@@ -1,0 +1,65 @@
+<div class="modal fade" id="add_tag" tabindex="-1" role="dialog" aria-labelledby="add_tag">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">添加标签</h4>
+			</div>
+			<div class="modal-body">
+				<span id="sys_tags_span" class="text-aqua">Tag:
+                {%for tag in sys_tags%}
+                    {% if tag.name in candidate_tag_name_list%}
+                        <button data-id="{{tag.id}}" data-name="{{tag.name}}" type="button" class="btn btn-primary btn-flat" data-toggle="button" aria-pressed="false" autocomplete="off">
+                          {{tag.name}}
+                        </button>
+                    {%else%}
+                        <button data-id="{{tag.id}}" data-name="{{tag.name}}" type="button" class="btn btn-default btn-flat" data-toggle="button" aria-pressed="false" autocomplete="off">
+                          {{tag.name}}
+                        </button>
+                    {% endif %}
+                {% endfor %}
+                </span>
+				<br><br>
+				<div class="input-group input-group-sm">
+					<input id="sys_tag_name" type="text" class="form-control" placeholder="标签名">
+					<span  class="input-group-btn">
+					    <a  id="btn_add_sys_tag" class="btn btn-danger btn-flat"><i  class="fa fa-plus"></i> 添加标签</a>
+					</span>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a id="btn_post_tags" type="button" class="btn btn-block btn-primary">提交</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+    $(function() {
+        //添加系统标签
+        $("#btn_add_sys_tag").click(function(){
+            var sys_tag_name = $("#sys_tag_name").val();
+            if (!sys_tag_name.trim()){
+                alert('请填写标签内容!');
+                return;
+            }
+            $.post("/crm/candidate/add_sys_tag/",{
+                    name: sys_tag_name
+                },
+                function(result) {
+                    if (result.status == 'ok'){
+                        $("#sys_tags_span").append(
+                            '<button data-id="'+result.sys_tag_id+'" data-name="'+sys_tag_name+'" type="button" class="btn btn-primary btn-flat" data-toggle="button" aria-pressed="false" autocomplete="off">'+
+                            sys_tag_name+
+                            '</button>&nbsp;'
+                        );
+                        $("#sys_tag_name").val("");
+
+                    }
+                  else{
+                    alert(result.msg);
+                  }
+            });
+        });
+    });
+</script>

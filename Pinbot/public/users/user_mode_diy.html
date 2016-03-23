@@ -1,0 +1,60 @@
+
+<div class="main main-mode" >
+                <div class="header">
+                    <h1>你选择了聘宝<span class="cf46c62">自助</span>套餐</h1>
+                    <div class="sub-title">更多职位定制数量、无限聘点赠送请详见(<a href="javascript:void(0);" ng-click="goNoWorryMode()">省心型套餐</a>)</div>
+                </div>
+
+                <div class="price content box-content" ng-class="{'box-content-p90': modeList.length>=3,'box-content-p60': modeList.length==2,'box-content-p30': modeList.length==1}">
+                    <div class="text-center ajax-loading" ng-if="loadingThis">
+                        <img src="/static/partner/images/loading.gif" alt="loading">
+                        <br>页面装载中...
+                    </div>
+                    <div class="box-col box-col-center" ng-repeat="mode in modeList | filter:{is_show:true} | orderBy:'index'">
+
+                        <div class="user-mode user-mode-small user-mode-small-{- mode.pid -}" ng-class="{active: hoverDiy}" ng-mouseover="hoverDiy=true"
+                ng-mouseout="hoverDiy=false" ng-click="clickMode($event,'diy',mode.pid,mode.price,mode.name,mode.allow_buy,mode.has_manual_service)">
+                            <div class="box-col-bar"></div>
+                            <div class="user-mode-title pb-mg-bottom-0">¥ <span class="price-focus">{- mode.price -}</span></div>
+                            <div class="user-mode-title user-mode-subtitle"><span class="annotation">(有效期：3个月)</span></div>
+                            <div class="user-mode-list">
+                                <ul>
+                                    <li>包含<span>{- mode.feed_count -}</span>个职位定制</li>
+                                    <li>包含<span>{- mode.pinbot_point -}</span>聘点</li>
+                                    <li>自助购买聘点</li>
+                                </ul>
+                            </div>
+                            <div class="user-mode-btn">
+                                <a class="btn" href="javascript:void(0);" ng-click="buyUserMode($event,mode.pid)">购买{- mode.name -}</a>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- service-period service-period-list="servicePeriodList"></service-period -->
+
+                <div class="price content box-content pd-top-0 lh180">
+                    <!-- span class="c607d8b f14">立即购买后可使用至：<span class="cf46c62 expired-date">{-serviceExpired-}</span><br></span -->
+                    <span class="c607d8b f14">您提交<span class="cf46c62">职位制定</span>需求后，聘宝将会通过算法每日为您推荐匹配人才</span><br>
+                    <span class="c607d8b f14">注：<span class="cf46c62">10</span>个聘点=下载<span class="cf46c62">1</span>份简历</span>
+                </div>
+
+                <div class="price content box-content pd-top-0" ng-if="chooseOneMode">
+                    <span class="c607d8b f14">服务费用：<span class="price-focus">¥ {- modeFee -}</span><br>
+                </div>
+
+                <p class="checkbox-p" style="display:none;">
+                    <label class="agreement-line">
+                        <input type="checkbox" ng-model="agreementChecked" required name="agreement" id="agreement" ng-click="checkAgreement($event)"/>
+                        我已阅读
+                        <a href="/users/vip_protocal" class="protocal" target="_blank">聘宝套餐用户协议</a>
+                    </label>
+                    <label id="agreement-error" class="invalid" for="agreement" style="display: none;"></label>
+                </p>
+                <p class="form-control align-center" ng-if="chooseOneMode">
+                    <button type="button" tabindex="9" class="btn btn-welcome-submit buy-next"  ng-click="clickToPay('diy')">下一步</button>
+                </p>
+
+            </div><!-- main -->
+

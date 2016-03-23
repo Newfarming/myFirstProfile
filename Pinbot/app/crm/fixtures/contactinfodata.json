@@ -1,0 +1,192 @@
+[
+{
+  "pk": 52217,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "haha",
+    "update_time": "2016-01-27T11:21:57",
+    "phone": "13778322331",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55c476f2a0c4b326dfb05c52",
+    "resume_id": "55c476f2a0c4b326dfb05c52",
+    "email": "527788929@qq.com",
+    "add_time": "2015-07-10T14:26:12"
+  }
+},
+{
+  "pk": 52218,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "\u6d4b\u8bd5\u7528\u7684",
+    "phone": "15196631808",
+    "update_time": "2016-01-27T11:21:57",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55cb04458230db20873a116e",
+    "resume_id": "55cb04458230db20873a116e",
+    "email": "527788917@qq.com",
+    "add_time": "2015-07-10T14:26:12"
+  }
+},
+{
+  "pk": 52219,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "testN\u6b21",
+    "update_time": "2016-01-27T11:21:57",
+    "phone": "13882808775",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "559f855c036d4a2560f913d8",
+    "resume_id": "559f855c036d4a2560f913d8",
+    "email": "527788939@qq.com",
+    "add_time": "2015-07-10T16:05:18"
+  }
+},
+{
+  "pk": 52220,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "test1",
+    "phone": "18008034588",
+    "update_time": "2016-01-27T11:21:57",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55a5c497036d4a7bcae5398e",
+    "resume_id": "55a5c497036d4a7bcae5398e",
+    "email": "houxinqi@163.com",
+    "add_time": "2015-07-15T10:21:24"
+  }
+},
+{
+  "pk": 52221,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "test2",
+    "phone": "13443332332",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "update_time": "2016-01-27T11:21:57",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55a5ccad036d4a7bce5a2f43",
+    "resume_id": "55a5ccad036d4a7bce5a2f43",
+    "email": "527787929@qq.com",
+    "add_time": "2015-07-15T10:21:41"
+  }
+},
+{
+  "pk": 52222,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "测试人才伙伴重复录入的数据，不要乱改",
+    "phone": "18042412008",
+    "update_time": "2016-01-27T11:21:57",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55a5d3f6036d4a7bcbf184fe",
+    "resume_id": "55a5d3f6036d4a7bcbf184fe",
+    "email": "runforever@163.com",
+    "add_time": "2015-07-15T10:21:40"
+  }
+},
+{
+  "pk": 52223,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "test4",
+    "phone": "13444877754",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "update_time": "2016-01-27T11:21:57",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55a5d620036d4a7bcbf18504",
+    "resume_id": "55a5d620036d4a7bcbf18504",
+    "email": "dae@qq.com",
+    "add_time": "2015-07-15T10:21:40"
+  }
+},
+{
+  "pk": 52224,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "",
+    "weibo": "",
+    "name": "nimeia",
+    "update_time": "2016-01-27T11:21:57",
+    "phone": "18042412009",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55a616088230db9371301520",
+    "resume_id": "55a616088230db9371301520",
+    "email": "runforever@163.comn",
+    "add_time": "2015-07-15T16:05:13"
+  }
+},
+{
+  "pk": 52225,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "526626540",
+    "weibo": "",
+    "name": "\u674e\u5f00\u56fd",
+    "update_time": "2016-01-27T11:21:57",
+    "phone": "18080170231",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55c06a3559046e0b79226521",
+    "resume_id": "55c06a3559046e0b79226521",
+    "email": "likaiguo.happy@163.com",
+    "add_time": "2015-08-04T15:18:00"
+  }
+},
+{
+  "pk": 52226,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": "12345323432",
+    "weibo": "",
+    "name": "\u5c0f\u5c0f\u5b9d",
+    "phone": "12345323432",
+    "reported_num": 0,
+    "source": "talent_partner",
+    "update_time": "2016-01-27T11:21:57",
+    "status": "public",
+    "identity_id": "",
+    "source_id": "55c1af6ac036980e206b9c80",
+    "resume_id": "55c1af6ac036980e206b9c80",
+    "email": "12345323432@qq.com",
+    "add_time": "2015-08-05T14:38:28"
+  }
+}
+]

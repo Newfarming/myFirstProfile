@@ -1,0 +1,140 @@
+{% extends 'base_dash.html' %}
+{% load compress %}
+{% block content %}
+<input type="hidden" id="report_name" value="{{report_name}}">
+<input type="hidden" id="report_type" value="{{report_type}}">
+<div id="data_block_user_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">用户周报表</div>
+    <table id = "data_table_user_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true">
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="new_register_user_count">注册用户</th>
+                <th data-field="new_register_user_count_contrast">注册用户周环比</th>
+                <th data-field="new_experience_user_count">体验用户</th>
+                <th data-field="new_experience_user_count_contrast">体验用户周环比</th>
+                <th data-field="new_member_count">会员用户</th>
+                <th data-field="new_member_count_contrast">会员用户周环比</th>
+                <th data-field="new_self_member_count">自助会员</th>
+                <th data-field="new_self_member_count_contrast">自助会员周环比</th>
+                <th data-field="new_self_member_a_count">自助会员A</th>
+                <th data-field="new_self_member_a_count_contrast">自助会员A周环比</th>
+                <th data-field="new_self_member_b_count">自助会员B</th>
+                <th data-field="new_self_member_b_count_contrast">自助会员B周环比</th>
+                <th data-field="new_self_member_c_count">自助会员C</th>
+                <th data-field="new_self_member_c_count_contrast">自助会员C周环比</th>
+                <th data-field="new_manual_member_count">省心会员</th>
+                <th data-field="new_manual_member_count_contrast">省心会员周环比</th>
+                <th data-field="week_repeat_visit_count">重复访问用户</th>
+                <th data-field="week_repeat_visit_count_contrast">重复访问用户周环比</th>
+                <th data-field="week_lively_user_count">周活跃用户</th>
+                <th data-field="week_lively_user_count_contrast">活跃用户周环比</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="data_block_resume_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">简历周报表</div>
+    <table id = "data_table_resume_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true">
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="resume_commends_count">简历推荐总量</th>
+                <th data-field="resume_commends_count_contrast">简历推荐总量周环比</th>
+                <th data-field="resume_view_count">简历查看量</th>
+                <th data-field="resume_view_count_contrast">简历查看量周环比</th>
+                <th data-field="resume_down_count">简历下载量</th>
+                <th data-field="resume_down_count_contrast">简历下载量周环比</th>
+                <th data-field="interviewed_count">进入面试量</th>
+                <th data-field="interviewed_count_contrast">进入面试量周环比</th>
+                <th data-field="entered_count">已入职量</th>
+                <th data-field="entered_count_contrast">已入职量周环比</th>
+                <th data-field="company_card_send_count">企业名片发放量</th>
+                <th data-field="company_card_send_count_contrast">企业名片发放量周环比</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="data_block_core_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">简历月报表</div>
+    <table id = "data_table_core_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true">
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="active_user_count">激活用户数</th>
+                <th data-field="active_user_count_contrast">激活用户周环比</th>
+                <th data-field="member_count">会员用户数</th>
+                <th data-field="member_count_contrast">会员用户周环比</th>
+                <th data-field="entered_count">入职数</th>
+                <th data-field="entered_count_contrast">入职周环比</th>
+                <th data-field="lively_user_count">活跃用户数</th>
+                <th data-field="lively_user_count_contrast">活跃用户周环比</th>
+                <th data-field="lively_member_count">活跃会员数</th>
+                <th data-field="lively_member_count_contrast">活跃会员周环比</th>
+                <th data-field="repeat_visit_count">重复访问用户数</th>
+                <th data-field="repeat_visit_count_contrast">重复访问用户周环比</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="data_block_partner_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">互助伙伴周报表</div>
+    <table id = "data_table_partner_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true">
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="accept_task_user_count">本周认领用户数量</th>
+                <th data-field="accept_task_user_count_contrast">认领用户数周环比</th>
+                <th data-field="task_total_count">任务总量</th>
+                <th data-field="task_total_count_contrast">任务总量环比</th>
+                <th data-field="task_viewed_count">被查看任务数</th>
+                <th data-field="task_viewed_count_contrast">被查看任务数周环比</th>
+                <th data-field="task_accedpted_count">被认领任务数</th>
+                <th data-field="task_accedpted_count_contrast">被认领任务周环比</th>
+                <th data-field="upload_resume_count">上传简历量</th>
+                <th data-field="upload_resume_count_contrast">上传简历周环比</th>
+                <th data-field="do_task_count">做任务次数</th>
+                <th data-field="do_task_count_contrast">做任务次数周环比</th>
+                <th data-field="resume_viewed_count">简历查看量</th>
+                <th data-field="resume_viewed_count_contrast">简历查看量周环比</th>
+                <th data-field="resume_download_count">简历下载量</th>
+                <th data-field="resume_download_count_contrast">简历下载量周环比</th>
+                <th data-field="interviewed_count">进入面试量</th>
+                <th data-field="interviewed_count_contrast">进入面试量周环比</th>
+                <th data-field="entered_count">入职量</th>
+                <th data-field="entered_count_contrast">入职量周环比</th>
+                <th data-field="accusation_count">被举报量</th>
+                <th data-field="accusation_count_contrast">被举报量周环比</th>
+                <th data-field="today_extra_reward_coin_count">当周周额外奖励金币</th>
+                <th data-field="all_extra_reward_coin_count_contrast">额外奖励金币周环比</th>
+                <th data-field="today_reward_coin_count">当周奖励金币</th>
+                <th data-field="all_reward_coin_count_contrast">奖励金币周环比</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+{% compress js %}
+<script src="{{STATIC_URL}}dash/js/dash.js"></script>
+{% endcompress %}
+
+{% endblock %}

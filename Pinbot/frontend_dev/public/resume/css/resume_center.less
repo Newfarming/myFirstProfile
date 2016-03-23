@@ -1,0 +1,678 @@
+/* 基本变量、函数 */
+@import "../../../css/base";
+body{
+    padding-bottom: 60px;
+}
+.fast-menu > a:first-child{
+    padding-top: 4px !important;
+}
+.resume-center-main{
+    width: 1140px;
+    margin: 24px auto 0 auto;
+}
+/*左侧操作栏*/
+.control-module{
+    float: left;
+    width: 238px;
+    padding-bottom: 70px;
+    font-size: @font-size-14;
+    border:1px solid @pb-bg-main-light;
+    background-color: @pb-bg-main-f7;
+}
+.control-module .control-nav-collect{
+    padding: 25px 0px 10px 0px;
+}
+.control-module .control-nav-collect a{
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 210px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    margin:0 auto;
+}
+.control-module .control-nav-collect a.null-collect{
+    background-color: @pb-bg-main-light;
+}
+.control-module .control-nav-collect a.null-collect-current{
+    height: 46px;
+    width: 234px;
+    line-height: 46px;
+    border-left: 4px solid @pb-btn-dark-bule;
+    background-color: @pb-bg-main-light;
+}
+.control-module .control-nav-collect a.have-collect{
+    color: #fff;
+    background-color: @pb-btn-blue;
+}
+.control-module .control-nav-collect a.control-nav-current{
+    height: 46px;
+    line-height: 46px;
+    width: 234px;
+    border-left: 4px solid @pb-btn-dark-bule;
+    background-color: @pb-btn-blue;
+}
+.control-module .control-nav-collect a.null-collect:hover,
+.control-module .control-nav-collect a.null-collect-current:hover{
+    background-color:@pb-bg-main-light;
+}
+.control-module .control-nav-collect a.have-collect:hover,
+.control-module .control-nav-collect a.control-nav-current:hover
+{
+    background-color: @pb-btn-blue-hover;
+}
+.control-module .control-nav-collect a.have-collect:after,
+.control-module .control-nav-collect a.control-nav-current:after,
+.control-module .control-nav-collect a.null-collect-current:after,
+.control-module .control-nav-collect a.null-collect:after
+{
+    position: absolute;
+    left: 20px;
+    top: 6px;
+    display: block;
+    content: "";
+    width: 25px;
+    height: 28px;
+    .border-radius(50%);
+    background: url(@sprite) no-repeat -258px -497px;
+}
+.control-module .control-nav-collect a.null-collect-current:after{
+    top: 9px !important;
+    left: 30px !important;
+    background: url(@sprite) no-repeat -198px -497px;
+}
+.control-module .control-nav-collect a.control-nav-current:after{
+    top: 9px !important;
+    left: 30px !important;
+}
+.control-module .control-nav-collect a.null-collect:after{
+    background: url(@sprite) no-repeat -198px -497px;
+}
+
+ul.control-nav{
+
+}
+ul.control-nav>li{
+    position:relative;
+    width: 238px;
+}
+ul.control-nav>li>a{
+    display: block;
+    height: 46px;
+    line-height: 46px;
+    padding-left: 42px;
+    color: @pb-btn-dark-bule;
+}
+ul.control-nav>li>a.pen-bg{
+    position: relative;
+}
+ul.control-nav>li>a.pen-bg + em{
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    display: block;
+    height: 24px;
+    width: 24px;
+    cursor:pointer;
+    background: url(/static/resume/images/pen.png) no-repeat center center;
+}
+ul.control-nav>li>a.pen-bg i{
+    font-style: normal !important;
+}
+ul.control-nav>li>a.control-nav-current{
+    padding-left: 38px;
+    background: url(/static/resume/images/xing.png) @pb-bg-main-f2 no-repeat  22px center;
+    border-left:4px solid @pb-btn-dark-bule;
+}
+ul.control-nav>li>a:hover{
+    background-color: @pb-bg-main-f2;
+}
+ul.control-second-nav>li>a.control-subnav-current{
+    padding-left: 70px !important;
+    background: @pb-bg-main-light !important;
+    border-left:0px solid @pb-btn-dark-bule !important;
+}
+ul.control-nav>li>ul.control-second-nav{
+    display: none;
+}
+ul.control-nav>li>ul.control-second-nav li{
+    width: 238px;
+    line-height: 46px;
+}
+ul.control-nav>li>ul.control-second-nav li a{
+    display: block;
+    height: 46px;
+    line-height: 46px;
+    padding-left: 70px;
+    color: @pb-bg-dark-blue;
+    background-color: @pb-bg-main-light;
+}
+ul.control-nav>li>ul.control-second-nav li a:hover{
+    background-color: @pb-bg-light-blue;
+}
+ul.control-nav>li>ul.control-second-nav li a.control-nav-current{
+    padding-left: 66px;
+    border-left:4px solid @pb-btn-dark-bule;
+    background: url(/static/resume/images/xing.png)  no-repeat @pb-bg-light-blue 22px center;
+}
+.control-module div.folder{
+    width: 210px;
+    margin: 20px auto 0 auto;
+}
+.control-module div.folder>a{
+    display: block;
+    margin-top: 20px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border:1px solid @pb-btn-dark-bule;
+    color: @pb-btn-dark-bule;
+    background: url(/static/resume/images/blue_folder.png) no-repeat #fff 24px center;
+}
+.control-module div.folder>a.adit-state,
+.control-module div.folder>a:hover{
+    color: #fff;
+    background: url(/static/resume/images/folder_bg.png) no-repeat @pb-btn-dark-bule 24px center;
+}
+.control-module div.folder>a.adit-state:hover{
+    background: url(/static/resume/images/folder_bg.png) no-repeat @pb-btn-dark-bule 24px center;
+}
+.control-module div.folder>div{
+    width: 210px;
+    height: 38px;
+    margin: 10px auto 0 auto;
+}
+.control-module div.folder>div input{
+    float: left;
+    height: 24px;
+    width: 140px;
+    color: @pb-font-main-light;
+    line-height: 24px;
+    padding: 6px 10px 6px 19px;
+    border-top: 1px solid @pb-bg-main-f2;
+    border-bottom: 1px solid @pb-bg-main-f2;
+    border-left: 1px solid @pb-bg-main-f2;
+}
+.control-module div.folder>div a{
+    float: left;
+    height: 38px;
+    width: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: url(/static/resume/images/folder.png) no-repeat @pb-btn-red center center;
+}
+
+/*右侧展示栏*/
+.display-module{
+    float: right;
+    width: 862px;
+    font-size: @font-size-13;
+}
+.search-box {
+    width: 820px;
+    height: 40px;
+    padding: 24px 20px;
+    background-color: @pb-bg-main-f7;
+    border:1px solid @pb-bg-main-f2 ;
+}
+.search-box .filter-factor{
+    position: relative;
+    width: 160px;
+    float: left;
+}
+.search-box .filter-factor>a{
+    display: block;
+    width: 130px;
+    height: 38px;
+    padding-left: 28px;
+    line-height: 38px;
+    color: @pb-btn-dark-bule;
+    border:1px solid @pb-bg-main-light;
+    background: url(/static/resume/images/down.png) no-repeat #fff 125px center;
+}
+.search-box .filter-factor ul{
+    position: absolute;
+    left: 0;
+    border-bottom: 0;
+    padding: 10px 0;
+    width: 158px;
+    color: @pb-btn-dark-bule;
+    font-size: @font-size-13;
+    background-color: @pb-bg-main-f7;
+    border:1px solid @pb-bg-main-light;
+    z-index: 2;
+}
+.search-box .filter-factor ul li a{
+    display: block;
+    width: 130px;
+    padding-left: 28px;
+    line-height: 36px;
+    color: @pb-font-main-light;
+}
+.search-box .filter-factor ul li a:hover,.filter-factor ul li a.filter-factor-choose{
+    color: @pb-btn-dark-bule;
+}
+.input-box{
+    float: left;
+    padding: 7px 25px;
+    width: 520px;
+    height: 24px;
+    border-top: 1px solid @pb-bg-main-light;
+    border-bottom: 1px solid @pb-bg-main-light;
+    background:#fff;
+}
+.input-box>input{
+    width: 520px;
+    height: 24px;
+    line-height: 24px;
+    color: @pb-font-main-light;
+    border: none;
+    outline: none;
+    background-color:#fff;
+}
+.search-box>a{
+    float: left;
+    width: 47px;
+    padding-left: 43px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size: @font-size-14;
+    background: url(/static/resume/images/search_bg.png) no-repeat @pb-btn-dark-bule 17px center;
+}
+
+/*table*/
+.resume-center-tabel{
+    width: 862px;
+    margin-top: 17px;
+    background-color: #fff;
+    border-left: 1px solid @pb-bg-main-light;
+    border-right: 1px solid @pb-bg-main-light;
+    border-top: 2px solid @pb-btn-dark-bule;
+}
+.resume-center-tabel tr:first-child{
+    height: 36px;
+}
+.resume-center-tabel tr{
+    height: 138px;
+    cursor:pointer;
+    border-bottom: 1px solid @pb-bg-main-light;
+}
+.resume-center-tabel tr th{
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    color:@pb-btn-dark-bule;
+    font-weight: normal;
+    text-align: center;
+    background-color: @pb-bg-main-f2;
+}
+.resume-center-tabel tr td{
+    position: relative;
+    padding: 9px 0;
+    text-align: center;
+}
+.resume-center-tabel tr td label,
+.resume-center-tabel tr th label{
+    position: absolute;
+    text-align: left;
+    left: 17px;
+    top: 0;
+    width: 60px;
+    z-index: 1;
+    padding-top:9px;
+
+}
+.resume-center-tabel tr td label{
+    padding-top:13px;
+}
+.resume-center-tabel tr th label span{
+    float: left;
+     line-height: 20px;
+}
+.check-box{
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: url(/static/resume/images/feed.png) no-repeat -26px -3px;
+}
+.check-box-choose{
+    background: url(/static/resume/images/feed.png) no-repeat -4px -3px;
+}
+.resume-center-tabel tr td.align-left{
+    text-align: left;
+}
+.resume-center-tabel tr td .resume-head{
+    position: absolute;
+    left: 0;
+    top: 10px;
+    background: url(/static/resume/images/femail_head.png) no-repeat;
+}
+.resume-center-tabel tr td .resume-head{
+    position: absolute;
+    left: 0;
+    top: 10px;
+    background: url(/static/resume/images/mail_head.png) no-repeat;
+}
+.resume-center-tabel tr td p{
+    line-height: 24px;
+}
+.resume-center-tabel tr td p.left-fix{
+    left: 48px;
+}
+.resume-center-tabel tr td p.of-hidden{
+    height:25px;
+    overflow:hidden;
+}
+.resume-center-tabel tr td p.of-hidden span{
+    //line-height: 16px;
+}
+.resume-center-tabel tr td p.down-time{
+    position: absolute;
+    top: 8px;
+    font-size: @font-size-12;
+    letter-spacing: -1px;
+}
+.resume-center-tabel tr td p.pl70{
+    padding-left: 70px;
+    height: 24px;
+    overflow: hidden;
+}
+.resume-center-tabel tr td p span.separate-line{
+    display: inline-block;
+    height: 16px;
+    margin: -4px 10px;
+    border-left: 1px solid @pb-btn-dark-bule;
+}
+.resume-center-tabel tr td p big{
+    font-size: @font-size-16;
+}
+.c44b5e8{
+    color: @pb-btn-blue;
+}
+.ccfd8dc{
+    color: @pb-bg-main-light;
+}
+.cf46c62{
+    color: @pb-btn-red;
+}
+.caaaaaa{
+    color: @pb-font-main-light;
+}
+.vertical-align{
+    vertical-align:middle;
+}
+.line-height-18{
+    line-height: 18px !important;
+}
+
+/*标记按钮*/
+.mark-botton{
+    display:inline-block;
+    margin: 0 auto;
+    width:120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: @font-size-13;
+}
+.bg607d8b{
+    background-color: @pb-btn-dark-bule;
+}
+a.bg607d8b:hover{
+    background-color: @pb-btn-dark-bule-hover;
+}
+.bg44b5e9{
+    background-color: @pb-btn-blue;
+}
+a.bg44b5e9:hover{
+    background-color: @pb-btn-blue-hover;
+}
+.bgf46c62{
+    background-color: @pb-btn-red;
+}
+a.bgf46c62:hover{
+    background-color: @pb-btn-red-hover;
+}
+
+.mt10{
+    margin-top: 10px;
+}
+.resume-center-tabel-bottom{
+    height: 30px;
+    width: 820px;
+    margin-top: 8px;
+    padding: 9px 20px;
+    background-color: @pb-bg-main-f7;
+    border:1px solid @pb-bg-main-light;
+}
+.resume-center-tabel-bottom>a{
+    float: left;
+    margin-right: 30px;
+    color: @pb-btn-dark-bule;
+    line-height: 30px;
+}
+.resume-center-tabel-bottom label{
+    float: left;
+    margin-right: 30px;
+    padding-top:6px;
+}
+.resume-center-tabel-bottom label span{
+    float: left;
+    line-height: 20px;
+    color: @pb-btn-dark-bule;
+}
+.resume-center-tabel-bottom a.confirm{
+    float: right;
+    color:#fff;
+    margin-right: 0;
+}
+.resume-center-tabel-bottom p{
+    float: right;
+    margin-right: 60px;
+    line-height: 30px;
+}
+.resume-center-tabel-bottom p strong{
+    color: @pb-btn-red;
+    font-size: @font-size-16;
+    font-weight: normal !important;
+}
+.null-data{
+    display: none;
+    width: 862px;
+    height: 500px;
+    background: url(/static/resume/images/img_02.png) no-repeat center center;
+}
+.rename-input-box{
+    margin:50px auto 0 auto;
+    width: 220px;
+    height: 20px;
+    padding: 5px 10px;
+    border:1px solid @pb-bg-main-light;
+}
+.rename-input-box input{
+    width: 220px;
+    height: 20px;
+    font-size: @font-size-14;
+}
+.modal-body{
+    padding: 20px 0 50px 0 !important;
+}
+.del-confirm{
+    font-size: @font-size-14;
+    padding-top: 50px;
+}
+.del-confirm span{
+    color: @pb-btn-blue;
+}
+.add-folder{
+    position: relative;
+    float: left;
+    width: 170px;
+    height: 28px;
+    border:1px solid @pb-bg-main-light;
+    background: url(/static/resume/images/down.png) no-repeat #fff 140px center;
+}
+.add-folder a{
+    display: block;
+    line-height: 28px;
+    color:@pb-btn-dark-bule;
+    padding-left: 10px;
+}
+.add-folder>ul{
+    display: none;
+    position: absolute;
+    top:29px;
+    left: -1px;
+    width: 170px;
+    background-color: #fff;
+    border-left:1px solid @pb-bg-main-light;
+    border-right: 1px solid @pb-bg-main-light;
+}
+.add-folder>ul li{
+    height: 28px;
+    width: 170px;
+    border-bottom: 1px solid @pb-bg-main-light;
+}
+.add-folder>ul li:hover{
+    background-color: @pb-bg-main-light;
+}
+.resume-center-loading{
+    display: none;
+    width: 862px;
+    height: 100px;
+    background: url(/static/partner/images/loading.gif) no-repeat center center;
+}
+.sex-box{
+    position: absolute;
+    left: 0;
+    top: 10px;
+    height: 48px;
+    width: 48px;
+}
+.resume-head-male{
+   background: url(/static/resume/images/mail_head.png) no-repeat;
+}
+.resuem-head-female{
+   background: url(/static/resume/images/femail_head.png) no-repeat;
+}
+.resume-head-unkown{
+    background: url(/static/resume/images/unkown_head.png) no-repeat;
+}
+.resume-center-tabel tr td div.pt40{
+    padding-top: 45px !important;
+}
+
+@import "../../../css/common_btn";
+
+.btn-select{
+    overflow: hidden;
+    width:120px;
+    height:30px;
+    z-index:10;
+}
+.btn-select a{
+    background-color: @pb-bg-dark-blue;
+    color:#fff;
+}
+.btn-select a.selected:after{
+    content:"";
+    display:block;
+    width:35px;
+    height:35px;
+    background: url(/static/b_index/img/sprite.png) no-repeat -318px -254px;
+    position:relative;
+    top: -30px;
+    right: -90px;
+}
+
+.btn-select-list{
+    width:118px;
+    position:absolute;
+    top:62px;
+    left:0px;
+    z-index:9;
+    border:1px @pb-bg-main-light solid;
+    border-top:1px @pb-bg-dark-blue solid;
+}
+.btn-select-list a{
+    width:118px;
+    height:30px;
+    border:0px !important;
+    background:#fff;
+    color:@pb-bg-dark-blue;
+    border-bottom: 1px @pb-bg-main-light solid !important;
+}
+.btn-select-list a:last-child{
+    border-bottom: 0px @pb-bg-dark-blue solid;
+}
+.btn-select-list a:hover{
+    border:0px !important;
+    background:@pb-bg-main-f2;
+    color:@pb-bg-dark-blue;
+    border-bottom: 1px @pb-bg-main-light solid !important;
+}
+.pb-paging{
+    padding-bottom: 40px;
+}
+.pb-paging a{
+    .userSelectNone;
+}
+.remove-resume{
+    padding:0 6px;
+}
+.resume-center-tabel-bottom > a.remove-resume-choose{
+    color:#fff;
+    background-color: @pb-btn-blue;
+}
+.resume-center-tabel tr td.pl46{
+    padding:9px 0 9px 46px;
+}
+
+.resume-center-tabel tr td.pl46 .sex-box{
+    left:46px;
+}
+.success-tip{
+    display:none;
+    width:820px;
+    padding:0 20px;
+}
+.success-tip p{
+    float:right;
+    width:120px;
+    text-align: center;
+    line-height: 30px;
+}
+.contact-message{
+    position:absolute;
+    left:0;
+    top:105px;
+}
+.content_message{
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.position-left{
+    left:48px;
+}
+.noselect {
+  .userSelectNone;
+}
+.email-string{
+  max-width:195px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+a.btn{
+    display:inline-block;
+}
+.stop-to-detail{
+    cursor: default !important;
+}

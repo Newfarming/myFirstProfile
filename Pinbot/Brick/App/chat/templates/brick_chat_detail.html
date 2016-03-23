@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load compress %}
+{% load job_tags %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}chat/css/chat.min.css" rel="stylesheet">
+{% endblock%}
+
+{% block body %}
+
+<div class="content" ng-app="app.chat" ng-controller="chatDetail">
+    <div class="chat-content">
+        <div class="chat-header clearfix">
+            <a class="i-back left" ng-click="back()"></a>
+            <div class="card">
+                {% if chat.chat_type == 'job' %}
+                <h2 class="text-overflow">{{ chat.job.company.company_name }}</h2>
+                <p>{{ chat.job.title }}，{{ chat.job.salary_low|divide }}k-{{ chat.job.salary_high|divide }}k {{ chat.job.work_years }}年 {{ chat.job.degree|card_cn_display }}</p>
+                {% else %}
+                <h2 class="text-overflow">{{ chat.feed.company.company_name }}</h2>
+                <p>{{ chat.feed.title }}，{{ chat.feed.salary_min|divide }}k-{{ chat.feed.salary_max|divide }}k {{ chat.feed.work_years_min }}-{{ chat.feed.work_year_max }}年 {{ chat.feed.degree|card_cn_display }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a title="查看更多" class="view-more" ng-click="loadMore()" ng-show="nextPage">查看更多</a>
+        <p class="text-center ng-hide" ng-show="loading">
+            <img src="{{ STATIC_URL }}common/img/loading.gif" alt="">
+        </p>
+    </div>
+
+    <div id="JS_detail_list" class="chat-content details">
+        <div class="p50">
+            <msg-info page="page"></msg-info>
+        </div>
+        <div class="send-chat">
+            <div class="content">
+                <div class="inner-content">
+                    <div class="send-chat-box clearfix">
+                        <form name="sendmsg" method="get" accept-charset="utf-8">
+                            <input type="text" name="msg" value="" class="input left" ng-model="msg" required>
+                            <button type="button" class="button button-primary left" ng-disabled="sendmsg.$invalid" ng-click="sendMsg( {{ chat.id }} )">发送</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {% compress js %}
+    <script src="{{ STATIC_URL }}chat/chat_detail.js"></script>
+    {% endcompress %}
+    <script type="text/javascript">
+        var chat_id = '{{ chat.id }}',
+            C_chatDetail = true;
+    </script>
+{% endblock %}

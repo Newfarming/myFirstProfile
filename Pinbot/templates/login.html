@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/login.css?ad571bfb" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+</head>
+<body class="page-login">
+  <div id="page">
+    <div id="login">
+      <h1>
+        <a href="/" title="聘宝，专业人才推荐"></a>
+      </h1>
+      <form method="post" action="/signin/" id="login-form">
+        {% if status == 'error' %}
+          <p id="error">
+          {% if message == 'user not active' %} 您的申请已经审核通过，请到申请邮箱中激活!  {% endif%}
+          {% if message == 'check failed' %} 你的资料没有审核通过，请重新注册!  {% endif%}
+          {% if message == 'user not checked' %} 您的申请资料正在审核，请耐心等待!  {% endif%}
+          {% if message == 'user not existed' %} 用户名或者密码输入错误 {% endif%}
+          {% if message == 'input error' %} 输入出错 {% endif%}
+          {% if message == 'code error' %} 验证码输入错误 {% endif%}
+          </p>
+        {% endif%}
+        <p id="email">
+          <input type="email" tabindex="1" name="email" autofocus placeholder="请输入邮箱" autocomplete="off" value="{{form.email.value|default_if_none:"" }}"/>
+        </p>
+        <p id="password">
+          <input type="password" tabindex="2" name="password" placeholder="请输入密码"/>
+          <a href="/users/resetpassword/" id="forget" title="点击找回密码">忘记密码?</a>
+        </p>
+        {% if code %}
+        <p id="cap" class="clearfix">
+          <input type="text" tabindex="3" placeholder="验证码" name="code"/>
+          <img name="code" title="看不清？点击刷新" src="/users/get_check_code_image/" alt="CheckCode" width="135px" height="40px" />
+        </p>
+        {% endif %}
+        <p id="submit">
+          <button type="submit" tabindex="4" /> 登录 </button>
+        </p>
+        <p id="apply">
+          聘宝正在内测，
+          <a href="/apply/">立即申请</a>
+        </p>
+        {% csrf_token %}
+      </form>
+
+    </div>
+  </div>
+  <script src="{{ STATIC_URL }}alpha/scripts/login.js?9c1f051a"></script>
+  {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+    {{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}partner/css/resume_manage.css" type="text/css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}partner/css/task_info.css" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with upload_class='curr' %}
+{% endblock %}
+
+{% block sub_header %}
+    {% include 'partner_sub_nav.html' with my_resume='on' %}
+{% endblock %}
+
+{% block app %}ng-app="manageApp"{% endblock %}
+
+{% block content %}
+    <div class="relative text-center" id="JS_container">
+        <div class="resume-list" ui-view>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    {% compress js %}
+        {% include 'angular.html' %}
+        {% include 'angular_validation.html' %}
+        <script src="{{ STATIC_URL }}partner/js/resume_manage.js"></script>
+    {% endcompress %}
+{% endblock %}

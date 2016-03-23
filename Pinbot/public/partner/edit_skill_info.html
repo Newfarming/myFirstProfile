@@ -1,0 +1,36 @@
+<p class="form-label text-center c607d8b">
+    <label for="JS_base_info" class="relative">专业技能<i class="sprite i-toggle" ng-click="action()" id="i-skill"></i></label>
+</p>
+<div class="form-content pt10 long-info skill-info" id="JS_skill_info">
+    <div class="display-list">
+        <div class="display-item" ng-repeat="item in experience track by $index" ng-if="isPreview(item)">
+            <p class="f14">{- item.proficiency -}</p>
+            <p class="f16">{- item.skill_desc -}</p>
+            <i class="sprite i-pen" ng-click="edit_item(item, $index)"></i>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="add-handle" ng-click="add_item()" ng-class="{'disabled': isOpenItem}">新增一条</a>
+    <ng-form name="skillForm">
+        <div class="add-content" ng-if="isOpenItem">
+            <div class="mt30">
+                <p class="relative inline-block">
+                    <input type="text" name="skill_name" id="JS_skill_name" class="input w260" maxlength="30" message-id="skill_name_message" ng-model="temp.skill_desc" placeholder="请输入技能名称" validator="required" validate-method="submit">
+                    <span id="skill_name_message"></span>
+                </p>
+                <p class="relative inline-block ml115">
+                    <input type="text" name="skill_level" id="JS_skill_level" class="input w260" maxlength="20" message-id="skill_level_message" ng-model="temp.proficiency" placeholder="技能熟练程度" validator="required" validate-method="submit">
+                    <span id="skill_level_message"></span>
+                </p>
+            </div>
+            <div class="mt30">
+                <p class="relative inline-block text-left w260">
+                    <a href="javascript:void(0)" class="btn btn-blue-90" ng-click="info_form.submit(skillForm)">保存</a>
+                    <a href="javascript:void(0)" class="btn btn-blue-hline-90" ng-click="info_form.reset(skillForm, 'JS_skill_info', 'i-skill')">取消</a>
+                </p>
+                <p class="relative inline-block text-right w260 ml115">
+                    <a href="javascript:void(0)" class="btn btn-red-hline-90" ng-click="deleteItem(temp)">删除本条</a>
+                </p>
+            </div>
+        </div>
+    </ng-form>
+</div>

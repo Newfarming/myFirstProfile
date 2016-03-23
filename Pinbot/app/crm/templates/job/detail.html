@@ -1,0 +1,149 @@
+{% extends 'base_crm.html' %}
+{% load compress %}
+{% load candidate_tags %}
+
+{% block head_asserts %}
+<style>
+    /* adapted from http://maxwells.github.io/bootstrap-tags.html */
+    .tag {
+      font-size: 14px;
+      padding: .3em .4em .4em;
+      margin: 0 .1em;
+    }
+    .tag a {
+      color: #bbb;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .tag a:hover {
+      opacity: 1.0
+    }
+    .tag .remove {
+      vertical-align: bottom;
+      top: 0;
+    }
+    .tag a {
+      margin: 0 0 0 .3em;
+    }
+    .tag a .fa-black {
+      color: #000;
+      margin-bottom: 2px;
+    }
+</style>
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' with company_active="active" company_sub_active="active" %}
+{% endblock %}
+
+{% block content %}
+<div class="box box-solid">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="lead">
+                    <span>{{ job.title|default:job.keywords }}</span> {{ job.user.userprofile.company_name }}<br>
+                    <span>{{ job.salary_min }} - {{ job.salary_max }}</span><br>
+                    <span>人才级别: {{ job.talent_level }}</span><br>
+                    <span>工作地: {{ job.expect_area }}</span><br>
+                    <span>职位诱惑: {{ job.job_welfare }}</span><br>
+                    <span>添加时间: {{ job.add_time|date:'Y-m-d H:i' }}</span><br>
+                    <span>最后点击: {{ job.last_click_time|date:'Y-m-d H:i' }}</span><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_detail" data-toggle="tab">详细信息</a></li>
+                <li><a href="#tab_remark" data-toggle="tab">评价</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_detail">
+                    <div class="box">
+                        <div class="box-body">
+                            <dl>
+                                <dt>技能关键词</dt>
+                                <dd>
+                                    {{ job.keywords }}
+                                </dd>
+                                <dt>人才级别</dt>
+                                <dd>{{ job.talent_level }}<br></dd>
+                                <dt>职位描述</dt>
+                                <dd>{{ job.job_desc|linebreaks|default:'未填写' }}<br></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab_remark">
+                    <button class="btn bg-default btn-flat margin" data-toggle="modal" data-target="#addMarkModal" data-feed_id="{{ job.id }}">
+                        <i class="fa fa-plus"></i>
+                        新增评价
+                    </button>
+
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        时间
+                                    </th>
+                                    <th>
+                                        类型
+                                    </th>
+                                    <th>
+                                        内容
+                                    </th>
+                                    <th>
+                                        评价人
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for remark in job.crm_remarks.all reversed %}
+                                <tr>
+                                    <td>
+                                        {{ remark.create_time|date:'Y-m-d H:i' }}
+                                    </td>
+                                    <td>
+                                        {{ remark.get_remark_type_display }}
+                                    </td>
+                                    <td>
+                                        {{ remark.remark }}
+                                    </td>
+                                    <td>
+                                        {{ remark.admin.username }}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+    <!-- /.col --!-->
+</div>
+
+{% include 'job/add_mark.html' %}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}crm/job/job.js"></script>
+{% endcompress %}
+{%endblock %}

@@ -1,0 +1,32 @@
+<div ng-show="isShowEditSns" class="sns-list-edit">
+    <div class="form-box">
+        <a href ng-click="setPageType('linkedin')"><i class="i-linkin" ng-class="hasSocial( page_type == 'linkedin' )"></i></a>
+        <a href ng-click="setPageType('weibo')"><i class="i-weibo" ng-class="hasSocial( page_type == 'weibo' )"></i></a>
+        <a href ng-click="setPageType('github')"><i class="i-github" ng-class="hasSocial( page_type == 'github' )"></i></a>
+        <a href ng-click="setPageType('zhihu')"><i class="i-zhihu" ng-class="hasSocial( page_type == 'zhihu' )"></i></a>
+        <!-- <a href ng-click="setPageType('douban')"><i class="i-douban" ng-class="hasSocial( page_type == 'douban' )"></i></a> -->
+        <a href ng-click="setPageType('dribbble')"><i class="i-dribbble" ng-class="hasSocial( page_type == 'dribbble' )"></i></a>
+    </div>
+    <div class="edit-sns">
+        <form action="." name="snsForm" method="post" accept-charset="utf-8" id="snsForm" autocomplete="off">
+            <div class="form-box">
+                <input ng-model="current_url" class="input" name="url" type="text" validator="url" placeholder="URL"/>
+            </div>
+            <div class="form-box text-center btns-2">
+                <button class="button button-normal w30p" type="button" ng-click="saveSocialPage()" validation-submit="snsForm">保存</button>
+                <button class="button button-cancle w30p" type="button" ng-click="toggleEditSns( false )">取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-show="!isShowEditSns">
+    <div class="form-box sns-list">
+        <a ng-href="{- sns.linkedin -}" target="_blank"><i class="i-linkin" ng-class="hasSocial( sns.linkedin )"></i></a>
+        <a ng-href="{- sns.weibo -}" target="_blank"><i class="i-weibo" ng-class="hasSocial( sns.weibo )"></i></a>
+        <a ng-href="{- sns.github -}" target="_blank"><i class="i-github" ng-class="hasSocial( sns.github )"></i></a>
+        <a ng-href="{- sns.zhihu -}" target="_blank"><i class="i-zhihu" ng-class="hasSocial( sns.zhihu )"></i></a>
+        <!-- <a ng-href="{- sns.douban -}" target="_blank"><i class="i-douban" ng-class="hasSocial( sns.douban )"></i></a> -->
+        <a ng-href="{- sns.dribbble -}" target="_blank"><i class="i-dribbble" ng-class="hasSocial( sns.dribbble )"></i></a>
+        <a ng-href ng-click="toggleEditSns( true )" class="toedit c0091fa">修改</a>
+    </div>
+</div>

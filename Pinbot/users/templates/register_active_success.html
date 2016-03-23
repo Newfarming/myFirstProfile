@@ -1,0 +1,163 @@
+{% include 'base_newset.html' %}
+
+{% block content %}
+    <div class="" data-status="">
+        <div class="layout">
+
+            <div class="main main-white">
+                <div class="header">
+                    <div class="stepBox">
+                        <ul class="steps-info-line">
+                            <li></li>
+                            <li class="active"></li>
+                            <li class="active"></li>
+                            <li class=""></li>
+                        </ul>
+                        <ul class="steps-info">
+                            <li class="step1 active">
+                                <span class="step-icon"><span>1</span></span>
+                                <span class="step-info">填写注册信息</span>
+                            </li>
+                            <li class="step2 active">
+                                <span class="step-icon"><span>2</span></span>
+                                <span class="step-info">账号激活</span>
+                            </li>
+                            <li class="step3 active">
+                                <span class="step-icon"><span>3</span></span>
+                                <span class="step-info">注册成功！</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="step-title">
+                        <li class="step-title-prev "><a class="" href="#">上一步</a></li>
+                        <li class="step-title-center"><h1>
+
+
+                        {% if status == 'token_error' %}
+                        链接无效！
+                        {% elif status == 'already_active'%}
+                        您的账号已激活！
+                        {% elif status == 'token_expire'%}
+                        激活链接已失效...
+                        {% else %}
+                        账号已激活！恭喜您注册成功！
+                        {% endif %}
+
+
+                        </h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <div class="register-form-div">
+                    <h1 class="mobile">
+                        {# with status='ok' #}
+
+                        {% if status == 'token_error' %}
+                        链接无效！
+                        {% elif status == 'already_active'%}
+                        您的账号已激活！
+                        {% elif status == 'token_expire'%}
+                        激活链接已失效...
+                        {% else %}
+                        账号已激活！恭喜您注册成功！
+                        {% endif %}
+
+                        {# endwith #}
+                    </h1>
+                </div>
+                <p class="pc register-pc mg-btm-20">
+
+                    {# with status='ok' #}
+
+                    {% if status == 'token_error' %}
+                    <!-- 链接无效！ -->
+                    <label class="city-no-star">
+                    <span class="c607d8b fs12">你好，该激活链接无效！</span>
+                    </label>
+                    {% elif status == 'already_active'%}
+                    <!-- 该账号已激活！ -->
+                    <label class="city-no-star">
+                    <span class="c607d8b fs12">请勿重复激活！</span><a class="ac44b5e8 fs12" href="/signin/">点击登录</a>
+                    </label>
+                    {% elif status == 'token_expire'%}
+                    <!-- 激活链接失效... -->
+                    {% else %}
+                    <label class="">
+                    <span class="c607d8b fs12">点击按钮</span><a class="ac44b5e8 fs12" href="/signin/">登录聘宝</a><span class="c607d8b fs12">，马上开始体验聘宝之旅吧！</span>
+                    </label>
+                    <!--end of success-->
+                    {% endif %}
+
+                    {# endwith #}
+                </p>
+
+                <div class="register-form-div">
+
+                    <form>
+                        <p class=" align-center mg-btm-30">
+
+
+                            <!--error-->
+                            {# with status='ok' #}
+
+                            {% if status == 'token_error' %}
+                            <img src="{{ STATIC_URL }}b_common/img/activate_failed.png" border="0">
+                            <!--end of error-->
+                            <!--actived-->
+                            {% elif status == 'already_active'%}
+                            <img src="{{ STATIC_URL }}b_common/img/activate_failed.png" border="0">
+                            {% elif status == 'token_expire'%}
+                            <img src="{{ STATIC_URL }}b_common/img/activate_failed.png" border="0">
+                            <br>
+                            <span class="c607d8b fs12">
+                            请<a href="javascript:void(0);" class="send_active ac44b5e8" email="{{ username }}">点击此处</a>重新发送激活邮件
+                            </span>
+                            <span class="resp_info">发送成功！</span>
+                            <!--end of fail-->
+                            <!--success-->
+                            {% else %}
+                            <img src="{{ STATIC_URL }}b_common/img/rocket.gif" border="0">
+                            <br>
+                            <span class="c607d8b fs12">页面自动跳转，请等待：<span class="jumpTo fc863f">5</span>s...</span>
+                            <!--end of success-->
+                            {% endif %}
+
+                            {# endwith #}
+
+                        </p>
+                        <p class=" align-center">
+                            <label class="pc"></label><a href="/signin/" class="btn btn-red-submit confirm got-to-signin">登录聘宝</a>
+                            <label class="mobile"></label>
+                        </p>
+                        <p class="mobile copyright">
+                            <label>Copyright &copy; 2013 - 2015 HopperClouds, Inc.</label>
+                        </p>
+
+                    </form>
+                </div>
+
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+    <script type="text/javascript">
+        {% if not debug %}
+        $(function(){
+            countDown(5, '{% url "goto-pinbot" %}');
+        });
+        {% endif %}
+    </script>
+    <br><br><br><br>
+{% endblock %}
+
+{% block footer_html %}
+<div class="new-footer">
+    <ul class="contact">
+        <li>联系电话：028-83330727</li>
+        <li>企业QQ：800031490</li>
+        <li>HR交流Q群：9580917</li>
+    </ul>
+</div>
+{% endblock %}

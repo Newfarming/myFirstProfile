@@ -1,0 +1,116 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+{% load utils_tag %}
+
+{% block header %}
+{{ block.super }}
+<link href="{{ STATIC_URL }}mark/css/mark.min.css?20150630" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<h1 class="mark-title text-center" data-url="{{ referer_url }}" id="JS_header">标记简历状态</h1>
+<div class="inner-content clearfix">
+    <div class="left w900">
+        <div class="states-outer">
+            <form action="." method="post">
+                <div class="states-head">
+                    请根据实际情况选择简历状态
+                </div>
+                <div class="states-list">
+
+                    {% for level, value in mark_choices.items %}
+                    <div class="states">
+                        {% if value.choices %}
+                        <h3 class="status-result">{{ value.name }}<i class="micon {% if value.is_good %}i-success{% else %}i-fail{% endif %}"></i></h3>
+
+                        {% for c_list in value.choices %}
+                        <div class="status">
+                            <ul class="clearfix">
+                                {% for choice in c_list.choices %}
+                                <li>
+                                    <span class="m-radio" data-name="code_name"><input type="radio" name="code_name" value="{{ choice.code_name }}">{{ choice.desc }}</span>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                        {% endfor %}
+
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="handle f14 text-center mt50">
+                        <button type="button" class="button button-primary f16 w255" id="JS_submit_btn" data-ajax_common_type="form" data-callback="saveCallback" disabled="disabled">提交</button><br>
+                        {% if not buy_record.resume_mark %}
+                        <span class="inline-block mt20">联系方式有误？去<a class="cf26e66" id="JS_toreport_btn">举报！</a></span>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="right w220">
+
+        <div class="module resume-info">
+            <div class="module-line"></div>
+            <div class="module-content" data-url="{% url 'resume-display-resume' contact_info.resume_id 0 %}" id="JS_goto_detail">
+                <dl>
+                    <dt class="r-title f20 text-overflow">{{ contact_info.name }}</dt>
+                    <dd class="r-job f18 text-overflow">{{ resume_info|get_position_title }}</dd>
+                    <dd class="text-overflow">{{ resume_info.gender }} <span class="r-line">|</span> {{ resume_info.age }} <span class="r-line">|</span> {{ resume_info.educations.0.degree }}</dd>
+                    <dd class="text-overflow">现居：{{ resume_info.address }} <span class="r-line"></dd>
+                    <dd class="text-overflow">意向地：{{ resume_info.job_target.expectation_area }}</dd>
+                    <dd class="text-overflow"><span class="cf46c62 arial f15">{{ contact_info.phone }}</span></dd>
+                    <dd class="text-overflow"><span class="cf46c62 arial f15">{{ contact_info.email }}</span></dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="module mt20">
+            <div class="module-line"></div>
+            <div class="module-content">
+                <h5 class="text-center">简历状态</h5>
+                <ul class="records f14 mt20">
+                    {% for log in mark_logs %}
+                    <li>
+                        <dl>
+                            <dd>{{ log.mark_time|date:'Y/m/d H:i' }}</dd>
+                            <dd>{{ log.mark.desc }}</dd>
+                        </dl>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-backdrop-tip-toreport" style="display:none;"></div>
+<div class="modal-tip-toreport" style="display:none;">
+    <div class="modal-dialog-tip-toreport">
+        <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn JS_close_tip"></a></p>
+        <p style="font-size:20px;color:#434343;text-align:center"><i class="i-l-notice"></i>举报</p>
+        <p style="margin-top:30px; text-align:left;padding-left: 217px;line-height: 2;">
+            <span class="m-radio JS_toreport_radio" data-name="back_count"><input type="radio" name="back_count" value="221">电话号码有误</span>
+            <span class="m-radio JS_toreport_radio" style="margin-left:20px;" data-name="back_count"><input type="radio" name="back_count" value="220">空号或者停机</span>
+            <br>
+            {% if resume_info.source == 'talent_partner' %}
+            <span class="m-radio JS_toreport_radio" data-name="back_count" has-info="true"><input type="radio" name="back_count" value="222">互助伙伴推荐简历举报</span>
+            {% endif %}
+        </p>
+        <p id="JS_feedback_info" style="display:none;text-align:center;"><input type="text" id="JS_feedback_value" name="feedback_value" class="input feedback-info-input" placeholder="例:候选人不求职了(20字内)" maxlength="20" value=""></p>
+        <p style="margin-top:30px;color:#f23748;font-size:14px;text-align:center;">注：审核通过后我们将返回给你<span style="color:#ff5c42;">10</span>个聘点</p>
+        <p class="mt20 text-center">
+            <a class="button button-primary w158 f16" id="JS_submit_toreport" data-id="{{contact_info.resume_id}}" disabled>提交</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}mark/js/mark.min.js?201505081" charset="utf-8"></script>
+{% endblock %}

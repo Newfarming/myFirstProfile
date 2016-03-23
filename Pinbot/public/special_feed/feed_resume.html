@@ -1,0 +1,288 @@
+<div class="clearfix feed-match-box">
+    <p class=" feed-match">
+        <a class="feed-apply-option-title bd-trace" ng-class="{'feed-apply-option-choose': checkFeedTitle()}" ng-click="toggleTitle()" id="feed-search-match-title" trace-title="智能匹配"><i></i>智能匹配</a>
+        <a class="feed-apply-option-extend bd-trace"  ng-class="{'feed-apply-option-choose': checkFeedExtend()}" ng-click="toggleExtend()" id="feed-search-match-extend" trace-title="扩展匹配"><i></i>扩展匹配</a>
+        <span class="feed-expand-time float-right" ng-show="timeShow">
+            时间：
+            <a ng-click="changeTime($event)" ng-class="{'feed-expand-time-choose':reco_time==0}" data-time="0" class="bd-trace" id="feed-search-match-0day" trace-title="扩展匹配不限">不限</a>
+            <a ng-click="changeTime($event)" ng-class="{'feed-expand-time-choose':reco_time==7}" data-time="7" id="feed-search-match-7day" trace-title="扩展匹配7天" class="bd-trace">7天</a>
+            <a ng-click="changeTime($event)" ng-class="{'feed-expand-time-choose':reco_time==15}" data-time="15" class="bd-trace" id="feed-search-match-15day" trace-title="扩展匹配15天">15天</a>
+            <a ng-click="changeTime($event)" ng-class="{'feed-expand-time-choose':reco_time==30}" data-time="30" class="bd-trace" id="feed-search-match-30day" trace-title="扩展匹配30天">30天</a>
+        </span>
+    </p>
+</div>
+<div class="active-success" ng-show="fromActive.length && fromActive.length != 0 && fromActive == fromActive">
+    <p><i class="i-success"></i>已激活成功！<i class="i-close" ng-click="closeActiveTip()"></i></p>
+</div>
+<div class="renew-success" ng-show="fromRenew.length && fromRenew.length != 0 && fromRenew == fromRenew">
+    <p><i class="i-success"></i>续期成功！<i class="i-close" ng-click="closeRenewTip()"></i></p>
+</div>
+<section class="feed-filter">
+    <div class="feed-filter-header" ng-show="!filter" ng-click="toggleFilter(filter)">
+        <div class="filter-trigger">
+            <p class="filter-trigger-tip">点击展开定制筛选</p>
+            <p class="filter-trigger-icon">
+                <i class="i-arrow-down"></i>
+            </p>
+        </div>
+    </div>
+    <div class="feed-filter-content" ng-show="filter">
+        <div class="feed-filter-detail">
+            <div class="feed-filter-detail-item">
+                工作年限:
+                <div class="filter-select js-work-year"  ng-click="showWorkYear()">
+                     <i class="u-arrow-right-down"></i>
+                     <span ng-show="!show_no_limit">
+                        <span class="f13">{- filter_list.work_years_min -}</span>
+                        -
+                        <span class="f13">{- filter_list.work_years_max -}</span>
+                     </span>
+                     <span ng-show="show_no_limit" class="js-no-limit f13">不限</span>
+                    <div ng-show="show_work_year" class="filter-select-box">
+                        <span class="filter-select">
+                            <span ng-bind-html="filter_list.work_years_min | trustHtml"></span>
+                            <i class="u-triangle-down"></i>
+                            <select ng-change="minChange(filter_list.work_years_min, 'work_years_max',true)" name="work_years_min" id="JS_work_years_min" ng-model="filter_list.work_years_min" class="filter-select">
+                                <option ng-repeat="years in work_years_min" ng-selected="filter_list.work_years_min == years.value" value="{- years.value -}">{- years.name -}</option>
+                            </select>
+                        </span>
+                         -
+                        <span class="filter-select">
+                            <span ng-bind-html=" filter_list.work_years_max | trustHtml"></span>
+                            <i class="u-triangle-down"></i>
+                            <select ng-change="maxChange(filter_list.work_years_max, 'work_years_min',true)" name="work_years_max" id="JS_work_years_max" ng-model="filter_list.work_years_max" class="filter-select">
+                                <option ng-repeat="years in work_years_max" ng-selected="filter_list.work_years_max == years.value"  value="{- years.value -}">{- years.name -}</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+                年
+            </div>
+            <div class="feed-filter-detail-item">
+                薪资:
+                <div class="filter-select js-salary" ng-click="showSalary()">
+                     <i class="u-arrow-right-down"></i>
+                     <span ng-show="!show_salary_no_limit">
+                        <span class="f13">{- filter_list.salary_min -}</span>
+                        -
+                        <span class="f13">{- filter_list.salary_max -}</span>
+                     </span>
+                     <span ng-show="show_salary_no_limit" class="js-salary-no-limit f13">不限</span>
+                    <div ng-show="show_salary" class="filter-select-box">
+                        <div class="filter-select f-h-26">
+                            <input type="text" maxLength="2" name="salary_min" placeholder="请输入" ng-model="filter_list.salary_min" message-id="salary_min_message" validator="required" valid-method="submit" ng-class="{'ng-invalid': validateSalaryInput(filter_list.salary_min) || showSalaryError}" ng-keyup="validateSalary($event)">
+                        </div>
+                        -
+                        <div class="filter-select f-h-26">
+                            <input type="text" maxLength="2" name="salary_max" placeholder="请输入" ng-model="filter_list.salary_max" message-id="salary_max_message" validator="required" valid-method="submit" ng-class="{'ng-invalid': validateSalaryInput(filter_list.salary_max) || showSalaryError}" ng-keyup="validateSalary($event)">
+                        </div>
+                        <span class="age-error" ng-if="showSalaryError"><br>最低薪资不能大于最高薪资</span>
+                        <span class="age-error" id="salary_min_message" ng-if="validateSalaryInput(filter_list.salary_min)"><br>请输入正确的薪资</span>
+                        <span class="age-error" id="salary_max_message" ng-if="validateSalaryInput(filter_list.salary_max)"><br>请输入正确的薪资</span>
+                    </div>
+                </div>
+                k
+            </div>
+            <div class="feed-filter-detail-item">
+                学历:
+                <div class="filter-select">
+                    {- filter_list.degree -}
+                    <i class="u-arrow-right-down"></i>
+                    <select name="degree" id="JS_degree" ng-model="filter_list.degree" ng-change="setDegreeCookie()">
+                        <option value="不限">不限</option>
+                        <option value="专科">专科</option>
+                        <option value="本科">本科</option>
+                        <option value="硕士">硕士</option>
+                        <option value="博士">博士</option>
+                    </select>
+                </div>
+            </div>
+            <div class="feed-filter-detail-item">
+                    <div>年龄:
+                        <div ng-click="showAge()" class="filter-select js-age">
+                         <span ng-show="!show_age_no_limit">
+                            <span class="f13">{- filter_list.age_min -}</span>
+                            -
+                            <span class="f13">{- filter_list.age_max -}</span>
+                         </span>
+                         <span ng-show="show_age_no_limit" class="js-age-no-limit f13">不限</span>
+                            <i class="u-arrow-right-down"></i>
+                            <div ng-show="show_age" class="filter-select-box">
+                                <span class="filter-select">
+                                    <input type="text" maxLength="2" name="age_min" placeholder="请输入" ng-model="filter_list.age_min" message-id="age_min_message" validator="required" valid-method="submit" ng-class="{'ng-invalid': validateSalaryInput(filter_list.age_min) || showAgeError}" ng-keyup="validateAge($event)">
+                                </span>
+                                 -
+                                <span class="filter-select">
+                                    <input type="text" maxLength="2" name="age_max" placeholder="请输入" ng-model="filter_list.age_max" message-id="age_max_message" validator="required" valid-method="submit" ng-class="{'ng-invalid': validateSalaryInput(filter_list.age_max) || showAgeError}" ng-keyup="validateAge($event)">
+                                </span>
+                                <span class="age-error" ng-if="showAgeError"><br>最低年龄不能大于最高年龄</span>
+                                <span class="age-error" id="age_min_message" ng-if="validateSalaryInput(filter_list.age_min)"><br>请输入正确的年龄</span>
+                                <span class="age-error" id="age_max_message" ng-if="validateSalaryInput(filter_list.age_max)"><br>请输入正确的年龄</span>
+                            </div>
+                        </div>
+                        岁
+                    </div>
+
+            </div>
+            <div class="feed-filter-detail-item">
+                性别:
+                <div class="filter-select">
+                    {- filter_list.gender -}
+                    <i class="u-arrow-right-down"></i>
+                    <select name="gender" class="filter-select" id="JS_gender" ng-model="filter_list.gender" ng-change="setGenderCookie()">
+                        <option value="不限">不限</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="feed-filter-detail-item">
+                现居:
+                <div class="filter-select">
+                    {- filter_list.current_area -}
+                    <i class="u-arrow-right-down"></i>
+                    <select name="current_area" id="JS_current_area" ng-model="filter_list.current_area" ng-change="setCaCookie()">
+                        <option ng-repeat="current in current_area" ng-selected="filter_list.current_area == current.value" value="{- current.value -}">{- current.name -}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="feed-filter-etail-handle">
+                <a href="javascript:void(0);" ng-click="triggerFilter(age)" class="bd-trace" id="feed-customize-btn" trace-title="定制筛选">确定</a>
+            </div>
+            <div class="feed-filter-etail-handle ">
+                <a href="javascript:void(0);"  class="bd-trace bf2f2f2" id="feed-reset-btn" trace-title="定制筛选" ng-click="reset()">重置</a>
+            </div>
+            <!-- <p class="feed-filter-detail-item last-child">
+                管理经验:
+                <select name="experience" id="JS_experience" ng-model="filter_list.experience">
+                    <option value="">不限</option>
+                    <option value="1">有</option>
+                    <option value="0">无</option>
+                </select>
+            </p> -->
+        </div>
+<!--         <p class="filter-trigger-icon" ng-click="toggleFilter(filter)">
+            <i class="i-arrow-up"></i>
+        </p> -->
+    </div>
+</section>
+<div class="page-header c747f8c">
+    <p class="feed-meta float-left" >
+        已筛选出<em class="cf46c62">&nbsp;{- data.feed_query_count -}&nbsp;</em>份，
+        历史总推荐<em class="cf46c62">&nbsp;{- total_recommend_count -}&nbsp;</em>份，
+        精选自&nbsp;{- total_count -}&nbsp;份
+    </p>
+    <p class="feed-meta-search float-left" >
+        从<em class="cf46c62">&nbsp;{- total_recommend_count -}&nbsp;</em>封简历中找到<span class="search-target"></span>简历&nbsp;<span class="search-target-count">{- search_count -}</span>&nbsp;封
+    </p>
+    <p class="feed-control float-right">
+        <a class="feed-apply-option feed-apply-option-partner bd-trace" ng-class="{'feed-option-false': checkFeedPartner()}" ng-click="togglePartner()"  id="feed-customize-choose-partner" trace-title="互助伙伴推荐"><i class="u-check-box" ng-class="{'u-check-box-choose': !checkFeedPartner()}"></i>互助伙伴推荐</a>
+        <a class="feed-apply-option feed-apply-option-apply" ng-show="false" ng-class="{'feed-option-false': checkFeedApply()}" ng-click="toggleApply()"><i class="u-check-box" ng-class="{'u-check-box-choose': !checkFeedApply()}"></i>求职者投递</a>
+        <a class="feed-latest-option bd-trace" ng-class="{'feed-option-false': checkFeedLatest()}" ng-click="toggleLatest()" id="feed-customize-choose-latest" trace-title="只看未读"><i class="u-check-box" ng-class="{'u-check-box-choose': !checkFeedLatest()}"></i>只看未读</a>
+    </p>
+</div>
+<div class="loading-page" ng-if="loadingStatus">
+    <p class="loading-gif"></p>
+    <p class="loading-text"> Loading... </p>
+</div>
+<div class="loading-page" ng-if="!loadingStatus && !dataBlank && data.data.length==0">
+    <p class="text-center"><span class="big-icon big-icon-coffee"></span></p>
+    <p class="loading-text"> 非常抱歉！没有符合筛选项的结果~请您更换筛选条件 </p>
+</div>
+<div class="resume-list" ng-if="!loadingStatus">
+    <div class="resume-item resume-item-{-getDay(item.display_time)-} resume-item-xx-date" title="点击查看简历详情" data-resume-detail-url="/feed/get/{-item.feed.id-}/{-item.resume.id-}?calc_time={-item.pub_time-}&user=user" target="{-item.resume.id-}" ng-click="clickToDetail($event,item)" ng-repeat="item in data.data" ng-class="{'item-download':checkDownloadStatus(item),'item-unread':checkReadStatus(item,item.user_read_status),'resume-item-date-bar-red':isSevenday(item.display_time),'resume-item-date-hide':isHideDateBar(item.display_time),'resume-item-today':isToday(item.display_time),'resume-item-yesterday':isYesterday(item.display_time)}" date-title="{- dateTitle($index,item.display_time) -}" ng-mouseenter="showMoreInfo($event,item)" ng-mouseleave="hideMoreInfo($event,item)">
+        <!-- <date-bar display-time="item.display_time"></date-bar> -->
+        <i class="i-unread">未读</i>
+        <i class="i-download">下载</i>
+
+        <i class="i-fav i-fav-{-item.resume.id-} bd-trace" title="" ng-click="favItem(item, $event)" ng-class="{'i-fav-checked': item.favStatus}" ng-mouseover="showHoverTip($event)"  ng-mouseleave="hideHoverTip($event)" id="feed-list-add-fav" trace-title="收藏该简历">
+            <i class="i-delete-hover i-fav-delete-hover-{-item.resume.id-}" ng-if="!item.favStatus">收藏该简历</i>
+        </i>
+
+        <i class="i-delete i-delete-{-item.resume.id-} bd-trace" title="" ng-click="deleteItem(item)" ng-class="{'i-delete-checked': item.deleteStatus}"  ng-mouseover="showHoverTip($event)"  ng-mouseleave="hideHoverTip($event)" id="feed-list-delete" trace-title="推荐不准">
+            <i class="i-delete-notice i-delete-delete-notice-{-item.resume.id-}" ng-if="item.deleteStatus">推荐不准</i>
+            <i class="i-delete-hover i-delete-delete-hover-{-item.resume.id-}" ng-if="!item.deleteStatus">推荐不准</i>
+        </i>
+        <div class="item-header c747f8c">
+            <p class="item-rec-time">
+                推荐时间：{- item.display_time | noSpace -}<!-- {- item.pub_time | noSpace -} -->
+                <span ng-if="hasUpdated">(简历有更新)<span class="pb-icon pb-icon-dot"></span></span>
+            </p>
+            <p class="item-status">
+                {- item.resume.job_target.job_hunting_state -}
+            </p>
+        </div>
+        <div class="item-info c747f8c">
+            <!-- 基本求职信息 -->
+            <div class="base-info">
+                <p class="job-title">
+                    <span class="c44b5e8 f18" ng-if="checkDownloadStatus(item)">{- item.contact_info.name -} </span><span class="c44b5e8 f18">{- item.resume.works[0].position_title -}</span>
+                    <span class="source-tag cf46c62 f18" ng-if="item.feed_source === 'brick'">[求职者投递]</span>
+                    <span class="source-tag cf46c62 f18" ng-if="item.feed_source === 'talent_partner'">[互助伙伴推荐]</span>
+                    <i class="i-heart" ng-click="toggleEvaluate($event)" ng-if="item.feed_source === 'talent_partner'">
+                        <span class="hr-evaluate c747f8c f16" ng-show="showEvaluate && checkReadStatus(item,item.user_read_status)">
+                            最近一次联系候选人：{- item.resume.last_contact -}<br>
+                            {- item.resume.hr_evaluate -}
+                        </span>
+                    </i>
+                </p>
+                <p class="f14" ng-if="checkDownloadStatus(item)">
+                    <span class="pb-icon pb-icon-phone"></span> 电话：{- item.contact_info.phone | gender-}<span class="divide-14"></span> 邮箱：{- item.contact_info.email -}<span ng-if="notEmpty(item.contact_info.qq)"><span class="divide-14"></span> QQ：{- item.contact_info.qq -}</span>
+                </p>
+                <p class="f14">
+                    {- item.resume.gender | gender-}<span class="divide-14"></span>{- item.resume.age -}<span ng-if="item.resume.educations.length != 0"><span class="divide-14"></span>{- item.resume.educations[0].degree -} · {- item.resume.educations[0].school -}</span>
+
+                    <span ng-if="item.resume.address != ''"><span class="divide-14"></span>现居：{- item.resume.address -}</span>
+
+                    <span ng-if="item.resume.job_target.expectation_area != ''"><span class="divide-14"></span>意向地：{- item.resume.job_target.expectation_area -}</span>
+                </p>
+                <p class="f14">
+                    <span class="c44b5e8">{- item.resume.work_years -}</span>年经验<span class="divide-14"></span>期望薪资：<span class="c44b5e8">{- item.resume.job_target.salary | meetIfEmpty -}</span>
+
+                    <span ng-if="false" ngs-if="item.resume.job_target.job_career" title="{- item.resume.job_target.job_career -}"><span class="divide-14"></span>期望职位：<span class="c44b5e8 f-text-over-flow-hide">{- item.resume.job_target.job_career -}</span></span>
+                </p>
+                <p class="feed-keywords f14 normal-cursor" ng-if="item.tags.company_type || item.tags.keywords" ng-click="stopBubble($event)">
+                    <span ng-repeat="name in item.tags.company_type">{- name -}</span>
+                    <span ng-repeat="name in item.tags.keywords">{- name -}</span>
+                </p>
+
+            </div>
+            <!-- 最近工作信息 -->
+            <div class="latest-info">
+                <p class="latest-title f13">
+                    {- item.resume.works[0].company_name -} | {- item.resume.works[0].position_title -} <span ng-if="hasRecentSalary(item)"> <span class="divide-14"></span> 薪资：<span class="c44b5e8">{- recent_salary -}</span></span>
+                </p>
+                <p title="{- item.resume.works[0].job_desc | trustHtmlAllForTitle -}" class="latest-works f13" ng-bind-html="item.resume.works[0].job_desc | trustHtml">
+                </p>
+            </div>
+            <!-- 个人介绍信息 -->
+            <div class="rec-info f14" ng-if="item.resume.self_evaluation.length != 0">
+                <p title="{- item.resume.self_evaluation | trustHtmlAllForTitle -}" ng-bind-html="item.resume.self_evaluation | trustHtml">
+                </p>
+            </div>
+        </div>
+        <div class="item-view-more-info " ng-class="{'item-view-more-info-single':isSingleLine(item)}" style="display:none;">
+            <ul class="item-view-more-info-ul ">
+                <li ng-if="isNotEmptyObj(item.mark_log)"><span class="title">简历状态：</span><span class="time">[{- item.mark_log[0].mark_time | formatDate -}]</span> <span class="info c44b5e8" ng-if="item.mark_log[0].good_result">{- item.mark_log[0].mark_name -}</span> <span class="info cf46c62" ng-if="!item.mark_log[0].good_result">{- item.mark_log[0].mark_name -}</span></li>
+                <li ng-if="isNotEmptyObj(item.comment_log)"><span class="title">我的备注：</span><span class="time">[{- item.comment_log[0].comment_time | formatDate -}]</span> <span class="info">{- item.comment_log[0].content -}</span></li>
+            </ul>
+        </div>
+        <!-- <div class="item-view-ctrl">
+            <a title="点击查看简历详情" class="btn" href="/feed/get/{-item.feed.id-}/{-item.resume.id-}?calc_time={-item.pub_time-}&user=user" target="{-item.resume.id-}" ng-click="changeReadStatus(item)">查看简历</a>
+        </div> -->
+    </div>
+</div>
+<a class="load-more" ng-if="hasmore" ng-click="fetchMore()">查看更多</a>
+<div class="loading-page" ng-if="moreLoading">
+    <p class="loading-gif"></p>
+    <p class="loading-text"> Loading... </p>
+</div>
+<!-- 选择未读和求职者投递数据为空展示 -->
+<!-- <div class="no-resume data-blank" ng-if="dataBlank">
+</div> -->
+<div class="loading-page" ng-if="!loadingStatus && dataBlank">
+    <p class="text-center"><span class="big-icon big-icon-coffee"></span></p>
+    <p class="loading-text"> 非常抱歉！没有符合筛选项的结果~请您更换筛选条件 </p>
+</div>
+

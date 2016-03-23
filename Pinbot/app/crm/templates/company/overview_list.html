@@ -1,0 +1,68 @@
+{% load endless %}
+{% load candidate_tags %}
+
+<div class="box-body">
+    {% paginate 20 paginate_query %}
+    <table class="table no-margin" id="export_table">
+        <thead>
+            <tr>
+                <th>公司名</th>
+                <th>职位名</th>
+                <th>候选人</th>
+                <th>联系方式</th>
+                <th>求职状态</th>
+                <th>简历购买完成时间</th>
+                <th>更新时间</th>
+                <th>标记时间</th>
+                <th>操作</th>
+                <th>阶段</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in download_list %}
+            <tr class="number-{{ candidate.user.id }}">
+                <td>
+                    {{ record.user.userprofile.company_name }}
+                </td>
+                <td>
+                    {% if record.feed %}
+                    <a href="{% url 'crm-job-detail' record.feed.id %}" target="_blank">{{ record.feed.title|default:record.feed.keywords }}</a>
+                    {% else %}
+                    无
+                    {% endif %}
+                </td>
+                <td><a href="{% url 'crm-candidate-details' record.resume_id %}">{{ record.contact.name }}{% if record.work.position_title %}({{ record.work.position_title }}){% endif %}</a></td>
+                <td>
+                    {{ record.contact.phone }}<br>
+                    {{ record.contact.email }}<br>
+                    {% if record.contact.qq and record.contact.qq != 'null' %}
+                    {{ record.contact.qq|default:'' }}<br>
+                    {% endif %}
+                </td>
+                <td>{{ record.job_target.hunting_status|default:'未知' }}</td>
+                <td>
+                    {{ record.finished_time|date:'Y-m-d H:i' }}
+                </td>
+                <td>
+                    {{ record.contact.candidate.update_time|date:'Y-m-d H:i' }}
+                </td>
+                <td>
+                    {{ record.resume_mark.mark_time|date:'Y-m-d H:i' }}
+                </td>
+                <td>
+                    {% if not record.resume_mark.current_mark.is_taking_work %}
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#addMarkModal" data-contact_id="{{ record.id }}">标记</button>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ record.resume_mark.current_mark.name }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="box-footer clearfix overview_list_pager">
+    {% get_pages %}
+    {{ pages }}
+</div>

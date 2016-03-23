@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/goamdnjcofikdnlfdfhicbjgdnblmmff" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?1aaad571bfb" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/help.css?ad571bfb" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+</head>
+<body>
+{% include 'alpha/header.html' %}
+<div id="main">
+  
+  <div id="content">
+    <div id="welcome" class="layout-grid-2">
+      <div class="layout-grid-col">
+        <p class="welcome-download">
+          <img src="{{ STATIC_URL }}alpha/images/welcome.jpg" /></br>
+          聘宝插件目前仅支持 
+          <a href="http://www.google.com/intl/zh-CN/chrome/" target="_blank">谷歌浏览器</a> 和 
+          <a href="http://chrome.360.cn/" target="_blank">360极速浏览器</a>
+          </br>
+          <a id="btn-install-plugin" href="https://chrome.google.com/webstore/detail/goamdnjcofikdnlfdfhicbjgdnblmmff" target="_blank">插件下载</a>
+        </p>
+      </div>
+      <script>
+        (function() {
+          var install = document.getElementById('btn-install-plugin')
+          if (window.chrome) {
+            if (window.location.host == 'www.pinbot.me') {
+              install.onclick = function() {
+                chrome.webstore.install();  
+                return false;
+              }
+            }
+          } else {
+            install.style.background = '#ccc';
+            install.onclick = function() {
+              return false;
+            }
+            install.onmouseover = function(e) {
+              install.style.background = '#ccc';
+            } 
+          }
+        }());
+      </script>         
+
+
+      <div class="layout-grid-col">
+        <div class="welcome-help-info">
+          <ul>
+            <li class="info-prepare"> 
+              <h3><span>准备工作</span></h3>      
+              <ol>
+                <li>
+                  <p>1. <a href="https://chrome.google.com/webstore/detail/goamdnjcofikdnlfdfhicbjgdnblmmff" target="_blank">下载安装插件</a>。 </p>
+                </li>
+                <li>
+                  <p>2. 登录
+                    <a href="http://rd2.zhaopin.com/s/homepage.asp" target="_blank">智联</a> 或
+                    <a href="http://ehire.51job.com/Candidate/SearchResumeIndex.aspx" target="_blank">前程无忧</a>的企业账户。
+                  </p>
+                </li>
+              </ol>
+            </li>
+            <li class="info-howtouse">
+              <h3><span>使用插件</span></h3>
+              <div class="approach">
+                <h4>
+                  <span>用法1</span> 
+                  您可以使用插件批量分析简历，以获得智能推荐
+                </h4>
+                <ol>
+                  <li>
+                    <p>1. 在企业账户内进行人才搜索。</p>
+                    <p class="screenshot"><img src="{{ STATIC_URL }}alpha/images/help/p2.jpg"/></p>
+                  </li>
+                  <li>
+                    <p>2. 打开聘宝插件，点击简历分析。</p>
+                    <p class="screenshot"><img src="{{ STATIC_URL }}alpha/images/help/p3.jpg"/></p>
+                  <li>
+                    <p>3. 查看分析结果。</p>
+                    <p class="screenshot"><img src="{{ STATIC_URL }}alpha/images/help/p4.jpg"/></p>
+                  </li> 
+                </ol>
+              </div>
+              <div class="approach">
+                <h4>
+                  <span>用法2</span> 
+                  您可以使用插件速读简历
+                </h4>
+                <ol>
+                  <li>
+                    <p>打开某一封简历，打开插件，查看简练摘要。 </p>
+                    <p class="screenshot"><img src="{{ STATIC_URL }}alpha/images/help/p5.jpg"/></p>
+                  </li>   
+                </ol>
+              </div>     
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function() {
+  var cn = 'expand-open';
+  var scrollTo = function(offset) {
+    $('html, body').stop().animate({ 'scrollTop': offset }, 'normal');  
+  }
+  $('<a href="#"><i class="ic ic-help-expand"></i></a>')
+    .appendTo($('.screenshot').prev()) 
+    .on('click', function(e) {
+      e.preventDefault();
+      var $self = $(this);
+      if ($self.hasClass(cn)) {
+        $self.removeClass(cn).parent().next().slideUp('fast');
+        scrollTo(0);
+      } else {
+        $('.' + cn).removeClass(cn).parent().next().slideUp('fast');
+        $self.addClass(cn).parent().next().slideDown('fast');
+        scrollTo($self.offset().top - 10);
+      }                                                              
+    })
+});
+</script>
+{% include 'footer.html' %}
+</body>
+</html>

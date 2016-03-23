@@ -1,0 +1,30 @@
+{% extends 'base_center.html' %}
+{% load compress %}
+{% load payment_tags %}
+
+{% block header %}
+{{ block.super }}
+<link href="{{ STATIC_URL }}partner/css/new_taocan.min.css?20141009" rel="stylesheet"/>
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with pay_class='curr' %}
+{% endblock %}
+
+{% block content %}
+<div id="main">
+    <div id="content">
+        {% block payment_content %}
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}payment/js/my_payment.min.js"></script>
+{% endcompress %}
+{% endblock %}

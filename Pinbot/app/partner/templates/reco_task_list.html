@@ -1,0 +1,104 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}partner/css/task_list.css" type="text/css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}special_feed/css/edit_feed.css" type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/tip.css" />
+    {% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with upload_class="curr" %}
+{% endblock %}
+
+{% block sub_header %}
+{% include 'partner_sub_nav.html' with task_list='on' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="inner-content" ng-app="taskListApp" ng-controller="taskListCtrl" ng-cloak>
+
+    <div class="search-task text-center">
+        <input type="text" class="input w380" placeholder="请输入职位关键词，如职位名称" ng-enter="search()" ng-model="query" value="{- query -}">
+    </div>
+
+    <div class="reco-list">
+        <div ui-view></div>
+        <div class="text-center ajax-loading" ng-if="loading">
+            <img src="/static/partner/images/loading.gif" alt=""><br>
+            Loading...
+        </div>
+        <p class="text-center f14 ajax-loading" ng-if="noAnyData">
+            <img src="/static/b_common/img/no_data.jpg" width="427" height="350" alt="这里空空如也">
+        </p>
+    </div>
+
+    <!-- 定制预览 -->
+    <div class="modal-backdrop-view" ng-if="viewFeed"></div>
+    <div class="modal-view" tabindex="-1" style="display:block" ng-if="viewFeed">
+        <div class="modal-dialog-view" style=" border-top: solid 6px #0091FA;">
+            <div class="modal-content-view">
+                <p class="close-layer text-right">
+                    <a href="javascript:;" class="close-layerout-btn" ng-click="toggleView()"></a>
+                </p>
+                <div class="modal-body-view">
+                    <div class="view-body">
+                        <h2 class="view-title">{- feedData.feed.title || feedData.feed.keywords -} <a href="javascript:;" class="c44b5e8" ng-bind="feedData.task.task_resumes.length ? '[继续推荐简历]' : '[录入简历]' " ng-click="isShowLayer( $event , feedData.task.feed.id )" ng-if="feedData.task.feed.active && !feedData.task.feed.deleted"></a></h2>
+                        <p class="view-salary mt10">{- feedData.feed.salary_min | formatMoney:feedData.feed.salary_max -}</p>
+                        <div class="mt10">
+                            <p>
+                                <a href="javascript:;" class="view-desc-btn" ng-click="toggleDesc()">职位详情</a>
+                            </p>
+                            <div class="view-desc mt10" ng-bind-html="feedData.feed.job_desc|as_html" ng-if="showViewDesc"></div>
+                            <p ng-if="showViewDesc">
+                                <a href="javascript:;" class="close-desc mt10 shrink-desc" ng-click="toggleDesc()"></a>
+                            </p>
+                        </div>
+                        <p class="view-company-name mt10" ng-if="feedData.company.company_name">{- feedData.company.company_name -}</p>
+                        <p class="view-area mt10" ng-if=" ( feedData.feed.expect_area && feedData.feed.expect_area.length ) || feedData.company.company_stage"><span ng-if="feedData.feed.expect_area && feedData.feed.expect_area.length">{- feedData.feed.expect_area | joinCity -}</span><span ng-if="feedData.company.company_stage">, &nbsp;&nbsp;{- feedData.company.company_stage -}</span></p>
+                        <p class="view-cat mt10" ng-if=" feedData.feed.job_domain && feedData.feed.job_domain.length ">{- feedData.feed.job_domain.join(',') -}</p>
+                        <p class="view-url mt10" ng-if="feedData.company.product_url"><a target="_blank" href="{- feedData.company.product_url -}">{- feedData.company.product_url -}</a></p>
+                        <p class="view-welfare" ng-if=" feedData.feed.job_welfare && feedData.feed.job_welfare.length ">
+                            <span ng-repeat="v_welfare in feedData.feed.job_welfare track by $index">{- v_welfare -}</span>
+                        </p>
+                        <div class="view-key_points mt10" ng-if="feedData.company.key_points">{- feedData.company.key_points -}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 接受任务弹窗-->
+    <div class="default-modal-backdrop fade in" ng-if="showBackdrop"></div>
+    <div class="default-modal" tabindex="-1" style="display: block;" ng-if="showBackdrop">
+        <div class="confirm-dialog">
+            <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn" ng-click="toogleBackdrop(false)"></a></p>
+            <div class="dialog-content">
+                <h3 class="c434343 text-center mt20">请选择简历来源</h3>
+                <div class="handler-button text-center">
+                    <a class="dialog-btn red-btn opa-btn" href="{- upload_url -}" target="upload_target">录入新简历</a>
+                    <a class="dialog-btn blue-btn opa-btn" href="{- select_url -}" target="select_target">选择已有简历</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+    {% include 'angular.html' %}
+    <script src="{{ STATIC_URL }}alpha/scripts/tip.js?20150715"></script>
+    <script src="{{ STATIC_URL }}partner/js/reco_task_list.js?20150623"></script>
+{% endcompress %}
+{% endblock %}

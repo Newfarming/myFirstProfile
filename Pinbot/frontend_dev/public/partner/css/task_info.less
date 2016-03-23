@@ -1,0 +1,126 @@
+@import "../../../css/base";
+
+.task-info {
+    background: @pb-bg-main-light;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+    font-size: @font-size-14;
+    color: @pb-btn-dark-bule;
+    width: 100%;
+    text-align: center;
+}
+.task-info p {
+    width: 640px;
+    margin: 0 auto;
+    height: 50%;
+    line-height: 3;
+}
+.task-title {
+    font-size: @font-size-18;
+}
+.task-title a {
+    text-decoration: underline;
+}
+/*定制预览弹窗*/
+.view-body{
+    padding: 0 20px;
+}
+.view-title{
+    font-size: @font-size-24;
+    color: @pb-font-main-dark;
+}
+.view-salary,.view-area,.view-cat{
+    font-size: @font-size-18;
+    color: @pb-font-main-dark;
+}
+.view-desc-btn{
+    font-size: @font-size-16;
+    color: @pb-font-main-bluer;
+}
+.view-desc{
+    line-height: 1.5em;
+    font-size: @font-size-14;
+    color: @pb-bg-main-grey;
+    max-height: 200px;
+    overflow: auto;
+}
+.close-desc{
+    background: url(/static/special_feed/img/close.png) no-repeat;
+    width: 24px;
+    height: 17px;
+    display: inline-block;
+}
+.view-company-name{
+    font-size: @font-size-18;
+    color: @pb-font-main-dark;
+}
+.view-url{
+    color: @pb-font-main-bluer;
+    font-size: @font-size-16;
+    text-decoration: underline;
+}
+.view-url a{
+    color: @pb-font-main-bluer;
+}
+.view-welfare span{
+    display: inline-block;
+    font-size: @font-size-13;
+    background: @pb-font-main-bluer;
+    padding: 4px 8px;
+    color: #fff;
+    margin-right: 10px;
+    margin-top: 10px;
+    line-height: 20px;
+}
+.view-key_points{
+    color: @pb-font-main-light;
+    font-size: @font-size-14;
+}
+.view-area,.view-cat{
+    font-size: @font-size-14;
+}
+.modal-backdrop-view {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    .opacityWithVars(50);
+}
+.modal-view {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+.modal-dialog-view {
+    width: 700px;
+    margin-top: 117.5px;
+    margin: 30px auto;
+    position: relative;
+}
+.modal-content-view {
+    position: relative;
+    background-color: #fff;
+    .backgroundClipWithVars(padding-box);
+    border: 1px solid @pb-bg-main-f2;
+    outline: 0;
+    .boxShadowWithVarsMore (0, 3px, 15px, rgba(0,0,0,.1));
+}
+.modal-body-view{
+    color: @pb-bg-main-grey;
+    font-size: @font-size-12;
+    line-height: 20px;
+    padding: 0 20px 30px;
+    text-align: left;
+}
+/*end of 定制预览弹窗*/

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Pinbot分析统计</title>
+    <link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css?3985b142" rel="stylesheet" />
+    
+</head>
+<body>
+
+
+
+<div id="feeds">
+<table >
+    <caption><h3>{{username}}--{{company_name}} --<a href='/feed/edit/{{feed_id}}'>查看订阅条件</a></h3>推荐记录</caption>
+
+
+
+    <tbody >
+    {% for feed_result in feed_results%}
+        <tr >
+            1
+            <td>{{forloop.counter}}</td>
+            <td class="keywords"><a href="/resume/display/{{feed_result.resume.id}}">{{feed_result.resume.id}}</a></td>
+            <td class="keywords">{{feed_result.is_recommended}}</td>
+            <td class="keywords">{{feed_result.resume_update_time}}</td>
+            <td> <a href="/statis/feed_reulst?username={{username}}&id={{user_feed.feed.id}}" target="blank">查看推荐</a></td>
+            <td>{{feed_result.cos}}</td>
+ 
+            <td style="width:30%">{{user_feed.feed.job_desc}}</td>
+        </tr>
+        
+    {% endfor %}
+    
+    </tbody>
+</table>
+</div>    
+</body>
+</html>

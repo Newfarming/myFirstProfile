@@ -1,0 +1,33 @@
+/* page styles */
+body { font-family: "Segoe UI", Frutiger,Tahoma,Helvetica,"Helvetica Neue", Arial, sans-serif; }
+table {  border-collapse: collapse; }
+td, th { 
+   text-align: center; 
+   border: 1px solid #ddd; 
+   padding:2px 5px; 
+  
+   }
+th{
+	
+	 background-color: #f4f4f4;
+}   
+caption {margin: 0 0 .5em; font-weight: bold; }
+.row1
+{
+	padding-left:5px;
+	text-align:left;
+	
+}
+.keywords
+{
+	witdh: 10%;
+	
+}
+
+#feeds
+{
+	
+	width:1200px;
+	margin:auto;
+	
+}

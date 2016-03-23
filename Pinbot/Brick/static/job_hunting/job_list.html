@@ -1,0 +1,110 @@
+<div class="tag-list text-center">
+    <div class="tags text-overflow">
+        <!-- <span>{- resume_tag.city -}</span> -->
+        <!-- <span>{- resume_tag.gender -}</span> -->
+        <span>{- resume_tag.job_category -}</span>
+        <!-- <span>{- resume_tag.degree -}</span> -->
+        <span>{- resume_tag.work_years -}年工作经验</span>
+    </div>
+    <a href="/my_resume/edit_tag/" title="编辑我的标签" class="i-edit"></a>
+</div>
+
+<div class="grey-bg list-bg">
+    <div class="content">
+        <div class="job-content relative">
+            <div ng-show="data.status === ok">
+                <div ng-repeat="job in data.data">
+                    <div class="relative text-right" ng-show="job.job__company__pinbot_recommend"><span class="pb-recommend">聘宝推荐</span></div>
+                    <div class="item-box">
+                        <h1>{- job.job__title -} <span class="c0091fa">[{- job.job__expect_area -}]</span></h1>
+                        <p class="other-info">
+                            {- job.job__salary_min | formatMoney: job.job__salary_max -}
+                            <!-- &nbsp;{- job.job__bind_job__work_year | filterYear -}
+                            &nbsp;{- job.job__bind_job__degree | filterDegree -} -->
+                        </p>
+                        <p class="job-desc-toggle" ng-click="toggleDetail()">职位详情</p>
+                        <div ng-show="showDetail">
+                            <p class="desc-title">职位描述</p>
+                            <div class="job-desc" ng-bind-html="job.job__job_desc|as_html"></div>
+                            <p class="desc-title" ng-show="job.job__skill_required">岗位要求</p>
+                            <div class="skill-desc" ng-show="job.job__skill_required" ng-bind-html="job.job__skill_required|as_html"></div>
+                            <p class="job-desc-toggle" ng-click="toggleDetail()"><i class="i-slideup"></i></p>
+                        </div>
+                        <p class="job-title">{- job.job__company__company_name -}</p>
+                        <p class="job-address"><span ng-show="job.job__company__company_stage">{- job.job__company__company_stage -}</span></p>
+                        <p class="job-category" ng-show="job.company_category.length"><span ng-repeat="cat in job.company_category">#{- cat -}#</span></p>
+                        <p class="job-url" ng-show="job.job__company__url">
+                            <a href="{- job.job__company__url -}" target="_blank" class="c0091fa">{- job.job__company__url -}</a>
+                        </p>
+                        <div class="welfare">
+                            <span ng-repeat="welfare in job.job_welfare">{- welfare -}</span>
+                        </div>
+                        <p class="key-points" ng-show="job.job__company__key_points">{- job.job__company__key_points -}</p>
+                    </div>
+                    <p class="company-desc" ng-show="job.job__company__pinbot_recommend">聘宝推荐：“{- job.job__company__pinbot_recommend -}”</p>
+                    <div class="panel-praise text-center" ng-class="{active:job.has_favour}">
+                        <p class="text-center">
+                            <a class="btn-praise" ng-click="praiseCompany()">赞一下</a>
+                        </p>
+                        <p class="text-center text-overflow praise-count" ng-show="job.job__company__favour_count">{- job.job__company__favour_count -}</p>
+                        <span class="tahoma add" id="JS_praised">+1</span>
+                    </div>
+
+                    <div class="fix-footer">
+                        <!-- <div class="probability-process">
+                            <h5 class="text-center">投递成功率</h5>
+                            <div class="process {- process -}-process"><span style="width: {- job.succ_rate -}%;" title="{- job.succ_rate -}%成功率"></span></div>
+                        </div> -->
+                        <div class="content">
+                            <div class="inner-content">
+                                <div class="fix-footer-btns text-center btn4">
+                                    <button type="button" class="button w20p button-alpha-default" ng-click="operation(send_url, job.id,'send')" ng-show="showSendbtn">
+                                        <i class="i-delivery"></i>
+                                        <span>投递</span>
+                                    </button>
+                                    <button class="button w20p button-alpha-default active" ng-show="!showSendbtn">
+                                        <i class="i-delivery"></i>
+                                        <span>已投递</span>
+                                    </button>
+                                    <button type="button" class="button w20p button-alpha-default" ng-click="operation(favorite_url, job.id , 'favorite')" ng-show="isShowMark">
+                                        <i class="i-mark"></i>
+                                        <span>收藏</span>
+                                    </button>
+                                    <button type="button" class="button w20p button-alpha-default active" ng-show="!isShowMark">
+                                        <i class="i-mark"></i>
+                                        <span>已收藏</span>
+                                    </button>
+                                    <button type="button o80p" class="button w20p button-alpha-default" ng-click="next('fresh')">
+                                        <i class="i-fresh"></i>
+                                        <span>刷新</span>
+                                    </button>
+                                    <button type="button o80p" class="button w20p button-alpha-default" ng-click="operation(dislike_url, job.id , 'dislike')">
+                                        <i class="i-delete"></i>
+                                        <span>不感兴趣</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="fix-footer" ng-show="showJobGuess">
+                        <div class="content">
+                            <div class="inner-content">
+                                <p class="select-tip text-center">你的选择会让下次推荐更准确</p>
+                                <div class="text-center">
+                                    <button type="button" class="button button-alpha-default button-long text-overflow">java开发工程师<i class="i-correct"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <a title="关闭" class="i-close" onclick="$(this).closest('.fix-footer').hide()"></a>
+                    </div> -->
+
+                </div>
+            </div>
+            <p class="text-center" ng-hide="hasRecord" style="color: #999;padding: 150px 0;">
+                <img src="/static/job_hunting/img/loading.gif" style="vertical-align: -5px;">
+                页面数据加载中…
+            </p>
+        </div>
+    </div>
+</div>

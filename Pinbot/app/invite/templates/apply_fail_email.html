@@ -1,0 +1,110 @@
+{% load mail_utils %}
+{% static_inject %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>【聘宝求职版】感谢支持，咱们公测时再见！</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style>
+    *{margin: 0;padding:0;}
+</style>
+</head>
+<body style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;background:#F2F2F2;">
+<div>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td background="#F2F2F2" style="background: #F2F2F2;vertical-align: top; font-family:'Hiragino Sans GB','微软雅黑'; padding: 60px 0;">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <tr>
+                        <td style="vertical-align: top;">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+                                <tr>
+                                    <td style="vertical-align:top">
+
+                                        <!-- head start -->
+                                            <table width="640" border="0" cellpadding="0" cellspacing="0" align="center"  style="margin: 0 auto;">
+                                                <tr>
+                                                    <td bgcolor="#0091FA" style="padding: 10px 30px; background:#0091FA;">
+                                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                            <tr>
+                                                                <td><a href="{{ email_host }}" target="_blank" title="聘宝 求职版"><img border="0" src="{{ static_url }}email_images/qz_email/qz_email_logo.png" alt="聘宝 求职版" width="188" height="33"></a></td>
+                                                                <!-- <td style="text-align:right;font-size:12px;color:#999">聘宝 | 专业人才推荐</td> -->
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        <!-- head end-->
+
+                                        <!-- content start -->
+                                            <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                <tr>
+                                                    <td bgcolor="#ffffff" style="padding: 25px 30px;background:#fff; ">
+                                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="margin: 0; padding: 10px 0; color: #777777; line-height:25px;">亲爱的申请者：</p>
+                                                                    <p style="margin: 0; padding: 10px 0 0; color: #777777; line-height:25px;">
+                                                                        你好,十分感谢近日耐心的等候！由于第一批邀请码数量有限，我们十分遗憾地通知你此次内测申请暂未通过。
+                                                                    </p>
+                                                                    <p style="margin: 0; padding: 10px 0 0; color: #777777; line-height:25px;">
+                                                                        如你希望抢先获取 聘宝 · 求职版 正式上线的一手消息，可关注我们的官方微信：<br><span style=" color: #0091fa;">聘宝话求职</span>（微信号：<span style=" color: #0091fa;">pinbotalk</span>）
+                                                                    </p>
+                                                                    <p style="margin: 0; padding: 40px 0 0; color: #777777; line-height:25px;">
+                                                                        <img src="{{ static_url }}email_images/qz_email/apply_failed_code.jpg" alt="" width="256" height="256">
+                                                                    </p>
+                                                                    <p style="margin: 0; padding: 40px 0 0; color: #777777; line-height:25px;">
+                                                                        内测申请地址：<br>
+                                                                        <a href="{{ email_host }}{% url 'invite-apply-code' %}" title="" style=" color: #0091fa; word-break: break-all;">{{ email_host }}{% url 'invite-apply-code' %}</a>
+                                                                    </p>
+                                                                    <p style="margin: 0; padding: 40px 0; color: #777777; line-height:25px;">聘宝</p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        <!-- content end -->
+
+                                        <!-- footer start -->
+                                            <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                <tr>
+                                                    <td style="padding:10px 0; background: #363636; vertical-align: top;">
+                                                        <table width="415" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                            <tr>
+                                                                <td style="text-align:center;font-size:12px;color:#7d7d7d">
+                                                                    <p style=" margin: 0; padding: 0; text-align: center; color: #777777; line-height:25px;">此邮件为系统邮件，请勿直接回复</p>
+                                                                    <p style=" margin: 0; padding: 0; text-align: center; color: #cccccc; line-height:25px; font-weight: bold;">
+                                                                        <a href="mailto:caroline@hopperclouds.com" style="color:#cccccc;font-size:12px; text-decoration:none;" target="_blank" title="客服邮箱">客服邮箱</a>
+                                                                        &nbsp;&nbsp;
+                                                                        <a href="http://weibo.com/u/3739464981" style="color:#cccccc;font-size:12px;text-decoration:none;" target="_blank" title="@聘宝"><img src="{{ static_url }}email_images/qz_email/wb.png" alt="" width="24" height="24" style=" vertical-align: middle;"> @聘宝</a>
+                                                                        &nbsp;&nbsp;
+                                                                        <a href="javascript:;" style="color:#cccccc;font-size:12px;text-decoration:none; cursor: default;" target="_blank" title="聘宝话求职"><img src="{{ static_url }}email_images/qz_email/wx.png" alt="" width="24" height="24" style=" vertical-align: middle;"> 聘宝话求职</a>
+                                                                    </p>
+                                                                    <p style=" margin: 0; padding: 0; text-align: center; color: #777777; line-height:25px;">Copyright © 2013-2016 HopperClouds, Inc.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        <!-- footer end-->
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

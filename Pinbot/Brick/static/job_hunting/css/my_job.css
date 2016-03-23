@@ -1,0 +1,192 @@
+/* my_job */
+.bg-f2f2f2{
+    background: #F2F2F2;
+}
+.job-category{
+    padding: 30px 0;
+}
+.job-category span{
+    display: inline-block;
+    width: 30%;
+}
+.job-category a{
+    display: inline-block;
+    font-size: 24px;
+    color: #999;
+    text-align: center;
+}
+.job-category span.active a{
+    color: #0091fa;
+    border-bottom: solid 3px #0091fa;
+}
+
+/* job_panel */
+.job_panel{
+    width: 30%;
+    display: inline-block;
+    margin: 0 1.6%;
+    vertical-align: top;
+}
+.date{
+    color: #999;
+    font-size: 14px;
+    padding: 10px 0;
+}
+.job-body{
+    border-top: solid 8px #0081ce;
+    background: #fff;
+    padding: 0 20px 20px;
+}
+.job-body h3,.job-body p{
+    width: 100%;
+    padding: 10px 0;
+}
+.job-body h3{
+    font-size: 20px;
+}
+.job-body p{
+    font-size: 16px;
+    color: #777;
+}
+.job-body p.other{
+    font-size: 14px;
+}
+.status{
+    border-top: solid 1px #cfd8dc;
+    color: #0091fa;
+    padding: 16px 0;
+    background: #fff;
+}
+.status[disabled]{
+    color: #fff;
+    background: #cfd8dc;
+}
+.job-handle{
+    margin-bottom: 15px;
+}
+.job-handle .favorite .button{
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+/* more */
+.i-view {
+    background: url(../img/arrow_b_48x48.png) left top no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100%;
+    margin-left: 5px;
+    -webkit-animation: move-bottom 1.5s infinite ease-in-out;
+    animation: move-bottom 1.5s infinite ease-in-out;
+    display: inline-block;
+    cursor: pointer;
+}
+.i-chat,.i-chat-delete{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+}
+.i-chat{
+    width: 32px;
+    height: 32px;
+    left: 20px;
+    background: url(../img/message_w_36x36.fw.png) left top no-repeat;
+    background-size: 100%;
+}
+.i-chat-delete{
+    width: 39px;
+    height: 39px;
+    left: 16px;
+    background: url(../img/recycle_42x32.fw.png) left top no-repeat;
+    background-size: 100%;
+}
+.i-clock{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url(../img/wait_b_36x36.fw.png) left top no-repeat;
+    background-size: 100%;
+}
+.wait{
+    padding: 8px 0;
+}
+.pb20{
+    padding-bottom: 20px;
+}
+
+
+/* media queries */
+@media ( min-width: 320px ) and ( max-width: 760px ) {  /* 手机设备 */
+    .job-category{
+        padding: 15px 0;
+    }
+    .job-category a{
+        display: inline-block;
+        font-size: 15px;
+        color: #999;
+    }
+    .date{
+        color: #999;
+        font-size: 12px;
+    }
+    .job_panel{
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+    }
+    .job-body{
+        border-top: solid 6px #0081ce;
+    }
+    .i-chat,.i-clock{
+        width: 24px;
+        height: 24px;
+    }
+    .i-chat{
+        margin-top: -12px;
+    }
+    .i-chat-delete{
+        width: 28px;
+        height: 28px;
+        margin-top: -11px;
+    }
+    .wait{
+        padding: 6px 0;
+    }
+    .job-handle .button{
+        font-size: 16px;
+    }
+    @media ( min-width: 481px ) and ( max-width: 760px ){   /* 大屏手机设备 */
+
+    }
+}
+@media ( min-width: 761px ) and ( max-width: 1024px ) { /* pad设备(不区分横竖屏) */
+    
+}
+@media ( min-width: 1025px ){   /* pc设备(默认) */
+
+
+}
+
+@-webkit-keyframes move-bottom{
+    0%{
+        transform: translate(0,0);
+    }
+    50%{
+        transform: translate(0,10px);
+    }
+    100%{
+        transform: translate(0,0);
+    }
+}
+@keyframes move-bottom{
+    0%{
+        transform: translate(0,0);
+    }
+    50%{
+        transform: translate(0,10px);
+    }
+    100%{
+        transform: translate(0,0);
+    }
+}

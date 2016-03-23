@@ -1,0 +1,81 @@
+<div class="main main-mode mg-top-20" >
+                <div class="header">
+                    <h1>交易记录</h1>
+                </div>
+
+                <div class="list-box list-box-menu">
+                    <div class="box-col-bar"></div>
+                    <ul class="trade-menu trade-type" data-title="交易分类：">
+                        <li class="active"><a href="javascript:void(0);" ng-click="listType($event,'all')">全部</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listType($event,'-1')">支出</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listType($event,'-2')">收入</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listType($event,'4')">充值</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listType($event,'5')">提现</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listType($event,'7')">续期</a></li>
+
+                    </ul>
+                    <ul class="trade-menu trade-status" data-title="交易状态：">
+                        <li class="active" ><a class="active" href="javascript:void(0);" ng-click="listStatus($event,'all')">全部</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'unpay')">进行中</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'paid')">交易成功</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'fail')">交易失败</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'refund')">退款中</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'cancel_refund')">取消退款</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'refunded')">退款成功</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'closed')">已关闭</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'canceled')">已取消</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'deleted')">已删除</a></li>
+                    </ul>
+                </div>
+                <div class="list-box list-box-header">
+                    <ul>
+                        <li>交易时间</li>
+                        <li class="long">交易内容</li>
+                        <li>价格</li>
+                        <li>状态</li>
+                        <li>操作</li>
+                    </ul>
+                </div>
+                <div class="list-box list-box-content list-box-loading" ng-if="loadingThis">
+                    <div class="text-center ajax-loading"><img src="/static/partner/images/loading.gif" alt="loading"><br>页面装载中...</div>
+                </div>
+                <div class="list-box list-box-content list-box-loading" ng-if="logList.count == 0 && !loadingThis">
+                    <!-- <div class="text-center ajax-loading">暂无<span class="noDataType"></span>数据...</div> -->
+                    <div class="text-center empty-img"><img src="/static/b_common/img/empty.png" border="0"></div>
+                </div>
+                <div class="list-box list-box-content" ng-repeat="log in logList.data">
+                    <ul>
+                        <li><span class="">{- log.pay_time -}</span></li>
+                        <li class="long"><span class="">{- log.order_desc -}</span></li>
+
+                        <li ng-if="log.actual_price == 0"></li>
+                        <li ng-if="log.actual_price > 0"><span class="minus">{- log.actual_price | numSign -}</span><span class="annotation"> 元</span></li>
+                        <li ng-if="log.actual_price < 0"><span class=" plus">{- log.actual_price | numSign -}</span><span class="annotation"> 元</span></li>
+
+                        <li ng-if="log.order_status == '进行中'"><span class="default">进行中</span></li>
+                        <li ng-if="log.order_status == '交易成功'"><span class="success">交易成功</span></li>
+                        <li ng-if="log.order_status == '交易失败'"><span class="error">交易失败</span></li>
+                        <li ng-if="log.order_status == '退款中'"><span class="error">退款中</span></li>
+                        <li ng-if="log.order_status == '取消退款'"><span class="success">取消退款</span></li>
+                        <li ng-if="log.order_status == '退款成功'"><span class="success">退款成功</span></li>
+                        <li ng-if="log.order_status == '已关闭'"><span class="default">已关闭</span></li>
+                        <li ng-if="log.order_status == '已取消'"><span class="error">已取消</span></li>
+                        <!-- <li ng-if="log.order_status == '已删除'"><span class="error">已删除</span></li> -->
+                        <li ng-if="defaultOrderStatus(log.order_status)"><span class="default"></span></li>
+                        <!-- <li><a class="select-btn select-btn-blue select-btn-blue-fix" href="javascript:void(0);" data-oid="{- log.order_id -}" ng-click="delLog($event)">删除记录</a></li> -->
+                        <li><a class="select-btn select-btn-blue select-btn-blue-fix" href="javascript:void(0);" data-oid="{- log.order_id -}" ng-click="continuePay($event)" ng-if="log.order_status_key == 'unpay' && log.order_type_key!=2 && log.order_type_key!=5 && log.order_type_key!=6">继续支付</a></li>
+                    </ul>
+                </div>
+                <div class="list-box-footer" ng-if="logList.count > 0 && logList.is_paginated == true">
+                    <span class="offset-start">1</span> - <span class="offset-end">{- logList.per_page -}</span>条，共<span class="total">{- logList.count -}</span>条
+
+                    <a href="javascript:void(0);" class="last-page" ng-click="nextPage(1)" ng-if="logList.current > 1 && logList.pages > 1">&lt;&lt;首页</a>
+
+                    <a href="javascript:void(0);" class="prev-page" ng-click="nextPage(logList.current-1)" ng-if="logList.current > 1">&lt;上一页</a>
+
+                    <a href="javascript:void(0);" class="next-page" ng-click="nextPage(logList.current+1)" ng-if="logList.current < logList.pages">下一页&gt;</a>
+
+                    <a href="javascript:void(0);" class="last-page" ng-click="nextPage(logList.pages)" ng-if="logList.current != logList.pages">尾页&gt;&gt;</a>
+                </div>
+
+            </div><!-- main -->

@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <link rel="stylesheet" href="{{ STATIC_URL }}b_common/css/common.css" />
+  <!-- <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?20150616" /> -->
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/settings.css?e89ac162" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}b_common/css/pb.css" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+      <script src="{{ STATIC_URL }}b_common/js/pb.js"></script>
+
+<script>
+{% if request.user.weixin_user.is_bind %}
+var isWxBinding = true;
+{% else %}
+var isWxBinding = false;
+{% endif %}
+var doc = document.documentElement;
+var ua = navigator.userAgent.replace(/[^0-9a-z,; _\(\)\/\.\-]/ig,"");
+doc.setAttribute('data-useragent', ua);
+</script>
+
+</head>
+<body>
+
+{% include 'alpha/header.html' %}
+
+<div id="main">
+  <div id="content">
+    <h2 class="setting-title">个人设置</h2>
+    <form name="editForm" class="percent-80">
+        <div class="edit-form">
+            <div class="form-panel">
+                <div title="'企业基本信息'" class=""><p class="form-label alert-label-ok text-center c607d8b" ><label class="relative"><span class="info">企业基本信息</span></label></p></div>
+
+                <div class="form-content text-left pt40">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">企业邮箱：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span class="c434343">{{ form.email.value }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left ">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">公司名称：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span ><input type="text" name="company_name" id="company_name" value="{{ form.company_name.value|default_if_none:"" }}" placeholder="请输入您的公司名称"></span>
+                      <span class="pb-error-info"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left ">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">公司网址：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span ><input type="text" name="url" id="url" value="{{ form.url.value|default_if_none:"" }}" placeholder="请输入您的公司网址"></span>
+                      <span class="pb-error-info"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-panel pt40 text-center">
+                    <div class="pb-line">
+                      <div class="pb-line-100 text-center">
+                        <button id="btn-save-company" type="button" class="button button-primary button-blue button-big w240 job_desc_parse">保存</button>
+                        <span class="pb-error-info pb-error-info-fix"></span>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-panel pt40">
+                <div title="'账号绑定'" class=""><p class="form-label alert-label-ok text-center c607d8b" ><label class="relative"><span class="info">账号绑定</span></label></p></div>
+
+                <div class="form-content text-left pt40">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="pb-icon pb-icon-phone pb-icon-fix pb-icon-prefix"></span><span class="c607d8b">手机号码：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      {% if form.is_phone_bind.value %}
+                      <span class="c434343">{{ form.phone.value }}</span>
+                      <span class="chg-phone c44b5e8 cursor-hand">&nbsp;修改手机绑定</span>
+                      {% else %}
+                      <span class="chg-phone c44b5e8 cursor-hand">&nbsp;绑定手机号</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left ">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="pb-icon pb-icon-weixin pb-icon-fix pb-icon-prefix"></span><span class="c607d8b">我的微信：</span>
+                    </div>
+                    <div class="pb-line-right">
+
+                      <span class="pb-cancel-wx-binding wxBinding c434343 {% if request.user.weixin_user.is_bind %}{% else %}pb-hide{% endif %}"><span class="weixin_nickname">{{request.user.weixin_user.nickname}}</span><a href="javascript:void(0);" class="unbindWeixin c44b5e8">&nbsp;解除绑定</a></span>
+
+                      <span class="pb-add-wx-binding wxBinding c44b5e8 {% if request.user.weixin_user.is_bind %}pb-hide{% else %}{% endif %}" id="js-bangding">&nbsp;立即绑定</span>
+                      <!--
+                      {% if request.user.weixin_user.is_bind %}
+                        <span class="wxBinding c434343">{{request.user.weixin_user.nickname}}<a href="javascript:void(0);" class="unbindWeixin c44b5e8">&nbsp;解除绑定</a></span>
+                      {% else %}
+                        <span class="wxBinding c44b5e8" id="js-bangding">&nbsp;立即绑定</span>
+                      {% endif %}
+                      -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left ">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="pb-icon pb-icon-email pb-icon-fix pb-icon-prefix"></span><span class="c607d8b">接受简历邮箱：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      {% if form.is_email_bind.value %}
+                      <span class="receive_email c434343">{{ form.notify_email.value }}</span> <a href="javascript:void(0);" class="chg-email c44b5e8">&nbsp;更换邮箱</a>
+                      {% else %}
+                      <span class="receive_email c434343">{{ form.email.value }} </span><span class="cf46c62">(未验证)</span> <a href="/users/bind_notify_email/" class="chg-email-no c44b5e8">&nbsp;立即验证</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="form-panel pt40">
+                <div title="'个人信息'" id="user-info" class=""><p class="form-label alert-label-ok text-center c607d8b" ><label class="relative"><span class="info">个人信息</span></label></p></div>
+                <a name="person-info"></a>
+                <div class="form-content text-left pt40">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">我的姓名：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span ><input type="text" name="name" id="name" value="{{ form.name.value|default_if_none:"" }}" placeholder="请输入您的姓名"></span>
+                      <span class="pb-error-info"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left ">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">联系QQ：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span ><input type="text" name="qq" id="qq" value="{{ form.qq.value|default_if_none:"" }}" placeholder="请输入您的QQ"></span>
+                      <span class="pb-error-info"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left clearfix">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">收货地址：</span>
+                    </div>
+                    <div class="pb-line-right {% if form.province.value %}pb-line-right-multi{%endif%}">
+                      {% if form.province.value %}
+                      <span class="c434343 form_recv_name">{{ form.recv_name.value|default_if_none:"" }}</span><br>
+                      <span class="c434343"><span class="form_province">{{ form.province.value|default_if_none:"" }}</span> <span class="form_city">{{ form.city.value|default_if_none:"" }}</span> <span class="form_area">{{ form.area.value|default_if_none:"" }}</span> </span><br>
+                      <span class="c434343 form_street">{{ form.street.value|default_if_none:"" }}</span><br>
+                      <span class="c434343 form_recv_phone">{{ form.recv_phone.value|default_if_none:"" }}</span>
+                      <span class="pb-icon pb-icon-pen open-recv-modal pb-icon-float-right"></span>
+                      {%else%}
+                      <span class="c44b5e8 open-recv-modal cursor-hand">您还未填写收货地址，请点击填写</span>
+                      <span class="pb-icon open-recv-modal pb-icon-pen pb-icon-fix"></span>
+                      {%endif%}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-panel pt40 text-center">
+                    <div class="pb-line">
+                      <div class="pb-line-100 text-center">
+                        <button id="btn-save-contact" type="button" class="button button-primary button-blue button-big w240 job_desc_parse">保存</button>
+                        <span class="pb-error-info pb-error-info-fix"></span>
+                      </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-panel pt40">
+                <div title="'修改密码'" class=""><p class="form-label alert-label-ok text-center c607d8b" ><label class="relative"><span class="info">修改密码</span></label></p></div>
+
+                <div class="form-content text-left pt40">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">当前密码：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span ><input type="password" name="old_password" id="old_password" value="" placeholder="请输入当前密码"></span>
+                      <span class="pb-error-info"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left ">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">新密码：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span ><input type="password" name="new_password1" id="new_password1" value="" placeholder="请输入新密码" class=""></span>
+                      <span class="pb-error-info"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-content text-left ">
+                  <div class="pb-line">
+                    <div class="pb-line-left">
+                      <span class="c607d8b">确认密码：</span>
+                    </div>
+                    <div class="pb-line-right">
+                      <span ><input type="password" name="new_password2" id="new_password2" value="" placeholder="请输入确认密码"></span>
+                      <span class="pb-error-info"></span>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+
+            <div class="form-panel pt40 text-center">
+                <div class="pb-line">
+                  <div class="pb-line-100 text-center">
+                    <button id="btn-save-passwd" type="button" class="button button-primary button-blue button-big w240 job_desc_parse">修改</button>
+                    <span class="pb-error-info pb-error-info-fix"></span>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- fix div bug -->
+</div>
+<script src="/static/users/settings.js"></script>
+{% include 'footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+$(function(){function t(t){$("html, body").stop().animate({scrollTop:t},"slow")}$(".history-toggler>a").on("click",function(){return $(this).toggleClass("open"),$(".history-table").toggle(),setTimeout(function(){t($(".history-table").offset().top)},200),!1})});

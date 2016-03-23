@@ -1,0 +1,55 @@
+{% extends 'base_center.html' %}
+{% load compress %}
+{% block header %}
+{{ block.super }}
+
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/cpmpany_card.css" />
+{% endcompress %}
+
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with company_card_css='curr' %}
+{% endblock %}
+
+{% block content %}
+<div id="main">
+    <div id="content" class="clearfix">
+
+
+        <div class="common-box">
+            <h2 class="h2">企业名片</h2>
+
+            <div class="panel company-card">
+                <div class="border"></div>
+                <div class="p-content" id="JS_company_info">
+                    <p style="padding:150px 0; text-align: center;"><img src="/static/alpha/images/loading.gif" alt=""></p>
+                </div>
+            </div>
+
+            <div class="jobs-list clearfix" id="JS_jobs_list"></div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}alpha/scripts/form.js?20140928"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/company_card.js?20150702" type="text/javascript" charset="utf-8"></script>
+{% endcompress %}
+<script type="text/javascript">
+    var infos = {% autoescape off %}{{company_json}}{% endautoescape %},
+        jobs = infos.jobs || [];
+    $(function(){
+        $.CompanyInfo();
+        $.intentionCard( { list: jobs } );
+    });
+</script>
+
+{% endblock %}

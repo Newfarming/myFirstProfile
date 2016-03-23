@@ -1,0 +1,207 @@
+/* 表单样式 */
+@import "../base";
+/* form */
+.input,.select,.textarea{
+    background: #fff;
+    border: solid 1px #cfd8dc;
+    font-size: 15px;
+    padding: 8px 10px;
+    color: #607d8b;
+    box-sizing: border-box;
+    resize: none;
+    vertical-align: middle;
+}
+.input:focus,.select:focus,.textarea:focus{
+    border: solid 1px #44b5e8;
+    color: #44b5e8;
+}
+.input.error,.select.error,.textarea.error,.input.ng-invalid,.select.ng-invalid,.textarea.ng-invalid{
+    color: #f46c62;
+    border: solid 1px #f46c62 !important;
+}
+.error,.ng-invalid{
+    color: #f46c62 !important;
+}
+
+
+/* checkbox */
+.i-checkbox{
+    color: #666;
+    line-height: 23px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.i-checkbox i{
+    background: url(/static/special_feed/img/feed-latest.png) -23px 0 no-repeat;
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.i-checkbox.active i{
+    background-position: 0 0;
+}
+
+.icon-checkbox{
+    display: none;
+}
+.icon-checkbox~label i{
+    background: url(/static/special_feed/img/feed-latest.png) -22px 0 no-repeat;
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.icon-checkbox:checked~label i{
+    background-position: 0 0;
+}
+
+/* radio*/
+.icon-radio{
+    display: none;
+}
+.icon-radio~label i{
+    background: url(/static/mark/img/mradio.png) 0 -31px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: -3px;
+    margin-right: 10px;
+}
+.icon-radio:checked~label i{
+    background-position: 0 0;
+}
+/* 简历中心 */
+/* 简历中心选择框 */
+.check-box{
+    float: left;
+    width: 16px;
+    height: 16px;
+    background: url(/static/resume/images/feed.png) no-repeat -26px -3px;
+}
+.check-box-choose{
+    background: url(/static/resume/images/feed.png) no-repeat -4px -3px;
+}
+/* 简历中心搜索栏 */
+.search-box {
+    width: 820px;
+    height: 40px;
+    padding: 24px 20px;
+    background-color: #fafafa;
+    border:1px solid #EEE ;
+}
+.search-box .filter-factor{
+    position: relative;
+    width: 160px;
+    float: left;
+}
+.search-box .filter-factor>a{
+    display: block;
+    width: 130px;
+    height: 38px;
+    padding-left: 28px;
+    line-height: 38px;
+    color: #607d8b;
+    border:1px solid #cfd8dc;
+    background: url(/static/resume/images/down.png) no-repeat #fff 125px center;
+}
+.search-box .filter-factor ul{
+    position: absolute;
+    left: 0;
+    border-bottom: 0;
+    padding: 10px 0;
+    width: 158px;
+    color: #607d8b;
+    font-size: 13px;
+    background-color: #fafafa;
+    border:1px solid #cfd8dc;
+    z-index: 2;
+}
+.search-box .filter-factor ul li a{
+    display: block;
+    width: 130px;
+    padding-left: 28px;
+    line-height: 36px;
+    color: #aaa;
+}
+.search-box .filter-factor ul li a:hover,.filter-factor ul li a.filter-factor-choose{
+    color: #607d8b;
+}
+.input-box{
+    float: left;
+    padding: 7px 25px;
+    width: 520px;
+    height: 24px;
+    border-top: 1px solid #cfd8dc;
+    border-bottom: 1px solid #cfd8dc;
+    background:#fff;
+}
+.input-box>input{
+    width: 520px;
+    height: 24px;
+    line-height: 24px;
+    color: #666;
+    border: none;
+    outline: none;
+    background-color:#fff;
+}
+.search-box>a{
+    float: left;
+    width: 47px;
+    padding-left: 43px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 14px;
+    background: url(/static/resume/images/search_bg.png) no-repeat #607d8b 17px center;
+}
+/* 添加到自定义文件夹 */
+.add-folder{
+    position: relative;
+    float: left;
+    width: 170px;
+    height: 28px;
+    border:1px solid #cfd8dc;
+    background: url(/static/resume/images/down.png) no-repeat #fff 140px center;
+}
+.add-folder a{
+    display: block;
+    line-height: 28px;
+    color:#607d8b;
+    padding-left: 10px;
+}
+.add-folder>ul{
+    display: none;
+    position: absolute;
+    top:29px;
+    left: -1px;
+    width: 170px;
+    background-color: #fff;
+    border-left:1px solid #cfd8dc;
+    border-right: 1px solid #cfd8dc;
+}
+.add-folder>ul li{
+    height: 28px;
+    width: 170px;
+    border-bottom: 1px solid #cfd8dc;
+}
+.add-folder>ul li:hover{
+    background-color: #eceff1;
+}
+/* 圆圈单选 蓝色 */
+.m-radio {
+    color: #607d8b;
+    font-size: 16px;
+    padding-left: 25px;
+    background: url('/static/mark/img/mradio_default.png?eac7085ad6e0') no-repeat;
+    display: inline-block;
+    line-height: 17px;
+}
+.m-radio.active {
+    background: url('/static/mark/img/mradio_active.png?eac7085ad6e0') no-repeat;
+}
+.button-b, .close-btn, .m-radio {
+    cursor: pointer;
+}

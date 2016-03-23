@@ -1,0 +1,30 @@
+<div class="sex-box" ng-class="{'resume-head-male':sexMale(resumeMassage.resume.gender) == 0,'resuem-head-female':sexMale(resumeMassage.resume.gender) == 1,'resume-head-unkown':sexMale(resumeMassage.resume.gender) == 2}"></div>
+<p class="pl70">
+    <big>{- resumeMassage.contact_info.name -}</big>
+    <span class="separate-line" ng-show="resumeMassage.contact_info.name" ></span>{- resumeMassage.resume.age -}
+    <span ng-show="resumeMassage.resume.job_target.expectation_area">
+        <span class="separate-line"></span>意向：{- resumeMassage.resume.job_target.expectation_area -}
+    </span>
+    <span ng-show="resumeMassage.resume.address" title="现居：{- resumeMassage.resume.address -}">
+        <span class="separate-line"></span>现居：{- resumeMassage.resume.address -}
+    </span>
+</p>
+<p class="pl70">
+    <span ng-show="resumeMassage.resume.educations[0].degree">
+        {- resumeMassage.resume.educations[0].degree -}<span class="separate-line"></span>
+    </span>
+    <span ng-show="resumeMassage.resume.educations[0].school">
+        {- resumeMassage.resume.educations[0].school -}
+    </span>
+</p>
+<p class="pl70 c44b5e8" ng-show="resumeMassage.resume.works[0].position_title">{- resumeMassage.resume.works[0].position_title -}</p>
+<p class="pl70" ng-show="resumeMassage.resume.works[0].company_name">{- resumeMassage.resume.works[0].company_name -}<span class="ccfd8dc">({- resumeMassage.resume.works[0].duration -})</span></p>
+<p class="contact-message of-hidden stop-to-detail" ng-class="{'left-fix':leftFix}" >
+    <span class="stop-to-detail">
+        <span ng-show="hasContactInfo(resumeMassage.contact_info)"  class="stop-to-detail">联系方式：</span><span class="cf46c62 stop-to-detail" ng-if="resumeMassage.status=='Secret'" >候选人关闭简历</span><span class="cf46c62 stop-to-detail" ng-if="resumeMassage.status=='Start'" >简历准备中...</span><span class="c44b5e8 stop-to-detail" ng-if="resumeMassage.contact_info.phone" >{- resumeMassage.contact_info.phone -}</span>
+    </span>
+
+    <span class="stop-to-detail" ng-if="resumeMassage.contact_info.email" title="{- resumeMassage.contact_info.email -}">
+        <span class="separate-line stop-to-detail"></span><span class="c44b5e8 stop-to-detail" >{- resumeMassage.contact_info.email -}</span>
+    </span>
+</p>

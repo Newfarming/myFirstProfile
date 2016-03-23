@@ -1,0 +1,21 @@
+<div id="header">
+    <div class="layout clearfix">
+      <a class="logo" href="/" title="聘宝 专业人才推荐">聘宝 专业人才推荐</a>
+      <nav>
+        <a href="/" class="{{index_class}}" >首页</a>
+        <a href="/users/feature" class="{{feature_class}}">产品功能</a>
+        <a href="/users/price" class="{{price_class}}">服务价格</a>
+        <!-- <a href="/activity/riverlake/" class="pbjh" target="_blank">聘宝江湖<span></span></a> -->
+        <a href="http://qz.pinbot.me" target="_blank" class="qzz">我是求职者<i></i></a>
+      </nav>
+
+      <div class="login">
+      {%if not request.user.is_authenticated %}
+        <a href="{% url 'user-account-reg' %}" class="btn btn-register">申请会员</a>
+        <a href="/signin" class="btn btn-login">登录</a>
+        {%else%}
+        <a href="/gotopinbot" class="btn btn-enter">进入聘宝</a>
+      {%endif%}
+      </div>
+    </div>
+  </div>

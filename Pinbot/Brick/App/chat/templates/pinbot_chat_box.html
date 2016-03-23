@@ -1,0 +1,83 @@
+{% extends 'base_center.html' %}
+{% load compress %}
+{% load payment_tags %}
+
+{% block header %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ STATIC_URL }}chat/css/chat_b.min.css">
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with pay_class='curr' %}
+{% endblock %}
+
+{% block content %}
+<div id="main">
+    <div id="content">
+        <div id="payment">
+
+            <h2 class="setting-title">我的会话</h2>
+            <div class="pb100" ng-app="app.chat">
+                <div class="notify-content">
+                    <div class="notify-category clearfix">
+                        <a ui-sref="history_chat" ng-class="{ active:pageActive == 'history_list' }">会话记录</a>
+                        <a ui-sref="chat_book" ng-class="{ active:pageActive == 'book_list' }">通讯列表<code class="ng-hide" ng-show="{{ has_unread }}"></code></a>
+                    </div>
+                    <div id="JS_notify_list" class="bootom-boder">
+                        <p class="text-center ng-hide" ng-show="noRecord" style="color: #999;padding: 20px 0;">这里空空如也！</p>
+                        <div ui-view></div>
+                        <p class="text-center" ng-show="loading"><img src="http://127.0.0.1:8000/static/common/img/loading.gif" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}common/js/angular.min.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/ng_config.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/filter.js"></script>
+<script>
+ (function() {
+     var service = angular.module('app.django', []);
+     service.factory('api', function() {
+         return {
+             chat: {
+                book_list: "{% url 'chat-chat-box' %}",
+                history_list: "{% url 'chat-history-list' %}",
+                msg_list: "/chat/chat_msg_list/",
+                send_msg: "/chat/send_msg/",
+                start_job_chat: "/chat/start_job_chat/",
+                start_card_job_chat: "/chat/start_card_job_chat/"
+            }
+         }
+     });
+
+     // angular tmpl method
+     service.factory('tmpl', function() {
+         return function(template_path) {
+             var static_path = '{{ STATIC_URL }}';
+             return static_path + template_path;
+         }
+     });
+
+     // angular tmp static url
+     service.factory('static_url', function() {
+         var static_path = '{{ STATIC_URL }}';
+         return static_path;
+     });
+ })();
+
+</script>
+<script src="{{ STATIC_URL }}chat/chat.js"></script>
+{% endcompress %}
+{% endblock %}

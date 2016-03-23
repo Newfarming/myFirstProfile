@@ -1,0 +1,97 @@
+<div class="resume-list-table">
+  <table>
+    <thead>
+      <tr>
+        <th width="10%">关注日期 </th>
+        <th width="15%">基本信息</th>
+        <th width="20%">最近工作</th>
+
+        <th width="15%">最高学历</th>
+        <th width="15%">职位分类</th>
+        <th width="15%">备注</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for resume, extra_info in resumes %}
+       <tr class="resume-single"> 
+
+        <td class="date-field">
+          <p>
+            {{resume.watch_time|date:"Y-m-d H:i"}}
+            <a class="resume-link" href="/resumes/display/{{ resume.id }}/?feed_id={{extra_info.feed_id}}" target='{{ resume.id }}'><span>查看</span></a>
+          </p>
+        </td>
+
+        <td>
+          <p>{{resume.name}}</p>
+          <p>
+            <span>{{resume.gender}}</span>
+            <span> {{ resume.age }}岁</span>
+            <span>{% if resume.work_years %}
+		               {{ resume.work_years }} 年经验
+		           {% endif %}
+            </span>
+         </p>
+         {% if resume.job_target.job_hunting_state %}
+         <p> <span>
+		      求职状态:{{ resume.job_target.job_hunting_state }}
+            </span>
+         </p>
+         {% endif %}
+         <p>
+            <span>意向地:
+            {% for area in resume.job_target.expectation_area %}
+               {{ area }}  
+            {% endfor %}
+            </span>
+          </p> 
+          
+          {%if extra_info.brief_comment%}
+          <p class="brief-comment">
+            <span>{{ extra_info.brief_comment }}</span>
+          </p>
+          {% endif %}
+        
+        </td>
+
+
+        <td>
+           {% if resume.works %}
+              {% with lastcompany=resume.works.0 %}
+                <p class="work-range"><span>{{ lastcompany.start_time }} 至 {{ lastcompany.end_time }}</span></p>
+                <p class="work-company">  
+                    <span>{{ lastcompany.company_name }}</span>
+                    <span>{{ lastcompany.position_title }}</span> 
+                </p>
+                
+              {% endwith %}
+            {% endif %}   
+        </td>
+
+        <td>
+          <p class="school">
+            {% with education=resume.educations.0 %}
+            <span>{{ education.start_time }}-{{education.end_time}}</span>
+            <span>{{education.school}}</span>
+            <span class="degree">{{education.major}}</span>
+            {% endwith %}
+          </p>
+        </td>
+
+        <td>
+          <p>
+           {{extra_info.keywords}}
+          </p>
+        </td>
+
+        <td class="comment-field">
+          <p>
+            <span>{{ extra_info.comment }}</span>
+          </p>
+        </td>
+      </tr>
+     {%endfor%}
+    </tbody>
+  </table>
+</div>
+

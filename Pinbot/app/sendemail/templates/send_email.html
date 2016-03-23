@@ -1,0 +1,61 @@
+{% extends 'base_sendemail.html' %}
+{%block media%}{%endblock%}
+{% load compress %}
+{%block content%}
+{{ form.media }}
+选择邮件模板:
+<select id="tpl_id" name="tpl_id">
+    {%for tpl in all_tpl%}
+        <option id="{{tpl.id}}">{{tpl.name}}</option>
+    {%endfor%}
+</select>
+<br/><br/>
+邮件标题:
+<input type="text" name="name" class="form-control" id="send_email_title"/>
+<br><br>
+邮件内容:{{form.content}}
+<br><br>
+选择发送标签:
+
+<span class="tags_choice">
+    {%for tag in tags%}
+    <span id="tag_{{tag.tag_id}}">
+        <input  type="radio" name="tag" value="{{tag.tag_id}}" />{{tag.tag_name}}
+        <a class="btn btn-xs btn-danger remove_fields" onclick="delete_tag({{tag.tag_id}});">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+    &nbsp;&nbsp;
+    </span>
+    {%endfor%}
+</span>
+ <a class="btn btn-default btn-sm" data-toggle="modal" data-target="#add_tag_modal">新增标签</a>
+
+<br><br>
+发送目标:
+<input type="checkbox" id="test_users">测试组用户 &nbsp;
+<input type="checkbox" id="b_user">B端已激活用户 &nbsp;
+<input type="checkbox" id="c_user">C端已激活用户 &nbsp;
+<input type="checkbox" id="b_unactive_user">B端未激活用户 &nbsp;
+<br><br>
+<textarea class="form-control" name="sendto" id="sendto" rows="5" cols="140"></textarea>
+<br>
+<input class="btn btn-default" type="button" value="邮件发送" onclick="send_email();">
+<input class="btn btn-default" type="button" value="保存模板" onclick="save_email_tpl('');">
+<input class="btn btn-info" type="button" value="预览邮件" onclick="preview_email();">
+
+
+{% include 'add_tag.html' %}
+{% include 'preview_email.html' %}
+
+{%endblock%}
+
+{%block footer%}
+
+{% compress js %}
+<script src="{{STATIC_URL}}sendemail/js/common.js"></script>
+{% endcompress %}
+
+<script type="text/javascript">
+   load_template(1);
+</script>
+{% endblock %}

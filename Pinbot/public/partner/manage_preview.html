@@ -1,0 +1,51 @@
+<p class="relative text-center inline-block search">
+    <input type="text" name="search_key" placeholder="请输入简历关键词，如姓名" class="input w380" maxlength="100" ng-model="search_key">
+    <i class="sprite i-search" ng-click="searchResume($event)" id="JS_search"></i>
+</p>
+<div class="loading-page" ng-if="isLoading">
+    <p class="loading-gif"></p>
+    <p class="loading-text"> Loading... </p>
+</div>
+<div class="manage-preview-item" ng-repeat="item in list_data track by $index" ng-if="!isLoading">
+    <header class="clearfix">
+        <p class="time">{- item.update_time -}</p>
+        <p class="resume-id">简历ID：{- item.resume_id -}</p>
+    </header>
+    <section class="resume-content resume-content-{- item.id -} clearfix" ng-click="link2resume_detail(item.resume_id)">
+        <div class="info">
+            <p class="name">
+                {- item.name -}
+            </p>
+            <p class="work">
+                <span>{- item.expect_position | limitword -}</span>
+                <span class="divide-14"></span>
+                {- item.work_years -}年工作经验
+                <span class="divide-14"></span>
+                {- item.expect_work_place -}
+            </p>
+            <p class="salary">
+                {- item.target_salary | salary -}K以上
+            </p>
+        </div>
+        <div class="handle" ng-click="pick_resume(item.id, $event)">
+            <a href="javascript:void(0)">
+                选我
+            </a>
+        </div>
+        <div class="rmb-tip">
+            该简历已帮你赚取<span class="cf46c62">{- item.coin -}</span>金币
+        </div>
+    </section>
+</div>
+<a class="load-more" id="JS_fetch_more" ng-if="hasMore" ng-click="fetchMore()">查看更多</a>
+<div class="loading-page" ng-if="is_paginated">
+    <p class="loading-gif"></p>
+    <p class="loading-text"> Loading... </p>
+</div>
+<task-info task_id="task_id"></task-info>
+<script type="text/javascript">
+    (function(){
+        $('li.on').removeClass('on');
+        $('li.first-child').addClass('on');
+    })();
+</script>

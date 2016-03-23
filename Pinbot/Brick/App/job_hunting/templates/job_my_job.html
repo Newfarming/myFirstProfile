@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}job_hunting/css/my_job.min.css" rel="stylesheet">
+{% endblock%}
+
+{% block app %} ng-app="my_job" ng-controller="jobController" class="bg-f2f2f2" {% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <div class="job-category text-center">
+        <span ng-class="{ active:activePage == 'my_job_send_list' }"><a ui-sref="send" title="我投递的">我投递的</a></span>
+        <span ng-class="{ active:activePage == 'my_job_card_list' }"><a ui-sref="card_job_list" title="对我感兴趣的">对我感兴趣的</a></span>
+        <span ng-class="{ active:activePage == 'my_job_favorite_list' }"><a ui-sref="favorite" title="我收藏的">我收藏的</a></span>
+    </div>
+</div>
+
+<div class="content">
+    <div id="JS_job_panel" class="clearfix">
+        <p class="text-center ng-hide" ng-show="noRecord" style="color: #999;padding: 20px 0;">还没有任何记录！</p>
+        <div ui-view></div>
+    </div>
+
+    <div class="text-center mt20 pb20">
+        <a class="i-view ng-hide" title="加载更多" ng-show="hasMore" ng-click="loadMorePage()"></a>
+        <p class="text-center ng-hide" ng-show="loading"><img src="/static/common/img/loading.gif" alt=""></p>
+    </div>
+    
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {% compress js %}
+        <script src="{{ STATIC_URL }}common/js/jquery.cookie.min.js"></script>
+        <script src="{{ STATIC_URL }}job_hunting/my_job.js"></script>
+    {% endcompress %}
+{% endblock %}

@@ -1,0 +1,54 @@
+
+<div class="main main-mode">
+    <div class="header">
+        <h1>套餐续费</h1>
+        <!-- <div class="sub-title"></div> -->
+    </div>
+
+    <div class="price content box-content box-content-small box-content-point box-content-p30" >
+        <div class="text-center ajax-loading" ng-if="loadingThis" ng-hide="true">
+            <img src="/static/partner/images/loading.gif" alt="loading">
+            <br>页面装载中...
+        </div>
+        <div class="box-col box-col-center" >
+
+            <div class="user-mode user-mode-small user-mode-small-h user-mode-small-hs user-mode-small-point" ng-mouseover="hoverDiy=true"
+    ng-mouseout="hoverDiy=false" >
+                <div class="box-col-bar"></div>
+                <div class="user-mode-list">
+                    <div class="user-mode-title text-center"><br><br><span class="f14 ">当前套餐</span><br><br></div>
+                    <div class="user-mode-title text-center"><span class="f18 cf46c62">{-vipName-}</span><br><br></div>
+                    <ul>
+                        <li>包含<span>{-feedCount-}</span>个职位定制</li>
+                        <li>包含<span>{-pinbotPoint-}</span>个聘点/周</li>
+                    </ul>
+                </div>
+                <div class="user-mode-btn">
+                    <div class="badge"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="price content box-content pd-top-0 lh180">
+        <span class="c607d8b f14">当前套餐到期时间：<span class="cf46c62">{-serviceNow-}</span></span>
+    </div>
+
+    <service-period service-period-list="servicePeriodList" order-id="orderId" month-price="monthPrice"></service-period>
+
+    <div class="price content box-content pd-top-0 lh180" >
+        <span class="c607d8b f14">续费后到期时间：<span class="cf46c62">{-serviceExpired-}</span></span>
+    </div>
+
+    <div class="price content box-content pd-top-0" >
+        <span class="c607d8b f14">请支付：<span class="price-focus">¥ {-payPrice-}</span>元<br>
+        <label class="agreement-error" class="invalid" style="display: none;"></label>
+    </div>
+
+    <p class="form-control align-center" >
+        <a href="javascript:void(0);" id="payNow" class="btn btn-welcome-submit" ng-click="paynow()">立即支付</a>
+    </p>
+    <br><br><br><br>
+
+</div><!-- main -->
+

@@ -1,0 +1,92 @@
+{% include 'base_newset.html' %}
+
+{% block content %}
+    <div class="">
+        <div class="layout">
+
+            <div class="main main-white">
+                <div class="header">
+                    <div class="stepBox">
+                        <ul class="steps-info-line">
+                            <li></li>
+                            <li class="active"></li>
+                            <li class="active"></li>
+                            <li></li>
+                        </ul>
+                        <ul class="steps-info">
+                            <li class="step1 active">
+                                <span class="step-icon"><span>1</span></span>
+                                <span class="step-info">填写注册信息</span>
+                            </li>
+                            <li class="step2 active">
+                                <span class="step-icon"><span>2</span></span>
+                                <span class="step-info">账号激活</span>
+                            </li>
+                            <li class="step3">
+                                <span class="step-icon"><span>3</span></span>
+                                <span class="step-info">注册成功！</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="step-title">
+                        <li class="step-title-prev active"><a class="active" href="/signup/">上一步</a></li>
+                        <li class="step-title-center"><h1>激活您的帐号</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <div class="register-form-div">
+                    <h1 class="mobile">激活您的帐号</h1>
+                </div>
+                <p class="pc register-pc">
+                    <label class="city-no-star">
+                    <span class="c607d8b fs12">账号激活邮件已发送至您填写的邮箱，没有收到激活邮件？</span><a class="send_active ac44b5e8 fs12 username" email="" href="javascript:void(0);">点击重新发送</a>
+                    </label>
+                    <span class="resp_info">发送成功！</span>
+                </p>
+
+                <div class="register-form-div">
+
+                        <p class="form-control align-center">
+                            <img src="{{ STATIC_URL }}b_common/img/activate_failed.png" border="" border="0">
+                        </p>
+                        <p class="form-control align-center">
+                            <label class="pc"></label><button type="button" tabindex="9" class="btn btn-red-submit confirm got-to-activate username" email="">去激活</button>
+                            <label class="mobile"></label>
+                        </p>
+                        <p class="mobile copyright">
+                            <label>Copyright &copy; 2013 - 2015 HopperClouds, Inc.</label>
+                        </p>
+
+                </div>
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+
+<br><br><br><br>
+
+{% endblock %}
+
+{% block footer_html %}
+<div class="new-footer">
+    <ul class="contact">
+        <li>联系电话：028-83330727</li>
+        <li>企业QQ：800031490</li>
+        <li>HR交流Q群：9580917</li>
+    </ul>
+</div>
+{% endblock %}
+
+<script type="text/javascript">
+        $(function(){
+            var wait_to_activate=$.cookie('wait_to_activate');
+            if(pbDebug) console.log('wait_to_activate',wait_to_activate);
+            if(wait_to_activate != undefined){
+                //$.removeCookie('wait_to_activate');
+                $('.username').attr('email',wait_to_activate);
+            }
+
+        });
+    </script>

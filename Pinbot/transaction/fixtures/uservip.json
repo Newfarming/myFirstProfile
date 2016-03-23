@@ -1,0 +1,19 @@
+[
+{
+  "pk": 2,
+  "model": "vip.uservip",
+  "fields": {
+    "active_time": "2015-08-28T19:47:16",
+    "create_time": "2015-03-28T19:45:58",
+    "expire_time": "2015-11-08T00:00:00",
+    "vip_role": 3,
+    "custom_point": 0,
+    "is_active": true,
+    "custom_feed": 0,
+    "has_sign": false,
+    "user": 907,
+    "total_price": 300,
+    "apply_status": "success"
+  }
+}
+]

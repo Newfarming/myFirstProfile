@@ -1,0 +1,212 @@
+<div class="feed-list clearfix" id="feedApp">
+  <div class="feed-page clearfix">
+    <div ng-cloak class="feed-page-wrap">
+      <div ng-view></div>
+    </div>
+  <div>
+</div>
+
+
+<script type="text/x-template" id="template-feeditem">
+
+  <div class="feed-item-list clearfix">
+
+    <div class="feed-item-tags clearfix">
+
+        <div fixedtop="20" class="tags-container" style="width: 245px; z-index:1000;">
+            <h4>筛选</h4>
+            <form>
+            <div class="filter-content">
+                <label for="">工作年限：</label>
+                <p>
+                    <input type="text" data-notequired data-reg="number" class="filter-input w65" name="lower_year" id="JS_lower_year"> 年 - <input type="text" name="upper_year" data-notequired data-reg="number" id="JS_upper_year" class="filter-input w65"> 年
+                </p>
+                <label class="mt20" for="">期望月薪：</label>
+                <p>
+                    <input type="text" id="JS_lower_money" data-notequired data-reg="number" name="lower_money" class="filter-input w65"> K - <input type="text" data-notequired data-reg="number" name="upper_money" class="filter-input w65"> K
+                </p>
+                <label class="mt20" for="">最高学历：</label>
+                <p>
+                    <div class="drop-select w180">
+                        <button class="button" type="button" data-toggle="dropdown">请选择<i class="i-barr"></i></button>
+                        <div class="drop-box">
+                            <ul class="drop-down">
+                                <li><a>请选择</a></li>
+                                <li><a>专科</a></li>
+                                <li><a>本科</a></li>
+                                <li><a>硕士</a></li>
+                                <li><a>博士</a></li>
+                            </ul>
+                        </div>
+                        <select class="edu_end_year" id="JS_degree" name="degree" data-equ="">
+                            <option value=""></option>
+                            <option value="专科">专科</option>
+                            <option value="本科">本科</option>
+                            <option value="硕士">硕士</option>
+                            <option value="博士">博士</option>
+                        </select>
+                    </div>
+                </p>
+                <p class="text-center mt20">
+                    <a href="javascript:;" class="filter-submit" id="JS_submit_btn">提交</a>
+                </p>
+            </div>
+            </form>
+        </div>
+
+      <div fixedtop="350" class="tags-container mt20">
+        <h4>标签</h4>
+        <p class="list-tags default clearfix">
+            <a href="/taocv/city=北京" {%if city == '北京'%}class="curr"{%endif%}>北京</a>
+            <a href="/taocv/city=成都" {%if city == '成都'%}class="curr"{%endif%}>成都</a>
+        </p>
+      </div>
+
+      <div fixedtop="450" class="tags-container mt20">
+        <h4>标签</h4>
+        <p class="list-tags clearfix" id="JS_list_tags">
+
+        </p>
+        <div class="want-more-tags">
+          <div class="want-more-tags-wrap">
+            <a href="javascript:void(0);" class="want-more-tags-handler" style="display:none;">我需要更多其他标签</a>
+            <div class="want-more-tags-addition">
+              <p>
+                <textarea placeholder="请在此输入你需要的简历标签"></textarea>
+              </p>
+              <p class="want-more-tags-addition-action">
+                <a href="javascript:void(0);" class="action-add-tags">提交</a>
+                <a href="javascript:void(0);" class="action-cancel">取消</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="want-more-submitted">你的申请需求已成功提交，审核通过后我们会邮件通知，请留意哦！</p>
+      </div>
+
+    </div>
+
+
+    <div class="feed-item-out">
+        <!-- <div class="feed-calendar" id="JS_calendar" style="display:none;"><i class="i-calendar">13</i> <span>2014年07月31日</span></div> -->
+
+      <div id="JS_list_content">
+      <div class="feed-item-out-empty" ng-show="filteredItems && !filteredItems.length">
+        <p>可惜没找到。</p>
+      </div>
+      <div
+        ng-repeat="item in (filteredItems = (feeditems | select:this))"
+        class="feed-item {[{item.opened | checkFeedOpen}]} {[{item.latest | checkFeedLatest}]}"
+      >
+        <div class="feed-item-wrapper">
+          <div class="item-header">
+            <div class="item-header-wrapper">
+              <div class="item-profile">
+                <h3 class="item-work-position">
+                  <span ng-show="item.name" style="margin-right: 5px; color: #f90;">{[{item.name}]}</span>
+                  {[{item.latest_work.position_title}]}
+                </h3>
+                <span class="item-update-time" ng-show="item.calc_time">推荐时间： {[{ item.calc_time | nospace}]}</span>
+                <p>
+                  <span class="item-profile-gender">{[{item.profile.gender | gender }]}</span>
+                  <span class="item-profile-age">{[{item.profile.age}]}&nbsp; &nbsp; </span>
+                  <span>{[{item.job_target.job_hunting_state}]}</span>
+                  <span class="item-profile-sep">|</span>
+                  <span ng-show="item.profile.address">现居地：{[{ item.profile.address }]}&nbsp; &nbsp;</span>
+                  <span ng-show="item.job_target.expectation_area">意向地：{[{ item.job_target.expectation_area }]}</span>
+                </p>
+              </div>
+
+              <div class="item-resume-tags clearfix">
+                <a href="" class="JS_tags_a" data-tag="{[{tag.tag}]}" data-tag_id="{[{tag.tag_id}]}" ng-repeat="tag in item.tags">{[{tag.tag}]}</a>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="item-body">
+            <div class="item-body-wrapper">
+              <div class="item-summary">
+
+                <div class="item-main">
+                  <p>
+                    <span class="item-profile-exp"><em>{[{item.profile.work_years}]}</em>年经验</span>
+                    <span class="item-profile-sep">|</span>
+                    <span class="item-work-salary">期望薪资：<em>{[{item.job_target.salary}]}</em></span>
+                  </p>
+                </div>
+
+                <div class="item-work">
+                  <p>
+                    <span class="item-work-comp">{[{item.latest_work.company_name}]}</span>
+                    <span class="item-profile-sep" ng-show="item.latest_work && item.latest_work.position_title">|</span>
+                    <span class="item-work-position">{[{item.latest_work.position_title}]}</span>
+                    &nbsp;
+                    <span class="item-work-salary">{[{item.latest_work.salary}]}</span>
+                  </p>
+                  <p ng-show="item.latest_work.job_desc" ng-bind-html-unsafe="item.latest_work.job_desc | chop" class="work-detail">
+                    {[{ item.latest_work.job_desc }]}
+                  </p>
+                </div>
+
+                <div class="item-edu">
+                  <p>
+                    <span class="item-edu-school">{[{item.profile.school}]}</span>
+                    <span class="item-profile-degree">{[{item.profile.degree}]}</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="item-footer">
+
+                <div ng-show="item.is_staff" class="tao-feedback">
+
+                  <p class="tao-feedback-detail" style="margin-bottom: 2px;width:70%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"  ng-show="item.feedback_dict && item.feedback_dict.no_contact">
+                    <strong>无法联系候选人</strong>
+                    <span class="reason" ng-repeat="comment in item.feedback_dict.no_contact||[]">
+                      {[{ comment }]}
+                    </span>
+                  </p>
+                  <p class="tao-feedback-detail" style="width:70%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;"  ng-show="item.feedback_dict && item.feedback_dict.no_intend">
+                    <strong>无求职意向</strong>
+                    <span class="reason" ng-repeat="comment in item.feedback_dict.no_intend||[]">
+                      {[{ comment }]}
+                    </span>
+                  </p>
+                </div>
+
+
+                <div ng-hide="item.is_staff" ng-show="item.resume_feedback_status" class="tao-feedback">
+                  <p ng-show="item.resume_feedback_status=='success'" class="tao-feedback-detail">
+                    <strong>{[{ item.resume_feedback_type }]}</strong>
+                    <span class="reason">{[{ item.resume_feedback }]}</span>
+                  </p>
+                  <p ng-show="item.resume_feedback_status=='checking'" class="tao-feedback-status">
+                    反馈正在验证中...
+                  </p>
+                  <p ng-show="item.resume_feedback_status=='fail'" class="tao-feedback-status">
+                    反馈验证失败了:(
+                  </p>
+                </div>
+
+                <p class="resume-link">
+                  <a title="点击查看简历详情" href="/feed/get/{[{item.feed_id}]}/{[{item.resume_id}]}" target="{[{item.resume_id}]}">查看简历</a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="feed-loading" ng-show="initLoading"> Loading... </div>
+  <a class="load-more" ng-show="hasmore" ng-click="fetch()">查看更多</a>
+  <div class="load-more load-more-loading" ng-show="loadmore"></div>
+
+  <div class="feed-waiting" ng-show="waiting">
+    <p class="feed-waiting-tip"></p>
+  </div>
+
+</script>

@@ -1,0 +1,170 @@
+{% extends 'base_center.html' %}
+
+{% block header %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/extension.css" />
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with promotion_css='curr' %}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ STATIC_URL }}b_common/css/page-jquery.css" />
+<div class="invite-main" >
+    <div>
+        <h1>邀请有奖</h1>
+        <h2 class="extension-title">邀请HR使用聘宝  双方获赠<span class="cf46c62">5</span>金币</h1>
+        <div class="extension-desc">
+            <p class="quote"><span class="cf46c62">（金币可提现）</span>
+            </p>
+            <div class="invite-step">
+                <p><i></i>扫码生成专属页面<br>分享到社交网络</p>
+                <div class="invite-code" id="qrcode" data-src="{{ qr_code_link }}"><div class="js-code-loading"></div></div>
+            </div>
+            <div class="invite-step">
+                <p><i class="icon-two"></i>或复制专属链接  邀请好友注册</p>
+                <p><input class="invite-link" type="text" readonly="true" value="{{ promotion_link }}"></p>
+                <a href="javascript:;" data-url="{{ promotion_link }}" id="JS_copy_btn" data-click_url="{% url 'promotion-save-click-record' token %}" class="btn-primary copy-a relative">复制<span><br>复制成功!</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="relative">
+        <h1>邀请记录</h1>
+        <ul class="invite-record">
+            <li>
+                <div class="width150">注册日期</div>
+                <div class="width190">用户名</div>
+                <div class="width240">公司名称</div>
+                <div class="width98">获得奖励</div>
+            </li>
+        </ul>
+        <div class="loading-img"></div>
+        <div class="js-invite-page page-widget noselect mt20"></div>
+    </div>
+</div>
+<div class="invite-activity gradient">
+    <a href="javascript:;" class="js-close-activity invite-close-btn">x</a>
+    <div class="invite-activity-contain clearfix">
+        <div class="invite-activity-contain-title"></div>
+        <div class="opacity-border"></div>
+        <div class="invite-activity-content">
+            <div class="clearfix">
+                <div class="invite-img-word">
+                    <img src="{{ STATIC_URL }}b_common/img/jdcard.jpg">
+                    <p class="award-name">100元京东卡</p>
+                    <p><strong>3</strong>个有效邀请&nbsp;&nbsp;兑换</p>
+                </div>
+                <div class="invite-img-word">
+                    <img src="{{ STATIC_URL }}b_common/img/speakers.jpg">
+                    <p class="award-name">emoi蓝牙灯音箱</p>
+                    <p><strong>6</strong>个有效邀请&nbsp;&nbsp;兑换</p>
+                </div>
+                <div class="invite-img-word">
+                    <img src="{{ STATIC_URL }}b_common/img/kindle.jpg">
+                    <p class="award-name">Kindle阅读器</p>
+                    <p><strong>10</strong>个有效邀请&nbsp;&nbsp;兑换</p>
+                </div>
+            </div>
+            <div class="definition-box">
+                <div class="opacity-bg"></div>
+                <div class="definition-word">
+                    <p class="definition-word-title">有效邀请定义</p>
+                    <p>属于不同的公司，并属于IT互联网行业</p>
+                    <p>提交职位定制(有招人需求)</p>
+                    <p>在北京、上海、广州、深圳、杭州、成都、武汉、西安、重庆9座城市中的1个</p>
+                </div>
+            </div>
+            <div class="invite-activity-bottom">
+                <a href="javascript:;" class="js-close-activity"></a>
+                <p>奖品将于活动结束后7天工作日内发放，邀请纪录数≠有效邀请数<br>邀请的HR将通过聘宝人工电话审核，审核通过则算作有效邀请！<br><span>＊</span>活动最终解释权归聘宝所有</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% include 'zeroClipboard.html' %}
+<script>
+$(function() {
+    $('#JS_copy_btn').on('click', function() {
+        var click_url = $(this).attr('data-click_url');
+        $.get(click_url, function(result) {
+        });
+    });
+});
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}b_common/js/page-jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}b_common/js/qrcode.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var qrcode = new QRCode("qrcode");
+        var codeHttp = $('#qrcode').attr('data-src');
+        qrcode.makeCode(codeHttp);
+        //判定二维码是否生成且加载完成去除loading
+        if(($('#qrcode img').length != 0) && ($('#qrcode img').eq(0).height() != 0)){
+            $('.js-code-loading').css('display','none');
+        }
+        getPageData(1);
+    })
+    function getPageData(page){
+        $('.loading-img').css('display','block');
+        $.ajax({
+            url: '/promotion_point/record/list/',
+            type: 'get',
+            data:{'page':page},
+            dataType: 'json',
+            success: function(data) {
+                fillTableHtml(data);
+                $(".js-invite-page").createPage({
+                    pageCount:data.pages,
+                    current: page,
+                    backFn: function(p) {
+                        getPageData(p);
+                    }
+                });
+            }
+        });
+    }
+    function fillTableHtml(data){
+        var tableStr = '<li><div class="width150">注册日期</div><div class="width190">用户名</div><div class="width240">公司名称</div><div class="width98">获得奖励</div></li>';
+        var dataLength = data.data.length;
+            if(dataLength>0){
+                for(var i=0; i<dataLength; i++){
+                    if(i%2 == 0){
+                        tableStr += '<li class="bfafafa clearfix js-record-data"><div class="width150">'+data.data[i].promotion_date+'</div><div class="width190"><p class="hr-name">'+data.data[i].register_username+'</p></div><div class="width240"><p class="company-name">'+data.data[i].register_company_name+'</p></div><div class="width98"><span class="cf46c62">5</span>金币</div></li>';
+                    }else{
+                        tableStr += '<li class="clearfix js-record-data"><div class="width150">'+data.data[i].promotion_date+'</div><div class="width190"><p class="hr-name">'+data.data[i].register_username+'</p></div><div class="width240"><p class="company-name">'+data.data[i].register_company_name+'</p></div><div class="width98"><span class="cf46c62">5</span>金币</div></li>';
+                    }
+                }
+            }else{
+                tableStr+='<div class="null-data">暂没有成功邀请的HR，加油哦！</div>';
+            }
+            $('.invite-record').empty();
+            $('.invite-record').append(tableStr);
+            $('.loading-img').css('display','none');
+    }
+    if($('.top-banner').length >0){
+            $('.top-banner').css('display','none');
+        }
+    $('.js-close-activity').on('click',function(){
+        $('.invite-main').css('display','block');
+        $('.invite-activity').css('display','none');
+    })
+    var adjustHeight = function(){
+        var windowHeight = $(window).height();
+        if((windowHeight-60) >= 630){
+            var inviteHeight = windowHeight-130+'px';
+            var inviteMargin = (windowHeight-690)/2;
+            $('.invite-activity').css('height',inviteHeight);
+            $('.invite-activity-contain').css('margin',inviteMargin+'px auto');
+        }
+    }
+adjustHeight();
+$(window).resize(function() {
+  adjustHeight();
+});
+</script>
+{% endblock %}

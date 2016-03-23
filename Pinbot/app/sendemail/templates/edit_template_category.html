@@ -1,0 +1,17 @@
+{% extends 'base_sendemail.html' %}
+{%block content%}
+<form action="" method="post" class="form-inline">
+    {% csrf_token %}
+    <div class="form-group">
+    <label >分类名称:</label>
+      <input type="text" class="form-control" name="name" value="{{category_obj.name}}">
+    </div>
+    <button class="btn btn-info" type="submit" value="Submit">更新</button>
+</form>
+<hr/>
+当前已有分类:
+{%for category in all_category%}
+    <a class="btn btn-default">{{category.name}}</a>
+{%endfor%}
+
+{%endblock%}

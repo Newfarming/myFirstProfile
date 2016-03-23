@@ -1,0 +1,134 @@
+
+{%if check_status == 'pass'%}
+<div class="tao-enter tao-status-5">
+{%elif check_status == 'checking'%}
+  <div class="tao-enter tao-status-3">
+{%elif check_status == 'deny'%}
+  <div class="tao-enter tao-status-4">
+
+
+{%else%}
+    {%if user_buy_status == 'Secret'%}
+      <div class="tao-enter tao-status-5">
+	{%elif user_buy_status != '' %}
+	<div class="tao-enter tao-status-2">
+	{%else%}
+	<div class="tao-enter tao-status-1">
+	{%endif%}
+{%endif%}
+
+  <a href="javascript:void(0);" class="tao-enter-btn btn-status-1">反馈有补偿</a>
+  <a href="javascript:void(0);" class="tao-enter-btn btn-status-2">反馈有补偿</a>
+  <a href="javascript:void(0);" class="tao-enter-btn btn-status-3">反馈审核中</a>
+  <a href="javascript:void(0);" class="tao-enter-btn btn-status-4 submitted">反馈未通过</a>
+  <a href="javascript:void(0);" class="tao-enter-btn btn-status-5 submitted"><span>下载点数已返还</br> -- 点数:<em>
+  {%if re_points%}
+    {{re_points}}
+  {%else%}
+    10
+  {%endif%}
+  </em>点 --</span> </a>
+
+  <div class="tao-feed-container">
+    <div class="body">
+      <div class="tao-rules-enter ">
+        <div class="tao-rules-header">
+          <ul>
+            <li>
+              <h5>反馈规则</h5>
+              <p>聘宝的反馈补偿机制，确保您得每一份简历下载额度都能够用到实处。如果您下载得候选人简历联系方式无效或存在有效性方面的问题，验证属实后，聘宝将全额或部分退还您得下载点数。</p>
+            </li>
+            <li>
+              <h5>特别提示</h5>
+              <p class="tip-normal">每封简历只能提交一次反馈！</p>
+              <p class="tip-warn">获得反馈补偿之前，需要先下载目标候选人的简历！</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="feedback-tab {% if not request.user.is_staff %}short{% endif %} clearfix" {% if user_buy_status == 'LookUp' %}id="JS_feed_tags"{%endif%}>
+            <a href="javascript:;" class="active">未约到面试</a>
+            <a href="javascript:;">约到面试</a>
+
+            {% if request.user.is_staff %}
+            <a href="javascript:;">官方反馈</a>
+            {% endif %}
+        </div>
+
+        <div class="tao-rules-main">
+
+          <ul class="choice-groups" data-submit-url="/taocv/add_feedback/" style="display:block;">
+
+            <li class="choice-group">
+              <h3>1.无法联系候选人<strong>返点<em>100%</em></strong></h3>
+              <ul class="choice-list clearfix">
+                <li data-id="401">停机</li>
+                <li data-id="402">号码不存在</li>
+                <li data-id="403"><span>其他</span><input type="text" maxlength="8" placeholder="请8字以内说明" class="input-other group2-other"/></li>
+              </ul>
+            </li>
+            <li class="choice-group">
+              <h3>2.候选人无求职意愿 <strong>返点<em>50%</em></strong></h3>
+              <ul class="choice-list">
+                <li data-id="404">候选人暂无求职或跳槽打算</li>
+                <li data-id="405">候选人期望薪资高于简历描述,实际期望薪资<input type="text" class="input-salary"/>K</li>
+                <li data-id="406">候选人居住地距离本公司较远,居住地位于<input type="text" class="input-location"/></li>
+              </ul>
+            </li>
+            <li class="choice-group">
+              <h3>3.候选人有意愿但不适合<strong>返点<em>50%</em></strong></h3>
+              <ul class="choice-list">
+                <li data-id="407">候选人专业能力不符</li>
+                <li data-id="408">候选人相关经验不足</li>
+                <li data-id="409">候选人其他素质不达标</li>
+                <li data-id="410"><span>其他</span><input type="text" maxlength="20" placeholder="请20字以内说明" class="input-other group1-other"/></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="choice-groups pt50" data-submit-url="/taocv/add_feedback/">
+
+            <li class="choice-group">
+              <ul class="choice-list clearfix">
+                <li data-id="501" class="back-count" onclick="$(this).siblings().find('div').hide();">候选人约定面试时间后爽约 <strong>返点<em>50%</em></strong></li>
+                <li data-id="502" class="back-count " style="position:relative; margin-bottom:120px" onclick="$(this).find('div').show();">候选人已参加首轮面试 <strong>录入有效面试摘要返点<em>50%</em></strong>
+                    <div style="position:absolute; top:30px; left:20px; width:410px; display:none;">
+                        <textarea name="" maxLength="100" placeholder="输入您的面试摘要可返点50%哦！" rows="5"></textarea>
+                        <p style="text-align:right; color:#989898; font-size:12px;">100字</p>
+                    </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="choice-groups pt50" data-submit-url="/taocv/add_feedback/">
+
+            <li class="choice-group">
+              <ul class="choice-list clearfix">
+                <li data-id="301" class="back-count">候选人竞争程度较高</li>
+                <li data-id="302" class="back-count">候选人求职意愿不强</li>
+                <li data-id="303" class="back-count">候选人倾向大公司</li>
+                <li data-id="304" class="back-count">候选人求职意愿强烈</li>
+                <li data-id="305" class="back-count">候选人愿意接触创业团队</li>
+                <li data-id="306"><span>其他</span><input type="text" maxlength="20" placeholder="请20字以内说明" class="input-other group1-other"/></li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="choice-pending">
+            <p>已成功提交，系统验证为<strong>3个工作日</strong>。</br>
+            验证属实后将退还你指定点数，请耐心等待吧！</p>
+            <a href="javascript:void(0);" class="tao-cancel" onclick="window.location.reload();return false;">返回</a>
+          </div>
+        </div>
+
+        <div class="footer">
+          <a href="javascript:void(0);" class="tao-submit">提&nbsp;交</a>
+          <a href="javascript:void(0);" class="tao-cancel">返&nbsp;回</a>
+          <a href="javascript:void(0);" class="tao-cancel tao-cancel-ok">好，我知道了</a>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+{% extends 'base_crm.html' %}
+{% load compress %}
+{% load endless %}
+{% load candidate_tags %}
+
+{% block sidebar %}
+{% include 'sidebar.html' with company_active="active" archives_sub_active="active" %}
+{% endblock %}
+{% block content %}
+
+<form action="." method="get" q_args_json="{{ q_args_json }}" id="search_form">
+    <div class="box box-solid">
+        <div class="row box-body">
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="keywords" placeholder="输入关键词" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-flat" type="submit">搜索</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box box-solid">
+        <div class="box-body">
+            <div class="row">
+                <div class="form-inline">
+                    <div class="col-xs-10">
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">管理员</label>
+                            <select id="select_admin" class="form-control select2" name="admin_id">
+                                <option selected="selected" value="-1">不限</option>
+                                {% for admin in admin_list %}
+                                <option value="{{ admin.id }}">{{ admin.username }}</option>
+                                {% endfor%}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">确定</button>
+                        <button type="button" class="btn btn-default" id="clear_query_btn">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body">
+                {% paginate 20 paginate_query %}
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th>用户/公司</th>
+                            <th>管理员</th>
+                            <th>套餐</th>
+                            <th>实际付费</th>
+                            <th>服务时间</th>
+                            <th>定制</th>
+                            <th>下载</th>
+                            <th>约面</th>
+                            <th>offer</th>
+                            <th>入职</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for company in company_archives_list %}
+                        <tr class="number-{{ candidate.user.id }}">
+                            <td>{{ company.user.username }} </br><a href="{% url 'crm-company-detail' company.user.id %}">{{ company.user.userprofile.company_name }}</a></td>
+                            <td>{{ company.user.crm_client_info.admin.username }}</td>
+                            <td>{{ company.item.get_desc }}</td>
+                            <td>{{ company.order_price }}</td>
+                            <td style="width: 100px; text-align: center;">{{ company.active_time|date:'Y-m-d' }}</br><span>至</span></br>{{ company.expire_time|date:'Y-m-d' }}</td>
+                            <td>{{ company.feed_usage }}</td>
+                            <td>{{ company.record_count }}</td>
+                            <td>{{ company.interview }}</td>
+                            <td>{{ company.send_offer }}</td>
+                            <td>{{ company.entry }}</td>
+                            <td style="width: 90px;">{{ company.get_status_display }}</td>
+                            <td style="width: 140px;">
+                                <div class="row">
+                                    <select style="display: inline-block;" >
+                                        <option selected="selected" value="{{ company.status }}">{{ company.get_status_display }}</option>
+                                        <option value="success">已开通</option>
+                                        <option value="continue">续期用户</option>
+                                        <option value="refunded">退款成功</option>
+                                        <option value="finished">已完结</option>
+                                    </select>
+                                    <button style="display: inline-block; width: 50px;" type="button" class="change_status btn btn-block btn-info btn-xs" the_id="{{ company.id }}" order_id="{{ company.order_id }}">提交</button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                {% get_pages %}
+                {{ pages }}
+            </div>
+        </div>
+    </div>
+</div>
+{% compress js %}
+<script src="{{ STATIC_URL }}crm/company/archives.js"></script>
+{% endcompress %}
+{% endblock %}

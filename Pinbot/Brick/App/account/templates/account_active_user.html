@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block header %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}account/css/active_user.css" />
+{% endblock %}
+{% block body %}
+<div class="content">
+	<div class="inner-content">
+{% if status == 'token_error' %}
+<!--无效链接-->
+		<h1>链接无效！</h1>
+		<h2>你好，该激活链接无效！</h2>
+{% elif status == 'already_active'%}
+<!--邮箱已激活-->
+		<h1>该帐号已激活！</h1>
+		<h2><span class="jumpTo">5</span>秒后跳转至登录页面</h2>
+		<p>页面没有跳转？点这里<a href="{% url 'account-login'%}">登录</a></p>
+{% elif status == 'token_expire'%}
+<!--失效链接-->
+		<h1>链接失效！</h1>
+		<h2>激活链接已失效，<a class="send_active" email="{{ user.username }}">点击此处</a>重新发送激活邮件</h2>
+		<label>发送成功！</label>
+{% else %}
+<!--激活成功-->
+		<h1>激活成功！</h1>
+		<h2>激活成功，<span class="jumpTo">5</span>秒后跳转至登录页面</h2>
+		<p>页面没有跳转？点这里<a href="{% url 'account-login'%}">登录</a></p>
+{% endif %}
+	</div>
+</div>
+{% endblock %}
+{% block footer %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}account/active_user.js" ></script>
+{% endblock %}
+
+
+
+fdsa

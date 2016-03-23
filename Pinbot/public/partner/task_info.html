@@ -1,0 +1,43 @@
+<div class="task-info" ng-if="task_id != 0">
+    <p class="task-title">你正在为<a class="cf46c62" ng-click="show_feed(feedData)">{- feedData.feed.title || feedData.feed.keywords -}</a>推荐人才</p>
+    <p class="task-profile">
+        {- feedData.feed.salary_min | formatMoney:feedData.feed.salary_max -}
+        <span ng-if=" ( feedData.feed.expect_area && feedData.feed.expect_area.length ) || feedData.company.company_stage">&nbsp;|&nbsp;{- feedData.feed.expect_area | joinCity -}</span>
+        <span ng-if=" feedData.feed.job_domain && feedData.feed.job_domain.length ">&nbsp;|&nbsp;{- feedData.feed.job_domain | category -}</span>
+        <span ng-if=" feedData.feed.company_prefer && feedData.feed.company_prefer.length ">&nbsp;|&nbsp;人才偏好：{- feedData.feed.company_prefer | category -}</span>
+    </p>
+</div>
+<!-- 定制预览 -->
+<div class="modal-backdrop-view" ng-if="viewFeed"></div>
+<div class="modal-view" tabindex="-1" style="display:block" ng-if="viewFeed">
+    <div class="modal-dialog-view" style=" border-top: solid 6px #0091FA;">
+        <div class="modal-content-view">
+            <p class="close-layer text-right">
+                <a href="javascript:;" class="close-layerout-btn" ng-click="toggleView()"></a>
+            </p>
+            <div class="modal-body-view">
+                <div class="view-body">
+                    <h2 class="view-title">{- feedData.feed.title || feedData.feed.keywords -}</h2>
+                    <p class="view-salary mt10">{- feedData.feed.salary_min | formatMoney:feedData.feed.salary_max -}</p>
+                    <div class="mt10">
+                        <p>
+                            <a href="javascript:;" class="view-desc-btn" ng-click="toggleDesc()">职位详情</a>
+                        </p>
+                        <div class="view-desc mt10" ng-bind-html="feedData.feed.job_desc|as_html" ng-if="showViewDesc"></div>
+                        <p ng-if="showViewDesc">
+                            <a href="javascript:;" class="close-desc mt10 shrink-desc" ng-click="toggleDesc()"></a>
+                        </p>
+                    </div>
+                    <p class="view-company-name mt10" ng-if="feedData.company.company_name">{- feedData.company.company_name -}</p>
+                    <p class="view-area mt10" ng-if=" ( feedData.feed.expect_area && feedData.feed.expect_area.length ) || feedData.company.company_stage"><span ng-if="feedData.feed.expect_area && feedData.feed.expect_area.length">{- feedData.feed.expect_area | joinCity -}</span><span ng-if="feedData.company.company_stage">, &nbsp;&nbsp;{- feedData.company.company_stage -}</span></p>
+                    <p class="view-cat mt10" ng-if=" feedData.feed.job_domain && feedData.feed.job_domain.length ">{- feedData.feed.job_domain.join(',') -}</p>
+                    <p class="view-url mt10" ng-if="feedData.company.product_url"><a target="_blank" href="{- feedData.company.product_url -}">{- feedData.company.product_url -}</a></p>
+                    <p class="view-welfare" ng-if=" feedData.feed.job_welfare && feedData.feed.job_welfare.length ">
+                        <span ng-repeat="v_welfare in feedData.feed.job_welfare track by $index">{- v_welfare -}</span>
+                    </p>
+                    <div class="view-key_points mt10" ng-if="feedData.company.key_points">{- feedData.company.key_points -}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

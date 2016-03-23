@@ -1,0 +1,101 @@
+{% extends 'base_revision_new.html' %}
+{% load compress %}
+{% load utils_tag %}
+
+{% block header %}
+{{ block.super }}
+
+{% endblock %}
+{% block content %}
+
+    <div class=" " ng-app="app.register_finish">
+        <div class="layout" ui-view {% if not order %}data-invalid-order="true"{% endif %} data-tutorial-url="{% url 'tutorial' %}">
+
+            <div class="text-center ajax-loading" ng-if="loading"><img src="{{ STATIC_URL }}partner/images/loading.gif" alt="loading"><br>页面装载中...</div>
+
+
+            <div class="main main-mode" ng-controller="registerFinish">
+                <div class="header">
+                    <h1>
+                        <!--支付失败-->
+                        {% if order.order_status != 'paid' %}
+                        <span class="pay-failed"></span>Sorry...支付失败
+                        {% else %}
+                        支付成功！恭喜您成为聘宝会员！
+                        {% endif %}
+                    </h1>
+                </div>
+                <div class="price content box-content">
+                    <!--支付失败-->
+                    {% if order.order_status != 'paid' %}
+                    <h3 style="padding: 0;">若你已经支付成功，请尝试刷新页面</h3>
+                    <div class="payway_field">
+                        <label>你已选择<span class="cf46c62">{{ order.subject_name }}</span>，应付金额：<span  class="cf46c62">{{ order.order_price }}元</span></label>
+                    </div>
+                    <div class="confirm_pay pd-top-20">
+                        <a href="javascript:void(0);" data-url="/vip/order/repaid/" data-order-id="{{ order.order_id }}" class="btn btn-welcome-submit" ng-click="repay($event)">重新支付</a>
+                    </div>
+                    {% else %}
+
+                    <div class="price content box-content lh180" >
+                        <img src="/static/b_common/img/rocket.gif" border="0">
+                                <br>
+                        <span class="c607d8b f14">您是聘宝<a class="c63c2ec" href="javascript:void(0);">自助型会员</a>，现在您可以使用聘点下载简历了！快来试试吧！
+                        </span>
+                    </div>
+
+                    <p class="form-control align-center" >
+                        <a class="btn btn-welcome-submit" href="/special_feed/page/">我的职位定制</a>
+                    </p>
+
+                    {% endif %}
+                </div>
+
+
+
+            </div><!-- main -->
+
+
+
+        </div><!-- layout -->
+    </div><!-- register -->
+{% endblock %}
+
+{% block footer %}
+
+{{ block.super }}
+
+{% if debug %}
+<script src="{{ STATIC_URL }}common/js/angular.1.3.6.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% else %}
+<script src="{{ STATIC_URL }}common/js/angular.min.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% endif %}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}brick/utils/ng_config.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/filter.js"></script>
+<script>
+    (function() {
+        var service = angular.module('app.django', []);
+        // angular tmpl method
+        service.factory('tmpl', function() {
+            return function(template_path) {
+                var static_path = '{{ STATIC_URL }}';
+                return static_path + template_path;
+            }
+        });
+        // angular tmp static url
+        service.factory('static_url', function() {
+            var static_path = '{{ STATIC_URL }}';
+            return static_path;
+        });
+    })();
+
+</script>
+<script src="{{ STATIC_URL }}users/scripts/register_finish.js"></script>
+{% endcompress %}
+
+{% endblock %}

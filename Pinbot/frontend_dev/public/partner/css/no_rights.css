@@ -1,0 +1,98 @@
+/* ------- start variables -------- */
+/* for test */
+/* main red button */
+/* sprite */
+/* z-index */
+/* main red button */
+/* main blue button */
+/* dark blue button */
+/* dark white button */
+/* main background color */
+/* main font color */
+/* main border color */
+/* main font family */
+/* main font size */
+/* ------- start variables -------- */
+/* ------- start mixins -------- */
+.no-space {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.clear-both {
+  clear: both;
+}
+.userSelectNone {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*
+content-box 在宽度和高度之外绘制元素的内边距和边框
+border-box 为元素设定的宽度和高度决定了元素的边框盒
+*/
+/*
+所有主流浏览器都不支持 appearance 属性
+ */
+.transition {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.transitionTransform {
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.modalBoxShadow {
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.btnBoxShadow {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+/* backface-visibility 属性定义当元素不面向屏幕时是否可见。 */
+/* 超出字符显示省略号: 290px = 20个中文字符 */
+/* ------- end mixins -------- */
+.partner-title {
+  color: #607d8b;
+  padding: 60px 0 10px;
+  text-align: center;
+}
+.contact-us {
+  color: #6f8a97;
+  font-size: 14px;
+  text-align: center;
+}
+.contact-us a {
+  text-decoration: underline;
+}
+.c45b5e9 {
+  color: #45b5e9;
+}
+.resons {
+  width: 370px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #6f8a97;
+}
+.resons dt,
+.resons dd,
+.resons dd p {
+  line-height: 1.8em;
+}
+.cf46c62 {
+  color: #f46c62;
+}
+.mt35 {
+  margin-top: 35px;
+}
+.feedback {
+  text-indent: 35px;
+}

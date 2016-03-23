@@ -1,0 +1,1169 @@
+/**顶部步骤小圆点**/
+.step_dot_ul {
+	width: 90%;
+	margin: 0 auto;
+	padding-top: 2rem;
+	text-align: center;
+	position: relative;
+	max-width: 680px;
+}
+.step_dot_ul li {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background: #ccc;
+	position: absolute;
+	z-index: 2;
+	border-radius: 50%;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+}
+.step_dot_ul li.has_show {
+	background: #40c4ff;
+}
+.step_dot_ul li.selected {
+	width: 20px;
+	height: 20px;
+	background: #40c4ff;
+	left: 8.5%;
+}
+.step_dot_ul li.first, .step_dot_ul li.second, .step_dot_ul li.third, .step_dot_ul li.forth, .step_dot_ul li.fifth, .step_dot_ul li.sixth, .step_dot_ul li.last {
+	top: 86.5%;
+}
+.step_dot_ul li.selected {
+	top: 74.5%;
+}
+.step_dot_ul li.first {
+	left: 0;
+}
+.step_dot_ul li.second {
+	left: 17.5%;
+}
+.step_dot_ul li.third {
+	left: 33.5%;
+}
+.step_dot_ul li.forth {
+	left: 49.5%;
+}
+.step_dot_ul li.fifth {
+	left: 65.5%;
+}
+.step_dot_ul li.sixth {
+	left: 81.5%;
+}
+.step_dot_ul li.last {
+	left: 98.5%;
+}
+.step_dot_ul li a {
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+}
+.step_dot_ul li.selected a {
+	width: 24px;
+	height: 24px;
+}
+.step_line_grey {
+	display: inline-block;
+	width: 100%;
+	height: 4px;
+	background: #eee;
+	position: absolute;
+	left: 0;
+	z-index: 1;
+}
+.step_line_blue {
+	display: inline-block;
+	width: 0%;
+	height: 4px;
+	background: #b3e5fc;
+	position: absolute;
+	left: 0;
+	z-index: 1;
+}
+a.checked {
+	color: #fff;
+	background: #0276bc;
+	position: relative;
+	border: 1px solid;
+}
+.common_form p {
+	position: relative;
+}
+.common_form p a {
+	border: 0;
+	height:48px;
+	width:48px;
+	vertical-align: middle;
+	position: absolute;
+	top: 0.45rem;
+	left: -0.75rem;
+	margin-top: 0;
+	cursor: pointer;
+}
+.common_form p a:hover {
+	border: 0;
+}
+.common_form p a img {
+	top: 0;
+	left: 0;
+	width: 24px;
+}
+.gender_form, .city_form {
+	margin-top: 2rem;
+	width: 90%;
+	max-width: 680px;
+}
+.gender_form p, .city_form p {
+	text-align: center;
+	font-size: 32px;
+	color: rgba(68,68,68,1);
+	display: inline-block;
+	width: 100%;
+	padding-bottom: 0.5rem;
+}
+.gender_form a {
+	display: inline-block;
+	width: 95%;
+	margin-top: 5rem;
+	position: relative;
+	border: 1px solid;
+	padding: 11px 16px;
+}
+.gender_form a.checked {
+	border: 1px solid #0276bc;
+}
+.gender_form a:hover {
+	border: 1px solid;
+}
+.gender_form a img {
+	position: absolute;
+	top: -1.2rem;
+	left: 18rem;
+	width: 96px;
+}
+.salary_form a img {
+	left: 20rem;
+}
+.gender_form p a {
+	position: absolute;
+	left: 0px;
+	top: 7px;
+	line-height: 0;
+}
+.gender_form p a img {
+	width: 24px;
+}
+.city_form {
+	margin: 0 auto;
+	margin-top: 2rem;
+}
+.city_form ul {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 3rem;
+}
+.city_form ul ul {
+	margin-top: 0;
+	padding-bottom: 48px;
+}
+.city_form li {
+	display: inline-block;
+	width: 180px;
+	height: 59px;
+	margin-left: 69px;
+	margin-bottom: 32px;
+	position: relative;
+}
+.city_form li.first_li {
+	margin-left: 0rem;
+}
+.city_form li a {
+	display: inline-block;
+	width: 100%;
+	padding: 15px 0;
+	border:1px solid;
+	font-size: 18px;
+}
+.city_form li a.checked {
+	border: 1px solid #0276bc;
+}
+.common_form a span {
+	display: none;
+}
+.common_form a.checked span {
+	display: inline-block;
+	position: absolute;
+	top: 1.35rem;
+	right: 0.45rem;
+	width: 18px;
+}
+.common_form a span:before, .common_form a span:after {
+	content:'';
+	height: 16px;
+	width: 2px;
+	display:block;
+	background: #fff;
+	position:absolute;
+	top: 0rem;
+	right: 0.4rem;
+	-moz-border-radius:10px;
+	transform:rotate(45deg);
+	-webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+}
+.common_form a span:before {
+	height: 8px;
+	transform:rotate(-45deg);
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	-o-transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg);
+	top: 0.4rem;
+	right: 0.9rem;
+}
+.common_form a:hover span {
+	display: none;
+}
+.common_form a:hover span.checked {
+	display: none;
+}
+.common_form a.checked:hover span {
+	display: inline-block;
+}
+.common_form a.checked:hover span.checked {
+	display: inline-block;
+}
+.degree_form a span:before, .degree_form a span:after, .work_year_form a span:before, .work_year_form a span:after {
+	right: 2.4rem;
+}
+.degree_form li a span:before, .work_year_form li a span:before, .work_year_form a span:before {
+	right: 2.9rem;
+}
+.gender_form a span:before, .gender_form a span:after {
+	right: 2.4rem;
+}
+.gender_form a span:before {
+	right: 2.9rem;
+}
+.city_form .city_form_next_btn, .salary_form .city_form_next_btn {
+	display: none;
+	margin-bottom: 2rem;
+	padding-top: 1rem;
+	cursor: pointer;
+	border: 0;
+}
+.salary_form .city_form_next_btn {
+	margin-top: 4rem;
+}
+.salary_form .city_form_next_btn:hover {
+	border: 0;
+}
+.city_form .show, .salary_form .show {
+	display: block;
+}
+.city_form .city_form_next_btn img, .salary_form .city_form_next_btn img {
+	display: none;
+	margin: 0 auto;
+	-webkit-animation: move-bottom 2s infinite;
+	-o-animation: move-bottom 2s infinite;
+	animation: move-bottom 2s infinite;
+	width: 48px;
+}
+.city_form .city_form_next_btn img.hide, .salary_form .city_form_next_btn img.hide {
+	display: none;
+}
+.city_form .city_form_next_btn img.show, .salary_form .city_form_next_btn img.show {
+	display: block;
+}
+.tag_form li.previous {
+	display: block;
+	width: 100%;
+	max-width: 680px;
+	margin: 0 auto;
+}
+.tag_form li.previous a {
+	background: #0091fa;
+	color: #fff;
+	position: relative;
+	border: 1px solid #0091fa;
+}
+.tag_form li.previous a i {
+	height:40px;
+	position:relative;
+	overflow:hidden;
+	width:25px;
+}
+.tag_form li.previous a i:before {
+	content:'';
+	height:20px;
+	width:20px;
+	display:block;
+	border: 5px solid #fff;
+	border-right-width:0;
+	border-bottom-width:0;
+	transform:rotate(-45deg);
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	-o-transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg);
+	position:absolute;
+	top: 5px;
+	left: -265px;
+}
+.tag_form li {
+	margin-top: 2rem;
+	margin-bottom: 0;
+}
+.work_year_form {
+	padding-bottom: 3rem;
+}
+.work_year_form a {
+	margin-top: 2rem;
+}
+.degree_form a.none {
+	display: none;
+}
+.degree_form a.go_edit {
+	border: 1px solid #fff;
+	color: #0091f8;
+	display: block;
+	text-align: center;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	display: none;
+	padding: 16px;
+	margin-top: 2rem;
+}
+.degree_form a.go_edit:hover {
+	background: none;
+	border: 1px solid #0091fa;
+	color: #008add;
+}
+.field_form li {
+	margin-left: 45px;
+}
+.field_form li a {
+	width: 28px;
+	padding: 14px 0;
+	vertical-align: middle;
+	border: 1px solid #40c4ff;
+}
+.field_form a.checked span {
+	top: 6px;
+	left: 7px;
+}
+.field_form span.field_name {
+	font-size: 18px;
+	color: #0091fa;
+	vertical-align: middle;
+	padding-left: 10px;
+	cursor: pointer;
+}
+.field_form a.get_rec {
+	width: 95%;
+	border: 0;
+	margin-top: 1rem;
+	background: #40c4ff;
+	color: #fff;
+	display: block;
+	padding: 17px;
+}
+.field_form a.get_rec:hover {
+	background: #24bbfe;
+	border: 0;
+}
+.field_form a.hide {
+	display: none;
+}
+.field_form a.disabled {
+	background: #ccc;
+}
+.field_form a.disabled:hover {
+	background: #ccc;
+}
+.salary_form ul li:first-child {
+	position: relative;
+}
+.salary_form .input_li div{
+	margin-top: 2.5rem;
+	border: solid 1px #d7d7d7;
+	display: table;
+	width: 100%;
+	text-align: center;
+}
+.salary_form input {
+	width: 30px;
+	margin-top: 4rem;
+	text-align: left;
+	padding: 10px 0;
+	/*Chrome Safari*/
+	-webkit-ime-mode: disabled;
+	/*Mozilla Firefox*/
+	-moz-ime-mode: disabled;
+	/*Opera*/
+	-o-ime-mode: disabled;
+	/*Internet Explorer*/
+	-ms-ime-mode: disabled;
+	/*CSS3 Standard*/
+	ime-mode: disabled;
+	border: 0;
+	vertical-align: baseline;
+	margin-top: -1px;
+	margin-bottom: -1px;
+	border: 1px solid #d7d7d7;
+	margin-left: -1px;
+	border-right: 0;
+	border-left: 0;
+	color: #0091fa;
+}
+.salary_form input:focus {
+	border-left: 0;
+}
+.salary_form label {
+    color: #b3e5fc;
+    font-size: 24px;
+    font-family: Helvetica '微软雅黑';
+}
+.salary_form label.info {
+	color: #0091fa;
+	position: initial;
+	text-align: center;
+	display: none;
+	font-size: 18px;
+	padding: 2rem 0 0 0;
+}
+.salary_form label.error {
+	color: #f23748;
+	position: initial;
+	text-align: center;
+	display: none;
+	font-size: 18px;
+	padding: 2rem 0 0 0;
+}
+.salary_form label.info span {
+	color: #f23748;
+}
+.show_tag_form {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.show_tag_form h1 {
+	text-align: center;
+	color: #444;
+	font-size: 32px;
+	position: relative;
+	padding-top: 2rem;
+}
+.show_tag_form h1 a {
+    position: absolute;
+    left: 160px;
+    top: 2.5rem;
+    line-height: 0;
+    cursor: pointer;
+}
+.show_tag_form h1 a img {
+    width: 24px;
+}
+.show_tag_form .tag_section {
+	padding-top: 48px;
+	margin-bottom: 1rem;
+}
+.show_tag_form h2 {
+    color: #777;
+    text-align: center;
+    font-size: 20px;
+}
+.show_tag_form ul {
+    padding-top: 1rem;
+	font-size: 0;
+}
+.show_tag_form ul li {
+	display: inline-block;
+	width: 180px;
+	padding-left: 24.5px;
+	margin-top: 2rem;
+}
+.show_tag_form ul li:first-child, .show_tag_form ul li.first {
+	padding-left: 0px;
+}
+.show_tag_form ul li a {
+	background: #0091fa;
+	color: #fff;
+	border:1px solid #0091fa;
+	display: inline-block;
+	width: 100%;
+	font-size: 18px;
+	padding: 15px 0;
+	position: relative;
+	z-index: 1;
+}
+.show_tag_form ul li a img {
+	display: none;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	z-index: 2;
+}
+.show_tag_form ul li.last a {
+	background: #fff;
+	color: #0091fa;
+	position: relative;
+}
+.show_tag_form ul li.last a span {
+	background: url('../img/plus_b_72x72.fw.png') no-repeat center center;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	vertical-align: text-bottom;
+	background-size: 100%;
+}
+.show_tag_form ul li.last a:hover {
+	background: #008add;
+	border: solid 1px #008add;
+}
+.show_tag_form ul li.last a:hover span {
+	background: url('../img/plus_72x72.png') no-repeat center center;
+	background-size: 100%;
+}
+.show_tag_form ul li.last a.minus span {
+	background: url('../img/minus_b_72x72.fw.png') no-repeat center center;
+	background-size: 100%;
+}
+.show_tag_form ul li.last a.minus:hover span {
+	background: url('../img/minus_w_72x72.fw.png') no-repeat center center;
+	background-size: 100%;
+}
+.common_form div.opt_part {
+	display: none;
+}
+.common_form div.opt_part a.confirm {
+	display: block;
+	width: 180px;
+	margin: 3rem auto;
+	border: 1px solid #0091fa;
+	padding: 11px 0;
+}
+.common_form div.confirm_show {
+	display: block;
+}
+.tag_form div.opt_part a.confirm, .city_form div.opt_part a.confirm {
+	margin-top: 0;
+}
+.city_form div.opt_part a.confirm {
+	font-size: 18px;
+}
+.show_tag_form div.tag_input_div {
+	display: none;
+	margin: 2rem auto;
+}
+.show_tag_form div.tag_input_div input {
+	display: inline-block;
+	height: 58px;
+	border: 1px solid #40c4ff;
+	margin: 0 auto;
+	width: 320px;
+	position: relative;
+	font-size: 18px;
+	color: #40c4ff;
+	text-indent: 1rem;
+	padding: 0;
+}
+.show_tag_form div.tag_input_div a {
+	border: 1px solid #40c4ff;
+	background: #40c4ff;
+	color: #fff;
+	padding:16px 11px 15px 11px;
+	font-size: 18px;
+	display: inline-block;
+	width: 156px;
+}
+.show_tag_form div.tag_input_div a:hover {
+	background: #40c4ff;
+	border: 1px solid #40c4ff;
+}
+.show_tag_form div.tag_input_div a.unuse {
+	background: #ccc;
+	border: 1px solid #ccc;
+}
+/**新增标签下拉框**/
+.show_tag_form div.tag_input_div ul {
+	position: relative;
+	border: 1px solid #40c4ff;
+	padding: 0;
+	width: 320px;
+	border-top: 0;
+	background: #fff;
+	margin: 0;
+	display: none;
+}
+.show_tag_form div.tag_input_div ul li {
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.show_tag_form div.tag_input_div ul li.none_info {
+	display: none;
+	color: #000;
+}
+.show_tag_form div.tag_input_div ul li a {
+	width: 100%;
+	border: 0;
+	color: #40c4ff;
+	padding: 8px 0;
+	font-size: 18px;
+	display: block;
+	cursor: pointer;
+	background: #fff;
+	text-indent: 1rem;
+}
+.show_tag_form div.tag_input_div ul li a:hover {
+	border: none;
+	background: #008add;
+	color: #fff;
+}
+.show_tag_form div.tag_input_div ul li.none_info a:hover {
+	border: none;
+	background: #fff;
+	color: #40c4ff;
+	cursor: default;
+}
+@media (min-width: 320px) and (max-width: 760px) {
+	.step_dot_ul {
+		padding-top: 1.75rem;
+	}
+	.step_dot_ul li, .step_dot_ul li a {
+		width: 8px;
+		height: 8px;
+	}
+	.step_dot_ul li.selected, .step_dot_ul li.selected a {
+		width: 12px;
+		height: 12px;
+	}
+	.step_dot_ul li.first, .step_dot_ul li.second, .step_dot_ul li.third, .step_dot_ul li.forth, .step_dot_ul li.fifth, .step_dot_ul li.sixth, .step_dot_ul li.last {
+		top: 90.5%;
+	}
+	.step_dot_ul li.selected {
+		top: 83%;
+	}
+	.step_dot_ul li.last {
+		left: 98%;
+	}
+	.step_line_grey, .step_line_blue {
+		height: 2px;
+	}
+	.common_form p a {
+		width: 1.5rem;
+		height: 1.5rem;
+		left: -0.45rem;
+	}
+	.common_form p a img {
+		width: 16px;
+		top: -3px;
+		left: 0.5rem;
+	}
+	.gender_form, .city_form {
+		margin-top: 1.5rem;
+	}
+	.gender_form p, .city_form p {
+		font-size: 20px;
+	}
+	.gender_form a {
+		width: 255px;
+		display: block;
+		margin: 0 auto;
+		margin-top: 4rem;
+		padding: 7px 16px;
+	}
+	.gender_form a img {
+		top: -0.8rem;
+		left: 6.8rem;
+		width: 4rem;
+	}
+	.salary_form a img {
+		left: 7.5rem;
+	}
+	.city_form p a {
+		width: 1.5rem;
+		height: 1.5rem;
+		left: -0.2rem;
+		top: 4px;
+	}
+	.city_form ul {
+		width: 288px;
+		margin-top: 1rem;
+	}
+	.city_form ul ul {
+		width: 290px;
+		padding-bottom: 0;
+	}
+	.city_form li.first_li {
+		margin-left: 0rem;
+	}
+	.city_form li.second_li {
+		margin-left: 1.656rem;
+	}
+	.city_form li {
+		display: inline-block;
+		width: 130px;
+		height: 40px;
+		margin-left: 0rem;
+		margin-bottom: 24px;
+	}
+	.city_form li a {
+		display: inline-block;
+		width: 100%;
+		padding: 8.5px 0;
+		font-size: 14px;
+	}
+	.city_form li a span:before, .city_form li a span:after {
+		content:'';
+		height: 12px;
+		width: 2px;
+		display:block;
+		background: #fff;
+		position:absolute;
+		top: -0.45rem;
+		right: 0.3rem;
+		-moz-border-radius:10px;
+		transform:rotate(45deg);
+		-webkit-transform:rotate(45deg);
+		-moz-transform:rotate(45deg);
+		-o-transform:rotate(45deg);
+		-ms-transform:rotate(45deg);
+	}
+	.city_form li a span:before {
+		height: 6px;
+		transform:rotate(-45deg);
+		-webkit-transform:rotate(-45deg);
+		-moz-transform:rotate(-45deg);
+		-o-transform:rotate(-45deg);
+		-ms-transform:rotate(-45deg);
+		top: -0.2rem;
+		right: 0.65rem;
+	}
+	.city_form .city_form_next_btn, .salary_form .city_form_next_btn{
+		display: none;
+	}
+	.city_form .city_form_next_btn img, .salary_form .city_form_next_btn img {
+		width: 2.5rem;
+	}
+	.city_form .city_form_next_btn .arrow_down, .salary_form .city_form_next_btn .arrow_down {
+		width: 1.5rem;
+	}
+	.city_form .show, .salary_form .show {
+		display: block;
+	}
+	.field_form li a {
+		width: 22px;
+		padding: 11px 0;
+	}
+	.field_form li span.field_name {
+		font-size: 14px;
+	}
+	.tag_form ul ul {
+		margin-bottom: 1rem;
+		height: 288px;
+		overflow: auto;
+		overflow-x: hidden;
+	}
+	::-webkit-scrollbar {
+	    width: 0px;
+	}
+	::-webkit-scrollbar-track {
+	}
+	/* 滚动条滑块 */
+	::-webkit-scrollbar-thumb {
+		opacity: 0;
+		border: none;
+		background: none;
+	}
+	.tag_form li {
+		margin-bottom: 0;
+		margin-top: 1rem;
+	}
+	.tag_form li.previous {
+		display: block;
+		width: 288px;
+		margin: 0 auto;
+	}
+	.tag_form li.previous a{
+		background: #0091fa;
+		color: #fff;
+	}
+	.tag_form li.previous a i:before {
+		left: -90px;
+		top: 6px;
+		height: 10px;
+		width: 10px;
+		border: 3px solid #fff;
+		border-right-width: 0;
+		border-bottom-width: 0;
+	}
+	.work_year_form a {
+		margin-top: 1rem;
+		padding: 7px 16px;
+	}
+	.field_form a.get_rec {
+		margin: 8px auto 48px auto;
+		width: 265px;
+		padding: 12px;
+	}
+	.salary_form ul li:first-child {
+		width: 289px;
+		margin: 0 auto;
+	}
+	.salary_form .input_li {
+		width: 288px;
+		margin: 0 auto;
+	}
+	.salary_form input {
+		width: 20px;
+		padding: 10px 0;
+	}
+	.salary_form label {
+		right: 42%;
+	    top: 67%;
+	    font-size: 1rem;
+	}
+	.salary_form label.info, .salary_form label.error {
+		font-size: 14px;
+		padding: 1.5rem 0 0 0;
+	}
+	.degree_form a.go_edit {
+		margin-top: 1rem;
+		width: 255px;
+	}
+	.show_tag_form h1 {
+		text-align: center;
+		color: #444;
+		font-size: 20px;
+		position: relative;
+		padding-top: 24px;
+		width: 100%;
+	}
+	.show_tag_form h1 a {
+	    position: absolute;
+	    left: 5.25%;
+	    top: 30px;
+	    line-height: 0;
+	}
+	.show_tag_form h1 a img {
+	    width: 16px;
+	}
+	.show_tag_form .tag_section {
+		padding-top: 16px;
+	}
+	.show_tag_form h2 {
+	    color: #777;
+	    text-align: center;
+	    font-size: 16px;
+	}
+	.show_tag_form ul {
+	    padding-top: 0;
+		font-size: 0;
+	    margin: 0 auto;
+	    width: 288px;
+	}
+	.show_tag_form ul li, .show_tag_form ul li.first {
+		display: inline-block;
+		width: 130px;
+		padding-left: 24.5px;
+		margin-top: 16px;
+		height: 50px;
+	}
+	.show_tag_form ul li.plus-btn {
+		display: none;
+	}
+	.show_tag_form ul li:first-child {
+		padding-left: 0px;
+	}
+	.show_tag_form ul li.last-second {
+		padding-left: 0;
+	}
+	.show_tag_form ul li.second {
+		padding-left: 0;
+	}
+	.show_tag_form ul li a {
+		background: #0091fa;
+		color: #fff;
+		border:1px solid #0091fa;
+		display: inline-block;
+		width: 100%;
+		font-size: 14px;
+		padding: 8.5px 0;
+	}
+	.show_tag_form ul li.last a span {
+		width: 18px;
+		height: 18px;
+		vertical-align: text-bottom;
+	}
+	.common_form div.opt_part {
+		margin-bottom: 2rem;
+	}
+	.common_form div.opt_part a.confirm {
+		display: block;
+		width: 130px;
+		margin: 3rem auto;
+		border: 1px solid #0091fa;
+		padding: 7px 0;
+	}
+	.city_form div.opt_part a.confirm {
+		display: block;
+		width: 130px;
+		margin: 0rem auto;
+		border: 1px solid #0091fa;
+		padding: 8px 0;
+		font-size: 14px;
+	}
+	.show_tag_form div.tag_input_div {
+		display: none;
+		margin: 2rem auto;
+	}
+	.show_tag_form div.tag_input_div input {
+		display: inline-block;
+		height: 38px;
+		border: 1px solid #40c4ff;
+		margin: 0 auto;
+		width: 154.5px;
+		position: relative;
+		font-size: 16px;
+		color: #40c4ff;
+		text-indent: 1rem;
+		padding: 0;
+	}
+	.show_tag_form div.tag_input_div a {
+		border: 1px solid #40c4ff;
+		background: #40c4ff;
+		color: #fff;
+		font-size: 16px;
+		display: inline-block;
+		width: 132px;
+		padding: 7px 0;
+	}
+	.common_form a.checked span {
+		display: inline-block;
+		position: absolute;
+		top: 1.35rem;
+		right: 0.45rem;
+		width: 18px;
+	}
+	.common_form a span:before, .common_form a span:after {
+		content:'';
+		height: 16px;
+		width: 2px;
+		display:block;
+		background: #fff;
+		position:absolute;
+		top: -0.6rem;
+		right: 2.4rem;
+		-moz-border-radius:10px;
+		transform:rotate(45deg);
+		-webkit-transform:rotate(45deg);
+		-moz-transform:rotate(45deg);
+		-o-transform:rotate(45deg);
+		-ms-transform:rotate(45deg);
+	}
+	.common_form a span:before {
+		height: 8px;
+		transform:rotate(-45deg);
+		-webkit-transform:rotate(-45deg);
+		-moz-transform:rotate(-45deg);
+		-o-transform:rotate(-45deg);
+		-ms-transform:rotate(-45deg);
+		top: -0.2rem;
+		right: 2.9rem;
+	}
+	.common_form a:hover span {
+		display: none;
+	}
+	.common_form a:hover span.checked {
+		display: none;
+	}
+	.common_form a.checked:hover span {
+		display: inline-block;
+	}
+	.common_form a.checked:hover span.checked {
+		display: inline-block;
+	}
+	.degree_form a span:before, .degree_form a span:after, .work_year_form a span:before, .work_year_form a span:after {
+		right: 2.4rem;
+	}
+	.degree_form li a span:before, .work_year_form li a span:before, .work_year_form a span:before {
+		right: 2.9rem;
+	}
+	/**新增标签下拉框**/
+	.show_tag_form div.tag_input_div ul {
+		width: 154px;
+		margin: 0;
+	}
+	.show_tag_form div.tag_input_div ul li {
+		height: 40px;
+	}
+	.show_tag_form div.tag_input_div ul li.none_info {
+		height: 40px;
+		display: none;
+		color: #000;
+	}
+	.show_tag_form div.tag_input_div ul li a {
+		width: 100%;
+		border: 0;
+		color: #40c4ff;
+		padding: 8px 0;
+		font-size: 16px;
+		display: block;
+		cursor: pointer;
+		background: #fff;
+		text-indent: 10px;
+	}
+	.show_tag_form div.tag_input_div ul li a:hover {
+		border: none;
+		background: #008add;
+		color: #fff;
+	}
+	.field_form a.checked span {
+		top: 12px;
+		left: 0px;
+	}
+	.field_form li {
+		width: 125px;
+		margin-left: 18px;
+		margin-bottom: 6px;
+	}
+  @media (min-width: 481px) and (max-width: 760px) {
+  	.show_tag_form ul li.plus-btn {
+		display: none;
+	}
+  }
+}
+@media (min-width: 761px) and (max-width: 1024px) {
+	.show_tag_form ul {
+	    width: 685px;
+		margin: 0 auto;
+	}
+	.show_tag_form ul li, .show_tag_form ul li.first {
+		padding-left: 4.5rem;
+	}
+	.show_tag_form ul li.plus-btn {
+		display: none;
+	}
+	.show_tag_form ul li.third {
+		padding-left: 0;
+	}
+	.show_tag_form ul li.last-third {
+		padding-left: 0;
+	}
+	.salary_form label {
+		font-size: 20px;
+		top: 70%;
+		right: 46%;
+	}
+}
+@media (min-width: 1025px) {
+	.show_tag_form ul li.first {
+		padding-left: 0;
+		margin-top: 2rem;
+	}
+	.show_tag_form ul li.last-first {
+		padding-left: 0;
+	}
+}
+
+@media (max-height: 768px) and (min-width: 1024px) {
+	.gender_form p a img, .common_form p a img {
+		width: 20px;
+	}
+	.gender_form p, .city_form p {
+		font-size: 28px;
+	}
+	.work_year_form a {
+		margin-top: 20px;
+		font-size: 18px;
+	}
+	.gender_form div.opt_part a.confirm {
+		margin-top: 3rem;
+		margin-bottom: 0;
+	}
+	.city_form ul {
+		margin-top: 20px;
+	}
+	.city_form li {
+		margin-bottom: 20px;
+	}
+	.city_form li a {
+		padding: 9.5px 0;
+	}
+	.field_form ul {
+		margin-top: 40px;
+	}
+	.field_form li a {
+		padding: 14px 0;
+	}
+	.field_form a.checked span {
+		top: 12px;
+		left: 7px;
+	}
+	.field_form span.field_name {
+		font-size: 18px;
+	}
+	.tag_form li {
+		margin-top: 20px;
+		margin-bottom: 0;
+	}
+	.city_form ul ul {
+		padding-bottom: 20px;
+	}
+	.common_form div.opt_part a.confirm {
+		padding: 9.5px 0;
+	}
+	.common_form a span:before, .common_form a span:after {
+		top: -0.4rem;
+	}
+	.common_form a span:before {
+		top: 0;
+	}
+	.gender_form a {
+		padding: 9.5px 16px;
+		font-size: 18px;
+	}
+	.field_form a {
+		font-size: 18px;
+	}
+}
+@media (min-width: 1025px) and (max-width: 1300px) {
+	.show_tag_form ul li.plus-btn {
+		display: none;
+	}
+}
+@-webkit-keyframes move-bottom {
+    0% {
+        transform: translate(0,0)
+    }
+
+    50% {
+        transform: translate(0,10px)
+    }
+
+    100% {
+        transform: translate(0,0)
+    }
+}
+
+@keyframes move-bottom {
+    0% {
+        transform: translate(0,0)
+    }
+
+    50% {
+        transform: translate(0,10px)
+    }
+
+    100% {
+        transform: translate(0,0)
+    }
+}

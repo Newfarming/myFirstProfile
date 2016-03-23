@@ -1,0 +1,45 @@
+<div class="wp-popup">
+    <div class="popup popup-enter" ng-controller="editbox">
+        <div class="popup-loading" ng-show="loading" style="display: none;"></div>
+        <div class="popup-hd clearfix">
+            <h3 class="popup-title">添加备注(多个词间用空格隔开)</h3>
+            <span class="span-switch">
+                <input type="checkbox" ng-checked="!ignored" id="switch1" name="switch1" class="switch" checked="checked">
+                <label for="switch1">关键词有效性</label>
+            </span>
+        </div>
+        <div class="popup-bd">
+            <div id="editbox">
+                <div class="editbox-table"><div style="float:right;width:200px;text-align:right;">? <a href="https://tower.im/s/8cOFt" target=_blank>帮助文档</a></div>1、一行为一个条件,条件内为"且"关系,条件间为"或"关系;<br>2、
+                以下关键词过滤逻辑：分别为"同义词扩展过滤"、"强过滤"、"强过滤"。<br>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="flag-th">◊</th>
+                            <th title="主题词进行分词后，每个词进行同义词扩展得到若干同义词集合, 简历中必须包含每个集合中至少一个词。"><span>主题词 <strong></strong></span></th>
+                            <th title="简历中必须包含所有必含词."><span>必含词 <strong></strong></span></th>
+                            <th title="简历中不能包含任意一个屏蔽词."><span>屏蔽词 <strong></strong></span></th>
+                            <th class="action-th">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="flag-td"><div class="ng-binding">1</div></td>
+                            <td title="主题词进行分词后，每个词进行同义词扩展得到若干同义词集合, 简历中必须包含每个集合中至少一个词。"><div><input class="latent_semantic_keywords" ng-model="remark.latent_semantic_keywords"></div></td>
+                            <td title="简历中必须包含所有必含词."><div><input class="necessary_keywords" ng-model="remark.necessary_keywords"></div></td>
+                            <td title="简历中不能包含任意一个屏蔽词."><div><input class="exclude_job_keywords" ng-model="remark.exclude_job_keywords"></div></td>
+                            <td class="action-td"><div><a href="javascript:;">删除</a></div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+      <div class="popup-action" style="display: block;">
+        <a href="javascript:;" class="action-add">+ 新增条件</a>
+        <a href="javascript:void(0);" class="action-edit-feed">修改定制</a>
+        <a href="javascript:;" class="action-ok">保存</a>
+        <a href="javascript:;" class="action-cancel" onclick="$('.wp-popup').remove();">取消</a>
+      </div>
+    </div>
+  </div>

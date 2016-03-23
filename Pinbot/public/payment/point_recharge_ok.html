@@ -1,0 +1,20 @@
+
+<div class="main main-mode" ng-controller="pointRechargeOk">
+                <div class="header">
+                    <h1>我的账户</h1>
+                    <div class="sub-title sub-title-red">您的聘点购买成功！</div>
+                </div>
+
+                <div class="price content box-content lh180" >
+                    <span class="c607d8b f14">购买聘点：<span class="cf46c62">{- modePoint -}</span> 聘点<br>
+                    <span ng-if="modeCoin > 0">消费金币：<span class="cf46c62">{- modeCoin -}</span> 金币<br></span>
+                    支付金额：<span class="cf46c62">{- modeFee -}</span> 元
+                    </span>
+                </div>
+
+                <p class="form-control align-center" >
+                    <a class="btn btn-welcome-submit" href="/payment/my_account/">查看我的聘点</a>
+                </p>
+
+            </div><!-- main -->
+

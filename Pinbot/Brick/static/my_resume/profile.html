@@ -1,0 +1,31 @@
+<div class="person-profile-edit" ng-show="isShowEditProfile">
+    <form action="." name="profileForm" method="post" accept-charset="utf-8" id="profileForm" autocomplete="off">
+        <div class="form-box">
+            <input ng-model="resume.name" name="name" type="text" class="input" validator="name" placeholder="姓名"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="resume.age" name="age" type="text" class="input" validator="number" placeholder="年龄"/>
+        </div>
+        <div class="form-box">
+            <textarea ng-model="resume.self_evaluation" name="self_evaluation" type="text" class="input" placeholder="求职宣言"/></textarea>
+        </div>
+        <div class="form-box text-center btns-2">
+            <button class="button button-normal w30p" type="button" validation-submit="profileForm" ng-click="savePersonInfo()">保存</button>
+            <button class="button button-cancle w30p" ng-hide="isShowCancelBtn" type="button" ng-click="toggleEditProfile( false )">取消</button>
+        </div>
+    </form>
+</div>
+<div class="person-profile-info" ng-show="!isShowEditProfile">
+    <div class="form-box text-center">
+        <span class="info-text font-1">{- resume.name -}</span>
+    </div>
+    <div class="form-box text-center">
+        <span class="info-text font-2">{- resume.age -}</span>
+    </div>
+    <div class="form-box text-center">
+        <span class="info-text font-2">{- resume.self_evaluation -}</span>
+    </div>
+    <div class="form-box text-center">
+        <button class="button button-normal w30p" ng-click="toggleEditProfile( true )">修改</a>
+    </div>
+</div>

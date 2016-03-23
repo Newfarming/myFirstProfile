@@ -1,0 +1,82 @@
+ 
+<div id="resume-summary" class="clearfix">
+
+  <div class="media-content">
+    <img src="{{ STATIC_URL}}alpha/images/{{resume.gender}}-placeholder.jpg"/>
+    <i class="profile-rank star-1" id="star-score" data-star="{{resume_score.star}}"></i>
+  </div>
+  <script>(function() { 
+    var el = document.getElementById('star-score');
+    var num = el.getAttribute('data-star') || '0.0';
+    var digit = num.split('.');
+    var star = ' star-' + digit[0]; 
+    if (+digit[1]) { star += ' star-half'};
+    el.className += star;
+  }())</script>       
+
+  <div class="profile">
+    <ul>
+      <li class="profile-name-field">
+        {% if contact_info.name %} 
+          <strong>{{contact_info.name}}</strong>
+        {% endif %}
+        {% if resume.works %} {% with work=resume.works.0 %} 
+          <strong>{{ work.position_title }}</strong>
+        {% endwith %} {% endif %}
+      </li>
+      <li class="profile-about-field">
+        <span><i class="profile-gender-{{resume.gender}}"></i><span>
+        <span>{{resume.age}}</span> 
+
+        {% if resume.educations %} {% with edu=resume.educations.0 %} 
+        <span class="char-sep">|</span>
+        <span>{{ edu.degree }}</span>
+        {% endwith %} {% endif %}
+
+        {% if resume.work_years %} 
+        <span><em>3</em>年经验</span>
+        {% endif %}
+
+        {% if resume.address %}
+        <span class="char-sep">|</span>
+        <span>{{resume.address}}</span>
+        {% endif %} 
+      </li>
+      <li class="profile-salary-field">
+        {% if resume.job_target.salary %}
+        <span><i class="profile-icon-salary"></i> 期望薪资: <em>{{resume.job_target.salary}}</em></span>
+        {% endif %}
+        
+        {% if resume.job_target.job_hunting_state %}
+        <span class="char-sep">|</span>
+        <span>{{resume.job_target.job_hunting_state}} </span>
+        {% endif %}      
+
+        {% if resume.job_target.expectation_area %}
+          <span class="char-sep">|</span>
+          <span>意向地：
+            {% for area in resume.job_target.expectation_area %}
+              {{ area }}
+            {% endfor %}
+          </span>
+        {% endif %}       
+      </li>
+
+      {% if resume_score.brief_comment %}
+      <li class="profile-brief-field">
+        <span><i></i><strong>{{resume_score.brief_comment}}</strong></span>
+      </li>     
+      {% endif %} 
+
+      {% if resume_score.extract_keywords %}
+      <li class="profile-keywords-field">
+        {% for keywords in resume_score.extract_keywords %}
+        <span>{{keywords}}</span>
+        {% endfor %}
+      </li>
+      {% endif %}      
+    </ul>
+  </div>
+
+</div>
+

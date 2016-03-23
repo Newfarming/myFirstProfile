@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+    {% compress css %}
+    <link href="{{ STATIC_URL }}b_common/css/common.css" type="text/css" rel="stylesheet" />
+    <link href="{{ STATIC_URL }}b_index/css/index.css" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'index_header.html' %}
+{% endblock %}
+
+{% block content %}
+    <aside class="banner">
+        <div class="swipe">
+            <ul id="slider">
+                <li style="display:block">
+                    <a href="/signup/"><img src="{{ STATIC_URL }}b_index/img/banner1920_0914.jpg" alt="" class="fullwidth"/></a>
+                </li>
+                <li style="display:block">
+                    <a href="/promotion_point/link/"><img src="{{ STATIC_URL }}b_index/img/invite_1920.jpg" alt="" class="fullwidth"/></a>
+                </li>
+                <li style="display:block">
+                    <img src="{{ STATIC_URL }}b_index/img/pinbot_for_wechat_1920x460.jpg" alt="" class="fullwidth"/>
+                </li>
+            </ul>
+            <div id="pagenavi">
+                <a href="javascript:void(0);" class="active">1</a>
+                <a href="javascript:void(0);">2</a>
+                <a href="javascript:void(0);">3</a>
+            </div>
+        </div>
+    </aside>
+
+    <div id="how-it-works">
+        <div class="layout layout-new">
+            <h2 class="sec-title sec-title-bg sec-title-mg-tb-70">简单了解聘宝</h2>
+            <ol>
+                <li class="introduce">
+                    <ul>
+                        <li>
+                            <span class="left robot"></span>
+                            <div class="words right w1">
+                                <h3>机器也能推荐人才</h3>
+                                <p>当机器具备学习能力去模仿猎头，推荐人才就变得高效而精准，聘宝正拥有这样的本事<br>
+                                <a href="/special_feed/page/">我要人才</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="right shakehands" ></span>
+                            <div class="words left w2">
+                                <h3>助人为乐的招聘平台</h3>
+                                <p>把无缘自己企业的求职者，推荐给同在聘宝的其他HR，帮助他人又愉悦了自己<br>
+                                <a href="http://www.pinbot.me/partner/home/?hmsr=%E8%81%98%E5%AE%9D%E9%A6%96%E9%A1%B5&hmmd=%E6%88%91%E8%A6%81%E6%8F%90%E4%BE%9B%E4%BA%BA%E6%89%8D%E6%96%87%E5%AD%97%E9%93%BE&hmpl=%E4%BA%92%E5%8A%A9%E6%8B%9B%E8%81%98&hmkw=&hmci=">我要提供人才</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="left talk"></span>
+                            <div class="words right w3">
+                                <h3>你的私人猎头顾问</h3>
+                                <p>不必担心一味的机器推荐太冰冷，温暖真实的私人任顾问，可助你解决所有的问题<br>
+<a href="javascript:void(0);" id="JS_pbqqnoworry_btn">我要联系顾问</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <h2 class="sec-title sec-title-bg">聘宝服务模式</h2>
+            <h4 class="sec-title sec-title-sub">注册聘宝账户即可收到每日简历推荐，成为付费会员享受更多贴心服务。</h4>
+            <div class="full-div">
+            <ul class="user-mode-intro">
+                <li class="user-mode-diy">
+                    <div>
+                    <span class="intro-title"><span class="cf46c62">自助型</span>会员服务</span>
+                    </div>
+                    <div class="intro-box intro-box-diy">
+                    <span class="intro-desc"><i class="dot"></i>每周赠送一定数量简历</span>
+                    <span class="intro-desc"><i class="dot"></i>系统每日推荐匹配人才，自助联系约面</span>
+                    <span class="intro-desc">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </div>
+                    <div>
+                    <a class="btn btn-blue" href="/vip/role_info_example/">查看详情</a>
+                    <span class="intro-annotation">(<span class="underline">会费</span>包含定制职位以及购买简历的费用)</span>
+                    </div>
+                </li>
+                <li class="user-mode-noworry">
+                    <div>
+                    <span class="intro-title"><span class="cf46c62">省心型</span>会员服务</span>
+                    </div>
+                    <div class="intro-box intro-box-noworry">
+                    <span class="intro-desc"><i class="dot"></i>海量简历无限下载</span>
+                    <span class="intro-desc"><i class="dot"></i>人才顾问1V1全程跟进</span>
+                    <span class="intro-desc"><i class="dot"></i>按入职效果扣除预付金</span>
+                    </div>
+                    <div>
+                    <a class="btn btn-red" href="/vip/role_info_example/">查看详情</a>
+                    <span class="intro-annotation">(<span class="underline">套餐价</span>包含候选人到岗所有服务费)</span>
+                    </div>
+                </li>
+            </ul>
+            </div>
+
+            <h2 class="sec-title sec-title-bg mg-top-330">亮点功能</h2>
+            <ul class="user-mode-intro hilight-intro">
+                <li class="left-fix">
+
+                    <div class="intro-box intro-box-hilight">
+                    <span class="intro-title">职位定制</span>
+                    <span class="intro-desc">陪伴式体验，每日自动推荐求职者</span>
+                    <span class="intro-desc">基于知识库和机器学习确保匹配度</span>
+                    <span class="intro-desc">顾问团队支持，答疑解惑为你省心</span>
+                    </div>
+                    <div class="intro-icon left"></div>
+
+                </li>
+                <li class="">
+                    <div class="intro-icon right"></div>
+                    <div class="intro-box intro-box-hilight">
+                    <span class="intro-title intro-title-fix">互助招聘</span>
+                    <span class="intro-desc">加速闲置人才资源流通，聘宝激励</span>
+                    <span class="intro-desc">HR遇见更多人才，求职者更快入职</span>
+                    </div>
+
+                </li>
+            </ul>
+
+            <h2 class="sec-title sec-title-bg">常见问题</h2>
+            <div class="full-div faq">
+            <div class="comment-box faq-container">
+            <ul id="list-faq">
+                <li class="fullwidth">
+                    <div class="faq-box faq-left">
+                        <ul>
+                        <li class="faq-info">
+                        <p class="question"><span>Q:</span>我能在聘宝发布职位招聘信息吗？</p>
+                        <p class="answer"><span>A:</span>聘宝是采用简历推荐的模式向用户提供人才，不是职位发布平台。只需一次提交人才需求，无需被动等待求职者投递，即可获得每日推荐。</p>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="faq-box faq-right">
+                        <ul>
+                        <li class="faq-info">
+                        <p class="question"><span>Q:</span>有简历库让我直接搜索人才吗？</p>
+                        <p class="answer"><span>A:</span>聘宝摒弃了操作繁琐、效率低的传统简历库搜索模式，你提交的人才需求将被聘宝机器人不断解析、匹配，不用反复搜索和浏览大量简历，精准优质的人才即可主动呈现到你面前。</p>
+                        </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="fullwidth">
+                    <div class="faq-box faq-left">
+                        <ul>
+                        <li class="faq-info">
+                        <p class="question"><span>Q:</span>聘宝推荐的人都是对我公司有兴趣的吗？</p>
+                        <p class="answer"><span>A:</span>国内市场上的优质候选人大部分属于被动型人才，聘宝向你推荐的都是潜在求职者，虽然没有投递行为，但不排斥了解新的机会，你必须打破陈规主动出击。</p>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="faq-box faq-right">
+                        <ul>
+                        <li class="faq-info">
+                        <p class="question"><span>Q:</span>创业团队预算少，用得起新一代猎头吗？</p>
+                        <p class="answer"><span>A:</span>新用户注册即可免费体验聘宝的推荐服务，除此之外我们还提供自助型和省心型两种会员服务，最低900元/季度即可开展招聘工作，创业团队也能轻松承担。</p>
+                        </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            </div>
+            <ul class="slider-arrows">
+                <li class="prev-page">
+                    <a href="javascript:void(0);"></a>
+                </li>
+                <li class="next-page">
+                    <a href="javascript:void(0);"></a>
+                </li>
+            </ul>
+            </div>
+            <div class="bottom-line">
+            </div>
+            <h2 class="sec-title client-title">客户的满意，我们的目标</h2>
+            <div class="comment-box">
+            <ul id="comment">
+                <li class="fullwidth">
+                    <p class="from"><img src="{{ STATIC_URL }}b_index/img/kuwo.png"></p>
+                    <p class="quote">聘宝的简历与职位匹配度比较高，省去了很多筛选简历的时间，每天都有订阅提醒，方便多快好省的拿到理想人选的简历。 </p>
+                </li>
+                <li class="fullwidth">
+                    <p class="from"><img src="{{ STATIC_URL }}b_index/img/bashi.png"></p>
+                    <p class="quote">聘宝是新的招聘工具模式，推荐简历服务非常好，希望以后继续完善。</p>
+                </li>
+                <li class="fullwidth">
+                    <p class="from"><img src="{{ STATIC_URL }}b_index/img/wasai.png"></p>
+                    <p class="quote">产品使用更方便，服务用户这块做的很好。</p>
+                </li>
+                <li class="fullwidth">
+                    <p class="from"><img src="{{ STATIC_URL }}b_index/img/paita.png"></p>
+                    <p class="quote">聘宝的简历与职位匹配度比较高，省去了很多筛选简历的时间，每天都有订阅提醒，方便多快好省的拿到理想人选的简历。</p>
+                </li>
+                <li class="fullwidth">
+                    <p class="from"><img src="{{ STATIC_URL }}b_index/img/qunar.png"></p>
+                    <p class="quote">简历的质量度很高，想寻觅中高端人才的话pinbot还是很给力的！</p>
+                </li>
+            </ul>
+            </div>
+            <ul class="clients">
+                <li class="c1">
+                </li>
+                <li class="c2">
+                </li>
+                <li class="c3">
+                </li>
+                <li class="c4">
+                </li>
+                <li class="c5">
+                </li>
+                <li class="c6">
+                </li>
+                <li class="c7">
+                </li>
+                <li class="c8">
+                </li>
+                <li class="c9">
+                </li>
+                <li class="c10">
+                </li>
+                <li class="c11">
+                </li>
+                <li class="c12">
+                </li>
+                <li class="line col-line col-line-1"></li>
+                <li class="line col-line col-line-2"></li>
+                <li class="line col-line col-line-3"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="footer" class="footer-index">
+        <div class="layout clearfix">
+            <div class="f-links">
+                <h2>友情链接</h2>
+                <ul>
+                    <li><a href="http://www.7doufeng.com/" target="_blank">去兜风</a></li>
+                    <li><a href="http://www.hrsalon.org/about/link.html" target="_blank">HRsalon</a></li>
+                    <li><a href="http://www.hrjob360.com/" target="_blank">HR圈内招聘网</a></li>
+                    <li><a href="http://www.ghrlib.com/" target="_blank">环球人力资源智库</a></li>
+                    <li><a href="http://www.joyowo.com/" target="_blank">金柚网</a></li>
+                    <li><a href="http://www.xiaobuwq.com/" target="_blank">小步外勤</a></li>
+                </ul>
+                <ul>
+                    <li><a href="http://www.nextdoit.com/" target="_blank">NEXT创业空间</a></li>
+                    <li><a href="http://www.evervc.com/" target="_blank">天天投</a></li>
+                </ul>
+            </div>
+            <div class="about">
+                <div class="about-us">
+                    <h2>关于我们</h2>
+                    <p>
+                    聘宝是浩泊云动(北京)科技有限公司旗下产品，聘宝致力于依托互联网提供专业优质的招聘服务。团队成员包括来自阿里巴巴、腾讯、IBM的资深产品技术人员，也包括资深的招聘顾问。
+                    </p>
+
+
+                </div>
+                <p class="copyright">Copyright &copy; 2013 - 2016 HopperClouds, Inc. ｜ 北京市朝阳区望京湖光中街1号Loftel大厦</p>
+            </div>
+
+            <ul class="contact">
+                <li class="f-links">
+                    <h2>关注聘宝</h2>
+                </li>
+                <li class="weixin">
+                    <i class="ic ic-weixin"></i>
+                    <a class="zp">
+                        聘宝话招聘(pinbotHR)
+                        <img src="{{ STATIC_URL }}b_index/img/zp-code.jpg">
+                    </a>
+                </li>
+                <li>
+                    <i class="ic ic-mail"></i>
+                    <a href="mailto:caroline@hopperclouds.com">caroline@hopperclouds.com(活动合作)</a>
+                </li>
+                <li>
+                    <i class="ic ic-weibo"></i>
+                    <a href="http://weibo.com/u/3739464981" target="_blank">@聘宝</a>
+                </li>
+                <li>
+                    <i class="ic ic-tel"></i>
+                    <a class="contact-tel">028-83330727</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_html %}
+    {% include 'statistic_code.html' %}
+    <div class="fast-menu" id="JS_fast_menu">
+        {% block custom_menu %}
+        {% endblock %}
+        <a href="javascript:void(0);" class="i-service-qa none" id="JS_service_btn" title="联系我们">联系我们</a>
+        <a href="javascript:void(0);" class="i-weixin-barcode none" id="JS_weixin_btn" title="扫码关注公众号，手机查看简历"><span class="bigger"><img width="121" src="/static/b_common/img/qrcode_for_pinbot_wx.jpg" border="0">扫码关注公众号<br>手机查看简历</span></a>
+        <a href="javascript:void(0);" class="i-back-top" data-event="backTop" title="回到顶部" id="JS_back_top">回到顶部</a>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <script src="{{ STATIC_URL }}common/js/pb.common.js"></script>
+    <script src="{{ STATIC_URL }}b_common/js/menu.js"></script>
+    <script src="{{ STATIC_URL }}b_index/js/index.js"></script>
+    <script src="{{ STATIC_URL }}b_common/mobile/js/touchScroll.js?20150418"></script>
+    <script src="{{ STATIC_URL }}b_common/mobile/js/touchslider.dev.js?20150418"></script>
+{% endblock %}

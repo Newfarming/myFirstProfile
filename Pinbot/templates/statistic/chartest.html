@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Pinbot分析统计</title>
+	<link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="{{ STATIC_URL }}statis/js/enhance.js"></script>		
+	<script type="text/javascript">
+		// Run capabilities test
+		enhance({
+			loadScripts: [
+				'{{ STATIC_URL }}statis/js/excanvas.js',
+				'{{ STATIC_URL }}statis/js/jquery.min.js',
+				'{{ STATIC_URL }}statis/js/visualize.jQuery.js',
+				'{{ STATIC_URL }}statis/js/example2.js',
+			],
+			loadStyles: [
+				'{{ STATIC_URL }}statis/css/visualize.css',
+				'{{ STATIC_URL }}statis/css/visualize-light.css'
+			]	
+		});   
+    </script>
+</head>
+<body>
+
+<table border="1" id="mydata" name="mydata">
+<caption>用户信息统计</caption>
+		<tbody>
+		<tr>
+			<th></th>
+			<th>星期一</th>
+			<th>星期二</th>
+			<th>星期三</th>
+			<th>星期四</th>
+			<th>星期五</th>
+			<th>星期六</th>
+			<th>星期日</th>
+			<th>一周</th>
+		</tr>
+	    <tr>
+	    <th>注册用户数</th>
+	    
+	    	<td>0</td>
+	    
+	    	<td>5</td>
+	    
+	    	<td>3</td>
+	    
+	    	<td>5</td>
+	    
+	    	<td>8</td>
+	    
+	    	<td>2</td>
+	    
+	    	<td>0</td>
+	    
+	    </tr>
+	    <tr>
+	    <th>访问用户数</th>
+	    
+	    	<td>0</td>
+	    
+	    	<td>13</td>
+	    
+	    	<td>32</td>
+	    
+	    	<td>47</td>
+	    
+	    	<td>43</td>
+	    
+	    	<td>42</td>
+	    
+	    	<td>11</td>
+	    
+	    </tr>
+	    <tr>
+	    <th>活跃用户数</th>
+	    
+	    	<td>2</td>
+	    
+	    	<td>10</td>
+	    
+	    	<td>13</td>
+	    
+	    	<td>32</td>
+	    
+	    	<td>20</td>
+	    
+	    	<td>20</td>
+	    
+	    	<td>3</td>
+	    
+	    </tr>
+	    
+	</tbody></table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+[
+{
+  "pk": 1, 
+  "model": "partner.useraccepttask", 
+  "fields": {
+    "feed": 235725, 
+    "update_time": "2015-06-18T16:56:23", 
+    "task_id": "558287b78230dbc012df1323", 
+    "has_hr_info": false, 
+    "user": 907, 
+    "accept_time": "2015-06-18T16:56:23"
+  }
+},
+{
+  "pk": 4, 
+  "model": "partner.useraccepttask", 
+  "fields": {
+    "feed": 234412, 
+    "update_time": "2015-06-18T21:53:22", 
+    "task_id": "5582cd52036d4a0af1a77030", 
+    "has_hr_info": false, 
+    "user": 907, 
+    "accept_time": "2015-06-18T21:53:22"
+  }
+},
+{
+  "pk": 8, 
+  "model": "partner.useraccepttask", 
+  "fields": {
+    "feed": 3026, 
+    "update_time": "2015-06-23T17:35:02", 
+    "task_id": "5583b8588230dbf5d56b441c", 
+    "has_hr_info": true, 
+    "user": 907, 
+    "accept_time": "2015-06-19T14:36:08"
+  }
+}
+]

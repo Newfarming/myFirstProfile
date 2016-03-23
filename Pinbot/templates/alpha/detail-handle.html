@@ -1,0 +1,137 @@
+<!-- 反馈 -->
+<script type="text/html" id="JS_feedback">
+<div class="tao-feed-container" style="display: block;">
+    <div class="body">
+      <div class="tao-rules-enter ">
+        <div class="tao-rules-header">
+          <ul>
+            <li class="clearfix">
+              <h5>特别提示</h5>
+              <p class="tip-normal" style="display: block;">每封简历只能标记一次状态！</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tao-rules-main">
+
+          <ul class="choice-groups" data-submit-url="/taocv/add_feedback/" style="display:block;">
+            <li class="choice-group">
+              <ul class="choice-list">
+                <li data-id="211" class="back-count">已约定初试时间</strong></li>
+                <li data-id="212">已参加初试</li>
+                <li data-id="213">已约定复试时间</li>
+                <li data-id="214">已参加复试</li>
+                <li data-id="215">已入职</li>
+                <li data-id="216">约面后爽约</li>
+                <li data-id="217" class="back-count">薪资/地点/经验/能力不匹配</li>
+                <li data-id="218" class="back-count ">候选人对公司/项目不感兴趣</li>
+                <li data-id="219" class="back-count ">候选人无求职意愿</li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="choice-pending">
+            <p>已成功提交，系统验证为<strong>3个工作日</strong>。</br>
+            验证属实后将退还你指定点数，请耐心等待吧！</p>
+            <a href="javascript:void(0);" class="tao-cancel" onclick="window.location.reload();return false;">返回</a>
+          </div>
+        </div>
+
+        <div class="footer" style="padding-top:30px;">
+          <a href="javascript:void(0);" class="tao-submit">提&nbsp;交</a>
+          <a href="javascript:void(0);" class="tao-cancel" onclick="$._LayerOut.close()">返&nbsp;回</a>
+          <span></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- 举报 -->
+<div class="modal-backdrop-tip-toreport" style="display:none;"></div>
+<div class="modal-tip-toreport" style="display:none;">
+    <div class="modal-dialog-tip-toreport">
+        <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn JS_close_tip"></a></p>
+        <p style="font-size:20px;color:#434343;text-align:center"><i class="i-l-notice"></i>举报</p>
+        <p style="margin-top:30px; text-align:left;padding-left: 217px;line-height: 2;">
+            <span class="m-radio JS_toreport_radio" data-name="back_count"><input type="radio" name="back_count" value="221">电话号码有误</span>
+            <span class="m-radio JS_toreport_radio" style="margin-left:20px;" data-name="back_count"><input type="radio" name="back_count" value="220">空号或者停机</span>
+            <br>
+            {% if resume.source == 'talent_partner' %}
+            <span class="m-radio JS_toreport_radio" data-name="back_count" has-info="true"><input type="radio" name="back_count" value="222">互助伙伴推荐简历举报</span>
+            {% endif %}
+        </p>
+        <p id="JS_feedback_info" style="display:none;"><input type="text" id="JS_feedback_value" name="feedback_value" class="input feedback-info-input" placeholder="例:候选人不求职了(20字内)" maxlength="20" value=""></p>
+        <p style="margin-top:30px;color:#f23748;font-size:14px;text-align:center;">注：审核通过后我们将返回给你<span style="color:#ff5c42;">10</span>个聘点</p>
+        <p class="mt20 text-center">
+            <a class="button-b button-primary w158 f16" id="JS_submit_toreport" data-id="{{contact_info.resume_id}}" disabled>提交</a>
+        </p>
+    </div>
+</div>
+
+<!-- 选择发送企业名片 -->
+<script id="JS_choose_cards" type="text/html">
+    <h3 class="card-layer-title">请选择你要发送的企业名片吧！<a class="i-layerout-close JS_close_layerout" title="关闭" href="javascript:;"></a></h3>
+    <div class="card-layer-content">
+        <div id="JS_jobs_ajax_content" style="position: absolute; left:0; top: 0px; padding: 10px 0;"></div>
+    </div>
+    <div>
+        <a href="javascript:;" class="card_larr" id="JS_left_btn"></a>
+        <a href="javascript:;" class="card_rarr" id="JS_right_btn"></a>
+    </div>
+    <h3 class="card-layer-title"><a href="/companycard/get/" target="_blank" title="新增岗位名片" class="a-blue"><i class="i-add"></i>新增岗位名片</a></h3>
+</script>
+
+<!--你还没有填写企业名片-->
+<script id="JS_no_card" type="text/html">
+    <div class="service-agreement">
+
+        <p style="text-align:center; font-size:14px; color:#333;padding: 0 0 30px 0;">
+            <i class="i-l-notice"></i>你还没有填写企业名片，立即去填写吧！
+        </p>
+        <div class="no-card-info">
+            <a href="/companycard/get/" title="" target="_blank" class="btn btn-primary">完成企业名片</a><br>
+            <a href="javascript:;" title="" class="a-blue JS_buy_not_sendcard" data-resumeid="{{resume.id}}" data-sendid="{{send_company_card.id}}" data-job_id="{{ recommend_job.id }}">暂不填写，直接购买简历</a>
+        </div>
+    </div>
+</script>
+
+<!--选择下载方式-->
+<script id="JS_has_card_html" type="text/html">
+    <div class="service-agreement">
+        <!-- <p class="text-right">
+            <a class="i-layerout-close JS_close_layerout" title="关闭" href="javascript:;">
+            </a>
+        </p> -->
+        <p style="text-align:center; font-size:14px; color:#333;padding: 0 0 30px 0;">
+            <i class="i-l-notice"></i>确定这是你心仪的人才吗？
+        </p>
+        <div class="choose-send-type clearfix">
+            <div class="send-type">
+                <p><a href="javascript:;" title="" class="btn btn-small btn-white JS_buy_not_sendcard" data-resumeid="{{resume.id}}" data-sendid="{{send_company_card.id}}" data-job_id="{{ recommend_job.id }}">下载简历</a></p>
+                <p class="tip">消耗10个点数直接获取联系方式，但不保证候选人意愿！</p>
+            </div>
+            <div class="send-type">
+                <a href="javascript:;" title="" class="btn btn-small btn-primary" id="JS_send_card_btn">发送企业名片</a>
+                <p class="tip"><span style="color:#44b4e5;">确认求职意向</span>只需消耗3个点数，若候选人有意愿再扣除9个点数并提供后续保障！</p>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- 还有未标记的简历 -->
+<script id="JS_to_mark" type="text/html">
+    <div class="service-agreement">
+
+        <p style="text-align:center; font-size:16px; color:#333;padding: 0 0 30px 0;">
+            <i class="i-l-notice"></i>还有简历在等待你标记状态呢！
+        </p>
+        <p style="text-align:center; font-size:14px; color:#333;padding: 0 0 30px 0;">
+            <span style="color:#FF6000;">*</span>你可以在简历中心-待标记简历里查找到需要标记的简历
+        </p>
+        <p style="text-align:center; padding-bottom:10px;">
+            <a class="button-b button-primary w158 f16" href="{% url 'transaction-buy-record' %}?mark_status=1" target="_blank">现在去标记</a>
+        </p>
+    </div>
+</script>

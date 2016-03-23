@@ -1,0 +1,11 @@
+
+<li class="{{ candidate_active }}"><a href="/crm/"><i class="fa fa-link"></i> <span>候选人管理</span></a></li>
+<li class="treeview {{ company_active }}">
+    <a href="#">
+        <i class="fa fa-link"></i> <span>公司管理</span> <i class="fa fa-angle-left pull-right"></i>
+    </a>
+    <ul class="treeview-menu">
+        <li class="{{ company_sub_active }}"><a href="/crm/company/?admin_id={{ request.user.id }}"><i class="fa fa-circle-o"></i>公司管理</a></li>
+        <li class="{{ archives_sub_active }}"><a href="/crm/company/archives/"><i class="fa fa-circle-o"></i>档案管理</a></li>
+    </ul>
+</li>

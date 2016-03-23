@@ -1,0 +1,16 @@
+[{
+  "pk": 6134,
+  "model": "transaction.resumebuyrecord",
+  "fields": {
+    "status": "Secret",
+    "feedback_info": null,
+    "finished_time": "2014-01-01T00:00:00",
+    "feed_id": "54ca0451b1c33775b8c89860",
+    "user": 907,
+    "keywords": "",
+    "resume_id": "55c476f2a0c4b326dfb05c52",
+    "op_time": "2015-01-23T10:36:11",
+    "send_card": 59,
+    "resume_url": "http://h.liepin.com/resume/showresumedetail/?res_id_encode=4564262649c1905486495&hitkey=false&keys=E5A4A7E695B0E68DAE7CE4BA92E88194E7BD91E4BAA7E59381E7BB8FE790867C50447CE4BAA7E59381E7BB8FE790867C50726"
+  }
+}]

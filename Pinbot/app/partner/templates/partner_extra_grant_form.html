@@ -1,0 +1,12 @@
+<form method="post" action="{% url 'partner-extra-grant-taking-work' op_id %}">
+    {% csrf_token %}
+    <div id="div_id_pay_status" class="form-group">
+        <label for="id_pay_status" class="control-label  requiredField">
+        输入奖励金币<span class="asteriskField">*</span>
+        </label>
+        <div class="controls ">
+            <input id="id_coin" type="text" name="coin" class="adminselectwidget form-control"/>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-block btn-sm">确定</button>
+</form>

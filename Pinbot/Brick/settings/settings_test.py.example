@@ -1,0 +1,76 @@
+# coding: utf-8
+
+DEBUG = True
+
+TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['127.0.0.1']
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test_pinbot',
+        'USER': 'shippable',
+        'TEST_CHARSET': "utf8",
+        'TEST_COLLATION': "utf8_general_ci",
+    }
+}
+
+
+PINBOT_PID = 'e40d8f62'
+PINBOT_AES_KEY = '71818f2933314fa7926c05a38e354ca7'
+SYNC_RESUME_API = 'http://127.0.0.1:8080/brick_api/v1/sync_resume/'
+SEND_RESUME_API = 'http://127.0.0.1:8080/brick_api/v1/send_resume/'
+
+WSGI_APPLICATION = 'ws4redis.django_runserver.application'
+
+# company card api
+COMPANY_CARD_API = 'http://127.0.0.1:8080/companycard/job/interest?token={token}&interest={interest}'
+
+# email client
+MAIL_CLIENT = 'mailgun'
+
+# pinbot url
+ACTIVE_URL = 'http://127.0.0.1:8080/users/valid_bduser/{token}'
+RESUME_URL = 'http://127.0.0.1:8080/resumes/display/{resume_id}/0?job_id={job_id}'
+SEND_RESUME_URL = 'http://127.0.0.1:8080/feed/receive_resume/'
+RESUME_BOUGHT_URL = 'http://127.0.0.1:8080/transaction/bought/'
+RECEIVE_URL = 'http://127.0.0.1:8080/feed/receive_resume/'
+
+# support email
+SUPPORT_EMAIL_LIST = [
+    'runforever@163.com',
+]
+
+# recommend system broker url
+RECO_BROKER_URL = 'mongodb://celery:hopper201313@115.28.222.146:27017/celery'
+
+# reco max times
+RECO_MAX_COUNT = 1000
+
+# mongo settings
+MONGO_CONN = {
+    'host': '127.0.0.1',
+    'port': 27017,
+    'user': '',
+    'password': '',
+}
+
+# rabbitmq conf
+RABBITMQ_CONF = {
+    'host': '127.0.0.1',
+    'user': 'guest',
+    'password': 'guest',
+    'port': '5672',
+}
+BROKER_URL = 'amqp://{user}:{password}@{host}:{port}'.format(**RABBITMQ_CONF)
+
+MONGO_URI = 'mongodb://%(host)s:%(port)d/' % MONGO_CONN
+
+
+# logging
+LOGGING = {
+}
+
+RAVEN_CONFIG = {}

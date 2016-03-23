@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝 - 专业人才推荐</title>
+  <meta name="Keywords" content="招聘, 企业招聘, 人才招聘, 定位人才，聘宝"/>
+  <meta name="Description" content="提供优质简历，尊重招聘效果"/>
+  <meta name="baidu-site-verification" content="iNRbJiDIO7" />
+  <meta name="viewport" content="width=device-width">
+  <meta property="qc:admins" content="6073361316274655" />
+  <link rel="stylesheet" href="{{STATIC_URL}}alpha/styles/common.css?d1044781"/>
+  <link rel="stylesheet" href="{{STATIC_URL}}beta/styles/app/index.css?d1044781"/>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <script>document.createElement('nav');</script>
+</head>
+<body>
+
+    {% include 'pinbot_beta/home_header.html' %}
+
+  <div class="price">
+    <div class="layout">
+
+      <div class="price-header">
+        <h1>聘宝会员服务</h1>
+        <ul class="price-summary">
+          <li>你可以通过升级来获得更多的服务</li>
+        </ul>
+      </div>
+
+      <div class="price-list">
+        <p><span><strong>注：</strong></span>10个聘点可下载一份简历</p>
+        <ul class="clearfix">
+          <li class="price-list-799">
+            <div class="price-list-header">
+              <h3><strong>普通会员</strong></h3>
+            </div>
+            <div class="price-list-content">
+              <div class="price-resume-count">
+                <h4>简历下载</h4>
+                <p> <span class="price-fix-pos">每周可下载简历</span> <span><strong>5</strong>份</span></p>
+              </div>
+              <div class="price-other-count">
+                <h4>专属定制</h4>
+                <p class="last-child fix-length"> <span>定制数量</span> <span><strong>3</strong>个</span></p>
+              </div>
+            </div>
+          </li>
+          <li class="price-list-1999">
+            <div class="price-list-header">
+              <h3><em>VIP</em><strong>会员</strong></h3>
+            </div>
+            <div class="price-list-content">
+              <div class="price-resume-count">
+                <h4>简历下载</h3>
+                <p> <span class="price-fix-pos">每周可下载简历</span> <span><strong>15</strong>份</span></p>
+              </div>
+              <div class="price-other-count">
+                <h4>专属定制</h4>
+                <p class="last-child"> <span>定制数量</span> <span><strong>5</strong>个</span></p>
+                <p class="last-child other-detail">成为VIP会员还需签订纸质<a href="{% url 'vip-service-contact' 1 %}" class="protocal">协议</a></p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div><!-- servie-list -->
+      {%if not loged_in %}
+        <div class="price-control">
+          <span><a href="/signin" class="btn btn-big-action">立即申请</a></span>
+        </div>
+      {%endif%}
+      <div class="price-list-other-detail">
+        <div class="header">
+          <strong>专属定制</strong> 每一个专属定制对应一个岗位需求，让你每天都能享受到最接近猎头的精准推荐服务
+        </div>
+      </div>
+
+      <div class="price-header standard-header">
+        <h1>聘宝收费标准</h1>
+        <ul class="price-summary">
+          <li>免费使用，入职付费</li>
+        </ul>
+      </div>
+
+      <div class="price-list standard-list">
+        <ul class="clearfix">
+
+            <p class="price-description">
+              成为聘宝会员即可<span>免费</span>使用产品进行招聘！候选人入职后，聘宝将根据候选人月薪按以下标准收取费用：
+            </p>
+          <li class="price-list">
+            <ul>
+              <li><span>月薪 &lt; 5k</span><span><i class="cf46c62">900</i>元/人</span></li>
+              <li><span>5k &le; 月薪 &lt; 20k</span><span><i class="cf46c62">2900</i>元/人</span></li>
+              <li><span>20k &le; 月薪 &lt; 30k</span><span><i class="cf46c62">3900</i>元/人</span></li>
+              <li><span>30k &le; 月薪</span><span><i class="cf46c62">29900</i>元/人</span></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- price-list -->
+      <div class="price-list-other-detail no-line">
+        <div class="header">
+          <strong>收费节点</strong> 以劳动合同签订的实际到岗时间为收费节点
+        </div>
+      </div>
+    </div><!-- layout -->
+  </div><!-- price -->
+
+
+  <div id="footer">
+    <div class="layout clearfix">
+      <div class="about">
+        <div class="about-us">
+          <h2>关于我们</h2>
+          <p>
+            聘宝的人才来源渠道很广泛，不用每天人工重复搜索，自动推荐的服务非常贴心！聘宝不仅为我提升了招聘的工作效率，同时还有效的控制了招聘成本。
+          </p>
+        </div>
+        <p class="copyright">Copyright &copy; 2013 - 2016 HopperClouds, Inc.</p>
+      </div>
+
+      <ul class="contact">
+        <li>
+          <i class="ic ic-tel"></i>
+          <a class="contact-tel">028-83330727</a>
+        </li>
+        <li>
+          <i class="ic ic-mail"></i>
+          <a href="mailto:hello@hopperclouds.com">hello@hopperclouds.com</a>
+        </li>
+        <li>
+          <i class="ic ic-weibo"></i>
+          <a href="http://weibo.com/u/3739464981">@关注聘宝</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="{{STATIC_URL}}beta/scripts/lib.js"></script>
+  <script src="{{STATIC_URL}}alpha/scripts/common.js"></script>
+  <script>
+    $(function() {
+      var timer;
+      $('.qmark').on('mouseover', function() {
+        if (timer) clearTimeout(timer);
+        $('.qmark-content').hide();
+        $(this).parent().find('.qmark-content').show();
+      }).on('mouseout', function() {
+        var self = $(this);
+        timer = setTimeout(function() {
+          self.parent().find('.qmark-content').hide();
+        }, 300);
+      });
+      $('.qmark-content').on('mouseover', function() {
+        if (timer) clearTimeout(timer);
+      }).on('mouseout', function() {
+        var self = $(this);
+        timer = setTimeout(function() {
+          self.parent().find('.qmark-content').hide();
+        }, 300);
+      });
+      if(window.location.search.indexOf('from=index') != -1){
+        $('html, body').animate({scrollTop: $(document).height()}, 300);
+      };
+    });
+  </script>
+  {% include 'statistic_code.html' %}
+</body>
+</html>

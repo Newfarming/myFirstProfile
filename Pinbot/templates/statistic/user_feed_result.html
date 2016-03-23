@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>聘宝，专业人才推荐</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?1aa8b4bfbda" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/feed.css?20140814" />
+    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+</head>
+<body>
+<div id="main">
+    <div id="content">
+        <div id="new-feed" class="clearfix">
+            {% include 'statistic/admin_feed_list.html' %}
+        </div>
+    </div>
+</div>
+<script src="{{ STATIC_URL }}alpha/scripts/angular.min.js"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+<script src="/static/common/js/basic-min.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/admin-feed-list.js?2015121101"></script>
+
+{% if page_type == 'feed_list'%}
+    <script src="{{ STATIC_URL }}alpha/scripts/admin-set-keyword.js?20150603"></script>
+    {% include 'alpha/add_recommand.html' %}
+    <script>
+        $( document ).on( 'click' , '.JS_set_keyword' , function(){
+            var obj = $.parseJSON( $( this ).attr('data-remarks') ),
+                feed_id =  $( this ).attr('data-feedid');
+            obj.feed_id = feed_id;
+            $.SetKeyword( obj );
+        });
+        var hheight = screen.height - 300;
+        $('[fixedtop]').height( hheight );
+        $('.feed-page').css( 'minHeight' , hheight + 'px' );
+
+
+        /*var hheight = screen.height - 300;
+        $('[fixedtop]').height( hheight );
+        $('.feed-page').css( 'minHeight' , hheight + 'px' );*/
+    </script>
+{% endif %}
+</body>
+</html>

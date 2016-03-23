@@ -1,0 +1,72 @@
+{% load endless %}
+{% load candidate_tags %}
+
+<div class="box">
+    <div class="box-body">
+        {% paginate 10 paginate_query %}
+        <table class="table no-margin">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>简历详情</th>
+                    <th>职位</th>
+                    <th>求职状态</th>
+                    <th>联系方式</th>
+                    <th>下载时间</th>
+                    <th>操作</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in download_list %}
+                <tr class="number-{{ candidate.user.id }}">
+                    <td><a href="{% url 'crm-candidate-details' record.resume_id %}" target="_blank">{{ record.contact.name }}{% if record.work.position_title %}({{ record.work.position_title }}){% endif %}</a></td>
+                    <td><a href="/resumes/display/{{ record.resume_id }}/" target="_blank">查看简历详情</a></td>
+                    <td>
+                        {% if record.feed %}
+                        <a href="/statis/feed_result/group/{{ record.feed.feed_obj_id }}?username={{ record.user.email }}#/group/{{ record.feed.feed_obj_id }}" target="_blank">{% if record.feed.title %}{{ record.feed.title|default:record.feed.keywords }}{% endif %}</a>
+                        {% else %}
+                        无
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="dropdown notifications-menu">
+                            <!-- Menu toggle button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <span id="show_job_status_{{record.resume_id}}"  class="btn bg-light-blue disabled color-palette btn-flat btn-block">{{ record.job_target.hunting_status|default:'未知' }}</span>
+                            </a>
+                            <ul data-resume_id="{{ record.resume_id }}" data-record_id={{ record.id }} class="dropdown-menu sleect_job_status">
+                                <li class="job_status"><a href="#tab_uncontact">求职(已离职)</a></li>
+                                <li class="job_status"><a href="#tab_uncontact">观望(仍在职)</a></li>
+                                <li class="job_status"><a href="#tab_uncontact">稳定(仍在职)</a></li>
+                            </ul>
+                        </span>
+                    </td>
+                    <td>
+                        {{ record.contact.phone }}<br>
+                        {{ record.contact.email }}<br>
+                        {% if record.contact.qq and record.contact.qq != 'null' %}
+                        {{ record.contact.qq|default:'' }}<br>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ record.op_time|date:'Y-m-d H:i' }}
+                    </td>
+                    <td>
+                        {% if not record.resume_mark.current_mark.is_taking_work %}
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addMarkModal" data-contact_id="{{ record.id }}">标记</button>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ record.resume_mark.current_mark.name|default:'未标记' }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="box-footer clearfix overview_list_pager">
+        {% get_pages %}
+        {{ pages }}
+    </div>
+</div>

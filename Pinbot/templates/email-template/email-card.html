@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业名片邮件</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style>
+    *{margin: 0;padding:0;}
+    body{word-break: break-all;}
+</style>
+</head>
+<body style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="65">
+    <tbody>
+        <tr>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%" style="margin: 0 auto;">
+    <tr>
+        <td bgcolor="#fff" style="background:#fff; vertical-align:top">
+            <table width="670" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                <tr>
+                    <td bgcolor="#fff" style="background:#fff;border:solid 1px #D4D4D4">
+
+                        <!-- head start -->
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                <tr>
+                                    <td bgcolor="#fff" style="padding:15px 0; background:#fff; border-bottom:solid 1px #D4D4D4">
+                                        <table width="595" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                            <tr>
+                                                <td width="150"><a href="http://www.pinbot.me/" target="_blank" title="聘宝 | 专业人才推荐"><img border="0" src="http://pinbot.me/static/beta/email/logo1.jpg" alt="推荐好工作, 给优秀的你"></a></td>
+                                                <td style="font-size:14px;color:#999">推荐好工作, 给优秀的你</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        <!-- head end-->
+
+                        <!-- content start -->
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                <tr>
+                                    <td>
+                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                            <tr>
+                                                <td>
+                                                    <p style="color:#333333;font-size:14px;line-height:2em;padding-top:40px;">
+                                                        {{name}}，<br>
+我是聘宝人才顾问，我们在网络上看到你的简历，很高兴认识你。聘宝是垂直互联网领域的专业招聘顾问团队，我们向优秀的候选人推荐优质的工作机会。根据你的简历信息，我们为你推荐以下工作，请你查阅并在邮件最后给我们反馈！
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;margin-top:20px;">
+                                            <tr>
+                                                <td style="background:#F9F9F9;border:solid 1px #E8E8E8;border-top:solid 2px #4b99d1;">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                        <tr>
+                                                                            <td style="font-size:16px;color:#333;font-weight:bold;text-align: left;line-height: 30px;padding:5px 0;">{{company.company_name}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="font-size:14px;color:#333;text-align: left; line-height: 25px;padding:0 0 5px;">{{company.key_points|linebreaksbr}}</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img src="{{WEBSITE}}/static/beta/email/shadow_arr.jpg" width="580" height="5"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                        <tr>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0 0 0; text-align: left;width:80px;line-height:25px;vertical-align: top;" valign="top">企业简介</td>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0 0 0; text-align: left;line-height:25px;vertical-align: top;"  valign="top">{{company.desc|linebreaksbr|linebreaksbr}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0; text-align: left;width:80px;line-height:25px;vertical-align: top;" valign="top">产品地址</td>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0; text-align: left;line-height:25px;vertical-align: top;"  valign="top"><a href="{{company.product_url}}" target="_blank" style="color:#3C99DF;font-size:14px;" title="">{{company.product_url}}</a></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background:#F9F9F9;border:solid 1px #E8E8E8;border-top:solid 2px #4b99d1;">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                        <tr>
+                                                                            <td style="font-size:16px;color:#333;font-weight:bold;text-align: left;line-height: 30px;padding:5px 0;">{{job.title}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="font-size:14px;color:#333;text-align: left; line-height: 25px;padding:0 0 5px;"><strong style="color:#3699DB;">{{job.salary_low}}k-{{job.salary_high}}k</strong> <strong style="color:#CCCCCC;">|</strong> {{job.address}} <strong style="color:#CCCCCC;">|</strong> 经验{{job.work_years}}年以上 <strong style="color:#CCCCCC;">|</strong> {{job_degree}}</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img src="{{WEBSITE}}/static/beta/email/shadow_arr.jpg" width="580" height="5"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align: center;">
+                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                        <tr>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0 0 0; text-align: left;width:80px;line-height:25px;vertical-align: top;" valign="top">职位描述</td>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0 0 0; text-align: left;line-height:25px;vertical-align: top;"  valign="top">{%if job.desc == '' %}暂无{%else%}{{job.desc|linebreaksbr}}{%endif%}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="2" style="border-bottom: solid 1px #efefef;" height="15"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0; text-align: left;width:80px;line-height:25px;vertical-align: top;" valign="top">岗位要求</td>
+                                                                            <td style="font-size:14px;color:#333;padding:15px 0; text-align: left;line-height:25px;vertical-align: top;"  valign="top">{%if job.skill_desc == '' %}暂无{%else%}{{job.skill_desc|linebreaksbr}}{%endif%}</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p style="padding:20px 0;text-align:center">
+                                                        <a href="{{WEBSITE}}/companycard/job/interest?token=pinbot_token&interest=true" target="_blank" title="我对该职位感兴趣" style="display:inline-block;background:#3498DB;color:#fff;padding:15px 50px; border-radius:3px; text-decoration:none;">我对该职位感兴趣</a><a href="{{WEBSITE}}/companycard/job/interest?token=pinbot_token&interest=false" target="_blank" title="我暂时不感兴趣" style="display:inline-block;background:#FFFFFF;color:#3498DB; border:solid 1px #3699DB;padding:14px 49px; text-decoration:none;margin-left:10px;border-radius:3px;">我暂时不感兴趣</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        <!-- content end-->
+
+                        <!-- footer start -->
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                <tr>
+                                    <td style="padding:10px 0; border-top:solid 1px #D4D4D4; background:url(newsletter/shadow.jpg) left top no-repeat;">
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                            <tr>
+                                                <td >
+                                                    <p style="text-align:center;font-size:12px;color:#949494; padding-top:20px;"><span style="color:#666">联系聘宝 |</span>&nbsp;&nbsp;邮箱： hello@hopperclouds.com</p>
+                                                    <p style="text-align:center;font-size:12px;color:#999; padding:15px 0 20px">推荐好工作，给优秀的你</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        <!-- footer end-->
+
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="65">
+    <tbody>
+        <tr>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

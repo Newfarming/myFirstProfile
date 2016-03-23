@@ -1,0 +1,115 @@
+<div class="modal fade" id="addFeedModal" tabindex="-1" role="dialog" aria-labelledby="addFeedModal">
+    <div class="modal-dialog" role="document" style="width: 800px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">加入定制</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12" id="candidateInfo">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="feedQueryInput" placeholder="输入公司名称">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-flat" type="button" id="searchFeedBtn" >搜索</button>
+                    </span>
+                </div>
+                <div class="box-body" id="searchFeedBody">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="feedTmpl">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>职位名称</th>
+                <th>用户名</th>
+                <th>公司名称</th>
+                <th>期望工作地</th>
+                <th>薪资</th>
+                <th>7天激活到</th>
+                <th>操作</th>
+            </tr>
+            <% _.each(jobList, function(job) { %>
+            <tr>
+                <td>
+                    <% if(job.title) { %>
+                    <%- job.title %>
+                    <% } else { %>
+                    <%- job.keywords %>
+                    <% } %>
+                </td>
+                <td><%- job.username %></td>
+                <td><%- job.company_name %></td>
+                <td><%- job.expect_area %></td>
+                <td><%- job.salary %></td>
+                <td><%- job.feed_expire_time %></td>
+                <td>
+                    <button type="button" class="addFeedBtn btn btn-primary" data-feed_id="<%- job.feed_obj_id %>">加入</button>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</script>
+
+<script>
+ $(function() {
+     var $modal = $('#addFeedModal'),
+     $searchFeedBtn = $('#searchFeedBtn'),
+     $candidateInfo = $('#candidateInfo'),
+     $searchFeedBody = $('#searchFeedBody'),
+     $feedQueryInput = $('#feedQueryInput'),
+     contact_id = 0,
+     jobTmpl = _.template($('#feedTmpl').html());
+
+     $modal.on('show.bs.modal', function(e) {
+         var button = $(e.relatedTarget),
+         data_contact_id = button.data('contact_id'),
+         data_candidate_info = button.data('contact_info');
+
+         contact_id = data_contact_id;
+         $candidateInfo.html(data_candidate_info);
+     });
+
+     $modal.on('hide.bs.modal', function(e) {
+         $searchFeedBody.html('');
+         $candidateInfo.html('');
+     });
+
+     $searchFeedBtn.on('click', function(e) {
+         var q = $feedQueryInput.val();
+
+         $.getJSON('/crm/candidate/search_job/', {'q': q}, function(data) {
+             $searchFeedBody.html(jobTmpl({
+                 'jobList': data.data
+             }));
+         });
+     });
+
+     $searchFeedBody.on('click', '.addFeedBtn', function(e) {
+         var job_id = $(this).data('feed_id');
+         var this_btn = $(this);
+         $.post('/crm/candidate/add_feed/', {
+             'resume_id': contact_id,
+             'feed_id': job_id
+         }, function(data) {
+            if(data.status == 'ok'){
+                this_btn.html('已加入');
+                this_btn.prop("disabled", true);
+            }
+            else{
+                alert(data.msg);
+            }
+         });
+     });
+ });
+</script>

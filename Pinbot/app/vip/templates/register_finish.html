@@ -1,0 +1,67 @@
+{% extends 'base_revision_new_ng.html' %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <div class=" extra_common_param" ng-app="app.register_finish" data-extra="{{ extra_common_param }}" data-oid="{{ order.order_id }}" data-price="{{ order.order_price }}">
+        <div class="layout" ui-view {% if not order %}data-invalid-order="true"{% endif %} data-tutorial-url="{% url 'tutorial' %}">
+
+            <div class="text-center ajax-loading" ng-if="loading"><img src="{{ STATIC_URL }}partner/images/loading.gif" alt="loading"><br>页面装载中...</div>
+
+
+            <div class="main main-mode" ng-controller="registerFinish">
+                <div class="header" style="display:none;">
+                    <h1>
+                        <!--支付失败-->
+                        {% if order.order_status != 'paid' %}
+                        <span class="pay-failed"></span>Sorry...支付失败
+                        {% else %}
+                        支付成功！恭喜您成为聘宝会员！
+                        {% endif %}
+                    </h1>
+                </div>
+
+                <div class="price content box-content box-content-info" style="display:none;">
+                    <!--支付失败-->
+                    {% if order.order_status != 'paid' %}
+                    <h3 style="padding: 0;">若你已经支付成功，请尝试刷新页面</h3>
+                    <div class="payway_field">
+                        <label>你已选择<span class="cf46c62">{{ order.subject_name }}</span>，应付金额：<span  class="cf46c62">{{ order.order_price }}元</span></label>
+                    </div>
+                    <div class="confirm_pay pd-top-20">
+                        <a href="javascript:void(0);" data-url="/vip/order/repaid/" data-order-id="{{ order.order_id }}" class="btn btn-welcome-submit" ng-click="repay($event)">重新支付</a>
+                    </div>
+                    {% else %}
+
+                    <div class="price content box-content lh180" ng-show="!isCharge">
+                        <img class="info-icon" src="/static/b_common/img/rocket.gif" border="0" width="180">
+                                <br>
+                        <span class="c607d8b f14">您是聘宝<a class="c63c2ec" href="javascript:void(0);">自助型会员</a>，现在您可以使用聘点下载简历了！快来试试吧！
+                        </span>
+                    </div>
+
+                    <p class="form-control align-center" ng-show="!isCharge">
+                        <a class="btn btn-welcome-submit" href="/special_feed/page/">我的职位定制</a>
+                    </p>
+
+                    {% endif %}
+                </div>
+
+
+
+            </div><!-- main -->
+
+
+
+        </div><!-- layout -->
+    </div><!-- register -->
+{% endblock %}
+
+{% block ng_js %}
+<script src="{{ STATIC_URL }}users/scripts/register_finish.js"></script>
+{% endblock %}
+
+

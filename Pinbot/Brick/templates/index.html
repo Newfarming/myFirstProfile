@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="content">
+    <h1 class="text-center" style="font-size:200px;font-variant: small-caps;font-family: Helvetica;">hello brick</h1>
+    <div class="inner-content">
+
+        <h2>表格:</h2>
+        <table width="100" cellpadding="0" cellspacing="0" class="table">
+            <thead>
+                <tr>
+                    <th>header</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>data</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <h2>按钮组:</h2>
+        <p>
+            <button type="button" class="button">default</button>
+            <button type="button" class="button button-primary">primary</button>
+            <button type="button" class="button button-normal">normal</button>
+            <button type="button" class="button button-cancle">cancel</button>
+            <button type="button" class="button" disabled>disabled</button>
+        </p>
+
+        <br>
+
+        <h2>外部盒子:</h2>
+        <div class="content" style="background:red">
+            <h3>内容(上一级的宽度的100%，最多不超过1125,默认居中对齐)</h3>
+        </div>
+
+        <br>
+
+        <h2>按钮组:</h2>
+        <div class="content">
+            <div class="inner-content" style="background:red">
+                <h3>不同设备不同比例(最多不超过680,默认居中对齐)</h3>
+            </div>
+        </div>
+
+        <br>
+
+        <h2>其他:</h2>
+        <div>
+            
+        </div>
+
+        <br>
+
+
+        <br>
+
+
+        <br>
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'vip-disable' op_id %}">
+    {% csrf_token %}
+    <div id="div_id_pay_status" class="form-group">
+        <label for="id_pay_status" class="control-label  requiredField">
+        停用<span class="asteriskField">*</span>
+        </label>
+        <div class="controls ">
+            <select class="adminselectwidget form-control" id="id_pay_status" name="pay_status">
+                <option value="paid">停用</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-block btn-sm">确定</button>
+</form>

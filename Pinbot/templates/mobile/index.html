@@ -1,0 +1,282 @@
+{% load compress %}
+<!doctype html>
+<html>
+<head>
+<title>聘宝 - 专业人才推荐</title>
+<meta name="keywords" content="keywords" />
+<meta name="description" content="description" />
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="pragma" content="no-cache">
+<link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico" />
+
+{% compress css %}
+<link href="{{ STATIC_URL }}b_common/mobile/css/b.m.common.css?20150616" type="text/css" rel="stylesheet" />
+<link href="{{ STATIC_URL }}b_common/mobile/css/b.m.index.css?20150616" type="text/css" rel="stylesheet" />
+{% endcompress %}
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="white">
+<link rel="apple-touch-icon" href="{{ STATIC_URL }}b_index/img/apple-touch-icon.png">
+<script>
+    var doc = document.documentElement;
+        doc.setAttribute('data-useragent', navigator.userAgent);
+</script>
+</head>
+<body>
+
+<header>
+    <!--
+    <div class="mobile-menu">
+        <button type="button" class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        {% if request.user.is_authenticated %}
+        <div class="nav-menu nav-menu-normal">
+            <ul>
+                <li><i class="menu-icon-customize" ></i><a href="/signup/"><span>注册</span></a></li>
+                <li><i class="menu-icon-recommand" ></i><a href="/signin/"><span>登录</span></a></li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="nav-menu">
+            <ul>
+                <li><span title="{{ request.user.username }}">{{ request.user.username }}</span></li>
+                <li><i class="menu-icon-customize" ></i><a href="http://m.pinbot.me/#/cutomize/list/" class="goToCustomize"><span>职位定制</span></a></li>
+                <li><i class="menu-icon-recommand"   ></i><a href="http://m.pinbot.me/#/recommand/list/" class="goToRecommand"><span>查看推荐</span></a></li>
+                <li><i class="menu-icon-favour"  ></i><a href="http://m.pinbot.me/#/favours/list/" class="goToFavours"><span>我的收藏</span></a></li>
+                <li><i class="menu-icon-about"  ></i><a href="http://www.pinbot.me/"><span>了解聘宝</span></a></li>
+                        <li><i class="menu-icon-logout"  ></i><a href="http://m.pinbot.me/#/logout/"><span>退出登录</span></a></li>
+            </ul>
+        </div>
+        {% endif %}
+    </div> -->
+    <div class="w90p clearfix">
+        <div class="left">
+            <a href="/" class="icon logo" style="overflow:hidden;text-indent: -9999px;"><img class="logo pinbot-logo" src="{{ STATIC_URL }}b_index/img/logo_121x75.png" border="0"></a>
+        </div>
+        <div class="right">
+            {% if not request.user.is_authenticated %}
+            <a href="/signup/" class="header-a">注册</a> ｜ <a href="/signin/" class="header-a">登录</a>
+            {% else %}
+            <a href="/gotopinbot" class="header-a pinbot-link">进入聘宝</a> ｜ <a href="/signout/" class="header-a">登出</a>
+            {% endif %}
+        </div>
+    </div>
+
+</header>
+<aside class="banner">
+
+    <div class="swipe">
+        <ul id="slider">
+            <li>
+                <a href="/signup/"><img src="{{ STATIC_URL }}b_index/img/banner760.jpg" alt="" class="fullwidth"/></a>
+            </li>
+            <li>
+                <img src="{{ STATIC_URL }}b_index/img/invite_760.jpg" alt="" class="fullwidth"/>
+            </li>
+            <li>
+                <img src="{{ STATIC_URL }}b_index/img/pinbot_for_wechat_760x508.jpg" alt="" class="fullwidth"/>
+            </li>
+        </ul>
+        <div id="pagenavi">
+            <a href="javascript:void(0);" class="active">1</a>
+                <a href="javascript:void(0);">2</a>
+                <a href="javascript:void(0);">3</a>
+        </div>
+    </div><!--swipe end-->
+
+</aside>
+
+<div class="content mt30">
+    <h2 class="text-center mt20 f24">聘宝是什么</h2>
+    <ul class="introduce mt20">
+        <li>
+            <span class="icons icons-main icons-main-robot"></span>
+        </li>
+        <li class="words text-center">
+            <h3>机器也能推荐人才</h3>
+            <p>当机器具备学习能力去模仿猎头<br>推荐人才就变得高效而精准<br>聘宝正拥有这样的本事
+            <!-- <br>
+            <a href="/special_feed/page/" class="c43b5e9">我要人才</a> -->
+            </p>
+        </li>
+        <li>
+            <span class="icons icons-main icons-main-hand"></span>
+        </li>
+        <li class="words text-center">
+            <h3>助人为乐的招聘平台</h3>
+            <p>把无缘自己企业的求职者<br>推荐给同在聘宝的其他HR<br>帮助他人又愉悦了自己
+            </p>
+        </li>
+        <li>
+            <span class="icons icons-main icons-main-talk"></span>
+        </li>
+        <li class="words text-center">
+            <h3>你的私人猎头顾问</h3>
+            <p>不必担心一味的机器推荐太冰冷<br>
+                温暖真实的私人任顾问<br>可助你解决所有的问题</p>
+        </li>
+    </ul>
+    <hr class="hr mt30">
+    <h2 class="text-center mt20 f24">聘宝服务模式</h2>
+    <ul class="user-mode mt20">
+        <li class="words diy text-center">
+            <h3><span class="cf46c62">自助型</span>会员服务</h3>
+            <div class="service1">
+            <p><i class="dot"></i>每周赠送一定数量简历
+            </p>
+            <p><i class="dot"></i>系统每日推荐匹配人才，自助联系约面
+            </p>
+            </div>
+            <span>(会费包含定制职位以及购买简历的费用)</span>
+        </li>
+        <li class="words noworry text-center">
+            <h3><span class="cf46c62">省心型</span>会员服务</h3>
+            <div class="service2">
+            <p><i class="dot"></i>海量简历无限下载
+            </p>
+            <p><i class="dot"></i>人才顾问1V1全程跟进
+            </p>
+            <p><i class="dot"></i>按入职效果扣除预付金
+            </p>
+            </div>
+            <span>(套餐价包含候选人到岗所有服务费)</span>
+        </li>
+        <li class="words btn-red">
+            <a href="javascript:void(0);">登录网页端查看详情</a>
+        </li>
+    </ul>
+    <hr class="hr mt30">
+    <h2 class="text-center mt20 f24">亮点功能</h2>
+    <ul class="introduce mt20">
+        <li>
+            <span class="icons icons-hlight icons-hlight-plan"></span>
+        </li>
+        <li class="words text-center">
+            <h3 class="mg-top-25">职位定制</h3>
+            <p>
+                <span class="intro-desc">陪伴式体验，每日自动推荐求职者</span><br>
+                <span class="intro-desc">基于知识库和机器学习确保匹配度</span><br>
+                <span class="intro-desc">顾问团队支持，答疑解惑为你省心</span>
+            </p>
+        </li>
+        <li>
+            <span class="icons icons-hlight icons-hlight-hand"></span>
+        </li>
+        <li class="words text-center">
+            <h3 class="mg-top-25">互助招聘</h3>
+            <p>
+                <span class="intro-desc">加速闲置人才资源流通，聘宝激励</span><br>
+                <span class="intro-desc">HR遇见更多人才，求职者更快入职</span>
+            </p>
+        </li>
+
+    </ul>
+    <hr class="hr mt30">
+    <h2 class="text-center mt20 f24 faq-list">常见问题</h2>
+    <div class="faq-links">
+    <ul class="user-mode mt20" id="faq">
+        <li class="words diy faq">
+            <div>
+            <p class="question"><span>Q:</span>我能在聘宝发布职位招聘信息吗？</p>
+            <p class="answer"><span>A:</span>聘宝是采用简历推荐的模式向用户提供人才，不是职位发布平台。只需一次提交人才需求，无需被动等待求职者投递，即可获得每日推荐。</p>
+            </div>
+        </li>
+        <li class="words diy faq">
+            <div>
+            <p class="question"><span>Q:</span>有简历库让我直接搜索人才吗？</p>
+            <p class="answer"><span>A:</span>聘宝摒弃了操作繁琐、效率低的传统简历库搜索模式，你提交的人才需求将被聘宝机器人不断解析、匹配，不用反复搜索和浏览大量简历，精准优质的人才即可主动呈现到你面前。</p>
+            </div>
+        </li>
+        <li class="words diy faq">
+            <div>
+            <p class="question"><span>Q:</span>聘宝推荐的人都是对我公司有兴趣的吗？</p>
+            <p class="answer"><span>A:</span>国内市场上的优质候选人大部分属于被动型人才，聘宝向你推荐的都是潜在求职者，虽然没有投递行为，但不排斥了解新的机会，你必须打破陈规主动出击。</p>
+            </div>
+        </li>
+        <li class="words diy faq">
+            <div>
+            <p class="question"><span>Q:</span>创业团队预算少，用得起新一代猎头吗？</p>
+            <p class="answer"><span>A:</span>新用户注册即可免费体验聘宝的推荐服务，除此之外我们还提供自助型和省心型两种会员服务，最低900元/季度即可开展招聘工作，创业团队也能轻松承担。</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="slider-arrows">
+        <li class="prev-page">
+            <a href="javascript:void(0);"></a>
+        </li>
+        <li class="next-page">
+            <a href="javascript:void(0);"></a>
+        </li>
+    </ul>
+    </div>
+
+</div>
+<footer class="mt30">
+    <p class="text-center ccfd8dd">Tel：<a href="tel:02883330727">028-83330727</a> </p>
+    <p class="text-center ccfd8dd">微信：聘宝话招聘（pinbotHR） 聘宝话求职（pinbotalk）</p>
+    <p class="text-center">Copyright © 2013 - 2016 HopperClouds, Inc.</p>
+</footer>
+<script src="{{ STATIC_URL }}common/js/pb.common.js?20150418"></script>
+<script src="{{ STATIC_URL }}b_common/mobile/js/touchScroll.js?20150418"></script>
+<script src="{{ STATIC_URL }}b_common/mobile/js/touchslider.dev.js?20150418"></script>
+<script type="text/javascript">
+    //banner轮播图
+    var active=0,
+        as=document.getElementById('pagenavi').getElementsByTagName('a');
+
+    for(var i=0;i<as.length;i++){
+        (function(){
+            var j=i;
+            as[i].onclick=function(){
+                t2.slide(j);
+                return false;
+            }
+        })();
+    }
+
+    var t2=new TouchSlider({id:'slider', speed:600, timeout:6000, before:function(index){
+            as[active].className='';
+            active=index;
+            as[active].className='active';
+        }});
+    var t3=new TouchSlider({auto:false,id:'faq', speed:600, timeout:5000, before:function(index){
+
+        }});
+    $('.slider-arrows .prev-page').click(function(e){
+        t3.prev();
+    });
+    $('.slider-arrows .next-page').click(function(e){
+        t3.next();
+    });
+
+    $('.navbar-toggle').click(function(e){
+        if($('.nav-menu').css('display')=='block'){
+            $('.nav-menu').css('display','none');
+        }else{
+            $('.nav-menu').css('display','block');
+        }
+    });
+
+    $(document).ready(function(){
+        if($('.pinbot-link').length){
+            if(document.location.href.toString().match(/\?from=pinbotHR/)){
+                $('.pinbot-link').prop('href','http://m.pinbot.me/?from=weixin');
+            }
+        }
+    });
+</script>
+
+<div style="display: none;">
+{% include 'baidu_tj.html' %}
+</div>
+
+</body>
+</html>

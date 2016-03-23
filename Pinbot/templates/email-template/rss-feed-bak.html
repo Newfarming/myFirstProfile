@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+</head>
+<body>
+  <div style="background:#fff;font-family:Helvetica,Arial,Sans-serif;padding:20px 0">
+    <div style="width:61.8%;min-width:450px;_width:650px;margin:0 auto;background:#fff;color:#333;border:1px solid #c8c8c8">
+      <div style="margin:10px 10px 0;background:#f0f0f0;padding:20px">
+        <h1 style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;margin-bottom:0;line-height:0">
+          <a href="http://pinbot.me" style="color:#5E93C9"><img width="130px" src="http://t1.pinbot.me/email/g/img/logo.png" alt="&#32856;&#23453;" style="border:none"></a>
+        </h1>
+      </div>
+      <div style="padding:40px 20px;font-size:.95em;border-top:3px solid #273f57;border-bottom:3px solid #ccc;background:#f9f9f9;margin:0 10px">
+        <h2 style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;text-align:center;font-size:18px">聘宝为您共优选<a href="http://www.pinbot.me/feed/feed_email/all/{{username_token}}" style="color:#5E93C9;color:#f60"><em style="font-style:normal;font-size:32px;font-weight:normal !important;margin:0 8px;padding:0;font-size:!important">{{total_num}}</em></a>封符合要求的简历</h2>
+        <div style="margin-top:30px">
+          <div style="width:350px;margin:0 auto;background:#f0f0f0;padding:25px 20px">
+            <table style="width:100%;border-collapse:collapse !important;border-spacing:0 !important">
+              <thead>
+                <tr>
+                  <th style="padding:0 10px 15px;border-bottom:1px solid #ddd;text-align:left;width:70%">订阅要求</th>
+                  <th style="padding:0 10px 15px;border-bottom:1px solid #ddd;text-align:left;text-align:center;width:30%;text-align:center">新的简历</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for feed_result_info in feed_info_list %}
+                <tr>
+                  <td style="padding:20px 10px 0;vertical-align:middle;text-align:left">{{feed_result_info.keywords}} {{feed_result_info.talent_level}}</td>
+                  <td style="padding:20px 10px 0;vertical-align:middle;text-align:left;text-align:center;color:#f90;font-size:20px"><a href="http://www.pinbot.me/feed/feed_email/{{feed_result_info.token}}" style="color:#5E93C9;color:#f60">{{feed_result_info.feed_result_num}}</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;text-align:center;margin:50px 0 !important">
+            <a href="http://www.pinbot.me/feed/feed_email/all/{{username_token}}" style="color:#5E93C9;color:#f60;background:#f90;color:#fff !important;font-weight:bold !important;font-size:16px;text-decoration:none;padding:10px 60px;margin:0 auto;display:block;width:270px;font-size:20px">马上查看</a>
+          </p>
+          <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;padding-top:20px;border-top:1px solid #ddd;text-align:center">
+            订阅更新的结果将同时通过邮件进行告知，如希望更改邮件推送的频率，请<a href="http://www.pinbot.me/feed/feed_email/change_profile/{{username_token}}" style="color:#5E93C9;color:#f60">点击这里</a>。
+          </p>
+        </div>
+      </div>
+      <div style="color:#555;margin:0 10px 10px;padding:20px;font-size:.8em;background:#f0f0f0">
+        <h2 style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;font-size:16px;font-weight:normal;margin:0;line-height:2;color:#000">聘宝，专业人才推荐</h2>
+        <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;margin:0;line-height:2">
+          <a href="http://hopperclouds.com" style="color:#5E93C9;margin-right:5px;color:#333">关于我们</a><span style="margin:0 3px;color:#999">|</span>
+          <a href="http://weibo.com/u/3739464981" style="color:#5E93C9;margin-right:5px;color:#333">关注聘宝</a>
+        </p>
+        <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;margin:0;line-height:2;color:#999">
+          Copyright &copy; 2016 HopperClouds Inc.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

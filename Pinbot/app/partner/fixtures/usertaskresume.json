@@ -1,0 +1,14 @@
+[
+{
+  "pk": 1, 
+  "model": "partner.usertaskresume", 
+  "fields": {
+    "upload_time": "2015-06-18T16:56:23", 
+    "task": 1, 
+    "resume": 2, 
+    "verify": false, 
+    "accusation_reason": "", 
+    "resume_status": 4
+  }
+}
+]

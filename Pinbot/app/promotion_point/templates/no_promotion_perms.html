@@ -1,0 +1,33 @@
+{% extends 'base_center.html' %}
+
+{% block header %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/extension.min.css?20140815" />
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with promotion_css='curr' %}
+{% endblock %}
+
+{% block sub_header %}
+{% endblock %}
+
+{% block content %}
+<div id="main" >
+    <div id="content" class="clearfix">
+        <h1 class="extension-default-title text-center">推广伙伴</h1>
+        <div class="extension-desc text-center">
+            <p>
+                <span class="simsun c999">“</span>让更多企业和HR认识聘宝，并获得点数奖励<span class="simsun c999">”</span>
+            </p>
+            <a href="http://wpa.qq.com/msgrd?v=3&uin=2711824953&site=qqmenu=yes" class="btn btn-primary btn-large mt50" target="_blank">在线咨询</a><br>
+            <img src="/static/beta/images/index/promotion.jpg" alt="" class="mt50">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% include 'zeroClipboard.html' %}
+{% endblock %}

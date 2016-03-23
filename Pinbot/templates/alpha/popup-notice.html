@@ -1,0 +1,39 @@
+
+<div class="popup-box popup-box-notice">
+  <div class="popup-box-bg"></div>
+  <div class="popup-box-wrap">
+    <a href="javascript:;" title="返回" class="popup-box-close"></a>
+    <div class="popup-box-content">
+      <h2>通 知</h2>
+      <p class="p-first">
+        尊敬的客户:
+      </p>
+      <p>
+        你的聘宝免费体验期已于<em>2014年6月12日</em>到期，你的各项服务将暂停数据更新。
+      </p>
+
+      <p>
+        聘宝beta1.0将提供更完善的功能体验，帮助你更快接触到更优质的简历。欢迎垂询！
+      </p>
+
+      <p>
+        <span>咨询电话：028-83330727</span>
+        <span>咨询QQ: 2589581354 或 1426740129 </span>
+      </p>
+
+      <p class="p-last">
+        聘宝服务团队
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+    $('.popup-box').show();
+
+    $('.popup-box-close').on('click', function() {
+      $('.popup-box').fadeOut('fast');
+      return false;
+    });
+  })
+</script>

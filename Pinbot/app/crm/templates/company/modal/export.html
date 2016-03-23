@@ -1,0 +1,106 @@
+<div class="modal" id="exportModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">导出数据</h4>
+            </div>
+            <div class="modal-body" style="margin: 0 30px 0 30px;">
+                <div class="form-group">
+                    <label>时间段选择</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" class="form-control pull-right" id="reservation" placeholder="请选择导出数据的时间段，不选则为所有时间段"/>
+                    </div>
+                    <table class="table no-margin">
+                        <thead>
+                                <tr>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="export_options" type="checkbox" value="need_contact">未联系
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="export_options" type="checkbox" value="break_invite&mark_type=pending&mark_type=unconfirm&mark_type=accu_fail&mark_type=accu_success&mark_type=accusation&mark_type=invite_lower_ability">已联系
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="export_options" type="checkbox" value="invite_interview&mark_type=next_interview&join_interview">已约面
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="export_options" type="checkbox" value="send_offer">发offer
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="export_options" type="checkbox" value="entry">已入职
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="export_options" type="checkbox" value="eliminate&mark_type=no_will&mark_type=lower_ability&mark_type=no_interest">已淘汰
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="export">导出</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $("#export").click(function(){
+            var time_slot = $("#reservation")[0].value
+            var admin_id = $('#select_admin').find("option:selected").val()
+                if (admin_id == -1){
+                    alert('请选择管理员')
+                    return false
+                }
+            var select_options = '?'
+            var export_options = $("input[name='export_options']:checkbox");
+            var checked_options = $(export_options).each(function(){
+                if (this.checked){
+                    if (this.value == 'need_contact'){
+                        select_options+='need_contact=True&'
+                    }
+                    else{
+                        select_options+='mark_type='+this.value+'&'
+                    }
+                }
+            })
+            if (window.location.pathname == '/crm/company/'){
+                window.open('/crm/company/export_all/'+admin_id+'/'+select_options+'time_slot='+time_slot)
+            }
+            else{
+                window.open('/crm/company/export/{{ client.id }}/'+select_options+'time_slot='+time_slot)
+            }
+        });
+    })
+</script>

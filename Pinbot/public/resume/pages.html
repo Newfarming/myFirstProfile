@@ -1,0 +1,12 @@
+<style>
+.task-page-code a.current {
+    color: #333;
+    text-decoration: underline;
+    cursor: default;
+}
+</style>
+<div class="task-page-code pb-paging" ng-show="pages.length>1" ng-cloak>
+    <a href="javascript:void(0);" class="prev-page" ng-class="{'prev-page-disabled':isFirstPage()}" ng-click="prevPage($event)">&nbsp;</a>
+    <a href="javascript:void(0);" class="page-num" ng-class="{'current':cp==n}" ng-repeat="n in pages" ng-click="clickPage($event)">{-n-}</a>
+    <a href="javascript:void(0);" class="next-page" ng-class="{'next-page-disabled':isLastPage()}" ng-click="nextPage($event)">&nbsp;</a>
+</div>

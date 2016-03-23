@@ -1,0 +1,40 @@
+{
+  "name": "frontendDev",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "gulp",
+    "test": "karma start karma.test.conf.js"
+  },
+  "config": {},
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.4.3",
+    "angular-mocks": "^1.4.3",
+    "angular-ui-router": "^0.2.15",
+    "browser-sync": "^2.11.0",
+    "fs": "0.0.2",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-cssnano": "^2.0.0",
+    "gulp-if": "^1.2.5",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.1",
+    "gulp-watch": "^4.3.5",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-safari-launcher": "^0.1.1",
+    "less": "^2.5.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "merge-stream": "^1.0.0",
+    "mocha": "^2.3.2",
+    "q": "^1.4.1",
+    "selenium-webdriver": "^2.46.1",
+    "yargs": "^3.32.0"
+  },
+  "devDependencies": {}
+}

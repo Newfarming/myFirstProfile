@@ -1,0 +1,67 @@
+
+<div class="popup-box popup-box-guide">
+  <div class="popup-box-bg"></div>
+  <div class="popup-box-wrap">
+    <a href="javascript:;" title="返回" class="popup-box-close"></a>    
+    <div class="popup-box-content">
+      <div class="popup-header">
+        <h3>欢迎体验人才订阅</h3>
+      </div>
+      <div class="popup-body">
+
+        <div class="popup-slider">
+          <ul class="popup-slider-body clearfix">
+            <li class="guide-one">
+              <div class="guide-page-wrapper">
+                <p>
+                  <strong>就是把您想要招聘的人才需求告诉我们。</strong></br>
+                  您只需告诉我们您所需人才的职位类型， 关键技能， 人才级别等基本信息。
+                </p>
+                <p>
+                  <strong>每早8点，我们为您呈现匹配的人才简历。</strong></br>
+                  聘宝智能猎头会帮您从海量人才库中寻找匹配的人选，一次订阅，持续推荐。
+                </p>
+              </div>
+              <div class="popup-slider-handler">
+                <span class="curr"></span>
+                <span class=""></span>
+              </div> 
+              <a class="popup-slider-next"></a>
+            </li>
+            <li class="guide-two">
+              <div class="guide-page-wrapper">
+                <ol>
+                  <li class="gt-one">提交职位订阅（一条订阅对应一个招聘职位)</li> 
+                  <li class="gt-two">聘宝智能猎头开始工作，为你推荐人才</li> 
+                  <li class="gt-three">每个工作日<em>早8点</em>，查收人才简历(届时会有邮件提醒，注意查收！)</li> 
+                  <li class="gt-four">关注人才，购买简历，招聘<em>so easy!</em></li> 
+                </ol>
+              </div>
+              <p class="popup-finish"><a href="">马上体验</a></p>
+              <a class="popup-slider-prev"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<script>
+  $(function() {
+    $('.popup-box-guide').show();
+    var slider = $('.popup-slider-body');
+    $('.popup-slider-next').on('click', function() {
+      slider.animate({'left': '-740px'}, 'fast');
+    });
+    $('.popup-slider-prev').on('click', function() {
+      slider.animate({'left': '0px'}, 'fast');
+    });  
+    $('.popup-finish>a, .popup-box-close').on('click', function() {
+      $('.popup-box-guide').fadeOut('fast'); 
+      return false;
+    });
+    $('.popup-slider-handler>span').eq(1).on('click', function() {
+      $('.popup-slider-next').click();
+    });
+  })
+</script>

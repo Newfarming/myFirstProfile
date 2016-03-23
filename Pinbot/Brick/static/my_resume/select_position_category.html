@@ -1,0 +1,10 @@
+<div class="inner-content common_form gender_form work_year_form">
+	<p><a ng-click="back()"><img src="{- static_url -}my_resume/img/arrow_1_32x46.fw.png"/></a>请选择职位</p>
+    <ul>
+        <li ng-repeat="position in data.position">
+            <a class="button {- position.id -}" ng-click="setPosition(position.id)" ng-class="{'checked':check_selected(position.id)}">{- position.name -}
+				<span></span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+<link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/common.min.css?20150511" />
+<link rel="stylesheet" href="{{STATIC_URL}}beta/styles/app/welcome.css?fb6069cc" />
+{% endblock %}
+
+{% block content %}
+<div class="register welcome">
+    <div class="layout">
+        <a class="logo" href="/" title=""></a>
+
+        <div class="main">
+            <div class="header">
+                <h1>申请注册</h1>
+                <div class="steps steps_3 at-step-1">
+                    <span class="step1">输入邮箱</span>
+                    <span class="step2">验证邮箱</span>
+                    <span class="step3">重置密码</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="user-tab clearfix" id="JS_user_tab">
+                    <a href="{% url 'user-account-reg' %}" >普通用户</a>
+                    <a href="javascript:;" class="active">人才伙伴</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <form method="POST" action="{% url 'user-register' %}" id="JS_register_form">
+                    <p>
+                        <input type="email" tabindex="1" name="user_email" value="{{email}}" autofocus placeholder="你的邮箱" autocomplete="off" class="input" data-equired data-reg="email"/>
+                    </p>
+                    <p>
+                        <input type="password" tabindex="2" name="password" value="{{password}}" placeholder="密码" autocomplete="off" maxLength="20" class="input" data-equired data-reg="isNull"/>
+                    </p>
+                    <p>
+                        <input type="password" tabindex="3" name="confirm_password" value="{{confirm_password}}" placeholder="确认密码" maxLength="20" autocomplete="off" class="input" data-equired data-reg="isNull"/>
+                    </p>
+                    <p>
+                        <input type="text" tabindex="4" name="name" value="{{name}}" placeholder="真实姓名" autocomplete="off" class="input" data-equired data-reg="isNull"/>
+                    </p>
+                    <p>
+                        <input type="text" tabindex="5" name="phone" value="{{phone}}" placeholder="联系电话" autocomplete="off" class="input" data-equired data-reg="number"/>
+                    </p>
+                    <p>
+                        <input type="text" tabindex="6" name="qq" value="{{qq}}"  placeholder="联络QQ" autocomplete="off" class="input" data-equired data-reg="number"/>
+                    </p>
+                    <div class="drop-select w180" style="margin-bottom: 10px; margin-left: -7px">
+                        <button class="button" type="button" data-toggle="dropdown" style="height: 40px; width: 322px; font-size:16px;box-shadow: inset 0 0 1px 1px rgba(123,125,125,0.2); color:#999; padding: 0 9px;">你的角色<i class="i-barr"></i></button>
+                        <div class="drop-box">
+                            <ul class="drop-down">
+                                <li><a>请选择</a></li>
+                                <li><a>HR</a></li>
+                                <li><a>猎头</a></li>
+                                <li><a>互联网从业者</a></li>
+                                <li><a>其他</a></li>
+                            </ul>
+                        </div>
+                        <select name="role" data-equired data-reg="isNull">
+                            <option value=""></option>
+                            <option value="hr">HR</option>
+                            <option value="headhunting">猎头</option>
+                            <option value="web_practitioner">互联网从业者</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    <p>
+                        <input type="text" tabindex="7" name="company_name" value="{{company_name}}"  placeholder="企业名称" autocomplete="off" class="input"  data-equired data-reg="isNull"/>
+                    </p>
+                    <p>
+                        <input type="text" tabindex="8" name="url" value="{{url}}" class="input" placeholder="公司网站(可选填)" autocomplete="off"/>
+                    </p>
+                    <div class="text-left mt20">
+                        <input type="checkbox" name="agreen" value="" placeholder="" class="JS_control_abled" data-for="JS_sign_parter">我同意聘宝<a href="javascript:;" id="JS_show_agreement" style="color: #42b4e6;">《人才伙伴用户协议》</a>
+                    </div>
+                    <p class="form-control">
+                        <a tabindex="7" class="btn btn-welcome-submit" disabled id="JS_sign_parter" id="JS_submit_btn" data-ajax_common_type="form" data-ajax_verify="formalVerify" data-callback="signResult" data-errorCallback="signErrorResult" data-before="beforeSubmit">确认提交</a>
+                    </p>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script src="{{ STATIC_URL }}alpha/scripts/jq.js?20140815"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/common.min.js?20140815"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/form.min.js"></script>
+<script src="{{ STATIC_URL }}users/register.min.js"></script>
+{% include 'client-agreement.html' %}
+{% endblock %}

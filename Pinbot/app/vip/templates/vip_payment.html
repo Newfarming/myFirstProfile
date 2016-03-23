@@ -1,0 +1,39 @@
+{% extends 'base_upgrade.html' %}
+{% load utils_tag %}
+
+{% block header %}
+{{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}vip/vip.css" />
+{% endblock %}
+
+{% block upgrade_content %}
+	<div class="register welcome">
+        <div class="layout">
+            <div class="main">
+                <div class="header">
+                    <h1>请选择付款方式</h1>
+                </div>
+
+                <div class="content">
+                    <h2>完成<span class="fc863f">{% math_expr user_vip.vip_role.price '-' current_vip.vip_role.price %}元</span>付款，即可享受<span class="vip_{{ user_vip.vip_role.level }}">{{ user_vip.vip_role.vip_name }}</span>会员服务～！</h2>
+                    <div class="payway_field">
+                        <a href="#" class="alipay payway selected"></a>
+                        <a href="#" class="weixinpay payway"><span>敬请期待</span></a>
+                    </div>
+                    <div class="confirm_pay">
+                        <a class="btn confirm_pay_btn" url="{% url 'vip-create-order' %}">确认支付</a>
+                        <label>如需选用其他支付方式，请<a href="#" class="contact c42b4e6 yingxiao_qq" style="display:inline;" id="contact_us">联系我们</a></label>
+                    </div>
+                </div>
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+{% endblock %}
+{% block footer_html %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block footer %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}users/scripts/vip_pay.js"></script>
+{% endblock %}

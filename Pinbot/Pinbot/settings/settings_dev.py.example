@@ -1,0 +1,128 @@
+# coding: utf-8
+
+import os
+
+PROJECT_ROOT = os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))).replace('\\', '/')
+PROJECT_ROOT = '/'.join(PROJECT_ROOT.split('/')[:-1])
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+
+DATABASES = {
+    'default': {
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pinbot',  # Or path to database file if using sqlite3.
+        'USER': 'admin',  # Not used with sqlite3.
+        # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': '192.168.99.100',
+        'PASSWORD': 'root',  # Not used with sqlite3.
+        # Set to empty string for default. Not used with sqlite3.
+        'PORT': '3306',
+        'CONN_MAX_AGE': 60,
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
+        },
+    },
+}
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://:root@192.168.99.100:6379:1',
+    },
+}
+
+OTHER_DATABASE = {
+    'mongo': {
+        'ENGINE': '',
+        'name': 'recruiting',  # Or path to database file if using sqlite3.
+        'user': None,  # Not used with sqlite3.
+        # Set to empty string for localhost. Not used with sqlite3.
+        'host': '192.168.99.100',
+        'password': None,  # Not used with sqlite3.
+        # Set to empty string for default. Not used with sqlite3.
+        'port': '27017',
+        'lexicon_collection': 'jobs_class_keywords',
+    },
+    'rabbitmq': {
+        'ENGINE': '',
+        'host': '192.168.99.100',
+        'user': 'guest',  # Not used with sqlite3.
+        'password': 'guest',  # Not used with sqlite3.
+        'html_resume_queue': 'htmlresume',
+        'upload_resume_queue': 'uploadresume',
+        'buy_resume_queue': 'buyresume',
+    }
+}
+
+ALIPAY_RETURN_URL = 'http://127.0.0.1:8000/payment/alipay_return/'
+
+MEDIA_ROOT = '/Users/runforever/test_static'
+MEDIA_ROOT_STAFF = MEDIA_ROOT
+
+PARSE_PATH = '/media/static/'
+
+# SESSION
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+SESSION_REDIS_PREFIX = 'session'
+
+RAVEN_CONFIG = {}
+
+SUPPORT_EMAIL_LIST = (
+    'runforever@163.com',
+)
+
+DEBUG_TOOLBAR_PANELS = [
+    'ddt_request_history.panels.request_history.RequestHistoryPanel',  # Here it is
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'ddt_request_history.panels.request_history.allow_ajax',
+}
+
+DEBUG_TOOLBAR_CONFIG = {
+    'RESULTS_STORE_SIZE': 100,
+}
+
+INTERNAL_IPS = (
+    '127.0.0.1',
+)
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
+
+SESSION_COOKIE_DOMAIN = None
+
+API_PARSE_URL = 'http://127.0.0.1:1324/api/parse/resume/'
+API_PARSE_JD_URL = 'http://api.pinbot.me:8088/job/parser/'
+API_PARSE_NUM = 'http://api.pinbot.me:8088/search/resume/num/'
+API_PARSE_SALARY = 'http://api.pinbot.me:8088/datamining/salary/suggest/'
+API_PARSE_RELATED = 'http://api.pinbot.me:8088/talent/related/'
+
+API_SEARCH_JOB = 'http://api.pinbot.me:8088/search/job/'
+API_SEARCH_RESUME = 'http://api.pinbot.me:8088/search/resume/'
+API_WRITE_ES = 'http://api.pinbot.me:8088/search/insert/'
+
+MOBILE_REGISTER_LINK = 'http://localhost:3000/#/invite/'
+
+WEIXIN_HOST = 'pinbot.ittun.com'
+WEIXIN_APP_ID = 'wx02413110d58a09e3'
+WEIXIN_APP_SECERT = '23838d0a311dfd74725553eefcd43204'
+WEIXIN_TOKEN = '960a31dd8c162518e77a37941802ee18'
+WEIXIN_ACCESS_TOKEN_EXPIRE_TIME = 300

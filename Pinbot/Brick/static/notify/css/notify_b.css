@@ -1,0 +1,87 @@
+/* notify*/
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none!important}ng\:form{display:block}
+.setting-title {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 28px;
+    font-weight: normal;
+}
+.notify-content{
+    border: solid 1px #EEEEEE;
+    border-top: none;
+    margin-bottom: 100px;
+}
+.pb100{
+    width: 700px;
+    padding-bottom: 100px;
+    border-top: solid 5px #313943;
+    margin: 0 auto;
+}
+.notify-category{
+    background: #F4F4F4;
+}
+.notify-category a{
+    float: left;
+    width: 50%;
+    font-size: 18px;
+    line-height: 66px;
+    text-align: center;
+    color: #000000;
+    cursor: pointer;
+}
+.notify-category a.active{
+    color: #00b7ee;
+}
+.read-all{
+    padding: 10px;
+}
+.read-all a{
+    display: inline-block;
+    color: #42b3e5;
+    font-size: 12px;
+    border: solid 1px #42b3e5;
+    padding: 10px;
+}
+.notify{
+    padding: 5px 20px 20px;
+    border-top: solid 1px #ddd;
+    position: relative;
+    cursor: pointer;
+}
+.notify p{
+    color: #666666;
+    font-size: 12px;
+}
+.notify p.date{
+    color: #000000;
+    font-size: 12px;
+    padding-right: 25px;
+}
+.notify h5{
+    font-size: 14px;
+    padding: 10px 0;
+    color: #000000;
+}
+.notify:before{
+    position: absolute;
+    right: 20px;
+    top: -1px;
+    background: url(../img/remind_g_20x24.fw.png);
+    background-size: 100%;
+    content: ' ';
+    width: 20px;
+    height: 24px;
+}
+.notify.unread:before{
+    position: absolute;
+    right: 20px;
+    top: -1px;
+    background: url(../img/remind_r_20x24.fw.png);
+    background-size: 100%;
+    content: ' ';
+    width: 20px;
+    height: 24px;
+}
+.notify p a{
+    color: #00b7ee;
+}

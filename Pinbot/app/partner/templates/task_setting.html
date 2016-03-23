@@ -1,0 +1,89 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+{% compress css %}
+<link href="{{ STATIC_URL }}partner/css/task_setting.css?20150522" type="text/css" rel="stylesheet" />
+{% endcompress %}
+{% endblock %}
+
+{% block app %} ng-app="settingApp"{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with upload_class="curr" %}
+{% endblock %}
+
+{% block sub_header %}
+{% include 'partner_sub_nav.html' with task_setting='on' %}
+{% endblock %}
+
+{% block content %}
+
+<h3 class="text-center head">请设置任务时间</h3>
+
+<form action="" data-datas='{{ data }}' ng-controller="settingCtrl" ng-cloak>
+    <div class="set-time">
+        <p class="text-center">
+            <input type="radio" id="rest-time" name="time" class="icon-radio" value="1" ng-model="datas.setting.task_time" ng-checked="datas.setting.task_time == 1">
+            <label for="rest-time"><i></i>休息时间</label><br>
+            （仅限每周一至四下午6点至23点59分，周五下午6点至周日晚上23点59分的时段有任务推送）
+        </p>
+        <p class="text-center">
+            <input type="radio" id="any-time" name="time" class="icon-radio" value="0" ng-model="datas.setting.task_time" ng-checked="datas.setting.task_time == 0">
+            <label for="any-time"><i></i>不限时间</label><br>
+            （我们会持续为您推送新任务，你可以自由分配任务时间）
+        </p>
+    </div>
+    <div class="citys panel grey-bg w700">
+        <p class="panel-title">所在城市</p>
+        <div class="city-list choose-btn mt20 multi">
+            <a class="button f16 button-normal" ng-repeat="city in datas.all_citys" data-id="{- city.id -}" ng-class="{ active: isActive( city.id , datas.setting.citys ) }" ng-click="toggleActive( city , datas.setting.citys )">{- city.name -}</a>
+        </div>
+    </div>
+    <div class="area panel">
+        <div class="form-panel" id="JS_keywords_box">
+            <p class="panel-title">请输入擅长的职位</p>
+            <div class="form-content text-center pt20 multi">
+                <div class="keywords">
+                    <a href="javascript:;" class="button button-small button-primary" ng-repeat=" tit in datas.setting.title track by $index ">{- tit -}<em ng-click="removeTitle( tit , datas.setting.title )"></em></a>
+                </div>
+                <div class="pt10">
+                    <input type="text" name="" class="input input-underline f15 w325 insert-key" id="JS_keyword_model" maxLength="15" placeholder="添加关键词（逗号隔开）" ng-enter="setKeywords()" ng-keyup="watchKeyword( $event )" ng-model="keywordText">
+                </div>
+                <div class="pt10 recommand-word" ng-if="datas.reco_title.length">
+                    <span>为您推荐:</span>
+                    <a href="javascript:;" ng-repeat="title in datas.reco_title" ng-click="addTile( title , datas.setting.title )" ng-if="!isActiveTitle( title , datas.setting.title )">{- title -}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="citys panel grey-bg w700">
+        <p class="panel-title">请选择擅长的领域</p>
+        <div class="city-list choose-small-btn mt20 pt10 w770">
+            <a class="button button-normal" ng-repeat=" domain in datas.all_company_domain " ng-class="{ active: isActive( domain.id , datas.setting.job_domain ) }" ng-click="toggleActive( domain , datas.setting.job_domain )">{- domain.category -}</a>
+        </div>
+        <p class="text-center mt20">
+            <input type="checkbox" id="JS_all_area" class="icon-checkbox" ng-checked="!datas.setting.job_domain.length" ng-click="resetJobDomain()">
+            <label for="JS_all_area"><i></i>领域不限</label>
+        </p>
+    </div>
+
+    <div class="form-handle text-center">
+        <button class="button button-primary button-big w240" type="button" ng-click="save()">保存我的选择</button>
+    </div>
+
+</form>
+
+{% endblock %}
+
+
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+    {% include 'angular.html' %}
+    <script src="{{ STATIC_URL }}partner/js/task_setting.js?20150624"></script>
+{% endcompress %}
+{% endblock %}

@@ -1,0 +1,23 @@
+<div class="chat no-tag" ng-repeat="chat in data.data" ng-click="toDetail(chat.id)">
+    <p class="text-right chat-date ng-binding">{- chat.create_time -}</p>
+    <div ng-show="chat.chat_type == 'job'">
+        <h4>{- chat.job__company__company_name -}</h4>
+        <h5>
+            {- chat.job__title -}，
+            {- chat.job__salary_low | formatMoney:chat.job__salary_high -}
+            {- chat.job__work_years | filterYear -}
+            {- chat.job__degree | filterDegree -}
+        </h5>
+        <p class="feedback">{- chat.msg -}</p>
+    </div>
+    <div ng-show="chat.chat_type == 'feed'">
+        <h4>{- chat.feed__company__company_name -}</h4>
+        <h5>
+            {- chat.feed__title -}，
+            {- chat.feed__salary_min | formatMoney:chat.feed__salary_max -}
+            {- chat.feed__work_years | filterYear -}
+            {- chat.feed__degree | filterDegree -}
+        </h5>
+        <p class="feedback">{- chat.msg -}</p>
+    </div>
+</div>

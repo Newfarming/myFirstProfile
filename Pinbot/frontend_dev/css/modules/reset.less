@@ -1,0 +1,248 @@
+@import "../base";
+
+/* 关于z-index
+默认按如下规则排列：
+>5000: top banner
+>6000: 右侧滑动
+>7000: 顶部菜单
+>8000: 任务系统
+>9000: 彩单相关
+*/
+
+/* @group Reset */
+html, div, body, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td ,article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    line-height: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    font-family: 'Helvetica Neue', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+ol, ul {
+    list-style: none;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+/* remember to define focus styles! */
+
+:focus{
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+sub{
+    position: relative;
+    bottom: -0.2em;
+    vertical-align: baseline;
+}
+
+small,sup,sub{
+    font-size: 85%;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a{
+    text-decoration: none;
+    line-height: 1.5em;
+    cursor: pointer;
+    font-size: @font-size;
+}
+p,h1,h2,h3,h4,h5,h6{
+    line-height: 1.5em;
+    font-weight: normal;
+}
+/* @end */
+
+/* font-set begin */
+body,input,select,textarea,button{
+    font-family: @pb-font-family-cn;
+    border:none;
+    word-break: break-all;
+}
+body{
+    font-size: @font-size - 2;
+}
+input,textarea,select{
+    box-shadow: none;
+    border-radius: 0;
+}
+em{
+    font-style: normal;
+}
+
+/* placeholder */
+::-webkit-input-placeholder{
+    color: #cccccc;
+}
+:-moz-placeholder{
+    color: #cccccc;
+}
+::-moz-placeholder{
+    color: #cccccc;
+}
+:-ms-input-placeholder{
+    color: #cccccc;
+}
+
+/******************** clear floating begin *********************/
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+/******************** 单行溢出显示省略号 *********************/
+.text-overflow{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}
+/******************** 取消选中状态 *********************/
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* disabled */
+[disabled]{
+    cursor: default !important;
+}
+
+/* opacity button */
+.opa-btn{
+    opacity: .9;
+}
+.opa-btn:hover{
+    opacity: 1;
+}
+
+/******************** others begin ********************/
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.inline-block{
+    display: inline-block;
+}
+.block{
+    display: block;
+}
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.fixed{
+    position: fixed;
+}
+.none{
+    display: none;
+}
+.clearBoth{
+    clear: both
+}
+
+.bold{
+    font-weight:bold;
+}
+.mt20{
+    margin-top: 20px !important;
+}
+.mt10{
+    margin-top: 10px !important;
+}
+.ml20{
+    margin-left: 20px !important;
+}
+.ml10{
+    margin-left: 10px !important;
+}
+h1{
+    font-size: 32px;
+}
+h2{
+    font-size: 22px;
+}
+h3{
+    font-size: 20px;
+}
+h4{
+    font-size: 18px;
+}
+h5{
+    font-size: 16px;
+}
+h6{
+    font-size: 14px;
+}
+
+.pt10{
+    padding-top: 10px !important;
+}
+.pt20{
+    padding-top: 20px !important;
+}
+.pt30{
+    padding-top: 30px !important;
+}
+
+.pb150{
+    padding-bottom: 150px;
+}

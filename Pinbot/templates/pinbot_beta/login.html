@@ -1,0 +1,116 @@
+{% extends 'base_newset.html' %}
+{% load utils_tag %}
+{% block content %}
+    <div class="">
+        <div class="layout">
+
+            <div class="main main-white">
+                <div class="header pd-10">
+
+                    <ul class="step-title mg-btm-20">
+                        <li class="step-title-prev "><a class="" href="#">上一步</a></li>
+                        <li class="step-title-center"><h1>登录聘宝</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <div class="register-form-div">
+                    <h1 class="mobile">登录聘宝</h1>
+                </div>
+                <p class="pc register-pc">
+                    <label class="city-no-star">
+
+                      {% if message == 'authenticate fail' %}
+                       <!-- <span class="cff0000 fs12">用户名密码错误! </span> -->
+                       {% elif message == 'input error' %}
+                       <span class="cff0000 fs12">输入出错，请检查你的输入 </span>
+                       {% elif message == 'brick user' %}
+                       <span class="cff0000 fs12">该账号暂无登录企业版的权限，请重新注册企业版账号 </span>
+                       {% elif message == 'account error' %}
+                      <span class="cff0000 fs12">账号异常，请联系管理员 </span>
+                      {% elif message == 'user not active' %}
+                      <span class="cff0000 fs12">该账号未激活，请至邮箱中查看并激活账号！<br><span class="caaaaaa">未收到邮件？<a href="javascript:;" id="JS_resend_email" target="blank" class="c42b4e6 send_active" data-ajax_common_type="form" data-method="get" data-ajax_url="{% url 'user-send-vip-active-email' user.email %}" email="{{user.email}}" data-form="#JS_resend_email">点击此处</a>再次发送激活邮件</span></span>
+                      <span class="resp_info"></span>
+                      {% else %}
+                      <span class="c607d8b fs12">没有聘宝账号？</span><a class=" c44b5e8 fs12 username" href="/signup/">立即申请</a>
+                      {% endif %}
+
+                    </label>
+
+                </p>
+
+                <div class="register-form-div">
+
+                    <form id="loginForm" method="POST" action="/signin/">
+                        <div class="account-div">
+
+                            <p id="email">
+                                <label class="pc pc-hide">请输入注册邮箱/手机号</label><input type="text" tabindex="1" name="username" id="username" value="" required autofocus autocomplete="off" class="big-placeholder" placeholder="请输入注册邮箱/手机号" />
+                                <label class="mobile" alt="请输入注册邮箱/手机号" placeholder="请输入注册邮箱/手机号"></label>
+                                {% if message == 'authenticate fail' %}
+                                <label id="username-error" class="invalid" for="username" >用户名密码错误! </label>
+                                {% else %}
+                                <label id="username-error" class="invalid" for="username" style="display: none;"></label>
+                                {% endif %}
+
+                            </p>
+                            <p id="password">
+                                <label class="pc pc-hide">请输入密码</label><input type="password" tabindex="2" name="password" id="password" value="" required autocomplete="off" placeholder="请输入密码" maxlength="20" minlength="6" class="big-placeholder" />
+                                <label class="mobile" alt="请输入密码" placeholder="请输入密码"></label>
+                                {% if message == 'authenticate fail' %}
+                                <label id="password-error" class="invalid" for="password" >密码错误! </label>
+                                {% else %}
+                                <label id="password-error" class="invalid" for="password" style="display: none;"></label>
+                                {% endif %}
+
+                            </p>
+                        </div>
+                        <p class="checkbox-p">
+                            <label class="pc"></label>
+
+                            <label class="agreement-line lineheight40">
+
+                            <span class="float-left">
+                            <input type="checkbox" checked tabindex="8" class="fix" name="rememberme" id="rememberme"/>
+                            记住我
+                            </span>
+                            <span class="float-right">
+                            <a class="caaaaaa" href="/users/resetpassword/" title="点击来找回密码">忘记密码?</a>
+                            </span>
+                            </label>
+
+                            <label id="agreement-error" class="invalid" for="agreement" style="display: none;"></label>
+                        </p>
+                        <p class="form-control align-center">
+                            <label class="pc"></label><button type="button" tabindex="9" class="btn btn-welcome-submit confirm login-btn">立即登录</button>
+
+                        </p>
+
+                        <div class="form-control align-center">
+                          <div class="box-list box-list-2">
+                            <div class="box"><a href="javascript:void(0);"><img width="121" src="/static/b_common/img/qrcode_for_pinbot_wx.jpg" border="0"></a></div>
+                            <div class="box box-info">
+                              <div><img src="/static/b_common/img/mp.png" border="0"></div>
+                              <div><span class="f14">关注并绑定服务号<br>及时接受推荐消息</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="mobile copyright">
+                            <label>Copyright &copy; 2013 - 2016 HopperClouds, Inc.</label>
+                        </p>
+
+                        {% csrf_token %}
+                    </form>
+                </div>
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+
+{% endblock %}
+
+  <script>
+      /*$(function(){
+          $(document).on('click','#JS_resend_email',$.commonAjax);
+      });*/
+  </script>

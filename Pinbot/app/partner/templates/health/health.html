@@ -1,0 +1,82 @@
+{% load compress %}
+{% compress css %}
+    <link href="{{ STATIC_URL }}partner/health/css/health.css" type="text/css" rel="stylesheet" />
+{% endcompress %}
+
+<div class="health" id="health">
+    <div class="health-content text-center" id="JS_health_content">
+        <div class="health-trigger" id="JS_trigger_health">
+           奖励<br>规则
+           <i class="" id="small-pot"></i>
+        </div>
+        <h2 class="health-title">互助伙伴奖励规则<a href="/partner/rule/?pos=rule"><i class="i-ask"></i></a></h2>
+        <p class="health-subtitle">(加油升级！级别越高越会达成更高奖励哦~)</p>
+        <div class="loading" id="loading">
+            <img src="/static/partner/images/loading.gif" alt="loading">
+            <p>Loading...</p>
+        </div>
+        <section id="content_detail" class="content-detail">
+            <div id="chart" class="chart">
+                <ul>
+                    <li id="download_level">
+                        <span class="axis">
+                            被下载
+                        </span>
+                        <span class="groove">
+                            <b class="level">lv.1</b>
+                            <i class="i-next-award">15金币/次</i>
+                            <i class="i-curr-award">5金币/次</i>
+                            <span class="ratio ratio-download"></span>
+                            <span class="number">
+                                <b class="curr-num">46</b>/<b class="next-num">50</b>
+                            </span>
+                        </span>
+                    </li>
+                    <li id="interview_level">
+                        <span class="axis">
+                            进面试
+                        </span>
+                        <span class="groove">
+                            <b class="level">lv.1</b>
+                            <i class="i-next-award">15金币/次</i>
+                            <i class="i-curr-award">5金币/次</i>
+                            <span class="ratio ratio-interview"></span>
+                            <span class="number">
+                                <b class="curr-num">46</b>/<b class="next-num">50</b>
+                            </span>
+                        </span>
+                    </li>
+                    <li id="taking_work_level">
+                        <span class="axis">
+                            已入职
+                        </span>
+                        <span class="groove">
+                            <b class="level">lv.1</b>
+                            <i class="i-next-award">15金币/次</i>
+                            <i class="i-curr-award">5金币/次</i>
+                            <span class="ratio ratio-taking-work"></span>
+                            <span class="number">
+                                <b class="curr-num">46</b>/<b class="next-num">50</b>
+                            </span>
+                        </span>
+                    </li>
+                    <li class="legend">
+                        <span>当前奖励:<i class="i-red-cube"></i></span>
+                        <span>下阶段奖励:<i class="i-grey-cube"></i></span>
+                    </li>
+                </ul>
+            </div>
+            <p class="commission-explain">
+                <i class="i-small-ask"></i><span class="cf46c62">佣金:</span>
+                聘宝根据入职候选人薪资收取的费用
+            </p>
+            <div class="pot-info clearfix">
+                <p id="dynamic-pot" class=""></p>
+                <p class="pot-word"><span class="f16 cf46c62">Tips&nbsp;</span>:&nbsp;<span id="pot-word">主人~饲养我健康成长，我会为你带来更多奖励！</span></p>
+            </div>
+        </section>
+    </div>
+</div>
+{% compress css %}
+<script defer src="{{ STATIC_URL }}partner/health/js/health.js?20150727"></script>
+{% endcompress %}

@@ -1,0 +1,63 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}special_feed/css/index.min.css?20150623" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block app %} class="noheadershadow" {% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with feed_class="curr" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="partner-banner">
+    <a href="/special_feed/edit_feed/" title="创建职位定制"><img src="{{ STATIC_URL }}special_feed/img/banner_zhiweidingzhi.jpg?20150629" alt="创建职位定制" width="100%"></a>
+</div>
+
+<div class="panel mt20">
+    <h3 class="panel-title w-line">功能简介</h3>
+    <ul class="mt20 w560 partner-profile">
+        <li>
+            <i class="i-p-question"></i>
+            依托算法，推荐匹配的潜在求职者
+        </li>
+        <li>
+            <i class="i-p-pen"></i>
+            只需一次提交，即可获得每日推荐
+        </li>
+        <li>
+            <i class="i-p-money"></i>
+            专业的顾问团队随时准备为您服务
+        </li>
+    </ul>
+</div>
+
+<div class="panel mt20">
+    <h3 class="panel-title">使用流程</h3>
+    <div class="text-center mt50">
+        <img src="{{ STATIC_URL }}special_feed/img/practice.png" width="526" height="101">
+    </div>
+</div>
+
+<div class="text-center home-foot">
+    <p class="text-center">
+        <a href="/special_feed/edit_feed/" class="more-task opa-btn">创建职位定制</a>
+    </p>
+</div>
+{% endblock %}
+
+
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+    {% include 'angular.html' %}
+    <script src="{{ STATIC_URL }}special_feed/js/edit_feed.js?20150422"></script>
+{% endcompress %}
+{% endblock %}

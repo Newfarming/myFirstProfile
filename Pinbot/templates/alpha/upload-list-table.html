@@ -1,0 +1,70 @@
+{% load endless %}
+
+{% paginate 20 resume_list %}
+<div class="resume-list-table">
+    <table>
+        <thead>
+            <tr>
+                <th width="10%" style="text-align:center;">简历ID </th>
+                <th width="8%" style="text-align:center;">候选人</th>
+                <th width="10%" style="text-align:center;">邮箱</th>
+                <th width="10%" style="text-align:center;">最近职位</th>
+                <th width="10%" style="text-align:center;">最近公司</th>
+                <th width="10%" style="text-align:center;">上传时间</th>
+                <th width="10%" style="text-align:center;">入库时间</th>
+                <th width="10%" style="text-align:center;">审核状态</th>
+                <th width="22%" style="text-align:center;">我的操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resume in resume_list %}
+            <tr class="resume-single">
+                <td>
+                    <p>{{ resume.resume_id }}</p>
+                </td>
+                <td>
+                    <p>{{ resume.name }}</p>
+                </td>
+                <td>
+                    <p>{{ resume.email }}</p>
+                </td>
+                <td>
+                    {{ resume.last_position }}
+                </td>
+                <td>
+                    {{ resume.last_company }}
+                </td>
+                <td class="date-field">
+                    <p>
+                        {{resume.upload_time|date:"Y-m-d"}}
+                    </p>
+                </td>
+                <td class="date-field">
+                    {% if resume.verify_status == 'success' %}
+                    <p>
+                        {{resume.pass_time|date:"Y-m-d"}}
+                    </p>
+                    {% endif %}
+                </td>
+                <td style="text-align:center">
+                    {%if resume.verify_status == 'unverify'%}
+                    <a class="status-icon"><i class="i-r-status i-r-wait"></i><span>审核中</span></a>
+                    {%endif%}
+                    {%if resume.verify_status == 'success'%}
+                    <a class="status-icon"><i class="i-r-status i-r-pass"></i><span>审核通过</span></a>
+                    {%endif%}
+                    {%if resume.verify_status == 'fail'%}
+                    <a class="status-icon"><i class="i-r-status i-r-error"></i><span>{{ resume.verify_msg|default:'审核未通过' }}</span></a>
+                    {%endif%}
+                </td>
+                <td>
+                    <a href="{% url 'resume-display-upload-resume' resume.resume_id %}" title="查看" class="list-a">查看</a>
+                    <a href="javascript:;" data-url="http://pinbot.me/resumes/display/{{resume.resume_id}}/" title="复制链接"  class="copy-a" >复制链接 <span><i class="tarr"></i>复制成功!</span></a>
+                    <a href="javascript:;" data-url="{% url 'resume-delete-upload-resume' resume.id %}" title="删除" class="delete-a">删除</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    {% show_pages %}
+</div>

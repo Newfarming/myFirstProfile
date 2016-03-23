@@ -1,0 +1,23 @@
+<section class="send-email-section">
+    <h3><span><i>A</i></span>给需求方HR发站内信</h3>
+    <p class="sub-title">每日限定发送一次哦~</p>
+    <p class="relative msg-option">
+        <span class="m-radio relative" ng-click="selectMsg(1)" ng-class="{'active': msgType === 1}">
+            <i class="sprite i-radio"></i>符合你JD的简历一枚已送达，收好不谢！
+        </span>
+    </p>
+    <p class="relative msg-option">
+        <span class="m-radio relative" ng-click="selectMsg(2)" ng-class="{'active': msgType === 2}">
+            <i class="sprite i-radio"></i>优秀的候选人不能等，过时不候哟~
+        </span>
+    </p>
+    <p class="relative msg-option">
+        <span class="m-radio relative" ng-click="selectMsg(3)" ng-class="{'active': msgType === 3}">
+            <i class="sprite i-radio"></i>互助伙伴给你送人才来啦，马上去查看！
+        </span>
+    </p>
+    <p>
+        <a href="javascript:void(0)" ng-click="sendMsg()" class="btn" ng-class="{'btn-disabled': isSending}" ng-bind-html="sendBtn | as_html"></a>
+    </p>
+    <p class="send-status" ng-if="sendStatus">发送成功！</p>
+</section>

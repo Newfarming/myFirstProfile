@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+</head>
+<body>
+  <div style="background:#fff;font-family:Helvetica,Arial,Sans-serif;padding:20px 0">
+    <div style="width:61.8%;min-width:450px;_width:650px;margin:0 auto;background:#fff;color:#333;border:1px solid #c8c8c8">
+      <div style="margin:10px 10px 0;background:#f0f0f0;padding:20px">
+        <h1 style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;margin-bottom:0;line-height:0">
+          <a href="http://pinbot.me" style="color:#5E93C9"><img width="130px" src="http://t1.pinbot.me/email/g/img/logo.png" alt="&#32856;&#23453;" style="border:none"></a>
+        </h1>
+      </div>
+      <div style="padding:40px 20px;font-size:.95em;border-top:3px solid #273f57;border-bottom:3px solid #ccc;background:#f9f9f9;margin:0 10px;padding-bottom:0">
+
+        <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word">
+          亲爱的HR，<br>
+          你购买的简历已经准备好了，请<a href="http://www.pinbot.me/resumes/display/{{resumeData.id}}" style="color:#5E93C9;color:#f60">点击此处</a>查看。也可通过一下联系方式与TA尽快交流。聘宝祝您沟通愉快，找到满意的人才！
+        </p>
+
+        <div style="margin-top:30px">
+
+          <div style="border:1px solid #ddd;padding:20px;background:#fff;box-shadow:3px 3px 0px rgba(125,125,125,.2)">
+          {%if feed%}
+            <div style="border-bottom:1px dashed #ddd;margin-bottom:20px">
+              <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;border-left:6px solid #999;padding-left:20px">
+                {{feed.keywords}} <br>
+                {{feed.job_type}} | {{feed.talent_level}} | {{feed.expect_area}}
+              </p>
+            </div>
+            {%endif%}
+
+            <div style="padding:10px 20px 30px">
+              <div>
+                <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;margin-bottom:5px !important">
+                {%if resumeData.gender == '男'%}
+                  <span style="margin-right:15px;background:#dfe8f0;width:25px;height:25px;line-height:25px;text-align:center;display:inline-block;zoom:1;*display:inline;border-radius:50%">男</span>
+                  {%else%}
+                  <span style="margin-right:15px;background:#ffe6e6;width:25px;height:25px;line-height:25px;text-align:center;display:inline-block;zoom:1;*display:inline;border-radius:50%">女</span>
+                  {%endif%}
+                  <span style="margin-right:15px">{{resumeData.age}}岁</span>
+                  <span style="margin-right:15px">{{resumeData.latestDegree}}</span>
+                  <span style="margin-right:15px"><em style="color:#f90;font-weight:bold;font-style:normal !important;margin:0 2px;color:#f60">{{resumeData.work_years}}</em> 年经验</span>
+                </p>
+                {% if resume.works %}
+              	{% with lastcompany=resume.works.0 %}
+				<p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;margin-bottom:5px !important">
+                  {{lastcompany.companyName}}
+                </p>
+                <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;margin-bottom:5px !important">
+                  <span style="margin-right:15px">{{lastcompany.positionTitle}}</span>
+                  <span style="margin-right:15px"><strong style="font-weight:bold;color:#000;font-weight:bold !important">{{lastcompany.salary}}</strong>/月</span>
+                </p>
+              	{% endwith %}
+            	{% endif %}
+
+                {% if resume.educations %}
+            	{% with education=resume.educations.0 %}
+                <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;margin-bottom:5px !important">
+                  {{education.school}}
+                </p>
+              	{% endwith %}
+            	{% endif %}
+
+              </div>
+
+              <div style="padding:30px;background:#eef3f6;margin-top:30px">
+                <h2 style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;padding-left:20px">{{contactInfoData.name}}</h2>
+                <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;margin-bottom:5px !important;padding-left:20px;background:url(&quot;http://t1.pinbot.me/email/g/img/dot.png&quot;) 0 center no-repeat">电话: <span style="margin-right:15px;font-size:24px;margin-left:5px">{{contactInfoData.phone}}</span></p>
+                <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;margin-bottom:5px !important;padding-left:20px;background:url(&quot;http://t1.pinbot.me/email/g/img/dot.png&quot;) 0 center no-repeat">邮箱: <span style="margin-right:15px;font-size:18px;margin-left:5px"><a href="mailto=zhao@hu.com" style="color:#5E93C9;color:#f60">{{contactInfoData.email}}</a></span></p>
+              </div>
+            </div>
+
+          </div>
+
+          <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;line-height:1.5;margin-bottom:20px;word-break:break-word;text-align:center;margin:50px 0 !important">
+            <a href="http://www.pinbot.me/resumes/display/{{resumeData.id}}" style="color:#5E93C9;color:#f60;background:#f90;color:#fff !important;font-weight:bold !important;font-size:16px;text-decoration:none;padding:10px;margin:0 auto;display:block;width:240px;font-size:22px">查看简历</a>
+          </p>
+        </div>
+      </div>
+      <div style="color:#555;margin:0 10px 10px;padding:20px;font-size:.8em;background:#f0f0f0">
+        <h2 style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;font-size:16px;font-weight:normal;margin:0;line-height:2;color:#000">聘宝，让招聘更简单</h2>
+        <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;margin:0;line-height:2">
+          <a href="http://hopperclouds.com" style="color:#5E93C9;margin-right:5px;color:#333">关于我们</a><span style="margin:0 3px;color:#999">|</span>
+          <a href="http://weibo.com/u/3739464981" style="color:#5E93C9;margin-right:5px;color:#333">关注聘宝</a>
+        </p>
+        <p style="margin:0;padding:0;margin-bottom:15px;line-height:1.5;margin:0;line-height:2;color:#999">
+          Copyright &copy; 2016 HopperClouds Inc.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

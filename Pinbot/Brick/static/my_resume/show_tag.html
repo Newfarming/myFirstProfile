@@ -1,0 +1,61 @@
+<div class="show_tag_form">
+	<h1><a ng-click="go_job_rec()"><img src="{- static_url -}my_resume/img/arrow_1_32x46.fw.png"/></a>我的标签</h1>
+	<div class="tag_section">
+		<h2>基础标签</h2>
+		<ul>
+			<li>
+				<a class="button" ui-sref="edit_gender">{- data.selected.gender -}</a>
+			</li>
+			<li>
+				<a class="button" ui-sref="edit_city">{- data.selected.city -}</a>
+			</li>
+			<li class="second">
+				<a class="button" ui-sref="edit_position_category">{- data.selected.job_category -}</a>
+			</li>
+			<li class="third">
+				<a class="button" ui-sref="edit_work_years">{- data.selected.work_years -}</a>
+			</li>
+			<li class="second">
+				<a class="button" ui-sref="edit_degree">{- data.selected.degree -}</a>
+			</li>
+			<li class="first">
+				<a class="button" ui-sref="edit_salary">{- data.selected.salary_lowest -}</a>
+			</li>
+			<li class="second third">
+				<a class="button" ui-sref="edit_field">偏好领域</a>
+			</li>
+		</ul>
+	</div>
+	<div class="tag_section">
+		<h2>职业标签</h2>
+		<ul>
+			<li ng-repeat="item in data.selected.category_tag track by $index" ng-class="{'first': check_first_li($index), 'second': check_second_li($index), 'third': check_third_li($index)}">
+				<a id="{- item.id -}" class="button" ng-click="show_delete_btn(item.id, 'category')">{- item.name -}<img ng-click="delete_tag(item.id, $index)" src="{- static_url -}my_resume/img/close24x24.fw.png"></img></a>
+			</li>
+
+			<!-- 添加标签 -->
+			<li class="last plus-btn" ng-class="{'last-first': data.selected.category_tag.length % 5 == 0, 'last-second': data.selected.category_tag.length % 2 == 0, 'last-third': data.selected.category_tag.length % 3 == 0}">
+				<a class="button" ng-click="toggle_input_div($event)"><span></span></a>
+			</li>
+		</ul>
+		<div class="tag_input_div">
+			<input type="text" ng-keyup="dropDown($event)" ng-model="tagName"/><a class="button addTag" ng-class="{'unuse': isUnuse()}" isUse="unuse" >新增标签</a>
+			<ul>
+				<li class="none_info"><a>暂无此职位标签</a></li>
+				<li ng-repeat="item in workTags track by item.id">
+					<a ng-click="setValue($event)" id="{- item.id -}">{- item.name -}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 系统推荐标签隐藏
+	<div class="tag_section">
+		<h2>系统推荐标签</h2>
+		<ul>
+			<li ng-repeat="item in data.selected.recommend_tag track by $index" ng-class="{'first': check_first_li($index), 'second': check_second_li($index), 'third': check_third_li($index)}">
+				<a id="{- item.id -}" class="button" ng-click="show_delete_btn(item.id, 'recommend')">{- item.name -}<img ng-click="delete_tag(item.id)" src="{- static_url -}my_resume/img/close24x24.fw.png"></img></a>
+			</li>
+		</ul>
+	</div>
+	-->
+</div>

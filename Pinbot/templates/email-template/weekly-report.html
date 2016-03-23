@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>{{start_date}}到{{end_date}}一周数据统计报表</title>
+	<link href="http://112.124.23.240/statis/css/basic.css" type="text/css?ad571bfb" rel="stylesheet" />
+	<script type="text/javascript" src="http://112.124.23.240/statis/js/enhance.js"></script>		
+	<script type="text/javascript">
+		// Run capabilities test
+		enhance({
+			loadScripts: [
+				'http://112.124.23.240/statis/js/excanvas.js',
+				'http://112.124.23.240/statis/js/jquery.min.js',
+				'http://112.124.23.240/statis/js/visualize.jQuery.js',
+				'http://112.124.23.240/statis/js/weekly-report.js',
+			],
+			loadStyles: [
+				'http://112.124.23.240/statis/css/visualize.css',
+				'http://112.124.23.240/statis/css/visualize-light.css'
+			]	
+		});   
+    </script>
+</head>
+<body>
+      <H2>用户信息统计</H2>
+      <table border="1">
+	  <tr>
+	    <th>指标</th>
+	    <th>累计</th>
+	    <th>一周</th>
+	  </tr>
+	  <tr>
+	  	<th>注册用户数</th>
+	  	<td>{{user_total_num}}</td>
+	  	<td>{{user_week_num}}</td>
+	  </tr>
+	  <tr>
+	  	<th>访问用户数</th>
+	  	<td>{{access_total_num}}</td>
+	  	<td>{{access_week_num}}</td>
+	  </tr>
+	  <tr>
+	  	<th>周日活跃</th>
+	  	<td>/</td>
+	  	<td>{{active_user_num}}</td>
+	  </tr>
+	  <tr>
+	  	<th>周新增日活跃</th>
+	  	<td>/</td>
+	    <td >{{new_user_active_num}}</td>
+	  </tr>
+	  <tr>
+	  	<th>周三日活跃</th>
+	  	<td>/</td>
+	  	<td>{{user_3day_active_num}}</td>
+	  </tr>
+	  <tr>
+	  	<th>周新增三日活跃</th>
+	  	<td>/</td>
+	  	<td>{{new_user_3day_active_num}}</td>
+	  </tr>
+	  <tr>
+	  	<th>成交量</th>
+	  	<td>{{total_pay}}</td>
+	  	<td>{{week_pay}}</td>
+	  </tr>
+	  <tr>
+	  	<th>付费用户数</th>
+	  	<td>{{total_user_num}}</td>
+	  	<td>{{week_user_num}}</td>
+	  </tr>
+	  <tr>
+	  	<th>客均价值</th>
+	  	<td>{{total_ave_value}}</td>
+	  	<td>{{week_ave_value}}</td>
+	  </tr>
+	  <tr>
+	  	<th>客均付费时长</th>
+	  	<td>{{total_ave_paytime}}</td>
+	  	<td>{{week_ave_paytime}}</td>
+	  </tr>
+	  <tr>
+	  	<th>周准流失: </th>
+	  	<td>{{pre_loss_num}}</td>
+	  	<td>/</td>
+	  </tr>
+	  <tr>
+	  	<th>周流失: </th>
+	  	<td>{{loss_num}}</td>
+	  	<td>/</td>
+	  </tr>
+	 </table>
+	<p></p>	
+	<table border="1" id="userInfo" name="userInfo">
+	<caption>用户信息统计</caption>
+	<tbody>
+		<tr>
+			<th>s</th>
+			<th>星期一</th>
+			<th>星期二</th>
+			<th>星期三</th>
+			<th>星期四</th>
+			<th>星期五</th>
+			<th>星期六</th>
+			<th>星期日</th>
+			<th>一周</th>
+		</tr>
+	    <tr>
+	    <th>注册用户数</th>
+	    {% for num in signup_list %}
+	    	<td>{{num}}</td>
+	    {% endfor %}
+	    <td>{{user_week_num}}</td>
+	    </tr>
+	    <tr>
+	    <th>访问用户数</th>
+	    {% for num in access_list %}
+	    	<td>{{num}}</td>
+	    {% endfor %}
+	    <td>{{access_week_num}}</td>
+	    </tr>
+	    <tr>
+	    <th>活跃用户数</th>
+	    {% for num in active_list %}
+	    	<td>{{num}}</td>
+	    {% endfor %}
+	    <td>{{active_user_num}}</td>
+	    </tr>
+	    </tbody>
+	</table>
+	    
+	<H2>订阅数据详情</H2>	
+	<table border="1">
+		<tr>
+			<th>指标</th>
+			<th>数值</th>
+		</tr>
+		<tr>
+		<th>简历推荐数</th>
+		<td>{{week_recommand_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历点击数</th>
+		<td>{{week_clicks_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历点击率</th>
+		<td>{{week_clicks_rate_feed}}</td>
+		</tr>
+		<tr>
+		<tr>
+		<th>简历点击数(去重)</th>
+		<td>{{week_clicks_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历点击率(去重)</th>
+		<td>{{week_clicks_norepeat_rate_feed}}</td>
+		</tr>
+		<tr>
+		<th>客户不合适点击数</th>
+		<td>{{improper_clicks_feed}}</td>
+		</tr>
+		<tr>
+		<th>员工不合适点击数</th>
+		<td>{{staff_improper_clicks_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历关注数</th>
+		<td>{{week_watch_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历关注数(去重)</th>
+		<td>{{week_watch_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历购买数</th>
+		<td>{{week_pre_buy_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历购买数(去重)</th>
+		<td>{{week_pre_buy_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买数</th>
+		<td>{{week_buy_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买数(去重)</th>
+		<td>{{week_buy_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历关注率</th>
+		<td colspan="2">{{resume_watch_rate_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历购买率</th>
+		<td colspan="2">{{resume_prebuy_rate_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买率</th>
+		<td colspan="2">{{resume_buy_rate_feed}}</td>
+		</tr>
+	</table>
+	
+	<H2>淘简历数据详情</H2>
+	<table border="1">
+		<tr>
+			<th>职位</th>
+			<th>职位点击数</th>
+			<th>已推荐的简历数</th>
+			<th>简历的累计点击数（无需去重）</th>
+			<th>被点击的简历数（按照简历维度去重）</th>
+			<th>产生点击行为的用户数</th>
+			<th>简历的累计下载数（无需去重）</th>
+			<th>被下载的简历数（按照简历维度去重）</th>
+			<th>有下载行为的用户数</th>
+			<th>不合适点击数</th>
+			<th>不合适点击数(员工)</th>
+			<th>简历关注数</th>
+		</tr>
+		{% for title, nums_list in statics_list %}
+			<tr>
+			<td>{{title}}</td>
+			{%for nums in nums_list%}
+				<td>{{nums}}</td>
+			{%endfor%}
+			</tr>
+		{%endfor%}
+		
+		{% for title, nums_list in statics_list_total %}
+			<tr>
+			<th>{{title}}</th>
+			{%for nums in nums_list%}
+				<th>{{nums}}</th>
+			{%endfor%}
+			</tr>
+		{%endfor%}
+	</table>
+	<p>详细情况请查看：<a href="http://112.124.23.240/statis/get_report/?days=7&lastday={{end_date}}&token=2XGIR062NRka">http://112.124.23.240/statis/get_report/?days=1&lastday={{report_date}}&token=2XGIR062NRka</a></p>
+	
+</body>
+</html>

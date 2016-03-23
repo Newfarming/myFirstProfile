@@ -1,0 +1,52 @@
+h1,h2,label,p {
+	text-align: center;
+	letter-spacing: 1px;
+	display: block;
+}
+h1 {
+	color: #434343;
+	font-size: 36px;
+	padding-top: 5rem;
+}
+h2,p {
+	color: #777;
+	padding-top: 3rem;
+}
+h2 a {
+	color: #0091fa;
+	cursor: pointer;
+	border-bottom: 1px solid #0091fa;
+}
+h2 span {
+	color: #f23748;
+}
+label {
+	display: none;
+	color: #f23748;
+	padding-top: 3rem;
+}
+p a {
+	color: #0091fa;
+	border-bottom: 1px solid #0091fa;
+}
+
+@media (min-width: 320px) and (max-width: 760px) {
+	h1 {
+		font-size: 24px;
+		padding-top: 4rem;
+	}
+	h2 {
+		font-size: 16px;
+		padding-top: 2rem;
+	}
+	label,p {
+		padding-top: 2rem;
+	}
+  @media (min-width: 481px) and (max-width: 760px) {
+
+   }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+
+}

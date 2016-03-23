@@ -1,0 +1,12 @@
+<div class="pull-right">
+  {% if page_info %}
+  <span>
+   总数：{{ page_info.total_count }}
+  </span>
+  {% endif %}
+  <ul class="pagination">
+    {% for page in pages %}
+    {{ page|default_if_none:'<li class="disabled"><span class="ellipsis">…</span></li>' }}
+    {% endfor %}
+  </ul>
+</div>

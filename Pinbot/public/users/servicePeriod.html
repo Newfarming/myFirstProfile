@@ -1,0 +1,7 @@
+
+<div class="price content box-content pd-top-0 lh180 choose-service-period" ng-show="servicePeriodList.length>0">
+    <span class="c607d8b f14">服务时长：</span>
+    <ul class="service-period-list">
+        <li class="btn " ng-class="{selected:item.selected}" ng-repeat="item in servicePeriodList | orderBy:'n'"><a href="javascript:void(0);" ng-click="chooseServicePeriod($event,item.n)">{-item.n-}个月</a></li>
+    </ul>
+</div>

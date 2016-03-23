@@ -1,0 +1,141 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+{% compress css %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}special_feed/css/re_feed_list.css?20151130">
+{% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with feed_class='curr' %}
+{% endblock %}
+
+{% block sub_header %}
+<!-- <div class="main-subnav">
+    <ul class="main-subnav-list">
+        <li class="first-child on"><a href="/feed/">我的定制</a></li>
+        <li class=""><a href="/feed/feedFrequency">定制设置</a></li>
+    </ul>
+</div> -->
+{% endblock %}
+
+{% block content %}
+<div id="main"  ng-app="app.re_feed_list" ng-cloak >
+    <div id="content" class="clear-fix">
+        <section class="feed-aside" ng-controller="feedAside">
+            <aside-info re_feed_list="re_feed_list"></aside-info>
+        </section>
+        <section class="feed-page" ui-view  ng-click="hideSelect($event)" >
+        </section>
+    </div>
+</div>
+{# include 'eggs/eggs.html' #}
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+{% if debug %}
+<script src="{{ STATIC_URL }}common/js/angular.1.3.6.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% else %}
+<script src="{{ STATIC_URL }}common/js/angular.min.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% endif %}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}brick/utils/ng_config.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/filter.js"></script>
+{% endcompress %}
+<script>
+    (function() {
+        var service = angular.module('app.django', []);
+        // angular tmpl method
+        service.factory('tmpl', function() {
+            return function(template_path) {
+                var static_path = '{{ STATIC_URL }}';
+                return static_path + template_path;
+            }
+        });
+        // angular tmp static url
+        service.factory('static_url', function() {
+            var static_path = '{{ STATIC_URL }}';
+            return static_path;
+        });
+    })();
+    var asideData = {{ data | safe }};
+</script>
+{% compress js %}
+<script src="{{ STATIC_URL }}special_feed/js/re_feed_list.js?t=20160222"></script>
+<script type="text/javascript">
+    var canUpdateDateBar=true;
+    var refreshDateBars=function(){
+        if(canUpdateDateBar && $('.resume-item-date').length){
+            //console.log('refreshDateBars',$('.resume-item-date').length);
+            canUpdateDateBar=false;
+            var dayList={};
+            $('.resume-item-date').each(function(i){
+                if($(this).prop('class').match(/resume\-item\-([0-9]+\-[0-9]+\-[0-9]+)/i)){
+                    var theDay=RegExp.$1;
+                    if(dayList[theDay]==undefined){
+                        dayList[theDay]=1;
+                    }else{
+                        dayList[theDay]++;
+                    }
+                }
+            });
+            for(var i in dayList){
+                if(dayList.hasOwnProperty(i)){
+                    if(dayList[i]>1){
+                        $('.resume-item-'+i).not('.resume-item-'+i+':first').addClass('resume-item-date-hide');
+                        //$('.resume-item-'+i).not('.resume-item-'+i+':first').css('border-top','2px solid #5e7c8b');
+
+                    }
+                    //console.log('background: '+i+'=',$('.resume-item-'+i+':first .item-header').css('background'));
+                    $('.resume-item-'+i+':first .item-header').css('background','#CFD8DC');
+                    $('.resume-item-'+i+':first .item-rec-time').css('color','#607D8B');
+                }
+            }
+            $('.resume-item').addClass('resume-item-date-bar');
+            if($('.resume-item-date-bar-red').length){
+                $('.resume-item-date-bar-red').not('.resume-item-date-bar-red:first').addClass('resume-item-date-hide');
+            }
+
+          }
+    };
+    $('.resume-item').addClass('resume-item-date-bar');
+    setTimeout(function(){
+        $(document).ready(function(){
+            $('.aside-1 li').click(function(e){
+                canUpdateDateBar=true;
+                setTimeout(function(){
+                    refreshDateBars();
+                },1500);
+            });
+            refreshDateBars();
+        });
+    },1500);
+    $(window).on( 'DOMMouseScroll mousewheel', function ( event ) {
+      if( event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0 ) {
+        //console.log('scroll down',event.originalEvent.detail,event.originalEvent.wheelDelta);
+        //alternative options for wheelData: wheelDeltaX & wheelDeltaY
+        canUpdateDateBar=true;
+        refreshDateBars();
+      }
+      //prevent page fom scrolling
+      //return false;
+    });
+    /*$(window).mousemove(function(e) {
+        //console.log('canUpdateDateBar',canUpdateDateBar);
+      refreshDateBars();
+    });*/
+
+
+
+</script>
+{% endcompress %}
+
+{% endblock %}

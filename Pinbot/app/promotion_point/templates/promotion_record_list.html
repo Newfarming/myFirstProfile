@@ -1,0 +1,84 @@
+{% extends 'base_center.html' %}
+{% load endless %}
+
+{% block header %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/extension.min.css?20140815" />
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with promotion_css='curr' %}
+{% endblock %}
+
+{% block sub_header %}
+<div class="main-subnav">
+    <div id="resume-list-header">
+        <ul class="main-subnav-list">
+            <li class="first-child">
+                <a href="{% url 'promotion-link' %}">推广链接</a>
+            </li>
+            <li class="on">
+                <a href="{% url 'promotion-record-list' %}">跟踪记录</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="main" class="noborder">
+    <div id="content" class="clearfix">
+        <div>
+            {% paginate 10 promotion_point_records %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>注册日期</th>
+                        <th>用户名</th>
+                        <th>公司名称</th>
+                        <th>获得奖励</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if promotion_point_records %}
+                {% for record in promotion_point_records %}
+                <tr>
+                    <td>
+                        {{ record.register_user.date_joined|date:'Y-m-d' }}
+                    </td>
+                    <td>
+                        {{ record.register_user.username }}
+                    </td>
+                    <td>
+                        {{ record.register_user.first_name }}
+                    </td>
+                    <td>
+                        {% if record.point %}
+                        {{ record.point }}聘点
+                        {% endif %}
+                        {% if record.coin %}
+                        {{ record.coin|floatformat:"0" }}金币
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">
+                        <p class="no-list"><i class="i-l-notice"></i>暂时没有任何数据！</p>
+                    </td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+
+            {% get_pages %}
+            {{ pages }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% endblock %}

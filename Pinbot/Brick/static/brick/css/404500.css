@@ -1,0 +1,67 @@
+p {
+	text-align: center;
+}
+p.title {
+    padding-top: 4.7rem;
+}
+p.description, p.notfound_d {
+    padding-top: 35px;
+    color: #666;
+    font-size: 18px;
+}
+p.description {
+	font-size: 24px;
+}
+p.pic {
+    padding-top: 30px;
+}
+p.notfound_d {
+	width: 55%;
+	word-wrap: break-word;
+	margin: 0 auto;
+	word-break: normal;
+	text-align: left;
+}
+p.notfound_p {
+	padding-top: 40px;
+	margin: 0 auto;
+	display: block;
+}
+p.notfound_p a {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    top: -4rem;
+}
+p.notfound_p a img {
+}
+p.ps {
+	text-align: center;
+	color: #888;
+	font-size: 14px;
+	padding-top: 3rem;
+	letter-spacing: 1px;
+}
+/* media queries */
+@media ( min-width: 320px ) and ( max-width: 782px ) {  /* 手机设备 */
+	p.title {
+		padding-top: 50px;
+	}
+	p.description {
+		font-size: 18px;
+	}
+	p.notfound_d {
+		width: 69%;
+		word-wrap: break-word;
+		margin: 0 auto;
+		word-break: normal;
+		text-align: left;
+		font-size: 18px;
+}
+    @media ( min-width: 481px ) and ( max-width: 760px ){   /* 大屏手机设备 */
+    }
+}
+@media ( min-width: 761px ) and ( max-width: 1024px ) { /* pad设备(不区分横竖屏) */
+}
+@media ( min-width: 1025px ){   /* pc设备(默认) */
+}

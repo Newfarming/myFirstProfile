@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>聘宝，专业人才推荐</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="{{STATIC_URL}}tutorial/newguide.min.css?20150421" />
+<link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}yure/img/favicon.ico" />
+
+</head>
+<body>
+
+    <!-- <a class="btn">
+        <span></span>
+        <em class="swave1"></em>
+        <em class="swave2"></em>
+        <em class="swave3"></em>
+    </a> -->
+
+    <div class="content" id="JS_content">
+        <span class="mouse" title="向下滚动" id="JS_mouse"></span>
+        <a href="javascript:;" class="return" title="跳过" onclick="_guide.play();" id="JS_skip">跳过</a>
+        <div id="JS_btns"></div>
+    </div>
+
+    <div id="JS_myModal" style="display:none;">
+        <div class="guide-backdrop"></div>
+        <div class="guide-modal"></div>
+    </div>
+
+    <div class="finish" id="JS_finish">
+        <a href="/companycard/get/" class="default-btn finish-btn" title="完善企业名片及招聘信息">完善企业名片及招聘信息</a>
+    </div>
+
+<script src="{{STATIC_URL}}tutorial/new_guide.min.js?20150421" type="text/javascript" charset="utf-8" async defer></script>
+
+<div style="display: none;">
+{% include 'baidu_tj.html' %}
+</div>
+</body>
+</html>

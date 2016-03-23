@@ -1,0 +1,160 @@
+{% extends 'base_newset.html' %}
+
+{% block content %}
+    <div class="">
+        <div class="layout">
+
+            <div class="main main-white">
+                <div class="header">
+                    <div class="stepBox">
+                        <ul class="steps-info-line">
+                            <li></li>
+                            <li class="active"></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <ul class="steps-info">
+                            <li class="step1 active">
+                                <span class="step-icon"><span>1</span></span>
+                                <span class="step-info">填写注册信息</span>
+                            </li>
+                            <li class="step2">
+                                <span class="step-icon"><span>2</span></span>
+                                <span class="step-info">账号激活</span>
+                            </li>
+                            <li class="step3">
+                                <span class="step-icon"><span>3</span></span>
+                                <span class="step-info">注册成功！</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p class="pc align-center caaaaaa">
+                        <span class="c607d8b f14">感谢使用聘宝，您正注册成为聘宝体验用户</span><br>
+                        <span class="city-no-star c607d8b f14">成为<span class="cf46c62">付费会员</span>可使用完整功能，详情<a href="/vip/role_info_example/" class="signin c63c2ec">点击查看</a>付费服务</span>
+                    </p>
+
+                    <ul class="step-title">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>填写注册信息</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <div class="register-form-div">
+                    <h1 class="mobile">申请会员</h1>
+                    <p class="mobile align-center caaaaaa">
+                        <span class="c607d8b f14">感谢使用聘宝，您正注册成为聘宝体验用户</span><br>
+                        <span class="c607d8b f14">成为<span class="cf46c62">付费会员</span>可使用完整功能，请至<span class="cf46c62">网页版</span>查看</span>
+                    </p>
+                </div>
+                <p class="pc register-pc">
+                    <label class="city-no-star">聘宝目前仅服务于：北京、上海、广州、深圳、杭州、成都、重庆、西安、武汉
+                    </label>
+                </p>
+
+                <div class="register-form-div">
+
+                    <form id="regForm" class="fix" method="POST" data-industry='[{% for field in industry_list %}{\"id\":\"{{field.code_name }}\",\"name\":\"{{field}}\"},{% endfor %}{}]' data-industry-fields='[{% for field in field_list %}{\"id\":\"{{ field.id }}\",\"category\":\"{{ field.category }}\",\"industry\":\"{{ field.industry.code_name }}\"},{% endfor %}{}]' >
+                        <div class="">
+                            <p>
+                                <label class="pc pc-hide">你的企业邮箱</label><input type="text" tabindex="1" name="user_email" id="user_email" value="{{user_email}}"  autocomplete="off" class="first-child big-placeholder" placeholder="你的企业邮箱" />
+                                <label class="mobile" alt="你的企业邮箱" placeholder="你的企业邮箱"></label>
+                                <label id="user_email-error" class="invalid" for="user_email" style="display: none;"></label>
+                            </p>
+                            <p>
+                                <label class="pc pc-hide">设置密码</label><input type="password" tabindex="2" name="password" id="password" value="{{password}}"  autocomplete="off" placeholder="设置密码" maxlength="20" minlength="6" class="big-placeholder" />
+                                <label class="mobile" alt="设置密码" placeholder="设置密码"></label>
+                                <label id="password-error" class="invalid" for="password" style="display: none;"></label>
+                            </p>
+                        </div>
+                        <div >
+                            <p>
+                                <label class="pc pc-hide">手机号码</label><input type="text" tabindex="3" id="phone" name="phone" value="{{phone}}"  autocomplete="off" class="big-placeholder" placeholder="手机号码" />
+                                <label class="mobile" alt="手机号码" placeholder="手机号码"></label>
+                                <label id="phone-error" class="invalid" for="phone" style="display: none;"></label>
+                            </p>
+                            <p class="smscodeBox">
+
+                                <label class="pc pc-hide">请输入短信验证码</label><input type="text" tabindex="4" name="smscode" id="smscode" value=""  autocomplete="off" placeholder="请输入短信验证码" maxlength="20" minlength="6" class="big-placeholder w250" />
+                                <label class="mobile short" alt="请输入短信验证码" placeholder="请输入短信验证码"></label>
+                                <label id="smscode-error" class="invalid short" for="smscode" style="display: none;"></label>
+                                <!-- <button type="button" class="btn btn-blue-submit-small smscode"><span>获取验证码</span></button> -->
+                            </p>
+                            <p>
+                                <label class="pc pc-hide">真实姓名</label><input type="text" tabindex="5" name="name" id="name" value="{{name}}"   autocomplete="off" class="big-placeholder" placeholder="真实姓名" />
+                                <label class="mobile" alt="真实姓名" placeholder="真实姓名"></label>
+                                <label id="name-error" class="invalid" for="name" style="display: none;"></label>
+                            </p>
+                            <p>
+                                <label class="pc pc-hide">联络QQ</label><input type="text" tabindex="6" name="qq" id="qq" value="{{qq}}"  autocomplete="off" class="big-placeholder" placeholder="联络QQ"/>
+                                <label class="mobile" alt="联络QQ" placeholder="联络QQ"></label>
+                                <label id="qq-error" class="invalid" for="qq" style="display: none;"></label>
+                            </p>
+                            <p>
+                                <label class="pc pc-hide">企业名称</label><input type="text" tabindex="7" name="company_name" id="company_name" value="{{company_name}}"  autocomplete="off" class="big-placeholder" placeholder="企业名称" />
+                                <label class="mobile" alt="企业名称" placeholder="企业名称"></label>
+                                <label id="company_name-error" class="invalid" for="company_name" style="display: none;"></label>
+                            </p>
+                        </div>
+                        <div class="toggle_div">
+                            <label class="pc line">请选择所在行业</label>
+                            <label class="mobile">请选择所在行业</label>
+                            <ul class="u-industry-btn">
+                                <li><a class="selected" data-id="internet" href="javascript:void(0);">IT互联网</a></li>
+                            </ul>
+
+                            <label class="pc line">请选择所在领域<span class="fix-span">（最多选<span class="fc863f">3</span>个）</span>
+                            </label>
+                            <label class="mobile">请选择所在领域（最多选<span class="fc863f">3</span>个）</label>
+
+                            <ul class="field_list fix"></ul>
+                            <p class="hidden-field">
+                                <label class="pc"></label><input type="hidden" class="select_fields" name="select_fields" data-industry="internet" value="{{select_fields}}" required/>
+                                <label id="select_fields-error" class="invalid" for="select_fields" style="display: none;"></label>
+                            </p>
+                        </div>
+                        <p class="checkbox-p">
+                            <label class="pc"></label>
+
+                            <label class="agreement-line">
+                            <input type="checkbox" checked required tabindex="8" name="agreement"/>
+                            我已阅读并同意
+                            <a href="/users/vip_protocal" class="protocal" target="_blank">聘宝用户协议</a>
+                            </label>
+
+                            <label id="agreement-error" class="invalid" for="agreement" style="display: none;"></label>
+                        </p>
+                        <p class="form-control align-center">
+                            <label class="pc"></label><button type="button" tabindex="9" class="btn btn-red-submit register-confirm btn-pos-fix">下一步</button>
+                            <label class="mobile">聘宝目前仅服务于：北京、上海、广州、深圳、杭州、成都、重庆、西安、武汉</label>
+                        </p>
+                        <p class="mobile copyright">
+                            <label>Copyright &copy; 2013 - 2015 HopperClouds, Inc.</label>
+                        </p>
+                        <p class="pc align-center caaaaaa">
+                            <label class="pc"></label>已有帐号？直接<a href="/signin" class="signin">登录</a>
+                        </p>
+                        {% csrf_token %}
+                        <input name="promotion_token" type="hidden" value="{{ promotion_token }}"/>
+                    </form>
+                </div>
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+<br><br><br><br><br><br><br><br>
+
+
+
+{% endblock %}
+
+{% block footer_html %}
+<div class="new-footer">
+    <ul class="contact">
+        <li>联系电话：028-83330727</li>
+        <li>企业QQ：800031490</li>
+        <li>HR交流Q群：9580917</li>
+    </ul>
+</div>
+{% endblock %}

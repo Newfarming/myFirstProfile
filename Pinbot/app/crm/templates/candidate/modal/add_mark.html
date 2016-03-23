@@ -1,0 +1,148 @@
+<div class="modal fade" id="addMarkModal" tabindex="-1" role="dialog" aria-labelledby="remarkModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加评价</h4>
+            </div>
+            <div class="modal-body">
+                <form action="#" id="addMarkForm">
+                    <input name="record_id" id="buy_record_id" type="hidden" value=""/>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">类型</label>
+                        <select class="form-control" name="code_name" id="markSelect">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">填写备注(是否展示给用户<input id="is_display" name="is_display" type="checkbox" checked="checked" > ):</label>
+                        <textarea class="form-control" cols="30" id="remarkDescInput" name="desc" rows="5" ></textarea>
+                    </div>
+                </form>
+                <a href="#" id="display_schedule_table" class="btn btn-success" style="width: 100%;">添加日程</a>
+                <table id="schedule_table" style="display: none;" class="table no-margin">
+                    <thead>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label>选择日程时间: </label>
+                            </td>
+                            <td style="width: 70%;">
+                                <input style="width: 90%;" id="schedule_time" type="text" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label>日程备注 : </label>
+                            </td>
+                            <td style="width: 70%;">
+                                <input style="width: 90%;" id="schedule_content" type="text" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label>URL : </label>
+                            </td>
+                            <td style="width: 70%;">
+                                <input style="width: 90%;" id="schedule_url" type="text" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%;">
+                                <label>事件背景色 : </label>
+                            </td>
+                            <td style="width: 70%;">
+                                <select id="select_background_color">
+                                    <option value="red" select="selected">&nbsp;红&nbsp;&nbsp;&nbsp;</option>
+                                    <option value="yellow">&nbsp;黄&nbsp;&nbsp;&nbsp;</option>
+                                    <option value="blue">&nbsp;蓝&nbsp;&nbsp;&nbsp;</option>
+                                    <option value="purple">&nbsp;紫&nbsp;&nbsp;&nbsp;</option>
+                                </select>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="addMarkConfirmBtn">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="selectMarkOptionTpl">
+    <% _.each(choices, function(value, key) { %>
+    <% _.each(value.choices, function(c_list) { %>
+    <% _.each(c_list.choices, function(choice) { %>
+    <option value="<%- choice.code_name %>"><%- choice.desc %></option>
+    <% }); %>
+    <% }); %>
+    <% }); %>
+</script>
+
+<script>
+ $(function() {
+     $( "#schedule_time" ).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+     $("#display_schedule_table").click(function(){
+         $("#schedule_table").toggle();
+     });
+     var $form = $('#addMarkForm'),
+     $contact_id = $('#buy_record_id'),
+     $remarkConfirmBtn = $('#addMarkConfirmBtn'),
+     $markSelect = $('#markSelect'),
+     $is_display = $('#is_display'),
+     _optionTpl = _.template($('#selectMarkOptionTpl').html()),
+     $remark_desc_input = $('#remarkDescInput');
+     $modal = $('#addMarkModal');
+
+     $modal.on('shown.bs.modal', function(e) {
+         var button = $(e.relatedTarget),
+         contact_id = button.data('contact_id');
+         $contact_id.val(contact_id);
+
+        $.getJSON('/transaction/record_mark_choice/' + contact_id + '/', function(data) {
+            $markSelect.html(_optionTpl({
+                choices: data.choices
+            }));
+        });
+     });
+
+    $remarkConfirmBtn.on('click', function(e) {
+        var is_add_schedule = $("#schedule_table").attr('style');
+        if (is_add_schedule != "display: none;"){
+            var schedule_time = $("#schedule_time").val();
+            if (schedule_time==''){
+                alert('请填写日程时间');
+                return false;
+            }
+            var schedule_content = $("#schedule_content").val();
+            if (schedule_content==''){
+                alert('请填写日程事件');
+                return false;
+            }
+            var schedule_color = $("#select_background_color").val();
+            var url = $("#schedule_url").val();
+            var csrf = document.cookie.match('(^|;) ?' + 'csrftoken' + '=([^;]*)(;|$)');
+            var csrftoken = csrf?csrf[2]:null;
+            $.post('/crm/calendar/events/', {'csrfmiddlewaretoken': csrftoken,'title': schedule_content,'start_time': schedule_time, 'backgroundcolor': schedule_color, 'url': url}, function(result){
+                if (result.status == 'ok'){
+                }
+                else{
+                    alert('error');
+                }
+            });
+        }
+
+        var record_id = $contact_id.val(),
+        desc = $remark_desc_input.val();
+        if (!desc) {
+            alert('请先填写备注');
+            return false;
+        }
+
+        $.post('/transaction/mark_resume/' + record_id + '/', $form.serialize(), function(data) {
+            $modal.modal('hide');
+            var selected_text = $("#markSelect").find("option:selected").text()
+                $("[data-contact_id="+record_id+"]").parent().next().html(selected_text)
+        });
+    });
+ });
+</script>

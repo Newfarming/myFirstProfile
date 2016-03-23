@@ -1,0 +1,37 @@
+<div class="mark-box" ng-if="unconfirm(resumeMassage.current_mark)" resume-id="{- resumeMassage.resume_id -}" ng-init="selected=false">
+    <div class="btn-select">
+        <a href="javascript:void(0)" class="mark-botton bg607d8b " ng-class="{'selected':selected}" ng-click="selected=!selected">淘汰</a>
+    </div>
+    <div class="btn-select-list" ng-show="selected" ng-cloak>
+        <a href="javascript:void(0)" class="mark-botton bg44b5e9" ng-click="interviewTime($event)">安排面试</a>
+    </div>
+</div>
+<div class="mark-box" ng-if="resumeMassage.current_mark == 'invite_interview'" resume-id="{- resumeMassage.resume_id -}" ng-init="selected=false">
+    <div class="btn-select">
+    <a href="javascript:void(0)" class="mark-botton bg607d8b" ng-class="{'selected':selected}" ng-click="selected=!selected">面试爽约</a>
+    </div>
+    <div class="btn-select-list" ng-show="selected" ng-cloak>
+    <a href="javascript:void(0)" class="mark-botton bg44b5e9 mt10">修改面试时间</a>
+    </div>
+</div>
+<div class="mark-box" ng-if="resumeMassage.current_mark == 'pending'" resume-id="{- resumeMassage.resume_id -}" ng-init="selected=false">
+    <div class="btn-select">
+    <a href="javascript:void(0)" class="mark-botton bg607d8b"  ng-class="{'selected':selected}" ng-click="selected=!selected">发送企业名片</a>
+    </div>
+    <div class="btn-select-list" ng-show="selected" ng-cloak><a href="javascript:void(0)" class="mark-botton bg44b5e9 mt10" ng-click="interviewTime($event)">安排面试</a></div>
+</div>
+<div class="mark-box" ng-if="resumeMassage.current_mark == 'break_invite'" resume-id="{- resumeMassage.resume_id -}" ng-init="selected=false">
+    <div class="btn-select">
+    <a href="javascript:void(0)" class="mark-botton bg607d8b" ng-class="{'selected':selected}" ng-click="selected=!selected">淘汰</a>
+    </div>
+    <div class="btn-select-list" ng-show="selected" ng-cloak><a href="javascript:void(0)" class="mark-botton bg44b5e9 mt10">修改面试时间</a></div>
+</div>
+<div class="mark-box vertical-align" ng-if="resumeMassage.current_mark == 'entry'" resume-id="{- resumeMassage.resume_id -}">
+    <p class="line-height-18"></p>
+</div>
+<div class="mark-box" ng-if="resumeMassage.current_mark == 'send_offer'" resume-id="{- resumeMassage.resume_id -}" ng-init="selected=false">
+    <div class="btn-select">
+    <a href="javascript:void(0)" class="mark-botton bg607d8b" ng-class="{'selected':selected}" ng-click="selected=!selected">淘汰</a>
+    </div>
+    <div class="btn-select-list" ng-show="selected" ng-cloak><a href="javascript:void(0)" class="mark-botton bg44b5e9 mt10">录用</a></div>
+</div>

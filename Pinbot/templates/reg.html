@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/login.css?ad571bfb" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+</head>
+<body class="page-login">
+<div id="page">
+  <div id="login">
+    <h1>
+      <a href="/" title="聘宝，专业人才推荐"></a>
+    </h1> 
+    <form method="post" action="/signup/" id="login-form">
+        {% if status == 'error' %}
+          <p id="error">
+	        {% if message == 'user existed' %} 用户已经存在 {% endif%}
+	        {% if message == 'password invalid' %} 密码不合法 {% endif%}
+	        {% if message == 'input error' %} 输入用户名或者密码不符合要求 {% endif%}
+	        {% if message == 'other_error'%} 其他错误{%endif%}
+          </p>
+        {% endif%}
+      <p id="email">
+        <input type="email" tabindex=1" name="email" autofocus placeholder="请输入邮箱" autocomplete="off"/>
+      </p>
+      <p id="password">
+        <input type="password" tabindex="2" name="password" placeholder="请输入密码"/>      
+      </p>
+
+      <p id="company">
+        <input type="text" tabindex="3" name="company" placeholder="请输入公司名称"/>    
+      </p>
+
+      <p id="submit">
+        <button type="submit" tabindex="4" /> 注册 </button>
+      </p>
+      <p id="apply">
+        已经有聘宝帐号？ <a href="/signin/">立即登录</a>
+      </p> 
+      {% csrf_token %}
+    </form>
+
+  </div>
+</div>
+
+<script src="{{ STATIC_URL }}alpha/scripts/login.js?9c1f051a"></script>
+{% include 'footer.html' %}
+</body>
+</html>

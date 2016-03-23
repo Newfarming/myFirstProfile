@@ -1,0 +1,245 @@
+/* ------- start variables -------- */
+/* for test */
+/* main red button */
+/* sprite */
+/* z-index */
+/* main red button */
+/* main blue button */
+/* dark blue button */
+/* dark white button */
+/* main background color */
+/* main font color */
+/* main border color */
+/* main font family */
+/* main font size */
+/* ------- start variables -------- */
+/* ------- start mixins -------- */
+.no-space {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.clear-both {
+  clear: both;
+}
+.userSelectNone {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*
+content-box 在宽度和高度之外绘制元素的内边距和边框
+border-box 为元素设定的宽度和高度决定了元素的边框盒
+*/
+/*
+所有主流浏览器都不支持 appearance 属性
+ */
+.transition {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.transitionTransform {
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.modalBoxShadow {
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.btnBoxShadow {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+/* backface-visibility 属性定义当元素不面向屏幕时是否可见。 */
+/* ------- end mixins -------- */
+.tip-model {
+  border: solid 1px #cfd8dc;
+  padding: 20px;
+  /*    width: 300px;*/
+  background: #f7f7f7;
+  position: absolute;
+  z-index: 500;
+  font-size: 12px;
+}
+.tip-model:before {
+  border: solid 5px transparent;
+  border-bottom: solid 5px #fbc89e;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: -11px;
+  content: ' ';
+}
+.tip-model:after {
+  border: solid 5px transparent;
+  border-bottom: solid 5px #f7f7f7;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  content: ' ';
+  top: -10px;
+}
+.tip-model.down-side:before {
+  border: solid 5px transparent;
+  border-top: solid 5px #fbc89e;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  bottom: -11px;
+  content: ' ';
+  top: auto;
+  right: auto;
+}
+.tip-model.down-side:after {
+  border: solid 5px transparent;
+  border-top: solid 5px #f7f7f7;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  content: ' ';
+  bottom: -10px;
+  top: auto;
+  right: auto;
+}
+.tip-model.right-bottom-side:before {
+  border: solid 5px transparent;
+  border-left: solid 5px #fbc89e;
+  position: absolute;
+  bottom: 2px;
+  content: ' ';
+  top: auto;
+  left: auto;
+  right: -11px;
+}
+.tip-model.right-bottom-side:after {
+  border: solid 5px transparent;
+  border-left: solid 5px #f7f7f7;
+  position: absolute;
+  content: ' ';
+  bottom: 2px;
+  top: auto;
+  left: auto;
+  right: -10px;
+}
+.tip-model.right-top-side:before {
+  border: solid 5px transparent;
+  border-bottom: solid 5px #fbc89e;
+  position: absolute;
+  bottom: auto;
+  content: ' ';
+  top: -11px;
+  left: auto;
+  right: 2px;
+}
+.tip-model.right-top-side:after {
+  border: solid 5px transparent;
+  border-bottom: solid 5px #f7f7f7;
+  position: absolute;
+  content: ' ';
+  bottom: auto;
+  top: -10px;
+  left: auto;
+  right: 2px;
+}
+.tip-model.left-top-side:before {
+  border: solid 5px transparent;
+  border-right: solid 5px #fbc89e;
+  position: absolute;
+  bottom: auto;
+  content: ' ';
+  left: -8px;
+  top: 2px;
+  right: auto;
+}
+.tip-model.left-top-side:after {
+  border: solid 5px transparent;
+  border-right: solid 5px #f7f7f7;
+  position: absolute;
+  content: ' ';
+  bottom: auto;
+  top: 2px;
+  left: -7px;
+  right: auto;
+}
+.tip-model.left-bottom-side:before {
+  border: solid 5px transparent;
+  border-right: solid 5px #fbc89e;
+  position: absolute;
+  top: auto;
+  content: ' ';
+  left: -8px;
+  bottom: 2px;
+  right: auto;
+}
+.tip-model.left-bottom-side:after {
+  border: solid 5px transparent;
+  border-right: solid 5px #f7f7f7;
+  position: absolute;
+  content: ' ';
+  top: auto;
+  bottom: 2px;
+  left: -7px;
+  right: auto;
+}
+.tracking-ajax-list {
+  color: #aaaaaa;
+}
+.tracking-ajax-list li {
+  color: #607d8b;
+}
+.tracking-ajax-list li:hover {
+  /*font-weight: bold;*/
+}
+.tracking-ajax-list li span {
+  margin-right: 10px;
+  display: inline-block;
+  line-height: 25px;
+  word-break: break-all;
+  vertical-align: middle;
+}
+.tracking-ajax-list li span.w100 {
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tracking-ajax-prevpage,
+.tracking-ajax-nextpage {
+  display: inline-block;
+  width: 8px;
+  height: 9px;
+}
+.tracking-pages {
+  padding: 10px;
+}
+.tracking-ajax-prevpage {
+  background: url(/static/alpha/images/track_arr.png) 0 -10px;
+}
+.tracking-ajax-nextpage {
+  background: url(/static/alpha/images/track_arr.png) 0 0;
+}
+.ajax-tip-list tr,
+.ajax-tip-list td {
+  line-height: 20px;
+  padding: 5px;
+  color: #607d8b;
+  font-size: 14px;
+}
+.tip-pages {
+  text-align: right;
+}
+.tip-pages a {
+  color: #607d8b;
+  margin: 10px 10px 0;
+  display: inline-block;
+}
+.tip-pages a:hover {
+  border-bottom: solid 1px #cfd8dc;
+}

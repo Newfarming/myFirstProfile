@@ -1,0 +1,66 @@
+<div class="contant-info-edit mt20" ng-show="isShowEditItem">
+    <form action="." name="projectForm_{- project.id -}" method="post" accept-charset="utf-8" id="projectForm_{- project.id -}" autocomplete="off">
+        <div class="form-box">
+            <input ng-model="project.project_name" name="project_name" type="text" class="input" validator="project_name" placeholder="项目名称"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="project.company_name" name="company_name" type="text" class="input" placeholder="公司名称"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="project.responsible_for" name="responsible_for" type="text" class="input" placeholder="职责"/>
+        </div>
+        <div class="clearfix">
+            <div class="left" style="width:48%;">
+                <div class="form-box">
+                    <input ng-model="project.start_time" name="start_time" type="month" class="input" validator="start_time" placeholder="开始时间"/>
+                </div>
+            </div>
+            <div class="right" style="width:48%;">
+                <div class="form-box">
+                    <input ng-model="project.end_time" name="end_time" type="month" class="input" validator="end_time" placeholder="结束时间"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-box">
+            <textarea ng-model="project.project_desc" name="project_desc" type="text" class="input" placeholder="项目描述"/></textarea>
+        </div>
+        <input ng-model="project.id" name="update_id" type="hidden" class="input"/>
+        <div class="form-box text-center btns-2">
+            <button class="button button-normal" validation-submit="projectForm_{- project.id -}" ng-click="save(save_project_url, {project_desc: project.project_desc, start_time: getDate( project.start_time , 'yyyy-MM' ), end_time: getDate( project.end_time , 'yyyy-MM' ), responsible_for: project.responsible_for, update_id: project.id, company_name: project.company_name, project_name: project.project_name})" type="button">保存</button>
+            <button class="button button-normal" ng-click="toggleEditItem( false , true )" type="button">取消</button>
+            <button class="button button-normal" ng-click="delete(project.id)" type="button" ng-show="isShowDelete()">删除</button>
+        </div>
+    </form>
+</div>
+<div class="person-profile-info text-left mt20" ng-show="!isShowEditItem">
+    <table width="100%" cellpadding="0" cellspacing="0" class="table-view">
+        <tbody>
+            <tr>
+                <td>项目名称：</td>
+                <td>{- project.project_name -}</td>
+            </tr>
+            <tr>
+                <td>公司名称：</td>
+                <td>{- project.company_name -}</td>
+            </tr>
+            <tr>
+                <td>职责：</td>
+                <td>{- project.responsible_for -}</td>
+            </tr>
+            <tr>
+                <td>起止日期：</td>
+                <td>{- project.start_time | formartDate -} - {- project.end_time | formartDate -}</td>
+            </tr>
+            <tr>
+                <td>项目描述：</td>
+                <td>{- project.project_desc -}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-box text-center btns-2">
+        <button class="button button-normal w20p" ng-click="toggleEditItem( true )" type="button">修改</a>
+        <button class="button button-normal w20p" ng-click="add()" type="button">新增</button>
+        <button class="button button-normal w20p" ng-click="delete(project.id)" type="button" ng-show="isShowDelete()">删除</button>
+
+    </div>
+</div>

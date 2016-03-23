@@ -1,0 +1,85 @@
+
+<div class="main main-mode" ng-controller="pointRecharge">
+    <div class="header">
+        <h1>购买聘点</h1>
+        <div class="sub-title">请选择你要购买的点数，
+            您当前有：<span class="cf46c62 price">{- myPoint -} </span> 聘点</div>
+    </div>
+
+    <div class="price content box-content box-content-small box-content-point" ng-class="{'box-content-p100-20': modeListMinor.length>=5,'box-content-p80': modeListMinor.length==4,'box-content-p90': modeListMinor.length==3,'box-content-p40': modeListMinor.length==2,'box-content-p30': modeListMinor.length==1}">
+        <div class="text-center ajax-loading" ng-if="loadingThis" ng-hide="true">
+            <img src="/static/partner/images/loading.gif" alt="loading">
+            <br>页面装载中...
+        </div>
+        <div class="box-col box-col-center" ng-repeat="mode in modeListMinor">
+
+            <div class="user-mode user-mode-small user-mode-small-h user-mode-small-hs user-mode-small-point user-mode-small-point-{- mode.id -} selected" ng-class="{active: hoverDiy}" ng-mouseover="hoverDiy=true"
+    ng-mouseout="hoverDiy=false" ng-click="clickMode($event,mode.id,mode.point,mode.price,mode.resume)">
+                <div class="box-col-bar"></div>
+                <div class="user-mode-list">
+                    <div class="user-mode-title text-center">¥ <span class="price-focus">{- mode.price -}</span></div>
+                    <div class="user-mode-title text-center"><span class="annotation">(有效期：不限)</span></div>
+                    <ul>
+                        <li>购买<span>{- mode.point -}</span>个聘点</li>
+                        <li>可下载<span class="blue">{- mode.resume -}</span>份简历</li>
+                    </ul>
+                </div>
+                <div class="user-mode-btn">
+                    <div class="badge"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="price content box-content box-content-p30">
+
+        <div class="box-col box-col-center">
+            <div class="user-mode user-mode-pay active" ng-click="choosePayMethod($event,'alipay')" ng-mouseover="hoverMe($event,true)"
+    ng-mouseout="hoverMe($event,false)">
+                <a class="pay-icons pay-icons-alipay">支付宝</a>
+            </div>
+        </div>
+        <!-- <div class="box-col box-col-right">
+            <div class="user-mode user-mode-pay" ng-click="choosePayMethod($event,'wechat')" ng-mouseover="hoverMe($event,true)"
+    ng-mouseout="hoverMe($event,false)">
+                <a class="pay-icons pay-icons-wechat">微信支付</a>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="price content box-content pd-top-0 lh180" ng-if="coin <= 0">
+        <span class="c607d8b f14">您的聘宝金币：<span class="cf46c62">{- coin -}</span>个，暂不能使用金币支付！</span>
+    </div>
+    <div class="price content box-content pd-top-0 lh180" ng-if="coin <= modeFee && coin > 0">
+        <span class="c607d8b f14">您的聘宝金币：<span class="cf46c62">{- coin -}</span>个，暂不能使用金币支付！</span>
+    </div>
+    <div class="price content box-content pd-top-0 lh180" ng-if="coin > modeFee">
+        <span class="c607d8b f14">您的聘宝金币：<span class="cf46c62">{- coin -}</span>个，可以使用金币支付！</span>
+
+    </div>
+    <p class="checkbox-p" ng-if="coin > modeFee">
+        <label class="agreement-line">
+            <input type="checkbox" ng-model="userCoin" required name="userCoin" id="userCoin"/>
+            使用我的金币支付，消耗金币<span class="cf46c62">{- modeFee -}</span>个，(支付成功后剩余金币：
+            <span class="cf46c62" ng-if="coin <= modeFee && coin > 0">{- modeFee - coin -}</span>
+            <span class="cf46c62" ng-if="coin > modeFee">{- coin - modeFee -}</span>
+            个)
+        </label>
+    </p>
+
+    <p class="checkbox-p">
+        <label class="agreement-line text-center mg-bottom-30">
+            建议您提前充值聘宝金币，金币支付更快捷！<a class="c63c2ec" href="/payment/coin_recharge/">我要充值</a>
+        </label>
+    </p>
+    <div class="price content box-content pd-top-0" ng-if="modeFee > 0">
+        <span class="c607d8b f14">请支付：<span class="price-focus">¥ {- modeFee -}</span>元<br>
+        <label class="agreement-error" class="invalid" style="display: none;"></label>
+    </div>
+
+    <p class="form-control align-center" ng-if="modeFee > 0">
+        <a href="javascript:void(0);" id="payNow" class="btn btn-welcome-submit" ng-click="paynow()">去支付</a>
+    </p>
+    <br><br><br><br>
+
+</div><!-- main -->
+

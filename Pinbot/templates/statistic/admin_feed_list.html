@@ -1,0 +1,212 @@
+{% load feed_tag %}
+<link rel="stylesheet" href="/static/alpha/styles/feed-admin.css?2015121501" />
+
+<div class="feed-list clearfix" id="feedApp" ng-controller="feedApp" ng-app="feedApp">
+  <div class="feed-aside">
+    <h2 data-username="username"><span>{{ username }}</span></h2>
+    <span id="admin" style="display:none;">{{ request.user.username }}</span>
+    <div fixedtop style=" overflow: auto;padding-right: 20px;width: 200px;">
+      <ul class="feed-nav" ng-controller="aside" style="padding-top:0 !important;">
+        {% for user_feed,unread_count in user_feed_list %}
+          <li ng-class="isActive('{{user_feed.feed.id}}')?'curr':''">
+            <p>
+              <span class="JS_set_keyword" style="color:#41b2e5; background:none;margin-top: 3px;display: inline-block;cursor:pointer;" title="添加关键字／修改定制" data-remarks='{{ user_feed.feed|get_json_remark }}' data-feedid="{{user_feed.feed.id}}">添加关键字／修改定制</span> | <span href="javascript:void(0);" class="real-co" style="cursor:pointer;color:#41b2e5;" ng-click="sendRealCo($event)"  data-feedid="{{user_feed.feed.id}}" title="发送实时推荐">实时推荐</span>
+            </p>
+            <a href="#/group/{{user_feed.feed.id}}" class="feed-group-link" title="{{user_feed.feed.analyze_titles}} &#10;&#10;职位描述：&#10;{{user_feed.feed.job_desc}}&#10;&#10;岗位要求：&#10;{{user_feed.feed.skill_required}}">
+                <span style="color: red;">{% if user_feed.feed.has_expire %}订阅已过期{% endif %}</span>
+              <strong>{{user_feed.feed.keywords}}</strong>
+              {% if user_feed.feed.title %}
+                <span><strong>{{ user_feed.feed.title }}</strong></span>
+              {% endif %}
+              <span>{{user_feed.feed.job_type}} | {{user_feed.feed.talent_level}} | {{user_feed.feed.expect_area}}{% if user_feed.feed.salary_max %} | {% get_salary user_feed.feed.salary_min user_feed.feed.salary_max %}{% endif %}</span>
+              <span>最后查看: {{ user_feed.feed.last_click_time|date:'Y-m-d H:i'|default:'无点击' }}</span>
+              <span>公司偏好: {{ user_feed.feed.company_prefer|join:',' }}</span>
+              <span>职位领域: {{ user_feed.feed.job_domain|join:',' }}</span>
+              {% if user_feed.feed.expire_status %}<em class="i-over-date"><code>待激活</code></em>{% endif %}
+                <span style="color: red;">{% if user_feed.feed.display and user_feed.feed.feed_type == 2 %}专享{% endif %}</span>
+            </a>
+            <span data-count-group="{{user_feed.feed.id}}" class="feed-latest-count">{% if unread_count %}{{unread_count}} {% endif %}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <datalist id="tagHistory">
+      <option ng-repeat="op in autoHistory" value="{[{op.tag}]}">
+    </datalist>
+
+  </div>
+
+  <div class="feed-page">
+    <div ng-cloak class="feed-page-wrap">
+      <div class="admin-publish-action clearfix">
+        <div class="main-control clearfix">
+          <p class="feed-control feed-filter">
+            <span class="feed-control-view">
+              <a href="javascript:void(0);" ng-class="{'selected-view': chkCurrentView('cached')}" ng-click="toggleView('cached', $event)">即将推送</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': chkCurrentView('user')}" ng-click="toggleView('user', $event)">当前</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': chkCurrentView('tomorrow')}" ng-click="toggleView('tomorrow', $event)">明天</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': chkCurrentView('shield')}" ng-click="toggleView('shield', $event)">已屏蔽</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': chkCurrentView('search_result')}" ng-click="toggleView('search_result', $event)">最新搜索</a>
+              <a href="javascript:void(0);" ng-click="toggleLatest()" ng-class="{'feed-latest-option-false': chkCurrentSelect('latest',0)}" class="feed-latest-option"><i></i>未读</a>
+              <a href="javascript:void(0);" ng-click="toggleOrderby()" ng-class="{'feed-latest-option-false': chkCurrentSelect('orderby','resume_update_time')}" class="feed-latest-option"><i></i>按更新</a>
+              <a href="javascript:void(0);" ng-click="toggleOrderJob()" ng-class="{'feed-latest-option-false': chkCurrentSelect('order_by_job','job_related')}" class="feed-latest-option"><i></i>按推荐度</a>
+              <a href="javascript:void(0);" ng-click="toggleManual()" ng-class="{'feed-latest-option-false': chkCurrentSelect('is_manual','no')}" class="feed-latest-option"><i></i>按人工</a>
+            </span>
+          </p>
+          <p class="feed-actions">
+            {% if request.user.is_staff %}
+              <a href="javascript:void(0)" class="toggleConfirm" data-type="feed">发布此条订阅</a>
+              <a href="javascript:void(0)" class="toggleConfirm" data-type="all">发布用户所有</a>
+
+              <div class="confirm-box">
+                <p>
+                  <label>展示时间</label>
+                  <input type="date" value=""/>
+                </p>
+                <p class="confirm-box-control">
+                  当前选中<span class="selected-num">0</span>条
+                  <a ng-click="publishFeed()" class="confirm-action action-feed">发布此条</a>
+                  <a ng-click="publishAll()" class="confirm-action action-all">发布所有</a>
+                </p>
+              </div>
+            {% endif %}
+          </p>
+        </div>
+        <div class="sub-control clearfix">
+            <p style="float: left;">
+                今日推荐总数：<strong style="color: #ff6100">{{ oneday_feeds.all_feed_count }}</strong>
+                已阅读：<strong style="color: #ff6100">{{ oneday_feeds.all_read_feed_count }}</strong>
+                阅读率：<strong style="color: #ff6100">{{ oneday_feeds.read_rate }}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                五日推荐总数：<strong style="color: #ff6100">{{ fiveday_feeds.all_feed_count }}</strong>
+                已阅读：<strong style="color: #ff6100">{{ fiveday_feeds.all_read_feed_count }}</strong>
+                阅读率：<strong style="color: #ff6100">{{ fiveday_feeds.read_rate }}</strong>
+            </p>
+          <p style="float: right;">
+            选择前<input type="number" value="0" min="0"/>条
+            <span class="btn-unselect">还原</span>
+          </p>
+        </div>
+
+      </div>
+      <div ng-view></div>
+    </div>
+  <div>
+</div>
+
+<script type="text/x-template" id="template-feeditem">
+  <div class="feed-item-list clearfix">
+    <div
+      ng-repeat="item in feeditems"
+      class="feed-item {[{ item.user_read_status|checkFeedOpen }]} {[{ item.latest|checkFeedLatest }]} feed-item-{[{item.feed.id}]}-{[{item.resume.id}]}"
+      data-resume_id = "{[{ item.resume.id }]}"
+    >
+      <div class="feed-item-wrapper">
+        <div class="item-header">
+          <div class="item-header-wrapper">
+            <div class="item-profile">
+
+              <h3 class="item-work-position"><label><input class="selectBox" type="checkbox" ng-show="current.view!='shield'"/>{[{item.resume.works.0.position_title}]}</label></h3>
+              <p>
+
+                <span class="item-profile-gender">{[{ item.resume.gender }]}</span>
+                <span class="item-profile-age">{[{ item.resume.age }]}</span>
+                <span ng-show="item.job_target.job_hunting_state"> &nbsp; &nbsp;{[{ item.resume.job_target.job_hunting_state }]}</span>
+                <span class="item-profile-sep">|</span>
+                <span ng-show="item.resume.address">现居地：{[{ item.resume.address }]} &nbsp; &nbsp;</span>
+                <span ng-show="item.resume.job_target.expectation_area">意向地：{[{ item.resume.job_target.expectation_area }]}</span>
+              </p>
+            </div>
+            <p class="item-action">
+              <span ng-show="item.is_manual">{[{ item.is_manual|searchKeyword }]}</span>
+              <span ng-show="item.resume.source"  class='item-source manual_mark'>{[{ item.admin }]}</span>
+              <span ng-show="item.resume.source" class="item-source">{[{ item.resume.update_time }]}[更新]</span>
+              <span ng-show="item.resume.source" class="item-source">{[{ item.calc_time }]}[计算]</span>
+              <span ng-show="item.published" class="item-source">{[{ item.display_time }]}[展示时间]</span>
+              <span ng-show="item.resume.source" class="item-source">({[{ item.resume.source }]})</span>
+              <span ng-show="item.feed.keywords && item.feed.keywords.length" class="resume-tags-hook"></span>
+              <a href="" class="btn-dislike" ng-hide="item.dislike" ng-click="dislike($index)">不适合</a>
+              <a href="" class="btn-dislike" ng-show="item.dislike"><i class="ic ic-item-dislike-icon"></i></a>
+            </p>
+            <div ng-show="item.feed.keywords && item.feed.keywords.length" class="item-action-keywords">
+              <div class="item-action-keywords-wrap">
+                <span ng-repeat="keyword in item.feed.keywords">{[{ keyword }]}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-body">
+          <div class="item-body-wrapper">
+            <div class="item-summary">
+              <div class="item-main">
+                <p>
+                  <span class="item-profile-exp"><em>{[{ item.resume.work_years }]}</em>年经验</span>
+                  <span class="item-profile-sep">|</span>
+                  <span class="item-work-salary">期望薪资：<em>{[{ item.resume.job_target.salary }]}</em></span>
+                </p>
+              </div>
+
+              <div class="item-work">
+                <p>
+                  <span class="item-work-comp">{[{ item.resume.works.0.company_name }]}</span>
+                  <span class="item-profile-sep">|</span>
+                  <span class="item-work-position">{[{ item.resume.works.0.position_title }]}</span>
+                  &nbsp;
+                  <span class="item-work-salary">{[{ item.resume.works.0.salary }]}</span>
+                </p>
+                <p ng-show="item.resume.works.0.job_desc" ng-bind-html-unsafe="item.resume.works.0.job_desc | chop" class="work-detail"></p>
+              </div>
+
+              <div class="item-edu">
+                <p>
+                  <span class="item-edu-school">{[{ item.resume.educations.0.school }]}</span>
+                  <span class="item-profile-degree">{[{ item.resume.educations.0.degree }]}</span>
+                </p>
+              </div>
+              <div class="item-edu">
+                <p>
+                  <p ng-if="item.fr_tags.keywords" class="item-edu-school">关键词：<span ng-repeat="keyword in item.fr_tags.keywords">{[{ keyword }]}, </span></p>
+                </p>
+              </div>
+            </div>
+          </div>
+          <a title="点击查看简历详情" class="btn-resume-link" ng-click="openFeed($index)" href="/feed/get/{[{item.feed.id}]}/{[{item.resume.id}]}?calc_time={[{item.pub_time}]}&user=admin" target="{[{item.resume.id}]}">
+            查看简历
+          </a>
+        </div>
+
+        <div class="item-footer clearfix">
+
+          <div class="resume-tags">
+            <span class="resume-tag" ng-controller="resumeTag" ng-repeat="tag in item.tags" ng-show="tag">{[{tag.tag}]}
+              <a href="" class="del-tag" ng-click="delTag({[{tag}]}, '{[{item.resume.id}]}')">删除</a>
+            </span>
+            <span class="resume-tag-edit" clickedit="content" feed_id="{[{ item.feed.id }]}" resume_id="{[{ item.resume.id }]}" scope="scope">{[{ _text }]}</span>
+          </div>
+
+          <div class="admin-custom-control">
+            <a href="" ng-click="adminVote($index, $event)" class="admin-custom-control-vote">很合适
+            </a>
+            <a href="javascript:void(0);" index-id="{[{item.feed.id}]}-{[{item.resume.id}]}" feed-id="{[{item.feed.id}]}" resume-id="{[{item.resume.id}]}" ng-mouseenter="hoverBlock($index, $event)" ngs-click="adminBlock($index, $event)" class="admin-custom-control-block">屏蔽
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feed-loading" ng-show="initLoading"> Loading... </div>
+  <a class="load-more" ng-show="hasmore" ng-click="fetch()">查看更多</a>
+  <div class="load-more load-more-loading" ng-show="loadmore"></div>
+
+  <div class="feed-waiting" ng-show="waiting">
+    <p class="feed-waiting-tip">已定制成功，推荐简历明早为你呈现，请留意查阅</p>
+    <p class="feed-waiting-tip-long">
+      <strong>特别提示</strong>
+      <span>人才订阅不是普通的简历搜索，您或许无法即时看到检索分析的结果，但您刚才所设定的订阅条件，将成为聘宝寻觅人才的标尺，不间断的在整个网络人才数据中发现匹配的人才。只需要一次设定，聘宝将每天向您推荐网络中最近更新的优质人才。</span>
+    </p>
+  </div>
+</script>

@@ -1,0 +1,113 @@
+# coding: utf-8
+
+DEBUG = True
+
+TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['127.0.0.1']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test_product',
+        'USER': 'admin',
+        'PASSWORD': 'PinbotTest2015',
+        'HOST': '112.124.4.196',
+        'PORT': '3306',
+        'CONN_MAX_AGE': 60,
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
+        },
+    }
+}
+
+# rabbitmq conf
+RABBITMQ_CONF = {
+    'host': '112.124.4.196',
+    'user': 'admin',
+    'password': 'Rabbitmq2015',
+    'port': '5672',
+}
+
+BROKER_URL = 'amqp://{user}:{password}@{host}:{port}'.format(**RABBITMQ_CONF)
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://:root@112.124.4.196:6479/1",
+        "OPTIONS": {
+            "CONNECTION_POOL_KWARGS": {"max_connections": 10},
+            "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+        }
+    }
+}
+
+PINBOT_PID = 'e40d8f62'
+PINBOT_AES_KEY = '71818f2933314fa7926c05a38e354ca7'
+SYNC_RESUME_API = 'http://127.0.0.1:8080/brick_api/v1/sync_resume/'
+SEND_RESUME_API = 'http://127.0.0.1:8080/brick_api/v1/send_resume/'
+
+WSGI_APPLICATION = 'ws4redis.django_runserver.application'
+
+# company card api
+COMPANY_CARD_API = 'http://127.0.0.1:8080/companycard/job/interest?token={token}&interest={interest}'
+
+# email client
+MAIL_CLIENT = 'mailgun'
+
+# pinbot url
+ACTIVE_URL = 'http://127.0.0.1:8080/users/valid_bduser/{token}'
+RESUME_URL = 'http://127.0.0.1:8080/resumes/display/{resume_id}/0?job_id={job_id}'
+SEND_RESUME_URL = 'http://127.0.0.1:8080/feed/receive_resume/'
+RESUME_BOUGHT_URL = 'http://127.0.0.1:8080/transaction/bought/'
+RECEIVE_URL = 'http://127.0.0.1:8080/feed/receive_resume/'
+
+# support email
+SUPPORT_EMAIL_LIST = [
+    'runforever@163.com',
+]
+
+# recommend system broker url
+RECO_BROKER_URL = BROKER_URL
+
+# reco max times
+RECO_MAX_COUNT = 1000
+
+# mongo settings
+MONGO_CONN = {
+    'host': '112.124.4.196',
+    'port': 27027,
+    'user': 'root',
+    'password': 'Hopperclouds2014',
+}
+
+MONGO_URI = 'mongodb://%(user)s:%(password)s@%(host)s:%(port)d/' % MONGO_CONN
+
+DEBUG_TOOLBAR_PANELS = [
+    'ddt_request_history.panels.request_history.RequestHistoryPanel',  # Here it is
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'ddt_request_history.panels.request_history.allow_ajax',
+}
+
+DEBUG_TOOLBAR_CONFIG = {
+    'RESULTS_STORE_SIZE': 100,
+}
+# logging
+LOGGING = {
+}
+
+RAVEN_CONFIG = {}

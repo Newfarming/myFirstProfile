@@ -1,0 +1,27 @@
+
+<div class="resume-list-pager">
+  <p>
+    {% if previous %}
+      <a href="{{previous}}" class="pager-prev"><i class="ic ic-pager-prev"></i>上一页</a>
+    {% endif %}
+
+    {% for page_num,deco in page_deco_list %}
+      {% ifequal deco   "curr" %}
+        <span class="curr">{{ page_num }}</span>
+      {% endifequal %}
+
+      {% ifequal deco "dot" %}
+        <span class="dot">...</span>
+      {% endifequal %}
+
+      {% ifequal deco "default" %}
+        <a href="{{ page_num }}">{{ page_num }}</a>
+      {% endifequal %}
+    {% endfor %}    
+
+    {% if page_next %}
+      <a href="{{page_next}}" class="pager-next">下一页<i class="ic ic-pager-next"></i></a>
+    {% endif %}
+  </p>
+</div>
+

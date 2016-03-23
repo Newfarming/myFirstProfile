@@ -1,0 +1,83 @@
+{% if not request.user.is_staff %}
+<div style="display: none">
+{% include 'baidu_tj.html' %}
+</div>
+{% endif %}
+
+{% if request.user.is_authenticated %}
+
+<style>
+
+.header-bar{
+    width:100%;
+    height: 60px;
+    border:0px;
+    border-bottom: 1px #eee solid;
+    background-color: #f9f9f9;
+}
+.header-bar .warn-info{
+    text-align: center;
+}
+.header-bar .warn-info span{
+    display:inline-block;
+    color:#607D8B;
+    font-size: 14px;
+    line-height: 60px;
+}
+.header-bar a{
+    color:#63C2EC;
+    font-size: 14px;
+    text-decoration: none;
+}
+.header-bar a:hover{
+    color:#f46c62;
+    text-decoration: underline;
+}
+.header-bar .arrow-link{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background:url(/static/b_index/img/sprite.png) -432px -434px no-repeat;
+    position: relative;
+    top:10px;
+    left:25px;
+}
+.header-bar .warn-info-close{
+    display: block;
+    width: 60px;
+    height: 60px;
+    float:right;
+    background:url(/static/b_index/img/sprite.png) 0px -60px no-repeat;
+    position: relative;
+    top:-60px;
+    left:0px;
+}
+.header-bar .warn-info-close a{
+    display: block;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    top:0px;
+    left:0px;
+}
+
+</style>
+{% endif %}
+<script>
+var is_staff = false;
+{% if request.user.is_staff %}
+is_staff = true;
+{% endif %}
+</script>
+<script src="/static/b_common/js/statistic_code.js"></script>
+
+{% if not debug %}
+<div style="display:none;">
+    <script type='text/javascript'> var _vds = _vds || []; window._vds = _vds; (function(){ _vds.push(['setAccountId', '04da31a1742043eda2579d10f696c496']); (function() { var vds = document.createElement('script'); vds.type='text/javascript'; vds.async = true; vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vds, s); })(); })(); </script>
+</div>
+{% endif %}
+
+{% if request.user.is_authenticated and request.path != '/' %}
+{% include 'eggs/eggs.html' %}
+{% include 'task.html' %}
+{% endif %}

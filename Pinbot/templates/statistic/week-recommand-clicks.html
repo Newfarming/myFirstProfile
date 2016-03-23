@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>{{start_date}}到{{end_date}}一周数据统计报表</title>
+	<link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="{{ STATIC_URL }}statis/js/enhance.js"></script>		
+	<script type="text/javascript">
+		// Run capabilities test
+		enhance({
+			loadScripts: [
+				'{{ STATIC_URL }}statis/js/excanvas.js',
+				'{{ STATIC_URL }}statis/js/jquery.min.js',
+				'{{ STATIC_URL }}statis/js/visualize.jQuery.js',
+				'{{ STATIC_URL }}statis/js/weekly-report.js',
+			],
+			loadStyles: [
+				'{{ STATIC_URL }}statis/css/visualize.css',
+				'{{ STATIC_URL }}statis/css/visualize-light.css'
+			]	
+		});   
+    </script>
+</head>
+<body>
+      <H2>简历点击统计</H2>
+      <table border="1">
+	  <tr>
+	  	<th>订阅</th>
+	  	<th>推荐数</th>
+	  	<th>点击数</th>
+	  </tr>
+	  {% for feed,list in feed_recommand_dict.items %}
+	  <tr>
+	  	<th>{{feed}}</th>
+	  	{% for data in list %}
+	  	<td>{{data}}</td>
+	  	{% endfor %}
+	  </tr>
+	  {% endfor %}
+	 </table>
+</body>
+</html>

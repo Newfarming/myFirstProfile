@@ -1,0 +1,10 @@
+<div class="inner-content common_form gender_form work_year_form">
+	<p><a ng-click="back()"><img src="{- static_url -}my_resume/img/arrow_1_32x46.fw.png"/></a>请选择工作年限</p>
+    <a id="3" class="button" ng-click="setWorkyears(3)" ng-class="{'checked':check_selected(3)}">1-3年<span></span></a>
+    <a id="4" class="button" ng-click="setWorkyears(4)" ng-class="{'checked':check_selected(4)}">3-5年<span></span></a>
+    <a id="5" class="button" ng-click="setWorkyears(5)" ng-class="{'checked':check_selected(5)}">5-8年<span></span></a>
+    <a id="6" class="button" ng-click="setWorkyears(6)" ng-class="{'checked':check_selected(6)}">8年以上<span></span></a>
+    <div class="opt_part">
+        <a class="button confirm" ng-click="confirm()">确认</a>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+
+    <div id="resume-list-empty" class="clearfix">
+        {% if userChargePackages %}
+        <div class="header empty-list-3">
+          <!-- <div class="empty-list-3-wrap">
+            <h2 class="title"> 你暂时还不能购买简历哦！</h2>
+            <p> 请选择合适企业的简历套餐，便可以轻松购买喜欢的简历了。</p>
+            <div class="action">
+              <a href="/transaction/my_transaction/">选择套餐</a>
+            </div>
+          </div> -->
+        </div>
+        {% else %}
+
+        <div class="header empty-list-2">
+          <h2 class="title"> {%if from_source == 'bought_resume' %}你暂时还未购买简历!{%else%}没有符合条件的简历！{%endif%}</h2> 
+          <p>
+            “我的下载” 将在云端存储你购买过的候选人简历。
+          </p>
+        </div>
+        {% endif %}
+    </div>

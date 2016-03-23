@@ -1,0 +1,272 @@
+{% load utils_tag %}
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>聘宝简历</title>
+        {% if download_type == 'pdf' %}
+        {% load_pdf_zh_style %}
+        {% endif %}
+        <style type="text/css" media="screen">
+         @page {
+             margin: 0cm;
+             page-break-before: avoid;
+         }
+            *{ margin: 0; padding: 0;}
+            ul,ol{ list-style: none;}
+            .wraper{ width: 960px; margin: 0 auto;}
+            .bg{ background: url({{ assert_url }}alpha/images/down_resume/wall.png);}
+            .mt20{ margin-top: 20px;}
+            .m20{ margin: 20px 0;}
+        </style>
+    </head>
+
+    <body class="bg" style="margin: 0; padding: 0; {% if download_type == 'html' %}font-family: '微软雅黑'{% endif %}">
+
+        <div class="wraper">
+            <div class="header" style="background: #303740; text-align: center; padding: 28px 43px;">
+                <h1 class="h1" style="text-align: left;"><a href="" title="聘宝beta" style="display: inline-block; width: 99px; height: 28px;"><img src="{{ assert_url }}alpha/images/down_resume/pbbeta.png" alt=""></a></h1>
+            </div>
+        </div>
+
+        <div class="wraper" style="background: #fff;">
+
+            <div style="padding: 0; margin:0 40px; color:#434343; ">
+                <p style="font-size: 16px;  padding:45px 0 5px;margin:0; line-height: 25px;">
+                    <span style="font-size: 24px">
+                        {% if is_pinbot_staff %}
+                        {% if contact_info.name and request_dict.name %}{{ contact_info.name }}{% else %}{{ resume|get_position_title }}{% endif %}
+                        {% else %}
+                        {% if contact_info.name %}{{ contact_info.name }}{% else %}{{ resume|get_position_title }}{% endif %}
+                        {% endif %}
+                    </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;({{ resume.gender }})</p>
+                <p style="font-size: 14px; padding:7px 0;margin:0; line-height: 25px;">
+                {{ resume|get_position_title }}
+                    &nbsp;&nbsp;
+                    <span style="color: #dcdcdc;">|</span>
+                    &nbsp;&nbsp;
+                    {{ resume.age }} {{ resume.educations.0.degree }} {{ resume|get_job_hunt_stat }}
+                    &nbsp;&nbsp;
+                    <span style="color: #dcdcdc;">|</span>
+                    &nbsp;&nbsp;
+                    {{ resume.address }}
+                    &nbsp;&nbsp;
+                    <span style="color: #dcdcdc;">|</span>
+                    &nbsp;&nbsp;
+                    意向地：{{ resume.job_target.expectation_area }}
+                </p>
+                <p style="font-size: 14px;padding:5px 0;margin:0; line-height: 25px;"><span style="color: #fc7524;">{{ resume.work_years }}年</span>经验 &nbsp;&nbsp;&nbsp;&nbsp; {% if is_pinbot_staff %}{% if request_dict.salary %}期望薪资：<span style="color: #fc7524;">{{ resume.job_target.salary }}</span>{% endif %}{% else %}期望薪资：<span style="color: #fc7524;">{{ resume.job_target.salary }}{% endif %}</p>
+                <p style="font-size: 14px; padding:10px 0;margin:0; line-height: 25px; color:#c3c3c3">
+                    ID: <a href="{{ resume_href }}" style="color:#c3c3c3" title="查看简历原网页">{{ resume.id }}</a>
+                </p>
+                {% if show_contact_info %}
+                {% if is_pinbot_staff %}
+                    {% if request_dict.contact_info %}
+                    {% if download_type == 'html' %}<p style="line-height: 10px; height: 10px;">&nbsp;</p>{% endif %}
+                    <table style=" width: 100%" width="100%" class="m20">
+                        <tr>
+                            <th style="padding: 0; margin: 0;width: 20px; text-align: left;"><img src="{{ assert_url }}alpha/images/down_resume/pdf_list.png" alt="" width="10" height="29"></th>
+                            <th style="padding: 0; margin: 0; font-size:16px; color: #434343; padding-top: 5px;line-height: 23px; text-align: left;">电话：{{ contact_info.phone }} &nbsp;&nbsp; 邮箱：{{ contact_info.email }}</th>
+                        </tr>
+                    </table>
+                    <p style="line-height: 10px; height: 10px;">&nbsp;</p>
+                    {% else %}
+                    <p style="font-size: 14px; padding:7px 0;margin:0; line-height: 25px; color:#c3c3c3">
+                        -如需联系方式请购买该简历-
+                    </p>
+                    {% endif %}
+                {% else %}
+                    {% if download_type == 'html' %}<p style="line-height: 10px; height: 10px;">&nbsp;</p>{% endif %}
+                    <table style=" width: 100%" width="100%" class="m20">
+                        <tr>
+                            <th style="padding: 0; margin: 0;width: 20px; text-align: left;"><img src="{{ assert_url }}alpha/images/down_resume/pdf_list.png" alt="" width="10" height="29"></th>
+                            <th style="padding: 0; margin: 0; font-size:16px; color: #434343; padding-top: 5px;line-height: 23px; text-align: left;">电话：{{ contact_info.phone }} &nbsp;&nbsp; 邮箱：{{ contact_info.email }}</th>
+                        </tr>
+                    </table>
+                    <p style="line-height: 10px; height: 10px;">&nbsp;</p>
+                {% endif %}
+                {% else %}
+                    <p style="font-size: 14px; padding:7px 0;margin:0; line-height: 25px; color:#c3c3c3">
+                        -如需联系方式请购买该简历-
+                    </p>
+                {% endif %}
+            </div>
+
+            {% if resume.works %}
+            <div style=" padding: 0; margin:0 40px; color:#434343;">
+
+                <table style=" width: 100%" width="100%">
+                    <tr>
+                        <th style="padding: 0; margin: 0;width: 20px; text-align: left;"><img src="{{ assert_url }}alpha/images/down_resume/pdf_list.png" alt="" width="10" height="29"></th>
+                        <th style="padding: 0; margin: 0; font-size:16px; color: #434343; padding-top: 5px;line-height: 23px; text-align: left;">工作经历</th>
+                    </tr>
+                </table>
+
+                {% for w in resume.works %}
+                    <p style="line-height: 10px; height: 10px;">&nbsp;</p>
+                    <table style=" width: 100%" width="100%">
+                        <tr style="page-break-before: avoid">
+                                <td style="vertical-align: top; padding-top: 2px; width: 20px;">
+                                    <img src="{{ assert_url }}alpha/images/down_resume/red_circle.png" alt="" width="7" height="7" style="margin-top: 8px;">
+                                </td>
+                                <td style="vertical-align: top;">
+                                    <p style=" color: #434343; line-height: 30px;padding: 0; margin: 0; font-size: 14px;">
+                                    <span style="font-size: 16px;">{{ w.company_name }}</span>
+                                    &nbsp;&nbsp;
+                                    {{ w.start_time }} 至 {{ w.end_time }} {% if w.duration %}({{ w.duration }}){% endif %}
+                                    </p>
+                                </td>
+                            </tr>
+                    </table>
+                    <table style=" width: 100%" width="100%">
+                        <tr style="page-break-before: avoid">
+                            <td style="vertical-align: top;">
+                                <p style=" padding: 10px 0 0; margin: 0; color: #434343; line-height: 30px; font-size:16px;">
+                                    职位
+                                </p>
+                                <p style=" padding: 5px 0 0; margin: 0; color: #434343; line-height: 30px; font-size:14px;">
+                                {{ w.position_title }} &nbsp;&nbsp;&nbsp;&nbsp; {{ w.salary }}
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <p style=" padding: 10px 0 7px; margin: 0; color: #434343; line-height: 30px; font-size:16px;">
+                        描述
+                    </p>
+                    <p style=" color: #434343; line-height: 30px;padding: 0; margin: 0; font-size: 14px;">
+                        {% if download_type == 'html' %}
+                        {{ w.job_desc|string_safe|safe }}
+                        {% else %}
+                        {% for j_desc in w.job_desc|split_linebreak %}
+                            {{ j_desc|pdf_linebreak:download_type }}
+                        {% endfor %}
+                        {% endif %}
+                    </p>
+                {% endfor %}
+
+            </div>
+            {% endif %}
+
+            {% if resume.projects %}
+            <div style=" padding: 0; margin: {% if pdf_type %}10px{% else %}40px{% endif %} 40px 0; color:#434343;">
+                <table style=" width: 100%" width="100%">
+                    <tr>
+                        <th style="padding: 0; margin: 0;width: 20px; text-align: left;"><img src="{{ assert_url }}alpha/images/down_resume/pdf_list.png" alt="" width="10" height="29"></th>
+                        <th style="padding: 0; margin: 0; font-size:16px; color: #434343; padding-top: 5px;line-height: 23px; text-align: left;">项目经历</th>
+                    </tr>
+                </table>
+                {% for p in resume.projects %}
+                    <table style=" width: 100%" width="100%">
+                        <tr style="page-break-before: avoid">
+                            <td style="vertical-align: top; padding-top: 2px; width: 20px;">
+                                <img src="{{ assert_url }}alpha/images/down_resume/red_circle.png" alt="" width="7" height="7" style="margin-top: 8px;">
+                            </td>
+                            <td style="vertical-align: top;">
+                                <p style=" color: #434343; line-height: 30px;padding: 0; margin: 0; font-size: 14px;">
+                                    <span style="font-size: 16px;">{{ p.project_name }}</span>
+                                    &nbsp;&nbsp;
+                                    {% if p.company_name %}
+                                        <span style="color: #dcdcdc;">|</span>
+                                        &nbsp;&nbsp;
+                                        该项目期间就职于: {{ p.company_name }}
+                                    {% endif %}
+                                    &nbsp;&nbsp;
+                                    {{ p.start_time }} 至 {{ p.end_time }}
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <p style=" padding: 10px 0 7px; margin: 0; color: #434343; line-height: 30px; font-size:16px;">
+                        职责
+                    </p>
+                    {% if p.responsible_for %}
+                    {% for resp in p.responsible_for|split_linebreak %}
+                    <p style="margin: 0; color: #434343; line-height: 30px; font-size:14px;">
+                        {{ resp|pdf_linebreak:download_type }}
+                    </p>
+                    {% endfor %}
+                    {% else %}
+                    无
+                    {% endif %}
+                    <p style=" padding: 10px 0 7px; margin: 0; color: #434343; line-height: 30px; font-size:16px;">
+                        描述
+                    </p>
+                    <p style="margin: 0; color: #434343; line-height: 30px; font-size:14px;">
+                        {% if download_type == 'html' %}
+                        {{ p.project_desc|string_safe|safe }}
+                        {% else %}
+                        {% for pd in p.project_desc|split_linebreak %}
+                        {{ pd|pdf_linebreak:download_type }}
+                        {% endfor %}
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if resume.educations %}
+            <div style=" padding: 0; margin: {% if pdf_type %}10px{% else %}40px{% endif %} 40px 0; color:#434343;">
+                <table style=" width: 100%" width="100%">
+                    <tbody>
+                        <tr>
+                            <th style="padding: 0; margin: 0;width: 20px; text-align: left;"><img src="{{ assert_url }}alpha/images/down_resume/pdf_list.png" alt="" width="10" height="29"></th>
+                            <th style="padding: 0; margin: 0; font-size:16px; color: #434343; padding-top: 5px;line-height: 23px; text-align: left;">教育经历</th>
+                        </tr>
+
+                        {% for e in resume.educations %}
+                        <tr style="page-break-before: avoid">
+                            <td colspan="2" style="padding: 0; margin: 0; padding-top: 20px;"></td>
+                        </tr>
+                        <tr style="page-break-before: avoid">
+                            <td style="vertical-align: top; padding-top: 2px;">
+                                <img src="{{ assert_url }}alpha/images/down_resume/red_circle.png" alt="" width="7" height="7" style="margin-top: 8px;">
+                            </td>
+                            <td style="vertical-align: top;">
+                                <p style=" color: #434343; line-height: 30px;padding: 0; margin: 0; font-size: 14px;">
+                                {{ e.start_time }} 至 {{ e.end_time }}
+                                </p>
+                                <p style=" padding: 7px 0 0; margin: 0; color: #434343; line-height: 30px; font-size:16px;">
+                                {{ e.school }}
+                                    &nbsp;&nbsp;
+                                    {{ e.degree }}
+                                    &nbsp;&nbsp;
+                                    {{ e.major }}
+                                </p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if resume.self_evaluation %}
+            <div style=" padding: 0; margin: {% if pdf_type %}10px{% else %}40px{% endif %} 40px 0; color:#434343;">
+                <table style="width: 100%">
+                    <tr>
+                        <th style="padding: 0; margin: 0;width: 20px; text-align: left;"><img src="{{ assert_url }}alpha/images/down_resume/pdf_list.png" alt="" width="10" height="29"></th>
+                        <th style="padding: 0; margin: 0; font-size:16px; color: #434343; padding-top: 5px;line-height: 23px; text-align: left;">自我评价</th>
+                    </tr>
+                </table>
+                <p style="line-height: 10px; height: 10px;">&nbsp;</p>
+                {% if download_type == 'html' %}
+                <p style=" color: #434343; line-height: 30px;padding: 0; margin: 0; font-size: 14px;">
+                    {{ resume.self_evaluation|string_safe|safe }}
+                </p>
+                {% else %}
+                {% for s_eva in resume.self_evaluation|split_linebreak %}
+                <p style=" color: #434343; line-height: 30px;padding: 0; margin: 0; font-size: 14px;">
+                    {{ s_eva|pdf_linebreak:download_type }}
+                </p>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+            <p style=" margin: {% if pdf_type%}10px{% else %}40px{% endif %} 0 0; padding: 30px 0; text-align: center; color: #b5b5b5; font-size:12px; line-height: 18px;">
+                聘宝 | 专业人才推荐<br>
+                www.pinbot.me
+            </p>
+        </div>
+    </body>
+</html>

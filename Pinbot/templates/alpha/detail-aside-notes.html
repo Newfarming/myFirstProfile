@@ -1,0 +1,30 @@
+{# autoescape off #}
+<div class="notes loading detail-aside-buy" ng-app="Notes" ng-controller="notes" ng-cloak>
+    <a href="" ng-click="toggle()" class="btn btn-black pen bd-trace" id="feed-customize-add-notes-btn" trace-title="添加备注">备注</a>
+  <div class="notes-body">
+    <p class="notes-placeholder bd-trace" ng-if="false" ng-click="toggle()" ng-show="!data.length && !openDialog" id="feed-customize-add-notes" trace-title="点击添加备注">点击添加备注</p>
+    <div class="notes-textbox-wrap" ng-show="openDialog">
+      <div class="notes-textbox">
+        <textarea autofocus maxLength="100" ng-model="comment"></textarea>
+      </div>
+      <p class="notes-textbox-action">
+        <span class="btn-add-notes" ng-click="addComment($event)">添加</span>
+      </p>
+    </div>
+
+    <div class="notes-list">
+      <ul class="notes-list-content">
+        <li ng-repeat="d in data">
+          <h6>{[{d.date |date:'yyyy年MM月dd日'}]}<a ng-click="delComment(d.id, $index)" class="ic btn-del-notes close" href=""></a></h6>
+          <p>{[{d.text}]}</p>
+        <li>
+      </ul>
+    </div>
+
+    <div class="notes-pager" ng-hide="cachedData.length<=3">
+      <span ng-click="prevPage()" class="ic ic-notes-prev disabled"></span>
+      <span ng-click="nextPage()" class="ic ic-notes-next"></span>
+    </div>
+  </div>
+</div>
+{# endautoescape #}

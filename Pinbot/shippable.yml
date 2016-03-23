@@ -1,0 +1,47 @@
+# cache
+cache: true
+
+# language setting
+language: python
+
+# version numbers
+python:
+  - "2.7"
+
+# Mongo binds to 127.0.0.1 by default
+# rabbitmq binds to 127.0.0.1 and is not started on boot. Default vhost "/", username "guest" and password "guest" can be used.
+services:
+  - mongodb
+  - rabbitmq
+  - redis
+
+before_install:
+#  set up a virtualenv and activate the python version that you want to use
+  - mkdir -p $HOME/bldve/
+  - if [ ! -d t ]; then virtualenv -p $SHIPPABLE_PYTHON  $HOME/bldve/; fi
+  - source $HOME/bldve/bin/activate
+  - pip install git+https://github.com/runforever/django-notifications.git
+  - pip install django-nose
+  - pip install coverage
+  - pip install fabric
+  - pip install uwsgi
+install:
+  - pip install -r requirements.txt
+  - pip install mongoengine==0.8.7
+  - pip install pymongo==2.7.1
+
+env:
+  - DJANGO_VERSION=1.6.5
+
+before_script:
+   - mkdir -p logs
+   - mkdir -p shippable/testresults
+   - mkdir -p shippable/codecoverage
+   - mysql -e 'DROP DATABASE IF EXISTS test_pinbot;CREATE DATABASE test_pinbot CHARACTER SET utf8;'
+   - /etc/init.d/xvfb start
+   - cp Brick/settings/settings_test.py.example  Brick/settings/settings_dev.py
+   - cp Pinbot/settings/settings_test.py.example  Pinbot/settings/settings_dev.py
+
+script:
+   - python manage.py sqlcustom partner
+   - python manage.py test `echo $(ls -d */) | sed -e 's/Brick\///g' -e 's/resume_manage\///g' -e 's/xadmin\///g' -e 's/pin_venv\///g'` --pattern="test*.py" --with-xunit --xunit-file=shippable/testresults/nosetests.xml

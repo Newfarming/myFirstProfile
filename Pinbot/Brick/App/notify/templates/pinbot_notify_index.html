@@ -1,0 +1,82 @@
+{% extends 'base_center.html' %}
+{% load compress %}
+{% load payment_tags %}
+
+{% block header %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ STATIC_URL }}notify/css/notify_b.min.css">
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with pay_class='curr' %}
+{% endblock %}
+
+{% block content %}
+<div id="main">
+    <div id="content">
+        <div id="payment">
+            
+            <h2 class="setting-title">系统通知</h2>
+            <div class="pb100" ng-app="app.notify" ng-controller="notify">
+                <div class="notify-content">
+                    <div class="notify-category clearfix">
+                        <a ui-sref="all" ng-class="{active:activePage == 'all'}">全部通知</a>
+                        <a ui-sref="unread" ng-class="{active:activePage == 'unread'}">未读通知<code class="ng-hide" ng-show="{{ has_unread }}"></code></a>
+                    </div>
+                    <p class="text-right read-all" ng-show="{{ has_unread }}">
+                        <a href ng-click="markAllRead()" class="read-all ng-hide">全部标为已读</a>
+                    </p>
+                    <div id="JS_notify_list" class="bootom-boder">
+                        <p class="text-center ng-hide" ng-show="noRecord" style="color: #999;padding: 20px 0;">还没有收到任何通知哦！</p>
+                        <div ui-view></div>
+                        <p class="text-center" ng-show="loading"><img src="{{ STATIC_URL }}common/img/loading.gif" alt=""></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+{% compress js %}
+<script src="{{ STATIC_URL }}common/js/angular.min.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/ng_config.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script>
+ (function() {
+     var service = angular.module('app.django', []);
+     service.factory('api', function() {
+         return {
+             notify: {
+                 notify_list: "{% url 'notify-list' %}",
+                 mark_notify_read: "/notify/mark_notify_read/",
+                 mark_all_read: "{% url 'notify-mark-all-read' %}"
+             }
+         }
+     });
+
+     // angular tmpl method
+     service.factory('tmpl', function() {
+         return function(template_path) {
+             var static_path = '{{ STATIC_URL }}';
+             return static_path + template_path;
+         }
+     });
+
+     // angular tmp static url
+     service.factory('static_url', function() {
+         var static_path = '{{ STATIC_URL }}';
+         return static_path;
+     });
+ })();
+
+</script>
+<script src="{{ STATIC_URL }}notify/notify_app.js"></script>
+{% endcompress %}
+{% endblock %}

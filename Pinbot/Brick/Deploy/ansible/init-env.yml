@@ -1,0 +1,50 @@
+---
+- hosts: brick
+  sudo: yes
+
+  tasks:
+    - name: install pkg
+      apt: pkg={{ item  }} state=present
+      with_items:
+        - gcc
+        - g++
+        - curl
+        - tmux
+        - python-dev
+        - python-setuptools
+        - python-pip
+        - htop
+        - zsh
+        - software-properties-common
+        - python-software-properties
+        - libpq-dev
+        - build-essential
+        - libmysqlclient-dev
+        - libevent-dev
+        - git
+    - name: install python pkg
+      pip: name={{ item }}
+      with_items:
+        - fabric
+        - virtualenvwrapper
+        - ipython
+        - ipdb
+        - supervisor
+
+    - name: add deploy user
+      user: name=deploy shell=/bin/zsh append=yes
+
+    - name: init data, brick dir
+      file: path=/data owner=root group=root state=directory mode=0755
+      file: path=/data/brick/log/supervisor owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/brick/log/nginx owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/brick/log/gunicorn owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/brick/log/django owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/brick/tmp owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/brick/run owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/pinbot/log owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/pinbot/log/supervisor owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/pinbot/log/nginx owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/pinbot/log/gunicorn owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/pinbot/log/django owner=deploy group=deploy state=directory mode=0755
+      file: path=/data/pinbot/tmp owner=deploy group=deploy state=directory mode=0755

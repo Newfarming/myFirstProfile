@@ -1,0 +1,111 @@
+{% load mail_utils %}
+{% static_inject %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+    *{margin: 0;padding:0;}
+</style>
+<div>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td background="#F2F2F2" style="background: #F2F2F2;vertical-align: top; font-family: 'Hiragino Sans GB','微软雅黑'; padding: 60px 0;">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <tr>
+                        <td style="vertical-align: top;">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+                                <tr>
+                                    <td style="vertical-align:top">
+
+                                        <!-- head start -->
+                                            <table width="640" border="0" cellpadding="0" cellspacing="0" align="center"  style="margin: 0 auto;">
+                                                <tr>
+                                                    <td bgcolor="#0091FA" style="padding: 14px 30px; background:#0091FA;">
+                                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                            <tr>
+                                                                <td><a href="{{ email_host }}" target="_blank" title="聘宝 求职版"><img border="0" src="{{ static_url }}email_images/qz_email/qz_email_logo.png" alt="聘宝 求职版" width="188" height="33"></a></td>
+                                                                <!-- <td style="text-align:right;font-size:12px;color:#999">聘宝 | 专业人才推荐</td> -->
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        <!-- head end-->
+
+                                        <!-- content start -->
+                                            <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;font-size:16px;">
+                                                <tr>
+                                                    <td bgcolor="#ffffff" style="padding: 25px 30px;background:#fff; ">
+                                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                            <tr>
+                                                                <td>
+                                                                    <p style="margin: 0; padding: 10px 0; color: #434343; line-height:25px;">亲爱的申请者：</p>
+                                                                    <p style="margin: 0; padding: 10px 0 0; color: #434343; line-height:25px;">
+                                                                        你好！恭喜你从众多的申请者中脱颖而出。<br>
+                                                                        聘宝 · 求职版 邀请码已准备就绪，请妥善保管。
+                                                                    </p>
+                                                                    <p style="margin: 0; padding: 10px 0 0; color: #434343; line-height:25px;">
+                                                                        邀请码：<span style=" color: #0091fa;">{{ code|default:'28A9UF3P0S' }}</span>
+                                                                    </p>
+                                                                    <p style="padding: 45px 0 0;text-align: center;">
+                                                                        <a href="http://qz.pinbot.me/account/register" style="display:inline-block;background:#0099ff;width:240px;height:48px;color: #fff;font-size:18px;cursor:pointer;line-height:48px;text-align:center;text-decoration:none;letter-spacing: 1px;">立即激活</a>
+                                                                    </p>
+                                                                    <p style="margin: 0; padding: 40px 0 20px; color: #434343; line-height:25px;">
+                                                                        聘宝 · 求职版 访问地址：<br>
+                                                                        <a href="http://qz.pinbot.me" title="" style=" color: #0091fa; word-break: break-all;">http://qz.pinbot.me</a>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        <!-- content end -->
+
+                                        <!-- footer start -->
+                                            <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;" width="640">
+                    <tbody>
+                        <tr>
+                            <td style="vertical-align: top;border-bottom: 1px solid #ddd;background:#fff;">
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;border-top:1px solid #ddd" width="540">
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: right;padding: 20px 26px;">
+                                            <img style="width: 68px;" src="http://qz.pinbot.me/static/account/pinbotalk.jpg"/>
+                                            </td>
+                                            <td style="text-align:left;font-size:15px;color:#607d8b;">
+                                                <p style="padding-bottom: 10px;">关注聘宝微信订阅号</p>
+                                                <p>聘宝话求职（pinbotalk）</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;" width="540">
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center;line-height: 150%;">
+                                            <p style="color: #999;font-size: 12px;padding: 20px 0 0;">此邮件为系统邮件，请勿直接回复</p>
+                                            <p style="color: #999;font-size: 12px;padding-bottom: 65px;">Copyright &copy; 2013-2016 HopperClouds,Inc.</p>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                                        <!-- footer end-->
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

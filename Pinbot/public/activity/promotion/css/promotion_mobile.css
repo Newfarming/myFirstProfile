@@ -1,0 +1,205 @@
+*{ margin: 0; padding: 0;}
+html{
+    max-width: 640px;
+    margin: 0 auto;
+}
+body{
+    color: #fff;
+    font-family:"Hiragino Sans GB" , "microsoft yahei", Helvetica,Arial, sans-serif;
+    background: url(/static/activity/promotion/images/bg_moblie.jpg) repeat-y;
+    background-size:100vw 32vw;
+}
+.promotion-head{
+}
+.promotion-head img{
+    width: 100%;
+}
+.middle-content{
+    width: 91%;
+    margin:0 auto;
+}
+.promotion-time h3{
+    line-height: 50px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: normal;
+}
+
+/*倒计时*/
+#countdown_dashboard {
+    width: 280px;
+    margin: 0 auto;
+}
+.dash {
+    width: 51px;
+    float: left;
+    position: relative;
+}
+.dash .digit {
+    position: relative;
+    float: left;
+    height: 44px;
+    width: 24px;
+    margin-left: 3px;
+    line-height: 44px;
+    text-align: center;
+    background-color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Times;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #333;
+}
+.dash .digit:first-child{
+    margin-left: 0;
+}
+.dash_title {
+    display: block;
+    font-size: 12px;
+    line-height: 30px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+.colon{
+    float: left;
+    width: 24px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 24px;
+    text-align: center;
+}
+.clearfix{*zoom:1;}
+.clearfix:after{
+    display:block;
+    content:"clear";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+}
+
+
+
+.yellow-border{
+    border:1px dashed #ffd254;
+}
+.lead-word{
+    padding: 15px 0;
+    margin-bottom: 15px;
+}
+.lead-word p{
+    font-size: 13px;
+    line-height: 22px;
+    text-align: center;
+}
+.lead-word p span{
+    color: #ffd254;
+}
+.save-worry{
+    margin-bottom: 15px;
+    padding: 60px 0 20px 0;
+    background: url(/static/activity/promotion/images/save_worry.png) no-repeat center 16px;
+    background-size: 200px 30px;
+}
+.save-worry p{
+    line-height: 28px;
+    font-size: 14px;
+    text-align: center;
+}
+.save-worry p big{
+    color: #ffd254;
+    font-size: 20px;
+}
+.save-worry p span{
+    color: #ffd254;
+    font-weight: bold;
+}
+.self{
+    padding-top: 55px;
+    padding-bottom: 22px;
+    background: url(/static/activity/promotion/images/self.png) no-repeat center 16px;
+    background-size: 200px 30px;
+}
+.self .self-public{
+    padding-top: 8px;
+    line-height: 24px;
+    text-align: center;
+}
+.self .self-public h3{
+    position: relative;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: normal;
+}
+.self .self-public p{
+    font-size: 13px;
+}
+.self .self-public p span{
+    font-size: 15px;
+    color: #ffd254;
+}
+.packages{
+
+}
+.packages>div{
+    width: 135px;
+    height: 160px;
+    margin: 15px auto 0 auto;
+    border-top: 3px solid #ffd254;
+    background-color: #FFF;
+    text-align: center;
+    color: #5e7c8b;
+}
+.packages>div p.old-price{
+    font-size: 13px;
+    padding-top: 10px;
+    line-height: 20px;
+}
+.packages>div p.now-price{
+    padding-bottom: 4px;
+    padding-left: 33px;
+    text-align: left;
+    font-size: 13px;
+}
+.packages>div p.now-price big{
+    font-size: 20px;
+    color: #9c3328;
+    line-height: 34px;
+}
+.packages>div p.feed-resume{
+    padding-left: 33px;
+    text-align: left;
+    font-size: 13px;
+    line-height: 20px;
+}
+.packages>div p.feed-resume span{
+   color: #9c3328;
+   font-size: 15px;
+}
+.packages>div p.packages-sort{
+    font-size: 13px;
+    line-height: 34px;
+}
+.promotion-bottom{
+    height: 132px;
+    padding-top: 80px;
+    background: url(/static/activity/promotion/images/tel.png) no-repeat center 16px;
+    background-size: 200px 45px;
+}
+.promotion-bottom p{
+    position: relative;
+    padding-left: 27px;
+    font-size: 12px;
+    line-height: 22px;
+}
+.promotion-bottom p.publish{
+    text-align: center;
+    padding-left: 0px;
+}
+.promotion-bottom p span{
+    position: absolute;
+    left: 20px;
+    top: 0;
+    color: #ffd254;
+}

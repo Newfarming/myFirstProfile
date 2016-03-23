@@ -1,0 +1,19 @@
+<div class="form-content text-center pt30 multi">
+    <div class="keywords">
+        <a href="javascript:;" class="button-public button-keyword cfff b44B5E8" ng-repeat="welfare in keywords track by $index" ng-click="removeAnaKeyword( welfare , keywords , $event )" title="{- welfare -}">{- welfare | maxlen -}<i></i></a><a href="javascript:void(0);" class="button-public button-keyword cfff b44B5E8 input-dash" ng-class="{'input-dash-hide':keywords.length>=20}">&nbsp;</a>
+    </div>
+    <div class="pt40 recommand-word" ng-show="useRecommand && recommandKeywords.length">
+        <span>为您推荐:</span>
+        <a href="javascript:void(0);" ng-repeat="anaWelfare in recommandKeywords track by $index" ng-hide="hasInArr( keywords , anaWelfare )" ng-click="addWelfare( anaWelfare )">{- anaWelfare -}</a>
+
+    </div>
+    <div class="keyword-input-box clearfix keyword-input-box-fix">
+        <div ng-show="!isShowNew">
+            <a href="javascript:void(0);" class=" button-public botton-add-keyword" ng-click="isShowNew=!isShowNew"> ＋ 添加关键字 </a>
+        </div>
+        <div ng-show="isShowNew" class="pt30">
+            <input type="text" name="" placeholder="添加标签" class="fl insert-key" id="JS_welfare_model" maxLength="50" ng-keyup="watchWelfare( $event )" ng-enter="setWelfare($event)" ng-model="kwt">
+            <a href="javascript:void(0);" class="fl f14" ng-click="setKeywords('JS_welfare_model',keywords)">贴上</a>
+        </div>
+    </div>
+</div>

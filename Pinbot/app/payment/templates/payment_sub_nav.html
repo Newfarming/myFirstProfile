@@ -1,0 +1,21 @@
+<div class="main-subnav">
+    <div id="resume-list-header">
+        <ul class="main-subnav-list">
+            <li class="first-child {{ pkg_on }}">
+                <a href="{% url 'payment-my-account' %}">我的账户</a>
+            </li>
+            <li class="{{ mypkg_on }}">
+                <a href="{% url 'payment-my-package' %}">省心套餐</a>
+            </li>
+            <li class="{{ tradelog_on }}">
+                <a href="{% url 'payment-trade-log' %}">交易记录</a>
+            </li>
+            <li class="{{ point_on }}">
+                <a href="{% url 'payment-point-record' %}">聘点记录</a>
+            </li>
+            <li class="{{ coin_on }}">
+                <a href="{% url 'payment-coin-record' %}">金币记录</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?1aa8b42afe4" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/resume_list.min.css?8b42afe4" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  {% include 'sentry_fix.html' %}
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+</head>
+<body>
+
+{% include 'alpha/header.html' %}
+<div class="main-subnav">
+    <div id="resume-list-header">
+        <ul class="main-subnav-list">
+            <li class="first-child"><a href="/resumeupload/index/">人才录入</a></li>
+            <li class="on"><a href="/resumeupload/uploadlist/">录入记录</a></li>
+            <li class=""><a href="/resumeupload/trace/">跟踪统计</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="main">
+  <div id="content" class="clearfix">
+    {% if resume_list %}
+    <div id="resume-list" class="clearfix">
+      {% include 'alpha/resume-list-aside.html' %}
+      <div class="resume-list-content">
+        {% include 'alpha/upload-list-table.html' %}
+     <!--    {% include 'alpha/resume-list-pager.html' %}  -->
+      </div>
+    </div>
+  {% else %}
+    <div id="resume-list" class="clearfix resume-list-table">
+      <table>
+            <thead>
+              <tr>
+                <th width="10%" style="text-align:center;">简历ID </th>
+                <th width="8%" style="text-align:center;">候选人</th>
+                <th width="10%" style="text-align:center;">邮箱</th>
+                <th width="10%" style="text-align:center;">最近职位</th>
+                <th width="10%" style="text-align:center;">最近公司</th>
+                <th width="10%" style="text-align:center;">上传时间</th>
+                <th width="10%" style="text-align:center;">入库时间</th>
+                <th width="10%" style="text-align:center;">审核状态</th>
+                <th width="22%" style="text-align:center;">我的操作</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="9" style="border-bottom:0 none;">
+                        <p class="no-list"><i class="i-l-notice"></i>暂时没有任何数据！</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% include 'footer.html'%}
+<script src="{{ STATIC_URL }}alpha/scripts/ZeroClipboard.js"></script>
+<script>
+    (function() {
+        var client = new ZeroClipboard($('.copy-a'));
+        client.on('copy', function(e) {
+            $('.copy-a span:visible').hide();
+            e = e || window.event;
+            var dom = $( e.target || e.srcElement ),
+                url = dom.attr('data-url');
+            client.setText(url);
+            dom.find('span').show();
+        });
+    }());
+
+    $(function(){
+        $('.delete-a').on('click', function(){
+            var $this = $( this ),
+                url = $this.attr('data-url');
+            if( !url ) return;
+            $.confirm('<p style="text-align:center;font-size:16px;"><i class="i-l-notice"></i>您确定删除该记录吗？</p>' , function(){
+                $.get( url , {} , function( res ){
+                    if( res && res.status == 'ok'){
+                        $this.closest('tr').remove();
+                    }else{
+                        $.alert('<p style="text-align:center;font-size:16px;"><i class="i-l-notice"></i>删除失败！</p>');
+                    };
+                },'json');
+            });
+        });
+    });
+</script>
+</body>
+</html>

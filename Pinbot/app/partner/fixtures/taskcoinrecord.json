@@ -1,0 +1,74 @@
+[
+{
+  "pk": 1, 
+  "model": "partner.taskcoinrecord", 
+  "fields": {
+    "task": 1, 
+    "record_time": "2015-06-18T17:20:02", 
+    "record_type": "check", 
+    "upload_resume": 2, 
+    "coin": 1.0, 
+    "desc": "\u67e5\u770b\u4e86\u7b80\u5386"
+  }
+},
+{
+  "pk": 2, 
+  "model": "partner.taskcoinrecord", 
+  "fields": {
+    "task": 1, 
+    "record_time": "2015-06-18T17:20:36", 
+    "record_type": "download", 
+    "upload_resume": 2, 
+    "coin": 2.0, 
+    "desc": "\u4e0b\u8f7d\u4e86\u7b80\u5386"
+  }
+},
+{
+  "pk": 3, 
+  "model": "partner.taskcoinrecord", 
+  "fields": {
+    "task": 1, 
+    "record_time": "2015-06-18T17:25:56", 
+    "record_type": "interview", 
+    "upload_resume": 2, 
+    "coin": 2.0, 
+    "desc": "\u8fdb\u5165\u5230\u4e86\u9762\u8bd5"
+  }
+},
+{
+  "pk": 4, 
+  "model": "partner.taskcoinrecord", 
+  "fields": {
+    "task": 1, 
+    "record_time": "2015-06-18T17:31:50", 
+    "record_type": "taking_work", 
+    "upload_resume": 2, 
+    "coin": 10.0, 
+    "desc": "\u5df2\u5165\u804c"
+  }
+},
+{
+  "pk": 9, 
+  "model": "partner.taskcoinrecord", 
+  "fields": {
+    "task": 8, 
+    "record_time": "2015-06-19T15:00:20", 
+    "record_type": "check", 
+    "upload_resume": 2, 
+    "coin": 1.0, 
+    "desc": "\u67e5\u770b\u4e86\u7b80\u5386"
+  }
+},
+{
+  "pk": 11, 
+  "model": "partner.taskcoinrecord", 
+  "fields": {
+    "task": 4, 
+    "record_time": "2015-06-19T16:08:18", 
+    "record_type": "check", 
+    "upload_resume": 2, 
+    "coin": 1.0, 
+    "desc": "\u67e5\u770b\u4e86\u7b80\u5386"
+  }
+}
+]

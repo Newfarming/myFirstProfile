@@ -1,0 +1,34 @@
+[
+{
+  "pk": 1,
+  "model": "crm.candidatetag", 
+  "fields": {
+    "name": "tag1",
+    "display": true
+  }
+},
+{
+  "pk": 2,
+  "model": "crm.candidatetag", 
+  "fields": {
+    "name": "tag2",
+    "display": true
+  }
+},
+{
+  "pk": 3,
+  "model": "crm.candidatetag", 
+  "fields": {
+    "name": "tag3",
+    "display": false
+  }
+},
+{
+  "pk": 4,
+  "model": "crm.candidatetag", 
+  "fields": {
+    "name": "tag4",
+    "display": false
+  }
+}
+]

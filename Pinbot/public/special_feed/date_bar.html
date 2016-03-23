@@ -1,0 +1,9 @@
+
+<div class="date-bar date-bar-hide" ng-class="{'date-bar-recent':isSevenday(displayTime),'date-bar-hide':!isShowDateBar(displayTime)}">
+    <div class="date-bar-arrow"></div>
+    <div class="date-bar-title" ng-show="isToday(displayTime)"><span>Hi~聘小宝为你带来今天的简历推荐～ ({- displayTime | noSpace -})</span></div>
+    <div class="date-bar-title" ng-show="isYesterday(displayTime)"><span>这里是来自昨天的简历推荐～ ({- displayTime | noSpace -})</span></div>
+    <div class="date-bar-title" ng-show="isSevenday(displayTime)"><span>这里是来自7天前的简历推荐～ ({- displayTime | noSpace -})</span></div>
+    <div class="date-bar-title" ng-show="isOtherday(displayTime)"><span>这里是来自{- displayTime | noSpace -}的简历推荐～ </span></div>
+    <div class="date-bar-icon"></div>
+</div>

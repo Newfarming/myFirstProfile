@@ -1,0 +1,25 @@
+{% extends 'base_revision_new_ng.html' %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class=" " >
+        <div class="layout mg-top-20" ui-view>
+
+            <div class="mission-success inner-page-modal">
+                <h3 class="text-center"><i class="i-ms"></i>您的省心型套餐已过期</h3>
+                <p class="caaa f14 text-center sub-title-star">我们将不会为你继续提供人工服务，你可以继续自助使用聘宝，并<a href="/payment/point_recharge/">购买点数</a></p>
+                <p class="alarm"></p>
+                <p class="mt20 text-center">
+                    <a class="btn btn-blue JS_close_layerout" href="/special_feed/page/">查看我的定制</a>
+                    <a class="btn btn-red continue-buy-link" href="/vip/role_info">继续购买</a>
+                </p>
+            </div>
+
+        </div><!-- layout -->
+    </div><!-- register -->
+{% endblock %}
+
+

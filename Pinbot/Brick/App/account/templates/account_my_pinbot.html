@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}account/css/account.min.css" rel="stylesheet">
+{% endblock%}
+
+{% block app %} ng-app="app.account" ng-controller="editAccount" {% endblock %}
+
+{% block body %}
+    <h1 class="text-center page-header">个人中心</h1>
+    <div class="content">
+        <div class="inner-content">
+
+            <div class="user-info">
+                <p><i class="i-email"></i>{{ request.user.username }}</p>
+                <!-- <p><i class="i-weixin"></i><a href="" title="绑定微信账号" class="c0091fa">绑定微信账号</a></p> -->
+            </div>
+
+            <div class="change-password">
+                <p class="text-center">
+                    <button type="button" ng-click="toggleChangePassword( true )" class="button button-primary button-long" ng-show="!isChangePassword">修改密码</button>
+                    <h2 class="text-center panel-title ng-hide" ng-show="isChangePassword">修改密码</h2>
+                </p>
+                <div class="change-password-form form-panel ng-hide edit-pwd-form" ng-show="isChangePassword">
+                    <form action="." name="changePasswordForm" method="post" accept-charset="utf-8" autocomplete="off">
+                        <div class="form-box">
+                            <p class="label-title">当前密码</p>
+                            <p class="relative">
+                                <a class="i-eye" ng-click="togglePasswordType( $event )"></a>
+                                <input ng-model="old_password" name="old_password" type="password" class="input" validator="old_password" placeholder="请输入当前密码" maxLength="20">
+                            </p>
+                        </div>
+                        <div class="form-box">
+                            <p class="label-title">新密码</p>
+                            <p class="relative">
+                                <a class="i-eye" ng-click="togglePasswordType( $event )"></a>
+                                <input ng-model="password" name="password" type="password" class="input" validator="newpassword" placeholder="请输入新密码" maxLength="20">
+                            </p>
+
+                        </div>
+                        <div class="form-box">
+                            <p class="label-title">确认密码</p>
+                            <p class="relative">
+                                <a class="i-eye" ng-click="togglePasswordType( $event )"></a>
+                                <input ng-model="confirm_password" name="confirm_password" type="password" class="input" validator="confirm_password" placeholder="请再次输入新密码" maxLength="20">
+                            </p>
+                        </div>
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}" ng-model="csrfmiddlewaretoken">
+                        <div class="form-box text-center btns-2 btn-group">
+                            <button class="button button-primary w30p" type="button" validation-submit="changePasswordForm" ng-click="changePassword()">确认</button>
+                            <button class="button button-cancle w30p" type="button" ng-click="toggleChangePassword( false )">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {% comment %}
+            <div class="privacy">
+                <h2 class="text-center panel-title">隐私设置</h2>
+                <div class="setting clearfix">
+                    仅对我感兴趣的职位公开联系方式
+                    <a class="switch" ng-show="!isOpenContact" ng-click="toggleOpenContact( true )"><i class="i-switch"></i>OFF</a>
+                    <a class="switch active ng-hide" ng-show="isOpenContact"  ng-click="toggleOpenContact( false )"><i class="i-switch"></i>ON</a>
+                </div>
+                <div class="setting clearfix">
+                    默认聘宝将我推荐给其他企业
+                    <a class="switch" ng-show="!isOpenRecommend"  ng-click="toggleOpenRecommend( true )"><i class="i-switch"></i>OFF</a>
+                    <a class="switch active ng-hide" ng-show="isOpenRecommend"  ng-click="toggleOpenRecommend( false )"><i class="i-switch"></i>ON</a>
+                </div>
+            </div>
+            {% endcomment %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% compress js %}
+        <script src="{{ STATIC_URL }}common/js/angular-validation.js"></script>
+        <script src="{{ STATIC_URL }}common/js/angular-validation-rule.js"></script>
+        <script src="{{ STATIC_URL }}account/user_center.min.js"></script>
+    {% endcompress %}
+{% endblock %}

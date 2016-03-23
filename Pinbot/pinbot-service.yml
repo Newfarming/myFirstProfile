@@ -1,0 +1,37 @@
+# serivce host 
+# mac use `boot2docker ip`
+# linux use 127.0.0.1
+
+# mysql 
+# username admin password root
+mysql: 
+  image: sameersbn/mysql:latest
+  ports:
+    - "3306:3306"
+  environment:
+    - DB_REMOTE_ROOT_NAME=admin
+    - DB_REMOTE_ROOT_PASS=root
+    - DB_REMOTE_ROOT_HOST=%
+
+# redis
+# password root
+redis:
+  image: redis:latest
+  ports:
+    - "6379:6379"
+  command: redis-server --requirepass root
+
+# rabbitmq 
+# username guest password guest
+rabbitmq:
+  image: mikaelhg/docker-rabbitmq:latest
+  ports:
+    - "5672:5672"
+
+# mongo
+# no auth
+mongo:
+  image: mongo:latest
+  command: mongod --setParameter failIndexKeyTooLong=false
+  ports:
+    - "27017:27017"

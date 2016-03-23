@@ -1,0 +1,4 @@
+<div ng-repeat="notify in data.data" class="notify" ng-class="{unread:notify.unread}" ng-click="view( $event )">
+    <p class="text-right date">{- notify.timestamp -}</p>
+    <div ng-bind-html="notify.verb | to_trusted"></div>
+</div>

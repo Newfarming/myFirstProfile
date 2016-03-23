@@ -1,0 +1,44 @@
+[
+{
+  "pk": 2, 
+  "model": "vip.userorder", 
+  "fields": {
+    "actual_price": 1.0, 
+    "order_type": 3, 
+    "order_remark": "", 
+    "order_id": "20150328194756-ozG7zD", 
+    "item_object_id": 3, 
+    "order_desc": "\u7533\u8bf7\u63d0\u73b0", 
+    "item_content_type": 127, 
+    "is_delete": false, 
+    "is_insurance": false, 
+    "create_time": "2015-03-28T19:47:56", 
+    "order_price": 1.0, 
+    "pay_time": "2015-03-28T19:47:56", 
+    "order_status": "paid", 
+    "payment_terms": "alipay", 
+    "user": 907
+  }
+},
+{
+  "pk": 3, 
+  "model": "vip.userorder", 
+  "fields": {
+    "actual_price": 9.0, 
+    "order_type": 3, 
+    "order_remark": "", 
+    "order_id": "20150328195358-AipPQm", 
+    "item_object_id": 4, 
+    "order_desc": "", 
+    "item_content_type": 127, 
+    "is_delete": false, 
+    "is_insurance": false, 
+    "create_time": "2015-03-28T19:53:58", 
+    "order_price": 9.0, 
+    "pay_time": "2015-03-28T19:53:58", 
+    "order_status": "paid", 
+    "payment_terms": "alipay", 
+    "user": 907
+  }
+}
+]

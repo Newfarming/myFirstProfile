@@ -1,0 +1,364 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+
+{% compress css %}
+<link href="{{ STATIC_URL }}special_feed/css/edit_feed.css?2015122201" type="text/css" rel="stylesheet" />
+{% endcompress %}
+
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with feed_class='curr' %}
+{% endblock %}
+
+{% block app %}ng-app="feedApp" ng-controller="feedController"{% endblock %}
+
+{% block content %}
+<div class="inner-content relative feed-box" data-feedData="{{data}}" id="JS_container">
+
+    <div class="add-resume-right" ng-show="firstStep" ng-cloak>
+        <div class="resume-right-btn-box clearfix">
+            <a href="javascript:void(0);" class="fl view-resume resume-right-btn-public" ng-click="toggleView()" ng-cloak><i></i>预览</a>
+            <a href="javascript:void(0);" class="fr del-resume resume-right-btn-public" ng-click="deleteFeed( feedData.feed.feed_id )" ng-show="!isAddNew" ng-cloak><i></i>删除</a>
+        </div>
+        <div>
+            <div class="add-resume-progress"><div class="progress-width" style="width:0%;"></div></div>
+            <div class="add-resume-right-nav pt20">
+                <a ng-cloak href="#label_expect_area" ng-click="moveToPanel($event, 'city')" class="icon-menu icon-menu-city  right-nav-current right-nav-state-current" ng-if="chkPanel('city')">工作地<span><em></em></span></a>
+                <a ng-cloak href="#label_level" ng-click="moveToPanel($event, 'level')" class="icon-menu icon-menu-level " ng-if="chkPanel('level')">人才级别<span><em></em></span></a>
+                <a ng-cloak href="#label_job_title" ng-click="moveToPanel($event, 'job_title')" class="icon-menu icon-menu-job-title " ng-if="chkPanel('job_title')">职位名称<span><em></em></span></a>
+                <a ng-cloak href="#label_job_desc" ng-click="moveToPanel($event, 'job_desc')" class="icon-menu icon-menu-job-desc " ng-if="chkPanel('job_desc')">职位详情<span><em></em></span></a>
+
+                <a ng-cloak href="#label_expect_area_edit" ng-click="moveToPanel($event, 'city_edit')" class="icon-menu icon-menu-city  right-nav-current right-nav-state-current" ng-if="chkPanel('city_edit')">工作地<span><em></em></span></a>
+                <a ng-cloak href="#label_level_edit" ng-click="moveToPanel($event, 'level_edit')" class="icon-menu icon-menu-level " ng-if="chkPanel('level_edit')">人才级别<span><em></em></span></a>
+                <a ng-cloak href="#label_job_title_edit" ng-click="moveToPanel($event, 'job_title_edit')" class="icon-menu icon-menu-job-title " ng-if="chkPanel('job_title_edit')">职位名称<span><em></em></span></a>
+                <a ng-cloak href="#label_job_desc_edit" ng-click="moveToPanel($event, 'job_desc_edit')" class="icon-menu icon-menu-job-desc " ng-if="chkPanel('job_desc_edit')">职位详情<span><em></em></span></a>
+
+                <!-- <a ng-cloak href="#label_keywords" ng-click="moveToPanel($event, 'keyword')" class="icon-menu icon-menu-keyword " ng-if=" loadingMoreDone && chkPanel('keyword')">职位关键词<span><em></em></span></a> -->
+                <a ng-cloak href="#label_job_keywords" ng-click="moveToPanel($event, 'job_keyword')" class="icon-menu icon-menu-job-keyword " ng-class="{'right-nav-state-current':!isAddNew}" ng-if=" loadingMoreDone && chkPanel('job_keyword')">职位拓展名<span><em></em></span></a>
+                <a ng-cloak href="#label_skill_keywords" ng-click="moveToPanel($event, 'skill_keyword')" class="icon-menu icon-menu-skill-keyword " ng-class="{'right-nav-state-current':!isAddNew}" ng-if=" loadingMoreDone && chkPanel('skill_keyword')">技能关键词<span><em></em></span></a>
+
+                <a ng-cloak href="#label_domain" ng-click="moveToPanel($event, 'domain')" class="icon-menu icon-menu-domain right-nav-state-current" ng-if="loadingMoreDone && chkPanel('domain')">职位领域<span><em></em></span></a>
+                <a ng-cloak href="#label_prefer" ng-click="moveToPanel($event, 'prefer')" class="icon-menu icon-menu-prefer right-nav-state-current" ng-if="loadingMoreDone && chkPanel('prefer')">公司偏好<span><em></em></span></a>
+                <a ng-cloak href="#label_welfare" ng-click="moveToPanel($event, 'welfare')" class="icon-menu icon-menu-welfare right-nav-state-current" ng-if="loadingMoreDone && chkPanel('welfare')">职位诱惑<span><em></em></span></a>
+                <a ng-cloak href="#label_salary" ng-click="moveToPanel($event, 'salary')" class="icon-menu icon-menu-salary " ng-if="loadingMoreDone && chkPanel('salary')">月薪范围<span><em></em></span></a>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="edit-form relative" ng-if="false">
+        <a href="javascript:void(0);" ng-if="loadingMoreDone" class="back-btn c607d8b" title="返回" ng-click="previous()"><i class="icon i-back-btn"></i>返回上一步</a>
+        <a href="javascript:void(0);" ng-if="!isAddNew" class="delete-btn c607d8b" title="删除" ng-click="deleteFeed( feedData.feed.feed_id )">删除定制<i class="icon i-delete-btn"></i></a>
+    </div>
+
+    <div ng-show="firstStep" class="feed-box-main ng-hide">
+        <h1 class="text-center pt40 ng-hide" ng-show="isAddNew">新增定制</h1>
+        <h1 class="text-center pt40 ng-hide" ng-hide="isAddNew">编辑定制</h1>
+        <p class="text-center cf46c62 error-message" ng-bind="'注：*号内容为必填内容哦！'"></p>
+
+        <!-- 新增定制 -->
+        <div class="feed-box-inbox" id="JS_add_box" ng-show="isAddNew">
+            <form name="addForm">
+
+                <div class="edit-form">
+                    <div class="form-panel noselect" id="JS_city_addnew">
+                        <a name="label_expect_area"></a>
+                        <feed-label title="'工作地'" star="true" for-id="'label_expect_area_title'" is-show-err="( ( !feedData.feed.expect_area || !feedData.feed.expect_area.length ) && feedData.levelCity ) || reAreaErrorError" error-msg="reAreaErrorMsg"></feed-label>
+                        <div class="form-content text-left pt40 choose-btn multi">
+                            <location-button expect-area="feedData.expect_area"></location-button>
+                        </div>
+                        <p class="text-center c44b5e8 add-tip">工作地对人才推荐结果非常重要并且不能修改，请认真选择哦！</p>
+                    </div>
+                    <div class="form-panel noselect pt30" id="JS_level_edit">
+                        <a name="label_level"></a>
+                        <feed-label title="'人才级别'" star="true" for-id="'label_level_title'" is-show-err="( ( !feedData.feed.talent_level || !feedData.feed.talent_level.length ) && feedData.levelDirty ) || reLevelError" error-msg="reLevelErrorMsg"></feed-label>
+                        <div class="form-content text-center pt40 choose-btn">
+                            <a class="button button-normal f16" data-level="{- level -}" ng-class="isLevelActive( level )" ng-click="toggleLevel( level , $event )" ng-repeat="level in feedData.talent_level">{- level -}</a>
+                        </div>
+                        <p class="text-center c44b5e8 add-tip">人才级别影响为你推荐的候选人资历，可多选哦！</p>
+                    </div>
+                    <div class="form-panel noselect pt30" id="JS_job_title_box">
+                        <a name="label_job_title"></a>
+                        <feed-label title="'职位名称'" star="true" for-id="'label_job_title_title'" is-show-err="( ( !feedData.feed.title || !feedData.feed.title.length ) && feedData.titleDirty ) || reTitleError" error-msg="reTitleErrorMsg"></feed-label>
+                        <div class="form-content text-center pt60">
+                            <input type="text" name="title" ng-model="feedData.feed.title" id="JS_job_title" validator="title" class="input input-underline w325" ng-maxlength="100" message-id="title_message">
+                        </div>
+                        <p class="text-center c44b5e8 add-tip">请填写准确的职位名称，例：java开发工程师</p>
+                    </div>
+                    <div class="form-panel noselect pt30" id="JS_job_desc_box">
+                        <a name="label_job_desc"></a>
+                        <feed-label title="'职位详情'" star="true" for-id="'label_job_desc_title'" is-show-err="( ( !feedData.feed.job_desc || !feedData.feed.job_desc.length ) && feedData.descDirty ) || reDescError" error-msg="reDescErrorMsg"></feed-label>
+                        <div class="form-content text-center pt60">
+                            <textarea name="job_desc" id="JS_job_desc_addnew" rows="10" class="textarea full" ng-model="feedData.feed.job_desc" validator="jobDesc" ng-maxlength="1000" message-id="job_desc_message">{- feedData.feed.job_desc -}</textarea>
+                        </div>
+                        <p class="text-center c44b5e8 add-tip">请妥善填写职位描述和职位要求，聘宝会为你解析出JD关键词，为您推荐更精准的简历。</p>
+                    </div>
+                    <div class="form-handle text-center" >
+                        <button class="button button-primary button-red button-big w240 job_desc_parse " ng-click="jobDescParse($event, addForm)" type="button">解析职位详情</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- 编辑定制 -->
+        <div class="feed-box-inbox" id="JS_edit_box" ng-show="!isAddNew">
+            <form name="editForm">
+
+                <div class="edit-form">
+                    <div class="form-panel noselect" id="JS_city_edit">
+                        <a name="label_expect_area_edit"></a>
+                        <feed-label title="'工作地'" for-id="'label_expect_area_title_edit'" is-show-err="false" error-msg="''"></feed-label>
+                        <div class="form-content text-center pt60 choose-btn multi">
+                            <span class="form-text">{- feedData.feed.expect_area | joinCity -}</span>
+                        </div>
+                    </div>
+                    <div class="form-panel noselect pt60" id="JS_level_edit">
+                        <a name="label_level_edit"></a>
+                        <feed-label title="'人才级别'" star="true" for-id="'label_level_title_edit'" is-show-err="( ( !feedData.feed.talent_level || !feedData.feed.talent_level.length ) && feedData.levelDirty ) || reLevelError" error-msg="reLevelErrorMsg"></feed-label>
+                        <div class="form-content text-center choose-btn pt40">
+                            <a class="button button-normal f16" data-level="{- level -}" ng-class="isLevelActive( level )" ng-click="toggleLevel( level , $event )" ng-repeat="level in feedData.talent_level">{- level -}</a>
+                        </div>
+                    </div>
+                    <div class="form-panel noselect pt60" id="JS_job_title_edit_box">
+                        <a name="label_job_title_edit"></a>
+                        <feed-label title="'职位名称'" for-id="'label_job_title_title_edit'" is-show-err="false" error-msg="''"></feed-label>
+                        <div class="form-content text-center pt60">
+                            <input type="text" name="title" ng-model="feedData.feed.title" id="JS_job_title_edit" validator="title" class="input input-underline w325" ng-maxlength="100" ng-show="!feedData.title" message-id="titlt1_message">
+                            <span class="form-text" ng-show="feedData.title">{- feedData.feed.title -}</span>
+                        </div>
+                    </div>
+                    <div class="form-panel noselect pt60" id="JS_job_desc_edit_box">
+                        <a name="label_job_desc_edit"></a>
+                        <feed-label title="'职位详情'" star="true" for-id="'label_job_desc_title_edit'" is-show-err="( ( !feedData.feed.job_desc || !feedData.feed.job_desc.length ) && feedData.descDirty ) || reDescError" error-msg="reDescErrorMsg"></feed-label>
+                        <!-- <p class="text-center cf46c62 arial error-message" id="job_desc1_message"></p> -->
+                        <div class="form-content text-center pt60">
+                            <textarea name="job_desc" id="JS_job_desc_edit" rows="10" class="textarea full" ng-model="feedData.feed.job_desc" validator="job_desc" ng-maxlength="1000"  message-id="job_desc1_message">{- feedData.feed.job_desc -}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-handle text-center" >
+                        <button class="button button-primary button-red button-big w240 job_desc_parse " type="button" ng-click="jobDescParse($event, editForm)">解析职位详情</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="loading" ng-show="loadingMore">
+        <div class="text-center"><img src="/static/partner/images/loading.gif" alt="loading"><br>请稍后...</div>
+    </div>
+
+    <div ngs-show="firstStep" class="feed-box-main" ng-show="loadingMoreDone" ng-cloak>
+
+        <form name="submitForm">
+            <div class="edit-form pb150">
+                <div class="form-panel noselect" id="JS_job_keywords_box">
+                    <a name="label_job_keywords"></a>
+                    <feed-label star="true" title="'职位拓展名'" for-id="'label_job_keywords_title'" is-show-err="( ( !feedData.feed.analyze_titles || !feedData.feed.analyze_titles.length ) && feedData.jobKeywordDirty ) || reJobKeywordsError" error-msg="reJobKeywordsErrorMsg"></feed-label>
+                    <customized-title-button keywords="feedData.feed.analyze_titles" use-recommand="feedData.analyze_titles && feedData.analyze_titles.length" recommand-keywords="feedData.analyze_titles" kwt="keywordText" select-title="'请选择您的职位拓展名：'"></customized-title-button>
+                    <p class="text-center c44b5e8 add-tip"></p>
+                </div>
+
+                <div class="form-panel noselect pt50" id="JS_skill_keywords_box">
+                    <a name="label_skill_keywords"></a>
+                    <feed-label star="true" title="'技能关键词'" for-id="'label_skill_keywords_title'" is-show-err="( ( !feedData.feed.keywords || !feedData.feed.keywords.length ) && feedData.keywordDirty ) || reKeywordsError" error-msg="reKeywordsErrorMsg"></feed-label>
+                    <customized-button keywords="feedData.feed.keywords" use-recommand="feedData.analyze_keywords && feedData.analyze_keywords.length" recommand-keywords="feedData.analyze_keywords" kwt="keywordText" select-title="'请选择您的技能关键词：'"></customized-button>
+                    <p class="text-center c44b5e8 add-tip"></p>
+                </div>
+
+                <div class="form-panel noselect pt50" id="JS_categorys_box" ng-if=" ( feedData.company.categorys && feedData.company.categorys.length ) || ( feedData.analyze_job_domain && feedData.analyze_job_domain.length ) ">
+
+                    <a name="label_domain"></a>
+                    <feed-label title="'职位领域'" for-id="'label_domain_title'" is-show-err=" ( ( !feedData.feed.job_domain || !feedData.feed.job_domain.length ) && feedData.catDirty ) || reCatError" error-msg="reCatErrorMsg"></feed-label>
+                    <!-- <p class="text-center c607d8b f14 pt20" ng-if="feedData.company.categorys || feedData.company.categorys.length">你可以同步公司的行业领域</p> -->
+                    <div class="form-content text-center pt40 choose-btn" ng-if="feedData.company.categorys || feedData.company.categorys.length">
+                        <domain-button categorys="feedData.company.categorys"></domain-button>
+                    </div>
+
+                    <!-- <p class="text-center c607d8b f14 pt20" ng-if="feedData.analyze_job_domain && feedData.analyze_job_domain.length">试试这些小宝推荐的职位领域~</p> -->
+                    <div class="form-content text-center pt10 choose-btn" ng-if="feedData.analyze_job_domain && feedData.analyze_job_domain.length">
+                        <domain-button categorys="feedData.analyze_job_domain"></domain-button>
+                    </div>
+
+                </div>
+                <div class="form-panel noselect pt60" id="JS_prefer_box" ng-if="!isPrimaryLevel()">
+                    <a name="label_prefer"></a>
+                    <feed-label title="'公司偏好'" for-id="'label_prefer_title'" is-show-err=" ( ( !feedData.feed.company_prefer || !feedData.feed.company_prefer.length ) && feedData.preferDirty && !isPrimaryLevel() ) || rePreferError" error-msg="rePreferErrorMsg"></feed-label>
+                    <!-- <p class="text-center c607d8b f14 pt20">挖角就是这么简单，现在就来试试看~XD</p> -->
+                    <div class="form-content text-center pt40 choose-btn">
+                        <prefer-button company-prefer="feedData.company_prefer"></prefer-button>
+                    </div>
+                </div>
+                <div class="form-panel noselect pt60" id="JS_welfare_box" ng-if="!isPrimaryLevel()">
+                    <a name="label_welfare"></a>
+                    <feed-label title="'职位诱惑'" for-id="'label_welfare_title'" is-show-err=" ( ( !feedData.feed.job_welfare || !feedData.feed.job_welfare.length ) && feedData.welfareDirty && !isPrimaryLevel() ) || reWelfareError " error-msg="reWelfareErrorMsg"></feed-label>
+                    <!-- <p class="text-center c607d8b f14 pt20">优质人才关心什么？试试使用这些打动他们，<span class="tahoma cf46c62">20</span>个标签以内（点击添加）</p> -->
+                    <welfare-button keywords="feedData.feed.job_welfare" recommand-keywords="feedData.job_welfare" kwt="''"></welfare-button>
+                    <p class="text-center c44b5e8 add-tip">用职位诱惑打动候选人吧！最多可选20个标签！</p>
+                </div>
+                <div class="form-panel noselect pt30" id="JS_salary_box">
+                    <a name="label_salary"></a>
+                    <feed-label title="'月薪范围'" star="true" for-id="'label_salary_title'" is-show-err=" reSalaryError && !isNegotiable " error-msg="reSalaryErrorMsg"></feed-label>
+
+                    <div class="form-content text-center pt60">
+                        <span ng-if="!isNegotiable" class="salary-input">
+                            <input type="text" min="0" class="input w120 h30" ng-model="feedData.feed.salary_min" name="salary_min" ng-class="{error:reSalaryError}" autocomplete="off" value="{- feedData.feed.salary_min -}" placeholder="最低薪资"> 元
+                            <span class="midline">—</span>
+                            <input type="text" min="1" class="input w120 h30" ng-model="feedData.feed.salary_max" name="salary_max" ng-class="{error:reSalaryError}" autocomplete="off" value="{- feedData.feed.salary_max -}" placeholder="最高薪资"> 元
+                        </span>
+                        <input type="checkbox" class="regular-radio" id="JS_negotiable" ng-model="isNegotiable" ng-checked="isNegotiable">
+                        <label for="JS_negotiable" class="l-radio" ng-if="isPrimaryLevel()"></label>
+                        <span class="my" ng-hide="true" ng-ifs="isPrimaryLevel()">面议</span>
+                    </div>
+                    <p class="text-center cf46c62 f14 pt10" ng-if="toLowSalary()">小宝提示：薪资太低可能无法打动优秀人才哦！</p>
+                </div>
+                <div class="form-handle text-center pt60">
+                    <button class="button button-primary button-big w240" ng-click="form.submit( submitForm )" type="button" ng-disabled="feedData.submiting">保存</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+<div class="fix-tip ng-hide" ng-show="loadingMoreDone && isSyncData">
+    <div class="fix-content relative">
+        <a href="javascript:void(0);" class="i-slideup" ng-click="toggleTip()" id="JS_slideup_btn"></a>
+        <div class="close-tip" id="JS_off_tip">
+            <a ng-click="toggleTip()" class="cffffff f14">查看小宝推荐薪资和人数范围</a>
+        </div>
+        <div id="JS_on_tip" style="display:none">
+            <div class="clearfix">
+                <a href="javascript:void(0);" class="sync cffd76d f14" ng-click="synSalary()">同步建议薪资</a>
+            </div>
+            <div class="clearfix pt10">
+                <div class="tip-panel left">
+                    <i class="icon i-coin"></i>
+                    <span class="cffffff f14">薪资推荐</span>
+                    <span class="cffd76d f35 arial" id="JS_salary_min">0</span>
+                    <span class="cffd76d f35">-</span>
+                    <span class="cffd76d f35 arial" id="JS_salary_max">0</span>
+                    <span class="cffffff f14">元</span>
+                </div>
+                <div class="tip-panel right">
+                    <i class="icon i-person"></i>
+                    <span class="cffffff f14">人群数量</span>
+                    <span class="cffd76d f35 arial" id="JS_num_min">0</span>
+                    <span class="cffd76d f35">-</span>
+                    <span class="cffd76d f35 arial" id="JS_num_max">0</span>
+                    <span class="cffffff f14">人</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop-view ng-hide" ng-show="viewFeed"></div>
+<div class="modal-view ng-hide" tabindex="-1" style="display: block;" ng-show="viewFeed">
+    <div class="modal-dialog-view" style=" border-top: solid 6px #0091FA;">
+        <div class="modal-content-view">
+            <p class="close-layer text-right">
+                <a href="javascript:void(0);" class="close-layerout-btn" ng-click="toggleView()"></a>
+            </p>
+            <div class="modal-body-view">
+                <div class="view-body">
+                    <h2 class="view-title">{- feedData.feed.title -}</h2>
+                    <p class="view-salary mt10" ng-if="!isNegotiable">{- feedData.feed.salary_min | moneyFilter -}K - {- feedData.feed.salary_max | moneyFilter -}K</p>
+                    <p class="view-salary mt10" ng-if="isNegotiable">面议</p>
+                    <div class="mt10">
+                        <p>
+                            <a href="javascript:void(0);" class="view-desc-btn" ng-click="toggleDesc()">职位详情</a>
+                        </p>
+                        <div class="view-desc mt10" ng-bind-html="feedData.feed.job_desc|as_html" ng-if="showViewDesc"></div>
+                        <p ng-if="showViewDesc">
+                            <a href="javascript:void(0);" class="close-desc mt10" ng-click="toggleDesc()"></a>
+                        </p>
+                    </div>
+                    <p class="view-company-name mt10" ng-if="feedData.company.company_name">{- feedData.company.company_name -}</p>
+                    <p class="view-area mt10" ng-if=" ( feedData.feed.expect_area && feedData.feed.expect_area.length ) || feedData.company.company_stage"><span ng-if="feedData.feed.expect_area && feedData.feed.expect_area.length">{- feedData.feed.expect_area | joinCity -}</span><span ng-if="feedData.company.company_stage">, &nbsp;&nbsp;{- feedData.company.company_stage -}</span></p>
+                    <p class="view-cat mt10" ng-if=" feedData.feed.job_domain && feedData.feed.job_domain.length ">{- feedData.feed.job_domain | joinCat -}</p>
+                    <p class="view-url mt10" ng-if="feedData.company.product_url"><a target="_blank" href="{- feedData.company.product_url -}">{- feedData.company.product_url -}</a></p>
+                    <p class="view-welfare" ng-if=" feedData.feed.job_welfare && feedData.feed.job_welfare.length ">
+                        <span ng-repeat="v_welfare in feedData.feed.job_welfare track by $index">{- v_welfare -}</span>
+                    </p>
+                    <div class="view-key_points mt10">{- feedData.company.key_points || '企业信息不完整，请至企业名片中填写' -}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop-tip fade in" style="display:none;"></div>
+<div class="modal-tip" tabindex="-1" style="display:none;">
+    <div class="modal-dialog-tip">
+        <div class="completed-task">
+            <p class="tip">(ﾉ≧v≦)ﾉ <span id="JS_username">XXX</span>，你的<span class="c1796ce">第一个</span>新手任务已于
+            <p class="tip2"><span id="JS_mission_time">2015年3月xx日</span></p>
+            <p class="tip">完成，请按以下步骤领取红包吧～</p>
+            <p class="step mt20"><span class="tip-dot">1</span>掏出手机，<span class="cf95861">拍下此弹窗！</span></p>
+            <p class="step mt20"><span class="tip-dot">2</span>扫码加聘宝小助手为微<br>信好友，把图发给小助手，领取你的红包～<i class="i-hb"></i></p>
+            <div class="wx-img mt20">
+                <img src="{{ STATIC_URL }}alpha/images/a-code.jpg" alt="" width="153" height="153">
+            </div>
+            <p class="text-center mt20" ng-if="!envelope">
+                <a href="javascript:void(0);" class="close-btn" ng-click="toggleEnvelope()">我已领取红包</a>
+            </p>
+            <div ng-if="envelope">
+                <p class="tip3 mt20">明天再回来完成[新手任务二]，领取<span class="cf95861">第二枚红包</span></p>
+                <p class="text-center">
+                    <a href="/special_feed/page/" class="close-btn">我知道了</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# include 'eggs/eggs.html' #}
+{% endblock %}
+
+{% block custom_menu %}
+<!-- <a href="javascript:void(0);" class="i-view" ng-click="toggleView()" title="预览">预览</a> -->
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+    {% include 'angular.html' %}
+    {% include 'angular_validation.html' %}
+    <script src="{{ STATIC_URL }}special_feed/js/edit_feed.js?2015122201"></script>
+    <script>
+        if($('.add-resume-right').length){
+            var asideMenuPos=$('.add-resume-right').css('position');
+            var asideMenuTop=$('.add-resume-right').css('top');
+            var asideMenuRight=$('.add-resume-right').css('left');
+            $(window).resize(function(){
+                //asideMenuRight=$('.add-resume-right').css('left');
+            });
+            $(window).scroll(function(){
+                //console.log('scroll',$(window).scrollTop());
+                var fixHeightHeaderBar=0;
+                if($('.header-bar').length){
+                    fixHeightHeaderBar=parseInt($('.header-bar').length)*61;
+                }
+                if($(window).scrollTop()>100+fixHeightHeaderBar){
+                    $('.add-resume-right').css('position','fixed');
+                    $('.add-resume-right').css('top','10px');
+                    //$('.add-resume-right').css('right',($('#JS_add_box .form-panel:first-child').offset().left+820)+'px');
+                    $('.add-resume-right').css('left',($('.feed-box').offset().left+900)+'px');
+                }else{
+                    $('.add-resume-right').css('position',asideMenuPos);
+                    $('.add-resume-right').css('top',asideMenuTop);
+                    $('.add-resume-right').css('left',asideMenuRight);
+                }
+            });
+        }
+
+    </script>
+{% endcompress %}
+{% endblock %}

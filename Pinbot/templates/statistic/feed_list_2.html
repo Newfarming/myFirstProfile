@@ -1,0 +1,193 @@
+<link rel="stylesheet" href="/static/alpha/styles/feed-admin.css" />
+
+<div class="feed-list clearfix" id="feedApp" ng-controller="feedApp" ng-app="feedApp">
+  <div class="feed-aside">
+    <h2 data-username="username"><span>{{ username }}</span></h2>
+    <div fixedtop>
+      <ul class="feed-nav" ng-controller="aside">
+        {% for user_feed,unread_count in user_feed_list %}
+          <li ng-class="isActive('{{user_feed.feed.id}}')?'curr':''">
+            <a href="#/group/{{user_feed.feed.id}}" class="feed-group-link" title="{{user_feed.feed.job_desc}}">
+              <strong>{{user_feed.feed.keywords}}</strong>
+              <span>{{user_feed.feed.job_type}} | {{user_feed.feed.talent_level}} | {{user_feed.feed.expect_area}}</span>
+            </a>
+            <!--
+            <a href="/feed/edit/{{user_feed.feed.id}}">
+              <span class="feed-group-edit"></span>
+            </a>
+            -->
+            <span data-count-group="{{user_feed.feed.id}}" class="feed-latest-count">{% if unread_count %}{{unread_count}} {% endif %}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <!--
+        <h2><strong>管理员</strong></h2>
+        <h2 data-username="{{request.user.username}}">{{request.user.username}}</h2>
+      -->
+    </div>
+
+    <datalist id="tagHistory">
+      <option ng-repeat="op in autoHistory" value="{[{op.tag}]}">
+    </datalist>
+
+  </div>
+
+  <div class="feed-page">
+    <div ng-cloak class="feed-page-wrap">
+      <div class="admin-publish-action clearfix">
+        <div class="main-control clearfix">
+          <p class="feed-control feed-filter">
+            <span class="feed-control-view">
+              <a href="javascript:void(0);" ng-class="{'selected-view': current.view=='cached'}" ng-click="toggleView('cached', $event)">即将推送</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': current.view=='user'}" ng-click="toggleView('user', $event)">当前</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': current.view=='tomorrow'}" ng-click="toggleView('tomorrow', $event)">明天呈现</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': current.view=='shield'}" ng-click="toggleView('shield', $event)">已屏蔽</a>
+              <a href="javascript:void(0);" ng-class="{'selected-view': current.view=='search_result'}" ng-click="toggleView('search_result', $event)">最新搜索</a>
+              <a href="javascript:void(0);" ng-click="toggleLatest()" ng-class="{'feed-latest-option-false': current.latest==0}" class="feed-latest-option"><i></i>只看未读</a>
+              <a href="javascript:void(0);" ng-click="toggleOrderby()" ng-class="{'feed-latest-option-false': current.orderby=='resume_update_time'}" class="feed-latest-option"><i></i>按简历更新时间排序</a>
+
+            </span>
+          </p>
+          <p class="feed-actions">
+            {% if request.user.is_staff %}
+              <a href="javascript:void(0)" class="toggleConfirm" data-type="feed">发布此条</a>
+              <a href="javascript:void(0)" class="toggleConfirm" data-type="all">发布当前用户所有</a>
+
+              <div class="confirm-box">
+                <p>
+                  <label>发布时间</label>
+                  <input type="date" value=""/>
+                </p>
+                <p class="confirm-box-control">
+                  当前选中<span class="selected-num">0</span>条
+                  <a ng-click="publishFeed()" class="confirm-action action-feed">发布此条</a>
+                  <a ng-click="publishAll()" class="confirm-action action-all">发布所有</a>
+                </p>
+              </div>
+            {% endif %}
+          </p>
+        </div>
+        <div class="sub-control">
+          <p>
+            选择前<input type="number" value="0" min="0"/>条
+            <span class="btn-unselect">还原</span>
+          </p>
+        </div>
+
+      </div>
+      <div ng-view></div>
+    </div>
+  <div>
+</div>
+
+<script type="text/x-template" id="template-feeditem">
+  <div class="feed-item-list clearfix">
+    <div
+      ng-repeat="item in feeditems"
+      class="feed-item {[{item.opened | checkFeedOpen}]} {[{item.latest | checkFeedLatest}]}"
+      data-resume_id = "{[{item.resume_id}]}"
+    >
+      <div class="feed-item-wrapper">
+        <div class="item-header">
+          <div class="item-header-wrapper">
+            <div class="item-profile">
+
+              <h3 class="item-work-position"><label><input class="selectBox" type="checkbox"/>{[{item.latest_work.position_title}]}</label></h3>
+              <p>
+                <span class="item-profile-gender">{[{item.profile.gender | gender }]}</span>
+                <span class="item-profile-age">{[{item.profile.age}]}</span>
+                <span ng-show="item.job_target.job_hunting_state"> &nbsp; &nbsp;{[{item.job_target.job_hunting_state}]}</span>
+                <span class="item-profile-sep">|</span>
+                <span ng-show="item.profile.address">现居地：{[{ item.profile.address }]} &nbsp; &nbsp;</span>
+                <span ng-shoiw="item.job_target.expectation_area">意向地：{[{ item.job_target.expectation_area }]}</span>
+              </p>
+            </div>
+            <p class="item-action">
+              <span ng-show="item.source && item.source.text"  class='item-source manual_mark'>{[{item.is_manual}]}</span>
+              <span ng-show="item.source && item.source.text" class="item-source">{[{item.update_time}]}[更新]</span>
+              <span ng-show="item.source && item.source.text" class="item-source">{[{item.calc_time}]}[计算]</span>
+              <span ng-show="item.source && item.source.text" class="item-source">({[{ item.source.text}]})</span>
+              <span ng-show="item.keywords && item.keywords.length" class="resume-tags-hook"></span>
+              <a href="" class="btn-dislike" ng-hide="item.dislike" ng-click="dislike($index)">不适合</a>
+              <a href="" class="btn-dislike" ng-show="item.dislike"><i class="ic ic-item-dislike-icon"></i></a>
+            </p>
+            <div ng-show="item.keywords && item.keywords.length" class="item-action-keywords">
+              <div class="item-action-keywords-wrap">
+                <span ng-repeat="keyword in item.keywords">{[{ keyword }]}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-body">
+
+          <div class="item-body-wrapper">
+            <div class="item-summary">
+
+              <div class="item-main">
+                <p>
+                  <span class="item-profile-exp"><em>{[{item.profile.work_years}]}</em>年经验</span>
+                  <span class="item-profile-sep">|</span>
+                  <span class="item-work-salary">期望薪资：<em>{[{item.job_target.salary}]}</em></span>
+                </p>
+              </div>
+
+              <div class="item-work">
+                <p>
+                  <span class="item-work-comp">{[{item.latest_work.company_name}]}</span>
+                  <span class="item-profile-sep">|</span>
+                  <span class="item-work-position">{[{item.latest_work.position_title}]}</span>
+                  &nbsp;
+                  <span class="item-work-salary">{[{item.latest_work.salary}]}</span>
+                </p>
+                <p ng-show="item.latest_work.job_desc" ng-bind-html-unsafe="item.latest_work.job_desc | chop" class="work-detail"></p>
+              </div>
+
+              <div class="item-edu">
+                <p>
+                  <span class="item-edu-school">{[{item.profile.school}]}</span>
+                  <span class="item-profile-degree">{[{item.profile.degree}]}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <a title="点击查看简历详情" class="btn-resume-link" ng-click="openFeed($index)" href="/feed/get/{[{item.feed_id}]}/{[{item.resume_id}]}" target="{[{item.resume_id}]}">
+            查看简历
+          </a>
+        </div>
+
+        <div class="item-footer clearfix">
+
+          <div class="resume-tags">
+            <!--<span clickedit="content" feed_id="{[{item.feed_id}]}" resume_id="{[{item.resume_id}]}" scope="scope">{[{ item.recommended_words.content }]}</span>-->
+            <span class="resume-tag" ng-controller="resumeTag" ng-repeat="tag in item.tags" ng-show="tag">{[{tag.tag}]}
+              <a href="" class="del-tag" ng-click="delTag({[{tag}]}, '{[{item.resume_id}]}')">删除</a>
+            </span>
+            <span class="resume-tag-edit" clickedit="content" feed_id="{[{item.feed_id}]}" resume_id="{[{item.resume_id}]}" scope="scope">{[{ _text }]}</span>
+          </div>
+
+
+          <div class="admin-custom-control">
+            <a href="" ng-click="adminVote($index, $event)" class="admin-custom-control-vote">很合适</a>
+            <a href="" ng-click="adminBlock($index, $event)" class="admin-custom-control-block">屏蔽</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="feed-loading" ng-show="initLoading"> Loading... </div>
+  <a class="load-more" ng-show="hasmore" ng-click="fetch()">查看更多</a>
+  <div class="load-more load-more-loading" ng-show="loadmore"></div>
+
+  <div class="feed-waiting" ng-show="waiting">
+    <p class="feed-waiting-tip">已定制成功，推荐简历明早为你呈现，请留意查阅</p>
+    <p class="feed-waiting-tip-long">
+      <strong>特别提示</strong>
+      <span>人才订阅不是普通的简历搜索，您或许无法即时看到检索分析的结果，但您刚才所设定的订阅条件，将成为聘宝寻觅人才的标尺，不间断的在整个网络人才数据中发现匹配的人才。只需要一次设定，聘宝将每天向您推荐网络中最近更新的优质人才。</span>
+    </p>
+  </div>
+
+</script>
+

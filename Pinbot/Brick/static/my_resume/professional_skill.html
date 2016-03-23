@@ -1,0 +1,42 @@
+<div class="contant-info-edit mt20" ng-show="isShowEditItem">
+    <form action="." name="skillForm_{- skill.id -}" method="post" accept-charset="utf-8" id="skillForm_{- skill.id -}" autocomplete="off">
+        <div class="form-box">
+            <input ng-model="skill.skill_desc" name="skill_desc" type="text" class="input" placeholder="技能名称"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="skill.proficiency" name="proficiency" type="text" class="input" placeholder="级别"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="skill.month" name="month" type="text" class="input" placeholder="时间"/>
+        </div>
+        <input ng-model="skill.id" name="update_id" type="hidden" class="input"/>
+        <div class="form-box text-center btns-2">
+            <button class="button button-normal" validation-submit="skillForm_{- skill.id -}" ng-click="save(save_professional_skill_url, {skill_desc: skill.skill_desc, update_id: skill.id, proficiency: skill.proficiency, month: skill.month})" type="button">保存</button>
+            <button class="button button-normal" ng-click="toggleEditItem( false , true )" type="button">取消</button>
+            <button class="button button-normal" ng-click="delete(skill.id)" type="button" ng-show="isShowDelete()">删除</button>
+        </div>
+    </form>
+</div>
+<div class="person-profile-info text-left mt20" ng-show="!isShowEditItem">
+    <table width="100%" cellpadding="0" cellspacing="0" class="table-view">
+        <tbody>
+            <tr>
+                <td>技能名称：</td>
+                <td>{- skill.skill_desc -}</td>
+            </tr>
+            <tr>
+                <td>级别：</td>
+                <td>{- skill.proficiency -}</td>
+            </tr>
+            <tr>
+                <td>时间：</td>
+                <td>{- skill.month -}个月</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-box text-center btns-2">
+        <button class="button button-normal w20p" ng-click="toggleEditItem( true )" type="button">修改</button>
+        <button class="button button-normal w20p" ng-click="add()" type="button">新增</button>
+        <button class="button button-normal w20p" ng-click="delete(skill.id)" type="button" ng-show="isShowDelete()">删除</button>
+    </div>
+</div>

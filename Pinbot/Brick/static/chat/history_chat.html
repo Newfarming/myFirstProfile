@@ -1,0 +1,23 @@
+<div class="chat" ng-repeat="chat in data.data" ng-class="{ unread:userid == chat.receiver && !chat.receiver_read }" ng-click="toDetail(chat.chat__id)">
+    <p class="text-right chat-date ng-binding">{- chat.chat__create_time -}</p>
+    <div ng-show="chat.chat__chat_type == 'job'">
+        <h4>{- chat.chat__job__company__company_name -}</h4>
+        <h5>
+            {- chat.chat__job__title -}，
+            {- chat.chat__job__salary_low | formatMoney:chat.chat__job__salary_high -}
+            {- chat.chat__job__work_years | filterYear -}
+            {- chat.chat__job__degree | filterDegree -}
+        </h5>
+        <p class="feedback">{- chat.msg -}</p>
+    </div>
+    <div ng-show="chat.chat__chat_type == 'feed'">
+        <h4>{- chat.chat__feed__company__company_name -}</h4>
+        <h5>
+            {- chat.chat__feed__title -}，
+            {- chat.chat__feed__salary_min | formatMoney:chat.chat__feed__salary_max -}
+            {- chat.chat__feed__work_years_min | filterYear -}
+            {- chat.chat__feed__degree | filterDegree -}
+        </h5>
+        <p class="feedback">{- chat.msg -}</p>
+    </div>
+</div>

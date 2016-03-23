@@ -1,0 +1,131 @@
+# coding: utf-8
+
+from django.conf.urls import patterns, url, include
+
+from app.crm.views.index import (
+    Home,
+)
+from app.crm.views.calendar import (
+    Calendar,
+    CalendarEvents,
+    DeleteCalendarEvents,
+    CalendarUndo,
+)
+from app.crm.views.candidate import (
+    ShowCandidate,
+    CandidateList,
+    AdminList,
+    AssignCandidate,
+    AddTag,
+    DelTag,
+    UpdateJobStatus,
+    EditRemark,
+    DeleteRemark,
+    SearchJob,
+    SendJobCard,
+    AddSysTag,
+    DelSysTag,
+    AddFeed,
+)
+
+
+urlpatterns = patterns(
+    '',
+    url(
+        '^$',
+        CandidateList.as_view(),
+        name='crm-candidate-list',
+    ),
+    url(
+        '^candidate/details/(?P<resume_id>\w+)/$',
+        ShowCandidate.as_view(),
+        name='crm-candidate-details',
+    ),
+    url(
+        '^home/$',
+        Home.as_view(),
+        name='crm-view-home',
+    ),
+    url(
+        '^admin_list/$',
+        AdminList.as_view(),
+        name='crm-admin-list',
+    ),
+    url(
+        '^assign_candidate/$',
+        AssignCandidate.as_view(),
+        name='crm-candidate-assign-candidate',
+    ),
+    url(
+        '^candidate/add_tag/$',
+        AddTag.as_view(),
+        name='crm-candidate-add-tag',
+    ),
+    url(
+        '^candidate/del_tag/$',
+        DelTag.as_view(),
+        name='crm-candidate-del-tag',
+    ),
+    url(
+        '^candidate/update_jobstatus/$',
+        UpdateJobStatus.as_view(),
+        name='crm-candidate-update-jobstatus',
+    ),
+    url(
+        '^edit_remark/$',
+        EditRemark.as_view(),
+        name='crm-candidate-edit-remark',
+    ),
+    url(
+        '^delete_remark/$',
+        DeleteRemark.as_view(),
+        name='crm-candidate-delete-remark',
+    ),
+    url(
+        '^candidate/search_job/$',
+        SearchJob.as_view(),
+        name='crm-candidate-search-job',
+    ),
+    url(
+        '^candidate/send_job_card/$',
+        SendJobCard.as_view(),
+        name='crm-candidate-send-job-card',
+    ),
+    url(
+        '^candidate/add_sys_tag/$',
+        AddSysTag.as_view(),
+        name='crm-candidate-add-systag',
+    ),
+    url(
+        '^candidate/del_sys_tag/$',
+        DelSysTag.as_view(),
+        name='crm-candidate-del-systag',
+    ),
+    url(
+        '^candidate/add_feed/$',
+        AddFeed.as_view(),
+        name='crm-candidate-add-feed',
+    ),
+    url(
+        '^calendar/$',
+        Calendar.as_view(),
+        name='crm-calendar',
+    ),
+    url(
+        '^calendar/events/$',
+        CalendarEvents.as_view(),
+        name='crm-calendar-events',
+    ),
+    url(
+        '^calendar/undo/$',
+        CalendarUndo.as_view(),
+        name='crm-calendar_undo',
+    ),
+    url(
+        '^calendar/events/delete/$',
+        DeleteCalendarEvents.as_view(),
+        name='crm-calendar-events',
+    ),
+    (r'^company/', include('app.crm.company.urls')),
+    (r'^job/', include('app.crm.job.urls')),
+)

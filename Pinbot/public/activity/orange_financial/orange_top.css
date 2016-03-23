@@ -1,0 +1,985 @@
+    .orange-container{
+        width: 80%;
+        margin:0 auto;
+    }
+@media screen and (min-width: 1280px){
+    .orange-header{
+        height: 600px;
+        width: 100%;
+        background: url(img/head_bg.jpg) no-repeat center center;
+    }
+    .orange-container div.orange-logo{
+        position: relative;
+        width: 533px;
+        height: 600px;
+        margin: 0 auto;
+        background: url(img/logo.png) no-repeat 0 0;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        position: absolute;
+        left: 140px;
+        bottom: -120px;
+        padding-top: 75px;
+        width: 240px;
+        height: 240px;
+        text-align: center;
+        line-height: 240px;
+        color: #fff;
+        font-size: 42px;
+        font-weight: 100;
+        background: url(img/orange_bg.png) no-repeat 0 0;
+    }
+
+    .orange-introduction{
+        padding-top: 120px;
+        height: 380px;
+        text-align: center;
+        background-color: #fff;
+        width: 100%;
+    }
+
+    .orange-introduction h1{
+        font-size: 54px;
+        color: #ff5a1c;
+        font-weight: normal;
+        line-height: 120px;
+    }
+    .orange-introduction p{
+        font-size: 20px;
+        color: #30373f;
+        line-height:40px;
+    }
+    .orange-introduction p strong{
+        font-size: 48px;
+        color: #ff770a;
+        font-weight: 300;
+    }
+    .orange-introduction div.orange-arrow{
+        position: relative;
+        margin:0 auto;
+        height: 100px;
+        background: url(img/arrow.png) no-repeat center center;
+    }
+    .orange-introduction div.orange-arrow p{
+        line-height: 100px;
+        color: #ff770a;
+        font-size:36px;
+    }
+
+    .orange-welfare{
+        height: 773px;
+        width: 100%;
+        background: url(img/welfare.jpg) no-repeat 0 0;
+    }
+
+    .welfare-container{
+        position: relative;
+        padding-top: 50px;
+        height: 753px;
+
+    }
+    .welfare-bg{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 803px;
+        width: 700px;
+        background:url(img/welfare.png) no-repeat right top;
+    }
+    .welfare-word-box{
+        height: 600px;
+        background-color:#fff;
+    }
+    .welfare-word-box h3{
+        padding-left: 60px;
+        font-size: 36px;
+        color: #ff770a;
+        padding-top: 20px;
+        line-height: 80px;
+    }
+    .welfare-word-box p{
+        padding-left: 60px;
+        font-size: 18px;
+        color: #30373f;
+        line-height: 38px;
+    }
+    .cff770a{
+        color: #ff770a !important;
+    }
+    .padding-bottom{
+        padding-bottom: 20px;
+    }
+    .padding-top{
+        padding-top: 40px;
+    }
+
+    .orange-company-introduction{
+        width: 100%;
+        height: 520px;
+        position: relative;
+        padding-top: 40px;
+        text-align: center;
+        background: url(img/deracotion.jpg) #fff no-repeat center 0;
+    }
+    .orange-company-introduction h2{
+        width: 551px;
+        height: 93px;
+        line-height: 94px;
+        font-size: 48px;
+        color: #ff770a;
+        margin: 0 auto 35px auto;
+        text-align: center;
+        background: url(img/dashed_box.png) no-repeat 0 0;
+    }
+    .orange-company-introduction h2 strong{
+        font-weight: bold;
+    }
+    .orange-company-introduction p{
+        color: #30373f;
+        font-size: 18px;
+        line-height: 36px;
+        text-align: center;
+    }
+    .orange-company-introduction p.hero{
+        position: relative;
+        margin-top: 50px;
+    }
+    .orange-company-introduction p strong{
+        color: #ff770a;
+        font-size: 32px;
+    }
+
+    .orange-map{
+        width: 100%;
+        height: 568px;
+        background: #404040;
+    }
+    .map-container{
+        width: 80%;
+        height: 568px;
+        color:#fff;
+        /*background:url(img/black_bg.png) repeat;*/
+        background: url(img/ma_bg.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .map-container h2{
+        width: 568px;
+        height: 90px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 90px;
+        font-size: 16px;
+        background: url(img/xing_two.png) no-repeat center center;
+        background-size: 568 90px;
+    }
+    .map-container p{
+        font-size: 14px;
+        text-align: center;
+        line-height: 28px;
+    }
+    .map-box{
+        width: 540px;
+        height: 280px;
+        margin: 10px auto 30px auto;
+    }
+    .map-box img{
+        display: block;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1280px){
+    .orange-header{
+        height: 510px;
+        width: 100%;
+        background: url(img/head_bg85.jpg) no-repeat center center;
+    }
+    .orange-container{
+        width: 80%;
+        margin:0 auto;
+    }
+    .orange-container div.orange-logo{
+        position: relative;
+        width: 453px;
+        height: 510px;
+        margin: 0 auto;
+        background: url(img/logo85.png) no-repeat 0 0;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        position: absolute;
+        left: 140px;
+        bottom: -97px;
+        padding-top: 75px;
+        width: 204px;
+        height: 194px;
+        text-align: center;
+        line-height: 183px;
+        color: #fff;
+        font-size: 38px;
+        font-weight: 100;
+        background: url(img/orange_bg85.png) no-repeat 0 0;
+    }
+
+
+    .orange-introduction{
+        padding-top: 100px;
+        height: 340px;
+        text-align: center;
+        background-color: #fff;
+        width: 100%;
+    }
+    .orange-introduction h1{
+        font-size: 46px;
+        color: #ff5a1c;
+        font-weight: normal;
+        line-height: 100px;
+    }
+    .orange-introduction p{
+        font-size: 20px;
+        color: #30373f;
+        line-height:34px;
+    }
+    .orange-introduction p strong{
+        font-size: 38px;
+        color: #ff770a;
+        font-weight: 300;
+    }
+    .orange-introduction div.orange-arrow{
+        position: relative;
+        margin:0 auto;
+        height: 100px;
+        background: url(img/arrow75.png) no-repeat center center;
+    }
+    .orange-introduction div.orange-arrow p{
+        line-height: 85px;
+        color: #ff770a;
+        font-size:32px;
+    }
+
+
+    .orange-welfare{
+        height: 657px;
+        width: 100%;
+        background: url(img/welfare85.jpg) no-repeat 0 0;
+    }
+
+    .welfare-container{
+        position: relative;
+        padding-top: 46px;
+        height: 657px;
+    }
+    .welfare-word-box{
+        height: 500px;
+        background-color:#fff;
+    }
+    .welfare-word-box h3{
+        padding-left: 50px;
+        font-size: 32px;
+        color: #ff770a;
+        padding-top: 18px;
+        line-height: 70px;
+    }
+    .welfare-word-box p{
+        padding-left: 50px;
+        font-size: 18px;
+        color: #30373f;
+        line-height: 32px;
+    }
+    .cff770a{
+        color: #ff770a !important;
+    }
+    .padding-bottom{
+        padding-bottom: 18px;
+    }
+    .padding-top{
+        padding-top: 35px;
+    }
+
+
+    .orange-company-introduction{
+        width: 100%;
+        height: 444px;
+        position: relative;
+        padding-top: 33px;
+        text-align: center;
+        background: url(img/deracotion85.jpg) #fff no-repeat center 0;
+    }
+    .orange-company-introduction h2{
+        width: 468px;
+        height: 79px;
+        line-height: 79px;
+        font-size: 42px;
+        color: #ff770a;
+        margin: 0 auto 30px auto;
+        background: url(img/dashed_box85.png) no-repeat 0 0;
+    }
+    .orange-company-introduction h2 strong{
+        font-weight: bold;
+    }
+    .orange-company-introduction p{
+        color: #30373f;
+        font-size: 16px;
+        line-height: 32px;
+    }
+    .orange-company-introduction p.hero{
+        position: relative;
+        margin-top: 43px;
+    }
+    .orange-company-introduction p strong{
+        color: #ff770a;
+        font-size: 28px;
+    }
+
+    .orange-map{
+        width: 100%;
+        height: 568px;
+        background: #404040;
+    }
+    .map-container{
+        width: 80%;
+        height: 568px;
+        color:#fff;
+        /*background:url(img/black_bg.png) repeat;*/
+         background: url(img/ma_bg.jpg) no-repeat center center;
+
+    }
+    .map-container h2{
+        width: 568px;
+        height: 90px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 90px;
+        font-size: 16px;
+        background: url(img/xing_two.png) no-repeat center center;
+        background-size: 568 90px;
+    }
+    .map-container p{
+        font-size: 14px;
+        text-align: center;
+        line-height: 28px;
+    }
+    .map-box{
+        width: 540px;
+        height: 280px;
+        margin: 10px auto 30px auto;
+    }
+}
+@media screen and (min-width: 760px) and (max-width: 1048px){
+    .orange-header{
+        height: 450px;
+        width: 100%;
+        background: url(img/head_bg75.jpg) no-repeat center center;
+    }
+    .orange-container{
+        width: 80%;
+        margin:0 auto;
+    }
+    .orange-container div.orange-logo{
+        position: relative;
+        width: 400px;
+        height: 450px;
+        margin: 0 auto;
+        background: url(img/logo75.png) no-repeat 0 0;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        position: absolute;
+        left: 110px;
+        bottom: -87px;
+        padding-top: 62px;
+        width: 180px;
+        height: 174px;
+        text-align: center;
+        line-height: 174px;
+        color: #fff;
+        font-size: 34px;
+        font-weight: 100;
+        background: url(img/orange_bg75.png) no-repeat 0 0;
+    }
+
+
+    .orange-introduction{
+        padding-top: 90px;
+        height: 305px;
+        text-align: center;
+        background-color: #fff;
+        width: 100%;
+    }
+    .orange-introduction h1{
+        font-size: 36px;
+        color: #ff5a1c;
+        font-weight: normal;
+        line-height: 90px;
+    }
+    .orange-introduction p{
+        font-size: 18px;
+        color: #30373f;
+        line-height:32px;
+    }
+    .orange-introduction p strong{
+        font-size: 40px;
+        color: #ff770a;
+        font-weight: 300;
+    }
+    .orange-introduction div.orange-arrow{
+        position: relative;
+        margin:0 auto;
+        height: 75px;
+        background: url(img/arrow55.png) no-repeat center center;
+    }
+    .orange-introduction div.orange-arrow p{
+        line-height: 75px;
+        color: #ff770a;
+        font-size:28px;
+    }
+
+    .orange-welfare{
+        height: 580px;
+        width: 100%;
+        background: url(img/welfare75.jpg) no-repeat 0 0;
+    }
+    .welfare-container{
+        position: relative;
+        padding-top: 45px;
+        height: 535px;
+    }
+    .welfare-word-box{
+        height: 460px;
+        background-color:#fff;
+    }
+    .welfare-word-box h3{
+        padding-left: 40px;
+        font-size: 30px;
+        color: #ff770a;
+        padding-top: 18px;
+        line-height: 60px;
+    }
+    .welfare-word-box p{
+        padding-left: 40px;
+        font-size: 18px;
+        color: #30373f;
+        line-height: 30px;
+    }
+    .cff770a{
+        color: #ff770a !important;
+    }
+    .padding-bottom{
+        padding-bottom: 18px;
+    }
+    .padding-top{
+        padding-top: 30px;
+    }
+
+
+    .orange-company-introduction{
+        width: 100%;
+        height: 371px;
+        position: relative;
+        padding-top: 22px;
+        text-align: center;
+        background: url(img/deracotion70.jpg) #fff no-repeat center 0;
+    }
+    .orange-company-introduction h2{
+        width: 413px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 34px;
+        color: #ff770a;
+        margin: 0 auto 16px auto;
+        background: url(img/dashed_box75.png) no-repeat 0 0;
+    }
+    .orange-company-introduction h2 strong{
+        font-weight: bold;
+    }
+    .orange-company-introduction p{
+        color: #30373f;
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .orange-company-introduction p.hero{
+        position: relative;
+        margin-top: 20px;
+    }
+    .orange-company-introduction p strong{
+        color: #ff770a;
+        font-size: 26px;
+    }
+
+    .orange-map{
+        width: 100%;
+        height: 568px;
+        background: #404040;
+    }
+    .map-container{
+        width: 90%;
+        height: 518px;
+        color:#fff;
+        /* background:url(img/black_bg.png) repeat;*/
+        background: url(img/ma_bg.jpg) no-repeat center center;
+        background-size:cover;
+    }
+    .map-container h2{
+        width: 518px;
+        height: 80px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 90px;
+        font-size: 15px;
+        background: url(img/xing_two.png) no-repeat center center;
+        background-size: 518px 80px;
+    }
+    .map-container p{
+        font-size: 14px;
+        text-align: center;
+        line-height: 28px;
+    }
+    .map-box{
+        width: 480px;
+        height: 250px;
+        margin: 10px auto 30px auto;
+    }
+    .map-box img{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 760px){
+    .orange-header{
+        height: 45vw;
+        width: 100%;
+        background: url(img/head_bg50.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container{
+        width: 80%;
+        margin:0 auto;
+    }
+    .orange-container div.orange-logo{
+        position: relative;
+        width: 39vw;
+        height: 45vw;
+        margin: 0 auto;
+        background: url(img/logo75.png) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        position: absolute;
+        left: 12vw;
+        bottom: -7.5vw;
+        padding-top: 4vw;
+        width: 15vw;
+        height: 15vw;
+        text-align: center;
+        line-height: 15vw;
+        color: #fff;
+        font-size: 2.9vw;
+        font-weight: 100;
+        background: url(img/orange_bg50.png) no-repeat center center;
+        background-size: 15vw 19vw;
+    }
+
+    .orange-introduction{
+        padding-top: 9vw;
+        text-align: center;
+        background-color: #fff;
+        width: 100%;
+    }
+    .orange-introduction h1{
+        font-size: 38px;
+        color: #ff5a1c;
+        font-weight: normal;
+        line-height: 60px;
+    }
+    .orange-introduction p{
+        font-size: 18px;
+        padding: 0 15px;
+        color: #30373f;
+        line-height:34px;
+    }
+    .orange-introduction p strong{
+        font-size: 38px;
+        color: #ff770a;
+        font-weight: 400;
+    }
+    .orange-introduction div.orange-arrow{
+        position: relative;
+        margin:0 auto;
+        height: 70px;
+        background: url(img/arrow75.png) no-repeat center center;
+        background-size: 580px 20px;
+    }
+    .orange-introduction div.orange-arrow p{
+        line-height: 70px;
+        color: #ff770a;
+        font-size:24px;
+    }
+
+    .orange-welfare{
+        height: 540px;
+        width: 100%;
+        background: url(img/welfare75.jpg) no-repeat 0 0;
+        background-size: cover;
+    }
+    .welfare-container{
+        position: relative;
+        padding-top: 45px;
+        height: 535px;
+    }
+    .welfare-word-box{
+        height: 430px;
+        background-color:#fff;
+    }
+    .welfare-word-box h3{
+        padding-left: 20px;
+        font-size: 24px;
+        color: #ff770a;
+        padding-top: 18px;
+        line-height: 60px;
+    }
+    .welfare-word-box p{
+        padding-left: 20px;
+        font-size: 15px;
+        color: #30373f;
+        line-height: 28px;
+    }
+    .cff770a{
+        color: #ff770a !important;
+    }
+    .padding-bottom{
+        padding-bottom: 18px;
+    }
+    .padding-top{
+        padding-top: 20px;
+    }
+
+
+    .orange-company-introduction{
+        width: 100%;
+        padding-bottom: 30px;
+        position: relative;
+        padding-top: 20px;
+        text-align: center;
+        background: url(img/deracotion50.jpg) #fff no-repeat center 0;
+        background-size: 580px 298px;
+    }
+    .orange-company-introduction h2{
+        width: 360px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 30px;
+        color: #ff770a;
+        margin: 0 auto 35px auto;
+        background: url(img/dashed_box75.png) no-repeat 0 0;
+        background-size: 360px 60px ;
+    }
+    .orange-company-introduction h2 strong{
+        font-weight: bold;
+    }
+    .orange-company-introduction p{
+        color: #30373f;
+        font-size: 16px;
+        line-height: 32px;
+    }
+    .orange-company-introduction p.hero{
+        position: relative;
+        margin-top: 25px;
+    }
+    .orange-company-introduction p strong{
+        color: #ff770a;
+        font-size: 24px;
+    }
+
+    .orange-map{
+        width: 100%;
+        height: 528px;
+        background: #404040;
+    }
+    .map-container{
+        width: 100%;
+        height: 478px;
+        color:#fff;
+        background: url(img/ma_bg85.jpg) no-repeat center center;
+        background-size: cover;
+
+    }
+    .map-container h2{
+        height: 80px;
+        text-align: center;
+        line-height: 90px;
+        font-size: 15px;
+    }
+    .map-container p{
+        font-size: 14px;
+        text-align: center;
+        line-height: 28px;
+    }
+    .map-box{
+        width: 420px;
+        height: 220px;
+        margin: 10px auto 30px auto;
+    }
+    .map-box img{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 319px) and (max-width: 600px){
+    .orange-header{
+        height: 180px;
+        width: 100%;
+        background: url(img/head_bg50.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container{
+        width: 80%;
+        margin:0 auto;
+    }
+    .orange-container div.orange-logo{
+        position: relative;
+        width: 160px;
+        height: 180px;
+        margin: 0 auto;
+        background: url(img/logo75.png) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        position: absolute;
+        left: 42px;
+        bottom: -32px;
+        padding-top: 23px;
+        width: 75px;
+        height: 75px;
+        text-align: center;
+        line-height: 75px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 100;
+        background: url(img/orange_bg50.png) no-repeat center center;
+        background-size: 75px 98px;
+    }
+
+
+    .orange-introduction{
+        padding-top: 45px;
+        text-align: center;
+        background-color: #fff;
+        width: 100%;
+    }
+    .orange-introduction h1{
+        font-size: 24px;
+        color: #ff5a1c;
+        font-weight: normal;
+        line-height: 46px;
+    }
+    .orange-introduction p{
+        font-size: 14px;
+        padding: 0 15px;
+        color: #30373f;
+        line-height:24px;
+    }
+    .orange-introduction p{
+        padding: 3px 15px;
+    }
+    .orange-introduction p strong{
+        font-size: 28px;
+        color: #ff770a;
+        font-weight: 200;
+    }
+    .orange-introduction div.orange-arrow{
+        position: relative;
+        margin:0 auto;
+        height: 60px;
+        background: url(img/arrow75.png) no-repeat center center;
+        background-size: 700px 20px;
+    }
+    .orange-introduction div.orange-arrow p{
+        line-height: 60px;
+        color: #ff770a;
+        font-size:20px;
+    }
+
+    .orange-welfare{
+        width: 100%;
+        padding-bottom: 30px;
+        background: url(img/welfare75.jpg) no-repeat 0 0;
+        background-size: cover;
+    }
+    .welfare-container{
+        position: relative;
+        padding-top: 20px;
+    }
+    .welfare-word-box{
+        background: rgba(250,250,250,0.85);
+        padding-bottom: 20px;
+    }
+    .welfare-word-box h3{
+        padding:15px 15px 10px 15px;
+        font-size: 18px;
+        color: #ff770a;
+        line-height: 28px;
+    }
+    .welfare-word-box p{
+        padding:0 15px;
+        font-size: 14px;
+        color: #30373f;
+        line-height: 22px;
+    }
+    .cff770a{
+        color: #ff770a !important;
+    }
+    .padding-bottom{
+        padding: 0px 15px 15px 15px !important;
+    }
+    .padding-top{
+        padding: 15px 15px 0 15px !important;
+    }
+
+
+    .orange-company-introduction{
+        width: 100%;
+        padding-bottom: 30px;
+        position: relative;
+        padding-top: 15px;
+        text-align: center;
+        background: #fff;
+    }
+    .orange-company-introduction h2{
+        width: 290px;
+        height: 46px;
+        line-height: 46px;
+        font-size: 24px;
+        color: #ff770a;
+        margin: 0 auto 20px auto;
+        background: url(img/dashed_box75.png) no-repeat 0 0;
+        background-size: 290px 46px ;
+    }
+    .orange-company-introduction h2 strong{
+        font-weight: bold;
+    }
+    .orange-company-introduction p{
+        color: #30373f;
+        font-size: 14px;
+        line-height: 26px;
+    }
+    .orange-company-introduction p.hero{
+        position: relative;
+        margin-top: 20px;
+        padding:0 15px;
+    }
+    .orange-company-introduction p strong{
+        color: #ff770a;
+        font-size: 20px;
+    }
+
+    .orange-map{
+        width: 100%;
+        padding-bottom: 20px;
+        /*background:url(img/black_bg.png) #404040 repeat;*/
+        background:url(img/ma_bg85.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .map-container{
+        width: 80%;
+        color:#fff;
+    }
+    .map-container h2{
+        padding: 15px 0;
+        text-align: center;
+        line-height: 24px;
+        font-size: 15px;
+    }
+    .map-container p{
+        font-size: 14px;
+        text-align: center;
+        line-height: 28px;
+    }
+    .map-box{
+        width: 80vw;
+        height: 45vw;
+        overflow: hidden;
+    }
+    .map-box img{
+        position: relative;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 760px) and (max-width: 1048px) and (-webkit-min-device-pixel-ratio:2.0){
+    .orange-header{
+       background: url(img/head_bg.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container div.orange-logo{
+        background: url(img/logo.png) no-repeat 0 0;
+        background-size: 400px 450px;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        background: url(img/orange_bg.png) no-repeat 0 0;
+        background-size: 180px 236px;
+    }
+    .orange-welfare{
+        background: url(img/welfare.jpg) no-repeat 0 0;
+        background-size: cover;
+    }
+    .orange-company-introduction h2{
+        background: url(img/dashed_box.png) no-repeat 0 0;
+        background-size: 413px 70px;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 760px) and (-webkit-min-device-pixel-ratio:2.0){
+    .orange-header{
+        background: url(img/head_bg.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container div.orange-logo{
+        background: url(img/logo.png) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        background: url(img/orange_bg.png) no-repeat center center;
+        background-size: 15vw 19vw;
+    }
+    .orange-introduction div.orange-arrow{
+        background: url(img/arrow.png) no-repeat center center;
+        background-size: 580px 20px;
+    }
+    .orange-welfare{
+        background: url(img/welfare.jpg) no-repeat 0 0;
+        background-size: cover;
+    }
+    .orange-company-introduction{
+        background: url(img/deracotion.jpg) #fff no-repeat center 0;
+        background-size: 580px 298px;
+    }
+    .orange-company-introduction h2{
+        background: url(img/dashed_box.png) no-repeat 0 0;
+        background-size: 360px 60px ;
+    }
+}
+@media screen and (min-width: 319px) and (max-width: 600px) and (-webkit-min-device-pixel-ratio:2.0){
+    .orange-header{
+        background: url(img/head_bg.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container div.orange-logo{
+        background: url(img/logo.png) no-repeat center center;
+        background-size: cover;
+    }
+    .orange-container div.orange-logo div.orange-orange-bg{
+        background: url(img/orange_bg.png) no-repeat center center;
+        background-size: 75px 98px;
+    }
+    .orange-introduction div.orange-arrow{
+        background: url(img/arrow.png) no-repeat center center;
+        background-size: 700px 20px;
+    }
+    .orange-welfare{
+        background: url(img/welfare.jpg) no-repeat 0 0;
+        background-size: cover;
+    }
+    .orange-company-introduction h2{
+        background: url(img/dashed_box.png) no-repeat 0 0;
+        background-size: 290px 46px ;
+    }
+}
+
+.welfare-word-box h3 strong{
+    font-weight: normal;
+}

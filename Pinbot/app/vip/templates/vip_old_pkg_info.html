@@ -1,0 +1,22 @@
+{% extends 'base_upgrade.html' %}
+{% load utils_tag %}
+
+{% block header %}
+{{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}vip/vip.css" />
+{% endblock %}
+{% block upgrade_content %}
+<!--聘宝套餐用户-->
+<div class="register welcome">
+    <div class="layout">
+        <div class="main">
+			<div class="header">
+			    <h1 class="notice"></h1>
+			</div>
+			<div class="content">
+			    <h2>你是聘宝套餐用户，若需转化为<span class="fc7524">会员用户</span>，请<a href="#" class="c42b4e6 contact yingxiao_qq" id="contact_us">联系我们</a></h2>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

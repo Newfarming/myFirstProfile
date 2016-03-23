@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/common.min.css?20150512" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?20150512" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/resume_list.css?20150512" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}b_common/css/ie_bug.css" />
+  {% include 'sentry_fix.html' %}
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+  <script type="text/javascript">
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+  </script>
+</head>
+<body data-resumeid="53bcea8181af5914ecffd0ca" data-feed_id="None" data-feed_keywords="">
+{% include 'alpha/header.html' %}
+<div class="main-subnav">
+  <div id="resume-list-header">
+     <ul class="main-subnav-list">
+      <li class="first-child {% if page != 'bought_resume' %} on {% endif %}>">
+        <a href="/resumes/watch/">我的收藏</a>
+      </li>
+      <li class="{% if page == 'bought_resume' %}on{% endif %}">
+        <a href="/transaction/bought">我的下载</a>
+      </li>
+      <li>
+        <a href="/feed/receive_resume/">投递我的</a>
+      </li>
+      <li>
+        <a href="{% url 'transaction-buy-record' %}?query=unmark" class="qzz">待标记简历</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div id="main">
+  <div id="content" class="clearfix">
+    <div id="resume-list" class="clearfix">
+      {% include 'alpha/resume-list-aside.html' %}
+      <div class="resume-list-content hover-layer">
+        {% if from_source  != 'bought_resume' or resume_list %}
+            {% include 'alpha/bought-resume-list-table.html' %}
+            {% include 'alpha/resume-list-pager.html' %}
+        {%endif%}
+
+      </div>
+      {% if not resume_list %}
+          <div id="resume-list" class="clearfix">
+            {% include 'alpha/list-empty-bought.html' %}
+          </div>
+     {%endif%}
+    </div>
+  </div>
+</div>
+{% include 'footer.html'%}
+<script src="{{ STATIC_URL }}alpha/scripts/form.min.js?20140928"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/company_card_handle.min.js?20150701"></script>
+<script>
+    $( document ).on( 'mouseover' , '.resume-list-table tr' , function(){
+        $('tr.hover').removeClass('hover');
+        $(this).addClass('hover');
+    }).on( 'mouseleave' , '.resume-list-table tr' , function(){
+        $( this ).removeClass('hover');
+    });
+
+    $( '.resume-list-table tr' ).on( 'click' , function(){
+        $( this ).find('.resume-link span').click();
+    });
+
+    $( '.resume-link' ).on( 'click' , function( e ){
+        e = e || window.event;
+        if( e.stopPropagation ){
+            e.stopPropagation();
+        }else{
+            e.cancelBubble = true;
+        };
+    });
+
+    $('.JS_prevent_default,.JS_mark_resume').on( 'click' , function( e ){
+      e.stopPropagation();
+    });
+</script>
+</body>
+</html>

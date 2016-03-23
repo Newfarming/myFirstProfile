@@ -1,0 +1,151 @@
+{% load show_resume_tags %}
+{% load utils_tag %}
+
+<div class="resume-content" id="resume-content">
+
+    {% if resume.self_evaluation %}
+    <div class="self sec-resume">
+        <h3><span>自我评价</span><a href="#" class="btn-toggle"></a> </h3>
+        <dl>
+            <dd class="content-header">
+                <p>{% autoescape off %} {{ resume.self_evaluation|linebreaks|string_safe }} {% endautoescape %}</p>
+            </dd>
+        </dl>
+    </div>
+    {% endif %}
+
+  {% if resume.works %}
+  <div class="exp sec-resume">
+    <h3><span>工作经历</span><a href="#" class="btn-toggle"></a> </h3>
+    {% for work in resume.works %}
+    <dl>
+      <dt class="content-header">
+        <p>{{ work.start_time }} 至 {{ work.end_time }} {% if work.duration %} ({{work.duration}}) {% endif %}</p>
+      </dt>
+      <dd>
+        <table><tbody>
+           <tr>
+            <td>
+              <h4>
+                <label>{{ work.company_name }}</label>
+                <span class="divide-16"></span>
+                <label>
+                {% autoescape off %}{{work.position_title|linebreaks|string_safe}}{% endautoescape %}
+                 {{work.salary|default:''}}
+                </label>
+              </h4>
+            </td>
+          </tr>
+        </tbody></table>
+      </dd>
+      <dd>
+        <table><tbody>
+          <tr>
+            <td class="desc-span">
+              <div>{% autoescape off %}{{work.job_desc|linebreaks|string_safe}}{% endautoescape %}</div>
+            </td>
+          </tr>
+        </tbody></table>
+      </dd>
+    </dl>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if resume.projects %}
+  {% autoescape off %}
+  <div class="project sec-resume">
+    <h3><span>项目经历</span><a href="#" class="btn-toggle"></a> </h3>
+    {% for project in resume.projects %}
+    <dl>
+
+      <dt class="content-header">
+        <p>{{ project.start_time }} 至 {{ project.end_time }}</p>
+        {% if project.project_name %}
+        <h4>
+          {{ project.project_name|string_safe }}{% if project.company_name %}<span class="divide-16"></span><span class="project-to-company">该项目期间就职于: {{project.company_name|string_safe}}</span>
+          {% endif %}
+        </h4>
+        {% endif %}
+      </dt>
+
+      {% if project.responsible_for %}
+      <dd>
+        <table><tbody>
+          <tr><th>职责</th><td class="desc-span"><div>{{project.responsible_for|string_safe}}</div></td> </tr>
+        </tbody></table>
+      </dd>
+      {% endif %}
+
+      {% if project.project_desc %}
+      <dd>
+        <table><tbody>
+          <tr><th>描述</th><td class="desc-span"><div>{{project.project_desc|linebreaks|string_safe}} </div></td></tr>
+        </tbody></table>
+      </dd>
+      {% endif %}
+
+      {% if project.develop_tool %}
+      <dd>
+        <table><tbody>
+          <tr><th>工具</th> <td><div>{{project.develop_tool|string_safe}}</div></td></tr>
+        </tbody></table>
+      </dd>
+      {% endif %}
+    </dl>
+    {% endfor %}
+  </div>
+  {% endautoescape %}
+  {% endif %}
+
+  {% if resume.educations %}
+  <div class="edu sec-resume">
+    <h3><span>教育经历</span><a href="#" class="btn-toggle"></a> </h3>
+    {% for edu in resume.educations %}
+    <dl>
+      <dt class="content-header">
+        <p>{{ edu.start_time }} 至 {{ edu.end_time }}</p>
+        <h4>{{ edu.school }}<span class="divide-16"></span>{{edu.degree}}<span class="divide-16"></span>{{edu.major}}</h4>
+      </dt>
+    </dl>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if resume.professional_skills %}
+    <div class="self sec-resume">
+        <h3><span>专业技能</span><a href="#" class="btn-toggle"></a> </h3>
+        <dl>
+            <dd class="content-header">
+                <p>
+                    {{ resume.professional_skills|show_skill|safe }}
+                </p>
+            </dd>
+        </dl>
+    </div>
+    {% endif %}
+</div>
+<div class="modal-backdrop-tip fade in" style="display:none;"></div>
+<div class="modal-tip" tabindex="-1" style="display:none;">
+    <div class="modal-dialog-tip">
+        <div class="completed-task">
+            <p class="tip">(ﾉ≧v≦)ﾉ <span id="JS_username">XXX</span>，你的<span class="ca465e7">最后一个</span>新手任务已于
+            <p class="tip2"><span id="JS_mission_time">2015年3月xx日</span></p>
+            <p class="tip">完成，请按以下步骤领取红包吧～</p>
+            <p class="step mt20"><span class="tip-dot">1</span>掏出手机，<span class="ca465e7">拍下此弹窗！</span></p>
+            <p class="step mt20"><span class="tip-dot">2</span>扫码加聘宝小助手为微<br>信好友，把图发给小助手，领取你的红包～<i class="i-hb"></i></p>
+            <div class="wx-img mt20">
+                <img src="{{ STATIC_URL }}alpha/images/a-code.jpg" alt="" width="153" height="153">
+            </div>
+            <p class="text-center mt20">
+                <a href="#" class="close-btn">快去联系候选人吧！</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% if feed_result and feed_result.tags.keywords %}
+<script>
+ var feed_keywords = {{ feed_result.tags.keywords|to_json|safe }}
+</script>
+
+{% endif %}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Pinbot分析统计</title>
+    <link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css?e0a0b537" rel="stylesheet" />
+    
+</head>
+<body>
+
+
+
+<div id="feeds">
+	<table >
+	    <caption>
+	    <h3>{{user.first_name}}-{{user.username}} <b style="color:red">{{days}}天内</b>推荐结果统计 
+		     <p>
+		     [ 
+			    <a href={{current_url}}days=1>昨天到当前</a>|
+			    <a href={{current_url}}days=2>前天到当前</a>|
+			    <a href={{current_url}}days=3>三天内</a>|
+			    <a href={{current_url}}days=7>一周内</a>|
+			    <a href={{current_url}}days=14>两周内</a>|
+			    <a href={{current_url}}days=30>一月内</a>
+		    ] 
+	    </h3>
+	    </caption>
+	
+	
+	    <tbody >
+	        <thead>
+	            <tr>
+	                <th width="4%">编号</th>
+	                <th width="20%">订阅关键词</th>
+	                <th scope="col">职位类型</th>
+	                <th scope="col">工作地</th>
+	                <th scope="col">级别</th>
+	                <th scope="col">状态</th>
+	               
+	                <th scope="col">已读人工推荐数</th>
+	                <th scope="col">人工推荐数</th>
+	                <th scope="col">已读推荐数</th>
+	                <th scope="col">推荐数</th>
+	                <th scope="col">人工屏蔽数</th>
+	                <th scope="col">计算数</th>
+	                <th scope="col">待审核数</th>
+	                <th scope="col">订阅时间</th>
+	                <th width="20%">职位描述</th>
+	            </tr>
+	        </thead>  
+	    
+	    {% for user_feed,user_read_manual_count,user_read_sum,manual_reco_count, feed_reco_sum, manual_sheild_count,feed_result_total_sum ,unpublished_count in user_feeds_list%}
+	      
+	        <tr >
+	            <th>{{forloop.counter}}</th>
+	            <th class="keywords">{{user_feed.feed.keywords}}</th>
+	            <td class="keywords">{{user_feed.feed.job_type}}</td>
+	            <td class="keywords">{{user_feed.feed.expect_area}}</td>
+	            <td class="keywords">{{user_feed.feed.talent_level}}</td>
+	            <td class="keywords">
+						{%if user_feed.is_deleted%}
+						   已删除
+						{%else%}
+						   <b style="color:red">仍关注</b>
+						{%endif%}
+	            </td>
+	            <td><b style="color:red"> {{user_read_manual_count}}</b></td>
+	            <td>{{manual_reco_count}}</td>
+	            <td><b style="color:red">{{user_read_sum}}</b></td>
+	            <td>{{feed_reco_sum}}</td>
+	            <td>{{manual_sheild_count}}</td>
+	            <td>{{feed_result_total_sum}}</td>
+	            <td><a href="/statis/feed_result/?username={{username}}&feed_id={{user_feed.feed.id}}#/group/{{user_feed.feed.id}}" target="blank">{{unpublished_count}}</a></td>
+	            <td class="keywords">{{user_feed.add_time|date:"Y-m-d  H:i"}} 添加 
+	            <p><a href="/statis/feed_result/?username={{username}}&feed_id={{user_feed.feed.feed_obj_id}}#/group/{{user_feed.feed.feed_obj_id}}" target="blank">推荐结果</a></p></td>
+	            <td style="width:30%">{{user_feed.feed.job_desc}}</td>
+	        </tr>
+	        
+	    {% endfor %}
+	    
+	    </tbody>
+	</table>
+	<div>
+	   <p><p>
+	   <b style="color:red">>>指标说明</b>:
+	    <p>   <b>已读</b>是指点击进入到详情页面
+		<p> <b >已读人工推荐数:</b>用户已经读取的人工推荐的数量
+		 <p><b>人工推荐数:</b>人工推荐数量
+		<p> <b >已读推荐数:</b>已经推荐的简历数量
+		<p> <b >推荐数:</b>总的推荐数量
+		 <p><b >人工屏蔽数:</b>人工屏蔽的机器推荐数量
+		 <p><b >计算数:</b>总共检索出含有关键词的简历是数量
+	 <p>以上指标:都是计算时间开始于days对应的天数前的<b>14:00</b>到当前时间
+	 <p><p><b style="color:red">待审核数:</b>现在机器推荐的待人工审核的数量
+	</div>
+</div>    
+</body>
+</html>

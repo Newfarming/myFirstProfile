@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load compress %}
+{% load job_tags %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}job_hunting/css/job.min.css?20150422" rel="stylesheet">
+{% endblock%}
+
+{% block app %} ng-app="job" {% endblock %}
+
+{% block body %}
+
+<div class="job-tip text-center none">
+    <span class="text-overflow">深圳腾讯科技成都公司对你的简历做出了反馈</span>
+    <a href="" class="i-view" title="查看详情"></a>
+</div>
+
+<div ui-view></div>
+
+{% endblock %}
+
+{% block footer %}
+    {% compress js %}
+        <script src="{{ STATIC_URL }}common/js/jquery.cookie.min.js"></script>
+        <script src="{{ STATIC_URL }}job_hunting/job_hunting.js"></script>
+    {% endcompress %}
+{% endblock %}

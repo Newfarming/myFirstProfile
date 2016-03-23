@@ -1,0 +1,31 @@
+<div class="active-success blank-active-success" ng-if="fromActive.length && fromActive.length != 0 && fromActive == fromActive">
+    <p><i class="i-success"></i>已激活成功！<i class="i-close" ng-click="closeActiveTip()"></i></p>
+</div>
+<div class="renew-success blank-renew-success" ng-if="fromRenew.length && fromRenew.length != 0 && fromRenew == fromRenew">
+    <p><i class="i-success"></i>续期成功！<i class="i-close" ng-click="closeRenewTip()"></i></p>
+</div>
+<div class="no-resume">
+    <!-- <h2 class="text-center blank-title mt40">Well done！简历推荐将在定制提交后的<span class="cf46c62">下一个工作日</span>为你呈现！</h2> -->
+    <div class="text-center mt40">
+        <img src="/static/special_feed/img/rocket.gif" width="256" height="256" alt="The Pinbot">
+    </div>
+    <p class="text-center f24">
+        <img src="/static/special_feed/img/heart.png" alt="" style=" vertical-align: -3px;"><br>
+        <span class="f14">聘小宝正在马不停蹄地为你匹配人才，别忘了稍后刷新看看哦～</span>
+    </p>
+    <p class="text-center mt40">
+        <a href="javascript:void(0);" onclick="refreshFeedPage();" class="goto-reload opa-btn">刷新看看</a>
+    </p>
+    <p class="text-center mt40 c999 f13"><span class="cf46c62">特别提示：</span>若你<span class="cf46c62">七</span>天内未查看过定制，则需要你<span class="cf46c62">手动激活</span>才能继续使用专属定制服务。</p>
+</div>
+
+<script>
+    //document.location.reload()
+    var refreshFeedPage = function(){
+        var loc=document.location.href.toString();
+        if(loc.match(/\/#\/feed_blank\/([0-9a-z]+)\//i)){
+            document.location.href='/special_feed/page/#/feed_resume/'+RegExp.$1+'/';
+        }
+    };
+
+</script>

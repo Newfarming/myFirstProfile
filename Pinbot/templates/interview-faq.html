@@ -1,0 +1,455 @@
+<div class="faq">
+    <a href="javascript:void(0);" trace-title="常见问题" class="faq-robot-public faq-robot-qusetion bd-trace" id="js-faq-click">
+        <span>常见问题</span>
+    </a>
+    <div class="faq-content">
+        <!--  一级页面 -->
+        <div class="faq-content-first">
+          <div class="faq-content-nav clearfix">
+            <a href="javascript:void(0);" class="faq-nav faq-nav-question bd-trace" id="js-nav-qusetion" trace-title="常见问题tab">常见问题</a>
+            <a href="javascript:void(0);" class="faq-nav faq-nav-meet bd-trace" id="js-nav-meet" trace-title="约面话术tab">约面话术</a>
+          </div>
+         <!-- 约面话术 -->
+          <div class="faq-content-main" id="js-meet-content">
+            <div>
+              <div class="slide-out">
+                <ul class="faq-question faq-meet-ul">
+
+                </ul>
+              </div>
+              <div class="faq-qusetion-page">
+                <div><a href="javascript:void(0);" class="no-right-page js-right-page"></a></div>
+                <div><a href="javascript:void(0);" class="go-left-page js-left-page"></a></div>
+
+              </div>
+            </div>
+            <div class="ask-more">
+              <a href="javascript:;" id="js-ask-more-faq" class="js-ask-more bd-trace" trace-title="反馈更多">反馈更多</a>
+            </div>
+          </div>
+          <!-- 常见问题 -->
+          <div class="faq-content-main" id="js-qusetion-content">
+            <div>
+              <div class="slide-out">
+                 <ul class="faq-question faq-qusetion-ul">
+                </ul>
+              </div>
+              <div class="faq-qusetion-page">
+                <div><a href="javascript:void(0);" class="no-right-page js-right-page"></a></div>
+                <div><a href="javascript:void(0);" class="go-left-page js-left-page"></a></div>
+
+              </div>
+            </div>
+            <div class="ask-more">
+              <a href="javascript:void(0);" id="js-ask-more-meet" class="js-ask-more bd-trace" trace-title="反馈更多">反馈更多</a>
+            </div>
+          </div>
+        </div>
+    <div class="faq-content-response">
+        <div>
+          <div><span class="title">谢谢反馈！</span></div>
+          <div><span class="desc">敬请期待小宝的蜕变～</span></div>
+          <div class="btn-box"><a href="javascript:void(0);" id="js-return-back">返回</a></div>
+        </div>
+    </div>
+
+      <!-- 约面会谈/常见问题二级页面 -->
+      <div class="faq-meet-second">
+        <a href="javascript:;" class="faq-meet-reture" id="js-reture-first"><i></i>返回</a>
+        <div class="faq-meet-content">
+          <p>约面话术</p>
+          <div class="faq-meet-question">
+            简历下载了，怎么开始联系候选人呢？
+          </div>
+          <div class="faq-meet-answer">简历下载了，怎么开始联系候选人呢？简历下载了，怎么开始联系候选人呢？简历下载了，怎么开始联系候选人呢？简历下载了，怎么开始联系候选人呢？</div>
+        </div>
+        <div class="contact-servicer">答案不满意？<a href="javascript:;" id="JS_pbqqdiy_btn">联系客服</a></div>
+      </div>
+
+      <!-- 问题反馈 -->
+      <div class="faq-advice-qusetion">
+          <p class="advice-qusetion-title">问题反馈</p>
+          <div>
+            <p class="advice-qusetion-black">对小宝有什么新的建议？/遇到什么新的问题?</p>
+            <p class="advice-qusetion-grey">我们会火速送到产品经理处，并尽快处理</p>
+            <form method="post" action="" name="faq" id="js-faq-form">
+              <textarea class="area" id="js-area-val" placeholder="请输入你的问题或者建议"></textarea>
+              <input type="email" placeholder="请留下你的邮箱" value="" class="email" id="js-email"/>
+              <div class="clearfix btn-box">
+                <a href="javascript:void(0);" id="js-return-first">返回</a>
+                <a href="javascript:;" id="js-sub">提交</a>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+</div>
+<script>
+(function(){
+
+    {% if user_buy_status == 'LookUp' %}
+    var faq_status='meet';
+    var downloadOk=1;
+    {% else %}
+    var faq_status='question';
+    var downloadOk=0;
+    {% endif %}
+    var username='{{ request.user.username }}';
+    if(username.match(/^([a-z0-9_\.\-])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,4})+$/i)){
+      $('#js-email').prop('value',username);
+    }
+
+    $('.faq-robot-public').removeClass('faq-robot-qusetion');
+    $('.faq-robot-public').removeClass('faq-robot-meet');
+    $('.faq-nav').removeClass('nav-blue');
+    $('.faq-nav').removeClass('nav-red');
+    if(faq_status=='meet'){
+      $('.faq-robot-public').addClass('faq-robot-meet');
+      $('.faq-robot-meet span').text('约面话术');
+      $('.faq-nav-meet').addClass('nav-red');
+    }else{
+      $('.faq-robot-public').addClass('faq-robot-qusetion');
+      $('.faq-robot-qusetion span').text('常见问题');
+      $('.faq-nav-question').addClass('nav-blue');
+    }
+
+
+  //定位faq的位置
+  var windowWinth = $(window).width();
+  var faq_left = ((windowWinth-1140)/2-44)+'px';
+  var faq_left_ori = parseInt($('.faq').css('left'));
+  $('.faq').css('left',faq_left);
+  var faq_list={};
+  var isClose=0;
+
+  //改变窗口大小，同步话术弹窗位置
+  $(window).resize(function() {
+    var windowWidthChg=windowWinth-$(window).width();
+    if(windowWidthChg>=0){
+      //变窄
+      faq_left = ((windowWinth-1140)/2-44-parseInt(windowWidthChg/2))+'px';
+    }else{
+      //变宽
+      faq_left = ((windowWinth-1140)/2-44+parseInt(-windowWidthChg/2))+'px';
+    }
+    $('.faq').css('left',faq_left);
+  });
+
+  //点击会谈话术，出现faq主体
+  $('#js-faq-click').click(function(e){
+    var trg=$(e.target);
+    //console.log('trg',trg.html());
+    isClose++;
+    $('.faq-content').toggle();
+    var updateList=function(data,downloadOk){
+        data_deal(data,'.faq-qusetion-ul','question');
+        data_deal(data,'.faq-meet-ul','meet');
+        show_second(data);
+        if(downloadOk){
+          $('#js-meet-content').show();
+          $('#js-qusetion-content').hide();
+        }else{
+          $('#js-meet-content').hide();
+          $('#js-qusetion-content').show();
+        }
+    };
+
+    if(faq_list.hasOwnProperty('question')){
+      show_second(faq_list);
+      if(isClose>1){
+        if($(e.target).text()=='常见问题'){
+          $('#js-meet-content').hide();
+          $('#js-qusetion-content').show();
+        }else{
+          $('#js-meet-content').show();
+          $('#js-qusetion-content').hide();
+        }
+      }else{
+        if(downloadOk){
+          $('#js-meet-content').show();
+          $('#js-qusetion-content').hide();
+        }else{
+          $('#js-meet-content').hide();
+          $('#js-qusetion-content').show();
+        }
+      }
+    }else{
+      $.ajax({
+          url: '/tut/interview_term/',
+          type: 'get',
+          dataType: 'json',
+          success: function(data){
+            faq_list=data;
+            updateList(data,downloadOk);
+          }
+      });
+    }
+
+  });
+
+  //点击切换常见问题／会谈话术
+  //点击会谈话术
+  $('#js-nav-meet').click(function(){
+    var _this = $(this);
+    if(!_this.hasClass('nav-red')){
+      _this.addClass('nav-red');
+      $('#js-nav-qusetion').removeClass('nav-blue');
+      $('#js-faq-click').addClass('faq-robot-meet').removeClass('faq-robot-qusetion').find('span').text('约面话术');
+      $('#js-meet-content').show();
+      $('#js-qusetion-content').hide();
+    }
+  })
+  var qusetion_ul_size;
+  var ul_size;
+  var inModal=false;
+
+  //循环数据
+  function data_deal(data,className,propName){
+    if(data.hasOwnProperty(propName)){
+      var qusetion_data = data[propName];
+      var eachPage = 4;
+      //pages
+      var qusetion_length = Math.ceil(qusetion_data.length/eachPage);
+      var data_str ='';
+      //循环数据
+      for(var i=0; i<qusetion_length; i++){
+        if(i==0){
+          //第一页
+          data_str += '<li class="slide-li li-now"><ul>';
+        }else{
+          data_str += '<li class="slide-li"><ul>';
+        };
+        var jmax=(i+1)*eachPage;
+        if(jmax>qusetion_data.length) jmax=qusetion_data.length;
+        for(var j=i*eachPage; j<jmax; j++){
+          if(qusetion_data==undefined || qusetion_data[j]==undefined || qusetion_data[j].id==undefined || qusetion_data[j].question==undefined) break;
+          data_str +='<li><a href="javascript:void(0);" class="js-show-answer" data-id="'+qusetion_data[j].id+'"><span>Q'+(j+1)+'</span>'+ qusetion_data[j].question+'</a></li>';
+        }
+        data_str+='</ul></li>';
+      }
+      $(className).append(data_str);
+      ul_width('.faq-meet-ul');
+      ul_width('.faq-qusetion-ul');
+    }
+  }
+
+  //根据添加的数据计算幻灯ul容器的宽度
+  function ul_width(classname){
+      qusetion_ul_size =$(classname).find('li.slide-li').size();
+      var question_ul_width = qusetion_ul_size*340;
+      $(classname).css('width',question_ul_width+'px');
+
+      //判断左右点击按钮是否显示
+      if(question_ul_width>340){
+        $(classname).closest('.slide-out').siblings('.faq-qusetion-page').show();
+      }
+  }
+
+  //点击常见问题
+  $('#js-nav-qusetion').click(function(){
+    var _this = $(this);
+    if(!_this.hasClass('nav-blue')){
+      _this.addClass('nav-blue');
+      $('#js-nav-meet').removeClass('nav-red');
+      $('#js-faq-click').addClass('faq-robot-qusetion').removeClass('faq-robot-meet').find('span').text('常见问题');
+      $('#js-meet-content').hide();
+      $('#js-qusetion-content').show();
+    }
+  })
+
+  function show_second(data){
+
+    var showAnswer=function(second_title,arr,data_id){
+      var qusetion_now = '';
+      var answer_now = '';
+      //console.log('showAnswer',second_title,arr,data_id);
+      for(var i=0,imax=arr.length; i<imax; i++){
+        if(arr[i].id == data_id){
+          qusetion_now = arr[i].question;
+          answer_now = arr[i].anwser;
+          answer_now = answer_now.replace(/[\n]/ig,'<br>');
+          break;
+        }
+      }
+      return '<p>'+second_title+'</p><div class="faq-question-question">'+qusetion_now+'</div><div class="faq-question-answer">'+answer_now+'</div>';
+    };
+
+    $('.js-show-answer').on('click',function(){
+      var second_str = '';
+      var second_title = '';
+      var data_id = $(this).attr('data-id');
+      var qusetion_now = '';
+      var answer_now = '';
+      if($('#js-nav-meet').hasClass('nav-red')){
+        $('.faq-meet-content').removeClass('faq-question-content');
+        second_title='约面话术';
+        second_str = showAnswer(second_title,data.meet,data_id);
+      }else{
+        $('.faq-meet-content').addClass('faq-question-content');
+        second_title='常见问题';
+        second_str = showAnswer(second_title,data.question,data_id);
+      };
+
+      $('#js-reture-first').click(function(){
+          $('.faq-meet-second').hide();
+          $('.faq-content-first').show();
+      })
+      $('.faq-content-first').hide();
+      $('.faq-meet-second').show();
+      $('.faq-meet-content').empty().append(second_str);
+    });
+  };
+
+
+  var slideHanlder=function(trgName){
+    if($(trgName).length){
+      var trg=$(trgName);
+
+      //点击左
+      $('.js-left-page',trg).click(function(){
+          var colse_out = $(this,trg).closest('.faq-qusetion-page').siblings('.slide-out');
+          var slide_li = colse_out.find('li.slide-li');
+          var li_now = colse_out.find('.li-now');
+          var li_index = slide_li.index(li_now);
+          var public_size;
+          var faq_question = $(this,trg).closest('.faq-qusetion-page').siblings('div.slide-out').find('.faq-question');
+          //console.log('faq_question',trgName,faq_question,qusetion_ul_size,ul_size);
+          if(faq_question.hasClass('faq-qusetion-ul') || faq_question.hasClass('faq-meet-ul')){
+            public_size = qusetion_ul_size;
+          }else{
+            public_size = 0;
+          }
+
+          if(li_index<(public_size-1)){
+            var faq_question_left = '-'+(li_index+1)*340+'px';
+            faq_question.animate({
+              left:faq_question_left
+            });
+            li_now.removeClass('li-now');
+            slide_li.eq(li_index+1).addClass('li-now');
+            $(this,trg).addClass('go-left-page');
+            $(this,trg).parent().siblings('div').find('.js-right-page').removeClass('no-right-page').addClass('go-right-page');
+            if(li_index==(public_size-2)){
+              $(this,trg).removeClass('go-left-page').addClass('no-left-page');
+            }
+          }
+       });
+
+      //点击右
+      $('.js-right-page',trg).click(function(){
+          var colse_out = $(this,trg).closest('.faq-qusetion-page').siblings('.slide-out');
+          var slide_li = colse_out.find('li.slide-li');
+          var li_now = colse_out.find('.li-now');
+          var li_index = slide_li.index(li_now);
+          if(li_index>0){
+            var faq_question_left = '-'+(li_index-1)*340+'px';
+            $(this,trg).closest('.faq-qusetion-page').siblings('div.slide-out').find('.faq-question').animate({
+              left:faq_question_left
+            });
+            li_now.removeClass('li-now');
+            slide_li.eq(li_index-1).addClass('li-now');
+            $(this,trg).addClass('go-right-page');
+            $(this,trg).parent().siblings('div').find('.js-left-page').removeClass('no-left-page').addClass('go-left-page');
+            if(li_index<=1){
+              $(this,trg).removeClass('go-right-page').addClass('no-right-page');
+            };
+          }
+       });
+    }
+
+  };
+  slideHanlder('#js-meet-content');
+  slideHanlder('#js-qusetion-content');
+
+  var str = "";
+  //反馈更多
+  $('.js-ask-more').click(function(e){
+    str = $('#js-faq-click').find('span').text();
+    $('.faq-advice-qusetion').show();
+    $('.faq-content-first').hide();
+    $('#js-faq-click').find('span').addClass('ask-answer-bg').text('反馈');
+  });
+
+  //返回
+  $('#js-return-first').click(function(e){
+    $('.faq-advice-qusetion').hide();
+    $('.faq-content-first').show();
+    $('#js-faq-click').find('span').removeClass('ask-answer-bg').text(str);
+  });
+
+  //关闭反馈
+  $('#js-return-back').click(function(e){
+    $('.faq-content-response').css('display','none');
+
+  });
+
+  var getCookie = function(key) {
+      var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+      return keyValue ? keyValue[2] : null;
+  }
+  // 提交
+  $('#js-sub').click(function(){
+        var reg = /^([a-z0-9_\.\-])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,4})+$/i;
+        var email_val = $('#js-email').val();
+        var area_val = $('#js-area-val').val();
+        var form_tip = '';
+        var focusTrg = 'js-area-val';
+        var myAlert=function(form_tip,focusTrg){
+          inModal=true;
+          $.alert('<p class="alert-notice-center"><span>'+form_tip+'</span></p>',undefined,undefined,{afterClose:function(){
+            if($(focusTrg).length) $(focusTrg).focus();
+            setTimeout(function(){
+              inModal=false;
+            },500);
+          }});
+        };
+        if((area_val == "") || (area_val == undefined)){
+          myAlert('请输入你的问题或者建议','#js-area-val');
+          return false;
+        };
+        if(!reg.test(email_val)){
+          myAlert('请检查你的邮箱地址','#js-email');
+          return false;
+        };
+        if(form_tip == ''){
+          $('#js-sub').prop('disabled',true);
+          $.ajax({
+              url: '/tut/feedback/',
+              type: 'post',
+              dataType: 'json',
+              data:JSON.stringify({'feedback_text':area_val,'contact_email':email_val}),
+              headers: {
+                "Content-Type":"application/json; charset=UTF-8",
+                "X-CSRFToken": getCookie('csrftoken')
+              },
+              success: function(data){
+                $('#js-sub').prop('disabled',false);
+                if (data.status == 'error') {
+                  myAlert(data.msg,'#js-area-val');
+                };
+                if(data.status == 'ok'){
+                  $('#js-email').val("");
+                  $('#js-area-val').val("");
+                  //myAlert('提交成功！你的问题或建议，我们会火速处理。');
+                  $('.faq-content-response').css('display','block');
+                };
+              },
+              error:function(data){
+                $('#js-sub').prop('disabled',false);
+                myAlert('提交失败！请重新提交。');
+              }
+          });
+        }
+  });
+  //点击页面其他部分关闭话术弹窗
+  $(document).on('click',function(e){
+    if(!inModal && $('.faq-content').css('display')=='block'){
+      //console.log('click',$('.click-to-download-resume'),$(e.target));
+      if($('.modal')[0]!=$(e.target)[0] && $('.click-to-download-resume')[0]!=$(e.target)[0] && $('#js-faq-click')[0]!=$(e.target)[0] && $('#js-faq-click').find(e.target).length==0 && $('.faq-content').find(e.target).length==0 && $('.modal').find(e.target).length==0){
+        $('.faq-content').css('display','none');
+      }
+    }
+  });
+
+})();
+</script>

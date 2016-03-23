@@ -1,0 +1,24 @@
+[
+{
+  "pk": 907,
+  "model": "auth.user",
+  "fields": {
+    "username": "runforever@163.com",
+    "first_name": "\u6d69\u6cca\u4e91\u52a8-\u65b9\u5706",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": true,
+    "is_staff": true,
+    "last_login": "2015-06-17T20:36:37",
+    "groups": [
+      5
+    ],
+    "user_permissions": [
+      316
+    ],
+    "password": "pbkdf2_sha256$12000$EeWFOMQv229b$4b+SyNoVff4CslGECLaKpVPdSuIKjKzXHz+EBuNQpxw=",
+    "email": "runforever@163.com",
+    "date_joined": "2013-09-09T03:06:14"
+  }
+}
+]

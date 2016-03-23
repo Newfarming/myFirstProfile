@@ -1,0 +1,19 @@
+<div class="aside">
+
+{% autoescape off %}
+{% if resume_score.extract_keywords %}
+<div class="locate-keywords">
+  <div class="wrap-locate-keywords">
+    <h3>关键词定位</h3>
+    <a href="#" title="回到顶部" class="btn-scroll-top"></a>
+    <p class="locate-keywords-container">
+      {% for keywords in resume_score.extract_keywords %}
+      <span>{{keywords}}</span>
+      {% endfor %}
+    </p>
+  </div>
+</div> 
+{% endif %}             
+{% endautoescape %}
+
+</div>  

@@ -1,0 +1,45 @@
+<div class="reco-list-panel w900 mt20" ng-repeat="task in data">
+    <p class="reco-date">任务更新：{- task.update_time -}</p>
+    <table class="table reco-table" width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="caption text-left" colspan="5">任务ID：{- task.task_id -}</td>
+            <td class="caption text-right">已推荐简历：{- task.task_resumes.length || 0 -}</td>
+        </tr>
+        <tr class="task-info" ng-click="showFeed( task , $event )">
+            <td colspan="2" class="text-left">
+                <span class="c434343 f16 inline-block">{- task.feed.title || task.feed.keywords -}</span> <span class="cf46c62 inline-block" ng-repeat="prefer in task.feed.company_prefer" ng-if=" prefer != '不限' ">[{- prefer -}]</span><br>
+                {- task.feed.expect_area.join(',') -} {- task.feed.job_domain.join('、') -}<br>
+                {- task.feed.salary_min | formatMoney:task.feed.salary_max -}
+            </td>
+            <td><span class="c45b5e9" ng-if="task.feed.active && !task.feed.deleted">已接受</span><span class="caaa" ng-if="!task.feed.active || task.feed.deleted">已过期</span></td>
+            <td>该任务已赚取<span class="cf46c62">{- task.total_coin -}</span>金币</td>
+            <td><a href="javascript:;" class="view-detail JS_view_desc" data-url="/partner/task_coin_record/{- task.id -}/">查看明细</a></td>
+            <td><button class="button upload-resume" ng-bind="task.task_resumes.length ? '继续推荐简历' : '录入简历' " ng-click="isShowLayer( $event , task.feed.id )" ng-if="task.feed.active && !task.feed.deleted"></button></td>
+        </tr>
+        <tr ng-if="task.task_resumes.length">
+            <th>候选人名称</th>
+            <th>推荐时间</th>
+            <th>薪资要求</th>
+            <th>简历状态</th>
+            <th>获得金币</th>
+            <th></th>
+        </tr>
+        <tr class="resume-tr" ng-repeat="resume in task.task_resumes" ng-click="toViewResume( resume )">
+            <td>{- resume.name -}</td>
+            <td>{- resume.upload_time -}</td>
+            <td>{- resume.target_salary | moneyFilter -}K</td>
+            <td>
+                <span class="c45b5e9" ng-if="resume.resume_status == 0">已推荐</span>
+                <span class="c45b5e9" ng-if="resume.resume_status == 1">已被查看</span>
+                <span class="c45b5e9" ng-if="resume.resume_status == 2">已被下载</span>
+                <span class="c45b5e9" ng-if="resume.resume_status == 3">进入面试</span>
+                <span class="c45b5e9" ng-if="resume.resume_status == 4">已入职</span>
+                <span class="cf46c62" ng-if="resume.resume_status == 5">被举报</span>
+            </td>
+            <td><span ng-class=" {true: 'c45b5e9' , false : 'cf46c62'}[ resume.resume_status != 5 ] ">{- resume.resume_coin -}</span>金币</td>
+            <td>
+                <a href="/partner/follow_task_resume/{- task.id -}/{- resume.id -}/" target="_blank" class="tracking" ng-click="followResume( $event )" ng-if=" resume.resume_status != 5 && resume.resume_status != 4 && task.feed.active && !task.feed.deleted ">跟进简历</a>
+            </td>
+        </tr>
+    </table>
+</div>

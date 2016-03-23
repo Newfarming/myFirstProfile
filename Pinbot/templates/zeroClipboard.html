@@ -1,0 +1,24 @@
+<script src="{{ STATIC_URL }}alpha/scripts/ZeroClipboard.js"></script>
+<script>
+(function($,undefined) {
+    var client = new ZeroClipboard($('.copy-a'));
+    client.on('copy', function(e) {
+        $('.copy-a span:visible').hide();
+        e = e || window.event;
+        var dom = $( e.target || e.srcElement ),
+            url = dom.attr('data-url');
+        client.setText(url);
+        dom.find('span').show();
+    });
+})(jQuery);
+
+$(function(){
+    $(document).on( 'click' , '.copy-a,#global-zeroclipboard-flash-bridge' , function( e ){
+        e.stopPropagation();
+        e.preventDefault();
+    });
+    $(document).on( 'click' , document , function( e ){
+        $('.copy-a span:visible').hide();
+    });
+});
+</script>

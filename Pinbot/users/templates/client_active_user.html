@@ -1,0 +1,62 @@
+{% extends 'base_unlogin.html' %}
+{% block main %}
+
+<div class="header">
+    <h1>申请注册</h1>
+    <div class="steps at-step-2">
+        <span class="step1">填写信息</span>
+        <span class="step2">激活邮箱</span>
+        <span class="step3">注册完成</span>
+        <span class="step4">完善企业信息</span>
+    </div>
+</div>
+
+{% if status == 'token_error' %}
+<div class="content">
+    <div class="checkmail">
+        <p class="checkmail-main">
+            该链接已失效
+        </p>
+    </div>
+</div>
+{% endif %}
+
+{% if status == 'token_expire' %}
+<div class="content">
+    <div class="checkmail">
+        <p class="checkmail-main">
+            该链接已失效，请点击此处，重新发送<a class="c42b4e6" id="JS_send_email" href="javascript:void(0);" data-ajax_url="{% url 'user-send-active-email' user.email %}" data-method="get" data-ajax_common_type="normal">激活链接</a>
+        </p>
+    </div>
+</div>
+{% endif %}
+
+{% if status == 'already_active' %}
+<div class="content">
+    <div class="checkmail">
+        <p class="checkmail-main">
+            该用户已经激活，请点击此处<a class="c42b4e6" href="/signin">直接登录</a>！
+        </p>
+    </div>
+</div>
+{% endif %}
+
+{% if status == 'success' %}
+<div class="content">
+    <div class="checkmail">
+        <p class="checkmail-main i-correct">
+            激活成功，立即<a class="c42b4e6" href="/signin">登录聘宝</a>
+        </p>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+<script src="{{ STATIC_URL }}alpha/scripts/jq.js?20140815"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/common.min.js?20140815"></script>
+<script>
+   $('#JS_send_email').on('click', $.commonAjax);
+</script>
+{% endblock %}

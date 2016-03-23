@@ -1,0 +1,23 @@
+<div class="inner-content common_form gender_form work_year_form degree_form salary_form">
+    <p><a ng-click="back()"><img src="{- static_url -}my_resume/img/arrow_1_32x46.fw.png"/></a>你能接受的最低月薪</p>
+    <ul>
+        <li class="input_li">
+            <div ng-click="focusInput($event)">
+                <input ng-click="focusInput($event)" ng-model="salary" type="tel" class="input" maxlength="2" ng-keyup="showInfo($event)" ng-blur="hideInfo($event)" placeholder="0" ng-focus="addColor($event)"/>
+                <label>K</label>
+            </div>
+        </li>
+        <li>
+            <label class='info'>你输入的最低月薪为<span></span>元</label>
+        </li>
+        <li>
+            <label class='error'>最低月薪请输入1K以上！</label>
+        </li>
+    </ul>
+    <a ng-click="next()" class="city_form_next_btn" ng-class="{'show': isShow()}">
+        <img ng-class="{'show': isShow()}" src="{- static_url -}my_resume/img/arrow_R_72x72.png"/>
+    </a>
+    <div class="opt_part" ng-class="{'confirm_show': confrimShow(data.salary_lowest)}">
+        <a class="button confirm" ng-click="confirm()">确认</a>
+    </div>
+</div>

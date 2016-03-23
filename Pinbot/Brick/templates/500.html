@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block header %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}brick/css/404500.css" />
+{% endblock %}
+
+{% block body %}
+	<div class="content">
+	    <div class="inner-content">
+	        <p class="title">
+	        	<img src="{{ STATIC_URL }}brick/img/500_169x29.png"/>
+	    	</p>
+	        <p class="description">
+	        	服务器考试睡觉，<br>
+	        	果不其然挂了科。
+	        </p>
+	        <p class="pic">
+	        	<img src="{{ STATIC_URL }}brick/img/500_251x189.png">
+	    	</p>
+	    	<p class="ps">
+	        	p.s.技术人员已经收到了服务错误信息啦<br>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正在紧急为你处理咯，别着急别着急
+	        </p>
+	    </div>
+	</div>
+{% endblock %}

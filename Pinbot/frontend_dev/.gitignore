@@ -1,0 +1,9 @@
+node_modules
+dist/
+.DS_Store
+chromedriver
+IEDriverServer.exe
+temp
+_config.js
+npm-debug.log
+out

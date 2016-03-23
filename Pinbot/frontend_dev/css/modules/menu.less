@@ -1,0 +1,31 @@
+/* 菜单样式 */
+@import "../base";
+/* main-subnav 定制子菜单 */
+.main-subnav {
+    background: #fff;
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 0;
+}
+
+.main-subnav-list li {
+    display: inline;
+    margin: 0 10px;
+    border-left: 1px solid @pb-btn-dark-bule;
+    padding-left: 20px;
+    padding-top: 2px;
+}
+
+.main-subnav-list li.first-child {
+    border-left: none;
+}
+
+.main-subnav-list li a {
+    color: @pb-btn-dark-bule;
+    font-size: 16px;
+}
+
+.main-subnav-list li.on a {
+    color: @pb-btn-red;
+}
+

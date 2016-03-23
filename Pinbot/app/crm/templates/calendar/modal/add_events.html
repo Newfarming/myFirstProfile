@@ -1,0 +1,114 @@
+<div class="modal fade" id="add_events" tabindex="-1" role="dialog" aria-labelledby="remarkModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">添加日程</h4>
+      </div>
+      <div class="modal-body">
+          <table class="table no-margin">
+              <thead>
+                  <tr>
+                      <td style="width: 20%;">
+                          <label>选择日程时间: </label>
+                      </td>
+                      <td style="width: 70%;">
+                          <input style="width: 90%;" id="schedule_time" type="text" placeholder="必填" value="" />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width: 20%;">
+                          <label>日程备注 : </label>
+                      </td>
+                      <td style="width: 70%;">
+                          <input style="width: 90%;" id="schedule_content" type="text" placeholder="必填" value="" />
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width: 20%;">
+                          <label>url : </label>
+                      </td>
+                      <td style="width: 60%;">
+                          <input style="width: 90%;" id="schedule_url" type="text" placeholder="选填" value="" />
+                      </td>
+                      <td>
+                          <a id="get_url" type="button">前往</a>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="width: 20%;">
+                          <label>事件背景色 : </label>
+                      </td>
+                      <td style="width: 70%;">
+                          <select id="select_background_color">
+                              <option value="red" select="selected">&nbsp;红&nbsp;&nbsp;&nbsp;</option>
+                              <option value="yellow">&nbsp;黄&nbsp;&nbsp;&nbsp;</option>
+                              <option value="blue">&nbsp;蓝&nbsp;&nbsp;&nbsp;</option>
+                              <option value="purple">&nbsp;紫&nbsp;&nbsp;&nbsp;</option>
+                          </select>
+                      </td>
+                  </tr>
+          </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" value=""  class="btn btn-default pull-left" id="delete_schedule">删除</button>
+        <button type="button" class="btn btn-primary" id="add_schedule">确认</button>
+      </div>
+    </div>
+   </div>
+</div>
+<script>
+    $(function(){
+        $( "#schedule_time" ).datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+        $("#delete_schedule").click(function(){
+            var event_id = $(this).val();
+            var csrf = document.cookie.match('(^|;) ?' + 'csrftoken' + '=([^;]*)(;|$)');
+            var csrftoken = csrf?csrf[2]:null;
+            $.post('/crm/calendar/events/delete/', {'csrfmiddlewaretoken': csrftoken, 'id': event_id}, function(result){
+                if (result.status == 'ok'){
+                    location.reload();
+                }
+                else{
+                    alert('error');
+                }
+            });
+        });
+        $("#add_schedule").click(function(){
+            var schedule_time = $("#schedule_time").val();
+            if (schedule_time==''){
+                alert('请填写日程时间');
+                return false;
+            }
+            var schedule_content = $("#schedule_content").val();
+            if (schedule_content==''){
+                alert('请填写日程事件');
+                return false;
+            }
+            var schedule_color = $("#select_background_color").val();
+            var schedule_id = $("#delete_schedule").val();
+            var url = $("#schedule_url").val()
+            var csrf = document.cookie.match('(^|;) ?' + 'csrftoken' + '=([^;]*)(;|$)');
+            var csrftoken = csrf?csrf[2]:null;
+            $.post('/crm/calendar/events/', {'csrfmiddlewaretoken': csrftoken,'title': schedule_content,'start_time': schedule_time, 'backgroundcolor': schedule_color, 'schedule_id': schedule_id, 'url': url}, function(result){
+                if (result.status == 'ok'){
+                    location.reload();
+                }
+                else{
+                    alert('error');
+                }
+            });
+        });
+        $("#get_url").click(function(){
+            var url = $(this).parent().prev().children('input').val()
+            // var reg_express = /^http(s)?:\/\/[0-9a-z\.\-]+\/[0-9a-z\?#&=%\.\/\-]+$/i
+            // var exp_obj = new RegExp(reg_express)
+            // if (exp_obj.test(url) == true){
+            if (url){
+                window.open(url);
+            }
+            else {
+                alert('请输入合法的url地址')
+            }
+        });
+    });
+</script>

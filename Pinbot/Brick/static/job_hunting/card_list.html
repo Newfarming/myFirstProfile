@@ -1,0 +1,22 @@
+<div class="job_panel" ng-repeat="item in data.data" ng-click="toCardDetail(item.id)" data-id="{- item.id -}">
+    <p class="date text-center">{- item.send_time -}</p>
+    <div class="job-body">
+        <h3 class="text-overflow">{- item.job__title -}</h3>
+        <p class="text-overflow other">
+            {- item.job__salary_low | formatMoney:item.job__salary_high -}
+            <!-- &nbsp;{- item.job__work_years | filterYear -}
+            &nbsp;{- item.job__degree | filterDegree -} -->
+        </p>
+        <p class="text-overflow">{- item.job__company__company_name -}</p>
+        <p class="text-overflow">{- item.job__address -}<span ng-show="item.job__company__company_stage"> , {- item.job__company__company_stage -}</span></p>
+    </div>
+    <p class="text-overflow status text-center" ng-disabled="item.status == 'reject' || item.status == 'expire' || item.status == 'chat_expire'">{- item.status | textCardStatus -}</p>
+    <div class="job-handle">
+        <div class="text-center mt20">
+            <button type="button" class="button button-primary relative w100p" ng-show="item.status == 'accept'" ng-click="createCardChat( item.id , $event )"><i class="i-chat"></i>发起会话</button>
+            <button type="button" class="button button-primary relative w40p" ng-show="item.status == 'waiting'" ng-click="accept( item.id , item , $event )">感兴趣</button>
+            <button type="button" class="button button-primary relative w40p ml20" ng-show="item.status == 'waiting'" ng-click="reject( item.id , item , $event )">不感兴趣</button>
+            <button type="button" class="button button-primary relative w100p" ng-click="cardDelete( item.id , $event )" ng-show="item.status == 'reject' || item.status == 'expire' || item.status == 'chat_expire'" ng-click="favorite( item.id , item , $event )"><i class="i-chat-delete"></i>删除</button>
+        </div>
+    </div>
+</div>

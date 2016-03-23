@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?1aa19c460df" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/resume_list.css?19c460df" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  {% include 'sentry_fix.html' %}
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+</head>
+<body>
+
+{% include 'alpha/header.html' %}
+<div class="main-subnav">
+  <div id="resume-list-header">
+     <ul class="main-subnav-list">
+      <li class="first-child {% if page != 'bought_resume' %} on {% endif %}>">
+        <a href="/resumes/watch/">我的收藏</a>
+      </li>
+      <li class="{% if page == 'bought_resume' %} class="on" {% endif %}">
+        <a href="/transaction/bought">我的下载</a>
+      </li>
+      <li>
+        <a href="/feed/receive_resume/">投递我的</a>
+      </li>
+      <li>
+        <a href="{% url 'transaction-buy-record' %}" class="qzz">待标记简历</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div id="main">
+  <div id="content" class="clearfix">
+  {% if resumes %}
+    <div id="resume-list" class="clearfix">
+      {% include 'alpha/resume-list-aside.html' %}
+      <div class="resume-list-content hover-layer">
+        {% include 'alpha/resume-list-table.html' %}
+        {% include 'alpha/resume-list-pager.html' %}
+      </div>
+    </div>
+  {% else %}
+    <div id="resume-list" class="clearfix">
+      <div class="resume-list-content">
+        <div id="resume-list-empty" class="clearfix">
+          {% include 'alpha/resume-list-empty.html' %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  </div>
+</div>
+{% include 'footer.html' %}
+<script>
+    $( document ).on( 'mouseover' , '.resume-list-table tr' , function(){
+        $('tr.hover').removeClass('hover');
+        $(this).addClass('hover');
+    }).on( 'mouseleave' , '.resume-list-table tr' , function(){
+        $( this ).removeClass('hover');
+    });
+
+    $( '.resume-list-table tr' ).on( 'click' , function(){
+        $( this ).find('.resume-link span').click();
+    });
+
+    $( '.resume-link' ).on( 'click' , function( e ){
+        e = e || window.event;
+        if( e.stopPropagation ){
+            e.stopPropagation();
+        }else{
+            e.cancelBubble = true;
+        };
+    });
+</script>
+</body>
+</html>

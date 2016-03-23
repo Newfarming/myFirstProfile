@@ -1,0 +1,146 @@
+[
+{
+  "pk": 1, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 2, 
+    "ratio": 0.0, 
+    "level": 1, 
+    "bonus_coin": 0, 
+    "exp": 0, 
+    "next_exp": 10, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 4, 
+    "level_type": 0, 
+    "is_max_level": false
+  }
+},
+{
+  "pk": 2, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 3, 
+    "ratio": 0.0, 
+    "level": 2, 
+    "bonus_coin": 4, 
+    "exp": 10, 
+    "next_exp": 1000, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 0, 
+    "level_type": 0, 
+    "is_max_level": true
+  }
+},
+{
+  "pk": 3, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 2, 
+    "ratio": 0.0, 
+    "level": 1, 
+    "bonus_coin": 0, 
+    "exp": 0, 
+    "next_exp": 3, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 12, 
+    "level_type": 1, 
+    "is_max_level": false
+  }
+},
+{
+  "pk": 4, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 3, 
+    "ratio": 0.0, 
+    "level": 2, 
+    "bonus_coin": 12, 
+    "exp": 3, 
+    "next_exp": 5, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 15, 
+    "level_type": 1, 
+    "is_max_level": false
+  }
+},
+{
+  "pk": 5, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 4, 
+    "ratio": 0.0, 
+    "level": 3, 
+    "bonus_coin": 15, 
+    "exp": 5, 
+    "next_exp": 7, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 15, 
+    "level_type": 1, 
+    "is_max_level": false
+  }
+},
+{
+  "pk": 6, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 5, 
+    "ratio": 0.0, 
+    "level": 4, 
+    "bonus_coin": 17, 
+    "exp": 7, 
+    "next_exp": 1000, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 0, 
+    "level_type": 1, 
+    "is_max_level": true
+  }
+},
+{
+  "pk": 7, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 2, 
+    "ratio": 0.0, 
+    "level": 1, 
+    "bonus_coin": 0, 
+    "exp": 0, 
+    "next_exp": 3, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 20, 
+    "level_type": 2, 
+    "is_max_level": false
+  }
+},
+{
+  "pk": 8, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 3, 
+    "ratio": 0.0, 
+    "level": 2, 
+    "bonus_coin": 20, 
+    "exp": 3, 
+    "next_exp": 5, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 22, 
+    "level_type": 2, 
+    "is_max_level": false
+  }
+},
+{
+  "pk": 9, 
+  "model": "partner.partnerlevelmanage", 
+  "fields": {
+    "next_level": 4, 
+    "ratio": 0.0, 
+    "level": 3, 
+    "bonus_coin": 25, 
+    "exp": 5, 
+    "next_exp": 1000, 
+    "next_ratio": 0.0, 
+    "next_bonus_coin": 0, 
+    "level_type": 2, 
+    "is_max_level": true
+  }
+}
+]

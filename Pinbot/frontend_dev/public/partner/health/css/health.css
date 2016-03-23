@@ -1,0 +1,452 @@
+.health-trigger {
+    background: #607d8b;
+    font-size: 16px;
+    color: #fff;
+    height: 120px;
+    width: 60px;
+    position: absolute;
+    top: 40%;
+    z-index: 3;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    line-height: 1.5;
+    cursor: pointer;
+    padding: 10px;
+    padding-left: 12px;
+    right: -60px;
+}
+.health-trigger .i-small-pot {
+    position: absolute;
+    display: block;
+    width: 66px;
+    height: 102px;
+    background: url('../img/pinbot_plant_s.png') no-repeat;
+    top: 50px;
+}
+.health-trigger .i-small-pot.pot-ordinary {
+    background-position: 0 0;
+}
+.health-trigger .i-small-pot.pot-sick {
+    background-position: -90px 0;
+}
+.health-trigger .i-small-pot.pot-sunlight {
+    background-position: -185px 0;
+}
+.health-trigger .i-small-pot.pot-unusual {
+    background-position: -280px 0;
+}
+.health-trigger .i-small-pot.pot-unbelieveable {
+    background-position: -368px 0;
+    width: 100px;
+}
+.health-content {
+    width: 500px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -500px;
+    border-right: 1px solid #ddd;
+    background: #fff;
+    z-index: 4;
+    -webkit-transition: left 0.5s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: left 0.5s;
+    transition: left 0.5s;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #607d8b;
+    padding-top: 60px;
+}
+.health-content.hide {
+    left: -500px;
+    -webkit-animation: movein 1s; /* Chrome, Safari, Opera */
+    animation: movein 1s;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes movein {
+    from {left: 0;}
+    to {left: -500px;}
+}
+
+@keyframes movein {
+    from {left: 0;}
+    to {left: -500px;}
+}
+.health-content.show {
+    left: 0;
+    -webkit-animation: moveout 1s ease-in-out; /* Chrome, Safari, Opera */
+    animation: moveout 1s ease-in-out;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes moveout {
+    from {left: -500px;}
+    to {left: 0;}
+}
+
+@keyframes moveout {
+    from {left: -500px;}
+    to {left: 0;}
+}
+.health-content .health-title {
+    padding-top: 20px;
+    font-size: 24px;
+    position: relative;
+}
+.health-content .health-title .i-ask {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    right: 106px;
+    top: 30px;
+    background: url('../img/sprite.png') no-repeat -52px -279px;
+    cursor: pointer;
+    vertical-align: -5px;
+}
+.health-content .health-subtitle {
+    font-size: 14px;
+}
+.health-content .loading {
+    position: absolute;
+    top: 40%;
+    left: 235px;
+    font-size: 14px;
+    color: #607d8b;
+}
+.health-content .loading img {
+    display: block;
+    margin: 0 auto 5px;
+}
+.health-content .content-detail {
+    opacity: 0;
+}
+.health-content .chart {
+    padding: 10px 40px 0;
+}
+.health-content .chart ul {
+
+}
+.health-content .chart ul li {
+    text-align: left;
+    padding: 32px 0;
+    height: 20px;
+    line-height: 20px;
+}
+.health-content .chart ul li.legend {
+    text-align: center;
+    padding: 20px 0 0;
+}
+.health-content .chart ul li span {
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.health-content .chart ul li.legend span {
+    font-size: 14px;
+}
+.health-content .chart ul li.legend span:nth-child(2n) {
+    margin-left: 30px;
+}
+.health-content .chart ul li b {
+    font-weight: normal;
+}
+.health-content .chart ul li .axis {
+    vertical-align: -1px;
+
+}
+.health-content .chart ul li .groove {
+    width: 70%;
+    background: #d7e1e4;
+    margin-left: 40px;
+    position: relative;
+}
+.health-content .chart ul li .groove b, .chart ul li .groove span, .chart ul li .groove i {
+    position: absolute;
+}
+.health-content .chart ul li .groove .level {
+    z-index: 2;
+    left: -33px;
+    top: 0px;
+    font-size: 15px;
+}
+.health-content .chart ul li .groove i {
+    font-style: normal;
+    font-size: 12px;
+    color: #fff;
+    z-index: 2;
+    width: 74px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+.health-content .chart ul li .groove .number {
+    left: 45%;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #fff;
+}
+.health-content .chart ul li .groove .number b {
+    position: static;
+    vertical-align: middle;
+}
+.health-content .chart ul li .groove .number b.max {
+    margin-left: 5px;
+}
+.health-content .chart ul li .groove .i-next-award {
+    background: #ced7db;
+    top: -32px;
+    right: -37px;
+}
+.health-content .chart ul li .groove .i-curr-award {
+    background: #f46c62;
+    bottom: -32px;
+}
+.health-content .chart ul li .groove .i-next-award.max {
+    background: #f46c62;
+}
+.health-content .chart ul li .groove .ratio-download {
+    background: #48b4e3;
+}
+.health-content .chart ul li .groove .ratio-interview {
+    background: #ffdf67;
+}
+.health-content .chart ul li .groove .ratio-taking-work {
+    background: #14e4a3;
+}
+.health-content .chart ul li .groove .ratio-download.max {
+    background: #48b4e3;
+    animation: crazydownload 1s ease-in-out infinite;
+    -webkit-animation: crazydownload 1s ease-in-out infinite;
+    -moz-animation: crazydownload 1s ease-in-out infinite;
+}
+.health-content .chart ul li .groove .ratio-interview.max {
+    background: #ffdf67;
+    animation: crazyinterview 1s ease-in-out infinite;
+    -webkit-animation: crazyinterview 1s ease-in-out infinite;
+    -moz-animation: crazyinterview 1s ease-in-out infinite;
+}
+.health-content .chart ul li .groove .ratio-taking-work.max {
+    background: #14e4a3;
+    animation: crazytakingwork 1s ease-in-out infinite;
+    -webkit-animation: crazytakingwork 1s ease-in-out infinite;
+    -moz-animation: crazytakingwork 1s ease-in-out infinite;
+}
+@keyframes crazydownload {
+    0 {
+        box-shadow: none;
+
+    }
+    50% {
+        box-shadow: -5px 0px 10px rgba(72, 180, 227, 0.3), 5px 0 10px rgba(72, 180, 227, 0.3), 0 -5px 10px rgba(72, 180, 227, 0.3), 0 5px 10px rgba(72, 180, 227, 0.3);
+    }
+    100% {
+        box-shadow: none;
+    }
+}
+@-webkit-keyframes crazydownload {
+    0 {
+        -webkit-box-shadow: none;
+    }
+    50% {
+        -webkit-box-shadow: -5px 0px 10px rgba(72, 180, 227, 0.3), 5px 0 10px rgba(72, 180, 227, 0.3), 0 -5px 10px rgba(72, 180, 227, 0.3), 0 5px 10px rgba(72, 180, 227, 0.3);
+    }
+    100% {
+        -webkit-box-shadow: none;
+    }
+}
+@-moz-keyframes crazydownload {
+    0 {
+        -moz-box-shadow: none;
+    }
+    50% {
+        -moz-box-shadow: -5px 0px 10px rgba(72, 180, 227, 0.3), 5px 0 10px rgba(72, 180, 227, 0.3), 0 -5px 10px rgba(72, 180, 227, 0.3), 0 5px 10px rgba(72, 180, 227, 0.3);
+    }
+    100% {
+        -moz-box-shadow: none;
+    }
+}
+@keyframes crazyinterview {
+    0 {
+        box-shadow: none;
+
+    }
+    50% {
+        box-shadow: -5px 0px 10px rgba(255, 223, 103, 0.3), 5px 0 10px rgba(255, 223, 103, 0.3), 0 -5px 10px rgba(255, 223, 103, 0.3), 0 5px 10px rgba(255, 223, 103, 0.3);
+    }
+    100% {
+        box-shadow: none;
+    }
+}
+@-webkit-keyframes crazyinterview {
+    0 {
+        -webkit-box-shadow: none;
+    }
+    50% {
+        -webkit-box-shadow: -5px 0px 10px rgba(255, 223, 103, 0.3), 5px 0 10px rgba(255, 223, 103, 0.3), 0 -5px 10px rgba(255, 223, 103, 0.3), 0 5px 10px rgba(255, 223, 103, 0.3);
+    }
+    100% {
+        -webkit-box-shadow: none;
+    }
+}
+@-moz-keyframes crazyinterview {
+    0 {
+        -moz-box-shadow: none;
+    }
+    50% {
+        -moz-box-shadow: -5px 0px 10px rgba(255, 223, 103, 0.3), 5px 0 10px rgba(255, 223, 103, 0.3), 0 -5px 10px rgba(255, 223, 103, 0.3), 0 5px 10px rgba(255, 223, 103, 0.3);
+    }
+    100% {
+        -moz-box-shadow: none;
+    }
+}
+@keyframes crazytakingwork {
+    0 {
+        box-shadow: none;
+
+    }
+    50% {
+        box-shadow: -5px 0px 10px rgba(20, 228, 163, 0.3), 5px 0 10px rgba(20, 228, 163, 0.3), 0 -5px 10px rgba(20, 228, 163, 0.3), 0 5px 10px rgba(20, 228, 163, 0.3);
+    }
+    100% {
+        box-shadow: none;
+    }
+}
+@-webkit-keyframes crazytakingwork {
+    0 {
+        -webkit-box-shadow: none;
+    }
+    50% {
+        -webkit-box-shadow: -5px 0px 10px rgba(20, 228, 163, 0.3), 5px 0 10px rgba(20, 228, 163, 0.3), 0 -5px 10px rgba(20, 228, 163, 0.3), 0 5px 10px rgba(20, 228, 163, 0.3);
+    }
+    100% {
+        -webkit-box-shadow: none;
+    }
+}
+@-moz-keyframes crazytakingwork {
+    0 {
+        -moz-box-shadow: none;
+    }
+    50% {
+        -moz-box-shadow: -5px 0px 10px rgba(20, 228, 163, 0.3), 5px 0 10px rgba(20, 228, 163, 0.3), 0 -5px 10px rgba(20, 228, 163, 0.3), 0 5px 10px rgba(20, 228, 163, 0.3);
+    }
+    100% {
+        -moz-box-shadow: none;
+    }
+}
+.health-content .chart ul li .groove .i-curr-award:before {
+    content: '';
+    height: 0;
+    width: 0;
+    display: block;
+    border: 7px transparent solid;
+    border-top-width: 0;
+    border-bottom-color: #f46c62;
+    position: absolute;
+    top: -7px;
+    left: 30px;
+}
+.health-content .chart ul li .groove .i-next-award:before {
+    content: '';
+    height: 0;
+    width: 0;
+    display: block;
+    border: 7px transparent solid;
+    border-bottom-width: 0;
+    border-top-color: #ced7db;
+    position: absolute;
+    top: 20px;
+    left: 29px;
+}
+.health-content .chart ul li .groove .i-next-award.max:before {
+    border-top-color: #f46c62;
+}
+.health-content .chart ul .legend i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.health-content .chart ul .legend .i-red-cube {
+    background: #f46c62;
+}
+.health-content .chart ul .legend .i-grey-cube {
+    background: #ced7db;
+}
+.health-content .pot-info {
+    margin-top: -40px;
+}
+.health-content .dynamic-pot {
+    width: 180px;
+    height: 240px;
+    margin: 0 auto;
+    background-size: 72%;
+    float: left;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.health-content .dynamic-pot-ordinary {
+    background-image: url('../img/ordinary.gif');
+}
+.health-content .dynamic-pot-sick {
+    background-image: url('../img/sick.gif');
+}
+.health-content .dynamic-pot-sunlight {
+    background-image: url('../img/sunlight.gif');
+    background-size: 95%;
+}
+.health-content .dynamic-pot-unusual {
+    background-image: url('../img/unusual.gif');
+}
+.health-content .dynamic-pot-unbelievable {
+    background-image: url('../img/unbelievable.gif');
+    background-size: 95%;
+}
+.health-content .pot-word {
+    font-size: 14px;
+    float: right;
+    width: 319px;
+    height: 240px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    text-align: left;
+    padding: 8em 20px;
+    line-height: 2;
+}
+.commission {
+    color: #fff;
+}
+.commission-explain {
+    font-size: 14px;
+    padding-top: 20px;
+    position: relative;
+}
+.commission-explain .i-small-ask {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    left: 88px;
+    top: 21px;
+    background: url('../img/sprite.png') no-repeat -99px -278px;
+    vertical-align: -3px;
+    margin-right: 5px;
+}
+.cf46c62 {
+    color: #f46c62;
+}
+.c44b5e8 {
+    color: #44b5e8;
+}
+/*进度条三色*/
+.c48b4e3 {
+    color: #48b4e3;
+}
+.cffdf67 {
+    color: #ffdf67;
+}
+.c14e4a3 {
+    color: #14e4a3;
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>聘宝，专业人才推荐</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="{{STATIC_URL}}alpha/styles/alpha.css?20150525" />
+    <link rel="stylesheet" href="{{STATIC_URL}}alpha/styles/tao_resume.min.css?7299a972" />
+    <script src="{{STATIC_URL}}alpha/scripts/alpha.js"></script>
+</head>
+<body>
+{% include 'alpha/header.html' %}
+
+{%if auth_fail %}
+
+    <div id="main">
+        <div id="content">
+            <div id="tao-feed">
+                {% include 'pinbot_beta/authfail/taocv-fail.html' %}
+            </div>
+        </div>
+    </div>
+
+{%else%}
+    <div ng-controller="feedApp" ng-app="feedApp">
+
+        <div class="tao-feed-aside" ng-controller="aside">
+            <ul class="feed-nav clearfix" >
+            	{% for feed in taocv_feeds %}
+            		<li ng-class="isActive('{{feed.feed_id}}')?'curr':''">
+                        <a data-feed_id="{{feed.feed_id}}" href="#/group/{{feed.feed_id}}" class="feed-group-link">
+                            <strong>{{feed.title}}</strong>
+                        </a>
+                    </li>
+            	{% endfor %}
+            </ul>
+        </div>
+
+        <div id="main">
+            <div id="content">
+                <div id="tao-feed">
+                    {% include 'alpha/tao-resume-list.html' %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{%endif%}
+<script src="{{STATIC_URL}}alpha/scripts/angular.min.js"></script>
+<script src="{{STATIC_URL}}alpha/scripts/tao_resume.min.js?20150525"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/form.min.js"></script>
+
+{% include 'footer.html' %}
+<script>
+    var Filter = { tags: {} };
+</script>
+</body>
+</html>

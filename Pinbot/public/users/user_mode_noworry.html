@@ -1,0 +1,99 @@
+
+<div class="main main-mode" >
+                <div class="header">
+                    <h1>你选择了聘宝<span class="cf46c62">省心</span>套餐</h1>
+                    <div class="sub-title"><a href="javascript:void(0);" ng-click="goDiyMode()">点击切换</a>自助型服务模式</div>
+                </div>
+                <!--
+                <div class="price content box-content pd-top-20" ng-class="{'box-content-p90': modeListRec.length>=3,'box-content-p60': modeListRec.length==2,'box-content-p30': modeListRec.length==1}">
+                    <div class="text-center ajax-loading" ng-if="loadingThis">
+                        <img src="/static/partner/images/loading.gif" alt="loading">
+                        <br>页面装载中...
+                    </div>
+                    <div class="box-col box-col-center" ng-repeat="mode in modeListRec">
+
+                        <div class="user-mode user-mode-small user-mode-small-h user-mode-small-{- mode.pid -}" ng-class="{active: hoverDiy}" ng-mouseover="hoverDiy=true"
+                ng-mouseout="hoverDiy=false" ng-click="clickMode($event,mode.product_type,mode.pid,mode.price)">
+                            <div class="box-col-bar"></div>
+                            <div class="user-mode-title"><span class="price-focus">¥ {- mode.price -}</span></div>
+                            <div class="user-mode-title"><span class="desc f14">{- mode.desc -}</span></div>
+                            <div class="user-mode-list">
+                                <ul>
+                                    <li><span>{- mode.service_month -}</span>个月内到岗</li>
+                                    <li><span>{- mode.candidate_num -}</span>名候选人</li>
+                                    <li><span>{- mode.salary_range | mode_salary_range -}</span>K 月薪</li>
+                                </ul>
+                            </div>
+                            <div class="user-mode-btn">
+                                <a class="btn" href="javascript:void(0);" ng-click="buyUserMode($event,mode.pid)">购买此套餐</a>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+                <div class="price content box-content pd-bottom-0 lh180">
+                    <span class="c607d8b f14">套餐包含服务内容，详细请联系<a class="c63c2ec" href="javascript:;" id="JS_pbqqnoworry_btn">聘宝人才顾问</a></span>
+                </div>
+
+                <div class="price content box-content box-content-small" ng-class="{'box-content-p100': modeListMinor.length>=5,'box-content-p80': modeListMinor.length==4,'box-content-p60': modeListMinor.length==3,'box-content-p40': modeListMinor.length==2,'box-content-p30': modeListMinor.length==1}">
+                    <div class="text-center ajax-loading" ng-if="loadingThis">
+                        <img src="/static/partner/images/loading.gif" alt="loading">
+                        <br>页面装载中...
+                    </div>
+                    <div class="box-col box-col-center" ng-repeat="mode in modeListMinor | filter:{is_show:true} | orderBy:'price'">
+
+                        <div class="user-mode user-mode-small user-mode-small-h user-mode-small-hs user-mode-small-{- mode.pid -}" ng-class="{active: hoverDiy,'pb-mg-bottom-30':modeListMinor.length>4}" ng-mouseover="hoverDiy=true"
+                ng-mouseout="hoverDiy=false" ng-click="clickMode($event,mode.product_type,mode.pid,mode.price,mode.candidate_num)">
+                            <div class="box-col-bar"></div>
+                            <div class="user-mode-title">¥ <span class="price-focus">{- mode.price -}</span></div>
+                            <div class="user-mode-title"><span class="desc f14">{- mode.desc -}</span></div>
+                            <div class="user-mode-list">
+                                <ul>
+                                    <li><span>{- mode.service_month -}</span>个月内到岗</li>
+                                    <li><span>{- mode.candidate_num -}</span>名候选人</li>
+                                    <li><span>{- mode.salary_range | mode_salary_range -}</span> 月薪</li>
+                                </ul>
+                            </div>
+                            <div class="user-mode-btn">
+                                <a class="btn" href="javascript:void(0);" ng-click="buyUserMode($event,mode.pid)">购买此套餐</a>
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="checkbox-p" ng-if="chooseOneMode">
+                    <label class="agreement-line">
+                        <input type="checkbox" ng-model="useGuarantee" required name="useGuarantee" id="useGuarantee" ng-click="chooseGuarantee()"/>
+                        <span class="useGuaranteeInfo">选择购买</span><span class="cf46c62">¥500/人</span>入职险
+                        <a class="c63c2ec noice" ng-click="aboutInsurance()"></a>
+
+                    </label>
+                    <label class="agreement-error" class="invalid" style="display: none;"></label>
+                </p>
+
+                <div class="price content box-content pd-top-20" ng-if="chooseOneMode">
+                    <span class="c607d8b f14">套餐价格：<span class="price-focus">¥ {- modeFee -}</span><br>
+                </div>
+
+                <div class="price content box-content pd-top-20" ng-if="chooseOneMode">
+                    <span class="c607d8b f14">请输入要添加订单的用户名：<input type="text" name="username" value="" id="username" class="s-input" ng-model="username"><br>
+                    <span ng-show="!username" class="cf46c62 f14 s-pd-10">请输入要添加订单的用户名</span>
+                </div>
+
+                <p class="checkbox-p" style="display:none;">
+                    <label class="agreement-line">
+                        <input type="checkbox" ng-model="agreementChecked" required name="agreement" id="agreement" ng-click="checkAgreement($event)"/>
+                        我已阅读
+                        <a href="/users/vip_protocal" class="protocal" target="_blank">聘宝套餐用户协议</a>
+                    </label>
+                    <label id="agreement-error" class="invalid" for="agreement" style="display: none;"></label>
+                </p>
+                <p class="form-control align-center" ng-if="chooseOneMode">
+                    <button type="button" tabindex="9" class="btn btn-welcome-submit buy-next"  ng-click="clickToPay('noworry')">下一步</button>
+                </p>
+
+            </div><!-- main -->
+

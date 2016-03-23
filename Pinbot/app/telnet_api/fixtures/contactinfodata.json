@@ -1,0 +1,22 @@
+[
+{
+  "pk": 52553,
+  "model": "resumes.contactinfodata",
+  "fields": {
+    "qq": null,
+    "weibo": null,
+    "update_time": "2016-01-27T11:21:57",
+    "name": "\u90b5\u78ca",
+    "phone": "18042412008",
+    "reported_num": 0,
+    "source": "zhilian",
+    "status": "public",
+    "identity_id": null,
+    "source_id": "JR226098827R90250001000",
+    "resume_id": "550df8ed1d936620eae72161",
+    "email": "runforever@163.com",
+    "origin": 2,
+    "add_time": "2016-01-27T11:16:12"
+  }
+}
+]

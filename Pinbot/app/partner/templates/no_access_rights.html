@@ -1,0 +1,64 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+{% compress css %}
+<link href="{{ STATIC_URL }}partner/css/no_rights.css?20150522" type="text/css" rel="stylesheet" />
+{% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with upload_class="curr" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="inner-content">
+    <h3 class="partner-title">互助伙伴权限已被关闭</h3>
+    <p class="text-center mt20">
+        <img src="{{ STATIC_URL }}partner/images/task_men02.jpg" width="285" height="283" alt="">
+    </p>
+    <dl class="resons mt35">
+        <dt>你的互助伙伴权限被关闭，有可能是因为： (<a href="javascript:;" id="JS_complaint" class="c45b5e9">我要申诉</a>)</dt>
+        <dd>1、你推荐的简历被用户<span class="cf46c62">多次举报</span>，经核查后属实</dd>
+        <dd>2、你的推荐行为被判定为<span class="cf46c62">恶意推荐</span>，并非诚意推荐</dd>
+    </dl>
+    <dl class="resons mt35">
+        <dt>关闭原因：</dt>
+        {% for accu_resume in accu_resumes %}
+        <dd>
+            <p>{{ forloop.counter }}、你推荐的简历<span class="c45b5e9">{{ accu_resume.resume.name }}</span>被举报，举报理由为：</p>
+            <p class="feedback cf46c62">“{{ accu_resume.accusation_reason }}”</p>
+        </dd>
+        {% endfor %}
+    </dl>
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+{{ block.super }}
+
+<script>
+    $(function(){
+        var bindComplaint = function(){
+            if( window.BizQQWPA ){
+                BizQQWPA.addCustom({
+                    aty: '0',
+                    nameAccount: '800031490',
+                    selector: 'JS_complaint'
+                });
+            }else{
+                setTimeout(function(){
+                    bindComplaint();
+                } , 100);
+            };
+        };
+
+        bindComplaint();
+    });
+</script>
+
+{% endblock %}

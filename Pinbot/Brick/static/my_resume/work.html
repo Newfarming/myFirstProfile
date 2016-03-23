@@ -1,0 +1,59 @@
+<div class="contant-info-edit mt20" ng-show="isShowEditItem">
+    <form action="." name="workForm_{- work.id -}" method="post" accept-charset="utf-8" id="workForm_{- work.id -}" autocomplete="off">
+        <div class="form-box">
+            <input ng-model="work.company_name" name="company_name" type="text" class="input" validator="company_name" placeholder="公司名称"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="work.position_title" name="position_title" type="text" class="input" validator="position_title" placeholder="职位名称"/>
+        </div>
+        <div class="clearfix">
+            <div class="left" style="width:48%;">
+                <div class="form-box">
+                    <input ng-model="work.start_time" name="start_time" type="month" class="input" validator="start_time" placeholder="开始时间"/>
+                </div>
+            </div>
+            <div class="right" style="width:48%;">
+                <div class="form-box">
+                    <input ng-model="work.end_time" name="end_time" type="month"  class="input" validator="end_time" placeholder="结束时间"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-box">
+            <textarea ng-model="work.job_desc" name="job_desc" type="text" class="textarea" validator="job_desc" placeholder="工作描述"/></textarea>
+        </div>
+        <input ng-model="work.id" name="update_id" type="hidden" class="input"/>
+        <div class="form-box text-center btns-2">
+            <button class="button button-normal" validation-submit="workForm_{- work.id -}" ng-click="save(save_work_experience_url, {company_name: work.company_name, update_id: work.id, position_title: work.position_title, start_time: getDate( work.start_time , 'yyyy-MM' ), end_time: getDate( work.end_time, 'yyyy-MM' ), job_desc: work.job_desc})" type="button">保存</button>
+            <button class="button button-normal" ng-click="toggleEditItem( false , true )" type="button">取消</button>
+            <button class="button button-normal" ng-click="delete(work.id)" type="button" ng-show="isShowDelete()">删除</button>
+        </div>
+    </form>
+</div>
+<div class="person-profile-info text-left mt20" ng-show="!isShowEditItem">
+    <table width="100%" cellpadding="0" cellspacing="0" class="table-view">
+        <tbody>
+            <tr>
+                <td>公司名称：</td>
+                <td>{- work.company_name -}</td>
+            </tr>
+            <tr>
+                <td>职位名称：</td>
+                <td>{- work.position_title -}</td>
+            </tr>
+            <tr>
+                <td>任职时间：</td>
+                <td>{- work.start_time | formartDate -} - {- work.end_time | formartDate -}</td>
+            </tr>
+            <tr>
+                <td>工作描述：</td>
+                <td>{- work.job_desc -}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-box text-center btns-2">
+        <button class="button button-normal w20p" ng-click="toggleEditItem( true )" type="button">修改</a>
+        <button class="button button-normal w20p" ng-click="add()" type="button">新增</button>
+        <button class="button button-normal w20p" ng-click="delete(work.id)" type="button" ng-show="isShowDelete()">删除</button>
+
+    </div>
+</div>

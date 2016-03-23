@@ -1,0 +1,32 @@
+[
+{
+  "pk": 1,
+  "model": "users.userprofile",
+  "fields": {
+    "province": "",
+    "guide_switch": false,
+    "ip": "127.0.0.1",
+    "street": "",
+    "postcode": "",
+    "company_email": "",
+    "city": "",
+    "activation_key": "",
+    "source": "1",
+    "role": "",
+    "company_name": "\u6d69\u6cca\u4e91\u52a8-\u5218\u73a5",
+    "calc_level": 0,
+    "status": 0,
+    "trans_time": "2015-06-17T20:36:37",
+    "is_review": 1,
+    "service_level": 0,
+    "phone": "123321",
+    "user": 907,
+    "qq": "2216618842",
+    "name": "\u5218\u73a5",
+    "url": "http://www.pinbot.me",
+    "user_email": "liuyue@hopperclouds.com",
+    "is_email_bind": true,
+    "is_phone_bind": true
+  }
+}
+]

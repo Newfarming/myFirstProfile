@@ -1,0 +1,40 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}partner/css/follow_resume.css" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with upload_class="curr" %}
+{% endblock %}
+
+{% block sub_header %}
+{% include 'partner_sub_nav.html' with task_list='on' %}
+{% endblock %}
+
+{% block app %}ng-app="followResume" ng-controller="followResumeController"{% endblock %}
+
+{% block content %}
+    <div class="inner-content text-center" data="{{ data }}" id="JS_get_data">
+        <h2>跟进你推荐的简历</h2>
+        <send-msg></send-msg>
+        <contact-candidate></contact-candidate>
+        <get-contact></get-contact>
+    </div>
+{% endblock %}
+
+
+
+{% block footer %}
+    {{ block.super }}
+    {% compress js %}
+        {% include 'angular.html' %}
+        <script src="{{ STATIC_URL }}common/js/angular-validation.js"></script>
+        <script src="{{ STATIC_URL }}partner/js/partner-validation-rule.js"></script>
+        <script src="{{ STATIC_URL }}partner/js/follow_resume.js"></script>
+    {% endcompress %}
+{% endblock %}

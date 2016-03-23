@@ -1,0 +1,61 @@
+<div class="modal fade" id="assignModal" role="dialog" aria-labelledby="assignModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">分配管理员</h4>
+            </div>
+            <div class="modal-body">
+                <form action="/crm/assign_admin/" method="post" id="formBody">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button id="confirmAssignBtn" type="button" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="assignFormTmpl">
+    <div class="form-group">
+        <input name="contact_id_list" type="hidden" value="<%- admin_id %>"/>
+        <select id="" name="admin_id" style="width: 100%" class="form-control select2">
+            <% _.each(admin_list, function(admin) { %>
+            <option value="<%- admin.id %>"><%- admin.username %></option>
+            <% }); %>
+        </select>
+    </div>
+</script>
+
+<script>
+ $(function() {
+     var formTpl = _.template($('#assignFormTmpl').html()),
+     contact_id = "",
+     $form = $('#formBody'),
+     $confirmAssignBtn = $('#confirmAssignBtn'),
+     $modal = $('#assignModal');
+
+     $modal.on('show.bs.modal', function(e) {
+         var button = $(e.relatedTarget),
+         admin_id = button.data('contact_id');
+         contact_id = button.attr("data-contact_id");
+
+         $.getJSON('/crm/admin_list', function(data) {
+             $form.html(formTpl({
+                 'admin_id': admin_id,
+                 'admin_list': data.data,
+             }));
+             $(".select2").select2();
+         });
+     });
+
+     $confirmAssignBtn.on('click', function(e) {
+         var formData = $form.serialize();
+         $.post('/crm/assign_candidate/', formData, function(data) {
+             $modal.modal('hide');
+             $(".number-"+contact_id+" td:last-child").text(data.admin_name);
+         });
+     });
+ });
+</script>

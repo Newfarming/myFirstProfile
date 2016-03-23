@@ -1,0 +1,19 @@
+<p class="form-label text-center c607d8b">
+    <label for="JS_base_info" class="relative"><span class="simsun cf46c62">*</span>最近联系候选人时间</label>
+</p>
+
+<div class="form-content pt10">
+    <div class="mt30 w640 relative">
+        <p class="relative inline-block text-left w140">
+            <span class="m-radio relative" ng-click="selectLastContact(1)" ng-class="{active: last_contact == 1}"><input type="radio" name="latest_time" value="0"><i class="sprite i-radio"></i>一周内</span>
+        </p>
+        <p class="relative inline-block text-left w140 ml100">
+            <span class="m-radio relative" ng-click="selectLastContact(2)" ng-class="{active: last_contact == 2}"><input type="radio" name="latest_time" value="1"><i class="sprite i-radio"></i>一个月内</span>
+        </p>
+        <p class="relative inline-block text-left w140 ml100">
+            <span class="m-radio relative" ng-click="selectLastContact(3)" ng-class="{active: last_contact == 3}"><input type="radio" name="latest_time" value="2"><i class="sprite i-radio"></i>三个月内</span>
+        </p>
+        <input type="hidden" ng-model="last_contact" validator="last_contact" valid-method="submit" name="last_contact" message-id="last_contact_message">
+        <span id="last_contact_message"></span>
+    </div>
+</div>

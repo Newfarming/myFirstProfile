@@ -1,0 +1,24 @@
+<p class="form-label text-center c607d8b">
+    <label for="JS_base_info" class="relative"><span class="simsun cf46c62">*</span>求职意愿</label>
+</p>
+
+<div class="form-content pt10 w640 relative">
+    <div class="mt30">
+        <p class="relative inline-block text-left w275">
+            <span class="m-radio relative" ng-click="selectStatus(1)" ng-class="{active: job_hunting_state == 1}"><input type="radio" name="job_wish" value="1"><i class="sprite i-radio"></i>目前正在找工作</span>
+        </p>
+        <p class="relative inline-block text-left w275 ml75">
+            <span class="m-radio relative" ng-click="selectStatus(2)" ng-class="{active: job_hunting_state == 2}"><input type="radio" name="job_wish" value="2"><i class="sprite i-radio"></i>我目前在职，正考虑换个环境</span>
+        </p>
+    </div>
+    <div class="mt30">
+        <p class="relative inline-block text-left w275">
+            <span class="m-radio relative" ng-click="selectStatus(3)" ng-class="{active: job_hunting_state == 3}"><input type="radio" name="job_wish" value="3"><i class="sprite i-radio"></i>我目前处于离职状态，可立即上岗</span>
+        </p>
+        <p class="relative inline-block text-left w275 ml75">
+            <span class="m-radio relative" ng-click="selectStatus(4)" ng-class="{active: job_hunting_state == 4}"><input type="radio" name="job_wish" value="4"><i class="sprite i-radio"></i>观望有好的机会再考虑</span>
+        </p>
+    </div>
+    <input type="hidden" ng-model="job_hunting_state" validator="job_wish" valid-method="submit" name="job_wish" message-id="job_wish_message">
+    <span id="job_wish_message"></span>
+</div>

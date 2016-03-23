@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>{{report_date}}数据统计报表</title>
+	<link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="{{ STATIC_URL }}statis/js/enhance.js"></script>		
+	<script type="text/javascript">
+		// Run capabilities test
+		enhance({
+			loadScripts: [
+				'{{ STATIC_URL }}statis/js/excanvas.js',
+				'{{ STATIC_URL }}statis/js/jquery.min.js',
+				'{{ STATIC_URL }}statis/js/visualize.jQuery.js',
+				'{{ STATIC_URL }}statis/js/weekly-report.js',
+			],
+			loadStyles: [
+				'{{ STATIC_URL }}statis/css/visualize.css',
+				'{{ STATIC_URL }}statis/css/visualize-light.css'
+			]	
+		});   
+    </script>
+</head>
+<body>
+	<H2>今日用户统计</H2>
+      <table border="1">
+      <tbody>
+      <caption>用户信息统计</caption>
+	  <tr>
+	    <th>日期</th>
+	    <th>注册并激活用户数</th>
+	    <th>访问用户数</th>
+	    <th>活跃用户数</th>
+	    <th>付费用户数</th>
+	  </tr>
+	  <tr>
+	    <td>{{report_date}}</td>
+	    <td>{{signup_num}}</td>
+	    <td>{{access_num}}</td>
+	    <td>{{active_user_num}}</td>
+	    <td>{{packages_buy_num}}</td>
+	  </tr>
+	  </tbody>
+	  </table>
+	  
+	  <H2>聘宝数据详情</H2>	
+	<table border="1">
+		<tr>
+			<th>指标</th>
+			<th>数值</th>
+		</tr>
+		<tr>
+		<th>简历推荐数</th>
+		<td>{{day_recommand}}</td>
+		</tr>
+		<tr>
+		<th>简历点击数</th>
+		<td>{{day_clicks}}</td>
+		</tr>
+		<tr>
+		<!--  
+		<th>简历点击率</th>
+		<td>{{day_clicks_rate}}</td>
+		</tr>
+		-->
+		<tr>
+		<th>简历点击数(去重)</th>
+		<td>{{day_clicks_norepeat}}</td>
+		</tr>
+		<!-- 
+		<tr>
+		<th>简历点击率(去重)</th>
+		<td>{{day_clicks_norepeat_rate}}</td>
+		</tr>
+		-->
+		<tr>
+		<th>客户不合适点击数</th>
+		<td>{{improper_clicks}}</td>
+		</tr>
+		<tr>
+		<th>员工不合适点击数</th>
+		<td>{{staff_improper_clicks}}</td>
+		</tr>
+		<tr>
+		<th>简历关注数</th>
+		<td>{{day_watch}}</td>
+		</tr>
+		<tr>
+		<th>简历关注数(去重)</th>
+		<td>{{day_watch_norepeat}}</td>
+		</tr>
+		<tr>
+		<th>简历购买数</th>
+		<td>{{day_pre_buy}}</td>
+		</tr>
+		<tr>
+		<th>简历购买数(去重)</th>
+		<td>{{day_pre_buy_norepeat}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买数</th>
+		<td>{{day_buy}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买数(去重)</th>
+		<td>{{day_buy_norepeat}}</td>
+		</tr>
+		<tr>
+		<th>简历关注率</th>
+		<td colspan="2">{{resume_watch_rate}}</td>
+		</tr>
+		<tr>
+		<th>简历购买率</th>
+		<td colspan="2">{{resume_prebuy_rate}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买率</th>
+		<td colspan="2">{{resume_buy_rate}}</td>
+		</tr>
+	</table>
+	
+	
+	<H2>订阅数据详情</H2>	
+	<table border="1">
+		<tr>
+			<th>指标</th>
+			<th>数值</th>
+		</tr>
+		<tr>
+		<th>简历推荐数</th>
+		<td>{{day_recommand_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历点击数</th>
+		<td>{{day_clicks_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历点击率</th>
+		<td>{{day_clicks_rate_feed}}</td>
+		</tr>
+		<tr>
+		<tr>
+		<th>简历点击数(去重)</th>
+		<td>{{day_clicks_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历点击率(去重)</th>
+		<td>{{day_clicks_norepeat_rate_feed}}</td>
+		</tr>
+		<tr>
+		<th>客户不合适点击数</th>
+		<td>{{improper_clicks_feed}}</td>
+		</tr>
+		<tr>
+		<th>员工不合适点击数</th>
+		<td>{{staff_improper_clicks_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历关注数</th>
+		<td>{{day_watch_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历关注数(去重)</th>
+		<td>{{day_watch_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历购买数</th>
+		<td>{{day_pre_buy_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历购买数(去重)</th>
+		<td>{{day_pre_buy_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买数</th>
+		<td>{{day_buy_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买数(去重)</th>
+		<td>{{day_buy_norepeat_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历关注率</th>
+		<td colspan="2">{{resume_watch_rate_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历购买率</th>
+		<td colspan="2">{{resume_prebuy_rate_feed}}</td>
+		</tr>
+		<tr>
+		<th>简历实际购买率</th>
+		<td colspan="2">{{resume_buy_rate_feed}}</td>
+		</tr>
+	</table>
+	
+	<H2>淘简历数据详情</H2>
+	<table border="1">
+		<tr>
+			<th>职位</th>
+			<th>职位点击数</th>
+			<th>已推荐的简历数</th>
+			<th>简历的累计点击数（无需去重）</th>
+			<th>被点击的简历数（按照简历维度去重）</th>
+			<th>产生点击行为的用户数</th>
+			<th>简历的累计下载数（无需去重）</th>
+			<th>被下载的简历数（按照简历维度去重）</th>
+			<th>有下载行为的用户数</th>
+			<th>不合适点击数</th>
+			<th>不合适点击数(员工)</th>
+			<th>简历关注数</th>
+		</tr>
+		{% for title, nums_list in statics_list %}
+			<tr>
+			<td>{{title}}</td>
+			{%for nums in nums_list%}
+				<td>{{nums}}</td>
+			{%endfor%}
+			</tr>
+		{%endfor%}
+		
+		{% for title, nums_list in statics_list_total %}
+			<tr>
+			<th>{{title}}</th>
+			{%for nums in nums_list%}
+				<th>{{nums}}</th>
+			{%endfor%}
+			</tr>
+		{%endfor%}
+	</table>
+	
+	<p>详细情况请查看：<a href="http://112.124.23.240/statis/get_report/?days=1&lastday={{report_date}}&token=2XGIR062NRka">http://112.124.23.240/statis/get_report/?days=1&lastday={{report_date}}&token=2XGIR062NRka</a></p>
+</body>
+</html>

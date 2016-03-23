@@ -1,0 +1,45 @@
+<div class="clearfix">
+    <a href="/feed/feedFrequency" class="btn-feed-setting"><i class="u-setting"></i>设置</a>
+    <a href="/special_feed/edit_feed/" class="btn-feed-add" ng-if="asideData.has_rest_feed"><i class="i-plus"></i><span>新增</span></a>
+    <a href="#" class="btn-feed-add-false" ng-if="!asideData.has_rest_feed && asideData.vip_user" ng-click="noFeedClick($event)"><i class="i-plus"></i><span>新增</span></a>
+</div>
+<ul ng-repeat='ul_item in asideList' class="aside-{- $index + 1 -}">
+    <li ng-repeat="item in ul_item" class="feed-btns " ng-click="changePage(item, $event)" ng-class="{'selected': checkSelected(item),'selected-hover':checkSelected(item)}" ngs-mouseleave="hideMoreBtn($event)" ngs-mouseenter="showFirstBtn($event)">
+
+        <!-- 可编辑背景 -->
+        <a href="javascript:void(0);" class="hover-bg ng-hide" ngs-class="{'ng-hide':!checkSelected(item)}" ngs-click="showMoreBtn($event)" ngs-if="!checkRenew(item) && !checkActive(item)">
+            <span class="item-status item-editable-bg" ng-click="stopBubble($event)"></span>
+            <i class="i-editable-bg"></i>
+        </a>
+        <!-- 可删除 -->
+        <a class="hover-del" href="javascript:void(0);" ng-click="deleteFeed(item.feed.id,$event)">
+            <span class="item-status item-delete" ng-if="checkDelete(item)" ng-click="stopBubble($event)"></span>
+            <i class="i-delete" ng-if="checkDelete(item)" title="删除定制"></i>
+        </a>
+        <!-- 可编辑 -->
+        <a class="hover-edit" href="/special_feed/edit_feed/{- item.feed.id -}" ng-click="stopBubble($event)">
+            <span class="item-status item-editable" ng-if="checkEditable(item)" ng-click="stopBubble($event)"></span>
+            <i class="i-editable" ng-if="checkEditable(item)" title="编辑定制"></i>
+        </a>
+        <!-- 待续期 -->
+        <span class="item-status item-renew" ng-if="checkRenew(item)">待确认</span>
+        <!-- 待激活 -->
+        <span class="item-status item-active" ng-if="checkActive(item)">待激活</span>
+        <!-- 有更新 -->
+        <span class="item-status item-update" ng-if="checkUpdate(item)"></span>
+        <span class="title">{- item.feed | titleOrKey -}</span>
+        <span class="oneline">
+        <span class="salary" ng-if="item.feed.salary_max != 0">
+            {- item.feed.salary_min | formatMoney:item.feed.salary_max -}
+        </span>
+        <span class="expect-area">{- item.feed.expect_area -}</span>
+        </span>
+        <span class="talent-level">{- item.feed.talent_level -}</span>
+        <i class="i-exclusive" ng-if="item.feed.feed_type == 2">聘宝专享</i>
+    </li>
+</ul>
+<ul class="ctrl">
+    <li ng-repeat="ul_item in asideList" ng-class="{'hide': isHide($index+1), 'on': isOn($index+1)}" ng-click="slide($index+1, $event)">
+        <a></a>
+    </li>
+</ul>

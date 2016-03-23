@@ -1,0 +1,11 @@
+[
+{
+  "pk": 732, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "spider_msg", 
+    "name": "\u722c\u866b\u8c03\u5ea6\u6743\u9650", 
+    "content_type": 1
+  }
+}
+]

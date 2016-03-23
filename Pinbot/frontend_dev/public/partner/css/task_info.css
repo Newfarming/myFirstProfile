@@ -1,0 +1,194 @@
+/* ------- start variables -------- */
+/* for test */
+/* main red button */
+/* sprite */
+/* z-index */
+/* main red button */
+/* main blue button */
+/* dark blue button */
+/* dark white button */
+/* main background color */
+/* main font color */
+/* main border color */
+/* main font family */
+/* main font size */
+/* ------- start variables -------- */
+/* ------- start mixins -------- */
+.no-space {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.clear-both {
+  clear: both;
+}
+.userSelectNone {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*
+content-box 在宽度和高度之外绘制元素的内边距和边框
+border-box 为元素设定的宽度和高度决定了元素的边框盒
+*/
+/*
+所有主流浏览器都不支持 appearance 属性
+ */
+.transition {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.transitionTransform {
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.modalBoxShadow {
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.btnBoxShadow {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+/* backface-visibility 属性定义当元素不面向屏幕时是否可见。 */
+/* ------- end mixins -------- */
+.task-info {
+  background: #cfd8dc;
+  height: 90px;
+  position: fixed;
+  bottom: 0;
+  font-size: 14px;
+  color: #607d8b;
+  width: 100%;
+  text-align: center;
+}
+.task-info p {
+  width: 640px;
+  margin: 0 auto;
+  height: 50%;
+  line-height: 3;
+}
+.task-title {
+  font-size: 18px;
+}
+.task-title a {
+  text-decoration: underline;
+}
+/*定制预览弹窗*/
+.view-body {
+  padding: 0 20px;
+}
+.view-title {
+  font-size: 24px;
+  color: #434343;
+}
+.view-salary,
+.view-area,
+.view-cat {
+  font-size: 18px;
+  color: #434343;
+}
+.view-desc-btn {
+  font-size: 16px;
+  color: #0091fa;
+}
+.view-desc {
+  line-height: 1.5em;
+  font-size: 14px;
+  color: #777777;
+  max-height: 200px;
+  overflow: auto;
+}
+.close-desc {
+  background: url(/static/special_feed/img/close.png) no-repeat;
+  width: 24px;
+  height: 17px;
+  display: inline-block;
+}
+.view-company-name {
+  font-size: 18px;
+  color: #434343;
+}
+.view-url {
+  color: #0091fa;
+  font-size: 16px;
+  text-decoration: underline;
+}
+.view-url a {
+  color: #0091fa;
+}
+.view-welfare span {
+  display: inline-block;
+  font-size: 13px;
+  background: #0091fa;
+  padding: 4px 8px;
+  color: #fff;
+  margin-right: 10px;
+  margin-top: 10px;
+  line-height: 20px;
+}
+.view-key_points {
+  color: #aaaaaa;
+  font-size: 14px;
+}
+.view-area,
+.view-cat {
+  font-size: 14px;
+}
+.modal-backdrop-view {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.modal-view {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.modal-dialog-view {
+  width: 700px;
+  margin-top: 117.5px;
+  margin: 30px auto;
+  position: relative;
+}
+.modal-content-view {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #f2f2f2;
+  outline: 0;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+.modal-body-view {
+  color: #777777;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 0 20px 30px;
+  text-align: left;
+}
+/*end of 定制预览弹窗*/

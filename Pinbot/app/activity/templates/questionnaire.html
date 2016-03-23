@@ -1,0 +1,71 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+{% load utils_tag %}
+{% load show_resume_tags %}
+
+{% block header %}
+{{ block.super }}
+
+{% compress css %}
+
+<!-- <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/common.css?20150616" /> -->
+<link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?20150616" />
+
+<link rel="stylesheet" href="/static/alpha/styles/settings.css?e89ac162" />
+<link rel="stylesheet" href="/static/b_common/css/pb.css" />
+<link rel="stylesheet" href="/static/alpha/styles/questionnaire.css" />
+
+
+{% endcompress %}
+{% endblock %}
+
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' %}
+{% endblock %}
+
+
+{% block sub_header %}
+{% endblock %}
+
+
+{% block content %}
+
+<div id="main"  ng-app="app.questionnaire" ng-controller="questionnaire">
+  <div id="content">
+    <h2 class="setting-title question-title">聘宝用户问卷调查V.1
+      <div class="middle-tip">
+        <div class="middle">
+          <span class="red">＊</span><span>感谢您填写本次聘宝调查问卷，您的所有信息聘宝将会严格保密</span>
+        </div>
+      </div>
+    </h2>
+    <form name="editForm" class="percent-80" ng-cloak>
+        <questionlist-directive></questionlist-directive>
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+{% if debug %}
+<script src="{{ STATIC_URL }}common/js/angular.1.3.6.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% else %}
+<script src="{{ STATIC_URL }}common/js/angular.min.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% endif %}
+
+<script src="{{ STATIC_URL }}brick/utils/ng_config.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/filter.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/django.js"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/questionnaire.js"></script>
+
+{% endblock %}

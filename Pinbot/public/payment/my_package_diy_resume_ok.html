@@ -1,0 +1,41 @@
+
+<div class="main main-mode" ng-cloak>
+                <div class="header">
+                    <h1>自助套餐续费成功！</h1>
+                    <div class="sub-title sub-title-star cf46c62">恭喜！您的套餐续费成功！</div>
+                </div>
+
+                <div class="price content box-content lh180" >
+                    <img src="/static/b_common/img/pinbot380x380_icon_resume_ok.png" border="0" width="180" height="180">
+                            <br>
+                    <span class="c607d8b f18">我的当前套餐</span><br>
+                    <span class="c63c2ec f14" href="javascript:void(0);">({- vipName -})</span>
+
+                    <div class="price content box-content box-content-table pd-top-0 lh180">
+                        <div class="box-col box-col-center">
+                            <div class="user-mode">
+                                <div class="box-col-bar"></div>
+                                <ul>
+                                    <li class="percent-50">
+                                        <span>定制数量</span>
+                                        <span><span class="cf46c62">{- feedCount -}</span>个</span>
+                                    </li>
+                                    <li class="percent-50">
+                                        <span>每周发放聘点</span>
+                                        <span><span class="cf46c62">{- pinbotPoint -}</span>点</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="c607d8b f18">续期套餐到期时间：<span class="cf46c62">{- serviceExpired -}</span>
+                    </span>
+                </div>
+
+                <p class="form-control align-center" >
+                    <a class="btn btn-welcome-submit" href="javascript:void(0);" ng-click="reload()">查看我的套餐</a>
+                </p>
+
+            </div><!-- main -->
+

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?20150616" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/resume_detail.css?20150610" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  {% include 'sentry_fix.html' %}
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+</head>
+<body data-resumeid="{{resume.id}}" data-feed_id="{{feed_id}}" data-feed_keywords="{{feed_keywords}}">
+
+{% include 'alpha/non-auth/header.html' %}
+
+<div id="main" class="elastic-layout">
+  <div class="resume-detail-page">
+    <div class="resume-detail-page-body">
+
+      <div id="content">
+        <div id="resume-detail" class="clearfix">
+          {% include 'alpha/non-auth/resume-aside.html' %}
+          <div class="resume-main">
+
+            <div id="resume-meta">
+              <div class="resume-meta-header clearfix">
+                {% if resume.update_time %}
+                <p class="resume-meta-date">更新时间: {{resume.update_time}}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% include 'alpha/resume-summary.html' %}
+            {% include 'alpha/resume-content.html' %}
+
+
+          </div>
+
+          <div >
+              <div class="resume-meta-header clearfix">
+                {% if calc_time %}
+                <p>简历推荐时间：{{calc_time}}</p>
+                {% endif %}
+              </div>
+            </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% include 'alpha/popup.html' %}
+
+<script src="{{ STATIC_URL }}alpha/scripts/angular.min.js"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/detail.js?20150422"></script>
+
+{% if request.user.is_staff == 1 %}
+<!--
+<script src="{{ STATIC_URL }}alpha/scripts/edit-tag.js?40b40634"></script>
+-->
+{% endif %}
+
+{% include 'footer.html' %}
+</body>
+</html>
+

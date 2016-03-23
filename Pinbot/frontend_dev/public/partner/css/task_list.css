@@ -1,0 +1,220 @@
+/* ------- start variables -------- */
+/* for test */
+/* main red button */
+/* sprite */
+/* z-index */
+/* main red button */
+/* main blue button */
+/* dark blue button */
+/* dark white button */
+/* main background color */
+/* main font color */
+/* main border color */
+/* main font family */
+/* main font size */
+/* ------- start variables -------- */
+/* ------- start mixins -------- */
+.no-space {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.clear-both {
+  clear: both;
+}
+.userSelectNone {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*
+content-box 在宽度和高度之外绘制元素的内边距和边框
+border-box 为元素设定的宽度和高度决定了元素的边框盒
+*/
+/*
+所有主流浏览器都不支持 appearance 属性
+ */
+.transition {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.transitionTransform {
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.modalBoxShadow {
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.btnBoxShadow {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+/* backface-visibility 属性定义当元素不面向屏幕时是否可见。 */
+/* ------- end mixins -------- */
+.search-task {
+  padding: 30px 0;
+}
+.search-task .input {
+  padding: 5px 37px 5px 10px;
+  background: url(/static/partner/images/manage_sprite.png) 352px 7px no-repeat;
+}
+.w380 {
+  width: 380px;
+}
+.w900 {
+  width: 900px;
+}
+.ajax-loading {
+  padding: 20px 0;
+  line-height: 25px;
+  color: #607d8b;
+  font-size: 14px;
+}
+.reco-list {
+  padding-bottom: 50px;
+}
+.reco-list-panel {
+  margin: 0 auto;
+}
+.reco-list-panel p {
+  line-height: 1.8em;
+}
+.reco-date {
+  font-size: 13px;
+  padding-bottom: 5px;
+  color: #607d8b;
+}
+.reco-table th,
+.reco-table td {
+  font-size: 14px;
+  vertical-align: middle;
+  line-height: 30px;
+  color: #607d8b;
+  padding: 10px 20px;
+  text-align: center;
+}
+.reco-table td.text-left {
+  text-align: left;
+}
+.table td.caption {
+  background: #607d8b;
+  color: #fff;
+  font-size: 13px;
+}
+.table td.caption.text-right {
+  text-align: right;
+}
+.c45b5e9 {
+  color: #44b5e8;
+}
+.caaa {
+  color: #aaaaaa;
+}
+.c434343 {
+  color: #434343;
+}
+.cf46c62 {
+  color: #f46c62;
+}
+.cf46c62 {
+  color: #f46c62;
+}
+.view-detail {
+  text-decoration: underline;
+  color: #607d8b;
+}
+.view-detail:hover {
+  color: #44b5e8;
+}
+.upload-resume {
+  background: #f46c62 !important;
+  border: none !important;
+  padding: 5px 10px;
+  color: #fff;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+.upload-resume:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.tracking {
+  background: #ffffff;
+  border: solid 1px #44b5e8;
+  padding: 5px 10px;
+  color: #44b5e8;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  cursor: pointer;
+}
+.tracking:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  background: #44b5e8;
+  color: #fff;
+}
+.tracking[disabled] {
+  cursor: default;
+  background: #cfd8dc !important;
+  color: #fff!important;
+  border: solid 1px #cfd8dc !important;
+}
+.reco-table tr.resume-tr td {
+  padding: 40px 10px;
+}
+.task-info,
+.resume-tr {
+  cursor: pointer;
+}
+/*.task-info:hover,.resume-tr:hover{
+    outline: solid 1px @pb-btn-dark-bule;
+}*/
+.task-info:hover td,
+.resume-tr:hover td {
+  background: #f7f7f7;
+}
+/* dialog */
+.confirm-dialog {
+  width: 720px;
+  height: 270px;
+  background: #fff;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  margin-top: -135px;
+  margin-left: -360px;
+}
+.handler-button {
+  padding-top: 65px;
+}
+.dialog-btn {
+  display: inline-block;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  width: 160px;
+  height: 46px;
+  line-height: 46px;
+  margin: 0 15px;
+}
+.red-btn {
+  background: #f46c62;
+}
+.blue-btn {
+  background: #44b5e8;
+}
+/* 20150623 */
+.c44b5e8 {
+  color: #44b5e8;
+}
+.view-title .c44b5e8:hover {
+  text-decoration: underline;
+}

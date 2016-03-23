@@ -1,0 +1,554 @@
+/**
+ *  author: 516758517@qq.com
+ *  date: 20150418
+ *  desc: B端手机站公共文件
+ */
+
+@charset utf-8;
+
+/* @group Reset */
+html, div, body, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td ,article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    line-height: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+ol, ul {
+    list-style: none;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+/* remember to define focus styles! */
+
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+
+ins {
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+sub{
+    position: relative;
+    bottom: -0.2em;
+    vertical-align: baseline;
+}
+
+small,sup,sub{
+    font-size: 85%;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a{
+    text-decoration: none;
+    line-height: 1.5em;
+}
+p,h1,h2,h3,h4,h5,h6{
+    line-height: 1.5em;
+    font-weight: normal;
+}
+/*img{
+    background: #eee;
+}*/
+
+/* @end */
+
+/******************** font-set begin ********************/
+body,input,select,textarea,button{
+    font-family: "Hiragino Sans GB" , "microsoft yahei", Helvetica,Arial, pxsans-serif;
+    border:none;
+    word-break: break-all;
+}
+input,textarea,select{
+    box-shadow: none;
+    border-radius: 0;
+    background:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -o-appearance:none;
+    appearance:none;
+}
+.simsun{
+    font-family:simsun;
+}
+.tahoma{
+    font-family:Tahoma, Geneva, sans-serif;
+}
+.georgia{
+    font-family:Georgia, "Times New Roman", Times, serif;
+}
+.arial{
+    font-family: arial;
+}
+.yahei{
+    font-family: "微软雅黑";
+}
+em{
+    font-style: normal;
+}
+.f14{
+    font-size: 14px !important;
+}
+.f15{
+    font-size: 15px !important;
+}
+.f16{
+    font-size: 16px !important;
+}
+.f18{
+    font-size: 18px !important;
+}
+
+/******************** clear floating begin *********************/
+.clearfix:after{
+    clear:both;
+    content:"020";
+    display:block;
+    height:0;
+    visibility:hidden;
+    line-height:0;
+    font-size:1px;
+}
+.clearfix{
+    zoom:1;
+}
+
+/******************** others begin ********************/
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.inline-block{
+    display: inline-block;
+}
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.fixed{
+    position: fixed;
+}
+.none{
+    display: none;
+}
+.clearBoth{
+    clear: both
+}
+.text-overflow{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}
+.font-bold{
+    font-weight:bold;
+}
+.black{
+    color: #000;
+}
+.mt20{
+    margin-top: 20px !important;
+}
+.mt10{
+    margin-top: 10px !important;
+}
+.ml20{
+    margin-left: 20px !important;
+}
+.ml10{
+    margin-left: 10px !important;
+}
+.fullwidth{
+    width: 100%;
+}
+h1{
+    font-size: 24px;
+    font-size: 1.5rem;
+}
+h2{
+    font-size: 22px;
+    font-size: 1.375rem;
+}
+h3{
+    font-size: 20px;
+    font-size: 1.25rem;
+}
+h4{
+    font-size: 18px;
+    font-size: 1.125rem;
+}
+h5{
+    font-size: 16px;
+    font-size: 1rem;
+}
+h6{
+    font-size: 14px;
+    font-size: .875rem;
+}
+body{
+    background-color: #fff;
+    min-width: 320px;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* color */
+.blue,.blue:hover{
+    color:#003366;
+}
+.red,a.red:hover{
+    color: #FF0000;
+}
+.lime,a.lime:hover{
+    color: #00FF00;
+}
+.green,a.green:hover{
+    color: #008000;
+}
+.orange,a.orange:hover{
+    color: #FFA500;
+}
+.c008add{
+    color: #008add; /* 蓝色字体 */
+}
+
+/* placeholder */
+::-webkit-input-placeholder{
+    color: #cccccc;
+}
+:-moz-placeholder{
+    color: #cccccc;
+}
+::-moz-placeholder{
+    color: #cccccc;
+}
+:-ms-input-placeholder{
+    color: #cccccc;
+}
+
+/* layer */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+.modal-dialog {
+    width: 700px;
+    margin-top: 117.5px;
+    margin: 30px auto;
+    position: relative;
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,.2);
+    /*border-radius: 6px;*/
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+.modal-header{
+    padding: 20px 20px;
+    background: #F0F0F0;
+    /*border-radius: 6px;*/
+}
+.modal-header h4{
+    color: #574e48;
+    font-size: 18px;
+}
+.modal-header span{
+    color: #574e48;
+}
+.modal-body{
+    color: #574e48;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 20px;
+}
+.modal-handle{
+    text-align:center;
+    padding: 20px 0 40px;
+}
+.modal-handle a{
+    margin: 0 10px;
+}
+.layer-button{
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 60px;
+    opacity: .9;
+    border-radius: 3px;
+    filter:alpha(opacity=90);
+    font-weight: bold;
+    cursor: pointer;
+}
+.layer-button.blue-button{
+    background: #42B3E5;
+    color: #fff;
+    font-size: 14px;
+}
+.layer-button.grey-button{
+    background: #999999;
+    color: #fff;
+    font-size: 14px;
+}
+a.layer-button:hover{
+    opacity: 1;
+    filter:alpha(opacity=100);
+}
+a.layer-button:active{
+    box-shadow: 0 3px 5px rgba(0,0,0,.1) inset;
+}
+.i-l-notice{
+    background: url(http://www.pinbot.me/static/alpha/images/entry/l_notice.png) 0 0 no-repeat;
+    width: 31px;
+    height: 36px;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 10px;
+    vertical-align: -12px;
+}
+.alert-notice{
+    padding: 5px 0 10px 50px;
+    background: url(http://www.pinbot.me/static/alpha/images/info-icon.png) 0 5px no-repeat;
+    font-size: 16px;
+    line-height: 1.8em;
+    color: #333;
+}
+
+
+/* table */
+.table{
+    width: 100%;
+    font-size: 13px;
+    border: solid 1px #e6e6e6;
+}
+.table th{
+    text-align: left;
+    background: #f5f5f5;
+    color: #666;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 15px 20px;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+.table td{
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    vertical-align: top;
+    text-align: left;
+}
+.table td p{
+    line-height: 1.6!important;
+    text-align: left;
+}
+.table td .no-list{
+    text-align: center;
+    padding: 200px 0;
+}
+.hover-layer .table td{
+    cursor: pointer;
+}
+.hover-layer .table .hover td{
+    background: #F5FBFE;
+}
+.list-passed{
+    color: #fd4600!important;
+}
+.list-a,.copy-a, .delete-a{
+    display: inline-block;
+    line-height: 20px;
+    margin: 0 5px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+.list-a{
+    padding: 0 10px;
+    background: #fff;
+    border: solid 1px #ccc;
+    box-shadow: 2px 2px #e5e5e5;
+    color: #666;
+}
+.list-a:hover{
+    color: #42b3e5;
+}
+.blue-a{
+    padding: 0 5px;
+    color: #42b3e5;
+    position: relative;
+    outline: 0;
+}
+.delete-a{
+    padding: 0 5px;
+    color: #999;
+}
+.blue-a:hover,.delete-a:hover{
+    text-decoration: underline;
+}
+
+/* icon */
+.i-correct,.i-error{
+    width: 7%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* button */
+.button{
+    background: #0081CE;
+    display: inline-block;
+    font-size: 32px;
+    text-align: center;
+    padding: 24px 0;
+    color: #fff;
+    border: none;
+}
+.button[disabled]{
+    background: #CCCCCC;
+    color: #fff;
+}
+
+/* form */
+.input,.select,.textarea{
+    background: #fff;
+    border: solid 1px #D7D7D7;
+    font-size: 24px;
+    padding: 12px 16px;
+    color: #D7D7D7;
+    box-sizing: border-box;
+    resize: none;
+    vertical-align: middle;
+}
+.input.error,.select.error,.textarea.error{
+    color: #f55f6c;
+    border: solid 1px #f55f6c !important;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .select{
+        background: url(/static/yure/img/select_btn140x140.jpg) top right no-repeat #fff;
+        background-size: contain;
+    }
+}
+.input:focus,.select:focus,.textarea:focus{
+    border: solid 1px #0081CE;
+    color: #0081ce;
+}
+.error{
+    color: #F55F6C !important;
+}
+
+/* swipe */
+.swipe{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+}
+.swipe ul{
+    -webkit-transition:left 800ms ease-in 0;
+    -moz-transition:left 800ms ease-in 0;
+    -o-transition:left 800ms ease-in 0;
+    -ms-transition:left 800ms ease-in 0;
+    transition:left 800ms ease-in 0;
+    position: absolute;
+    white-space: nowrap;
+}
+.swipe #pagenavi{
+    position:absolute;
+    left:0;
+    bottom:10px;
+    text-align:center;
+    width:100%;
+}
+.swipe #pagenavi a{
+    width:40px;
+    height:4px;
+    line-height:99em;
+    background:#627D89;
+    margin:0 4px;
+    overflow:hidden;
+    cursor:pointer;
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+}
+.swipe #pagenavi a.active{
+    background:#F46C62;
+}
+
+/*内容区域*/
+.content{
+    margin: 0 auto;
+    width: 100%; /* 默认 */
+    max-width: 760px;
+}
+
+/* angular css */
+@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}

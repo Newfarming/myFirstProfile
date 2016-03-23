@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我愿意</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style>
+    *{margin: 0;padding:0;}
+    .fix-top{position: fixed; top: 0; left: 0; width: 100%;}
+    .fix-bottom{position: fixed; bottom: 0; left: 0; width: 100%; background: #F9F9F9;border-top: solid 1px #D4D4D4;box-shadow: 0 1px 2px rgba(0,0,0,.1) inset}
+    .fix-content{ position: fixed; top: 69px; bottom: 54px; left: 0; right: 0; background: #E6E6E6; box-shadow: 0 1px 2px rgba(0,0,0,.05) inset;min-height: 400px;}
+    .info{position: absolute; top: 50%; margin-top: -167px; text-align: center; width: 100%; left: 0; }
+</style>
+</head>
+<body>
+<div class="fix-top">
+    <!-- head start -->
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+            <tr>
+                <td bgcolor="#fff" style="padding:15px 0; background:#F9F9F9; border-bottom:solid 1px #D4D4D4; padding-left:25px;">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                        <tr>
+                            <td width="120"><a href="/jobs/index" title="聘宝 | 专业人才推荐"><img border="0" src="{{STATIC_URL}}beta/email/logo_blue.png" alt="推荐好工作, 给优秀的你"></a></td>
+                            <td style="font-size:14px;color:#999">推荐好工作, 给优秀的你</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    <!-- head end-->
+</div>
+<div class="fix-content">
+    <div class="info">
+        <img src="{{STATIC_URL}}beta/email/agree.png" alt=""><br><br><br><br><br>
+        {% if not msg%}
+       	 聘宝将推动企业将尽快与你联络，预祝求职顺利！
+       	{% else%}
+       		{{msg}}
+       	{%endif%}
+    </div>
+</div>
+<div class="fix-bottom">
+    <p style="color:#999999;font-size:12px;text-align:right;padding: 20px 40px; font-family:Verdana">Copyright © 2013 - 2016 HopperClouds, Inc.</p>
+</div>
+</body>
+</html>

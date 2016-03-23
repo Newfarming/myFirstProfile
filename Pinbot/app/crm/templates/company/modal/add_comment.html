@@ -1,0 +1,64 @@
+<div class="modal fade" id="remarkModal" tabindex="-1" role="dialog" aria-labelledby="remarkModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">添加评价</h4>
+      </div>
+      <div class="modal-body">
+          <form action="#" id="remarkForm">
+              <input name="contact_id" id="contact_id" type="hidden" value=""/>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">类型</label>
+                  <select class="form-control" id="remark_type" name="remark_type">
+                      <option value="0">个人信息更新</option>
+                      <option value="1">求职要求</option>
+                      <option value="2">个人喜好</option>
+                      <option value="3">其他</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1">备注</label>
+                  <textarea class="form-control" cols="30" id="remark_desc" name="desc" rows="5"></textarea>
+              </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" id="remarkConfirmBtn">提交</button>
+      </div>
+    </div>
+   </div>
+</div>
+
+<script>
+ $(function() {
+     var $form = $('#remarkForm'),
+     $contact_id = $('#contact_id'),
+     $remarkConfirmBtn = $('#remarkConfirmBtn'),
+     $modal = $('#remarkModal');
+
+     $modal.on('show.bs.modal', function(e) {
+         var button = $(e.relatedTarget),
+         contact_id = button.data('contact_id');
+         $contact_id.val(contact_id);
+     });
+
+     $remarkConfirmBtn.on('click', function(e) {
+         $.post('/crm/edit_remark/', $form.serialize(), function(data) {
+             $modal.modal('hide');
+             $('#tab_add_comment tr:first').after('<tr>'+
+                '<td>'+data.remark_time+'</td>'+
+                '<td><span class="label label-default btn-flat ">'+data.remark_type+'</span></td>'+
+                '<td>'+data.remark_desc+'</td>'+
+                '<td>'+data.remark_admin+'</td>'+
+                '<td><button class="btn btn-block btn-info btn-xs delete_remark" remark_id="'+data.remark_id+'">'+'删除'+'</button></td>'+
+             '</tr>'
+             );
+             var feed_result_list_count = Number($("#feed_result_list_count").text());
+             $("#feed_result_list_count").text(feed_result_list_count+1);
+
+         });
+     });
+ });
+</script>

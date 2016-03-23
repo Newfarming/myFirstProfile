@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Pinbot分析统计</title>
+	<link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css" rel="stylesheet" />
+	<!--
+	<script type="text/javascript" src="{{ STATIC_URL }}statis/js/enhance.js"></script>
+	<script type="text/javascript">
+		// Run capabilities test
+		enhance({
+			loadScripts: [
+				'{{ STATIC_URL }}statis/js/excanvas.js',
+				'{{ STATIC_URL }}statis/js/jquery.min.js',
+				'{{ STATIC_URL }}statis/js/visualize.jQuery.js',
+				'{{ STATIC_URL }}statis/js/example.js'
+			],
+			loadStyles: [
+				'{{ STATIC_URL }}statis/css/visualize.css',
+				'{{ STATIC_URL }}statis/css/visualize-light.css'
+			]
+		});
+    </script>
+    -->
+</head>
+<body>
+
+
+
+<table>
+    <a href="/statis/get_all_keywords">获取所有搜索关键字 </a>   |
+    <a href="/statis/data">用户访问统计</a>|
+    <a href="/statis/manual_reco?days=1">推荐数量统计</a>|
+	[查看
+	<a href="/statis/data?days=1&look_days=90">一天内</a>|
+	<a href="/statis/data?days=7&look_days=90">一周内</a>|
+	<a href="/statis/data?days=14&look_days=90">两周内</a>|
+	<a href="/statis/data?days=30&look_days=90">一月内</a>
+	访问过Pinbot的用户
+	]
+	<a href="/">Pinbot首页</a>
+	<caption><b style="color:red">{%if days %}{{days}}天内{%else%}今天{%endif%} </b>访问过Pinbot的用户 在<b style="color:red">{{look_days}}内</b>的推荐和行为统计数据</caption>
+	<p>
+	<thead>
+		<tr>
+		    <th>编号</th>
+			<th>用户名\统计类型</th>
+			{%for statis_type in statis_keys_list%}
+				<th scope="col">{{statis_type}}</th>
+			{%endfor%}
+			<th scope="col">订阅总数</th>
+			<!--<th scope="col">推荐总数</th>-->
+			<th scope="col">已读推荐总数</th>
+			<!--<th scope="col">计算总数</th>-->
+			<th scope="col">最后访问时间</th>
+		</tr>
+	</thead>
+	<tbody>
+
+			{%for username,company_name,access_list in statistic_res_list%}
+				<tr>
+				    <th>{{forloop.counter}}</th>
+					<th scope="row" class="row1">{{company_name}}(<a href="/statis/access?username={{username}}" target="blank">{{username}}</a>)</th>
+					{%for cnt in access_list%}
+
+					   {%if forloop.last%}
+					        <td>{{cnt|date:"Y-m-d  H:i"}}<p><a href="/statis/access?username={{username}}&id={{forloop.counter}}" target="blank">具体操作记录</a>
+					   {% elif forloop.counter = 8%}
+					        <td><a href="/statis/user_feeds?username={{username}}&id={{forloop.counter}}&days=7" target="blank">{{cnt}}</a>
+					   {% elif forloop.counter = 11%}
+					           <td style="color:red">{{cnt}}
+					   {%else%}
+						   <td>{{cnt}}
+					   {%endif%}
+					   </td>
+					{%endfor%}
+				</tr>
+			{%endfor%}
+
+
+	</tbody>
+
+
+</table>
+    <div>
+       <p><p>
+       <p>该页统计数据为<b style="color:red">汇总数据</b>:提供两个参数供查询:days 表示days对应的天数有访问的用户,look_days是指用户在look_days天内的行为.
+       <p>取值范围 [0,正无穷]
+       <p>取值类型:正整数
+       <p>两个参数 对应的时间逻辑,如days=0,look_days=90,表示从今天0零点开始计算对pinbot有过访问的用户在此刻向前数90天在pinbot的行为数据.
+       <p>修改方式:在url中修改,如:http://www.pinbot.me/statis/data?days=7&look_days=90修改对应数字
+       <b style="color:red">>>指标说明</b>:
+        <p>   <b>已读是指点击进入到详情页面</b>
+        <p> <b >插件分析:</b>用户使用了pinbot的插件点击了开始分析按钮
+         <p><b> 添评论:</b>用户在简历详情页对简历进行的备注
+        <p> <b > 插件下载:</b>pinbot内部的插件下载页面
+        <p> <b > 我的收藏:</b>点击pinbot内部我的收藏按钮
+         <p><b>  我的订阅 :</b>点击pinbot内部我的订阅按钮
+        <p> <b >点击订阅具体订阅:</b>用户对每个具体订阅的点击
+        <p> <b >PINBOT简历页:</b>用户访问pinbot的简历详情页面
+         <p><b > 添关注:</b>关注的pinbot平台的简历数量
+		<p> <b > 订阅总数:</b>用户的订阅数量,<b style="color:red">点击链接</b>可以具体看到各个订阅的人工推荐数量,机器推荐数量,用户点击人工推荐数量,以及计算总数
+         <p><b> 推荐总数 :</b>人工和机器推荐总数
+        <p> <b >已读推荐总数:</b>用户在具体的订阅条目下点击某个简历.
+         <p><b >计算数:</b>总共检索出含有关键词的简历是数量
+
+
+     <p><p><b style="color:red">待审核数:</b>现在机器推荐的待人工审核的数量
+    </div>
+
+</body>
+</html>

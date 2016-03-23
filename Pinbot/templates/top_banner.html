@@ -1,0 +1,76 @@
+<style>
+.top-banner{
+    text-align: center;
+    z-index: 9998;
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:84px;
+    width:100%;
+    background:#000 url(/static/b_index/img/banner_invite.jpg) center center no-repeat;
+}
+/* IE 6 */
+* html .top-banner {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
+.top-banner a{
+    display: inline-block;
+    width: 100%;
+    height: 84px;
+    text-indent: -9999px;
+}
+.top-banner > span.close{
+    width:30px;
+    height: 30px;
+    color:#fff;
+    cursor: pointer;
+    position: absolute;
+    top:0px;
+    right:10px;
+    font-size: 30px;
+    padding:0px;
+    z-index: 9999;
+}
+</style>
+<div class="top-banner" style="display:block;"><a href="http://www.pinbot.me/promotion_point/link/?hmsr=%E9%82%80%E8%AF%B7%E6%9C%89%E5%A5%96%E5%85%A8%E7%AB%99banner&hmpl=%E9%82%80%E8%AF%B7%E6%9C%89%E5%A5%96%E6%8C%89%E9%92%AE&hmcu=%E9%82%80%E8%AF%B7%E6%9C%89%E5%A5%96%E6%8C%89%E9%92%AE&hmkw=&hmci=" id="top-banner-a" class="bd-trace" target="_blank" trace-title="邀请活动"></a><span id="top-banner-close" class="close">&times;</span></div>
+<script>
+var topBanner = {
+    getCookie : function(key) {
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    },
+    setCookie : function(key,value,time) {
+        var today = new Date();
+        var expires_date = new Date( today.getTime() + time );
+        document.cookie = key + "=" +escape( value ) +
+        ";expires=" + expires_date.toGMTString() +
+        ";path=/";
+    },
+    init: function(){
+        var _this = this;
+        var closeTopBanner = document.getElementById('top-banner-close');
+        var aTopBanner = document.getElementById('top-banner-a');
+        var noshow = false;
+        var cookieName = 'is_show_top_invite_banner';
+        if(document.location.href.toString().match(/^https?:\/\/[0-9a-z:\.\-]+\/special_feed\/edit_feed\//i) && document.location.href.toString().match(/^https?:\/\/[0-9a-z:\.\-]+\/promotion_point\/link\//i)){
+            noshow = true;
+        }
+        if(!noshow && _this.getCookie(cookieName) == null){
+            closeTopBanner.addEventListener("click", function(event) {
+                event.stopPropagation();
+                event.preventDefault();
+                closeTopBanner.parentNode.style.display = 'none';
+                _this.setCookie(cookieName,'1',7200000);
+            });
+            aTopBanner.addEventListener("click", function(event) {
+                aTopBanner.parentNode.style.display = 'none';
+                _this.setCookie(cookieName,'1',7200000);
+            });
+        }else{
+            closeTopBanner.parentNode.style.display = 'none';
+        }
+    }
+};
+topBanner.init();
+</script>

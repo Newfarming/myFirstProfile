@@ -1,0 +1,37 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}partner/css/reco_task.css?20150624" type="text/css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}special_feed/css/edit_feed.css?20150623" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block app %} ng-app="recoTaskApp"{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with upload_class="curr" %}
+{% endblock %}
+
+{% block sub_header %}
+{% include 'partner_sub_nav.html' with reco_task='on' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="inner-content">
+    <div class="ui-view"></div>
+</div>
+{% endblock %}
+
+
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+    {% include 'angular.html' %}
+    <script src="{{ STATIC_URL }}partner/js/reco_task.js?20150623"></script>
+{% endcompress %}
+{% endblock %}

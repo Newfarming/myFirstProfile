@@ -1,0 +1,21 @@
+<div class="job_panel" ng-repeat="item in data.data" ng-click="toDetail(item.id)" data-id="{- item.id -}">
+    <p class="date text-center">{- item.action_time -}</p>
+    <div class="job-body">
+        <h3 class="text-overflow">{- item.job__title -}</h3>
+        <p class="text-overflow other">
+            {- item.job__salary_min | formatMoney:item.job__salary_max -}
+            <!-- &nbsp;{- item.job__bind_job__work_year | filterYear -}
+            &nbsp;{- item.job__bind_job__degree | filterDegree -} -->
+        </p>
+        <p class="text-overflow">{- item.job__company__company_name -}</p>
+        <p class="text-overflow">{- item.job__expect_area -}<span ng-show="item.job__company__company_stage"> , {- item.job__company__company_stage -}</span></p>
+    </div>
+    <p class="text-overflow status text-center">{- item.statusText || '已收藏' -}</p>
+    <div class="job-handle">
+        <div class="text-center favorite mt20">
+            <button type="button" class="button button-primary w40p" ng-show="item.action && item.action == 'favorite'" ng-click="send( item.id , item , $event )">投递</button>
+            <button type="button" class="button button-primary w40p" ng-show="item.action && item.action == 'favorite'" ng-click="dislike( item.id , item , $event )">取消收藏</button>
+            <button type="button" class="button button-normal w40p" ng-show="item.action && item.action != 'favorite'" ng-click="favorite( item.id , item , $event )">收藏</button>
+        </div>
+    </div>
+</div>

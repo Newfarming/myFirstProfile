@@ -1,0 +1,24 @@
+[
+{
+  "pk": 1,
+  "model": "transaction.userchargepackage",
+  "fields": {
+    "pkg_source": 1,
+    "zero_points_notify_status": "read",
+    "start_time": "2014-08-08T10:10:23",
+    "package_type": 2,
+    "re_points": 0,
+    "pay_status": "finished",
+    "feed_package": 10,
+    "feed_end_time": "2017-08-08T10:10:23",
+    "user": 907,
+    "extra_feed_num": 20,
+    "rest_points": 0,
+    "resume_package": null,
+    "order": null,
+    "rest_feed": 3,
+    "actual_cost": 0.0,
+    "resume_end_time": "2017-08-08T10:10:23"
+  }
+}
+]

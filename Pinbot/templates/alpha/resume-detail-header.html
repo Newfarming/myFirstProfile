@@ -1,0 +1,14 @@
+{% if request.user.is_staff == 1 %}
+<div id="resume-detail-header" class="clearfix">
+  <div class="inner-wrap">
+    <div class="detail-header-control">
+      <p>
+        {% if contact_info %}
+        <a href="{% url 'crm-candidate-details' resume_id %}" target="_blank" class="control-btn" title="CRM链接"><span>CRM链接</span></a>
+        {% endif %}
+        <a href="{{resume.url}}" target="_blank" class="control-btn" title="查看原简历"><span>原简历</span></a>
+      </p>
+    </div>
+  </div>
+</div>
+{%endif%}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div ng-app="account">
+    <form action="{% url 'account-check-user-in' %}"
+          name="check_in_form"
+          id="check_in_form"
+          method="post"
+          ng-controller="checkUserIn"
+          novalidate
+          >
+        <input ng-model="user.username" name="username" type="email" required />
+        <input ng-model="user.password" name="password" type="password" required />
+        <input ng-model="csrf_token" ng-init="csrf_token='{{ csrf_token }}'" name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}"/>
+        <a href ng-click="check_in_form.$valid && submit()">开始求职</a>
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script src="{{ STATIC_URL }}account/account.js"></script>
+{% endblock %}

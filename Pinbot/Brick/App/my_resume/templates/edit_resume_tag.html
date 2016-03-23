@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}my_resume/css/process.css" />
+{% endcompress %}
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div ng-app="app.edit_resume">
+        <div ui-view></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+<script type="text/javascript" src="{{ STATIC_URL }}my_resume/edit_resume.js" ></script>
+{% endcompress %}
+{% endblock %}

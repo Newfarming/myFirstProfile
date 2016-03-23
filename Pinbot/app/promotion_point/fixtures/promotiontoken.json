@@ -1,0 +1,11 @@
+[
+{
+  "pk": 1,
+  "model": "promotion_point.promotiontoken",
+  "fields": {
+    "promotion_user": 907,
+    "token": "7307b281225552ef082a688d9f0c1a01",
+    "create_date": "2014-08-20T18:34:08"
+  }
+}
+]

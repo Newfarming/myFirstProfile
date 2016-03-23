@@ -1,0 +1,30 @@
+<div class="divider">OR</div>
+<section class="get-contact-section">
+    <h3><span><i>C</i></span>与需求方直接电话联系</h3>
+    <p class="sub-title">点击查看<a href="javascript:void(0)" ng-click="showTalk()">互助伙伴话术</a></p>
+    <div class="input-div" ng-if="!has_hr_info">
+        <form name="contactForm" novalidate>
+            <p class="relative">
+                <input type="text" class="input w270" maxlength="30" message-id="name_message" ng-model="send_info.name" placeholder="请输入你的姓名" validator="name" valid-method="submit" name="name">
+                <span id="name_message"></span>
+            </p>
+            <p class="relative">
+                <input type="text" class="input w270" maxlength="20" message-id="phone_message" ng-model="send_info.phone" placeholder="电话" validator="required, phone" valid-method="submit" name="phone">
+                <span id="phone_message"></span>
+            </p>
+            <p class="f14 cf46c62">
+                <span class="simsun">*</span>获取需求方联系方式的同时，您的信息也将呈现给对方，请真实填写
+            </p>
+            <p>
+                <a href="javascript:void(0)" ng-click="contact_form.submit(contactForm)" class="btn" ng-class="{'btn-disabled': isGetting}">获取联系方式</a>
+            </p>
+        </form>
+    </div>
+    <div class="show-div contact-info" ng-if="has_hr_info">
+        <p>公司：{- hr_info.company_name -}</p>
+        <p>名称：{- hr_info.name -}</p>
+        <p>电话：{- hr_info.phone -}</p>
+        <p>QQ：{- hr_info.qq -}</p>
+        <p>邮箱：{- hr_info.email -}</p>
+    </div>
+</section>

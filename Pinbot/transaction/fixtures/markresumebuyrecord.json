@@ -1,0 +1,18 @@
+[
+{
+  "pk": 12,
+  "model": "transaction.resumebuyrecord",
+  "fields": {
+    "status": "LookUp",
+    "feedback_info": null,
+    "finished_time": "2014-01-01T00:00:00",
+    "feed_id": null,
+    "user": 907,
+    "keywords": "PHP",
+    "resume_id": "52fa1037fb6dec25c02b1f41",
+    "op_time": "2014-02-13T13:45:00",
+    "send_card": null,
+    "resume_url": "http://www.pinbot.me/resumes/display/52fa1037fb6dec25c02b1f41/?feed_keywords=Java&feed_id=52cab374b1c3372c0428512b"
+  }
+}
+]

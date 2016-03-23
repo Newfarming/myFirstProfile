@@ -1,0 +1,58 @@
+
+<div id="header" class="clearfix">
+  {% include 'snow_bar.html' %}
+    <h1><a href="/" title="聘宝，专业人才推荐"></a></h1>
+  <div class="nav-wrap">
+    <ul class="main-nav clearfix">
+      {%if request.user.groups.all.0.name == 'tmp-taocv' or request.user.groups.all.1.name == 'tmp-taocv' or request.user.groups.all.0.name == 'taocv' or request.user.groups.all.1.name == 'taocv'%}
+      	<li class="{{tao_class}}"> <a href="/taocv"><i class="ic ic-nav ic-nav-tao"></i>&nbsp;淘简历&nbsp;</a></li>
+      {%endif%}
+      {%if request.user.groups.all.0.name == 'tmp-taocv' or request.user.groups.all.1.name == 'tmp-taocv'%}
+      {%else%}
+      		<li class="{{feed_class}}"> <a href="/feed/"><i class="ic ic-nav ic-nav-feed"></i>人才订阅</a></li>
+      {%endif%}
+      <li class="{{watch_class}}" > <a href="/resumes/watch/"><i class="ic ic-nav ic-nav-resume"></i>简历中心</a></li>
+      <li class="{{pay_class}}" > <a href="/transaction/my_transaction/"><i class="ic ic-nav ic-nav-pay"></i>充值中心</a></li>
+      <li class="{{user_setting_class}}"><a href="/users/profile/"><i class="ic ic-nav ic-nav-setting"></i>个人设置</a></li>
+      <li class="{{plugin_download_class}}"> <a href="/plugin_download/"><i class="ic ic-nav ic-nav-down"></i>聘宝插件</a></li>
+    </ul>
+    <div class="user-control">
+      <ul>
+      <!--
+        <li class="user-control-email"><span>{{ request.user.username|default:"username" }}</span></li>
+				{%if request.user.groups.all.0.name == 'taocv'%}
+        <li class="tao-topnav-money">
+          余额:<span>{{user_points}}</span>点
+          {%if user_points > 0%}
+          {%if result%}
+          <div class="tao-money-tips">
+            <p data-memo-url="/taocv/notify_read/{{resume_id}}" >刚刚收到系统返点数：<em>+{{re_point}}</em></p>
+          </div>
+         {%endif%}
+         {%endif%}
+         {%if user_points == 0%}
+         	{%if user_point.zero_points_notify_status == 'need_notify'%}
+         	<div class="tao-money-tips" style="width: 320px">
+            <p style="width: 320px" data-memo-url="/taocv/notify_read/zero_points" >点数已消耗完毕,如希望继续参与活动请<a href="http://wpa.qq.com/msgrd?v=3&uin={{{{SERVICE_QQ}}}}&site=qqmenu=yes" target="_blank">联系我们</a></p>
+          </div>
+         	{%endif%}
+         {% endif %}
+         {% endif %}
+        </li>
+        -->
+
+        <li><a href="/signout" title="点击退出">退出</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+  $(function() {
+    $('body').on('click', '.tao-money-tips>p', function(e) {
+      var url = $(this).data('memo-url');
+      $.post(url, function() {});
+      $(this).parent().fadeOut();
+    });
+  });
+</script>
+

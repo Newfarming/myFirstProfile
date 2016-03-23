@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load compress %}
+{% block header %}
+<link href="{{ STATIC_URL }}my_resume/css/resume.min.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+<h1 class="text-center page-header">我的简历</h1>
+<div ng-app="app.resume">
+    <div ng-controller="editResume" ng-init="initResume()">
+        <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="person-profile">
+                        <h2 class="text-center panel-title">个人信息</h2>
+                        <profile-info resume="resume"></profile-info>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="relation-resume text-center mt20">
+                        <sns-info sns="resume.social_page"></sns-info>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="relation-resume text-center mt40">
+                        <h2 class="text-center panel-title">联系信息<i class="i-infomation"></i></h2>
+                        <contact-info contact="resume"></contact-info>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="relation-resume text-center mt40">
+                        <h2 class="text-center panel-title">一键关联简历</h2>
+                        <relation-resume relation="resume"></relation-resume>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="relation-resume text-center mt40">
+                        <h2 class="text-center panel-title">工作经历</h2>
+                        <div ng-show="resume.works.length == 0">
+                            <work-info work="{}" works="resume.works"></work-info>
+                        </div>
+                        <div ng-repeat="work in resume.works">
+                            <work-info works="resume.works" work="work"></work-info>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="relation-resume text-center mt40">
+                        <h2 class="text-center panel-title">教育经历</h2>
+                        <div ng-show="resume.educations.length == 0">
+                            <education-info edu="{}" edus="resume.educations"></education-info>
+                        </div>
+                        <div ng-repeat="edu in resume.educations">
+                            <education-info edu="edu" edus="resume.educations"></education-info>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="relation-resume text-center mt40">
+                        <h2 class="text-center panel-title">项目经历</h2>
+                        <div class="mt20">
+                            <a title="" class="button button-normal btn-long" ng-show="!openProjects" ng-click="isOpenProjects( true )"><i class="i-down"></i>展开</a>
+                            <a title="" class="button button-normal btn-long" ng-show="openProjects" ng-click="isOpenProjects( false )"><i class="i-up"></i>收起</a>
+                        </div>
+                        <div ng-show="openProjects">
+                            <div ng-show="resume.projects.length == 0">
+                                <project-info project="{}" projects="resume.projects"></project-info>
+                            </div>
+                            <div ng-repeat="project in resume.projects">
+                                <project-info project="project" projects="resume.projects"></project-info>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-ling">
+            <div class="content">
+                <div class="inner-content form-panel">
+                    <div class="relation-resume text-center mt40">
+                        <h2 class="text-center panel-title">我的技能</h2>
+                        <div class="mt20">
+                            <a title="" class="button button-normal btn-long" ng-show="!openSkills" ng-click="isOpenSkills( true )"><i class="i-down"></i>展开</a>
+                            <a title="" class="button button-normal btn-long" ng-show="openSkills" ng-click="isOpenSkills( false )"><i class="i-up"></i>收起</a>
+                        </div>
+                        <div ng-show="openSkills">
+                            <div ng-show="resume.professional_skills.length == 0">
+                                <skill-info skill="{}" skills="resume.professional_skills"></skill-info>
+                            </div>
+                            <div ng-repeat="skill in resume.professional_skills">
+                                <skill-info skill="skill" skills="resume.professional_skills"></skill-info>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% if send_btn %}
+<div class="content mt40 foot-handle">
+    <div class="inner-content text-center">
+        <button onclick="history.back(-1);" class="button button-primary btn-long">返回投递</button>
+    </div>
+</div>
+{% endif %}
+
+<div class="content mt40 foot-handle">
+    <!-- <div class="inner-content text-center">
+        <a href="/job/" title="" class="button button-primary btn-long">获取职位推荐</a>
+    </div> -->
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+    <script type="text/javascript">
+        var jsonResume = {{ resume_json | safe }};
+    </script>
+    {% compress js %}
+        <script src="{{ STATIC_URL }}common/js/angular-validation.js"></script>
+        <script src="{{ STATIC_URL }}common/js/angular-validation-rule.js"></script>
+        
+        <script src="{{ STATIC_URL }}my_resume/my_resume.js"></script>
+    {% endcompress %}
+{% endblock %}

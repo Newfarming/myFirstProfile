@@ -1,0 +1,61 @@
+<div class="modal fade" id="addMarkModal" tabindex="-1" role="dialog" aria-labelledby="remarkModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加评价</h4>
+            </div>
+            <div class="modal-body">
+                <form action="#" id="addMarkForm">
+                    <input name="feed" id="mark_feed" type="hidden" value=""/>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">类型</label>
+                        <select class="form-control" name="remark_type">
+                            <option value="1">公司信息更新</option>
+                            <option value="2">公司特别要求</option>
+                            <option value="3">职位特别要求</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">备注</label>
+                        <textarea class="form-control" cols="30" id="remarkDescInput" name="remark" rows="5" ></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="addMarkConfirmBtn">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+ $(function() {
+     var $form = $('#addMarkForm'),
+         $mark_feed = $('#mark_feed'),
+         $remarkConfirmBtn = $('#addMarkConfirmBtn'),
+         $remark_desc_input = $('#remarkDescInput'),
+         $modal = $('#addMarkModal');
+
+     $modal.on('show.bs.modal', function(e) {
+         var button = $(e.relatedTarget),
+             feed_id = button.data('feed_id');
+         $mark_feed.val(feed_id);
+     });
+
+     $remarkConfirmBtn.on('click', function(e) {
+         var desc = $remark_desc_input.val();
+
+         if (!desc) {
+             alert('请先填写备注');
+             return false;
+         }
+
+         $.post('/crm/job/feed_remark/', $form.serialize(), function(data) {
+             $modal.modal('hide');
+             //window.location.reload();
+         });
+     });
+ });
+</script>

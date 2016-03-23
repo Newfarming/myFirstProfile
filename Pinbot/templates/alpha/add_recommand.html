@@ -1,0 +1,381 @@
+<a href="javascript:;" style="position: fixed;top: 50%;left: 0;background: #41B2E5;color: #fff;padding: 10px;width: 21px;text-align: center;display: inline-block;font-weight: bold;border-radius: 0 10px 10px 0;margin-top: -45px;" id="JS_toggle_addbtn">添加简历</a>
+<div class="add-recommand-panel" style="display:none">
+    <div class="inner">
+        <div class="action-form">
+            <label>添加简历地址</label>
+            <input id="action-form-url" type="text" name="url" placeholder="51, 智联或其他网站的简历地址" autocomplete="off">
+            <a href="javascript:;" class="action-submit" id="JS_add_btn" data-csrf="{{ csrf_token }}">添加</a>
+            <a href="javascript:;" class="clear-all" id="JS_clear_action" style="display: none;">清空</a>
+            <span style="display: none;" id="JS_loading">
+                <img src="{{ STATIC_URL }}alpha/images/loading1.gif" style="vertical-align:-10px">
+            </span>
+            <span id="action-form-addOk" style="display: none;">
+                添加成功!
+            </span>
+        </div>
+        <div id="JS_error_msg" class="action-error-msg" style="display: none;">
+            简历已经添加过！
+        </div>
+    </div>
+</div>
+<script>
+
+    $('#action-form-url').on( 'keyup' , function(){
+        if( $( this ).val() ){
+            $('#JS_clear_action').show();
+        }else{
+            $('#JS_clear_action').hide();
+        };
+        $('#action-form-addOk').hide();
+        $('#JS_error_msg').hide();
+    });
+
+    $('#JS_clear_action').on('click',function(){
+        $('#action-form-url').val('');
+        $('#JS_error_msg').hide();
+        $('#action-form-addOk').hide();
+        $(this).hide();
+    });
+
+    $('#JS_add_btn').on('click', function(){
+        var $this = $( this ),
+            csrf_token = $this.attr('data-csrf'),
+            url = $('#action-form-url').val();
+        if( !url ) return;
+        $.post( '/feed/staff_add_resume/' , {
+            feed_id: $('.feed-nav li.curr').find('.feed-latest-count').attr('data-count-group'),
+            url: url,
+            csrfmiddlewaretoken: csrf_token
+        }, function( res ){
+            if( res && res.status == true ){
+                $('#action-form-addOk').show();
+            }else{
+                $('#JS_error_msg').html( res.data ).show();
+            };
+            $('#action-form-url').val( '' );
+            $('#JS_loading').hide();
+            $('#JS_add_btn,#JS_clear_action').show();
+        }, 'json').fail(function(){
+            $('#JS_error_msg').html( '请求失败了！' ).show();
+            $('#JS_loading').hide();
+            $('#JS_add_btn,#JS_clear_action').show();
+        });
+        $('#JS_loading').show();
+        $('#JS_add_btn,#JS_clear_action').hide();
+    });
+
+    $('#JS_toggle_addbtn').on('click',function(){
+        $('.add-recommand-panel').stop(true,false).slideToggle();
+    });
+
+</script>
+
+
+<a href="javascript:void(0);" style="position: fixed;top: 23%;left: 0;background: #41B2E5;color: #fff;padding: 10px;width: 21px;text-align: center;display: inline-block;font-weight: bold;border-radius: 0 10px 10px 0;margin-top: -45px;" id="JS_ask_help">有问题找开发</a>
+<script>
+
+
+$.askHelp = ( function( $ , undefined ){
+    var keyword = function( params ){
+        return new keyword.prototype.init( params );
+    };
+    keyword.prototype = {
+        init: function( params ){
+            var _this = this;
+            this.setting = params;
+            __setKeyword = this;
+            this.addHtml();
+            this.list(function(res){
+                _this.loadList(res);
+            });
+            this.bindEvent();
+        },
+        loadList:function(res){
+            var imax=0;
+            if( res && res.status == 'ok' ){
+                imax=res.reco_bug.messages.length;
+            }
+            if(imax==0){
+                $('.switch-label').html('查看过往反馈');
+                $('.bugs-list-empty').css('display','none');
+                //this.setting.ignored = true;
+                $('.bugs-list').hide();
+                $('.add-bug').show();
+            }else{
+                $('.switch-label').html('切换到提单');
+                if(imax==0) $('.bugs-list-empty').css('display','block');
+                //this.setting.ignored = false;
+                $('.bugs-list').show();
+                $('.bug-action .action-ok').hide();
+                $('.add-bug').hide();
+                var html='';
+                html += '<ul class="bug-list">';
+                for(var i=0;i<imax;i++){
+                    var msg=res.reco_bug.messages[i];
+                    html += '<li>[<strong>'+msg.msg_type+'</strong>][<span style="color:#008000;">'+msg.admin+'</span>] - <small>'+msg.add_time+'</small><p class="bug-info">'+msg.msg.replace(/\n/gi,'<br>')+'</p></li>';
+                }
+                html += '</ul>';
+                $('.bugs-list').html(html);
+                $('.bugs-list').show();
+            }
+
+
+        },
+        escEvent:function( e ){
+            if( e.keyCode == 27 ){
+                __setKeyword.close();
+            };
+        },
+        bindEvent: function(){
+            $( window ).on( 'keyup' , window , __setKeyword.escEvent );
+        },
+        add: function(){
+            html = '<tr>' +
+                        '<td class="flag-td">' + ( $('.editbox-table tbody tr').length + 1 ) + '</td>' +
+                        '<td><div><input ></div></td>' +
+                        '<td><div><input></div></td>' +
+                        '<td><div><input></div></td>' +
+                        '<td class="action-td"><div><a href="javascript:;" onclick="__setKeyword.remove( this );">删除</a></div></td>' +
+                    '</tr>';
+            return html;
+        },
+        list: function(cb){
+            //list: http://api.pinbot.me:8088/bugs/reco/message/?feed_id=5301d98efb6dec344c92b55c
+            var html = '';
+            var loc = document.location.href.toString();
+            var feed_id='';
+            if(loc.match(/#\/group\/([0-9a-z]+)/i)){
+                feed_id=RegExp.$1;
+            }
+            var url = 'http://api.pinbot.me:8088/bugs/reco/message/?feed_id='+feed_id;
+            $.getJSON( url , function( res ){
+                /*if( res && res.status == 'ok' ){
+                    if(typeof cb == 'function'){
+                        cb(res);
+                    }
+                }else if( res && res.msg ){
+                    //alert( res.msg );
+                }else{
+                    //alert('请求失败！');
+                };*/
+                if(typeof cb == 'function'){
+                    cb(res);
+                }
+            },'json').fail(function(){
+                alert('请求列表失败！');
+            });
+
+            //return html;
+
+        },
+        addHtml: function(){
+
+                var html = '<div class="wp-popup">' +
+                            '<div class="popup popup-enter">' +
+                                '<div class="popup-loading" id="JS_loading_img" style="display:none;"></div>' +
+                                '<div class="popup-hd clearfix">' +
+                                    '<h3 class="popup-title">有问题找开发</h3>' +
+                                    '<span class="span-switch">' +
+                                        '<input type="checkbox" id="switch1" name="switch1" class="switch" ' +
+                                        //( this.setting.ignored.toString() == 'true' ? 'checked="checked"' : '' ) +
+                                        '>' +
+                                        '<label class="switch-label" for="switch1"></label>' +
+                                   ' </span>' +
+                                '</div>' +
+                                '<div class="popup-bd">' +
+                                    '<div id="editbox">' +
+                                        '<div class="editbox-table editbox-table-heigh">' +
+                                                '<div class="bugs-list-empty">暂无错误报告</div>'+
+                                            '<div class="bugs-list"></div>'+
+                                            '<table class="ask-help-table add-bug">' +
+                                                //'<thead>' +
+                                                '<tr>' +
+                                                    '<td>定制：</td>' +
+                                                    '<td><span class="bug-feed-title"></span></td>' +
+                                                '</tr>' +
+                                                '<tr>' +
+                                                    //'<th class="flag-th">◊</th>' +
+                                                    '<td>精炼描述问题：</td>' +
+                                                    //'<th>加分词</th>' +
+                                                    '<td><select id="bug_tags" name="bug_tags" class="ask-help-form-elem ask-help-input"><option value="推荐少">推荐少</option><option value="推荐不准">推荐不准</option><option value="没有推荐">没有推荐</option></select>'+
+                                                    //'<input type="text" id="bug_tags" name="bug_tags" value="" class="ask-help-form-elem ask-help-input" placeholder="精炼描述问题" > 可点选：<a href="javascript:void(0);" class="clickTag">推荐少</a>，<a href="javascript:void(0);" class="clickTag">不准</a>，<a href="javascript:void(0);" class="clickTag">行业不对</a><input type="text" id="but_tags" name="but_tags" value="" class="ask-help-form-elem ask-help-input" placeholder="精炼描述问题" >'+
+                                                    '</td>' +
+
+                                                    //'<th class="action-th">操作</th>' +
+                                                '</tr>' +
+/*                                                '<tr>' +
+                                                    //'<th class="flag-th">◊</th>' +
+                                                    '<td>反馈问题：</td>' +
+                                                    //'<th>加分词</th>' +
+                                                    '<td><input id="ask_help_question" name="ask_help_question" value="" class="ask-help-form-elem ask-help-input" ></td>' +
+                                                    //'<th class="action-th">操作</th>' +
+                                                '</tr>' +*/
+                                                '<tr>' +
+                                                    //'<th class="flag-th">◊</th>' +
+                                                    '<td>呼叫：</td>' +
+                                                    //'<th>加分词</th>' +
+                                                    //<a href="tencent://message/?uin=你的QQ号&Site=QQ交谈&Menu=yes" target="blank">
+                                                    '<td> 点击后可QQ直接找［<a class="ask-who" href="tencent://message/?uin=526626540&Site=QQ交谈&Menu=yes" >开哥</a>］ ［<a href="tencent://message/?uin=244099372&Site=QQ交谈&Menu=yes" class="ask-who" >田哥</a>］</td>' +
+                                                    '<input type="hidden" id="dmer" name="dmer" value="" class="ask-help-form-elem ask-help-input" >' +
+                                                    //'<th class="action-th">操作</th>' +
+                                                '</tr>' +
+                                                '<tr>' +
+                                                    //'<th class="flag-th">◊</th>' +
+                                                    '<td>想说：</td>' +
+                                                    //'<th>加分词</th>' +
+                                                    '<td><textarea id="ask_help_detail" name="ask_help_detail" class="ask-help-form-elem ask-help-textarea" cols="90" rows="10" placeholder="说明用户特殊要求 用户特殊情况 其他信息"></textarea>' +
+                                                    //'<th class="action-th">操作</th>' +
+                                                '</tr>' +
+                                                //'</thead>' +
+                                                '<tbody>' +
+                                                //list( this.setting.remarks ) +
+                                                '</tbody>' +
+                                            '</table>' +
+                                        '</div>' +
+                                    '</div> ' +
+                                '</div>' +
+                              '<div class="popup-action bug-action" style="display: block;">' +
+                                //'<a href="javascript:;" class="action-add" onclick="__setKeyword.addNew();">+ 新增条件</a> ' +
+                                '<a href="javascript:;" class="action-ok" onclick="__setKeyword.save();">开哥/田田 该你们了</a> ' +
+                                '<a href="javascript:;" class="action-cancel" onclick="__setKeyword.close();">取消</a> ' +
+                              '</div>' +
+                            '</div> ' +
+                            '</div>';
+            $('body').append( html );
+            $('.ask-who').on('click',function(e){
+                $('#dmer').prop('value',$(this).text());
+            });
+            $('#switch1').on('click',function(e){
+                var switchLabel = $('.switch-label').html();
+                //console.log('switch',switchLabel);
+                if(switchLabel=='切换到提单'){
+                    $('.switch-label').html('查看过往反馈');
+                    switchLabel = '查看过往反馈';
+                    $('.bugs-list').hide();
+                    $('.bug-action .action-ok').show();
+                    $('.add-bug').show();
+                }else{
+                    $('.switch-label').html('切换到提单');
+                    switchLabel = '切换到提单';
+                    $('.bugs-list').show();
+                    $('.bug-action .action-ok').hide();
+                    $('.add-bug').hide();
+                }
+            });
+            //clickTag
+            $('.clickTag').on('click',function(e){
+                var oldValue = $('#bug_tags').prop('value').trim();
+                var newValue = $(this).text().trim();
+                var re = RegExp(newValue,"i")
+                if(!oldValue.match(re)){
+                    $('#bug_tags').prop('value',oldValue+' '+newValue);
+                }
+            });
+            setTimeout(function(){
+                if($('ul.feed-nav li.curr > a > strong').length){
+                    var titleTmp = $('ul.feed-nav li.curr > a > span > strong').text();
+                    $('.bug-feed-title').text(titleTmp + ' - ' + $('ul.feed-nav li.curr > a > strong').text());
+                }else{
+                    $('.bug-feed-title').html('<span style="color: #ff6100">not found</span>');
+                }
+
+            },1000);
+
+        },
+        save: function(){
+            var _this = this;
+            var encodeStr = function(str){
+                if(str!=undefined && typeof str == 'string'){}else{
+                     return '';
+                }
+                var str2 = stripHTML(str.trim());
+                return encodeURIComponent(str2);
+            };
+            var stripHTML = function(dirtyString) {
+              var container = document.createElement('div');
+              var text = document.createTextNode(dirtyString);
+              container.appendChild(text);
+              return container.innerHTML; // innerHTML will be a xss safe string
+            };
+            var loc = document.location.href.toString();
+            var feed_id='';
+            var username='';
+            var admin=$('#admin').text();
+            //#/group/565d78b4036d4a6929d26fbe
+            if(loc.match(/#\/group\/([0-9a-z]+)/i)){
+                feed_id=RegExp.$1;
+            }
+            if(loc.match(/username=([^#\/]+)/i)){
+                username=RegExp.$1;
+            }
+
+            var bug_tags=$('#bug_tags').prop('value');
+            if(bug_tags==""){
+                alert('请输入精炼描述问题');
+                $('#bug_tags').focus();
+                return false;
+            }
+            var dmer=$('#dmer').prop('value');
+            var msg=$('#ask_help_detail').val();
+            if(msg==""){
+                alert('请输入想说内容');
+                //console.log('test',feed_id,username,admin,bug_tags,dmer,msg);
+                $('#ask_help_detail').focus();
+                return false;
+            }
+
+            var url='http://api.pinbot.me:8088/bugs/reco/?';
+            url+='feed_id='+encodeStr(feed_id)+'&';
+            url+='username='+encodeStr(username)+'&';
+            url+='admin='+encodeStr(admin)+'&';
+            url+='msg='+encodeStr(msg)+'&';
+            url+='bug_tags='+encodeStr(bug_tags)+'&';
+            url+='dmer='+encodeStr(dmer)+'&';
+            $.get( url , function( res ){
+                $('#JS_loading_img').hide();
+
+                if( res && res.status == 'ok' ){
+                    //alert('保存成功！');
+                    $('#ask_help_detail').val('');
+                    //that.close();
+                }else if( res && res.msg ){
+                    alert( res.msg );
+                }else{
+                    alert('请求失败！');
+                }
+
+                _this.list(function(res){
+                    _this.loadList(res);
+                });
+            },'json').fail(function(){
+                //alert('请求失败！');
+                $('#JS_loading_img').hide();
+                $('#ask_help_detail').val('');
+                _this.list(function(res){
+                    _this.loadList(res);
+                });
+            });
+            $('#JS_loading_img').show();
+        },
+        close: function(){
+            $('.wp-popup').remove();
+            $( window ).off( 'keyup' , __setKeyword.escEvent );
+            __setKeyword = null;
+        }
+    };
+    keyword.prototype.init.prototype = keyword.prototype;
+    return function( params ){
+        keyword( params );
+    };
+})( jQuery );
+
+$( document ).on( 'click' , '#JS_ask_help' , function(){
+    $.askHelp({ignored:true});
+});
+
+var loc = document.location.href;
+if(loc.toString().match(/feedback=yes/i)){
+    $.askHelp({ignored:true});
+}
+
+</script>

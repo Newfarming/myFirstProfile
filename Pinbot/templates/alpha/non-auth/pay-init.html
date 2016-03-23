@@ -1,0 +1,84 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?1aa7642f81c" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+</head>
+<body>
+  <div id="main">
+    {% include 'alpha/header.html' %}
+    <div id="content">
+        <div id="resume-list-header">
+  	    	<div class="nav">
+     	    	<a href="#" class="on">我的收藏</a>
+        		<a href="#">我的购买</a>
+      		</div>
+    	</div>
+    <div id="pay-init">
+
+	<p class="intro">
+	    您好！请根据您的企业规模和招聘需求，选择最合适企业的简历套餐。
+	</p>
+
+  <div class="content">
+    <ul class="pay-init-choice clearfix">
+
+      <li>
+        <div class="choice">
+          <div class="header">
+            <h3>初创企业</h3>
+            <p><i class="ic ic-sec-pay ic-pay-rmb"></i>每年 <strong>399</strong> 元</p>
+          </div>
+          <div class="body">
+            <p>可订阅数量: <strong>8</strong></p>
+            <p>可下载分数: <strong>100</strong></p>
+          </div>
+        </div>
+      </li>
+
+       <li>
+        <div class="choice">
+          <div class="header">
+            <h3>初创企业</h3>
+            <p><i class="ic ic-sec-pay ic-pay-rmb"></i>每年 <strong>699</strong> 元</p>
+          </div>
+          <div class="body">
+            <p>可订阅数量: <strong>15</strong></p>
+            <p>可下载分数: <strong>200</strong></p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="choice">
+          <div class="header">
+            <h3>初创企业</h3>
+            <p><i class="ic ic-sec-pay ic-pay-rmb"></i>每年 <strong>1299</strong> 元</p>
+          </div>
+          <div class="body">
+            <p>可订阅数量: <strong>30</strong></p>
+            <p>可下载分数: <strong>350</strong></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <p class="action">
+      <a href="http://wpa.qq.com/msgrd?v=3&uin=64331963&site=qqmenu=yes" target="_blank">立即购买</a>
+    </p>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+  <script src="{{ STATIC_URL }}alpha/scripts/angular.min.js"></script>
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+  <script src="{{ STATIC_URL }}alpha/scripts/feed.js?46c44a3"></script>
+  {% include 'footer.html' %}
+</body>
+</html>
+
+

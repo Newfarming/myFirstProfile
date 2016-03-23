@@ -1,0 +1,16 @@
+div.select {
+	padding: 40px 0 15px 15px;
+}
+div.select input {
+	vertical-align: middle;
+	line-height: 100%;
+}
+.table {
+	table-layout: fixed;
+}
+.table tr.hover-layer {
+	cursor: pointer;
+}
+.table tr.hover-layer:hover td {
+	background: #F5FBFE;
+}

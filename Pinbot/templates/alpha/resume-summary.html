@@ -1,0 +1,176 @@
+{% load show_resume_tags %}
+
+<div id="resume-summary">
+
+  <div class="profile">
+    <ul>
+        {% if request.user.is_authenticated %}
+
+            {% if feed_id and user_buy_status != 'LookUp' %}
+                <a href="#" data-feed_id="{{feed_id}}" class="control-btn btn-resume-feedback-recommand btn-resume-feedback bd-trace i-delete-{{resume.id}}" id="feed-customize-delete" trace-title="不再推荐此人才">
+                  <span class="feed-back-sended-text"><i class="i-delete-notice">我们将不再为您推荐此人才</i></span>
+                  <span class="feed-back-default-text"></span>
+                </a>
+                <i class="i-delete-notice i-delete-delete-notice-{{resume.id}}" style="display: none;">我们将不再为您推荐此人才</i>
+                <i class="i-delete-hover i-delete-delete-hover-{{resume.id}}" style="display: none;">对该候选人不感兴趣？</i>
+            {% endif %}
+            {% if watch_status %}
+                <span class="control-btn control-btn-unfav fav-current">
+                  <a href="" class="btn-unfav bd-trace" id="feed-customize-cancel-fav" trace-title="取消收藏此简历"></a>
+                </span>
+                <a href="/resumes/add_watch/{{resume.id}}?feed_keywords={{feed_keywords}}&feed_id={{feed_id}}" class="control-btn control-btn-fav bd-trace btn-resume-fav i-fav-{{resume.id}}" id="feed-customize-add-fav"  trace-title="收藏此简历" ></a>
+                <i class="i-delete-hover i-fav-delete-hover-{{resume.id}}" style="width: 72px; display: none;">收藏此简历</i>
+            {% else %}
+                <span class="control-btn control-btn-unfav">
+                  <a href="" class="btn-unfav bd-trace" id="feed-customize-cancel-fav"  trace-title="取消收藏此简历"></a>
+                </span>
+                <a href="/resumes/add_watch/{{resume.id}}?feed_keywords={{feed_keywords}}&feed_id={{feed_id}}" class="control-btn control-btn-fav fav-current bd-trace btn-resume-fav i-fav-{{resume.id}}" id="feed-customize-add-fav"  trace-title="收藏此简历"></a>
+                <i class="i-delete-hover i-fav-delete-hover-{{resume.id}}" style="width: 72px; display: none;">收藏此简历</i>
+            {% endif %}
+
+        {% endif %}
+        {% if request.user.is_authenticated and not preview and not upload_resume %}
+            <a href="javascript:void(0);" class="save btn-download bd-trace i-download-{{resume.id}}" id="JS_down_to_local" trace-title="保存文本到本地"></a>
+            <i class="i-delete-hover i-download-delete-hover-{{resume.id}}" style="width: 72px; display: none;">保存文本到本地</i>
+            <script type="text/html" id="JS_download_local">
+                <p style="text-align:center; font-size:14px; color:#333;padding:30px 0;">
+                    请选择简历<strong>下载格式</strong>
+                </p>
+                <p style="text-align:center; padding:30px 0;" class="choose-down-type">
+                    <a href="{% url 'resume-download-resume' 'pdf' resume.id %}" target="_blank" title="PDF" class="btn btn-primary">PDF</a>
+                    <a href="{% url 'resume-download-resume' 'html' resume.id %}" target="_blank" title="HTML" class="btn btn-primary ml20">HTML</a>
+                </p>
+            </script>
+        {% endif %}
+        {% if user_buy_status == 'LookUp' and resume_buy_record.resume_mark|can_accu %}
+          {%if type_desc == '举报' %}
+          <!-- 已举报 -->
+            <a class="report report-red" title="举报信息">已举报</a>
+            {%if check_status == 'pass' or offical_feedback %}
+
+                {%if check_status == 'pass'%}
+                    <i class="i-report">{{ feedback_str }} {% if check_status == 'pass'%}（已返还<code>10</code>点）{%endif%}</i>
+                {%endif%}
+
+                {%if offical_feedback%}
+                    <br>
+                    <p class="global-back">
+                        <span class="reason">{{offical_feedback}}</span>
+                    </p>
+                {%endif%}
+
+            {%endif%}
+
+          {%else%}
+              {%if not type_desc %}
+              <!-- 未举报 -->
+              <a href="javascript:;" title="举报" id="JS_toreport_btn" class="report">举报</a>
+              {%endif%}
+          {%endif%}
+        {%endif%}
+      <li class="profile-basic-field {{ resume.gender }} c5e7c8b">
+        <!-- 改版展示 -->
+        {% if contact_info.name and contact_info.status != 'secret' %}
+        <p class="name">
+          {{contact_info.name}}
+        </p>
+        {% endif %}
+        <p class="job-title">
+            {% if resume.works %} {% with work=resume.works.0 %}
+            <span class="c44b5e8">{% autoescape off %}{{ work.position_title }}{% endautoescape %}</span>
+            {% endwith %} {% endif %}
+
+            {% if is_send_resume %}
+            <span class="source-tag cf46c62">[求职者投递]</span>
+            {% endif %}
+
+            {% if resume.source == 'talent_partner' and is_user_feed %}
+            <span class="source-tag cf46c62">[互助伙伴推荐]</span>
+            <i class="i-heart" id="JS_toggle_evaluate">
+                <span class="hr-evaluate">
+                    最近一次联系候选人：{{ resume.last_contact }}<br>
+                    {{ resume.hr_evaluate }}
+                </span>
+            </i>
+            {% endif %}
+        </p>
+        <p>
+            {{resume.gender}}
+            <span class="divide-14"></span>{{resume.age}}
+            {% if resume.educations %} {% with edu=resume.educations.0 %}
+            <span class="divide-14"></span>{{ edu.degree }} · {{ edu.school }}
+            {% endwith %} {% endif %}
+            {% if resume.address %}
+            <span class="divide-14"></span>现居：{{resume.address}}
+            {% endif %}
+            {% if resume.job_target.expectation_area %}
+            <span class="divide-14"></span>意向地：
+            {% for area in resume.job_target.expectation_area %}
+             {{ area }}
+            {% endfor %}
+            {% endif %}
+        </p>
+        <p>
+            {% if resume.work_years %}
+            <span class="c44b5e8">{{ resume.work_years }}</span>年经验
+            {% endif %}
+            {% if resume.job_target.salary %}
+            <span class="divide-14"></span>期望薪资：<span class="c44b5e8">{{resume.job_target.salary}}</span>
+            {% endif %}
+        </p>
+
+        {% if feed_result and feed_result.tags.company_type %}
+        <p class="type-tag">
+            {% for name in feed_result.tags.company_type %}
+            <span>{{ name }}</span>
+            {% endfor %}
+        </p>
+        {% endif %}
+
+        {% if contact_info.phone and contact_info.status != 'secret' or self_upload_resume %}
+        <p class="contact-info">
+            {% if contact_info.phone %}
+            电话：<span class="cf46c62">{{contact_info.phone}} </span>
+            {% endif %}
+
+            {% if contact_info.email %}
+            <span class="divide-14"></span>邮箱：<a href="mailto:{{contact_info.email}}" class="underline cf46c62">{{contact_info.email}} </a>
+            {% endif %}
+
+            {% if contact_info.qq and contact_info.qq != 'null' %}
+            <span class="divide-14"></span>QQ：<a href="tencent://message/?uin={{ contact_info.qq }}&Site=www.pinbot.me&Menu=yes" class="underline cf46c62">{{contact_info.qq}} </a></span>
+            {% endif %}
+
+            {%if request.user.is_staff == 1 %}
+            <span class="divide-14"></span>[管理员身份：{{request.user.username}}]</span>
+            {% endif %}
+
+        </p>
+        {% endif %}
+        <!-- end of 改版展示 -->
+      </li>
+
+      {%if request.user.is_staff == 1 %}
+          {%if has_feedback or comment_content != "" or offical_feedback %}
+          <!-- <li class="profile-tao-field"> -->
+              {% if feed_id and feed_id_match %}
+                  {% if comment_content != "" %}
+                  <p>{{comment_content}}</p>
+                  {% endif %}
+              {% endif %}
+                {%if offical_feedback or feedback_dict%}
+          {%if offical_feedback%}
+          <br>
+          <p class="global-back">
+              <span class="reason">{{offical_feedback}}</span>
+          </p>
+          {%endif%}
+
+          {%endif%}
+      <!-- </li> -->
+      {%endif%}
+      {%endif%}
+
+    </ul>
+  </div>
+</div>

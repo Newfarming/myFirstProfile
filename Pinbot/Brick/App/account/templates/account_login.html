@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block header %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}account/css/lr-common.min.css" />
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <h1 class="text-center masthead">
+        <strong class="c2c2c2c">登录</strong>
+        <span class="c607d8b">聘宝，为你量身推荐好工作</span>
+    </h1>
+</div>
+<div class="content">
+    <div class="inner-content apply-code">
+        <form id="loginForm" accept-charset="utf-8" accept-charset="utf-8" method="post" action="." autocomplete="off" novalidate="novalidate">
+            <div class="none first">
+                <span class="login_tip_info"></span>
+            </div>
+            <div class="none">
+                <span class="active_span"></span>
+            </div>
+            <div class="none">
+                <span class="active_send_resp"></span>
+            </div>
+            <div>
+                <input type="email" class="input" placeholder="请输入你的邮箱" name="username" id="id_username" maxlength="60" aria-required="true"/>
+            </div>
+            <div>
+                <input type="password" class="input" placeholder="请输入你的密码" name="password" id="id_password" maxlength="20" aria-required="true"/>
+            </div>
+            {% csrf_token %}
+            <p class="text-center forget-pwd">
+                <a id="forget_pwd" class="forget-pwd" href="{% url 'account-forget-password' %}">忘记密码？</a>
+            </p>
+            <div class="btn">
+                <button type="button" id="id_submit" class="button">获得职位推荐</button>
+            </div>
+            <div class="none">
+                <span class="result"></span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="content">
+    <div class="inner-content notice">
+        <p class="text-center">
+            没有帐号？<a id="get_apply_code" class="red-line" href="/">获得邀请码</a>
+        </p>
+        <p class="text-center">
+            已有邀请码？<a id="register" class="blue-line" href="{% url 'account-register' %}">激活</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}common/js/jquery.validate.js"></script>
+    <script src="{{ STATIC_URL }}common/js/jquery.form.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}account/login.min.js" ></script>
+{% endblock %}

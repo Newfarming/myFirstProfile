@@ -1,0 +1,91 @@
+{% extends 'base_upgrade.html' %}
+{% load utils_tag %}
+
+{% block header %}
+{{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}vip/vip.css" />
+{% endblock %}
+
+{% block upgrade_content %}
+    <div class="register welcome">
+        <div class="layout">
+            <div class="main">
+                <!--非聘宝套餐用户-->
+                <div class="header">
+                    <h1>请选择你的会员级别</h1>
+                </div>
+
+                <div class="price content">
+                    <div class="price-list">
+                        <p class="ps"><span><strong>注：</strong></span>10个聘点可下载一份简历</p>
+                        <ul class="clearfix">
+                            {% for vip in data %}
+                            <li class="price-list-1999">
+                                <div class="price-list-header" id="price-list-1999-header">
+                                    <h3><em class="vip_{{ vip.level }}">{{ vip.vip_name }}</em><strong>会员</strong></h3>
+                                </div>
+                                <div class="price-list-content">
+                                    <div class="price-resume-count">
+                                        <h4>简历下载</h3>
+                                        <p> <span class="price-fix-pos">每周可下载简历</span> <span><strong>{{ vip.pinbot_point|divide:10 }}</strong>份</span></p>
+                                    </div>
+                                    <div class="price-other-count">
+                                        <h4>专属定制</h4>
+                                        <p class="last-child"> <span>定制数量</span> <span><strong>{{ vip.feed_count }}</strong>个</span></p>
+                                        {% if vip.agreement %}
+                                        <p class="last-child other-detail">成为VIP会员还需签订纸质<a href="{% url 'vip-service-contact' vip.id %}" class="protocal">协议</a>
+                                        </p>
+                                        {% else %}
+                                        <p class="last-child placeholder">
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="btn_field">
+                                    <label class="price_tag">¥{{ vip.price }}元</label>
+                                    {% if not current_vip or current_vip.vip_role.level < vip.level %}
+                                    <a class="btn show_apply_btn" apply_url="{% url 'vip-apply-role' vip.id %}">申请</a>
+                                    {% endif %}
+                                     <label class="comment_tag">{{ vip.attract_info }}</label>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+    <div class="modal-backdrop-price fade in" style="display: none;"></div>
+    <div class="modal-price" id="myModal" tabindex="-1" style="display: none;">
+        <div class="modal-dialog-price" style="margin-top: 0px;">
+            <div class="modal-content-price">
+                <div class="modal-body-price price-standard">
+                    <i class="i-close"></i>
+                    <h2><i class="i-notice"></i>免费使用，入职付费</h2>
+                    <p>聘宝将为你免费推荐人才，入职后再按照以下标准收取费用</p>
+                    <p class="standard-tip"><i class="i-cube"></i>入职付费标准如下</p>
+                    <ul>
+                      <li><span>月薪 &lt; 5k</span><span><i class="cf46c62">900</i>元/人</span></li>
+                      <li><span>5k &le; 月薪 &lt; 20k</span><span><i class="cf46c62">2900</i>元/人</span></li>
+                      <li><span>20k &le; 月薪 &lt; 30k</span><span><i class="cf46c62">3900</i>元/人</span></li>
+                      <li><span>30k &le; 月薪</span><span><i class="cf46c62">29900</i>元/人</span></li>
+                    </ul>
+                    <p class="btn_field">
+                        <a class="apply_btn">我同意并继续申请</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+<script type="text/javascript" src="{{ STATIC_URL }}users/scripts/role_info_select.min.js?20150527"></script>
+{% endblock %}
+
+{% block footer_html %}
+{% include 'footer.html' %}
+{% endblock %}

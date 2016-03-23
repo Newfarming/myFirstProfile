@@ -1,0 +1,25 @@
+<div class="contant-info-edit" ng-show="isShowEditContact">
+    <form action="." name="contactForm" method="post" accept-charset="utf-8" id="contactForm" autocomplete="off">
+        <div class="form-box">
+            <input ng-model="contact.phone" name="phone" type="text" class="input" validator="phone" placeholder="手机"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="contact.email" name="email" type="text" class="input" validator="email" placeholder="职位接收邮箱"/>
+        </div>
+        <div class="form-box text-center btns-2">
+            <button class="button button-normal w30p" type="button" validation-submit="contactForm" ng-click="saveContactInfo()">保存</button>
+            <button class="button button-cancle w30p" ng-hide="isHideCancelBtn" type="button" ng-click="toggleEditContact( false )">取消</button>
+        </div>
+    </form>
+</div>
+<div class="person-profile-info" ng-show="!isShowEditContact">
+    <div class="form-box text-center">
+        <span class="info-text font-1">{- contact.phone -}</span>
+    </div>
+    <div class="form-box text-center">
+        <span class="info-text font-2">{- contact.email -}</span>
+    </div>
+    <div class="form-box text-center">
+        <button class="button button-normal w30p" ng-click="toggleEditContact( true )">修改</a>
+    </div>
+</div>

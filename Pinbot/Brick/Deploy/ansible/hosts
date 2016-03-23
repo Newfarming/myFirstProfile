@@ -1,0 +1,5 @@
+[test]
+test.pinbot.me ansible_ssh_user=test
+
+[brick]
+121.40.106.215 ansible_ssh_user=root

@@ -1,0 +1,46 @@
+
+
+
+{% if debug %}
+<script src="{{ STATIC_URL }}common/js/angular.1.3.6.js"></script>
+{% else %}
+<script src="{{ STATIC_URL }}common/js/angular.min.js"></script>
+{% endif %}
+
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+
+<script src="{{ STATIC_URL }}common/js/angular-ravenjs.js"></script>
+
+<script src="{{ STATIC_URL }}brick/utils/ng_config.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/filter.js"></script>
+<script>
+    (function() {
+
+        var service = angular.module('app.django', []);
+        // angular tmpl method
+        service.factory('tmpl', function() {
+            return function(template_path) {
+                var static_path = '{{ STATIC_URL }}';
+                return static_path + template_path;
+            }
+        });
+        // angular tmp static url
+        service.factory('static_url', function() {
+            var static_path = '{{ STATIC_URL }}';
+            return static_path;
+        });
+
+        // 清除非法字符串
+        service.factory('clean', function() {
+            return function(str,reg) {
+                if(typeof(str)!='string') return str;
+                var reg = new RegExp(reg,"ig");
+                return str.replace(reg,"");
+            }
+        });
+    })();
+
+
+
+</script>

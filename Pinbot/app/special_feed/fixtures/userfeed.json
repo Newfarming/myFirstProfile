@@ -1,0 +1,15 @@
+[
+{
+  "pk": 3209,
+  "model": "feed.userfeed",
+  "fields": {
+    "feed": 235725,
+    "is_deleted": false,
+    "user_charge_pkg": 1,
+    "delete_time": "2014-09-24T00:00:00",
+    "user": 907,
+    "expire_time": "2014-09-24T00:00:00",
+    "add_time": "2014-02-13T00:00:00"
+  }
+}
+]

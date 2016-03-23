@@ -1,0 +1,72 @@
+<p class="form-label text-center c607d8b experience">
+    <label for="JS_base_info" class="relative"><span class="simsun cf46c62">*</span>教育经历</label>
+    <span id="educations_experience_message"></span>
+</p>
+<div class="form-content pt10 long-info edu-info" ng-click="hideCitySelectList($event)">
+    <div class="display-list">
+        <div class="display-item" ng-repeat="item in experience track by $index" ng-if="isPreview(item)">
+            <p class="f14">{- item.start_time -} - {- item.end_time | endTime -}</p>
+            <p class="f16">{- item.school -} · {- item.degree -} · {- item.major -}</p>
+            <i class="sprite i-pen" ng-click="edit_item(item, $index)"></i>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="add-handle add-handle-title" ng-click="add_item()" ng-class="{'disabled': isOpenItem}">新增一条</a>
+    <ng-form name="eduForm" novalidate>
+        <div class="add-content" ng-if="isOpenItem">
+            <div class="mt30">
+                <p class="relative inline-block">
+                    <input type="text" name="school" id="JS_school" class="input w260" maxlength="60" message-id="school_message" ng-model="temp.school" placeholder="请输入学校名称" validator="school" validate-method="submit">
+                    <span id="school_message"></span>
+                </p>
+                <p class="relative inline-block ml115">
+                    <input type="text" name="major" id="JS_major" class="input w260" maxlength="20" message-id="major_message" ng-model="temp.major" placeholder="专业名称" validator="major" valid-method="submit">
+                    <span id="major_message"></span>
+                </p>
+            </div>
+            <div class="mt30">
+                <!-- <p class="relative inline-block">
+                    <select type="text" name="degree" id="JS_degree" class="select w260 JS_degree JS_degree_edu" message-id="edu_degree_message" ng-model="temp.degree" validator="degree" valid-method="submit">
+                        <option value="" class="first">最高学历（请选择）</option>
+                        <option value="专科">专科</option>
+                        <option value="本科">本科</option>
+                        <option value="硕士">硕士</option>
+                        <option value="博士">博士</option>
+                    </select>
+                    <i class="sprite i-arr-down i-arr-down-degree" ng-click="toggleSelectDegreeEdu()"></i>
+                    <span id="edu_degree_message"></span>
+                </p> -->
+
+                <div class="relative inline-block ml115 degreefix">
+                
+                    <div class="degree">
+                        <div class="degree-field noselect" ng-click="toggleDegree(showDegree)" ng-class="{searchDegreeInvalid: invalidShowDegree()}">
+                            {{selected_degree | syncDegreeEdu}} <i class="i-arr-down" ng-class="{'i-arr-up': showDegree}"></i>
+                        </div>
+                        <ul class="degree-list" ng-if="showDegree">
+                            <li ng-repeat="item in degree_list track by $index" ng-click="setDegree(item, $event)" ng-class="{selected: isSelected(item)}">
+                                {- item -}
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="degree" id="JS_degree" value="" class="JS_degree_edu" ng-model="temp.degree" 
+                    message-id="edu_degree_message" validator="degree" valid-method="submit">
+                    <span id="edu_degree_message"></span>
+                </div>
+
+                <p class="relative inline-block ml115 w260"></p>
+            </div>
+            <div class="calendar-wrapper mt30 clearfix">
+                <calendar-wrapper temp="temp" belong="belong"></calendar-wrapper>
+            </div>
+            <div class="mt30">
+                <p class="relative inline-block text-left w260">
+                    <a href="javascript:void(0)" class="btn btn-blue-90" ng-click="info_form.submit(eduForm)">保存</a>
+                    <a href="javascript:void(0)" class="btn btn-blue-hline-90" ng-click="cancelItem()">取消</a>
+                </p>
+                <p class="relative inline-block text-right w260 ml115">
+                    <a href="javascript:void(0)" class="btn btn-red-hline-90" ng-if="isDeleteShow" ng-click="deleteItem(temp)">删除本条</a>
+                </p>
+            </div>
+        </div>
+    </ng-form>
+</div>

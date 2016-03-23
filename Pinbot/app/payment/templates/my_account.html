@@ -1,0 +1,461 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+{% load utils_tag %}
+{% load point_tags %}
+{% load payment_tags %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}payment/css/new_payment.css" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block app %} ng-app="cashApp" ng-controller="cashCtrl" ng-cloak data-datas="{{ withdraw_data }}" id="JS_cash_body"{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with pay_class="curr" %}
+{% endblock %}
+
+{% block sub_header %}
+{% include 'payment_sub_nav.html' with pkg_on='on' %}
+{% endblock %}
+
+{% block content %}
+<h1 class="pay-head text-center">我的账户</h1>
+
+<p class="pay-info text-center c607d8b" ng-show="loadUserStatus">
+    <div class="side-bar-div info-box info-box-diy" style="display:none;">
+        <div class="half-div">
+            Hi, {{ request.user.username }}<span class=""></span><br>
+            当前角色：<span class="current-role c63c2ec">自助会员</span><br>
+            有效期：<span class="expired-time cf46c62"></span><br>
+            套餐内容：<span class="feed-count c63c2ec">0</span>个定制，<span class="pinbot-point c63c2ec">0</span>聘点<br>
+        </div>
+        <div class="half-div">
+            <a class="pb-btn pb-btn-default " href="javascript:void(0);" ng-click="layerTip($event)"><span>购买套餐</span></a>
+            <a class="pb-btn pb-btn-default bg47B5E8" href="{% url 'payment-point-recharge' %}"><span>购买聘点</span></a>
+        </div>
+    </div>
+
+    <div class="side-bar-div info-box info-box-vip" style="display:none;">
+        <div class="half-div">
+            Hi, {{ request.user.username }}<span class=""></span><br>
+            当前角色：<span class="current-role c63c2ec">省心会员</span><br>
+            套餐内容：<a href="/payment/my_package/" class="c63c2ec">查看详情</a><br>
+        </div>
+        <div class="half-div">
+            <a class="pb-btn pb-btn-single" href="/vip/role_info/#/usermode_noworry/"><span>购买套餐</span></a>
+        </div>
+    </div>
+
+    <div class="side-bar-div info-box info-box-guest" style="display:none;">
+        <div class="half-div">
+            Hi, {{ request.user.username }}<span class=""></span><br>
+            当前角色：<span class="current-role c63c2ec">体验型用户</span><br>
+            套餐内容：<span class="feed-count c63c2ec">1</span>个定制，<span class="pinbot-point c63c2ec">0</span>聘点<br>
+        </div>
+        <div class="half-div">
+            <a class="pb-btn pb-btn-single pb-btn-default " href="/vip/role_info/"><span>购买套餐</span></a>
+        </div>
+    </div>
+
+    <div class="side-bar-div info-box info-box-default" style="display:none;">
+     你的角色：<span class="user-type"></span><span class="my-package">(<a class="c63c2ec my-package-link" href="">我的套餐</a>)</span>；{% if is_partner %}
+    聘宝互助伙伴
+    {% else %}
+    <a href="{% url 'partner-home-page' %}" class="c45b5e9 underline">成为互助伙伴</a>
+    {% endif %}
+    </div>
+</p>
+<div class="pay-content mt50">
+    <div class="clearfix acc-tab" id="JS_toggle_account">
+        <a href="javascript:;" class="active">我的聘点</a>
+        <a href="javascript:;">我的金币</a>
+    </div>
+    <div class="acc-body">
+
+        <div class="acc-item clearfix">
+            {% with latest_base_pkg=charge_pkgs.0.resume_package base_pkg=charge_pkgs.0 %}
+            <div>
+                <p class="acc-title">我的聘点：<span class="cf46c62 f32">{% user_rest_point base_pkg pinbot_point %}</span> 点</p>
+                <a href="{% url 'payment-point-record' %}" class="c45b5e9 underline">查看详情</a>
+            </div>
+            <div>
+                <table class="pay-table" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>返还点数：</td>
+                        <td><span class="cf46c62">
+                            {% if base_pkg %}
+                            {{ base_pkg.re_points|default:0 }}
+                            {% endif %}
+
+                            {% if current_vip %}
+                            {{ user_point.return_point|default:0 }}
+                            {% endif %}
+                        </span> 点</td>
+                    </tr>
+                    <tr>
+                        <td>消费点数：</td>
+                        <td><span class="c45b5e9">{{ user_point.consume_point|default:0 }}</span> 点</td>
+                    </tr>
+                    <tr>
+                        <td>剩余定制数量：</td>
+                        <td><span class="c45b5e9">{{ rest_feed_count }}</span> 个</td>
+                    </tr>
+                </table>
+            </div>
+            {% endwith %}
+        </div>
+
+        <div class="acc-item none clearfix">
+            <div>
+                <p class="acc-title">我的金币：<span class="cf46c62 f32">{{ pinbot_point.coin|floatformat:"0" }}</span> 个</p>
+                <a href="{% url 'payment-coin-record' %}" class="c45b5e9 underline">查看详情</a><br><br>
+                <a href="{% url 'payment-coin-recharge' %}" class="c45b5e9 underline">我要充值</a><br><br>
+                <a href="javascript:;" class="cf46c62 underline" ng-click="showCashLayer()">我要提现</a>
+            </div>
+            <div>
+                <table class="pay-table" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>互助伙伴获得金币：</td>
+                        <td><span class="cf46c62">{{ coin_stat.partner_coin|floatformat:"0"|default:0 }}</span> 个</td>
+                    </tr>
+                    <tr>
+                        <td>推广伙伴获得金币：</td>
+                        <td><span class="cf46c62">{{ coin_stat.promotion_coin|floatformat:"0"|default:0}}</span> 个</td>
+                    </tr>
+                    <tr>
+                        <td>已兑换金币(消耗的金币)：</td>
+                        <td><span class="c45b5e9">{{ coin_stat.consume_coin|floatformat:"0"|default:0 }}</span> 个</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="default-modal-backdrop fade in" ng-if="isShowLayer"></div>
+<div class="default-modal" tabindex="-1" style="display: block;" id="JS_cash_layer" ng-if="isShowLayer">
+    <div class="default-modal-body" style="margin-top:-500px">
+
+        <!-- type: 1 -->
+        <div ng-if=" datas.type == 1 ">
+            <form name="Form1" id="Form1">
+                <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn" ng-click="toggleCashLayer( false )"></a></p>
+                <div style="font-size:20px;color:#434343;text-align:center;">
+                    <span style="display:inline-block;width:30px;height:30px;border:solid 2px #f46c62;color:#f46c62;border-radius:50%;line-height:30px;font-size:20px; text-align:center;">1</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入需要提现的金币数<br>
+                    <span style="color:#aaaaaa;font-size:12px; line-height:25px;margin-left:20px;">提取金额不高于您当前金币总数</span>
+                </div>
+                <div style="text-align:center;margin-top:20px; font-size:15px;color: #708a97;">
+                    <input type="number" class="input" style="width:100px;" validator="number" ng-model="form1.money" name="money" min="0" max="{- datas.coin -}">&nbsp;&nbsp;聘宝金币
+                </div>
+                <p style="font-size: 15px; text-align:center;padding:10px 0;color:#708a97;">可兑换 <span style="color:#f46c62;">{- datas.coin -}</span> 金币</p>
+                <p style="text-align:center;margin-top:20px;padding-bottom: 20px;">
+                    <a href="javascript:;" class="button button-primary w158 f16" ng-click="form1.submit( Form1.money )" ng-disabled=" !form1.checkValid(Form1) || ajaxing ">提现</a><br>
+                    <span style="color:#f46c62;margin-top:10px;display:inline-block;">{- tipMsg -}</span>
+                </p>
+            </form>
+        </div>
+
+        <!-- type: 2 -->
+        <div ng-if=" datas.type == 2 ">
+            <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn" ng-click="toggleCashLayer( false )"></a></p>
+            <div style="font-size:20px;color:#434343;text-align:center;"><span style="display:inline-block;width:30px;height:30px;border:solid 2px #f46c62;color:#f46c62;border-radius:50%;line-height:30px;font-size:20px; text-align:center;">2</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发送用户名给聘宝小助手</div>
+            <p style="text-align:center;margin-top:20px;color:#708a97;">请将<span style="color:#f46c62;">用户名</span>通过微信发送给小助手，小助手将在<span style="color:#f46c62;">两个工作日</span>内将现金返给用户！</p>
+            <p style="text-align:center;margin-top:20px;color:#708a97;">您本次提现：<span style="color:#f46c62;">{- datas.alreadyTakeOut -}</span> 金币 | 提现时间：{- datas.takeTime | date : 'yyyy-MM-dd HH:mm' -}</p>
+            <p style="text-align:center;margin-top:20px;padding-bottom: 20px;color:#708a97;">
+                <img src="{{ STATIC_URL }}payment/image/xzs.jpg" alt="" width="112" height="112"><br>
+                还不是小助手的好友？扫码添加~
+            </p>
+        </div>
+
+        <!-- type: 3 -->
+        <div ng-if=" datas.type == 3 ">
+            <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn" ng-click="toggleCashLayer( false )"></a></p>
+            <div style="font-size:20px;color:#434343;text-align:center;"><i class="i-l-notice"></i>您已申请提现</div>
+            <p style="text-align:center;margin-top:10px;color:#708a97;">
+                您已于{- datas.takeTime -}申请了提现，提现金额 <span style="color:#f46c62;">{- datas.alreadyTakeOut -}</span> 金币
+            </p>
+            <p style="text-align:center;margin-top:10px;color:#708a97;">
+                您需要发送用户名给<span style="color:#f46c62;">聘宝小助手</span>微信号，我们将在2个工作日内完成兑换!
+            </p>
+            <p style="text-align:center;margin-top:20px;padding-bottom: 20px;color:#708a97;">
+                <img src="{{ STATIC_URL }}payment/image/xzs.jpg" alt="" width="112" height="112"><br>
+                还不是小助手的好友？扫码添加~
+            </p>
+        </div>
+
+        <!-- type: 4 -->
+        <div ng-if=" datas.type == 4 ">
+            <form name="Form2" id="Form2">
+                <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn" ng-click="toggleCashLayer( false )"></a></p>
+                <div style="font-size:20px;color:#434343;text-align:center;"><i class="i-l-notice"></i>本次提现兑换失败！</div>
+                <p style="text-align:center;margin-top:10px;color:#708a97;">
+                    非常抱歉！<span style="color:#f46c62;">{- datas.reason -}</span>，本次提现兑换失败！
+                </p>
+                <div style="text-align:center;margin-top:20px; font-size:15px;color: #708a97;">
+                    <input type="number" class="input" style="width:100px;" validator="number" ng-model="form2.money" name="money" min="0" max="{- datas.coin -}">&nbsp;&nbsp;聘宝金币
+                </div>
+                <p style="font-size: 15px; text-align:center;padding:10px 0;color:#708a97;">可兑换 <span style="color:#f46c62;">{- datas.coin -}</span> 金币</p>
+                <p style="text-align:center;margin-top:20px;padding-bottom: 20px;">
+                    <a href="javascript:;" class="button button-primary w158 f16" ng-click="form2.submit( Form2.money )" ng-disabled=" !form2.checkValid(Form2) || ajaxing ">提现</a><br>
+                    <span style="color:#f46c62;margin-top:10px;display:inline-block;">{- tipMsg -}</span>
+                </p>
+            </form>
+        </div>
+
+        <!-- type: 5 -->
+        <div ng-if=" datas.type == 5 ">
+            <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn" ng-click="toggleCashLayer( false )"></a></p>
+            <div style="font-size:20px;color:#434343;text-align:center;"><img src="{{ STATIC_URL }}payment/image/right_32x32.png" width="32" height="32" alt="" style=" vertical-align: -8px;margin-right: 20px;">恭喜！您已提现成功！</div>
+            <p style="text-align:center;margin-top:10px;color:#708a97;">
+                您已于{- datas.takeTime -}申请了提现，提现金额 <span style="color:#f46c62;">{- datas.alreadyTakeOut -}</span> 金币
+            </p>
+            <p style="color:#f46c62;margin-top:10px;text-align:center;">每月仅允许提现一次，请您下月再来提取：）</p>
+            <p style="padding:20px; text-align:center;"><img src="{{ STATIC_URL }}payment/image/piggy_113x96.png" width="113" height="96" alt=""></p>
+            <p style="text-align:center; padding-bottom:40px;">
+                <a href="/partner/reco_task/" style="width: 160px; height: 46px; color:#fff; font-size:16px; text-align:center; display:inline-block; line-height:46px;background:#3DB2E7;" class="opa-btn">做任务，赚零花</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+    {% include 'angular.html' %}
+    {% include 'angular_validation.html' %}
+
+    <script>
+    (function() {
+        angular.module('validation.rule', ['validation'])
+            .config(['$validationProvider',
+                function($validationProvider) {
+
+                    var numReg = /^\d+$/;
+
+                    var expression = {
+                        number: numReg
+                    };
+
+                    var defaultMsg = {
+                        number: {
+                            error: ''
+                        }
+                    };
+
+                    $validationProvider.setExpression(expression).setDefaultMsg(defaultMsg);
+
+                }
+            ]);
+
+    }).call(this);
+
+
+        var app = angular.module( 'cashApp' , [ 'app.config' , 'validation', 'validation.rule'] );
+
+        var formatDate=function(format, ts) {
+            var tsDate = (ts != undefined && typeof ts == 'number') ? new Date(ts) : new Date();
+            var o = {
+                "M+": tsDate.getMonth() + 1,
+                "d+": tsDate.getDate(),
+                "h+": tsDate.getHours(),
+                "m+": tsDate.getMinutes(),
+                "s+": tsDate.getSeconds(),
+                "q+": Math.floor((tsDate.getMonth() + 3) / 3),
+                "S": tsDate.getMilliseconds()
+            };
+            if (/(y+)/.test(format) || /(Y+)/.test(format)) {
+                format = format.replace(RegExp.$1, (tsDate.getFullYear() + "").substr(4 - RegExp.$1.length));
+            }
+            for (var k in o) {
+                if (o.hasOwnProperty(k) && new RegExp("(" + k + ")").test(format)) {
+                    format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+                }
+            }
+            return format;
+        };
+
+        app.controller( 'cashCtrl' , [
+            '$scope',
+            '$http',
+            '$injector',
+            function( $scope , $http , $injector ){
+                $scope.isShowLayer = false;
+                $scope.datas = angular.fromJson( angular.element( $('#JS_cash_body') ).attr('data-datas') );
+                $scope.tipMsg = $scope.defaultTipMsg  = '每个用户每月仅允许成功提现一次';
+
+                $scope.loadUserStatus=false;
+                $scope.layerTip = function($event){
+                    //var trg = angular.element($event.currentTarget);
+                    $.confirm( '<p class="cf46c62 f16 fcenter" style="text-align:center; color:#">继续购买套餐会导致现有套餐（包括定制、聘点）失效！</p><p class="f16" style="text-align:center; color:#607d8b; padding-top:8px;">注:你可以在现有自助套餐基础上单独购买聘点套餐</p>', goOnBuy,buyPindin,'<p style="text-align:center;"><i class="i-ask"></i> <span>确认购买套餐</span></p>',
+                        {
+                            handlers: [
+                                {
+                                    title: '继续购买套餐',
+                                    eventType: 'click',
+                                    className: 'button button-primary main-color-btn w158 f16 bggrey',
+                                    event: function(){
+                                        $._LayerOut.close();
+                                        goOnBuy();
+                                    }
+                                },
+                                {
+                                    title: '购买聘点套餐',
+                                    eventType: 'click',
+                                    className: 'button button-primary red-btn w158 f16',
+                                    event: function(){
+                                        $._LayerOut.close();
+                                        buyPindin();
+                                    }
+                                }
+                            ]
+                        }
+                    );
+
+                    function goOnBuy(){
+                        window.location.href='/vip/role_info/';
+                    };
+                    function buyPindin(){
+                        window.location.href='{% url 'payment-point-recharge' %}';
+                    };
+                };
+                $http.get('/vip/get_user_info/', {
+                        cache: false
+                    }).success(function(data) {
+                        if(data.status!=undefined && data.status=='ok'){
+
+                            $('.info-box').css('display','none');
+                            //is_manual_service_user is_experience_user
+                            if(data.hasOwnProperty('user_type') && data.user_type=='manual'){
+                                //省心型
+                                $('.info-box-vip').css('display','block');
+                            }else{
+                                if(data.hasOwnProperty('user_type') && data.user_type=='self'){
+                                    //自助型
+                                    $('.info-box-diy').css('display','block');
+                                    $('.info-box-diy .current-role').text(data.user_status);
+                                    $('.info-box-diy .expired-time').text(formatDate('yyyy-MM-dd', data.expire_time['$date']));
+                                    $('.info-box-diy .feed-count').text(data.feed_count);
+                                    $('.info-box-diy .pinbot-point').text(data.self_pinbot_point);
+                                }else if(data.hasOwnProperty('user_type') && data.user_type=='experience'){
+                                    //体验型 expired-time
+                                    $('.info-box-guest').css('display','block');
+                                    $('.info-box-guest .feed-count').text(data.feed_count);
+                                }else{
+                                    //package 套餐
+                                    $('.info-box-default').css('display','block');
+                                }
+                            }
+                            //extra_common_param=renew_service
+
+                            $scope.loadUserStatus=true;
+                        }else{
+                            $.alert('<p class="alert-notice-center"><span>获取用户状态失败，请刷新再试！</span></p>');
+                        }
+                    }).error(function(data) {
+                        //$.alert('<p class="alert-notice">获取用户状态失败，请刷新再试！</p>');
+                    });
+
+                $scope.setLayerPosition = function(){
+
+                    var $dom = $('#JS_cash_layer').find('.default-modal-body'),
+                        height = $dom.height(),
+                        wHeight = $( window ).height();
+
+                    $dom.css({
+                        marginTop: ( wHeight - height ) / 2 + 'px'
+                    });
+
+                };
+
+                $scope.toggleCashLayer = function( bool ){
+                    $scope.isShowLayer = bool;
+                };
+
+                $scope.showCashLayer = function(){
+                    if( $scope.datas.type == 6 ){
+                        $.alert( '<p class="text-center" style="color:#708a97;font-size:16px;"><i class="i-l-notice"></i>' + $scope.datas.reason + '</p>' );
+                    }else{
+                        $scope.isShowLayer = true;
+                        setTimeout( function(){
+                            $scope.setLayerPosition();
+                        }, 0)
+                    };
+                };
+
+                // Injector
+                var $validationProvider = $injector.get('$validation');
+
+                $scope.form1 = $scope.form2 = {
+                    checkValid: $validationProvider.checkValid,
+                    submit: function( moneyModel ){
+                        if( $scope.ajaxing ) return false;
+                        $scope.ajaxing = true;
+                        var money = moneyModel.$modelValue;
+                        $http.post(
+                            '/vip/withdraw/',
+                            $.param( { money : money } )
+                        ).success(function( res ){
+                            if( res.status == 'ok' ){
+                                $scope.datas.alreadyTakeOut = money;
+                                $scope.datas.type = 2;
+                                $scope.datas.takeTime = new Date().getTime();
+                            }else{
+                                $scope.tipMsg = res.msg;
+                            };
+                            $scope.ajaxing = false;
+                        }).error(function(){
+                            $scope.ajaxing = false;
+                        });
+                    }
+                }
+
+            }
+        ]);
+
+        $(function(){
+
+            $('#JS_toggle_account a').on( 'click' , function(){
+                var $this = $( this ),
+                    index = $this.index();
+
+                $this.addClass('active').siblings().removeClass('active');
+                $('.acc-item').eq( index ).show().siblings().hide();
+            });
+
+            var loc=document.location.href.toString();
+            if(loc.match(/#mycoin/i)){
+                $('.acc-tab a:nth-child(2)').addClass('active').siblings().removeClass('active');
+                $('.acc-item').eq( 1 ).show().siblings().hide();
+            }
+
+            var bindComplaint = function(){
+                if( window.BizQQWPA ){
+                    BizQQWPA.addCustom({
+                        aty: '0',
+                        nameAccount: '800031490',
+                        selector: 'apply_vip'
+                    });
+                }else{
+                    setTimeout(function(){
+                        bindComplaint();
+                    } , 100);
+                };
+            };
+
+            bindComplaint();
+        });
+
+    </script>
+{% endcompress %}
+{% endblock %}

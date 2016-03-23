@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'manual-service-invalid' op_id %}">
+    {% csrf_token %}
+    <div id="div_id_pay_status" class="form-group">
+        <label class="control-label requiredField">
+        审核状态<span class="asteriskField">*</span>
+        </label>
+        <div class="controls ">
+            <select class="adminselectwidget form-control" id="id_service_status" name="operation">
+                <option value="1">已过期</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-block btn-sm">确定</button>
+</form>

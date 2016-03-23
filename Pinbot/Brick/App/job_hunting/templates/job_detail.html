@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load compress %}
+{% load job_tags %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}job_hunting/css/job.min.css?20150422" rel="stylesheet">
+{% endblock%}
+
+{% block body %}
+
+
+<div class="grey-bg" ng-app="job_detail">
+    <div class="content">
+        <div class="job-content relative" ng-controller="jobDetailCtrl">
+            <div>
+                <div>
+
+                    {% if pinbot_recommend %}
+                        <div class="relative text-right"><span class="pb-recommend">聘宝推荐</span></div>
+                    {% endif %}
+
+                    <div class="item-box">
+                        <h1>{{ title }} <span class="c0091fa">[{{ address }}]</span></h1>
+                        <p class="other-info">
+                            {% get_salary salary_low salary_high %}
+                            {% comment %}
+                            <!-- &nbsp;{- job.job__bind_job__work_year | filterYear -}
+                            &nbsp;{- job.job__bind_job__degree | filterDegree -} -->
+                            {% endcomment %}
+                        </p>
+                        <p class="job-desc-toggle" ng-click="toggleDetail()">职位详情</p>
+                        <div class="ng-hide" ng-show="showDetail">
+                            <p class="desc-title">职位描述</p>
+                            <div class="job-desc">{{ desc|linebreaks|safe }}</div>
+                            {% if skill_desc %}
+                                <p class="desc-title">岗位要求</p>
+                                <div class="skill-desc">{{ skill_desc|linebreaks|safe }}</div>
+                            {% endif %}
+                            <p class="job-desc-toggle" ng-click="toggleDetail()"><i class="i-slideup"></i></p>
+                        </div>
+                        <p class="job-title">{{ company_name }}</p>
+                        <p class="job-address">
+                            {% if company_stage %}<span>, {{ company_stage }}</span>{% endif %}
+                        </p>
+                        {% if company_category %}
+                            <p class="job-category">{{ company_category|show_category }}</p>
+                        {% endif %}
+                        {% if url %}
+                            <p class="job-url">
+                                <a href="{{ url }}" target="_blank" class="c0091fa">{{ url }}</a>
+                            </p>
+                        {% endif %}
+
+                        {% if job_welfare %}
+                            <div class="welfare">
+                                {% for i in job_welfare %}
+                                    <span>{{ i }}</span>
+                                {% endfor%}
+                            </div>
+                        {% endif %}
+                        {% if key_points %}<p class="key-points">{{ key_points }}</p>{% endif %}
+                    </div>
+
+                    {% if pinbot_recommend %}
+                    <p class="company-desc">聘宝推荐：“{{ pinbot_recommend }}”</p>
+                    {% endif %}
+
+                    {% if company_id %}
+                    <div class="panel-praise text-center" ng-class="{active: favour}">
+                        <p class="text-center">
+                            <a class="btn-praise" id="JS_praise_btn" data-company_id="{{ company_id }}" data-count="{{ company_favour_count }}" data-favour="{{has_favour}}" ng-click="praiseCompany( $event )">赞一下</a>
+                        </p>
+                        <p class="text-center text-overflow praise-count ng-hide" ng-show="count && count > 0" ng-bind="count"></p>
+                        <span class="tahoma add" id="JS_praised">+1</span>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+    {% compress js %}
+        <script src="{{ STATIC_URL }}job_hunting/job_detail.js"></script>
+    {% endcompress %}
+{% endblock %}

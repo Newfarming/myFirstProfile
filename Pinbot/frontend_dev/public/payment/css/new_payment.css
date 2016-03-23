@@ -1,0 +1,253 @@
+/* ------- start variables -------- */
+/* for test */
+/* main red button */
+/* sprite */
+/* z-index */
+/* main red button */
+/* main blue button */
+/* dark blue button */
+/* dark white button */
+/* main background color */
+/* main font color */
+/* main border color */
+/* main font family */
+/* main font size */
+/* ------- start variables -------- */
+/* ------- start mixins -------- */
+.no-space {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.clear-both {
+  clear: both;
+}
+.userSelectNone {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*
+content-box 在宽度和高度之外绘制元素的内边距和边框
+border-box 为元素设定的宽度和高度决定了元素的边框盒
+*/
+/*
+所有主流浏览器都不支持 appearance 属性
+ */
+.transition {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.transitionTransform {
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.modalBoxShadow {
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.btnBoxShadow {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+/* backface-visibility 属性定义当元素不面向屏幕时是否可见。 */
+/* ------- end mixins -------- */
+.underline {
+  text-decoration: underline;
+}
+.pay-head {
+  font-size: 24px;
+  color: #434343;
+  padding: 30px 0 0;
+}
+.pay-info {
+  font-size: 16px;
+  padding: 10px;
+}
+.mt50 {
+  margin-top: 50px !important;
+}
+.pay-content {
+  width: 680px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+/* account */
+.acc-tab {
+  border-bottom: solid 3px #607d8b;
+}
+.acc-tab a {
+  font-size: 14px;
+  color: #607d8b;
+  line-height: 36px;
+  padding: 0 28px;
+  display: inline-block;
+  float: left;
+}
+.acc-tab a.active {
+  background: #607d8b;
+  color: #fff;
+}
+.acc-body {
+  border: solid 1px #cfd8dc;
+  border-top: 0 none;
+  font-size: 14px;
+}
+.f32 {
+  font-size: 32px;
+}
+.acc-title {
+  padding: 10px 0;
+}
+.acc-item > div {
+  width: 40%;
+  float: left;
+  padding: 30px;
+}
+.acc-item > div:last-child {
+  border-left: solid 1px #cfd8dc;
+  margin-left: -1px;
+}
+/* pay-table */
+.pay-table td {
+  line-height: 25px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #607d8b;
+}
+.pay-table tr td:last-child {
+  text-align: right;
+}
+.recorad-tab a {
+  display: inline-block;
+  float: left;
+  height: 40px;
+  width: 120px;
+  color: #607d8b;
+}
+.recorad-tab a span {
+  border-right: solid 1px #607d8b;
+  display: inline-block;
+  width: 100%;
+  line-height: 20px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+.recorad-tab a:last-child span {
+  border: none;
+}
+.recorad-tab a.active {
+  background: #607d8b;
+  color: #fff;
+}
+.recorad-tab a.active span {
+  border: none;
+}
+.r-item {
+  display: none;
+}
+.r-item:first-child {
+  display: block;
+}
+.r-item table {
+  border: solid 1px #cfd8dc;
+}
+.r-item table td {
+  border-bottom: solid 1px #cfd8dc;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #607d8b;
+}
+.r-item table tr:nth-child(even) td,
+.r-item table tr:hover td {
+  background: #f7f7f7;
+}
+.r-page {
+  padding: 20px 0;
+}
+.r-page a {
+  display: inline-block;
+  margin: 0 2px;
+  color: #aaaaaa;
+}
+.r-page a.active,
+.r-page a:hover {
+  color: #607d8b;
+}
+.point-table {
+  border: solid 1px #cfd8dc;
+}
+.point-table th,
+.point-table td {
+  font-size: 14px;
+  text-align: center;
+  line-height: 25px;
+}
+.point-table th {
+  padding: 10px;
+  background: #607d8b;
+  color: #fff;
+  border: solid 1px #607d8b;
+}
+.point-table td {
+  padding: 20px 10px;
+  color: #607d8b;
+  border-bottom: solid 1px #cfd8dc;
+}
+.point-table tr:nth-child(even) td,
+.point-table tr:hover td {
+  background: #f7f7f7;
+}
+/* pagination */
+.pull-right {
+  text-align: right;
+}
+.pagination li {
+  display: inline-block;
+}
+.pagination li a {
+  display: inline-block;
+  margin: 0 2px;
+  color: #aaaaaa;
+}
+.pagination li a.active,
+.pagination li a:hover {
+  color: #607d8b;
+}
+/* modal */
+.default-modal-body {
+  width: 680px;
+  padding: 20px;
+  background: #fff;
+  margin: 30px auto;
+}
+.modal-header {
+  background-color: #fff !important;
+}
+.bggrey {
+  background-color: #607d8b !important;
+  border: 1px solid #607d8b !important;
+}
+.button.bggrey {
+  border: 1px solid #607d8b !important;
+}
+.bg47B5E8 {
+  background-color: #44b5e8 !important;
+  border: 1px solid #44b5e8 !important;
+}
+.i-ask {
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  background: url('/static/resume/images/sprite.png') no-repeat -373px -10px;
+  vertical-align: -10px;
+}

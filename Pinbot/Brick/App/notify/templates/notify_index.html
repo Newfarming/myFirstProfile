@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}notify/css/notify.min.css" rel="stylesheet">
+{% endblock%}
+
+{% block body %}
+
+<div class="content" ng-app="app.notify" ng-controller="notify">
+    <div class="notify-content">
+        <div class="notify-body">
+            <h1 class="text-center page-header">系统通知</h1>
+            <div class="category text-center">
+                <a ui-sref="all" ng-class="{active:activePage == 'all'}">全部通知</a>
+                <a ui-sref="unread" ng-class="{active:activePage == 'unread'}">未读通知<code class="ng-hide" ng-show="{{ has_unread }}"></code></a>
+                <a href ng-click="markAllRead()" class="ng-hide" ng-show="{{ has_unread }}">全部标为已读</a>
+            </div>
+            <div id="JS_notify_list" class="bootom-boder">
+                <p class="text-center ng-hide" ng-show="noRecord" style="color: #999;padding: 20px 0;">还没有收到任何通知哦！</p>
+                <div ui-view></div>
+                <p class="text-center" ng-show="loading"><img src="{{ STATIC_URL }}common/img/loading.gif" alt=""></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<script src="{{ STATIC_URL }}notify/notify_app.js"></script>
+{% endblock %}

@@ -1,0 +1,58 @@
+<div class="edit-form">
+            <div class="form-panel" ng-repeat="qtp in localData.questionTypes" ng-class="{'pt40':!$first}">
+                <div title="{-localData.question_types_zh_CN[$index]-}" class=""><p class="form-label alert-label-ok text-center c607d8b" ><label class="relative"><span class="info">{-localData.question_types_zh_CN[$index]-}</span></label></p></div>
+                <div class="user-asking" ng-repeat="ques in localData.questions[qtp]">
+                 <div class="one-asking" ng-if="ques.answer_type =='single_choies_or_text'||ques.answer_type =='single_choies'" >
+                    <div id='{-ques.question_id-}' ng-class="{'red':ques.wrong_show && posted}">{-ques.order-}、{-ques.question-}</div>
+                    <div class="wrong-tip" ng-show="ques.wrong_show && posted"><span>此项为必填项！</span><span class="arrow"><em></em></span></div>
+                    <div class="radio-line">
+                    <span class="one-select" ng-repeat="item in ques.answer_options" ng-click="singleSelect(ques,$index)" ng-class="{'active':item.selected}"><i class="i-radio sprite"></i><span class="word">{-item.name-}</span></span>
+                    </div>
+                    <div class="radio-line" ng-hide="ques.is_other_option == false">
+                      <span class="one-select" ng-click="singleSelect(ques,'other')" ng-class="{'active': ques.other_opinion_selected}"><i class="i-radio sprite"></i><span class="word">其它</span>
+                    </span><input type="text" placeholder="请输入" ng-hide="!ques.other_opinion_selected" class="other-text-radio" ng-keyup="actualtime(ques)" ng-model="ques.answer_word">
+                    </div>
+                  </div>
+                  <div class="one-asking" ng-if="(ques.answer_type ==('multi_choies'))||(ques.answer_type ==('multi_choies_or_text'))" >
+                    <div id='{-ques.question_id-}' ng-class="{'red':ques.wrong_show && posted} ">{-ques.order-}、{-ques.question-}</div>
+                    <div class="wrong-tip" ng-show="ques.wrong_show && posted"><span>此项为必填项！</span><span class="arrow"><em></em></span></div>
+                    <div class="radio-line">
+                    <span class="one-select" ng-repeat="item in ques.answer_options" ng-click="multiSelect(ques,$index)" ng-class="{'active':item.selected}"><i class="i-checkbox sprite"></i><span class="word">{-item.name-}</span></span>
+                    </div>
+                    <div class="radio-line" ng-hide="ques.is_other_option == false">
+                      <span class="one-select" ng-click="multiSelect(ques,'other')" ng-class="{'active': ques.other_opinion_selected}"><i class="i-checkbox sprite"></i><span class="word">其它</span></span>
+                      <input type="text" placeholder="请输入" class="other-text-checkbox" ng-hide="!ques.other_opinion_selected" ng-model="ques.answer_word" ng-keyup="actualtime(ques)">
+                    </div>
+                  </div>
+                 <div class="one-asking" ng-if="ques.answer_type ==('short_text')" >
+                    <div id='{-ques.question_id-}' ng-class="{'red':ques.wrong_show && posted}">{-ques.order-}、{-ques.question-}</div>
+                    <div class="wrong-tip" ng-show="ques.wrong_show && posted"><span>此项为必填项！</span><span class="arrow"><em></em></span></div>
+                    <div class="radio-line">
+                      <input type="text" class="long-text" placeholder="请输入" ng-model="ques.answer_word" ng-keyup="actualtime(ques)">
+                    </div>
+                 </div>
+                 <div class="one-asking" ng-if="ques.answer_type ==('address')" >
+                    <div id='{-ques.question_id-}' ng-class="{'red':ques.wrong_show && posted}">{-ques.order-}、{-ques.question-}</div>
+                    <div class="wrong-tip" ng-show="ques.wrong_show && posted"><span>此项为必填项！</span><span class="arrow"><em></em></span></div>
+                    <div class="radio-line">
+                    <input type="text" class="city" placeholder="请输入省份" ng-model="ques.answer_word[0]" ng-keyup="actualtime(ques)">
+                    <input type="text" class="city" placeholder="请输入城市" ng-model="ques.answer_word[1]" ng-keyup="actualtime(ques)">
+                    <input type="text" class="city" placeholder="请输入区域" ng-model="ques.answer_word[2]" ng-keyup="actualtime(ques)">
+                  </div>
+                 </div>
+                 <div class="one-asking" ng-if="ques.answer_type ==('long_text')">
+                    <div id='{-ques.question_id-}' ng-class="{'red':ques.wrong_show && posted}">{-ques.order-}、{-ques.question-}</div>
+                    <div class="wrong-tip" ng-show="ques.wrong_show && posted"><span>此项为必填项！</span><span class="arrow"><em></em></span></div>
+                    <div class="radio-line">
+                      <textarea  class="textarea-class" placeholder="完成问卷领取微信红包" ng-model="ques.answer_word" ng-keyup="actualtime(ques)"></textarea>
+                    </div>
+                 </div>
+
+                </div>
+            </div>
+            <div class="form-panel pt40 text-center">
+                <p class="bottom-word" ng-click="changeQR()">戳这里加入组织，我们等你很久了－</p>
+                <img class="lparter" src="/static/b_common/img/little_parter.jpg" ng-hide = "QRshow == false">
+                <button id="btn-save" ng-click="saveFolder()">提交</button>
+            </div>
+        </div>

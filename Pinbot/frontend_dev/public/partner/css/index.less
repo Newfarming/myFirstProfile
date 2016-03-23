@@ -1,0 +1,239 @@
+@import "../../../css/base";
+
+.noheadershadow #header{
+    .boxShadowWithVars(none);
+}
+.partner-banner img{
+    display: block;
+    width: 100%;
+}
+.regular{
+    background: @pb-bg-main-dark;
+    padding: 30px 0;
+    color: @pb-btn-blue;
+}
+.regular-title{
+    text-align: center;
+    position: relative;
+    color: #fff;
+    font-size: @font-size-24;
+}
+.regular-title:before,.regular-title:after{
+    position: absolute;
+    content: ' ';
+    top: 50%;
+    width: 36%;
+    height: 1px;
+    background: #fff;
+    overflow: hidden;
+}
+.regular-title:before{
+    left: 5%;
+}
+.regular-title:after{
+    right: 5%;
+}
+/*.regular ul{
+    width: 620px;
+    margin: 0 auto;
+}
+.regular ul li{
+    font-size: 16px;
+    padding: 10px;
+    line-height: 25px;
+}
+.regular ul li span.circle{
+    padding: 2px 8px;
+    color: #fff;
+    background: @pb-btn-blue;
+    .border-radius(50%);
+    margin-right: 20px;
+}
+.regular ul li span.circle code{
+    -webkit-transform: -webkit-translate( -5px , -6px );
+    transform: translate( -5px , -6px );
+    display: inline-block;
+    font-family: arial;
+}*/
+.regular table {
+    color: #fff;
+    margin: 20px auto 0;
+    text-align: center;
+    font-size: @font-size-16;
+}
+.regular table tr td {
+    border: 1px solid @pb-btn-dark-bule;
+    height: 46px;
+    line-height: 46px;
+    width: 120px;
+}
+.regular table tr.pre-bottom-row td {
+    border-bottom: 0;
+}
+.regular table tr td.state {
+    border: 1px solid #ddd;
+    background: @pb-btn-dark-bule;
+    font-size: @font-size-18;
+}
+.regular table tr td.state-2 {
+    background: #526874;
+}
+.regular table tr td.state-3 {
+    background: #485a65;
+}
+.regular table tr td.state-4 {
+    background: #3e4c56;
+}
+.regular table tr td.border-none {
+    border: 0;
+}
+.regular table tr td.level {
+    text-align: left;
+    padding-left: 20px;
+    .boxSizingWithVars(border-box);
+}
+.f13 {
+    font-size: @font-size-13;
+}
+.cf46c62 {
+    color: @pb-btn-red;
+}
+.cfff{
+    color: #fff;
+}
+.panel{
+    padding: 30px 0;
+    color: @pb-btn-dark-bule;
+}
+.panel-title{
+    color: @pb-btn-dark-bule;
+    text-align: center;
+    position: relative;
+    font-size: @font-size-24;
+}
+.panel-title:before,.panel-title:after{
+    position: absolute;
+    content: ' ';
+    top: 50%;
+    width: 36%;
+    height: 1px;
+    background: @pb-bg-main-light;
+    overflow: hidden;
+}
+.panel-title:before{
+    left: 5%;
+}
+.panel-title:after{
+    right: 5%;
+}
+.panel ul{
+    margin: 0 auto;
+}
+.w790{
+    width: 790px;
+}
+.i-p-question,.i-p-pen,.i-p-money,.i-p-time{
+    display: inline-block;
+    background: url(/static/partner/images/icon.png?20150626) no-repeat;
+    width: 90px;
+    height: 88px;
+    margin-right: 45px;
+    vertical-align: middle;
+}
+.i-p-question{
+    background-position: 0 0;
+}
+.i-p-pen{
+    background-position: 0 -88px;
+}
+.i-p-money{
+    background-position: 0 -177px;
+}
+.i-p-time{
+    background-position: 0 -265px;
+}
+.partner-profile li{
+    font-size: @font-size-22;
+    line-height: 25px;
+    padding: 20px 0;
+}
+
+/* tast-steps */
+.task-steps{
+    width: 640px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.task-steps li{
+    display: inline-block;
+    width: 180px;
+    text-align: center;
+    color: @pb-btn-dark-bule;
+    float: left;
+    font-size: @font-size-14;
+    position: relative;
+    margin: 0 16px;
+}
+.task-steps li i{
+    margin-bottom: 10px;
+}
+.task-steps li:after{
+    position: absolute;
+    content: ' ';
+    right: -35px;
+    top: 50%;
+    margin-top: -25px;
+    width: 50px;
+    height: 50px;
+    background: url(/static/partner/images/task_icon.png) -200px 0 no-repeat;
+}
+.task-steps li:last-child:after{
+    display: none;
+}
+.p-icon{
+    background: url(/static/partner/images/task_icon.png) no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+}
+.i-book{
+    background-position: -100px 0;
+}
+.i-upload{
+    background-position: -50px 0;
+}
+.i-coins{
+    background-position: 0 0;
+}
+
+
+/* home-foot */
+.home-foot{
+    padding: 30px 0 90px;
+    color: @pb-btn-dark-bule;
+    font-size: @font-size-14;
+}
+.more-task{
+    display: inline-block;
+    font-size: 18px;
+    background: @pb-btn-red;
+    color: #ffffff;
+    width: 240px;
+    line-height: 60px;
+    text-align: center;
+}
+
+/* 0618 */
+.ccfd8dc{
+    color: @pb-bg-main-light;
+}
+.c44b5e8{
+    color: @pb-btn-blue;
+}
+.cf46c62{
+    color: @pb-btn-red;
+}
+.mt30 {
+    margin-top: 30px;
+}

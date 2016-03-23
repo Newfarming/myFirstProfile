@@ -1,0 +1,476 @@
+{% extends 'base_crm.html' %}
+{% load compress %}
+{% load candidate_tags %}
+{% block content %}
+<style>
+    /* adapted from http://maxwells.github.io/bootstrap-tags.html */
+    .tag {
+      font-size: 14px;
+      padding: .3em .4em .4em;
+      margin: 0 .1em;
+    }
+    .tag a {
+      color: #bbb;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .tag a:hover {
+      opacity: 1.0
+    }
+    .tag .remove {
+      vertical-align: bottom;
+      top: 0;
+    }
+    .tag a {
+      margin: 0 0 0 .3em;
+    }
+    .tag a .fa-black {
+      color: #000;
+      margin-bottom: 2px;
+    }
+</style>
+<div class="box box-solid">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <input id="resume_id" type="hidden" value="{{ resume_info.id }}">
+                <div class="lead">
+                    <i class="fa fa-user fa-black"></i>
+                    <a href="/resumes/display/{{ resume_info.id }}/" target="_blank">{{ resume_info.name }}</a>
+                    <div>电话：{{ contract.phone }} </div>
+                    <div>邮箱：{{ contract.email }}</div>
+                    <span class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                      <span id="show_job_status" class="btn bg-light-blue disabled color-palette btn-flat">{{ resume_info.job_target.hunting_status|default:'未知' }}</span>
+                    </a>
+                    <ul id="sleect_job_status" class="dropdown-menu">
+                        <li><a href="">求职(已离职)</a></li>
+                        <li><a href="">观望(仍在职)</a></li>
+                        <li><a href="">稳定(仍在职)</a></li>
+                    </ul>
+                    {% if resume_info.admin %}
+                    操作: {{ resume_info.admin }} 时间: {{ resume_info.admin_time|date:'Y-m-d H:i' }}
+                    {% endif %}
+                  </span>
+                </div>
+                {{ resume_info.job_career }}
+                <br><br>
+                <span> {{ resume_info.gender }}  | {{ resume_info.age }}岁 |{{ resume_info.education }} | 现居：{{ resume_info.address }} | 意向地：{{ resume_info.job_location }}</span>
+                <br><br>
+                {{ resume_info.work_years }}年经验 | 期望薪资：{{ resume_info.job_salary }}
+                <br><br>
+                <div class="candidate_tags_block">
+                    {% for tag in candidate_tags%}
+                        <span class="tag label label-default">
+                            <span>{{ tag.name }}</span>
+                            <a data-id="{{ tag.id }}" data-name="{{ tag.name }}">
+                                <i class="fa fa-close fa-black"></i>
+                            </a>
+                        </span>
+                    {%endfor%}
+
+                <a class="btn btn-social-icon" data-toggle="modal" data-target="#add_tag"><i class="fa fa-plus"></i></a>
+                </div>
+                <div class=" pull-right">
+                    <p class="text-muted">简历来源：{{ resume_info.source|get_candidate_cn }}</p>
+                    <p class="text-muted pull-right">最近操作时间：{{ candidate_info.update_time }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab">评价信息(<span id="feed_result_list_count">{{ contract.candidate.candidate_remarks.all|length }}</span>)</a></li>
+                <li><a href="#tab_download_records" data-toggle="tab">下载历史({{ download_records|length }})</a></li>
+                <li><a href="#tab_2" data-toggle="tab">候选人推荐历史({{ feed_results_list|length }})</a></li>
+                <li><a href="#tab_reco_feed" data-toggle="tab">系统推荐匹配({{ reco_feed_results|length }})</a></li>
+                <li><a href="#tab_3" data-toggle="tab" >举报信息({{ feedbacks|length }})</a></li>
+                <li><a href="#tab_4" data-toggle="tab">企业名片({{ contract.candidate.send_records.all|length }})</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <button class="btn bg-default btn-flat margin" data-toggle="modal" data-target="#remarkModal" data-contact_id="{{ contract.id }}">
+                        <i class="fa fa-plus"></i> 新增评价</button>
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table id="tab_add_comment" class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th width="10%">
+                                        评价时间
+                                    </th>
+                                    <th width="10%">
+                                        类型
+                                    </th>
+                                    <th width="50%">
+                                        评价详情
+                                    </th>
+                                    <th width="10%">
+                                        评价人
+                                    </th>
+                                    <th width="10%">
+                                        操作
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {%for tag in contract.candidate.candidate_remarks.all reversed%}
+                                    <tr>
+                                        <td>
+                                            {{ tag.remark_time }}
+                                        </td>
+                                        <td>
+                                            <span class="label label-default btn-flat ">{{ tag.remark_type|get_remark_type_cn }}</span>
+                                        </td>
+                                        <td style="width: 200px; word-break: break-all;">
+                                            {{ tag.desc|escape|linebreaks }}
+                                        </td>
+                                        <td>
+                                            {{ tag.admin }}
+                                        </td>
+                                        <td>
+                                            <button remark_id="{{ tag.id }}" class="btn btn-block btn-info btn-xs delete_remark">删除</button>
+                                        </td>
+                                    </tr>
+                                {%endfor%}
+                                </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab_download_records">
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        下载时间
+                                    </th>
+                                    <th>
+                                        下载人
+                                    </th>
+                                    <th>
+                                        公司名称
+                                    </th>
+                                    <th>
+                                        职位
+                                    </th>
+                                    <th>
+                                        当前状态
+                                    </th>
+                                    <th>
+                                        标记历史
+                                    </th>
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for record in download_records %}
+                                <tr>
+                                    <td>
+                                        {{ record.op_time|date:'Y-m-d H:i' }}
+                                    </td>
+                                    <td>
+                                        {{ record.user.username }}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'crm-company-detail' record.user.id %}" target="_blank">
+                                            {{ record.user.first_name }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {% if record.job %}
+                                        <a href="{% url 'crm-job-detail' record.job.id %}" target="_blank">
+                                            {{ record.job.title }}
+                                        </a>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {{ record.resume_mark.current_mark.name|default:'无' }}
+                                    </td>
+                                    <td>
+                                        {% for log in record.resume_mark.mark_logs.all reversed %}
+                                        {{ log.mark_time|date:'Y-m-d H:i' }}, {{ log.user.username}}, {{ log.mark.name }}, {{ log.desc }} <br>
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% if not record.resume_mark.current_mark.is_taking_work %}
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#addMarkModal" data-contact_id="{{ record.id }}">标记</button>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab_2">
+                    <button class="btn bg-default btn-flat margin" href="javascript:void(0);" data-toggle="modal" data-target="#addFeedModal" data-contact_id="{{  resume_info.id  }}" data-contact_info="">加入定制</button>
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        推荐时间
+                                    </th>
+                                    <th>
+                                        推荐人
+                                    </th>
+                                    <th>
+                                        公司名称
+                                    </th>
+                                    <th>
+                                        职位
+                                    </th>
+                                    <th>
+                                        查看
+                                    </th>
+                                    <th>
+                                        下载
+                                    </th>
+                                    <th>
+                                        进入面试
+                                    </th>
+                                    <th>
+                                        入职
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for feed_result in feed_results_list reversed%}
+                                <tr>
+                                    <td>
+                                        {{ feed_result.pub_time }}
+                                    </td>
+                                    <td>
+                                        {{ feed_result.admin }}
+                                    </td>
+                                    <td>
+                                        {{ feed_result.company_name }}
+                                    </td>
+                                    <td>
+                                        {{ feed_result.job }}
+                                    </td>
+                                    <td>
+                                        {%if feed_result.is_clicked%}
+                                        <span class="btn btn-social-icon"><i class="fa fa-check"></i></span>
+                                        {%endif%}
+                                    </td>
+                                    <td>
+                                        {%if feed_result.is_down%}
+                                        <span class="btn btn-social-icon"><i class="fa fa-check"></i></span>
+                                        {%endif%}
+                                    </td>
+                                    <td>
+                                        {%if feed_result.is_interview%}
+                                        <span class="btn btn-social-icon"><i class="fa fa-check"></i></span>
+                                        {%endif%}
+                                    </td>
+                                    <td>
+                                        {%if feed_result.is_enter%}
+                                        <span class="btn btn-social-icon"><i class="fa fa-check"></i></span>
+                                        {%endif%}
+                                    </td>
+                                </tr>
+                                {%endfor%}
+
+                                </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab_reco_feed">
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        计算时间
+                                    </th>
+                                    <th>
+                                        推荐人
+                                    </th>
+                                    <th>
+                                        公司名称
+                                    </th>
+                                    <th>
+                                        职位
+                                    </th>
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for feed_result in reco_feed_results %}
+                                <tr>
+                                    <td>
+                                        {{ feed_result.calc_time }}
+                                    </td>
+                                    <td>
+                                        {{ feed_result.admin }}
+                                    </td>
+                                    <td>
+                                        {{ feed_result.company_name }}
+                                    </td>
+                                    <td>
+                                        {{ feed_result.feed.title|default:feed_result.feed.keywords }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary pub_feed_btn" data-display_time="{% now 'Y-m-d' %}" data-resume_ids[]="{{ resume_info.id }}" data-feed_id="{{ feed_result.feed.id }}" data-api_url="/special_feed/publish_feed/" data-method="post" data-confirm_msg="确定要发布">发布</button>
+                                        <button type="button" class="btn btn-danger block_feed_btn" data-feed_id="{{ feed_result.feed.id }}" data-resume_id="{{ resume_info.id }}" data-reco_index="-150" data-api_url="/feed/modify_feed_result/" data-method="get" data-confirm_msg="确定要屏蔽">屏蔽</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab_3">
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        举报时间
+                                    </th>
+                                    <th>
+                                        举报人
+                                    </th>
+                                    <th>
+                                        举报理由
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for feedback in feedbacks reversed%}
+                                <tr>
+                                    <td>
+                                        {{ feedback.create_time }}
+                                    </td>
+                                    <td>
+                                        {{ feedback.user.first_name }}
+                                    </td>
+                                    <td>
+                                        {{ feedback.feedback_info }}
+                                    </td>
+                                </tr>
+                                {%endfor%}
+                                </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab_4">
+                    <button class="btn bg-default btn-flat margin" href="javascript:void(0)" data-toggle="modal" data-target="#sendCardModal" data-email="{{  contract.email  }}" data-contact_id="{{  contract.id  }}">发送企业名片</button>
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        发送时间
+                                    </th>
+                                    <th>
+                                        公司名称
+                                    </th>
+                                    <th>
+                                        职位
+                                    </th>
+                                    <th>
+                                        状态
+                                    </th>
+                                    <th>
+                                        操作人
+                                    </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {%for companycard in contract.candidate.send_records.all %}
+                                <tr>
+                                    <td>
+                                        {{ companycard.send_time }}
+                                    </td>
+                                    <td>
+                                        {{ companycard.job.user.first_name }}
+                                    </td>
+                                    <td>
+                                        {{ companycard.job.title | default:companycard.job.keywords }}
+                                    </td>
+                                    <td>
+                                        {{ companycard.get_status_display }}
+                                    </td>
+                                    <td>
+                                        {{ companycard.operator.username }}
+                                    </td>
+
+                                </tr>
+                                {%endfor%}
+                                </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+    <!-- /.col --!-->
+</div>
+<script src="{{ STATIC_URL }}crm/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+{% include "candidate/modal/add_tag.html" %}
+{% include "candidate/modal/add_comment.html" %}
+{% include "candidate/modal/add_feed.html" %}
+{% include "candidate/modal/send_company_card.html" %}
+{% include "candidate/modal/add_mark.html" %}
+{% compress js %}
+<script src="{{ STATIC_URL }}crm/js/common.js"></script>
+
+{% endcompress %}
+{%endblock %}

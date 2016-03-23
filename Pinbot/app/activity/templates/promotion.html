@@ -1,0 +1,117 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>聘宝江湖 2016聘宝新春钜献</title>
+        <meta name="keywords" content="聘宝江湖 2016聘宝新春钜献" />
+        <meta name="description" content="聘宝江湖 2016聘宝新春钜献">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="renderer" content="webkit">
+        <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+        <link rel="stylesheet" href="{{ STATIC_URL }}activity/qixi2015/css/normalize.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}activity/promotion/css/promotion.css">
+    </head>
+    <body>
+        <!--[if lt IE 9]>
+            <script>alert('您的浏览器版本过低，请升级！')</script>
+            <p class="browserupgrade">您的浏览器版本<strong>过低</strong>，请<a rel="nofollow" href="http://browsehappy.com/">升级</a>！</p>
+        <![endif]-->
+        <div class="wrap">
+            <div class="promotion-head"></div>
+            <div class="promotion-time middle-content" start-time="{{ now_time }}">
+                <h3>距离结束时间还有：</h3>
+                <div id="countdown_dashboard" class="clearfix">
+                    <div class="dash days_dash clearfix">
+                        <div class="digit">0</div>
+                        <div class="digit">0</div>
+                        <span class="dash_title">天</span>
+                    </div>
+                    <div class="colon"></div>
+                    <div class="dash hours_dash clearfix">
+                        <div class="digit">0</div>
+                        <div class="digit">0</div>
+                        <span class="dash_title">小时</span>
+                    </div>
+                    <div class="colon">:</div>
+                    <div class="dash minutes_dash clearfix">
+                        <div class="digit">0</div>
+                        <div class="digit">0</div>
+                        <span class="dash_title">分</span>
+                    </div>
+                    <div class="colon">:</div>
+                    <div class="dash seconds_dash clearfix">
+                        <div class="digit">0</div>
+                        <div class="digit">0</div>
+                        <span class="dash_title">秒</span>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-content">
+                <div class="yellow-border lead-word">
+                    <p>新一年招聘计划即将开启，你还在苦恼？<br>职位定制数量不够用？<br>简历下载次数使用不合理？<br>多次申请招聘经费劳心费力？<br>2016聘宝招聘套餐全面升级，推出年度套餐，一次性满足你所有需求，<span>限时八折起</span></p>
+                </div>
+                <div class="yellow-border save-worry">
+                    <p>预存<big>￥40000</big></p>
+                    <p>享全年省心型套餐<span>8折</span>优惠</p>
+                </div>
+                <div class="yellow-border self">
+                    <div class="self-public">
+                        <h3>更多职位定制</h3>
+                        <p>较季度套餐增加<span>3倍以上</span>职位定制数</p>
+                    </div>
+                    <div class="self-public"`>
+                        <h3>更多简历下载</h3>
+                        <p><span>350份</span>以上简历下载数全年集中使用</p>
+                    </div>
+                    <div class="self-public">
+                        <h3>更多价格优惠</h3>
+                        <p>全年仅需付费一次，<span>9折</span>优惠限时开售</p>
+                    </div>
+                    <div class="packages clearfix">
+                        <div>
+                            <p class="old-price"><del>原价：￥5500</del></p>
+                            <p class="now-price">￥<big>4950</big></p>
+                            <p class="feed-resume"><span>10 </span>个定制</p>
+                            <p class="feed-resume"><span>350 </span>份简历</p>
+                            <p class="packages-sort">A+</p>
+                        </div>
+                        <div>
+                            <p class="old-price"><del>原价：￥6800</del></p>
+                            <p class="now-price">￥<big>6120</big></p>
+                            <p class="feed-resume"><span>20 </span>个定制</p>
+                            <p class="feed-resume"`><span>450 </span>份简历</p>
+                            <p class="packages-sort">B+</p>
+                        </div>
+                        <div>
+                            <p class="old-price"><del>原价：￥9000</del></p>
+                            <p class="now-price">￥<big>8100</big></p>
+                            <p class="feed-resume"><span>35 </span>个定制</p>
+                            <p class="feed-resume"><span>550 </span>份简历</p>
+                            <p class="packages-sort">C+</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="promotion-bottom">
+                    <p><span>*</span> 本活动时间为2016年1月8日至31日；</p>
+                    <p><span>*</span> 已购买季度套餐用户若再购买年度套餐，年度套餐生效时间为季度套餐合约结束后；</p>
+                    <p><span>*</span> 本活动最终解释权归聘宝所有。</p>
+                    <p class="publish">Copyright © 2013 - 2016 HopperClouds, Inc</p>
+                </div>
+            </div>
+        </div>
+
+
+{% if debug %}{% else %}
+{% include 'baidu_tj.html' %}
+{% endif %}
+    <script src="/static/common/js/pb.common.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}activity/promotion/js/time.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}activity/promotion/js/promotion.js"></script>
+    </body>
+</html>

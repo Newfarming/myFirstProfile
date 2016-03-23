@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Pinbot分析统计</title>
+	<link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="{{ STATIC_URL }}statis/js/enhance.js"></script>		
+	<script type="text/javascript">
+		// Run capabilities test
+		enhance({
+			loadScripts: [
+				'{{ STATIC_URL }}statis/js/excanvas.js',
+				'{{ STATIC_URL }}statis/js/jquery.min.js',
+				'{{ STATIC_URL }}statis/js/visualize.jQuery.js',
+				'{{ STATIC_URL }}statis/js/manual_reco.js'
+			],
+			loadStyles: [
+				'{{ STATIC_URL }}statis/css/visualize.css',
+				'{{ STATIC_URL }}statis/css/visualize-light.css'
+			]	
+		});   
+    </script>
+</head>
+<body>
+
+
+
+<table>
+	<a href="/statis/get_all_keywords">获取所有搜索关键字 </a>	|
+	<a href="/statis/data">用户访问统计</a>|
+	<a href="/statis/manual_reco?days=1">推荐数量统计</a>|
+	 
+	<a href="/statis/manual_reco?days=1">一天内</a>|
+	<a href="/statis/manual_reco?days=7">一周内</a>|
+	<a href="/statis/manual_reco?days=14">两周内</a>|
+	<a href="/statis/manual_reco?days=30">一月内</a>|
+	<a href="/">Pinbot首页</a>
+	<caption>Pinbot分析页面统计数据{{total_count}}</caption>
+	<thead>
+		<tr>
+			<td>人员\统计类型</td>
+			{%for statis_type in statis_keys_list%}
+				<th scope="col">{{statis_type}}</th>
+			{%endfor%}
+			<th scope="col">推荐总数</th>
+			<!--  
+			<th scope="col">订阅数</th>
+			
+			<th scope="col">已读推荐数</th>
+			<th scope="col">计算总数</th>
+			
+			
+			<th scope="col">最近访问</th>
+			
+			-->
+		</tr>
+	</thead>
+	<tbody>
+		
+			{%for username,total_count,access_list in statistic_res_list%}
+				<tr>
+					<th scope="row" class="row1"><a href="/statis/access?username={{username}}" target="blank">{{username}}</a></th>
+					<td>{{total_count}}</td>
+					<!--  
+					{%for cnt in access_list%}
+					   
+					   {%if forloop.last%}
+					        <td>{{cnt|date:"Y-m-d  H:i"}}|<a href="/statis/access?username={{username}}&id={{forloop.counter}}" target="blank">详情</a> 
+					   {% elif forloop.counter = 10%}
+					        <td><a href="/statis/user_feeds?username={{username}}&id={{forloop.counter}}" target="blank">{{cnt}}</a>
+					   {% elif forloop.counter = 11%}
+					 
+					           <td style="color:red">{{cnt}}
+	 
+					   {%else%}
+						   <td>{{cnt}} 
+					   {%endif%}
+					   </td>
+					{%endfor%}
+				   -->
+				</tr>
+			{%endfor%}
+		
+		
+	</tbody>
+	
+	
+</table>
+
+
+</body>
+</html>

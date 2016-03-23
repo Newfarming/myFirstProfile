@@ -1,0 +1,28 @@
+.content {
+    text-align: center;
+}
+.content h1 {
+    color: #434343;
+    padding: 40px 0;
+}
+.content table {
+    width: 100%;
+    font-size: 16px;
+    text-align: left;
+    border: 1px solid #cfd8dd;
+}
+.content table thead th {
+    color: #44b5e8;
+    border: 1px solid #cfd8dd;
+    padding: 10px;
+}
+.content table tbody tr td {
+    border: 1px solid #cfd8dd;
+    padding: 10px;
+}
+.content .pagi {
+    padding: 30px 0;
+}
+.content .pagi .button {
+    border: 1px solid #44b5e8;
+}

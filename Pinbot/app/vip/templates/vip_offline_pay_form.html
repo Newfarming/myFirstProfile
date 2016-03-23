@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'vip-offline-pay-success' op_id %}">
+    {% csrf_token %}
+    <div id="div_id_pay_status" class="form-group">
+        <label for="id_pay_status" class="control-label  requiredField">
+        支付状态<span class="asteriskField">*</span>
+        </label>
+        <div class="controls ">
+            <select class="adminselectwidget form-control" id="id_pay_status" name="pay_status">
+                <option value="paid">已支付</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-block btn-sm">应用</button>
+</form>

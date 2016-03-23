@@ -1,0 +1,62 @@
+# coding: utf-8
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test_pinbot',
+        'USER': 'shippable',
+        'TEST_CHARSET': "utf8",
+        'TEST_COLLATION': "utf8_general_ci",
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
+        },
+    }
+}
+
+from .settings import INSTALLED_APPS
+
+remove_apps = ('debug_toolbar', )
+extra_apps = ('django_nose', )
+INSTALLED_APPS = filter(lambda x: x not in remove_apps, INSTALLED_APPS)
+INSTALLED_APPS += extra_apps
+
+OTHER_DATABASE = {
+    'mongo': {
+        'ENGINE': '',
+        'name': 'recruiting',
+        'user': None,
+        'host': '127.0.0.1',
+        'password': None,
+        'port': 27017,
+        'lexicon_collection': 'jobs_class_keywords',
+    },
+    'rabbitmq': {
+        'ENGINE': '',
+        'host': '127.0.0.1',
+        'user': 'guest',
+        'password': 'guest',
+        'html_resume_queue': 'htmlresume',
+        'upload_resume_queue': 'uploadresume',
+        'buy_resume_queue': 'buyresume',
+    }
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+    },
+}
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-coverage',  # activate coverage report
+    '--with-doctest',  # activate doctest: find and run docstests
+    '--verbosity=2',   # verbose output
+    '--with-xunit',    # enable XUnit plugin
+    '--xunit-file=shippable/testresults/nosetests.xml',  # the XUnit report file
+    '--cover-xml',     # produle XML coverage info
+    '--cover-xml-file=shippable/codecoverage/coverage.xml',  # the coverage info file
+]
+SOUTH_TESTS_MIGRATE = False
+RAVEN_CONFIG = {}

@@ -1,0 +1,21 @@
+<div class="person-profile-info">
+    <div class="form-box text-center btns-2">
+        <button class="button button-normal w30p" ng-click="showRelation( 'zhilian' )" ng-class="isActive( relationSite == 'zhilian' )">智联招聘</button>
+        <button class="button button-normal w30p" ng-click="showRelation( '51job' )" ng-class="isActive( relationSite == '51job' )">前程无忧</button>
+    </div>
+</div>
+<div class="contant-info-edit" ng-show="isShowEditRelation">
+
+    <form action="." name="relationForm" method="post" accept-charset="utf-8" id="relationForm" autocomplete="off">
+        <div class="form-box">
+            <input ng-model="relation.username" name="username" type="text" class="input" validator="username" placeholder="请输入账号"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="relation.password" name="password" type="text" class="input" validator="password" placeholder="请输入密码"/>
+        </div>
+        <div class="form-box text-center btns-2">
+            <button class="button button-primary w30p" type="button" validation-submit="relationForm" ng-click="saveRelationInfo()">关联简历</button>
+            <button class="button button-cancle w30p" type="button" ng-click="toggleEditRelation( false )">取消</button>
+        </div>
+    </form>
+</div>

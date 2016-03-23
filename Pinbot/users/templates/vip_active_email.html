@@ -1,0 +1,22 @@
+{% extends 'email_base.html' %}
+
+{% block content %}
+<table width="700" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+    <tr>
+        <td bgcolor="#F7F7F7" style="padding:70px;background:#f7f7f7; vertical-align: top;">
+            <p style="font-size:13px; line-height:25px;">
+                尊敬的客户, 您好！
+                <br><br>
+                聘宝已经准备就绪，请点击下面的链接（或复制到浏览器地址栏并打开）以激活您的聘宝会员账号， 激活后即可正常使用聘宝招聘人才:
+                <br><a href="{{ valid_url }}" style="color:#fc7524; text-decoration: underline;">
+                    {{ valid_url }}
+                    </a>
+                <br><br>聘宝Pinbot正在快速进化，欢迎您对产品提出宝贵建议，您的建议将对Pinbot意义重大。您可以加入聘宝官方QQ群（9580917）提出建议或参与讨论。
+                <br><br>再次感谢您的关注，愿聘宝在招聘之路上伴您一路同行！
+            </p>
+        </td>
+    </tr>
+
+</table>
+
+{% endblock %}

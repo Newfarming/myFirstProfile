@@ -1,0 +1,176 @@
+{% extends 'base_crm.html' %}
+{% load compress %}
+{% load candidate_tags %}
+
+{% block head_asserts %}
+<style>
+    /* adapted from http://maxwells.github.io/bootstrap-tags.html */
+    .tag {
+      font-size: 14px;
+      padding: .3em .4em .4em;
+      margin: 0 .1em;
+    }
+    .tag a {
+      color: #bbb;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .tag a:hover {
+      opacity: 1.0
+    }
+    .tag .remove {
+      vertical-align: bottom;
+      top: 0;
+    }
+    .tag a {
+      margin: 0 0 0 .3em;
+    }
+    .tag a .fa-black {
+      color: #000;
+      margin-bottom: 2px;
+    }
+</style>
+<script src="{{ STATIC_URL }}dash/js/tableExport.min.js"></script>
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' with company_active="active" company_sub_active="active" %}
+{% endblock %}
+
+{% block content %}
+<div class="box box-solid">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="lead">
+                    <i class="fa fa-user fa-black"></i>
+                    <span>{{ company.company_name|default:client.userprofile.company_name }}</span><br>
+                    <span>{{ client.username }}</span><br>
+                    <span>{{ client.userprofile.phone }}</span><br>
+                    <span>加入时间: {{ client.date_joined|date:'Y-m-d H:i' }}</span><br>
+                    <span>最后登录: {{ client.last_login|date:'Y-m-d H:i' }}</span><br>
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="lead">
+                    <span>最后操作套餐相关管理员: {{ client.crm_client_info.last_operate_admin.username }}</span><br>
+                    <span>最后操作时间: {{ client.crm_client_info.last_time|date:'Y-m-d H:i' }}</span><br>
+                    <span>最后操作事件: {{ client.crm_client_info.last_operate_staff }}</span><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom" id="tab_content">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_detail" data-toggle="tab">详细信息</a></li>
+                <li><a href="#tab_job" data-toggle="tab">职位</a></li>
+                <li><a href="#tab_overview" data-toggle="tab">概览</a></li>
+                <li><a href="#tab_uncontact" data-toggle="tab">未处理的下载</a></li>
+                <li><a href="#tab_contacted" data-toggle="tab">已联系</a></li>
+                <li><a href="#tab_interview" data-toggle="tab">约面</a></li>
+                <li><a href="#tab_offer" data-toggle="tab">offer</a></li>
+                <li><a href="#tab_entry" data-toggle="tab">入职</a></li>
+                <li><a href="#tab_eliminate" data-toggle="tab">淘汰</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_detail">
+                    <div class="box">
+                        <div class="box-body">
+                            <dl>
+                                <dt>所在领域</dt>
+                                <dd>
+                                    {% if company.category.all %}
+                                    {% for i in company.category.all %}{{ i.category }}{% endfor %}
+                                    {% else %}
+                                    未填写
+                                    {% endif %}
+                                    <br>
+                                </dd>
+                                <dt>企业亮点</dt>
+                                <dd>{{ company.key_points|default:'未填写' }}<br></dd>
+                                <dt>企业简介</dt>
+                                <dd>{{ company.desc|linebreaks|default:'未填写' }}<br></dd>
+                                <dt>发展阶段</dt>
+                                <dd>{{ company.stage|default:'未填写' }}<br></dd>
+                                <dt>产品地址</dt>
+                                <dd>{{ company.product_url|default:'未填写' }}<br></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab_uncontact" data-url="{% url 'crm-company-download' client.id %}">
+                </div>
+                <div class="tab-pane" id="tab_contacted" data-url="{% url 'crm-company-contacted' client.id %}?mark_type=pending&mark_type=break_invite&mark_type=unconfirm&mark_type=invite_lower_ability&mark_type=accu_fail&mark_type=accu_success&mark_type=accusation">
+                </div>
+                <div class="tab-pane" id="tab_interview" data-url="{% url 'crm-company-invite-interview' client.id %}?mark_type=invite_interview&mark_type=next_interview&mark_type=join_interview">
+                </div>
+                <div class="tab-pane" id="tab_offer" data-url="{% url 'crm-company-offer' client.id %}?mark_type=send_offer&mark_type=reject_offer">
+                </div>
+                <div class="tab-pane" id="tab_entry" data-url="{% url 'crm-company-entry' client.id %}?mark_type=entry">
+                </div>
+                <div class="tab-pane" id="tab_eliminate" data-url="{% url 'crm-company-entry' client.id %}?mark_type=eliminate&mark_type=no_will&mark_type=lower_ability&mark_type=no_interest">
+                </div>
+
+                <div class="tab-pane" id="tab_overview" >
+                    <form action="." method="get" id="overview_form">
+                        <div class="box box-solid">
+                            <div class="box-body">
+                                <div class="form-inline">
+                                    <div class="row">
+                                        <div class="col-xs-9">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail3">职位</label>
+                                                <select name="job" id="select_job" data-url="{% url 'crm-job-select' client.id %}">
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail3">阶段</label>
+                                                <select name="mark">
+                                                    <option value="">所有</option>
+                                                    {% for option in mark_choices %}
+                                                    <option value="{{ option.id }}">{{ option.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <button type="button" class="btn btn-success" id="query_overview_btn" data-url="{% url 'crm-company-overview' client.id %}">确定</button>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <button type="button" class="btn btn-success" id="export_btn">导出本页</button>
+                                            <a href="#" data-toggle="modal" class="btn btn-success" data-target="#exportModal">导出数据</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="box" id="overview_div" data-url="{% url 'crm-company-overview' client.id %}">
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="tab_job" data-url="{% url 'crm-company-job' client.id %}">
+                </div>
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+    <!-- /.col --!-->
+</div>
+
+{% include 'candidate/modal/add_mark.html' %}
+{% include "company/modal/export.html" %}
+<script src="{{ STATIC_URL }}crm/company/moment.min.js"></script>
+
+{% compress js %}
+<script src="{{ STATIC_URL }}crm/company/daterangepicker.js"></script>
+<script src="{{ STATIC_URL }}crm/js/bootstrap-datetimepicker.js"></script>
+<script src="{{ STATIC_URL }}crm/company/company.js"></script>
+
+{% endcompress %}
+{%endblock %}

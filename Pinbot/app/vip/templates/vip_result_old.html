@@ -1,0 +1,63 @@
+{% extends 'base_upgrade.html' %}
+{% load utils_tag %}
+
+{% block header %}
+{{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}vip/vip.css" />
+{% endblock %}
+
+{% block upgrade_content %}
+    <div class="register welcome">
+        <div class="layout">
+            <div class="main">
+                <div class="header">
+                    <h1>申请会员</h1>
+                </div>
+
+                <div class="content">
+                    <!--支付失败-->
+                    {% if order.order_status != 'paid' %}
+                    <h2 class="wrong" style="background-position: 350px center;padding-left: 25px;">支付失败...</h2>
+                    <div class="payway_field">
+                        <label>你已选择<span class="fc863f">{{ order.subject_name }}</span>，应付金额：<span class="fc863f">{{ order.order_price }}元</span></label>
+                    </div>
+                    <div class="confirm_pay">
+                        <a class="btn confirm_pay_btn" url="{% url 'vip-create-order' %}">重新支付</a>
+                    </div>
+                    {% else %}
+                    {% if order.item.vip_role.level == 1 %}
+                    <h2 class="right" style="background-position: 350px center;padding-left: 25px;">支付成功！</h2>
+                    <!--申请普通会员成功-->
+                    <div class="payway_field">
+                        <label>立即完成新手任务，领<span class="fc863f">现金红包！</span></label>
+                    </div>
+                    <div class="confirm_pay">
+                        <a href="{% url 'tutorial' %}" class="btn start">开始新手任务</a>
+                    </div>
+                    {% else %}
+                    <!--申请vip会员成功-->
+                    <h2 class="right" style="background-position: 350px center;padding-left: 25px;">支付成功！</h2>
+                    <div class="payway_field">
+                        <label>成为<span class="fc863f">VIP会员</span>必须与我们签订纸质协议</label>
+                    </div>
+                    <div class="confirm_pay">
+                        <a href="{% url 'vip-service-contact' order.item.vip_role.id %}" class="btn download">下载纸质协议</a>
+                        <p>签订纸质协议，请联系<a href="#" class="c42b4e6 contact yingxiao_qq" id="contact_us">聘宝人才顾问</a></p>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                </div>
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}users/scripts/vip_pay.js"></script>
+{% endblock %}
+
+{% block footer_html %}
+{% include 'footer.html' %}
+{% endblock %}

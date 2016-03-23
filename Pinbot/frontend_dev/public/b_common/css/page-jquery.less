@@ -1,0 +1,35 @@
+/*分页插件样式*/
+.page-widget{
+    text-align: center;
+    a,span{
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        line-height: 30px;
+        margin: 0 2px;
+        color: #999;
+    }
+    a:hover{
+        color: #333;
+    }
+    span.current{
+        color: #fff;
+        background-color: #45b5e9;
+    }
+    span.disabled{
+        color: #999 !important;
+    }
+    .prev-page{
+        background:url(/static/resume/images/sprite.png) no-repeat -315px -435px;
+    }
+    .prev-page-disabled{
+        background: url(/static/resume/images/sprite.png) no-repeat -375px -435px;
+    }
+    .next-page{
+        background: url(/static/resume/images/sprite.png) no-repeat -195px -435px;
+    }
+    .next-page-disabled{
+        background: url(/static/resume/images/sprite.png) no-repeat -255px -435px;
+    }
+}

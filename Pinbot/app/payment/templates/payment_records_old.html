@@ -1,0 +1,54 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+{% load endless %}
+{% load payment_tags %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}payment/css/new_payment.min.css?20150630" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with pay_class="curr" %}
+{% endblock %}
+
+{% block sub_header %}
+{% include 'payment_sub_nav.html' with record_on='on' %}
+{% endblock %}
+
+{% block content %}
+<h1 class="pay-head text-center">交易记录</h1>
+
+<div class="pay-content mt50">
+    <div class="clearfix recorad-tab" id="JS_toggle_records">
+        {% with record_type=request.GET.record_type %}
+        <a href="{% url 'payment-payment-record' %}" class="{% if not record_type %}active{% endif %}"><span>所有交易记录</span></a>
+        <a href="{% url 'payment-payment-record' %}?record_type=income" class="{% if record_type == 'income' %}active{% endif %}"><span>收入记录</span></a>
+        <a href="{% url 'payment-payment-record' %}?record_type=pay" class="{% if record_type == 'pay' %}active{% endif %}"><span>支出记录</span></a>
+        {% endwith %}
+    </div>
+    <div class="record-body" id="JS_records">
+
+        <div class="r-item">
+            {% paginate 5 payment_record %}
+            <table cellspacing="0" cellpadding="0" width="100%">
+                {% for r in payment_record %}
+                <tr>
+                    <td width="160">{{ r.pay_time|date:'Y-m-d H:i' }}</td>
+                    <td>{{ r.item.get_subject }}</td>
+                    <td><span class="c45b5e9">{{ r.actual_price|get_order_pay_price }}</span> 元</td>
+                    <td>{{ r.order_status|get_payment_cn_display }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="r-page clearfix">
+                {% get_pages %}
+                {{ pages }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,253 @@
+.egg-sprite {
+    /*background: url('../img/eggs_sprite.png') no-repeat;*/
+    background: #fff;
+}
+.eggs {
+    display: none;
+    z-index:9000 !important;
+}
+.eggs-layer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    z-index:9001 !important;
+}
+.eggs-popup-layer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: block;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    z-index:9001 !important;
+}
+.half-dark{
+    background: url(/static/b_common/img/half-dark.png);
+}
+.half-dark2{
+    background: url(/static/b_common/img/half-dark2.png);
+}
+.eggs-popup {
+    width: 426px;
+    margin: 0 auto;
+    position: relative;
+    top: -300px;
+    text-align: center;
+    display: none;
+    background:#fff;
+    min-height: 180px;
+}
+.eggs-popup.transparent{
+    background:transparent !important;
+}
+.hammer, .hammer:active{
+    cursor: url('/static/partner/eggs/img/Hammer.gif'), pointer;
+}
+.egg, .egg:active {
+
+}
+.egg-box{
+    width: 426px;
+    height: 227px;
+    overflow: hidden;
+    margin: 0px auto;
+    position:absolute;
+    top:-175px;
+    left:0%;
+    z-index: 9990 !important;
+}
+.egg-box img{
+    text-align: center;
+    position:absolute !important;
+    bottom:0px !important;
+    left:35%;
+}
+.eggs-popup .egg-close {
+    background: url(/static/b_common/img/close.png) no-repeat;
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin: 10px 15px 0 0;
+    position:absolute;
+    top:0px;
+    left:392px;
+    cursor: pointer;
+    z-index: 9999 !important;
+}
+.egg-reel {
+    background-position: center 0;
+    color: #333;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 32px 0;
+    padding-top:92px;
+    padding-bottom:43px;
+    overflow: hidden;
+}
+.blue-reel {
+    background-position: center 0;
+    color: #333;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 32px 0;
+    overflow: hidden;
+}
+.red-reel {
+    background-position: center -115px;
+    color: #333;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.5;
+    padding: 18px 0 24px;
+    height: 245px;
+    overflow: hidden;
+}
+.gift-title {
+    font-size: 18px;
+    color: #333;
+    padding-bottom: 0px;
+}
+.red-reel p {
+    color: #333;
+    text-align: center;
+    padding: 0 30px;
+}
+.red-reel p.img-p {
+    text-align: center;
+    padding: 5px 0;
+}
+/*.i-blue-close, .i-red-close {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 55px;
+    background-position: -65px -410px;
+    left: 44%;
+    bottom: -30px;
+    cursor: pointer;
+}
+.i-blue-close{
+    position: relative !important;
+    top:-17px;
+}
+.i-red-close-new {
+    display: block;
+    position: relative !important;
+    width: 50px;
+    height: 55px;
+    background-position: -9999px -9999px;
+    left: 44%;
+    bottom: -30px;
+    cursor: pointer;
+}
+.i-red-close {
+    background-position: -9999px -9999px;
+    position: relative;
+    top: 0px;
+}
+.i-red-close-new {
+    background-position: -9999px -9999px;
+    top: 0px !important;
+}*/
+.code-img {
+    width: 100px;
+}
+
+.color-white{
+    color: #333 !important;
+}
+.eggs-popup .text-center{
+    text-align: center;
+}
+.egg-sprite .barcode-info{
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+.egg-sprite .barcode-info .barcode-info-red{
+    color:#f66b5d;
+    font-size: 24px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    margin:0px 8px;
+}
+i.egg-sprite-close:before {
+    cursor: pointer;
+    content:"";
+    background: url('/static/b_common/img/close_2.png') no-repeat;
+    width: 18px !important;
+    height: 18px !important;
+    display: inline-block;
+    margin: 0px !important;
+    position: absolute;
+    top: 8px;
+    left: 401px;
+}
+.eggs-popup .gift-title-more{
+    display:block;
+    color:#44B5E8;
+    position:relative;
+    top:9px;
+    left:0px;
+}
+.button-red{
+    display: block;
+    background: #F46C62 !important;
+    color: #fff !important;
+    border: solid 1px #F46C62 !important;
+    width: 160px !important;
+    margin:0 auto !important;
+    text-align: center !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    padding:0px 0px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+}
+.button-red:hover{
+    background: #F46C62 !important;
+    color: #fff !important;
+    border: solid 1px #F46C62 !important;
+}
+.pd-btm-38{
+    display: inline-block;
+    padding-bottom: 38px;
+}
+.cf46c62 {
+    color: #f46c62;
+}
+.c44b5e8 {
+    color: #44b5e8;
+}
+.egg-btn{
+    display:inline-block;
+    width:160px;
+    height:35px;
+    line-height: 35px;
+    color:#fff;
+    margin:20px 10px;
+}
+.egg-btn-dark-blue{
+    background:#607d8b;
+}
+.egg-btn-blue{
+    background:#44b5e8;
+}
+.egg-btn-red{
+    background:#F46C62;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我不愿意</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style>
+    *{margin: 0;padding:0;}
+    .fix-top{position: fixed; top: 0; left: 0; width: 100%;}
+    .fix-bottom{position: fixed; bottom: 0; left: 0; width: 100%; background: #F9F9F9;border-top: solid 1px #D4D4D4;box-shadow: 0 1px 2px rgba(0,0,0,.1) inset}
+    .fix-content{ position: fixed; top: 69px; bottom: 54px; left: 0; right: 0; background: #E6E6E6; box-shadow: 0 1px 2px rgba(0,0,0,.05) inset;min-height: 400px;}
+    .info{position: absolute; top: 50%; margin-top: -167px; text-align: center; width: 100%; left: 0; }
+</style>
+</head>
+<body>
+<div class="fix-top">
+    <!-- head start -->
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+            <tr>
+                <td bgcolor="#fff" style="padding:15px 0; background:#F9F9F9; border-bottom:solid 1px #D4D4D4; padding-left:25px;">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                        <tr>
+                            <td width="120"><a href="/jobs/index" title="聘宝 | 专业人才推荐"><img border="0" src="{{STATIC_URL}}beta/email/logo_blue.png" alt="推荐好工作, 给优秀的你"></a></td>
+                            <td style="font-size:14px;color:#999">推荐好工作, 给优秀的你</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    <!-- head end-->
+</div>
+<div class="fix-content">
+    <div class="info">
+        <form action="/companycard/job/interest/" method="post" accept-charset="utf-8">
+            <input type="hidden" name="token" value="{{token}}">
+            <input type="hidden" name="interest" value="" id="JS_intrest">
+            <p style="padding:20px 0;text-align:center">
+            你可能正在使用代理访问，这会导致你的反馈结果不准确，请再次确认你对该职位是否感兴趣！
+            <br><br><br><br>
+                {%if preview %}
+                    <a target="_blank" title="我对该职位感兴趣" style="display:inline-block;background:#efefef;color:#999;padding:15px 50px; border-radius:3px; text-decoration:none; cursor:default;;">我对该职位感兴趣</a>
+                    <a target="_blank" title="我暂时不感兴趣" style="display:inline-block;background:#efefef;color:#999; border:solid 1px #efefef;padding:14px 49px; text-decoration:none;margin-left:10px;border-radius:3px;cursor:default;">我暂时不感兴趣</a>
+                {%else%}
+                    <a class="JS_resume_nterest" href="javascript:;" data-interest="true"  title="我对该职位感兴趣" style="display:inline-block;background:#3498DB;color:#fff;padding:15px 50px; border-radius:3px; text-decoration:none;">我对该职位感兴趣</a><a class="JS_resume_nterest" href="javascript:;" data-interest="false"  title="我暂时不感兴趣" style="display:inline-block;background:#FFFFFF;color:#3498DB; border:solid 1px #3699DB;padding:14px 49px; text-decoration:none;margin-left:10px;border-radius:3px;">我暂时不感兴趣</a>
+                {%endif%}
+            </p>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+<div class="fix-bottom">
+    <p style="color:#999999;font-size:12px;text-align:right;padding: 20px 40px; font-family:Verdana">Copyright © 2013 - 2014 HopperClouds, Inc.</p>
+</div>
+<script src="{{STATIC_URL}}alpha/scripts/jq.js?20141201" type="text/javascript"></script>
+<script src="{{STATIC_URL}}alpha/scripts/common.min.js?20141201" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" async defer>
+    $(function(){
+        $('.JS_resume_nterest').on( 'click' , function(){
+            var $this = $(this),
+                interest = $this.attr('data-interest');
+            if( !interest )return false;
+            $('#JS_intrest').val(interest);
+            $this.closest('form')[0].submit();
+        });
+    });
+</script>
+</body>
+</html>

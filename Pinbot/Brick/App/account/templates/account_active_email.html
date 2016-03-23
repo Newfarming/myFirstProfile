@@ -1,0 +1,24 @@
+{% extends 'email_base.html' %}
+
+{% block body %}
+<!-- content start -->
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;background:#fff;font-family: 'Hiragino Sans GB', 'microsoft yahei', Helvetica, Arial, pxsans-serif;" width="640">
+        <tbody>
+            <tr>
+                <td style="padding: 36px 50px;vertical-align: top;color: #444;">
+                    <p style="font-size:15px; line-height:25px;">
+                        <span style="color:#0091fa;">{{ username }}</span>, 您好！
+                        <br/>
+                        <br/>
+                        请点击下面的链接激活您的聘宝 · 求职版的账号:<br /><br />
+                        <a href="{{ valid_url }}" style="color:#0091fa; text-decoration: underline;word-wrap: break-word; word-break: break-all;width:540px;">{{ valid_url|default:'http://www.pinbot.me' }}</a><br/><br/><br>
+                    </p>
+                    <p style="width:240px;margin:0 auto;">
+                        <a href="{{ valid_url }}" style="display:inline-block;background:#0099ff;width:240px;height:48px;color: #fff;font-size:18px;cursor:pointer;line-height:48px;text-align:center;text-decoration:none;">立即验证</a>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!-- content end -->
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base_revision_new_ng.html' %}
+{% load compress %}
+{% block nav_header %}
+{% include 'alpha/new-header.html' with pay_class="curr" %}
+{% endblock %}
+
+{% block content %}
+    <div class=" " ng-app="app.trade_log">
+        {% include 'payment_sub_nav.html' with tradelog_on='on' %}
+        <div class="layout mg-top-20" ui-view>
+
+            <div class="text-center ajax-loading" ng-if="loading"><img src="{{ STATIC_URL }}partner/images/loading.gif" alt="loading"><br>页面装载中...</div>
+
+        </div><!-- layout -->
+    </div><!-- register -->
+{% endblock %}
+
+{% block ng_js %}
+
+<script src="{{ STATIC_URL }}payment/js/trade_log.js"></script>
+
+{% endblock %}
+
+
+

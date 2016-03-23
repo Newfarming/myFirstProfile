@@ -1,0 +1,446 @@
+.tao-enter {
+  position: relative;
+
+  .tao-enter-btn {
+    display: none;
+    border: 1px solid #ccc;
+    height: 60px;
+    line-height: 60px;
+    color: #111;
+    font-weight: bold;
+    padding-left: 50px;
+    font-size: 14px;
+    background: #fff;
+    margin-bottom: 20px;
+    &:hover {
+      opacity: .9;
+    }
+    &.submitted {
+      color: #666;
+      cursor: default;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .tao-feed-container {
+    display: none;
+    position: absolute;
+    left: -695px;
+    top: -125px;
+    width: 685px;
+    background: #f6f6f6;
+    z-index: 999;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 0px rgba(125,125,125,.15);
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    transition: all .1s linear;
+    &.translatex {
+      left: -705px;
+    }
+    &:after, &:before {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 8px solid transparent;
+      border-left-color: #f3f7fa;
+      top: 150px;
+      right: -16px;
+      z-index: 2;
+    }
+    &:before {
+      right: -17px;
+      border-left-color: #ccc;
+      z-index: 1;
+    }
+
+  }
+  .header {
+    background: #bfd1e1;
+    padding-left: 15px;
+    li {
+      display: inline;
+      float: left;
+      padding-top: 10px;
+      a {
+        padding: 4px 10px;
+        color: #111;
+        display: block;
+        &.on {
+          background: #f3f7fa; 
+        }
+      }
+    }
+  }
+  .body {
+    padding: 20px 20px 0;
+    .tab-content {
+      display: none;
+    }
+    .tab-content.on {
+      display: block !important;
+    }
+    input {
+      border: none;
+      border-bottom: 1px solid #ddd;
+      background: transparent;
+      outline: none;
+      text-align: center;
+      &:focus {
+        border-color: #555;
+      }
+      &.input-salary {
+        width: 5em;
+      }
+      &.input-location {
+        width: 10em;
+      }
+      &.input-other {
+        display: none;
+      }
+      &.group1-other {
+        width: 25em;
+      }
+      &.group2-other {
+        width: 8em;
+      }
+    }
+    .choice-pending {
+      display: none;
+      p {
+        text-align: center;
+        line-height: 1.6;
+        position: absolute;
+        top: 140px;
+        left: 230px;
+      }
+      .tao-cancel {
+        position: absolute;
+        color: #42b3e5;
+        top: 190px;
+        left: 470px;
+      }
+    }
+    .choice-group {
+      margin-bottom: 20px;
+      padding: 15px 15px 15px 30px;
+      border: 1px solid transparent;
+      h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+        background: url(../images/tao/circle.png) 0 center no-repeat;
+        padding-left: 15px;
+        margin-left: -15px;
+        strong {
+          font-size: 12px;
+          color: #f60;
+          margin-left: 10px;
+          em {
+            font-size: 16px;
+            font-style: normal;
+          }
+        }
+      }
+    }
+    .list-line .choice-list {
+      margin-left: -20px;
+      li {
+        margin-left: 20px;
+        float: left;
+        vertical-align: middle;
+        line-height: 20px;
+      }
+    }
+    .selected-choice {
+      background: #fff;
+      border-color: #ccc;
+    }
+    .choice-list {
+      li {
+        margin-top: 8px;
+        padding-left: 20px;
+        cursor: pointer;
+        background: url(../images/tao/choice.png) 0 2px no-repeat;
+        height: 22px;
+        line-height: 22px;
+        vertical-align: middle;
+        &.selected {
+          background-position: 0 -32px;
+          span {
+            display: none;
+          }
+          .input-other {
+            display: inline !important;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    text-align: center;
+    background: #e2ebf2;
+    padding: 10px 20px 30px;
+    span {
+      position: absolute;
+      bottom: 5px;
+      width: 100%;
+      text-align: center;
+      left: 0;
+    }
+    
+    .tao-submit, .tao-cancel {
+      background: #42b3e5;
+      color: #fff;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      padding: 10px 40px !important;
+      margin: 0 10px;
+      border-radius: 2px;
+      font-weight: bold;
+      &:hover {
+        opacity: .9;
+      }
+    }
+    .tao-cancel-ok {
+      display: none;
+    } 
+    .tao-submitting {
+      cursor: default !important;
+    }
+    .tao-cancel {
+      background: #aaa;
+    }
+    .btn-disabled {
+      background: #aaa;
+      &:hover {
+        opacity: 1 !important;
+        background: #aaa !important;
+        cursor: default;
+      }
+    }
+  }
+}
+
+.tao-rules {
+  padding-bottom: 30px;
+  h3 {
+    margin: 1em 0;
+  }
+  ol {
+    padding-left: 20px;
+    list-style: decimal;  
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  p {
+    margin-bottom: 2em;
+    line-height: 1.8;
+    &.tao-rules-meta {
+      color: #666;
+    }
+  }
+  .footer {
+    background: none;
+  }
+}
+
+.tao-rules-enter {
+  padding-bottom: 5px;
+
+  .tao-rules-header {
+    margin-bottom: 40px;
+    margin-top: 15px;
+    h5 {
+      float: left;
+      color: #42b3e5;
+      line-height: 1.8;
+      margin-right: 20px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    p {
+      overflow: hidden;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+    .tip-normal, .tip-warn {
+      color: #fc7524;
+      font-weight: bold;
+      display: none;
+    }
+  }
+
+  h3 {
+    margin: 1em 0;
+  }
+  ol {
+    padding-left: 20px;
+    list-style: decimal;  
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  p {
+    margin-bottom: 2em;
+    line-height: 1.8;
+    &.tao-rules-meta {
+      color: #666;
+    }
+  }
+  .footer {
+    background: none;
+    padding-right: 0;
+    a.tao-cancel {
+      padding: 5px 25px;
+    }
+  }
+}
+
+
+.tao-enter-btn {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    background: url(../images/aside-icon.png) 0 0 no-repeat;
+    right: 30px;
+    top: 18px;
+  }
+}
+
+.btn-status-1 {
+  &:after {
+    background-position: -13px -65px;
+    width: 23px;
+    height: 20px;
+  }
+}
+.btn-status-2 {
+  background-color: #42b3e5 !important;
+  color: #fff !important;
+  border: none !important;
+  &:after {
+    background-position: -56px -65px;
+    width: 23px;
+    height: 20px;
+  }
+}
+.btn-status-3 {
+  &:after {
+    background-position:-101px -65px;
+    width: 27px;
+    height: 19px;
+  }
+}
+.btn-status-4 {
+  &:after {
+    background-position: -144px -61px;
+    width: 25px;
+    height: 23px;
+  }
+}
+.btn-status-5 {
+  &:after {
+    background-position: -186px -63px;
+    width: 24px;
+    height: 21px;
+  }
+  line-height: 1 !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+  span {
+    position: relative;
+    top: 10px;
+    line-height: 1.8;
+    em {
+      color: #fc7524;
+      font-style: normal;
+      margin: 0 2px;
+    }
+  }
+}
+
+.tao-status-1 {
+  .tip-warn {
+    display: block !important;
+  }
+  .tao-rules-main {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f6f6f6;
+      opacity: .7;
+      filter: alpha(opacity=70);
+    }
+  }
+  .footer  a {
+    display: none !important;
+    &.tao-cancel-ok {
+      background: #42b3e5;
+      color: #fff;
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+      display: inline !important;
+    }
+  }
+}
+
+
+.tao-status-1 {
+  .btn-status-1 { display: block; }
+}.tao-status-2 {
+  .tip-normal {
+    display: block !important;
+  }
+  .btn-status-2 { display: block; }
+}
+.tao-status-3 {
+  .choice-pending {
+    display: block !important;
+  }
+  
+  .btn-status-3 { display: block; }
+  .tao-rules-header {
+    display: none;
+  }
+  .choice-groups {
+    display: none;
+  }
+  .footer {
+    display: none;
+  }
+  .tao-feed-container {
+    background: #f6f6f6 url(../images/tao/tao-pending.png) center center no-repeat;
+    height: 540px;
+  }
+}
+.tao-status-4 {
+  .btn-status-4 { display: block; }
+}.tao-status-5 {
+  .btn-status-5 { display: block; }
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

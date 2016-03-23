@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝分析结果</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{STATIC_URL}}alpha/styles/analyse.css?cc6c5acc" />
+  <link rel="icon" type="image/x-icon" href="{{STATIC_URL}}favicon.ico" />
+  {% include 'sentry_fix.html' %}
+  <script src="{{STATIC_URL}}alpha/scripts/alpha.js"></script>
+</head>
+<body>
+
+<div id="main">
+
+  <div id="header">
+    <h1><a href="/" title="聘宝，专业人才推荐"></a></h1>
+    <ul class="analyse-nav">
+      <li><a href="/resumes/watch" target="_blank" class="myfav">我的收藏</a></li>
+    </ul>
+  </div>
+  <div id="page">
+    <div class="analyse-list">
+      <div class="filter-container clearfix">
+        <p class="analyse-switch clearfix">
+          <a href="#" class="switch-all curr" data-filter="all"><i class="ic ic-filter-all"></i>只查看更新</a>
+          <a href="#" class="switch-new" data-filter="new"><i class="ic ic-filter-new"></i>只查看更新</a>
+        </p>
+        <p class="filter-rank">
+          <a href="#" class="curr" data-filter="none">不分级</a>
+          <a href="#" data-filter="level-junior">初级</a>
+          <a href="#" data-filter="level-intermediate">中级</a>
+          <a href="#" data-filter="level-senior">高级</a>
+          <a href="#" data-filter="has_managerial_exp">管理级</a>
+          <a href="#" class="rank-filtered" data-filter="filtered">
+            <i class="ic ic-filtered"></i>被过滤的简历(<span id="filtered-count">0</span>)
+          </a>
+        </p>
+      </div>
+      <div class="analyse-result-slider slider"></div>
+    </div>
+    <div class="loading">
+      <canvas id="loading-counter" width="160" height="160"></canvas>
+      <span>0%</span>
+    </div>
+
+  </div>
+
+  <script type="text/x-template" id="template-slider">
+    <% if (pages && pages.length) { %>
+    <ul class="slider-container clearfix">
+      <% _.each(pages, function(page, i) { %>
+        <li>
+          <ul class="clearfix">
+            <% _.each(page, function(p) {  %>
+            <li data-index="<%=p.index%>" data-id="<%= p.id %>" class="analyse-result-list <% if (p.watch_status) { %>favorite<% } %>">
+              <div class="list-wrap">
+                <a target="_blank" href="/resumes/display/<%= p.id %>?search_keywords={{search_keywords}}" class="btn-goto-resume"></a>
+                <% if (p.update_status) { %>
+                  <div class="update-time">
+                    <p>
+                      <% if (p.update_status.outdated) { %>
+                        <i class="ic ic-uptime"></i>
+                      <% } else { %>
+                        <i class="ic ic-uptime-latest"></i>
+                      <% } %>
+                      更新时间: <%= p.update_status.date %>
+                    </p>
+                  </div>
+                <% } %>
+                <div class="item-action">
+                  <span class="action-fav">
+                    <a href="#" ><i class="ic ic-fav"></i>关注</a>
+                  </span>
+                  <span class="action-faved">
+                    <i class="ic ic-faved"></i>已关注 <span>|</span>
+                    <a href="#">取消</a>
+                  </span>
+                </div>
+                <div class="profile clearfix">
+                  <img class="gender-avatar" src="{{STATIC_URL}}alpha/images/avatar-<%= p.profile.gender%>.png"/>
+                  <ul class="profile-detail">
+                    <li>
+                      <p class="profile-basic">
+                        <%= p.profile.age %><%= p.profile.degree %>, <%= p.profile.location%>
+                      </p>
+                    </li>
+                    <li>
+                      <p class="profile-will">
+                        <%= p.profile.job_hunting_state %> <span>意向地：</span><%= p.profile.expectation_area %>
+                      </p>
+                    </li>
+                    <li data-rank="<%=p.summary.star%>">
+                      <%
+                        var digit = ('' + (p.summary.star||'0.0')).split('.');
+                        var star = 'star-' + digit[0];
+                        if (+digit[1]) { star += ' star-half'; }
+                      %>
+                      <i class="profile-rank <%= star %>"></i>
+                    </li>
+                    <% if (p.profile.brief_comment) { %>
+                      <li>
+                        <p class="profile-brief">
+                          <span>评</span><%= p.profile.brief_comment %>
+                        </p>
+                      </li>
+                    <% } %>
+                  </ul>
+                </div>
+
+                <div class="keywords">
+                  <div class="wrap">
+                  <% _.each(p.summary.keywords, function(key) { %>
+                    <span><%= key %></span>
+                  <% }) %>
+                  </div>
+                </div>
+
+                <div class="experience">
+                  <p class="exp-summary">
+                    <em><%= p.profile.work_years%></em>
+                    年工作经验
+                    <%
+                      var max = p.works.length;
+                      if (max > 2) max = 2;
+                    %>
+                    <span>(以下为最近<%= max %>份工作经验)</span>
+                  </p>
+                  <ul class="exp-recent">
+                    <% _.each(p.works, function(work, i) { if ( i> 1) return;%>
+                      <li>
+                        <p>
+                          (<%= work.duration %>)
+                          <%= work.company_name %>
+                          <%= work.salary %>
+                          <%= work.position_title %></p>
+                      </li>
+                    <% }) %>
+                  </ul>
+                </div>
+
+              <% if (p.projects[0]) { %>
+                <div class="project">
+                  <h6><%= p.projects[0].project_name %></h6>
+                  <p title="<%= $.trim(p.projects[0].project_desc)%>">
+                    <%= $.trim(p.projects[0].project_desc).replace(/<br\s?\/>|<br>/g, ' ') %>
+                  </p>
+                </div>
+              <% } %>
+
+              <% if (p.educations[0]) { %>
+                <div class="education">
+                  <p>
+                    <%= p.educations[0].school %> <%= p.educations[0].degree %>
+                  </p>
+                </div>
+              <% } %>
+              </div>
+            </li>
+            <% }) %>
+          </ul>
+        </li>
+
+      <% }) %>
+    </ul>
+
+    <% } else { %>
+      <p class="empty-page">
+        <i class="ic ic-empty"></i><br/>
+        很仔细地找过了，暂无匹配的简历。
+      </p>
+    <% } %>
+
+    <% if (pages.length > 1) { %>
+      <div class="analyse-slider-nav">
+        <% _.each(pages, function(__, i) { %>
+          <% if (!i) {%>
+            <span class="curr"></span>
+          <% } else { %>
+            <span></span>
+          <% } %>
+        <% }) %>
+     </div>
+    <% } %>
+  </script>
+  <script src="{{STATIC_URL}}alpha/scripts/analyse.js?40b40634"></script>
+  {% include 'footer.html' %}
+</body>
+</html>

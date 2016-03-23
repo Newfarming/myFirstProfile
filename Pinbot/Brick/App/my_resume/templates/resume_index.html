@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}my_resume/css/process.css" />
+{% endcompress %}
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <div ng-app="app.process">
+        <ul class="step_dot_ul">
+            <li class="first"><a class="select_gender"></a></li>
+            <li class="second"><a class="select_city"></a></li>
+            <li class="third"><a class="select_position_category"></a></li>
+            <li class="forth"><a class="select_work_years"></a></li>
+            <li class="fifth"><a class="select_degree"></a></li>
+            <li class="sixth"><a class="select_salary"></a></li>
+            <li class="last"><a class="select_field"></a></li>
+            <div class="step_line_grey"></div>
+            <div class="step_line_blue"></div>
+        </ul>
+        <div ui-view></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+<script type="text/javascript" src="{{ STATIC_URL }}my_resume/process.js" ></script>
+{% endcompress %}
+{% endblock %}

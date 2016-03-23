@@ -1,0 +1,59 @@
+{% load companycard_tags %}
+{% load notify_tags %}
+{% load chat_tags %}
+{% load utils_tag %}
+
+{% include 'top_banner.html'%}
+{% include 'snow_bar_fix.html' %}
+<div id="header" class="clearfix">
+
+    <div class="inner-wrap clearfix">
+        <h1><a href="/" title="聘宝，专业人才推荐"></a></h1>
+        <div class="nav-wrap">
+            <ul class="main-nav clearfix">
+                <li class="{{feed_class}}"> <a href="{% url 'special-feed-page' %}"><i class="ic ic-nav ic-nav-feed"></i>职位定制</a></li>
+                <li class="{{watch_class}}" > <a href="/transaction/bought/"><i class="ic ic-nav ic-nav-resume"></i>简历中心</a></li>
+                <li class="{{pay_class}}" > <a href="{% url 'payment-my-account' %}"><i class="ic ic-nav ic-nav-pay"></i>我的钱包</a></li>
+                <li class="{{ companycard_css }}"><a href="{% url 'companycard-get' %}"><i class="ic ic-nav ic-nav-setting"></i>企业名片</a></li>
+                <li class="{{upload_class}}"><a href="{% url 'partner-home-page' %}"><i class="i-new i-hide i-new-hide"></i>互助招聘</a></li>
+                <li><a href="{% url 'promotion-link' %}" class="invite-reward-icon"><i class="ic ic-nav ic-nav-setting"></i>邀请有奖</a></li>
+            </ul>
+
+            <div class="main-user-control">
+                {% with msg=request.user|has_receive_msg %}
+                <a class="main-user-control-icon {% if msg %}has-new {% endif %}"></a>
+                <ul class="main-user-control-dropdown-menu">
+                    <li><a href="/users/profile/">个人设置</a></li>
+                    <li><a href="{% url 'chat-box' %}" class="{% if msg %}has-new{% endif %}">我的会话</a></li>
+                    <li><a href="{% url 'notify-index' %}">我的通知</a></li>
+                    {#<li class="menu-account"><a href="#">我的余额<span>{{user_points}}100</span>点</a></li>#}
+                    <li class="menu-exit"><a href="/signout">退出</a></li>
+                </ul>
+                {% endwith %}
+            </div>
+            <!-- main-user-control -->
+            {% show_notice request.user %}
+            <!-- main-notice -->
+        </div> <!-- nav-wrap -->
+    </div>  <!-- inner-wrap -->
+</div> <!-- header -->
+ <script>
+    $(function() {
+        $('body').on('click', function() {
+            $('.main-user-control-dropdown-menu').hide();
+        });
+        $('body').on('click', '.main-user-control-icon', function(e) {
+            e.stopPropagation();
+            $('.tao-money-tips').hide();
+            $(this).parent().find('.main-user-control-dropdown-menu').toggle();
+        });
+
+        $('body').on('click', '.tao-money-tips>p', function(e) {
+            var url = $(this).data('memo-url');
+            $.post(url, function() {});
+            $(this).parent().fadeOut();
+        });
+    });
+
+
+</script>

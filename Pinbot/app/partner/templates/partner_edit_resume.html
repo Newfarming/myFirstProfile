@@ -1,0 +1,107 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+    {{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}partner/css/partner_edit_resume.css" type="text/css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}partner/css/task_info.css" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with upload_class='curr' %}
+{% endblock %}
+
+{% block sub_header %}
+    {% include 'partner_sub_nav.html' with reco_task='on' %}
+{% endblock %}
+
+{% block app %}ng-app="uploadApp" ng-controller="uploadController"{% endblock %}
+
+{% block content %}
+    <div class="inner-content relative" id="JS_container" data-resumeData="{{ data }}" task-id="{{ task_id }}" data-all_citys="{{ all_citys }}">
+        <!-- 录入简历表单 -->
+        <form name="uploadForm" novalidate autocomplete="off">
+            <div class="edit-form">
+                <div class="step-title">
+                    <p class="text-center cf46c62 t-info">Step1</p>
+                    <h1 class="text-center h-step1">
+                        录入简历
+                        <i class="sprite i-toggle" id="h_step1" ng-click="toggleSth('JS_resume', 'h_step1')"></i>
+                    </h1>
+                    <p class="text-center cf46c62 t-ps">注：<span class="simsun">*</span>号内容为必填内容哦！</p>
+                </div>
+
+                <section id="JS_resume">
+
+                    <!-- 基本信息&自我评价 -->
+                    <base-info resume="resume"></base-info>
+
+                    <div class="form-panel">
+                        <!-- 工作经历 -->
+                        <work-info experience="resume.works" belong="works"></work-info>
+                    </div>
+                    <div class="form-panel bgf7">
+                        <!-- 教育经历 -->
+                        <edu-info experience="resume.educations" belong="education"></edu-info>
+                    </div>
+                    <div class="form-panel-40">
+                        <!-- 项目经验 -->
+                        <project-info action="toggleSth('JS_project_info', 'i-project')" experience="resume.projects" belong="projects"></project-info>
+                    </div>
+                    <div class="form-panel-40 bgf7">
+                        <!-- 专业技能 -->
+                        <skill-info action="toggleSth('JS_skill_info', 'i-skill')" experience="resume.skills" belong="skills"></skill-info>
+                    </div>
+
+                </section>
+
+                <div class="step-title">
+                    <p class="text-center cf46c62 t-info">Step2</p>
+                    <h1 class="text-center h-step2">
+                        候选人状态
+                        <i class="sprite i-toggle" id="h_step2" ng-click="toggleSth('JS_status', 'h_step2')"></i>
+                    </h1>
+                </div>
+                <section id="JS_status">
+                    <div class="form-panel">
+                        <!-- 求职意愿 -->
+                        <job-wish></job-wish>
+                    </div>
+                    <div class="form-panel bgf7">
+                        <!-- 最近联系候选人时间 -->
+                        <latest-time></latest-time>
+                    </div>
+                    <div class="form-panel">
+                        <!-- 对候选人的评价 -->
+                        <p class="form-label text-center c607d8b">
+                            <label for="JS_base_info" class="relative">对候选人的评价</label>
+                        </p>
+                        <div class="form-content pt10">
+                            <p class="tips"><span class="simsun cf46c62">*</span>留下您与该候选人的沟通评价，帮助其他HR更高效的查阅</p>
+                            <div class="mt20 w640 relative">
+                                <textarea name="hr_evaluate" id="" cols="30" rows="4" class="textarea" ng-model="resume.hr_evaluate" maxlength="500"></textarea>
+                                <p class="word-tip">(请输入500字以内的描述)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="form-handle">
+                    <a href="javascript:void(0)" class="btn btn-blue-240" ng-click="upload_form.submit(uploadForm)" ng-class="{'btn-disabled': isSubmiting}" ng-disabled="isSubmiting">保存并提交</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <task-info resume="resume"></task-info>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    {% compress js %}
+        {% include 'angular.html' %}
+        <script src="{{ STATIC_URL }}partner/js/partner-validation.js"></script>
+        <script src="{{ STATIC_URL }}partner/js/partner-validation-rule.js"></script>
+        <script src="{{ STATIC_URL }}partner/js/partner_edit_resume.js"></script>
+    {% endcompress %}
+{% endblock %}

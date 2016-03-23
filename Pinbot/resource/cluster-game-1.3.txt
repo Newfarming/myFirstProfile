@@ -1,0 +1,1292 @@
+1 网络游戏_项目管理 9
+cluster_keywords: 项目经理,游戏,项目管理,研发,策划,运营,文案
+2 互联网/电子商务_市场专员 7
+cluster_keywords: 分析,方案,搜索引擎,策划,产品,运营
+3 计算机软件_.net软件工程师 5
+cluster_keywords: web,代码,布置,数据库,单元测试,功能设计,数据处理,设计,net,客户端,前端开发,服务器端
+4 网络游戏_市场总监 13
+cluster_keywords: 分析,方案,游戏,网游,市场推广,产品
+5 互联网/电子商务_ 10
+cluster_keywords: PV,策划,产品,运营,设计,分词
+6 IT服务（系统/数据/维护）/多领域经营_客服专员助理 9
+cluster_keywords: 客服
+7 网络游戏_质量工程师 9
+cluster_keywords: 技术支持,游戏,Bug,策划,测试,BUG
+8 网络游戏_行政助理 9
+cluster_keywords: 行政,游戏
+9 IT服务（系统/数据/维护）/多领域经营_数据库开发工程师 12
+cluster_keywords: BOSS,db2,开发人员,数据库,数据仓库,网上商城,BI,oracle,ORACLE,测试,EBS,数据挖掘,DB2,B2B,ETL
+10 网络游戏_技术总监 5
+cluster_keywords: 项目经理,游戏,Centos,代码,django,Project,nginx,策划,设计,研发
+11 互联网/电子商务_客服专员 5
+cluster_keywords: 客服,review,服务中心,游戏,产品
+12 网络游戏_网站部经理 7
+cluster_keywords: www,webgame,http,游戏,网游,产品,运营
+13 网络游戏_技术主管 5
+cluster_keywords: ipad,游戏,运维,开发人员,ai,服务器,IDC,buff
+14 互联网/电子商务_开发主管 5
+cluster_keywords: SOA,运维,python,代码,mysql,nginx,ESB,服务器,设计,memcached,客户端
+15 网络游戏_设计管理人员 40
+cluster_keywords: 动画,场景,游戏,美术,品质,安卓,策划,UI,运营,设计
+16 网络游戏_数据库管理员 11
+cluster_keywords: 游戏,SQL,数据库,Mysql,Server2005,Server,系统监控,sql,MySQL,Oracle,服务器,ora
+17 网络游戏_3d美工主管 6
+cluster_keywords: OL,3DMMO,游戏,角色,美术,品质,道具,dome,场景,3d,3D
+18 网络游戏_美术设计 9
+cluster_keywords: ui,场景,原画,游戏,美术,平面设计,http,UI,美术设计,Q版,设计,客户端,gtgame,3D
+19 IT服务（系统/数据/维护）/多领域经营_系统工程师 28
+cluster_keywords: 服务器,数据库,测试,运维,Linux
+20 网络游戏_客服部 9
+cluster_keywords: 06,游戏,05,组长,网络游戏,BUG
+21 互联网/电子商务_美工编辑美术设计 30
+cluster_keywords: www,电子商务,游戏,代码,策划,html,UI,前台,美术设计,设计,div,css
+22 网络游戏_游戏开发 8
+cluster_keywords: Unity3D,界面,游戏,tap4fun,2D,LUA,API,RPG,服务器,Lua,java,手游,服务端,客户端
+23 计算机软件_android工程师 5
+cluster_keywords: 界面,D版,程序开发,APK,PAD,搜索,ANDROID,CRM
+24 计算机软件_c++软件工程师 19
+cluster_keywords: XML,编程,C++,c++,Linux,服务器,多线程
+25 互联网/电子商务_客服主管 25
+cluster_keywords: 客服,产品,运营,KPI,客户服务,部门经理
+26 计算机软件_测试员 6
+cluster_keywords: 界面,游戏,开发人员,测试人员,测试,BUG
+27 互联网/电子商务_php工程师 14
+cluster_keywords: www,http,二次开发,数据库,ecshop,功能模块,后台,mysql,thinkphp,php
+28 网络游戏_网络管理员 65
+cluster_keywords: 服务器,策划,电脑,游戏
+29 网络游戏_游戏ui设计 5
+cluster_keywords: 界面设计,MAYA,游戏,UI,界面,工作室
+30 网络游戏_c++软件工程师 6
+cluster_keywords: 界面,游戏,网游,C++,研发,设计,CEGUI,服务器,客户端,服务端,服务器端
+31 网络游戏_技术支持维护经理 13
+cluster_keywords: OL,游戏,运维,Windows,网游,数据库,服务器,IDC
+32 计算机软件_设计师 5
+cluster_keywords: DM,平面广告,平面设计,VI,界面风格,UI,Logo,设计,电子杂志,画册
+33 计算机软件_游戏设计开发 30
+cluster_keywords: 脚本,功能设计,SNS,游戏,服务器端,Symbian,PC,策划,UI,Iphone,Android,客户端,创意,3D
+34 网络游戏_首席运营官coo运营总监 7
+cluster_keywords: 游戏,产品策划,网游,安卓,ios,手机游戏,产品,运营
+35 互联网/电子商务_部门经理 11
+cluster_keywords: BD,www,产品设计,游戏,运维,客服,研发,策划,产品,运营,GM,客户端
+36 网络游戏_3d角色美工 16
+cluster_keywords: 场景,MONSTER,角色,NPC,2D,gt,MMORPG,3D
+37 IT服务（系统/数据/维护）/多领域经营_技术支持维护工程师 59
+cluster_keywords: 脚本,服务器,数据库,技术支持,linux
+38 网络游戏_质量 19
+cluster_keywords: QA,游戏,tester,Pet,House,iOS,Herd,功能测试,Pirates,网络游戏,测试,NBA,CivRev,BUG,测试报告
+39 网络游戏_运营 13
+cluster_keywords: 数据分析,OL,游戏,测试,客服,撰写,VIP,YY,策划,产品,运营,SLG,文案
+40 网络游戏_游戏开发工程师 20
+cluster_keywords: OL,游戏,道具,C++,功能模块,编辑器,MMORPG,休闲游戏,客户端,服务端,服务器端
+41 互联网/电子商务_网页设计 16
+cluster_keywords: 界面设计,Adobe,平面设计,门户网站,flash,html,产品,设计,banner,店铺,wap
+42 网络游戏_媒介经理主管 25
+cluster_keywords: 方案,策划,游戏,产品,运营
+43 IT服务（系统/数据/维护）/多领域经营_美工编辑美术设计 19
+cluster_keywords: 设计,虚拟现实,原画,游戏,界面设计
+44 网络游戏_编辑 9
+cluster_keywords: 翻译,游戏,撰写,lotro,策划,translation
+45 网络游戏_无 16
+cluster_keywords: IP,网络游戏,游戏,工作室,3D
+46 网络游戏_市场活动策划 6
+cluster_keywords: 分析,脚本,gt,游戏,策划,产品
+47 网络游戏_flash开发 7
+cluster_keywords: QQ,PVP,游戏,RichTextField,功能模块,PVE,前台,RPG,360
+48 互联网/电子商务_java软件工程师 8
+cluster_keywords: 分析,Hibernate,Java,管理系统,Spring,代码,Struts,BI,技术开发,portal,后台,设计
+49 网络游戏_游戏界面设计师 14
+cluster_keywords: 界面设计,原画,游戏,角色,美术,道具,IOS,二维,UI,前台,设计,界面
+50 网络游戏_销售代表 25
+cluster_keywords: MSN,网络游戏,游戏,产品,客户关系
+51 网络游戏_游戏主策划 36
+cluster_keywords: 策划人员,游戏,框架,网游,策划,产品,设计
+52 计算机软件_产品经理主管 11
+cluster_keywords: 分析,管理系统,Delphi,产品,Oracle,设计,电信
+53 IT服务（系统/数据/维护）/多领域经营_技术员 6
+cluster_keywords: VB,GIS,WIN95,软件开发,WIN32,VFP
+54 网络游戏_主管 17
+cluster_keywords: 场景,http,游戏,数据库,网络游戏,产品,运营,UE,设计
+55 互联网/电子商务_销售主管 14
+cluster_keywords: 客服,主管,销售主管,产品
+56 网络游戏_数值策划师 5
+cluster_keywords: webgame,游戏,管理工作,程序,策划,MMORPG
+57 网络游戏_主策 12
+cluster_keywords: WTK,java,游戏,项目管理,nokia,Eclipse,策划,运营,MMORPG,设计,j2me,手游,WTK2,主策
+58 计算机软件_策划 5
+cluster_keywords: 脚本,界面,游戏,道具,安卓,Flying,IOS,手机游戏,LUA,策划,UI,测试,设计,休闲游戏,创意,文案
+59 计算机软件_ios开发 12
+cluster_keywords: iOS,编码,ios,IOS,单元测试,AppStore,产品,设计
+60 网络游戏_测试经理 22
+cluster_keywords: 方案,游戏,产品,测试人员,测试,运营,BUG
+61 网络游戏_开发工程师 79
+cluster_keywords: 服务器端,C++,研发,功能模块,算法,UI,服务器,设计,客户端,游戏
+62 计算机软件_软件测试工程师 36
+cluster_keywords: 测试报告,TV,功能测试,测试,Error,设计,Bug
+63 IT服务（系统/数据/维护）/多领域经营_网络管理员 9
+cluster_keywords: PC机,FLASH,数据备份,动漫,unix,linux,开发部,BBS
+64 互联网/电子商务_运营主管 13
+cluster_keywords: APP,策划,游戏,产品,运营
+65 网络游戏_游戏特效师 5
+cluster_keywords: ps,场景,游戏,安卓,ios,particlillusion,UI,手游
+66 计算机软件_java软件工程师 57
+cluster_keywords: 分析,Java,框架,管理系统,数据库,JSP,设计,代码
+67 网络游戏_游戏原画 15
+cluster_keywords: STONE,场景,原画,游戏,美术,ios,IOS,http,美工,策划,ui,Q版,设计,主美,3D
+68 互联网/电子商务_多媒体动画设计 11
+cluster_keywords: 动画,场景,游戏,动作,开发人员,平面设计,APP,flash,设计,手游,代码
+69 网络游戏_客服经理 49
+cluster_keywords: 游戏,客服,VIP,产品,运营,客户服务
+70 网络游戏_ 15
+cluster_keywords: 分析,数据分析,游戏,角色,动画,客服,道具,2D,策划,uniSWF,测试,运营,服务器,3D
+71 计算机软件_需求工程师 6
+cluster_keywords: ERP,产品,数据库,测试,Oracle,用户文档
+72 网络游戏_采购专员助理 13
+cluster_keywords: PCB,设计,IC,产品
+73 计算机软件_产品经理 10
+cluster_keywords: 分析,负责人,游戏,项目管理,Flash,产品,bboss,设计,客户端
+74 计算机软件_招聘专员助理 7
+cluster_keywords: 部门经理,Java,人力资源,工程师
+75 IT服务（系统/数据/维护）/多领域经营_实习生 16
+cluster_keywords: java,管理系统,数据库,功能模块,jsp,测试,sql,数据挖掘,设计
+76 计算机软件_ 15
+cluster_keywords: GIS,插件,Java,C#,数据库,SQL,PC,服务器,设计,NET
+77 网络游戏_3d角色建模 6
+cluster_keywords: 游戏,BodyPaint3D,道具,角色,3DMAX,绘图,手游,主美,3D
+78 网络游戏_主美 38
+cluster_keywords: 场景,原画,游戏,角色,美术,美工,手机游戏,策划,OL,UI,设计,主美,3D
+79 网络游戏_网站运营管理 56
+cluster_keywords: 分析,产品,游戏,客服,撰写,策划,测试,运营
+80 计算机软件_多媒体动画设计 15
+cluster_keywords: 动画,gt,角色,3DMAX,FLASH,2D,后期合成,场景,SANTA,设计,3d,3D
+81 IT服务（系统/数据/维护）/多领域经营_技术总监 6
+cluster_keywords: 分析,架构设计,方案,项目管理,研发,产品,运营,数据挖掘
+82 网络游戏_商务专员 5
+cluster_keywords: 分析,SNG,翻译,Webgame,游戏,Cyworld,手机游戏,策划,产品,运营,互译
+83 IT服务（系统/数据/维护）/多领域经营_网页设计制作美工 6
+cluster_keywords: css3,界面设计,界面,前端,美工,RP,设计,js,前端开发
+84 网络游戏_3d美工 30
+cluster_keywords: 动画,webgame,游戏,角色,美术,道具,NPC,动作,场景,端游,手游,3D
+85 网络游戏_产品经理助理 5
+cluster_keywords: 分析,产品,游戏,产品策划,客服,VIP,策划,测试
+86 计算机软件_ios软件工程师 26
+cluster_keywords: iOS,sdk,游戏,ios,Xcode,IOS,iPhone,cocos2d,设计,多线程,客户端
+87 互联网/电子商务_技术支持维护经理 6
+cluster_keywords: ERP,运维,Windows,数据库,Discuz,http,SNS,MySQL,服务器,PHP
+88 网络游戏_3d设计师 10
+cluster_keywords: 场景,游戏,艺术总监,研发,设计,主美,3D
+89 互联网/电子商务_编辑 15
+cluster_keywords: 策划,创意,版面设计,文案
+90 互联网/电子商务_网页设计制作美工 150
+cluster_keywords: www,http,前端,美工,html,CSS,设计,div,css
+91 计算机软件_辅导开发的编写与调试 6
+cluster_keywords: 分析,程序,C语言
+92 互联网/电子商务_网站编辑 82
+cluster_keywords: enet,http,游戏,撰写,策划,产品
+93 网络游戏_推广专员 10
+cluster_keywords: 分析,数据分析,监测数据,游戏,Excel,后台,360
+94 互联网/电子商务_产品经理主管 126
+cluster_keywords: 分析,游戏,研发,策划,产品,运营,设计
+95 计算机软件_ui工程师 5
+cluster_keywords: 编码,www,界面,http,JS,HTML,产品,视觉,设计,CSS
+96 互联网/电子商务_媒介专员媒介购买 5
+cluster_keywords: pdf,互联网,游戏,产品,运营
+97 网络游戏_游戏特效 5
+cluster_keywords: WEBGAME,AE,游戏,FLASH,3DMAX,后期合成,UI,3D
+98 IT服务（系统/数据/维护）/多领域经营_flash工程师 5
+cluster_keywords: 动画,flash,游戏
+99 网络游戏_动画设计 5
+cluster_keywords: 动画设计,动画,场景,AE,游戏,角色,动作
+100 计算机软件_技术支持维护工程师 36
+cluster_keywords: LyncOnline,Office,运维,数据库,SharePointOnline,ITSM,Office365,技术支持,产品,ExchangeOnline
+101 互联网/电子商务_人力资源总监 11
+cluster_keywords: 人力资源,运营
+102 网络游戏_渠道分销专员 13
+cluster_keywords: 游戏
+103 网络游戏_商务助理 9
+cluster_keywords: 行政,档案管理,游戏,电玩
+104 网络游戏_媒介 6
+cluster_keywords: 策划,撰写,游戏
+105 网络游戏_出纳员 12
+cluster_keywords: 回单,公司财务
+106 网络游戏_开发 6
+cluster_keywords: 游戏,动作,网络游戏,UI,测试,邮件系统,服务器,Bug
+107 网络游戏_游戏运维工程师 5
+cluster_keywords: FTP,游戏,web,数据库,server,mysql,服务器
+108 网络游戏_3d动作师 7
+cluster_keywords: 动画,场景,游戏,角色,动作,3DMAX,设计
+109 网络游戏_产品运营经理 5
+cluster_keywords: 产品,游戏,端游,研发,测试,运营,后台,客户端
+110 网络游戏_商务总监 9
+cluster_keywords: gt,游戏,网游,手机游戏,产品,运营,3D
+111 网络游戏_员工关系企业文化工会 5
+cluster_keywords: 足球赛,篮球赛,年会,之约,徒步,健步,北邮,海淀,世界,足协杯,组稿,舞蹈,完美,联谊,海淀区,第七期
+112 网络游戏_场景设计师 10
+cluster_keywords: 场景,原画,网游,道具,VR,设计方案,手游,主美,3D
+113 网络游戏_ui设计 14
+cluster_keywords: 界面设计,界面,游戏,flash,插画,UI,设计,手游,原画
+114 IT服务（系统/数据/维护）/多领域经营_培训生 5
+cluster_keywords: 动画,编程,JAVA,计算机硬件,FLASH,sqlserver,C++
+115 网络游戏_3d引擎开发游戏开发 10
+cluster_keywords: 脚本,动画,gt,游戏,编辑器,c++,lua,策划,场景,客户端程序,客户端
+116 网络游戏_3d特效师 5
+cluster_keywords: 场景,FPS,角色,端游,TATA,TATA2,RPG,ACT,Q版,手游,BUG,3D
+117 网络游戏_销售总监 7
+cluster_keywords: 电子商务,游戏,CEO,策划,网络游戏,运营,部门经理
+118 网络游戏_建模师 5
+cluster_keywords: 场景,界面,游戏,道具,游戏类,网络游戏,设计,部门经理,3D
+119 网络游戏_实习生 130
+cluster_keywords: 场景,界面,游戏,测试,策划,UI,cocos2d,设计,3D,BUG,客户端
+120 计算机软件_测试主管 7
+cluster_keywords: 游戏,测试,QC,产品,设计,电信,测试报告
+121 计算机软件_销售经理 8
+cluster_keywords: DMS,产品,运维
+122 网络游戏_模型师 9
+cluster_keywords: MAYA,游戏,角色,CG,MT,PDE
+123 网络游戏_ui设计师 48
+cluster_keywords: 界面设计,界面,游戏,美术,网游,策划,ui,UI,设计
+124 网络游戏_游戏工程师 5
+cluster_keywords: gt,界面,游戏,2D,主程,编辑器,二次开发,listbox,客户端
+125 互联网/电子商务_商务专员 5
+cluster_keywords: 商务谈判,CPS,游戏,masamaso,运营
+126 网络游戏_技术员 5
+cluster_keywords: 方案设计,游戏,运维,管理系统,网游,研发,测试,服务器
+127 互联网/电子商务_售前售后技术支持工程师 10
+cluster_keywords: 监测数据,技术支持,POS,产品,服务器,部门经理
+128 互联网/电子商务_客户经理 6
+cluster_keywords: 后台,互联网,电子商务
+129 网络游戏_市场主管 13
+cluster_keywords: 游戏,撰写,市场推广,策划,产品,运营
+130 网络游戏_客户端主程 17
+cluster_keywords: 架构设计,游戏,程序,研发,编辑器,UI,客户端
+131 互联网/电子商务_总监 7
+cluster_keywords: 副总裁,游戏,策划,产品,运营,部门经理
+132 计算机软件_总监部门经理 7
+cluster_keywords: 分析,产品,技术支持,游戏,360
+133 网络游戏_游戏动作师 6
+cluster_keywords: 动画,游戏,动作,美术,程序,角色,研发,手机游戏,NPC,电脑游戏,3D
+134 网络游戏_网络工程师 31
+cluster_keywords: cisco,游戏,测试,linux,服务器,VPN,IDC
+135 网络游戏_产品策划 17
+cluster_keywords: 分析,方案,游戏,产品策划,研发,策划,产品,运营,SD,数据分析
+136 网络游戏_首席执行官ceo总裁总经理 16
+cluster_keywords: 方案,游戏,网游,运营,研发,策划,网络游戏,产品,端游
+137 网络游戏_合伙人 12
+cluster_keywords: gt,java,游戏,nokia,Eclipse,手机游戏,策划,工作室,运营,服务器,j2me,WTK,WTK2
+138 互联网/电子商务_flash设计开发 22
+cluster_keywords: AS3,动画,Flash,FLASH,游戏,代码,flash,多媒体,客户端
+139 计算机软件_手机软件开发工程师 5
+cluster_keywords: 游戏,warcity,测试,程序开发,策划,iphone,cocos2d,android,休闲游戏
+140 计算机软件_其他 6
+cluster_keywords: iPad,测试报告,安卓,c++,BUG,手机游戏,iPhone,测试,数据库
+141 计算机软件_高级软件测试工程师 5
+cluster_keywords: 设计,分析测试,电信,测试报告,测试
+142 网络游戏_网页设计制作美工 32
+cluster_keywords: Web,界面,游戏,动画,前端,flash,http,act,设计,后台,原画
+143 互联网/电子商务_运维工程师 32
+cluster_keywords: 脚本,游戏,运维,数据库,Linux,linux,服务器,IDC
+144 网络游戏_3d游戏美工 9
+cluster_keywords: 场景,原画,游戏,动作,MU2,UV,道具,角色,策划,单机游戏,3D
+145 网络游戏_设计师 10
+cluster_keywords: 界面设计,游戏,平面设计,VI,08,插画,orkut,产品,运营,二次开发,设计
+146 网络游戏_游戏测试专员 6
+cluster_keywords: 功能测试,游戏,测试,IOS,手机游戏,策划,产品,Android,BUG,测试报告
+147 互联网/电子商务_人力资源经理 7
+cluster_keywords: 人力资源
+148 互联网/电子商务_平面设计 23
+cluster_keywords: 动画,FLASH,插画,UI,产品,设计,视觉,店铺,电子杂志
+149 互联网/电子商务_web前端工程师 11
+cluster_keywords: Web,www,框架,前端,jq,js,后台,div,php,bbs,代码,css
+150 网络游戏_技术支持维护工程师 39
+cluster_keywords: 服务器,电脑,游戏,运维,linux
+151 计算机软件_设计管理人员 9
+cluster_keywords: unity3D,Google,游戏,美术,电脑,Unity,教育软件,设计,Android,market
+152 网络游戏_质量检验员测试员 6
+cluster_keywords: 产品,测试报告,游戏,测试,BUG
+153 网络游戏_美工设计师 13
+cluster_keywords: 场景,原画,游戏,角色,美术,手机游戏,UI,设计,设计师,wap,3D
+154 网络游戏_财务助理会计助理 6
+cluster_keywords: 
+155 计算机软件_技术总监 14
+cluster_keywords: 游戏,管理系统,项目管理,iOS,研发,手机游戏,EaseUS,产品,设计,Android,客户端,服务器端
+156 网络游戏_多媒体游戏开发工程师 47
+cluster_keywords: 游戏,运维,主程,手机游戏,lua,cocos2d,服务器,后台,设计,android,手游,客户端
+157 网络游戏_执行主策 9
+cluster_keywords: 设计,策划,游戏,测试数据,主策
+158 网络游戏_游戏设计开发 706
+cluster_keywords: 界面,游戏,网游,策划,编辑器,UI,测试,设计,服务器,客户端,3D
+159 互联网/电子商务_广告创意设计经理 5
+cluster_keywords: XNTYwNjg0OTk2,http,产品,show,XNTYwNjgzMDY0,Yoobao,USM,WIFI,youku,XNTYwNDA5MzA0,html,UMzUyMjMyNTEy,M3,SSD,超频
+160 网络游戏_java开发工程师 5
+cluster_keywords: 编码,flash,java,游戏,WindowsXP,spring,数据库,Velocity1,resin,后台,myEclipse6,SNS,3.0,Spring2,设计,mongodb1,quartz
+161 网络游戏_测试工程师 36
+cluster_keywords: 方案,兼容性,游戏,功能测试,策划,测试,BUG,测试报告
+162 互联网/电子商务_主编 7
+cluster_keywords: 策划,产品,运营
+163 网络游戏_人事经理 6
+cluster_keywords: 福利,人力资源,游戏,管理工作,人事,人事管理,GAMEBOY,总经理
+164 计算机软件_初级软件工程师 6
+cluster_keywords: 设计,数据库,java,测试,信息系统
+165 网络游戏_质量管理测试主管(质量qc主管) 6
+cluster_keywords: 测试,Mantis,产品
+166 互联网/电子商务_主美 5
+cluster_keywords: 总监,场景,原画,游戏,美术,IOS,策划,设计,手游
+167 互联网/电子商务_网站运营管理 74
+cluster_keywords: 分析,www,游戏,策划,产品,运营,SEO,店铺
+168 网络游戏_系统架构设计师 8
+cluster_keywords: xml,web,jdbc,游戏,角色,架构设计,数据库,Linux,ajax,hibernate,服务器,apache,设计,sping,服务端,webservice
+169 网络游戏_后期制作音效师 7
+cluster_keywords: 场景,游戏,程序开发,程序,手机游戏,策划
+170 网络游戏_美工总监 19
+cluster_keywords: QQ,总监,游戏,美术,设计,CP,3D
+171 网络游戏_gm 12
+cluster_keywords: QQ,OL,游戏,客服,道具,策划,测试,服务器,GM,BUG
+172 网络游戏_论坛管理员 5
+cluster_keywords: PFC,游戏,人事管理,网游,策划,CoolMood,音乐网,后台,文案
+173 网络游戏_原画 23
+cluster_keywords: 动画,ui,场景,界面,游戏,npc,UI,Q版,设计,原画
+174 网络游戏_网页设计制作 25
+cluster_keywords: lugood,www,http,游戏,beyou8,VI,flash,策划,运营,设计,banner,前端开发
+175 网络游戏_动画师 18
+cluster_keywords: 动画设计,动画,动画师,游戏,角色,动作,设计,手游,部门经理
+176 互联网/电子商务_高级软件工程师 81
+cluster_keywords: QQ,服务器端,app,IOS,产品,服务器,设计,客户端,游戏
+177 计算机软件_游戏策划师 9
+cluster_keywords: Unity3d,游戏,美术,Runner,IOS,Vampire,策划,SNS,Online,设计,Android,功能设计,游戏软件,休闲游戏,文案
+178 计算机软件_信息技术经理主管 9
+cluster_keywords: WEB,linux,SSIS,服务器,设计,CPT
+179 网络游戏_总裁助理总经理助理 9
+cluster_keywords: 游戏,总裁,总经理,人力资源,美术
+180 计算机软件_team主管 10
+cluster_keywords: TeamLeader,www,Management,http,Producer,技术主管,SMS,System,Logistica,Stockpile,au,iPhone,测试,matrixgroup
+181 网络游戏_项目经理 46
+cluster_keywords: 游戏,项目管理,研发,策划,产品,运营,设计
+182 互联网/电子商务_商务经理 9
+cluster_keywords: www,http,游戏,APP,游戏类,互联网,开发者,产品
+183 互联网/电子商务_首席执行官ceo总裁总经理 6
+cluster_keywords: www,Adobe,Flash,互联网,运营,店长,电子商务,RIA
+184 互联网/电子商务_软件工程师 215
+cluster_keywords: 界面,数据库,测试,服务器,后台,设计,客户端
+185 网络游戏_韩语翻译 5
+cluster_keywords: 翻译,产品,测试,CYWORLD,QA,SNS,FPS,运营,游戏
+186 互联网/电子商务_销售代表 31
+cluster_keywords: 主管,互联网,产品
+187 网络游戏_招聘经理主管 11
+cluster_keywords: 分析,java,人力资源,工程师,C++,策划,运营
+188 互联网/电子商务_技术支持维护工程师 15
+cluster_keywords: 脚本,shell,Windows,数据库,linux,mysql,oracle,服务器
+189 网络游戏_招聘专员助理 13
+cluster_keywords: JD,主管,游戏
+190 互联网/电子商务_主管 6
+cluster_keywords: web,游戏,产品,08,zookeeper,管理软件,IM,测试,设计,BUG,服务端,软件测试
+191 网络游戏_游戏运营专员 8
+cluster_keywords: 游戏,测试,撰写,策划,产品,运营
+192 计算机软件_系统分析员 7
+cluster_keywords: 分析,项目经理,ASP,java,管理系统,数据库,bi,系统分析,程序员,oracle,设计,NET
+193 计算机软件_软件开发部 7
+cluster_keywords: 编码,VB,ASP,java,管理系统,信息管理,SERVER,HTML,测试,SQL,设计,程序代码
+194 计算机软件_研发部 11
+cluster_keywords: 总监,信息系统,管理系统,数据仓库,Server,jsp,SQL,架构师,部门经理,软件测试
+195 网络游戏_项目经理主管 39
+cluster_keywords: 产品,项目经理,游戏,美术,项目管理,运营,策划,测试,服务器,设计
+196 网络游戏_会计 34
+cluster_keywords: 财务报表
+197 网络游戏_客服 31
+cluster_keywords: QQ,客服,GM,游戏,BUG
+198 计算机软件_java工程师 63
+cluster_keywords: 分析,管理系统,数据库,测试,设计,代码
+199 互联网/电子商务_产品专员助理 17
+cluster_keywords: 分析,撰写,策划,产品,运营,后台,设计
+200 互联网/电子商务_java工程师 7
+cluster_keywords: Web,spring,数据库,Hadoop,API,jsp,seasar,程序代码,wap
+201 网络游戏_手机软件开发工程师 5
+cluster_keywords: 开发计划,广州,谷得,游戏,网游,服务器进行,抓取,网络科技,参讨,2004,UI,分析测试,运营,盈正,3GUU,BUG,相应
+202 网络游戏_3d美术师 17
+cluster_keywords: gt,美术师,游戏,角色,美术,网游,UV,道具,场景,3D
+203 网络游戏_前端工程师 7
+cluster_keywords: web,www,webgame,http,游戏,前端,设计,前端开发
+204 互联网/电子商务_系统管理员 14
+cluster_keywords: www,运维,tomcat,数据库,Linux,服务器,php
+205 网络游戏_运维总监 5
+cluster_keywords: 管理工作,运维,wkzol,运营,服务器,MooENV,IDC
+206 网络游戏_产品运营专员 5
+cluster_keywords: 分析,数据分析,游戏,策划,产品,运营,ARPU,3D
+207 互联网/电子商务_技术经理 12
+cluster_keywords: PHP,运维,代码,服务器,产品,运营,设计,php,B2C,wap
+208 IT服务（系统/数据/维护）/多领域经营_网页设计师 6
+cluster_keywords: 界面设计,www,游戏,美工设计,设计,品牌设计
+209 网络游戏_场景美工 6
+cluster_keywords: 场景,游戏,美术
+210 网络游戏_3d场景 20
+cluster_keywords: 场景,外包,3D,游戏,手游,部门经理
+211 网络游戏_质量管理测试经理(质量qc经理) 8
+cluster_keywords: 产品,游戏,EA,测试人员,QA,测试,运营,BUG
+212 计算机软件_部门经理 18
+cluster_keywords: 游戏,研发,互联网,产品,电信,客户端
+213 网络游戏_系统工程师 39
+cluster_keywords: 脚本,web,游戏,运维,Linux,Windows,数据库,MySQL,mysql,服务器
+214 网络游戏_技术经理 11
+cluster_keywords: 游戏,开发人员,review,研发,运营,客户端
+215 网络游戏_服务器工程师 6
+cluster_keywords: 分析,web,游戏,软件开发,二进制,server,GDE,服务器,boost,dump
+216 计算机软件_软件开发工程师 14
+cluster_keywords: 服务器,数据库,MTA,测试,研发
+217 网络游戏_主策划 85
+cluster_keywords: gt,游戏,框架,美术,程序,策划,产品,运营,设计,3D
+218 网络游戏_市场策划 7
+cluster_keywords: PR,方案,OL,游戏,A3,撰写,RF,市场推广,市场策划,策划,ONLINE,产品,Online,文案
+219 网络游戏_产品助理 6
+cluster_keywords: KPI,客服,游戏,产品,运营
+220 互联网/电子商务_php开发工程师 16
+cluster_keywords: www,http,框架,主程序,功能模块,后台,php
+221 网络游戏_市场拓展专员助理 8
+cluster_keywords: 分析,后台,网络游戏,游戏,运营
+222 网络游戏_产品专员 50
+cluster_keywords: 分析,数据分析,游戏,客服,测试,策划,产品,运营,BUG
+223 计算机软件_实习生 69
+cluster_keywords: web,Java,游戏,数据库,C++,测试,Android,代码
+224 计算机软件_网页设计制作 9
+cluster_keywords: 数据库,JavaScript,美工,HTML,前台,后台,设计,php
+225 网络游戏_原画师 344
+cluster_keywords: 动画,场景,原画,游戏,角色,美术,道具,NPC,手机游戏,UI,Q版,2D,设计,手游
+226 网络游戏_行政主管 11
+cluster_keywords: 行政
+227 IT服务（系统/数据/维护）/多领域经营_销售经理 7
+cluster_keywords: 系统集成,销售员,部门经理,组长
+228 网络游戏_前台总机接待 20
+cluster_keywords: 行政,游戏,前台
+229 网络游戏_产品运营 18
+cluster_keywords: 分析,方案,游戏,测试,策划,产品,运营
+230 互联网/电子商务_高级产品经理 16
+cluster_keywords: 分析,QQ,产品设计,撰写,产品,运营,设计,电商,客户端
+231 网络游戏_项目总监 17
+cluster_keywords: OL,游戏,框架,美术,研发,策划,产品,运营
+232 计算机软件_学生 6
+cluster_keywords: WEB,界面,管理系统,算法,jsp,SQL,数据挖掘,设计,Android,JAVA,javabean
+233 网络游戏_人力资源经理 15
+cluster_keywords: 人力资源
+234 互联网/电子商务_数据分析师 19
+cluster_keywords: 分析,数据分析,Offer,运营,产品,SQL,数据挖掘
+235 计算机软件_c++工程师 7
+cluster_keywords: 界面,Qt,数据库,研发,Oracle,服务器,多线程,代码,服务端
+236 网络游戏_游戏推广员 10
+cluster_keywords: RMB,I3,OL,游戏
+237 网络游戏_行政专员助理 72
+cluster_keywords: 行政,人事
+238 网络游戏_媒介专员 11
+cluster_keywords: gt,游戏,客服,策划,产品,运营,媒体广告
+239 网络游戏_市场拓展 5
+cluster_keywords: WEBGAME,游戏,撰写,单机游戏,运营,网络游戏,SNS,ONLINE,客户关系
+240 网络游戏_游戏运营 12
+cluster_keywords: 游戏,客服,撰写,测试,策划,产品,运营
+241 计算机软件_系统架构设计师 24
+cluster_keywords: 架构设计,服务器端,BMC,方案,BSM,架构师,设计,游戏
+242 网络游戏_英语客服 6
+cluster_keywords: 客服,meil,产品
+243 计算机软件_软件工程师 1613
+cluster_keywords: 游戏,管理系统,数据库,C++,测试,设计,代码,客户端
+244 网络游戏_人事行政经理 6
+cluster_keywords: 设计,游戏,人力资源,福利,人事
+245 网络游戏_游戏原画师 11
+cluster_keywords: Web,场景,原画,游戏,角色,美术,动画,IOS,策划,ui,设计,Android,3D,文案
+246 网络游戏_美工 28
+cluster_keywords: photoshop,场景,原画,游戏,美术,动画,flash,道具,美工,3Dmax,UI,设计,3D
+247 互联网/电子商务_销售经理 17
+cluster_keywords: 游戏,动漫,互联网,产品,客户关系,wap
+248 互联网/电子商务_网络管理员 9
+cluster_keywords: Google,Netware,工程师,Lotus,数据库,数据备份,计算机网络,PC,策划,linux,服务器
+249 网络游戏_游戏主美 5
+cluster_keywords: 动画,原画,游戏,美术,主管,策划,画面质量,设计
+250 网络游戏_部门经理 15
+cluster_keywords: www,gt,游戏,产品,运营
+251 互联网/电子商务_合伙人 12
+cluster_keywords: 策划,运营,seo,设计,B2C,部门经理
+252 网络游戏_司机 5
+cluster_keywords: CEO,行政
+253 互联网/电子商务_游戏设计开发 26
+cluster_keywords: 游戏,测试,安卓,动作游戏,C++,研发,策划,cocos2d,服务器,设计,客户端
+254 互联网/电子商务_网页设计师 17
+cluster_keywords: Web,www,编程,http,AD,前端,flash,EDM,Facebook,后台,设计,设计师,App,CSS
+255 网络游戏_场景原画 15
+cluster_keywords: 场景,原画,游戏,角色,npc,概念设计,MMO,Q版,设计
+256 互联网/电子商务_运营总监 17
+cluster_keywords: 策划,电子商务,店铺,产品,运营
+257 IT服务（系统/数据/维护）/多领域经营_客服主管 5
+cluster_keywords: BUG,客服,游戏,产品,回访
+258 网络游戏_设计主管 5
+cluster_keywords: 游戏,APP,2D,Plane,Design,amp,设计,3D
+259 网络游戏_产品经理 46
+cluster_keywords: 分析,数据分析,游戏,研发,策划,产品,运营,设计
+260 网络游戏_模型制作 6
+cluster_keywords: 场景,游戏,角色,UV,道具,ZB
+261 网络游戏_副总经理 10
+cluster_keywords: 运营,游戏,产品,研发
+262 网络游戏_渠道分销经理主管 9
+cluster_keywords: 策划,CP,产品
+263 网络游戏_游戏运营策划 7
+cluster_keywords: gt,游戏,网游,撰写,策划,运营,FAQ
+264 网络游戏_绘画 34
+cluster_keywords: 动画,场景,游戏,角色,3DMAX,美工,插画,手机游戏,ui,产品,设计,手游,3D
+265 网络游戏_产品经理主管 199
+cluster_keywords: 分析,数据分析,游戏,测试,研发,策划,产品,运营,设计
+266 网络游戏_运营专员 244
+cluster_keywords: 分析,数据分析,游戏,客服,测试,策划,产品,运营
+267 互联网/电子商务_技术部 9
+cluster_keywords: www,系统管理,Complete,开发人员,ISP,电子商城,主管,UNIX,Handbook,FreeBSD,2.0
+268 计算机软件_售前售后技术支持工程师 19
+cluster_keywords: product,技术支持,Business,BI,analysis,system,Objects,Enterprise,SAP
+269 网络游戏_信息技术经理主管 19
+cluster_keywords: 方案,游戏,客服,道具,运营,服务器,IDC
+270 网络游戏_人事专员 9
+cluster_keywords: 讲师,人事
+271 网络游戏_运营策划 7
+cluster_keywords: 分析,数据分析,翻译,版本控制,游戏,产品,网游,策划,测试,运营
+272 IT服务（系统/数据/维护）/多领域经营_软件测试工程师 6
+cluster_keywords: Linux,测试报告,测试,开发人员
+273 网络游戏_运营助理 18
+cluster_keywords: 分析,www,http,游戏,客服,总监,策划,91wan,测试,运营,GS,GM
+274 互联网/电子商务_客服经理 18
+cluster_keywords: 客服,运营,CSR,管理工作,客户服务
+275 互联网/电子商务_运营专员 83
+cluster_keywords: 分析,数据分析,游戏,策划,产品,运营
+276 互联网/电子商务_商务助理 6
+cluster_keywords: 分析,搜索,搜索引擎
+277 网络游戏_运维工程师 68
+cluster_keywords: 脚本,游戏,运维,数据库,linux,数据备份,mysql,服务器
+278 IT服务（系统/数据/维护）/多领域经营_数据库管理员 8
+cluster_keywords: 管理系统,数据库,Server,系统监控,SQL,Oracle,服务器
+279 网络游戏_场景组组长 5
+cluster_keywords: www,场景,TEL,游戏,rayfile,策划,13585608483QQ,http,11e0
+280 网络游戏_客户端程序员 12
+cluster_keywords: webgame,界面,游戏,功能模块,编辑器,UI,客户端程序,MMORPG,系统优化,服务端,客户端
+281 网络游戏_客服专员 74
+cluster_keywords: QQ,客服,游戏,运营
+282 网络游戏_2d原画 5
+cluster_keywords: 2d,场景,原画,插画,2D,绘画,amp
+283 互联网/电子商务_前端开发工程师 10
+cluster_keywords: shtml,www,http,sohu,程序开发,js,代码优化,html,webapp,php,前端开发,css,wap
+284 网络游戏_市场助理 6
+cluster_keywords: 平面设计,撰写,游戏,管理工作,database
+285 互联网/电子商务_市场经理 15
+cluster_keywords: 方案,策划,产品,市场推广
+286 网络游戏_测试专员 9
+cluster_keywords: 游戏,道具,策划,测试,运营,BUG
+287 互联网/电子商务_网站运营经理主管 7
+cluster_keywords: 方案,电子商务,监督管理,策划,互联网,运营
+288 网络游戏_客户关系投诉协调人员 39
+cluster_keywords: 客服,运营,嵌入,游戏,BUG
+289 IT服务（系统/数据/维护）/多领域经营_软件测试 30
+cluster_keywords: 测试报告,测试项目,analysis,测试,test,软件测试,客户端
+290 网络游戏_游戏客服 49
+cluster_keywords: 分析,客服,游戏,测试,BUG
+291 网络游戏_日语类 11
+cluster_keywords: 日语,脚本,日语翻译,游戏,网游,翻译,笔译,手机游戏,日译,互译
+292 网络游戏_项目主管 9
+cluster_keywords: 架构设计,http,游戏,美术,数据库,运营,SNS,设计,服务器,sdo
+293 网络游戏_多媒体动画设计 165
+cluster_keywords: 动画,gt,http,游戏,角色,美术,网游,动作,场景,UI,设计,3D
+294 网络游戏_服务器开发 5
+cluster_keywords: 游戏,画图,c++,linux,MMORPG,服务器,客户端
+295 网络游戏_角色原画 10
+cluster_keywords: 界面设计,原画,游戏,角色,网游,NPC,研发,UI,设计
+296 IT服务（系统/数据/维护）/多领域经营_java开发工程师 5
+cluster_keywords: IP,系统管理,测试
+297 网络游戏_产品总监 18
+cluster_keywords: Flex,游戏,WEB,美术,研发,策划,产品,运营,设计
+298 网络游戏_客户主任助理 5
+cluster_keywords: QQ,PV,游戏,产品
+299 互联网/电子商务_软件测试工程师 8
+cluster_keywords: 分析,游戏,工程师,电子商务系统,开发人员,QA,PC,测试,设计,BUG,软件测试
+300 互联网/电子商务_ui设计 8
+cluster_keywords: 界面设计,视觉,amp,美术,安卓,pad,UI,设计,logo,banner,Vero
+301 互联网/电子商务_系统架构设计师 10
+cluster_keywords: SOA,数据分析,抓取,研发,银泰,设计,服务端,客户端
+302 网络游戏_媒介专员媒介购买 22
+cluster_keywords: 策划,游戏,产品
+303 网络游戏_人力资源经理主管 6
+cluster_keywords: 行政,人力资源,人事
+304 网络游戏_java软件工程师 8
+cluster_keywords: java,游戏,管理系统,URL,Spring,APP,程序开发,Redis,后台,shrio,下架,运营,开发人员,操作,GM,yuwanend,BUG,Wap
+305 计算机软件_技术部 10
+cluster_keywords: 开发周期,Jbuilder,Java,WebService,软件开发,管理系统,WIN2000Server,Delphi,C++,V2,Tomcat,IM,net,客户端,数据库,服务器端
+306 计算机软件_web前端开发工程师 7
+cluster_keywords: ps,框架,开发人员,美工,JS,动态效果,前台,后台,js,天津,前端开发,CSS
+307 网络游戏_美工编辑美术设计3d场景 6
+cluster_keywords: 场景,游戏
+308 网络游戏_网页游戏策划 5
+cluster_keywords: 联盟,总监,文稿,游戏,宝贝,撰写,美工,介绍,世界观,游戏性,策划,产品,设计,文案
+309 网络游戏_客户代表 18
+cluster_keywords: 游戏,客服,跟单,展架,走访,铺设,网络游戏,灯箱,游戏币,网易公司,B2C,各地,维系
+310 网络游戏_市场经理 42
+cluster_keywords: 游戏,魔界,市场推广,策划,产品,运营
+311 计算机软件_项目经理 81
+cluster_keywords: 分析,fly,项目经理,xsq,http,amp,管理系统,photo,pid,aid,设计
+312 网络游戏_服务器端开发 5
+cluster_keywords: 笑傲,java,log,运维,ARPG,开天,C++,游戏,算法,运营,GM,寻路,数据库,服务器端
+313 互联网/电子商务_副总裁副总经理 7
+cluster_keywords: 抱抱,方案,电子商务,爱妻,摩美得,ECP,产品,运营,物流,B2C
+314 计算机软件_项目经理主管 41
+cluster_keywords: 项目经理,GIS,测试,WM,http,WM5,MES,WINCE,设计,客户端
+315 计算机软件_网络管理员 5
+cluster_keywords: 计算机,信息系统,应用软件,投影,主持,外围设备,服务器,操作
+316 计算机软件_开发工程师 122
+cluster_keywords: 数据库,研发,终端,测试,设计,服务器,Android,客户端
+317 网络游戏_销售主管 10
+cluster_keywords: 广州,游戏,产品,茂名,片区,研发,一直,客户服务
+318 网络游戏_项目负责人 7
+cluster_keywords: 九城,游戏,二次,iOS,运营,Photon,速递,研发,手机游戏,开发者,产品,服务器,设计,Android,手游,05,服务端
+319 网络游戏_市场营销专员助理 8
+cluster_keywords: 曾多次,游戏,吉林省,培养,黑龙江,后备,主管,执行力,展台,完成率,摩力游,督察组
+320 网络游戏_产品专员助理 65
+cluster_keywords: 分析,产品,游戏,撰写,策划,测试,运营
+321 计算机软件_技术工程师,现场总负责,技术总监 5
+cluster_keywords: 黑龙江,技术支持,ALCATEL,BTS,工程师,电信,项目经理,2002,小灵通,年初,基站,表扬,数据处理,CDMA,GSM,直放站,BSC
+322 IT服务（系统/数据/维护）/多领域经营_行政专员助理 6
+cluster_keywords: 事务性,报刊杂志,前台,差旅费,信函,出库
+323 网络游戏_游戏gm 12
+cluster_keywords: QQ,帐号,客服,测试,运营,后台,服务器,GM,异常,BUG,游戏
+324 网络游戏_hrbp 5
+cluster_keywords: 用人,业务部门,落实,面谈,定期,试用期
+325 网络游戏_公会专员 10
+cluster_keywords: 方案,游戏,福利,进驻,测试,31500,产品,大公
+326 网络游戏_运营主管 20
+cluster_keywords: 分析,数据分析,游戏,策划,产品,运营
+327 网络游戏_系统分析师架构师 18
+cluster_keywords: 分析,游戏,运维,微启,运营,策划,手机游戏,流失率,design,服务器,后台,设计,声效
+328 网络游戏_主程 7
+cluster_keywords: 捕鱼,幻战,游戏,运维,服务器端,flash,算法,代码优化,轨迹,欢乐,产品,运营,主程,承担,加密算法,客户端
+329 网络游戏_as3工程师 8
+cluster_keywords: as3,仿真,美工,false,游戏,web,BUG,ios,ps,前端开发,aswing,功能模块,程序员,II,UI,欧陆,萌主,客户端
+330 网络游戏_项目执行协调人员 7
+cluster_keywords: 数据分析,产品开发,游戏,传媒,产品,设计,九天,难易度
+331 互联网/电子商务_技术总监经理 15
+cluster_keywords: www,技术支持,校内,技术储备,http,发展趋势,网络游戏,迅游,运营,MMORPG,设计,从容应对,互联网
+332 IT服务（系统/数据/维护）/多领域经营_技术总监经理 8
+cluster_keywords: 分析,抄表,安全,负荷,计量,用电,采集,概述,终端,技术人员,服务器
+333 计算机软件_技术支持维护经理 14
+cluster_keywords: 分析,机位,技术支持,ERP,产品,管理系统,工程师,酒店,测试
+334 互联网/电子商务_设计主管 5
+cluster_keywords: 界面设计,www,产品设计,交友,uu,CI,游戏类,日文版,UI,产品,skin,uume,设计,创意,第一家
+335 计算机软件_工程师 53
+cluster_keywords: 脚本,编码,Java,游戏,软件开发,数据库,C++,功能模块,测试,后台,设计,代码,客户端
+336 网络游戏_ui 12
+cluster_keywords: 界面设计,做过,界面,游戏,出身,学会,Flash,动画,绘画,策划,UI,我学,设计,矢量,缺少,文案
+337 互联网/电子商务_制作人 5
+cluster_keywords: 游戏,核心,安卓,IOS,商业化,手机游戏,策划,完毕,产品,题材,节点,商议
+338 网络游戏_数据挖掘工程师 6
+cluster_keywords: 分析,游戏,展示,SQL,数据仓库,主导,频率,运营,数据挖掘,设计,HBase,控等
+339 网络游戏_网管 5
+cluster_keywords: 千益,计算机,收银员,机子,电脑,网管,小白,跑堂,考察,卫生,性质
+340 网络游戏_总监部门经理 17
+cluster_keywords: 龙枪,项目部,游戏,美术,评判,IOS,研发,策划,运营
+341 网络游戏_人力资源专员 14
+cluster_keywords: 社保,福利,人事,人事档案,公积金,劳动合同
+342 计算机软件_人力资源专员助理 7
+cluster_keywords: 人力资源,人事,工资,正通,精微,行政,套改
+343 IT服务（系统/数据/维护）/多领域经营_网络工程师 11
+cluster_keywords: 技术支持,Prometric,防火墙,NIIT,PC,Vue,UI,NAT,服务器,培训中心,等工,IDC
+344 网络游戏_游戏系统策划 11
+cluster_keywords: QQ,构建,游戏,搭档,回访,遣散,创意设计,整个,奖励,策划,UI,测试,运营,设计,部门经理,封天传,经营不善
+345 网络游戏_韩语类 11
+cluster_keywords: 金钱,QQ,翻译,游戏,培养,计量,疑难,手机游戏,语言障碍,网络游戏,运营,韩服,研发
+346 互联网/电子商务_招聘主管 9
+cluster_keywords: 分析,每周,高级,成都,VP,候选人
+347 计算机软件_创意指导总监 7
+cluster_keywords: 界面设计,popomo,主美,原画,游戏,美术,潮流,鹿鼎记,品质,创作,粉粉,好评,策划,一致,故事梗概,设计,手游,日记,水立方
+348 网络游戏_客服主管 136
+cluster_keywords: 客服,主管,游戏,测试,运营
+349 计算机软件_java软件开发工程师 5
+cluster_keywords: 多线程,JAVA,框架,收银员,数据库,编程,开源,前台,MySQL,Oracle,用户手册,设计模式,上传,交易
+350 IT服务（系统/数据/维护）/多领域经营_售前售后技术支持工程师 15
+cluster_keywords: 技术支持,工程师,HP,稽核,联调,包于,产品,服务器,彩铃,CA
+351 互联网/电子商务_市场营销主管 6
+cluster_keywords: 联盟,九酷,自建,方案,zcom,USD0,站长,运营,ROI,SEM,cps
+352 网络游戏_市场推广 8
+cluster_keywords: 开发新,独自一人,QQ,游戏,片区,策划,策划书,跟踪报道,陌拜,内部事务
+353 IT服务（系统/数据/维护）/多领域经营_网站编辑 8
+cluster_keywords: www,游戏,客服,玩伴,Lava,wan82,PC,策划,iPhone,Android,客户端
+354 计算机软件_ios开发工程师 43
+cluster_keywords: iPad,Quidsi,产品,程序开发,iOS,应用程序,yoyo,iPhone,测试,android,Bug,客户端
+355 网络游戏_售前售后技术支持工程师 5
+cluster_keywords: 游戏,IM800,客服,回单,管理工具,被盗,服务器,GM,核查,第三方,投入使用
+356 计算机软件_会计 7
+cluster_keywords: 财务报表,财务软件,工商,税控,防伪,纳税人,国税,地税,年检,增值税
+357 网络游戏_flash工程师 7
+cluster_keywords: flex,www,flash,脚本语言,神曲,Flash,游艺机,游戏,客户端,海贼,nextwar,php,大冒险
+358 网络游戏_3d场景主管 8
+cluster_keywords: 同时,场景,原画,拼关,时间表,劲舞,手机游戏,工作量,RPG,产品质量,符合,ripent,3D
+359 计算机软件_互联网软件开发工程师 14
+cluster_keywords: 钻井,钻进,数据库,KBF,服务器,googleapp,设计,TIPS,订房,CMS,子系统
+360 网络游戏_文案策划 54
+cluster_keywords: 文字,世界观,http,游戏,撰写,策划,产品,运营,设计,文案
+361 网络游戏_剧情策划 8
+cluster_keywords: 米亚,原画,游戏,角色,美术,世界观,主线,npc,表格,网络游戏,NPC,命名,设计,UI
+362 网络游戏_经理助理 7
+cluster_keywords: 行政,临时性,管理工作,研发
+363 计算机软件_平面设计 7
+cluster_keywords: 界面设计,LOGO,季刊,平面设计,网强,白皮书,插画,UI,工艺流程,产品,PPT,筷子,设计,EDM
+364 互联网/电子商务_互联网开发工程师 90
+cluster_keywords: www,Java,框架,数据库,http,后台,设计,php,前端
+365 网络游戏_游戏策划 167
+cluster_keywords: 脚本,场景,游戏,美术,撰写,程序,策划,UI,测试,设计
+366 网络游戏_java工程师 6
+cluster_keywords: xml,web,后台,游戏,框架,springmvc,redis,规则,按合服,程序,ajax,多多关照,适应,使合服,mongodb,添加,合服,mybatis,struts2,服务器端
+367 互联网/电子商务_设计师 10
+cluster_keywords: 界面设计,www,javascript,http,平面设计,前端,FLASH,编写出,UI,zpoun,logo,设计,设计师,单页,设计部
+368 网络游戏_助理 6
+cluster_keywords: 公车,推办,证照,用餐,行政事务,后勤,高新区,及软,行政,年检,对外
+369 网络游戏_技术总监经理 23
+cluster_keywords: web,http,游戏,运维,Symbian,手机游戏,运营,ysplay,服务器,android
+370 计算机软件_flash设计开发 12
+cluster_keywords: 播放器,AS3,创业项目,flash,宝箱,游戏,前端,FLASH,精通,介绍,类似,图表,编辑器,名称,金蛋
+371 网络游戏_php工程师 21
+cluster_keywords: 1mobile,www,http,游戏,comhttp,数据库,cache,dfplayer,运营,后台,GM,PHP
+372 计算机软件_售前售后技术支持经理 11
+cluster_keywords: 华表,方案,最佳,NC,BI,用友,华东,华东区,各地,商业智能
+373 网络游戏_网页游戏运营 5
+cluster_keywords: 分析,游戏,统计数据,运营,引到,得到,后台,服务器,相应
+374 计算机软件_开发部 5
+cluster_keywords: 建行,Hibernate,JAVA,2004,框架,Oracle9i,Spring,数据库,Struts,Eclipse,2007,测试,2005,厦门,设计,湖南电信
+375 互联网/电子商务_人力资源专员助理 8
+cluster_keywords: 转正,面谈,研发,策划,搜索,劳动合同
+376 互联网/电子商务_测试工程师 7
+cluster_keywords: 项目经理,测试报告,开发人员,ios,暂未,测试,后台,京东,手游,BUG,android
+377 计算机软件_销售总监 7
+cluster_keywords: 商务洽谈,国家,检疫,spotfire,建设项目,总局,定期
+378 计算机软件_模型制作 5
+cluster_keywords: 维空间,售楼,一起,之间,消防系统,CAD,大纲
+379 互联网/电子商务_网络工程师 32
+cluster_keywords: web,负载,测试,4.3,割接,门户,防火墙,M2M,网营,DL380,服务器,回退,设计,IDC
+380 计算机软件_美工编辑美术设计 16
+cluster_keywords: 场景,界面,游戏,预警,Dreamweaver,程序,防汛,编辑器,ui,美术设计,推送,设计,北京市,山洪,昌平区,3D
+381 互联网/电子商务_ios开发工程师 15
+cluster_keywords: iPad,开发计划,产品,有线,商店,ios,IOS,研发,每期,按质,iphone,产品开发,客户端,iPhone
+382 网络游戏_销售 6
+cluster_keywords: 很多,游戏,白眼,WOW,游戏币,抗压,培养,随机应变,游戏机,乐在其中,喜欢,辛苦,澳服,熟练地,一卡通,有恒心,美服
+383 网络游戏_网络游戏系统策划 6
+cluster_keywords: 游戏,参考,主线,美术,程序,研发,五行,UI,测试,设计,文案
+384 IT服务（系统/数据/维护）/多领域经营_软件测试&质量 5
+cluster_keywords: 负载,DM,编写程序,R2,IBM,数据库,DEFECT,R1,ORACLE10G,突发,manager,API,应用程序,测试,WIN08,操作系统,DB2,WIN03,document,AIX
+385 互联网/电子商务_主策划 5
+cluster_keywords: 剑网,www,界面,游戏,剑侠情缘,17game,西山居,两款,策划,网络游戏,珠海,产品,运营,王座,设计
+386 互联网/电子商务_数据分析 15
+cluster_keywords: 分析,数据分析,表现出色,后台,搜索,产品,运营,数据挖掘,KPI
+387 IT服务（系统/数据/维护）/多领域经营_销售代表 10
+cluster_keywords: 一体机,撰写,emachines,招投标,电脑,笔记本,易美逊,梦想家,显示器,配件,冠捷,产品,服务器,ACER,艾默生,台式
+388 计算机软件_网站运营经理主管 5
+cluster_keywords: IPtables,WINDOWS,安全策略,MySQL,IDC,游戏,双机,服务器,VPN,IPSec,RedHat,Windows,电脑,Server,UNIX,amp,出现,RAC,Mankrake,IPF,Squid,SQL,ORACLE
+389 互联网/电子商务_电子商务seo 34
+cluster_keywords: 分析,世界排名,产品,网址,搜索引擎,SEO,SNS,aleax,网络广告,7551,导航,外链
+390 网络游戏_人力资源主管 37
+cluster_keywords: 人力资源,福利
+391 IT服务（系统/数据/维护）/多领域经营_技术部 6
+cluster_keywords: 技术支持,试题,管理系统,学员,开发人员,MYSQL,测试,设计,服务器
+392 网络游戏_客户咨询热线呼叫中心人员 136
+cluster_keywords: 来电,客服,游戏
+393 网络游戏_游戏测试员 40
+cluster_keywords: 功能测试,兼容性,游戏,iOS,QuickPlay,手机游戏,策划,测试,Gameplay,BUG,测试报告
+394 互联网/电子商务_客服部 6
+cluster_keywords: 游戏,查看,职务,CC,客服,组长,网络游戏,名称,产品,GM
+395 互联网/电子商务_总监部门经理 13
+cluster_keywords: 产品,游戏,管理工作,APP,市场推广,115,导入,蓝心,运营,电商
+396 IT服务（系统/数据/维护）/多领域经营_系统集成工程师 10
+cluster_keywords: 红鹤,方案,cisco,Redhat,运维,Linux,系统集成,ccna,测试,linux,服务器,vpn
+397 计算机软件_技术支持工程师 6
+cluster_keywords: 技术支持,耐德,台基,OS,数据库,停机,Mac,Server,管理软件,产品,中国,服务器,汽修,财务软件,远程
+398 计算机软件_web前端工程师 5
+cluster_keywords: web,精品课程,框架,架构设计,创意设计,前端,ps,js,pc,Appcan,video,设计,部门经理
+399 网络游戏_创意指导总监 40
+cluster_keywords: 动画,原画,游戏,角色,美术,flash,ui,设计,杀神,3D
+400 计算机软件_测试经理 6
+cluster_keywords: 测试,测试人员,彩票,自助,产品,产品质量,设计,投注
+401 网络游戏_行政经理 5
+cluster_keywords: 管理工作,完美,保卫工作,后勤,大厦,宿舍,行政,拟订,帐册
+402 网络游戏_策划 41
+cluster_keywords: 游戏,客服,道具,策划,UI,运营,设计,文案,3D
+403 互联网/电子商务_三维3d设计制作 12
+cluster_keywords: 动画,场景,游戏,动作,道具,NPC,角色,2D,里德,Iphone,序列,FinalToon,3D
+404 网络游戏_系统管理员 49
+cluster_keywords: web,游戏,运维,数据库,Linux,mysql,服务器,客户端
+405 网络游戏_3d建模 8
+cluster_keywords: 书剑,场景,原画,角色,动作,信誉,置换,出品,配表,成形,绘画,所建,风手游,3D,鲜明,游戏
+406 互联网/电子商务_前端开发 6
+cluster_keywords: WEB,www,功能测试,界面设计,kutongji,前端,WIN8,highcharts,互交,arttemplate,amcharts2013,seajs2,grunt,数据分析系统,前端开发,bootstrap2
+407 网络游戏_系统策划 87
+cluster_keywords: gt,界面,游戏,美术,撰写,程序,策划,UI,设计,手游
+408 网络游戏_人事行政助理 8
+cluster_keywords: 人力资源,福利,人事,交办,规章制度,行政
+409 互联网/电子商务_web前端开发工程师 10
+cluster_keywords: 代码,web,www,兼容性,http,框架,前端,js,ajax,seo,前端开发,css,chinaunicom
+410 网络游戏_关卡策划 17
+cluster_keywords: 场景,游戏,动作,AI,撰写,策划,NPC,编辑器,新手,设计
+411 网络游戏_高级软件工程师 112
+cluster_keywords: 服务器端,游戏,数据库,CGB,IOS,C++,手机游戏,编辑器,服务器,设计,客户端,代码,3D
+412 计算机软件_网络工程师 5
+cluster_keywords: 方案,R2,VPS,WEB,Windows,存储系统,SQL,server,升级,BIZ,DNS,linux,服务器,VPN,远程
+413 计算机软件_高级软件工程师 342
+cluster_keywords: 游戏,管理系统,数据库,C++,设计,服务器,代码,客户端
+414 互联网/电子商务_工程师 11
+cluster_keywords: 编程,LinQ,放号,Ajax,搜索,SQL,NET,php
+415 网络游戏_客服经理主管 8
+cluster_keywords: 方案,游戏,客服,FAQ,QC,组长,主管,定期,客户服务
+416 网络游戏_3d场景设计师 15
+cluster_keywords: 加叠,场景,原画,游戏,uv,CE3,出色完成,帖图,3D
+417 计算机软件_软件ui设计师工程师 10
+cluster_keywords: 界面设计,界面,pc,Windows,数据库,XP,访问,警务,服务器,MySQL,后台,设计,Android,前端,客户端
+418 网络游戏_市场专员 15
+cluster_keywords: 分析,方案,游戏,撰写,策划,产品,文案
+419 网络游戏_助理秘书 25
+cluster_keywords: 总经理,行政,事宜,会议记录,人事
+420 互联网/电子商务_项目经理 29
+cluster_keywords: 分析,方案,项目管理,研发,策划,产品,运营,设计
+421 网络游戏_策划总监 6
+cluster_keywords: 策划人员,游戏,华夏,测试,运营,梁山,策划,中娱,2004,飞讯,客户端
+422 网络游戏_3d场景制作 7
+cluster_keywords: 更好,编组,创收,知识,相处,大城市,向往,魔界,场景,和谐,3D,不错,第一个
+423 互联网/电子商务_网站运营专员 5
+cluster_keywords: 中超,文字编辑,策划,华强,新品,互换,品类,球迷,电子网
+424 网络游戏_前端开发 5
+cluster_keywords: 脚本,手机游戏,服务器端,写意,Unity3D,编程,C++,武侠,米斯,cocos2d,增量,管理系统,客户端
+425 计算机软件_java开发 11
+cluster_keywords: JQuery,jquery,插件,国家,java,tomcat,cdc,数据库,管理系统,统计分析,js,功能模块,html,测试,mysql,javaScript,卫生
+426 网络游戏_市场专员市场助理 29
+cluster_keywords: http,游戏,撰写,策划,运营,文案
+427 网络游戏_采购主管 8
+cluster_keywords: 不必要,周期,主打产品,分批,CDN,组装,其位,分内事,采购计划,下单,供货,定做,零配件,轻重缓急,配件,按计划,其政
+428 计算机软件_销售代表 10
+cluster_keywords: 分析,方案,软件产品,指定,市场动态,促使,财务预算,市场调研,产品价格,顺利完成
+429 网络游戏_销售经理 10
+cluster_keywords: 方案,主管,周边,游戏,运营
+430 IT服务（系统/数据/维护）/多领域经营_软件工程师 163
+cluster_keywords: Java,框架,数据库,C++,测试,设计,代码,客户端
+431 互联网/电子商务_电子商务专员助理 9
+cluster_keywords: 找出,电子商务,管理工作,工程师,客服,工程部,愉快,化妆品,天猫,一家,一号,运营,店铺
+432 网络游戏_linux运维工程师 6
+cluster_keywords: 负载,shell,游戏,运维,主机,数据库,mysql,linux,服务器,php,操作系统
+433 互联网/电子商务_前端工程师 11
+cluster_keywords: 代码,web,www,悄语,http,俏物,ihush,前端,标准化,W3C,前端开发,JS,程序员,跨平台,UI,符合,设计,php,出山
+434 计算机软件_技术经理 10
+cluster_keywords: 夜店,游戏,zend,开放平台,LAMP,studio,SNS,editplus,PHP,康盛,动物园,大亨
+435 网络游戏_3d角色 20
+cluster_keywords: 所调,XNjAyNTYzNTg0,XNTk5MTQyMTE2,游戏,角色,show,场景,亿网,动作,youku,html,星漫,http,XNjAyNTYzMzg0,3D
+436 网络游戏_运营总监 32
+cluster_keywords: 数据分析,方案,游戏,客服,产品,运营
+437 网络游戏_uiue设计师顾问 24
+cluster_keywords: 界面设计,www,界面,游戏,co,美术,mobile,gameloft,http,kr,html,UI,设计,手游,mgamezone
+438 互联网/电子商务_策划主管 5
+cluster_keywords: 方案,游戏,美术,网游,总体设计,组外,策划,测算,产品,培养,设计,提案
+439 IT服务（系统/数据/维护）/多领域经营_ 6
+cluster_keywords: 广西,水电站,泵站,柳州,管理系统,数据库,SERVER,计粮,洋关,船闸,泄水闸,线程,终端,瑞和兴泰,SQL,驱动程序,红花
+440 网络游戏_c++工程师 11
+cluster_keywords: 界面,游戏,VS2005,网游,跨平台,C++,间通信,编辑器,UI,挂机,服务端,客户端
+441 网络游戏_3d角色制作 6
+cluster_keywords: 场景,游戏,角色,网游,神墓,道具,有时,盘龙,羡慕,3D,游外,九天,3d
+442 互联网/电子商务_电子商务经理主管 17
+cluster_keywords: 方案,电子商务,各组,策划,爆款,天猫,搜索,产品,运营,店铺
+443 网络游戏_人事行政专员 8
+cluster_keywords: 人事,Offer,行政事务,人事行政,规章制度,行政
+444 IT服务（系统/数据/维护）/多领域经营_测试经理 6
+cluster_keywords: 小伍,游戏,oem,工程师,雅啤士,帮客,功能测试,产品,测试,时空,偏向,系统配置
+445 网络游戏_原画设计师 14
+cluster_keywords: LADYGAGA,QQ,场景,原画,游戏,角色,美术,侠义道,道具,NPC,PETHOME,UI,赛手,设计,Tinylife,欧美地区,3D
+446 网络游戏_人力资源专员助理 46
+cluster_keywords: 行政,人事
+447 互联网/电子商务_销售总监 7
+cluster_keywords: 产品,电脑,江民,2004,杀毒软件,电信
+448 网络游戏_总监 11
+cluster_keywords: 融资,人力资源,美术,网游,策划,产品,运营,行政,工作室,游戏
+449 互联网/电子商务_产品专员 10
+cluster_keywords: 分析,播放器,www,http,游戏,产品库,策划,产品,设计,watchstor,华录
+450 IT服务（系统/数据/维护）/多领域经营_ui设计师 7
+cluster_keywords: 界面设计,广州,平面设计,前端,设计方案,终端,产品,LOGO,设计,导购,辅导组
+451 网络游戏_3d场景美工 26
+cluster_keywords: 场景,原画,游戏,角色,美术,道具,研发,3D
+452 网络游戏_美工经理 5
+cluster_keywords: 游戏,美术,创意设计,IOS,策划,SNS,产品,设计
+453 网络游戏_信息技术专员 18
+cluster_keywords: Maya,游戏,安全策略,Perforce,BUG,3DMax,基础架构,测试,容灾,服务器,研发,IDC
+454 网络游戏_行政专员 9
+cluster_keywords: 行政,年检,事宜
+455 网络游戏_数据分析师 12
+cluster_keywords: 分析,数据分析,业务部门,游戏,项目管理,神曲,BI,hadoop,策划,产品,运营,数据挖掘,设计
+456 计算机软件_开发 7
+cluster_keywords: 检索,责任,gis,游戏,D版,程序开发,四川省,贵阳市,API,eclipsewindowssvn,ANDROI,ERP,android,客户端
+457 网络游戏_总经理助理 7
+cluster_keywords: 总署,申办,管理工作,新闻出版局,梁山,行政,总经理,新闻出版,游戏
+458 网络游戏_人力资源总监 11
+cluster_keywords: HR,人力资源,人力资源部,战略规划
+459 互联网/电子商务_实习生 40
+cluster_keywords: www,http,旗舰店,算法,实习生,产品,数据挖掘,设计
+460 网络游戏_互联网开发工程师 38
+cluster_keywords: www,ASP,http,游戏,C#,客服,程序开发,ubabytv,后台,NET,客户端,服务器端
+461 IT服务（系统/数据/维护）/多领域经营_销售主管 5
+cluster_keywords: customer,中标,network,nationwide,technical,按灵,sales,毛利,顺德区,中国移动,销售额,systems,海淀区,服务中心,such,禅城区,networks
+462 互联网/电子商务_高级开发工程师 7
+cluster_keywords: Web,存储,海量,随心,研发,OLAP,搜索,数据处理,功能设计,阿拉丁,客户端
+463 网络游戏_测试 16
+cluster_keywords: real,Web,游戏,ios,iphone,测试,运营,ipad,BUG
+464 计算机软件_系统分析师架构师 8
+cluster_keywords: 03,信用卡,游戏,框架,2005,哥布林,2007,服务器,设计,网上银行
+465 互联网/电子商务_市场专员市场助理 6
+cluster_keywords: 中新网,传媒,策划,访问量,准备,会展,合作意向,Wap
+466 计算机软件_java开发工程师 21
+cluster_keywords: 项目经理,删除,应聘,管理系统,Spring,框架,Struts2,MVC,设计
+467 网络游戏_市场策划企划专员助理 7
+cluster_keywords: 撰写,游戏,炒作,促销,常规,策划,OL,张婉悠,173,文案
+468 互联网/电子商务_动画3d设计 5
+cluster_keywords: 动画设计,增强,电子商务,真人,美术,AdobeDirector,表现,Flash,现实,ActionScript2,交互式,游戏,技术开发,楼盘,美术设计,教育软件,设计,事宜,试衣,3D
+469 网络游戏_3d角色美术师 5
+cluster_keywords: 2D,原画,游戏,角色,美工,3Dmax,完整,战神,绘图,其间,大型,3D
+470 计算机软件_三维3d设计制作 7
+cluster_keywords: 仿真,地图编辑,片头,测控,美术,加注,火箭,动画,界面设计,场景,航天,太原,研究所,虚拟现实,3D
+471 网络游戏_活动策划 10
+cluster_keywords: 决赛,方案,制订,游戏,举办,舞台,策划,工会
+472 网络游戏_制作人 14
+cluster_keywords: 游戏,安卓,IOS,UNITY,研发,策划,专案,产品,运营,设计,3D
+473 网络游戏_3d美工设计师 8
+cluster_keywords: 隔离带,场景,游戏,角色,道具,动作,武侠,遮墙,步线,OL,网络游戏,RPG,誓魂,设计,设计师,制作人员,战旗,3D
+474 网络游戏_网站编辑 69
+cluster_keywords: http,游戏,yzz,撰写,策划,原创
+475 互联网/电子商务_市场营销经理 6
+cluster_keywords: 带队参加,代表处,产品,天使,商户,时光,撰写,策划,杂志,互联网,福建,本地,文案
+476 网络游戏_市场拓展经理主管 6
+cluster_keywords: 路西,动画,COS,长乐路,游戏,指环王,客服,世纪,航海,CG,门店,西安市,南起,大奖赛,策划,国度,雁展,路北,联谊,B2B,机甲
+477 IT服务（系统/数据/维护）/多领域经营_网页设计制作 13
+cluster_keywords: www,http,比酷,大话,sqlserver2005,设计,DIV,xianjian8,CSS,htmlhttp
+478 网络游戏_游戏系统策划师 6
+cluster_keywords: 各个系统,脚本,会用,游戏,美术,书写,撰写,程序,无误,lua,策划,新手,设计
+479 网络游戏_推广员 9
+cluster_keywords: 客情,竞赛活动,游戏,我司,学会,回馈,策划,网络游戏,产品,两款
+480 互联网/电子商务_原画师 5
+cluster_keywords: 弟子规,动画,机械类,决战,原画,角色,美术,组组,日式,央视,教育性,酷酷,场景,UI,Q版,80,风林火山,逐针
+481 计算机软件_网页设计制作美工 7
+cluster_keywords: jquery,界面设计,WEB,sql2005,Demo,javascript,前端开发,HTML,UI,web,设计,div,cms,net,css
+482 互联网/电子商务_产品总监 15
+cluster_keywords: 优谈,产品设计,产品,SMS,www,MMS,互联网,总监,运营,设计,乐讯,WAP
+483 IT服务（系统/数据/维护）/多领域经营_开发工程师 28
+cluster_keywords: 发运,WLAN,游戏,数据库,数据通路,采集,测试,服务器,设计,电信,客户端
+484 计算机软件_应届毕业生 5
+cluster_keywords: 北大,Web,青鸟,界面,软件开发,开发人员,C++,max,前端,3Ds,ps,层及,架构设计,虚拟现实,楼盘,WEB,设计,培训中心,软件测试
+485 互联网/电子商务_客户咨询热线呼叫中心人员 11
+cluster_keywords: 出勤,来电,游戏
+486 网络游戏_3d角色主管 10
+cluster_keywords: MONSTER,角色,汉武大帝,NPC,工作进展,MMORPG,龙塔,3d
+487 互联网/电子商务_市场总监 12
+cluster_keywords: www,市场推广,策划,切客,运营,多家,欧朋,市场调研
+488 网络游戏_工程师 30
+cluster_keywords: 服务器端,java,游戏,网狐,数据库,C++,手机游戏,程序员,c++,测试,主程,服务器,客户端
+489 网络游戏_产品主管 11
+cluster_keywords: 分析,游戏,测试,策划,产品,运营
+490 网络游戏_特效设计师 21
+cluster_keywords: 插件,Ol,AE,游戏,角色,主线,策划,场景,UI,保密,设计
+491 网络游戏_市场策划企划经理主管 9
+cluster_keywords: 巨人,DM,游戏,创意,盘古,策划,如哇,网络游戏,征途,产品,运营,乐美,胖哥,几款,客户端
+492 计算机软件_系统工程师 29
+cluster_keywords: 数据库,6.03,系统集成,MSN,Linux,服务器
+493 计算机软件_4001-6000元月 6
+cluster_keywords: OCI,网关,加密,RAC,TTS,交管局,数据库,编程,10g,通华声,Weblogic,Solaris,Oracle,服务器,奥运,ActiveX
+494 互联网/电子商务_ui设计师 40
+cluster_keywords: 分析,界面设计,房地产,界面,APP,功能模块,HTML,UI,产品,设计,视觉,交易会
+495 计算机软件_游戏测试 9
+cluster_keywords: 游戏,能够,功能测试,PC,策划,给出,master,测试,PS3,级别,BUG,Apple
+496 互联网/电子商务_系统分析师架构师 14
+cluster_keywords: www,http,框架,tongxue8,数据库,CI,Oracle,采集,服务器,物流,设计,NET,报关,客户端
+497 网络游戏_兼职 37
+cluster_keywords: 游戏,市场推广,团团长,动画人物,测试,端游,Q版,手游,工作室
+498 计算机软件_前端工程师 6
+cluster_keywords: 优秀员工,插件,Flash,GS,框架,管理系统,kuwo,JavaScript,甘特图,JS,获得,html,一等奖,特殊效果,前端,编程
+499 网络游戏_总经理 11
+cluster_keywords: 极品飞车,俱乐部,游戏,裁判长,优秀,光谷,策划,裁判员,运营,跻身,工作室,电子竞技,E3,星际争霸
+500 网络游戏_编辑撰稿 12
+cluster_keywords: 游戏,撰写,游艺,策划,SEO,主编,文案
+501 互联网/电子商务_软件开发工程师 7
+cluster_keywords: 驾考,www,主厨,Java,TableView,精通,C#,茶牌,数据库,IOS,SQLite,彩信,Mac,Sqllite3,UI,Objective,http,Xcode4,OS,驾照
+502 计算机软件_ios工程师 10
+cluster_keywords: iPad,unity3d,Code,OC,练习,ios,责任,MAC,iPhone,cocos2D,客户端
+503 互联网/电子商务_技术总监 25
+cluster_keywords: 架构设计,www,http,框架,按质,技术培训,服务器,开发部,设计,设计部
+504 网络游戏_财务经理 13
+cluster_keywords: 分析,账套,内控,财务人员,财务部,税法,财务管理
+505 互联网/电子商务_数据挖掘工程师 6
+cluster_keywords: 分析,web,机票,游戏,工程师,python,研究,态度,当当网,hadoop,研发,利用,情感,算法,运营,数据挖掘,自然语言
+506 网络游戏_招聘专员 9
+cluster_keywords: 用人,负责人,测评,笔试,校园,程序员,候选人
+507 IT服务（系统/数据/维护）/多领域经营_项目经理 13
+cluster_keywords: 分析,项目经理,年初,JAVA,游戏,信息系统,Spring,08,上海,Eclipse,网管,建设项目,改建,测试,数据库
+508 互联网/电子商务_产品运营 8
+cluster_keywords: 分析,方案,粉丝,05,留言,运营,竞价,策划,主播,产品,明星,设计,火星,360
+509 IT服务（系统/数据/维护）/多领域经营_ios开发工程师 7
+cluster_keywords: 开发计划,产品开发,协作,按期,iOS,ios,理解,iphone,产品,帮传带,客户端
+510 互联网/电子商务_运营经理 28
+cluster_keywords: 分析,方案,制订,策划,产品,运营,飞信
+511 互联网/电子商务_项目总监 6
+cluster_keywords: 方案,运维部,客服,完整,产品,运营,数据挖掘,部门经理
+512 计算机软件_原画师 7
+cluster_keywords: 两款,MAC,场景,原画,游戏,奇网,美术,龙头企业,程序开发,美工,应用程序,研发,哥布林,人设,UI,设计,不断创新,3DiPad
+513 IT服务（系统/数据/维护）/多领域经营_技术支持 8
+cluster_keywords: win2000,房地产,运维,win,win7,HIS,复兴门,技术支持,迪克斯,北京市,服务器,xp,儿童医院,信息中心,IDC,客户端
+514 互联网/电子商务_项目经理主管 21
+cluster_keywords: WEB,IBM,项目管理,优惠,掌上,project,JohnDeere,服务器,设计
+515 网络游戏_收银员 6
+cluster_keywords: 班次,应聘,验明,日记帐,收支,收入支出,收钱,这份,真伪,收银,现金管理,来时,客人
+516 网络游戏_测试员 26
+cluster_keywords: 游戏,测试报告,功能测试,策划,测试,MMORPG,设计,BUG,3D
+517 网络游戏_质量主管 9
+cluster_keywords: 产品,gt,游戏,开发人员,测试报告,QA,测试,BUG,客户端
+518 网络游戏_副总裁副总经理 9
+cluster_keywords: 几万家,项目经理,游戏,OAO,实体店,分管,产品,运营
+519 互联网/电子商务_高级运维工程师 6
+cluster_keywords: 脚本,Shell,http,运维,管理系统,队列,数据处理系统,yongye,github,开源,shell,集群,proxy,https,接维,俄罗斯,节点,方块
+520 网络游戏_游戏原画设计师 5
+cluster_keywords: 动画,场景,原画,游戏,包及,平面设计,网络游戏,美术,工作效率,手机游戏,策划,UI,两款,设计,android,Icon,主美,交流心得
+521 互联网/电子商务_系统工程师 19
+cluster_keywords: 脚本,负载,运维,Linux,数据库,mysql,linux,服务器
+522 计算机软件_测试工程师 18
+cluster_keywords: 测试,UI,产品,android,BUG,软件测试
+523 网络游戏_运营经理 33
+cluster_keywords: 分析,数据分析,游戏,方案,接入,策划,产品,运营
+524 网络游戏_售前售后技术支持经理 5
+cluster_keywords: 出售,技术支持,买卖,服务器端,批量,效能,电脑,私服,稳定性,全面,服务器,多方面,吸纳,低价,安全性,黄金
+525 互联网/电子商务_游戏策划师 24
+cluster_keywords: 游戏,美术,网游,安卓,精灵,手机游戏,修仙,策划,UI,测试,设计,晨曦,文案
+526 互联网/电子商务_项目主管 6
+cluster_keywords: 分析,技术难题,mvvm,管理系统,类似,星城,技术培训,导购网,wpf
+527 网络游戏_运营支持 6
+cluster_keywords: 数据分析,游戏,开发人员,开并服,例行,排查,产品,运营,联合,对账,BUG
+528 网络游戏_策划师 5
+cluster_keywords: gt,搜到,创意设计,7.5,龙门客栈,数十款,游戏软件,火影忍者,设计,延伸,HC,功能设计,泡泡龙,核心
+529 网络游戏_平面设计 41
+cluster_keywords: 界面设计,界面,游戏,动画,平面设计,联众,Flash,UI,产品,设计,海报设计
+530 互联网/电子商务_网站策划 8
+cluster_keywords: 分析,方案,5000,运营,撰写,美工,策划,测试,420,设计,咕汇,项目前期
+531 网络游戏_场景原画师 5
+cluster_keywords: 动画,场景,游戏,统筹,美术,做事,道具,策划,人设,网络游戏,设计,信任,支援,深受
+532 网络游戏_行政经理办公室主任 7
+cluster_keywords: 装修,设施,资产,新址,规章制度,行政,拟订
+533 互联网/电子商务_客服专员助理 32
+cluster_keywords: 产品,客服,出价,游戏,测试
+534 互联网/电子商务_软件测试 31
+cluster_keywords: QQ,介绍,项目风险,测试,设计,软件测试,客户端
+535 IT服务（系统/数据/维护）/多领域经营_人力资源专员助理 6
+cluster_keywords: 人事档案,考勤制度
+536 网络游戏_3d角色美工设计师 5
+cluster_keywords: 原画,游戏,角色,美术,侠客行,uv,npc,好评,网络游戏,王者,设计,3D
+537 网络游戏_运营客服 8
+cluster_keywords: 后台,游戏,客服,服表,发开,运营,开区
+538 IT服务（系统/数据/维护）/多领域经营_项目经理主管 18
+cluster_keywords: 方案,项目经理,广汽,测试,服务器,TSP,Telematics
+539 互联网/电子商务_行政专员 6
+cluster_keywords: 客户资料,行政,保管,人事
+540 网络游戏_美工编辑美术设计 269
+cluster_keywords: 动画,场景,原画,游戏,角色,美术,道具,美工,手机游戏,UI,设计,界面,3D
+541 互联网/电子商务_产品经理 37
+cluster_keywords: 分析,产品设计,游戏,商户,产品,运营,后台,设计
+542 网络游戏_3d角色设计师 7
+cluster_keywords: 感觉良好,两款,游戏,角色,美术,完美,美术专业,蒙皮,51,Project,之新,奖项,设计,设计师,射雕,色彩,3D
+543 互联网/电子商务_uiue设计师顾问 32
+cluster_keywords: 分析,界面设计,www,界面,QQ,产品,携程,APP,功能模块,UI,测试,设计,视觉,banner
+544 IT服务（系统/数据/维护）/多领域经营_网页设计 5
+cluster_keywords: 动画,动画师,封面,http,..,界面设计,本是,flash,信网,实习生,21315,内页,设计,banner
+545 网络游戏_游戏文案策划 9
+cluster_keywords: OL,游戏,运维,客服,龙魂,持续,NPC,研发,策划,网络游戏,运营,设计,功能设计,文案
+546 网络游戏_培训生 24
+cluster_keywords: 动画,火星时代,原画,游戏,角色,专业班,max,创作,沙盘,分组,实训生,设计,夏尔,3D
+547 IT服务（系统/数据/维护）/多领域经营_多媒体动画设计 6
+cluster_keywords: 动画设计,动画,gt,游戏,农村信用,flash,程序,海宁市,ie7,ie6,部门经理,UI,后台,设计,设计师,人才网,div,css,3D
+548 互联网/电子商务_人力资源主管 7
+cluster_keywords: 行政,管理体系,人力资源,劳动
+549 互联网/电子商务_客户代表 10
+cluster_keywords: 作业量,彩金,客服,知识,债务,server,交收,定期,产品,网络广告,windows8
+550 网络游戏_商务经理 18
+cluster_keywords: 分析,游戏,引进,研发,商务谈判,产品,运营
+551 网络游戏_角色原画师 8
+cluster_keywords: 酷蜂,原画,游戏,角色,类端游,日入,纹章,npc,端游,设计,设计师,画师,日到,3D
+552 IT服务（系统/数据/维护）/多领域经营_平面设计 6
+cluster_keywords: 平面广告,形象,贴纸,平面设计,不干胶,宝达,宣传单,纪念册,多项,影集,彩信,设计,折页,海报设计
+553 网络游戏_高级开发工程师 5
+cluster_keywords: JAVA,服务器端,迭代,研究,Unreal3,策划,研发,开源,产品,OSGi,第三方,游戏
+554 互联网/电子商务_首席运营官coo运营总监 7
+cluster_keywords: 划算,苏州,主管,互联网,运营,电商,餐饮,类目
+555 互联网/电子商务_平面设计师 9
+cluster_keywords: 连帧,运维,美术,平面设计,展示,英文网,LOGO,画面,面盖,产品,机底,设计,手提袋,电子杂志,海报设计
+556 网络游戏_人事主管 5
+cluster_keywords: 低值易耗品,公积金,作出,员工福利,人事
+557 计算机软件_主美 5
+cluster_keywords: 场景,魔幻,美术,30,核心成员,策划,商讨,提案,次后,战舰,部门经理
+558 网络游戏_3d场景美术师 9
+cluster_keywords: 机械类,场景,原画,游戏,Q版,不断,道具,此款,修养,三转,率低,设计,通过率,特色,就职,3D
+559 互联网/电子商务_首席技术官cto首席信息官cio 9
+cluster_keywords: 架构设计,运维,研发,电梯,视频会议,产品,运营,服务器
+560 计算机软件_互联网开发工程师 14
+cluster_keywords: 红桃,ios,爬虫,美工,过滤,搜索,垃圾,Query,后台,设计,研发
+561 网络游戏_flash设计开发 111
+cluster_keywords: 动画,gt,界面,游戏,框架,前端,Flash,功能模块,flash,编辑器,UI,RPG,服务器,设计,前端开发,客户端
+562 网络游戏_英语类 9
+cluster_keywords: 翻译,游戏,客服,运营,陪同,跑马灯,Skype,产品,分配任务,网络游戏,Livechat,客人
+563 网络游戏_测试主管 38
+cluster_keywords: 书写,测试报告,游戏,测试,BUG
+564 网络游戏_商务专员助理 9
+cluster_keywords: 联盟,游戏,产品,积分,调查,网络游戏,交付,运营,发行商,短短的
+565 互联网/电子商务_店主 5
+cluster_keywords: 决定,土特产品,持之以恒,信誉,taobao,全心投入,三颗,付出,户外,策划,闲暇,进货,开店,必由之路,领悟到,在校,店铺
+566 网络游戏_网页设计 6
+cluster_keywords: www,http,游戏,lib,劲舞团,zhy,奇侠传,图库,jpg,可乐吧,ui,悠贝网,舞侠,设计,9you,9u,wx
+567 网络游戏_产品品牌专员助理 6
+cluster_keywords: 球友,baidu,www,http,游戏,权重,体育,知名,恒大,可能性,产品,运营
+568 互联网/电子商务_android开发工程师 9
+cluster_keywords: 插件,产品,工程师,iOS,电影,歌曲,测试,沸米,欧洲杯,Android,sdk,android,选座,客户端
+569 网络游戏_电子商务经理主管 11
+cluster_keywords: 商务洽谈,游戏,接入,测试,研发,产品,运营,CP
+570 互联网/电子商务_总经理 11
+cluster_keywords: 开玩,http,旗舰店,供应链,运营,1号店,电子商务,京东,电商
+571 互联网/电子商务_经理 8
+cluster_keywords: 服务器,数据库,评为,客服
+572 互联网/电子商务_兼职 5
+cluster_keywords: 名片,主页,排版,发稿,大部分,认真负责,西安,LOGO,加为,设计,超额完成,餐饮
+573 互联网/电子商务_文案策划 8
+cluster_keywords: 游戏,代购,撰写,校园,版块,新闻稿,策划,产品,优酷,文案
+574 计算机软件_erp技术开发应用 10
+cluster_keywords: std,ERP,运维,c#,数据库,当当网,子系统,SQL,Oracle,物资
+575 网络游戏_策划主管 18
+cluster_keywords: 工作进度,游戏,美术,世界观,裂天,策划,产品,设计,手游
+576 网络游戏_服务器开发工程师 5
+cluster_keywords: 法宝,服务器端,推送,游戏,数据库,侍从,多次,奖励,礼包,UI,竞技场,服务器,客户端,提醒,服务端,师傅
+577 互联网/电子商务_网页制作 9
+cluster_keywords: www,布局,http,flash,旗下,JS,HTML,优势,联动,后台,Div,CSS
+578 互联网/电子商务_互联网软件开发工程师 26
+cluster_keywords: iPad,www,HTTP,app,http,组长,iPhone,服务器,android,net
+579 网络游戏_软件测试工程师 10
+cluster_keywords: 幻想,产品,OL,测试报告,博彩,角色扮演,测试,BUG,游戏
+580 网络游戏_游戏策划师 443
+cluster_keywords: 游戏,美术,策划,UI,测试,运营,设计
+581 网络游戏_1000-2000元月 11
+cluster_keywords: 魔力宝贝,守则,游戏,回访,邮寄,问题解答,策划,工作室,测试,礼品,服务器,日常事务,SE
+582 网络游戏_游戏测试 65
+cluster_keywords: 测试报告,Bug,功能测试,策划,测试,运营,BUG,游戏
+583 网络游戏_其他 11
+cluster_keywords: 2D,www,u3d,界面,游戏,产品,工程师,网游,前端,测试,网址,刀剑,美术设计,设计,Unity3D,3D
+584 IT服务（系统/数据/维护）/多领域经营_java工程师 6
+cluster_keywords: 分析,web,操作手册,代码,测试人员,研发,形成,舆情,测试,设计,软件测试
+585 网络游戏_电子商务seo 9
+cluster_keywords: www,http,yawan,氙气灯,雅湾,手机游戏,后台,汽车,添加,cls168,产品,jsdbs,seo,收录
+586 网络游戏_数值策划 50
+cluster_keywords: 掉落,游戏,角色,道具,产出,成长,策划,设计
+587 网络游戏_学生 5
+cluster_keywords: 一个,火星时代,游戏,模拟,我们
+588 网络游戏_游戏美工 24
+cluster_keywords: 动画,封面,界面,游戏,角色,美术,道具,IOS,美工,动作,Game,场景,UI,原画,轩辕剑,设计,Maker,3D
+589 互联网/电子商务_行政专员助理 8
+cluster_keywords: 策划,卫生,物资,前台
+590 互联网/电子商务_java开发工程师 12
+cluster_keywords: Java,框架,管理系统,springMVC,表单,Struts2,Session,Cookie,前台,单例,SQL,后台
+591 网络游戏_售前售后技术支持管理 5
+cluster_keywords: 分析,韩服,游戏,运维,星尘,客服,数据库,SQL,kpi,布线,产品,运营,服务器,GM,服务器端
+592 互联网/电子商务_客户关系投诉协调人员 9
+cluster_keywords: 回访,客服,话务量,三组,组长,二线,一线,维权
+593 互联网/电子商务_产品策划 5
+cluster_keywords: 产品,应用软件,架构图,策划,测试,运营,设计,功能设计,创意,阿拉丁,客户端
+594 计算机软件_软件测试 204
+cluster_keywords: 测试报告,功能测试,游戏,测试,设计,BUG,软件测试
+595 网络游戏_毕业生 6
+cluster_keywords: 交班,服务员,下班,收银台,关掉,会员,技术员,原画,礼貌,场景,身份证,道具,电脑,饮料,下机,巡逻,文稿,显示器,团委,位子,收取,走动
+596 网络游戏_软件测试 91
+cluster_keywords: 游戏,测试报告,Bug,功能测试,测试,服务器,BUG,客户端
+597 互联网/电子商务_招聘专员助理 7
+cluster_keywords: 工伤,候选人,录用,人事
+598 IT服务（系统/数据/维护）/多领域经营_技术支持维护经理 14
+cluster_keywords: 维保,整机,工程师,主机,电脑,西藏,除尘,服务器,部门经理
+599 互联网/电子商务_部门主管 5
+cluster_keywords: 服务质量,主机,CDN,产品,客服,工单,DHS,节点
+600 计算机软件_ui设计师 17
+cluster_keywords: 界面设计,界面,软件产品,平面设计,前端,联想,PC,终端用户,UI,产品,设计,视觉,DIV,管家婆,CSS
+601 网络游戏_游戏测试工程师 39
+cluster_keywords: 测试报告,功能测试,游戏,策划,测试,BUG,客户端
+602 网络游戏_电子商务专员助理 5
+cluster_keywords: 商务洽谈,游戏,分区,产品,运营,媒体广告
+603 IT服务（系统/数据/维护）/多领域经营_高级软件工程师 39
+cluster_keywords: FT,UT,数据库,C++,FD,基站,设计,hubsiteid,客户端
+604 互联网/电子商务_信息技术经理主管 6
+cluster_keywords: 选项,集团公司,信息安全,光大银行,PC,密令,技术人员,IDC
+605 互联网/电子商务_开发工程师 35
+cluster_keywords: 提取,java,适配,数据库,算法,设计,servlet
+606 网络游戏_文员 12
+cluster_keywords: 来电,客服,出纳,交给
+607 互联网/电子商务_web前端开发 11
+cluster_keywords: Web,www,代码,系列,HTML,书写,前端,js,html,CSS,http,发型,前端开发,css
+608 IT服务（系统/数据/维护）/多领域经营_信息技术经理主管 6
+cluster_keywords: 网络安全,VPN,技术支持,调配,网络管理,LINUX,WINDOWS,信息安全,业务人员,OA,升级,Windows,服务器,设计,源代码,及运维
+609 网络游戏_商务经理主管 15
+cluster_keywords: 商务洽谈,游戏,桔子,研发,畅游,产品,运营,CPS
+610 计算机软件_游戏策划 12
+cluster_keywords: 流程图,游戏,封闭式,美术,撰写,IOS,手机游戏,策划,部门经理,对话,测试,设计,新手,SLG,文案
+611 网络游戏_原画设计 13
+cluster_keywords: 科技类,gt,用图,游戏,角色,美术,维亚,道具,宣传画,动漫,场景,网络游戏,UI,设计,尚峰,概念性,原画
+612 网络游戏_2d美工 10
+cluster_keywords: 动画,ui,场景,界面,角色,矢量图,美术,主做,FLASH,IOS,ios,研发,..,UI,预告片,LOOG,设计,AE,游戏
+613 网络游戏_游戏执行策划 6
+cluster_keywords: 数据分析,搜集整理,运维,客服,收集整理,运营,持续,推动,研发,策划,网络游戏,产品,产品质量,功能设计
+614 网络游戏_客服专员助理 245
+cluster_keywords: 客服,游戏,运营
+615 互联网/电子商务_网站推广 6
+cluster_keywords: 后台,营业额,计算机专业,客服,物流,产品,数据挖掘,设计,天内,店铺
+616 网络游戏_网站推广 14
+cluster_keywords: 本市,游戏,场所,搜索引擎,群发,网络营销,客户端
+617 IT服务（系统/数据/维护）/多领域经营_运维工程师 6
+cluster_keywords: 网络故障,游戏,运维,可用,数据库,事务处理,响应,突发性,集群,运营,构架,服务器,安全
+618 网络游戏_公关主管 5
+cluster_keywords: 网络游戏,公共关系,申请,游戏,公关
+619 互联网/电子商务_网页设计制作 145
+cluster_keywords: CSS,www,06,co,前端,http,nf,html,wuyibo,wp,设计,net,jpghttp,wuyiboli,uploads
+620 计算机软件_技术总监经理 14
+cluster_keywords: ERP,测试,项目管理,代码,研发,构架,云内,产品,开发部,设计
+621 网络游戏_游戏美术师 5
+cluster_keywords: 场景,java,游戏,美术,刻画,ios,原画,理解,demon,测试,Concept,UI,美术设计,美术师,做出,讲师,项目前期,3D
+622 计算机软件_培训生 15
+cluster_keywords: Web,J2EE,Hibernate,服务器端,Spring,数据库,DAO,OA,QC,hibernate,测试
+623 计算机软件_科研人员 6
+cluster_keywords: UNITY3D,speedDial,包含,ios,GlobalTalk,C++,四款,AppStore,myDialBox,测试,macos,研发,KUBAO,Voip
+624 计算机软件_android开发工程师 7
+cluster_keywords: 监狱,源代码,点名,框架,网络应用,研究,安卓,知识,功能模块,警务,点子,Android,设计模式,android,记事本,客户端
+625 网络游戏_配置管理工程师 5
+cluster_keywords: 更新包,版本控制,系列,游戏,版本号,7Z,配置管理,天骄,VSS,客户端,charlie,服务器,分支,MKZ,MD5
+626 网络游戏_市场营销经理主管 10
+cluster_keywords: 5173,全区,游戏,产品,同城会,网游,校园,华南区,策划,网络游戏,联合,运营
+627 计算机软件_总监 6
+cluster_keywords: 动画,总监,游戏,软件产品,项目管理,研发部,豪峰,项目经理,药品,心理,产品,生物反馈
+628 计算机软件_软件开发 6
+cluster_keywords: 海度,代码,宇动,VS2008,web,spring,数据库,编程,Server2005,TCP,安全软件,测试,winform,多线程,structs,文件传送,Socket
+629 计算机软件_数据库开发工程师 15
+cluster_keywords: 分析,管理系统,程序,数据库,数据仓库,多省,ETL,SQL,数据挖掘,设计,数据模型
+630 互联网/电子商务_创意指导总监 5
+cluster_keywords: ipad,iponeApp,总监,http,游戏,美术,www,影视广告,五菱,三维动画,策划,production,设计,trianglefilm,triangledigital,创意,设计部,tandw
+631 IT服务（系统/数据/维护）/多领域经营_工程师 7
+cluster_keywords: 数据完整性,源代码,界面,游戏,斗地主,牌拉牌,代码,成都,网管,数据表,源码,明牌,串口,叫主,设计,多线程
+632 网络游戏_php开发工程师 18
+cluster_keywords: 游戏,framework,接入,Unic,前端,编译,linux,后台,服务器,php,服务端
+633 网络游戏_产品品牌经理 7
+cluster_keywords: 方案,OL,移动游戏,游戏,51wan,GMGC,30,大会,策划,公关,产品,marketing
+634 计算机软件_项目负责人 5
+cluster_keywords: 分析,优秀员工,电子商务,服务器端,前置,认证,安全,评为,公估,设计,组成员,分工合作
+635 互联网/电子商务_电话销售 12
+cluster_keywords: 开发新,维系,互易,咨询服务,介绍,子公司,产品,企业邮箱,意向
+636 网络游戏_软件工程师 356
+cluster_keywords: 界面,游戏,数据库,C++,UI,c++,设计,服务器,客户端,代码,3D
+637 互联网/电子商务_行政经理办公室主任 6
+cluster_keywords: 装修,外联,后勤,规章制度,集采,行政,后勤保障
+638 网络游戏_三维3d设计制作 289
+cluster_keywords: 动画,场景,原画,游戏,角色,美术,道具,动作,maya,设计,3d,3D
+639 网络游戏_美工主管 32
+cluster_keywords: 场景,原画,游戏,角色,美术,主管,研发,策划,UI,产品,设计,3D
+640 网络游戏_项目助理 7
+cluster_keywords: 款项,人事工作,管理工作,会议记录,接入,大额,搜寻,游戏
+641 网络游戏_执行策划 59
+cluster_keywords: gt,游戏,美术,撰写,策划,NPC,Game,测试,运营,设计,Monster
+642 计算机软件_主策划 5
+cluster_keywords: web,海贼王,游戏,框架,斗地主,任主,IOS,2012.11,2D,2013.7,策划,UI,虚拟社区,设计,android,过手
+643 计算机软件_项目主管 14
+cluster_keywords: 设计,研发,gt,说明书,绿森
+644 IT服务（系统/数据/维护）/多领域经营_网站运营管理 5
+cluster_keywords: 点播,央视国际,CCTV,光大银行,策划,杂志,运营,客户端,cms,奥运,wap
+645 网络游戏_运维主管 6
+cluster_keywords: 脚本,游戏,运维,数据库,防火墙,安全,测试,Mysql,Oracle,服务器,星际,IDC
+646 网络游戏_动画设计师 6
+cluster_keywords: 动画设计,QQ,其它,游戏,动作,正背,造型,矢量图,幼崽,道具,练习,星级,设计,成年,3D

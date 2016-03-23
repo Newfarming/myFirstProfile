@@ -1,0 +1,88 @@
+<!-- 左侧操作栏 -->
+    <div class="control-module" ng-cloak>
+        <div class="control-nav-collect">
+            <a href="javascript:void(0)" class="area-btn-fav" ng-class="{'have-collect':isHaveCollect(),'control-nav-current':controlNavCurrent,'null-collect':!isHaveCollect(),'null-collect-current':nullCollectCurrent}" ng-click="go('my_favs')">我的收藏(<span id="js-collect-num">{- sideData.watch_count -}</span>)</a>
+        </div>
+        <ul class="control-nav">
+            <li><a href="javascript:void(0)" class="area-btn-home control-nav-current"  ng-click="go('home')">全部简历(<span>{- sideData.mark_count.total -}</span>)</a></li>
+            <li><a href="javascript:void(0)" class="area-btn-unmark " data-mark="unmark" ng-click="go('unmark')">未标记(<span>{- sideData.mark_count.unmark -}</span>)</a></li>
+            <li><a href="javascript:void(0)" class="area-btn-pending " data-mark="pending" ng-click="go('pending')">进一步跟进(<span>{- sideData.mark_count.pending -}</span>)</a></li>
+            <li>
+                <a href="javascript:void(0)" class="area-btn-interview_stage js-show-second-nav" data-mark="interview_stage" ng-click="go('interview_stage')">面试阶段(<span>{- sideData.mark_count.invite_interview+sideData.mark_count.break_invite+sideData.mark_count.unconfirm -}</span>)</a>
+                <ul class="control-second-nav" id="js-interview">
+                    <li><a href="javascript:void(0)" class="area-btn-invite_interview " data-mark="invite_interview" ng-click="go('invite_interview')">已安排面试(<span>{- sideData.mark_count.invite_interview -}</span>)</a></li>
+                    <li><a href="javascript:void(0)" class="area-btn-break_invite " data-mark="break_invite" ng-click="go('break_invite')">爽约(<span>{- sideData.mark_count.break_invite -}</span>)</a></li>
+                    <li><a href="javascript:void(0)" class="area-btn-unconfirm " data-mark="unconfirm" ng-click="go('unconfirm')">待定(<span>{- sideData.mark_count.unconfirm -}</span>)</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="area-btn-entry_stage js-show-second-nav" data-mark="entry_stage" ng-click="go('entry_stage')">录用阶段(<span>{- sideData.mark_count.send_offer+sideData.mark_count.entry -}</span>)</a>
+                <ul class="control-second-nav" id="js-entry">
+                    <li><a href="javascript:void(0)" class="area-btn-send_offer " data-mark="send_offer" ng-click="go('send_offer')">已发offer(<span>{- sideData.mark_count.send_offer -}</span>)</a></li>
+                    <li><a href="javascript:void(0)" class="area-btn-entry " data-mark="entry" ng-click="go('entry')">录用(<span>{- sideData.mark_count.entry -}</span>)</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)" class="area-btn-eliminate " data-mark="eliminate" ng-click="go('eliminate')">淘汰(<span>{- sideData.mark_count.eliminate -}</span>)</a></li>
+            <li><a href="javascript:void(0)" class="area-btn-company-card js-send-record" ng-click="go('company_card')">发送企业名片记录(<span>{- sideData.send_card_count -}</span>)</a></li>
+            <li ng-repeat="Folder in sideData.categories"><a href="javascript:void(0)" class="area-btn-f-{- Folder.id -} pen-bg folder{- Folder.id -}" ng-class="{'control-nav-current':currentFolderId==Folder.id}" folder-name="{- Folder.category_name -}" folder-id="{- Folder.id -}" ng-click="go('f-'+Folder.id)"><i class="js-folder-name">{- Folder.category_name -}</i>(<span>{- Folder.resume_num -}</span>)</a><em ng-click="editFolder($event)"></em></li>
+        </ul>
+        <div class="folder">
+            <a href="javascript:void(0)" ng-class="{'adit-state':createFolderState}" ng-click="createFolder()" ng-cloak>自定义文件夹</a>
+            <div ng-show = "showFolderName">
+                <input type="text" name="folder-name" id="js-category-name" placeholder="请输入文件夹名称">
+                <a href="javascript:void(0)" ng-click="saveFolder()"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="display-module" ng-cloak>
+        <!-- 搜索栏 -->
+        <div class="search-box">
+            <div class="filter-factor">
+                <a href="javascript:void(0)" ng-click="showSearchFilter()" id="js-search-filter">按简历全文</a>
+                <input type="hidden" value="{- search_fields -}" id="js-search-filter-params">
+                <ul ng-show="showFilter">
+                    <li><a href="javascript:void(0)" search-fields="position_title" class="filter-factor-choose" ng-click="chooseSearchFilter($event)">按职位名称</a></li>
+                    <li><a href="javascript:void(0)" search-fields="company_name" ng-click="chooseSearchFilter($event)">按公司名称</a></li>
+                    <li><a href="javascript:void(0)" search-fields="name" ng-click="chooseSearchFilter($event)">按候选人姓名</a></li>
+                    <li><a href="javascript:void(0)" search-fields="school" ng-click="chooseSearchFilter($event)">按学校名</a></li>
+                    <li><a href="javascript:void(0)" search-fields="all" ng-click="chooseSearchFilter($event)">按简历全文</a></li>
+                </ul>
+            </div>
+            <div class="input-box"><input type="text" name="search" placeholder="请输入搜索关键词" id="js-search-val" ng-keyup="enterToSearch($event)"></div>
+            <a href="javascript:void(0)" ng-click="search($event)">搜索</a>
+        </div>
+        <!-- 简历主体 -->
+        <table class="resume-center-tabel">
+            <tr>
+                <th width="400">简历信息</th>
+                <th width="155">候选人反馈</th>
+                <th width="100">备注</th>
+                <th width="158">操作</th>
+            </tr>
+            <tr class="js-resume" ng-repeat="resumeMassage in listData" ng-click="clickToDetail($event)" resume-id="{- resumeMassage.resume_id -}" id="{- resumeMassage.id -}" feed-id="{- resumeMassage.feed_id -}" ng-cloak>
+                <td class="align-left pl46">
+                    <resume-brief resume-massage="resumeMassage" left-fix="leftFix"></resume-brief>
+                </td>
+                <td class="vertical-align">
+                    <p class="line-height-18 c44b5e8">{- resumeMassage.feedback_status_display -}</p>
+                </td>
+                <td class="vertical-align">
+                    <p class="line-height-18 content_message" ng-show="resumeMassage.comment[0].content">{- resumeMassage.comment[0].content -}</p>
+                    <p class="line-height-18 ccfd8dc" ng-show="!resumeMassage.comment[0].content">无备注</p>
+                </td>
+                <td class="last-td vertical-align">
+                    <div class="mark-box " resume-id="{- resumeMassage.resume_id -}">
+                        <p class="ccfd8dc down-time" ng-show="resumeMassage.send_time">发送时间: {- resumeMassage.send_time -}</p>
+                        <a href="javascript:void(0)" class="mark-botton bg607d8b" resume-id="{- resumeMassage.resume_id -}" id="{- resumeMassage.id -}" feed-id="{- resumeMassage.feed_id -}" ng-click="clickToDetail($event)">查看详情</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="null-data"></div>
+        <div class="resume-center-loading"></div>
+        <pages cp="cp" pages="pages" url="url" mark="mark" category="category" search_fields="search_fields" keywords="keywords" chooseResume="chooseResume" ></pages>
+
+
+    </div>

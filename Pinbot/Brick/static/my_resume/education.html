@@ -1,0 +1,59 @@
+<div class="contant-info-edit mt20" ng-show="isShowEditItem">
+    <form action="." name="educationForm_{- edu.id -}" method="post" accept-charset="utf-8" id="educationForm_{- edu.id -}" autocomplete="off">
+        <div class="form-box">
+            <input ng-model="edu.school" name="school" type="text" class="input" validator="school" placeholder="学校名称"/>
+        </div>
+        <div class="form-box">
+            <input ng-model="edu.major" name="major" type="text" class="input" placeholder="专业名称"/>
+        </div>
+        <div class="clearfix">
+            <div class="left" style="width:48%;">
+                <div class="form-box">
+                    <input ng-model="edu.start_time" name="start_time" type="month" class="input" validator="start_time" placeholder="开始时间"/>
+                </div>
+            </div>
+            <div class="right" style="width:48%;">
+                <div class="form-box">
+                    <input ng-model="edu.end_time" name="end_time" type="month"  class="input" validator="end_time" placeholder="结束时间"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-box">
+            <input ng-model="edu.degree" name="degree" type="text" class="input" placeholder="学历"/>
+        </div>
+        <input ng-model="edu.id" name="update_id" type="hidden" class="input"/>
+        <div class="form-box text-center btns-2">
+            <button class="button button-normal" validation-submit="educationForm_{- edu.id -}" ng-click="save(save_education_url, {school: edu.school, start_time: getDate( edu.start_time , 'yyyy-MM' ), end_time: getDate( edu.end_time , 'yyyy-MM' ), degree: edu.degree, update_id: edu.id, major: edu.major})" type="button">保存</button>
+            <button class="button button-normal" ng-click="toggleEditItem( false , true )" type="button">取消</button>
+            <button class="button button-normal" ng-click="delete(edu.id)" type="button" ng-show="isShowDelete()">删除</button>
+        </div>
+    </form>
+</div>
+<div class="person-profile-info text-left mt20" ng-show="!isShowEditItem">
+    <table width="100%" cellpadding="0" cellspacing="0" class="table-view">
+        <tbody>
+            <tr>
+                <td>学校名称：</td>
+                <td>{- edu.school -}</td>
+            </tr>
+            <tr>
+                <td>专业名称：</td>
+                <td>{- edu.major -}</td>
+            </tr>
+            <tr>
+                <td>毕业年份：</td>
+                <td>{- edu.start_time | formartDate -} - {- edu.end_time | formartDate -}</td>
+            </tr>
+            <tr>
+                <td>学历：</td>
+                <td>{- edu.degree -}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-box text-center btns-2">
+        <button class="button button-normal w20p" ng-click="toggleEditItem( true )" type="button">修改</button>
+        <button class="button button-normal w20p" ng-click="add()" type="button">新增</button>
+        <button class="button button-normal w20p" ng-click="delete(edu.id)" type="button" ng-show="isShowDelete()">删除</button>
+
+    </div>
+</div>

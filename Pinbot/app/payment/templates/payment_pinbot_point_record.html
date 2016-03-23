@@ -1,0 +1,63 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+{% load endless %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+        <link href="{{ STATIC_URL }}payment/css/new_payment.css" type="text/css" rel="stylesheet" />
+    {% endcompress %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with pay_class="curr" %}
+{% endblock %}
+
+{% block sub_header %}
+{% include 'payment_sub_nav.html' with point_on='on' %}
+{% endblock %}
+
+{% block content %}
+<h1 class="pay-head text-center">聘点记录</h1>
+<div class="pay-content mt50">
+    {% paginate 5 point_record %}
+    <table width="100%" cellpadding="0" cellspacing="0" class="point-table">
+        <tr>
+            <th width="130">时间</th>
+            <th>内容</th>
+            <th width="120">聘点</th>
+        </tr>
+        {% for record in point_record %}
+        <tr>
+            <td>{{ record.record_time|date:'Y-m-d H:i'}}</td>
+            <td>{{ record.detail }}</td>
+            <td><span class="c45b5e9">{{ record.point }}</span> 个</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="r-page clearfix">
+        {% get_pages %}
+        {{ pages }}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+    {% include 'angular.html' %}
+    <script>
+        $(function(){
+
+            $('#JS_toggle_records a').on( 'click' , function(){
+                var $this = $( this ),
+                    index = $this.index();
+
+                $this.addClass('active').siblings().removeClass('active');
+                $('.r-item').eq( index ).show().siblings().hide();
+            });
+
+        });
+    </script>
+{% endcompress %}
+{% endblock %}

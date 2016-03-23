@@ -1,0 +1,15 @@
+<div class="common_form city_form field_form">
+    <p><a ng-click="back()"><img src="{- static_url -}my_resume/img/arrow_1_32x46.fw.png"/></a>请选择偏好领域</p>
+    <ul>
+        <li ng-repeat="field in data.all_fields">
+            <a class="button {- field.id -}" ng-class="{'checked':checked_field(field)}" ng-click="checkField(field.id)">
+                <span ng-class="{'checked':checked_field(field), 'unchecked': false}"></span>
+            </a>
+            <span class="field_name" ng-click="checkField(field.id)">{- field.category -}</span>
+        </li>
+    </ul>
+    <a class="button get_rec" ng-click="next()" ng-class="{'hide': hideGetRec(), 'disabled': isDisabled()}">获得职位推荐</a>
+    <div class="opt_part">
+        <a class="button confirm" ng-click="confirm()">确认</a>
+    </div>
+</div>

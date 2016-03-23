@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="/static/alpha/styles/alpha.css?1aa7642f81c" />
+  {% include 'sentry_fix.html' %}
+</head>
+<body>
+
+<div id="main">
+  {% include 'alpha/header.html' %}
+  <div id="content" class="clearfix">
+    <div id="resume-list-header">
+      <div class="nav">
+        <a href="/resume/watch" class="on">我的收藏</a>
+        <a href="/transaction/bought">我的购买</a>
+      </div>
+    </div>
+    <div id="resume-list-empty" class="clearfix">
+      <div class="header">
+        <i class="ic ic-empty-resume"></i>
+        <h2 class="title">你暂时没有关注的人才</h2>
+        <p class="about-watch-feature"> “我的收藏” 可以帮助您更好地在云端保存和管理待联系的候选人。
+      </div>
+
+      <ul class="expect-feature">
+        <li class="feature-feed">
+          <p class="feature-link" >
+            <a href="/feed/">人才订阅</a>
+          </p>
+          <h3 class="feature-title">
+            以逸待劳，人才尽观
+          </h3>
+          <p class="disc">
+            使用我们的人才订阅功能，它能够帮您从全网寻找人才，并对您推荐，您可以查收这些人才推荐，并对感兴趣的人才进行关注。
+          </p>
+        </li>
+
+         <li class="feature-plugin">
+          <p class="feature-link">
+            <a href="/plugin_download/">聘宝插件</a>
+          </p>
+          <h3 class="feature-title">
+            去粗求精，阅你所需
+          </h3>
+          <p class="disc">
+            使用我们的聘宝插件，当您在51job、智联等招聘网站搜索、浏览人才时，可以随时打开插件，对感兴趣的人才进行关注。
+          </p>
+        </li>
+
+        <li class="feature-mail">
+          <p class="feature-link disabled-link">
+            <a>邮箱同步</a>
+          </p>
+          <h3 class="feature-title">
+            一键同步，云端管理
+          </h3>
+          <p class="disc">
+            使用我们的邮箱同步功能，它能够帮助您一键同步EMAIL中的简历数据，并支持对其中的候选人进行关注。
+          </p>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</div>
+  {% include 'footer.html' %}
+
+</body>
+</html>

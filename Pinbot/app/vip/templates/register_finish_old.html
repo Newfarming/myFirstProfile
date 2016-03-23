@@ -1,0 +1,70 @@
+{% extends 'base_account.html' %}
+{% load utils_tag %}
+{% block header %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ STATIC_URL }}beta/styles/app/index.css" />
+{% endblock %}
+{% block content %}
+<div class="register welcome">
+    <div class="layout">
+        <a class="logo" href="/" title=""></a>
+
+        <div class="main">
+            <div class="header">
+                <h1>申请会员</h1>
+                <div class="steps {% if order.order_status == 'paid' %}at-step-4{% else %}at-step-3{% endif %}">
+                    <span class="step1">填写信息</span>
+                    <span class="step2">&nbsp;选择会员级别</span>
+                    <span class="step3">&nbsp;支付会员费用</span>
+                    <span class="step4">申请完成</span>
+                </div>
+            </div>
+
+            <div class="content">
+                <!--支付失败-->
+                {% if order.order_status != 'paid' %}
+                <h2 class="wrong" style="background-position: 350px center;padding-left: 25px;">支付失败...</h2>
+                <h3 style="padding: 0;">若你已经支付成功，请尝试刷新页面</h3>
+                <div class="payway_field">
+                    <label>你已选择<span class="fc863f">{{ order.subject_name }}</span>，应付金额：<span  class="fc863f">{{ order.order_price }}元</span></label>
+                </div>
+                <div class="confirm_pay">
+                    <a class="btn confirm_pay_btn" url="{% url 'vip-create-order' %}">重新支付</a>
+                </div>
+                {% else %}
+                {% if order.item.vip_role.level == 1 %}
+                <h2 class="right" style="background-position: 350px center;padding-left: 25px;">支付成功！</h2>
+                <!--申请普通会员成功-->
+                <div class="payway_field">
+                    <label>立即完成新手任务，领<span class="fc863f">现金红包！</span></label>
+                </div>
+                <div class="confirm_pay">
+                    <a href="{% url 'tutorial' %}" class="btn start">开始新手任务</a>
+                    <!-- <a href="{% url 'special-feed-page' %}" class="c42b4e6 skip">跳过新手任务</a> -->
+                </div>
+                {% else %}
+                <!--申请vip会员成功-->
+                <h2 class="right" style="background-position: 350px center;padding-left: 25px;">支付成功！</h2>
+                <div class="payway_field">
+                    <label>成为<span class="fc863f">VIP会员</span>必须与我们签订纸质协议</label>
+                </div>
+                <div class="confirm_pay">
+                    <a href="{% url 'vip-service-contact' order.item.vip_role.id %}" class="btn download">下载纸质协议</a>
+                    <a href="#" class="c42b4e6 contact yingxiao_qq" id="contact_us">联系我们</a>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+
+        </div><!-- main -->
+    </div><!-- layout -->
+</div><!-- register -->
+{% endblock %}
+
+{% block footer_html %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block footer %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}users/scripts/vip_pay.js"></script>
+{% endblock %}

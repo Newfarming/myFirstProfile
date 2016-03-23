@@ -1,0 +1,138 @@
+{% extends 'base_newset_panel.html' %}
+
+{% block content %}
+
+    <div class="pb-layer change-motify-email-box">
+        <div class="layout page-bind-email">
+
+            <div class="main main-white">
+                <div class="header">
+
+                    <ul class="step-title mg-btm-30">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>绑定接收简历邮箱</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <p class="pc register-pc">
+
+                    <span class="icon icon-email"></span><br>
+                    <span class="c607d8b">请验证并绑定您的简历接收邮箱</span> <span class="c42b4e6">{{user_profile.user_email}}</span><br><br>
+
+                    <span class="pb-wait pb-wait-resend pb-hide"></span>
+
+                    <span class="c607d8b done-resend pb-hide">验证链接已发送到您的邮箱：<span class="c42b4e6">{{user_profile.user_email}}</span><br><br></span>
+
+                    <span class="cf46c62 done-resend-err pb-hide">验证链接发送失败，请稍后尝试：<span class="c42b4e6">{{user_profile.user_email}}</span><br><br></span>
+
+
+                    <span class="c607d8b">没有收到邮件？请点击 <br><br>
+                        <button type="button" class="btn btn-red-submit-small resend-email">重新发送</button> 或 <button type="button" href="javascript:void(0);" class="btn btn-blue-submit-small2 chg-email">修改邮箱</button><br>
+                        <br>更换您的简历接收邮箱</span><br><br>
+
+                    <span class="cf46c62 submit-failed pb-hide">发送太频繁啦，请等会儿再来试试吧！</span>
+                    <span class="c42b4e6 submit-ok pb-hide">发送成功！</span>
+                </p>
+
+                <p class="pc register-pc w355">
+                    <span class="c607d8b">验证邮箱后，我们将每天通过邮箱为您发送最新的简历推荐！</span><br><br>
+                    <span class="c607d8b">您也可以通过邮箱来<span class="cf46c62">找回密码</span></span><br><br>
+                    <span class="c607d8b">您还可以随时在“<a href="/users/profile/" class="c42b4e6 underline">个人设置</a>”中修改接受简历邮箱</span>
+                </p>
+
+            </div>
+        </div><br><br><br><br><br><br><br><br>
+    </div>
+
+    <div class="pb-layer email-valid-ok pb-hide">
+        <div class="layout page-bind-email">
+
+            <div class="main main-white">
+                <div class="header">
+
+                    <ul class="step-title mg-btm-30">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>您的邮箱已完成验证</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <p class="pc register-pc">
+                    <span class="icon icon-present"></span><br>
+                    <span class="c607d8b">页面自动跳转，请等待<span class="jumpTo c42b4e6">3</span>s...</span><br><br>
+                    <button type="button" class="btn btn-blue-submit-small btn-blue-submit-small-fix link-guide">查看新手引导</button>
+                </p>
+
+                <p class="pc register-pc">
+                    <span class="c607d8b">页面没有跳转？请点击按钮查看<a href="javascript:void(0);" class="c42b4e6 link-guide">新手引导</a></span>
+                </p>
+
+            </div>
+        </div><br><br><br><br><br><br><br><br>
+    </div>
+
+
+    <div class="pb-layer email-valid-failed pb-hide">
+        <div class="layout page-bind-email">
+
+            <div class="main main-white">
+                <div class="header">
+
+                    <ul class="step-title mg-btm-30">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>您的激活链接已失效</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <p class="pc register-pc">
+                    <span class="icon icon-coffee"></span><br>
+                    <span class="c607d8b">页面自动跳转，请等待<span class="jumpTo c42b4e6">3</span>s...</span><br><br>
+                    <button type="button" class="btn btn-blue-submit-small link-guide btn-blue-submit-small-fix">查看新手引导</button>
+                </p>
+
+                <p class="pc register-pc">
+                    <span class="c607d8b">页面没有跳转？请点击按钮查看<a href="javascript:void(0);" class="c42b4e6 link-guide">新手引导</a></span>
+                </p>
+
+            </div>
+        </div><br><br><br><br><br><br><br><br>
+    </div>
+
+
+    <div class="pb-layer email-valid-wrong pb-hide">
+        <div class="layout page-bind-email">
+
+            <div class="main main-white">
+                <div class="header">
+
+                    <ul class="step-title mg-btm-30">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>您的激活链接有误</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <p class="pc register-pc">
+                    <span class="icon icon-wrong"></span><br>
+                    <span class="c607d8b">请点击按钮，重新验证您的邮箱</span><br><br>
+                    <button type="button" class="btn btn-red-submit-small verify-email-again btn-blue-submit-small-fix">验证邮箱</button>
+                </p>
+
+            </div>
+        </div><br><br><br><br><br><br><br><br>
+    </div>
+
+
+{% endblock %}
+
+{% block footer_html %}
+<div class="new-footer">
+    <ul class="contact">
+        <li>联系电话：028-83330727</li>
+        <li>企业QQ：800031490</li>
+        <li>HR交流Q群：9580917</li>
+    </ul>
+</div>
+{% endblock %}

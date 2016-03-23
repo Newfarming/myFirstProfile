@@ -1,0 +1,151 @@
+{% extends 'base_dash.html' %}
+{% load compress %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-5">
+        <div class="input-group">
+          <input class="form-control" type="text" name="daterange" placeholder="按日期筛选" id="daterange" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" onclick="filter_data();">筛选数据</button>
+          </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-lg-5">
+        <button class="btn btn-default" onclick="export_csv();">导出报表</button>
+    </div><!-- /.col-lg-6 -->
+</div>
+    <input type="hidden" id="report_name" value="{{report_name}}">
+    <input type="hidden" id="report_type" value="{{report_type}}">
+<hr>
+
+<div id="data_block_user_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">用户日报表</div>
+    <table id="data_table_user_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true"
+           data-page-size=31
+            >
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="new_register_user_count">新增注册用户</th>
+                <th data-field="new_experience_user_count">新体验用户</th>
+                <th data-field="new_member_count">新增会员</th>
+                <th data-field="new_self_member_count">新增自助会员</th>
+                <th data-field="new_self_member_a_count">新增自助A型</th>
+                <th data-field="new_self_member_b_count">新增自助B型</th>
+                <th data-field="new_self_member_c_count">新增自助C型</th>
+                <th data-field="new_manual_member_count">新增省心型</th>
+                <th data-field="lively_user_count">活跃用户数</th>
+                <th data-field="all_total_active_user_count">总激活用户</th>
+                <th data-field="total_register_user_count">注册用户</th>
+                <th data-field="total_experience_user_count">体验用户</th>
+                <th data-field="total_member_count">会员用户</th>
+                <th data-field="total_self_member_count">自助型用户</th>
+                <th data-field="total_self_member_a_count">自助A型用户</th>
+                <th data-field="total_self_member_b_count">自助B型用户</th>
+                <th data-field="total_self_member_c_count">自助C型用户</th>
+                <th data-field="total_manual_member_count">省心型用户</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="data_block_core_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">简历日报表</div>
+    <table id="data_table_core_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true"
+           data-page-size=31>
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="active_user_count">激活用户数</th>
+                <th data-field="member_count">会员用户数</th>
+                <th data-field="entered_count">入职数</th>
+                <th data-field="lively_user_count">活跃用户数</th>
+                <th data-field="lively_member_count">活跃会员数</th>
+                <th data-field="repeat_visit_count">重复访问用户数</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="data_block_resume_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">简历日报表</div>
+    <table id="data_table_resume_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true"
+           data-page-size=31>
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="resume_commends_count">简历推荐总量</th>
+                <th data-field="resume_view_count">简历查看量</th>
+                <th data-field="resume_down_count">简历下载量</th>
+                <th data-field="resume_down_contrast">下载比率</th>
+                <th data-field="interviewed_count">进入面试量</th>
+                <th data-field="entered_count">已入职量</th>
+                <th data-field="company_card_send_count">企业名片发放量</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+<div id="data_block_partner_daily_report" style="display:none">
+    <div class="alert alert-info" role="alert">互助伙伴日报表</div>
+    <table id="data_table_partner_daily_report"
+           data-toggle="table"
+           data-url=""
+           data-query-params="queryParams"
+           data-pagination="true"
+           data-page-size=31>
+        <thead>
+            <tr>
+                <th data-field="report_date">日期</th>
+                <th data-field="accept_task_user_count">当日认领任务用户</th>
+                <th data-field="accept_task_user_total_count">互助伙伴总量</th>
+                <th data-field="task_total_count">任务总量</th>
+                <th data-field="task_viewed_count">被查看次数</th>
+                <th data-field="task_accedpted_count">被认领数量</th>
+                <th data-field="task_accedpted_count_contrast">被认领任务占比</th>
+                <th data-field="task_accedpted_total_count">被认领任务总量</th>
+                <th data-field="upload_resume_count">上传简历量</th>
+                <th data-field="upload_resume_total_count">上传简历总量</th>
+                <th data-field="do_task_count">做任务次数</th>
+                <th data-field="do_task_total_count">做任务总量</th>
+                <th data-field="resume_viewed_count">简历查看量</th>
+                <th data-field="resume_viewed_total_count">简历查看总量</th>
+                <th data-field="today_commend_and_check_count">当天推荐当天查看量</th>
+                <th data-field="resume_download_count">简历下载量</th>
+                <th data-field="resume_download_total_count">简历下载总量</th>
+                <th data-field="today_commend_and_download_count">当天推荐当天下载量</th>
+                <th data-field="interviewed_count">进入面试量</th>
+                <th data-field="interviewed_total_count">进入面试总量</th>
+                <th data-field="entered_count">入职量</th>
+                <th data-field="entered_total_count">入职总量</th>
+                <th data-field="accusation_count">举报量</th>
+                <th data-field="accusation_total_count">举报总量</th>
+                <th data-field="today_extra_reward_coin_count">当天额外奖励金币</th>
+                <th data-field="all_extra_reward_coin_count">额外奖励金币总量</th>
+                <th data-field="today_reward_coin_count">当天奖励金币</th>
+                <th data-field="all_reward_coin_count">奖励金币总量</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+{% compress js %}
+<script src="{{STATIC_URL}}dash/js/dash.js"></script>
+<script src="{{STATIC_URL}}dash/js/tableExport.min.js"></script>
+<script src="{{STATIC_URL}}dash/js/libs/FileSaver/FileSaver.min.js"></script>
+{% endcompress %}
+
+{% endblock %}

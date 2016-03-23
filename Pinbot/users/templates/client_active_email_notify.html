@@ -1,0 +1,127 @@
+{% extends 'base_newset_panel.html' %}
+
+{% block content %}
+{% if status == 'ok' %}
+    <div class="pb-layer email-valid-ok ">
+        <div class="layout page-bind-email">
+
+            <div class="main main-white">
+                <div class="header pd-10">
+
+                    <ul class="step-title mg-btm-30">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>您的邮箱已完成验证</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <p class="pc register-pc">
+                    <span class="icon icon-present"></span><br>
+                    <span class="c607d8b">页面自动跳转，请等待<span class="jumpTo c42b4e6">3</span>s...</span><br><br>
+                    <button type="button" class="btn btn-blue-submit-small-fix link-guide">查看新手引导</button>
+                </p>
+
+                <p class="pc register-pc">
+                    <span class="c607d8b">页面没有跳转？请点击按钮查看<a href="javascript:void(0);" class="c42b4e6 link-guide">新手引导</a></span>
+                </p>
+
+            </div>
+        </div><br><br><br><br><br><br><br><br>
+    </div>
+    <script>
+    setTimeout(function(){
+        if (typeof jQuery != 'undefined') {
+
+                $(document).ready(function(){
+                    PB.countDown('.email-valid-ok','/special_feed/page/')
+                    $('.link-guide').on('click', function(e) {
+                        document.location.href='/special_feed/page/';
+                    });
+                });
+
+        }
+    }, 1000);
+
+    </script>
+{% endif %}
+{% if status == 'error' %}
+    <div class="pb-layer email-valid-failed ">
+        <div class="layout page-bind-email">
+
+            <div class="main main-white">
+                <div class="header pd-10">
+
+                    <ul class="step-title mg-btm-30">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>您的激活链接已失效</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <p class="pc register-pc">
+                    <span class="icon icon-coffee"></span><br>
+                    <span class="c607d8b">页面自动跳转，请等待<span class="jumpTo c42b4e6">3</span>s...</span><br><br>
+                    <button type="button" class="btn btn-blue-submit-small-fix link-guide">查看新手引导</button>
+                </p>
+
+                <p class="pc register-pc">
+                    <span class="c607d8b">页面没有跳转？请点击按钮查看<a href="javascript:void(0);" class="c42b4e6 link-guide">新手引导</a></span>
+                </p>
+
+            </div>
+        </div><br><br><br><br><br><br><br><br>
+    </div>
+    <script>
+    setTimeout(function(){
+        if (typeof jQuery != 'undefined') {
+
+                $(document).ready(function(){
+                    PB.countDown('.email-valid-failed','/special_feed/page/')
+                    $('.link-guide').on('click', function(e) {
+                        document.location.href='/special_feed/page/';
+                    });
+                });
+
+        }
+    }, 1000);
+    </script>
+{% endif %}
+
+    <div class="pb-layer email-valid-wrong pb-hide">
+        <div class="layout page-bind-email">
+
+            <div class="main main-white">
+                <div class="header pd-10">
+
+                    <ul class="step-title mg-btm-30">
+                        <li class="step-title-prev "><a class="" href="＃">上一步</a></li>
+                        <li class="step-title-center"><h1>您的激活链接有误</h1></li>
+                        <li class="step-title-next "><a class="" href="＃">下一步</a></li>
+                    </ul>
+                </div>
+
+                <p class="pc register-pc">
+                    <span class="icon icon-wrong"></span><br>
+                    <span class="c607d8b">请点击按钮，重新验证您的邮箱</span><br><br>
+                    <button type="button" class="btn btn-red-submit-small-fix verify-email-again">验证邮箱</button>
+                </p>
+
+            </div>
+        </div><br><br><br><br><br><br><br><br>
+    </div>
+
+
+
+{% endblock %}
+
+{% block footer_html %}
+<div class="new-footer">
+    <ul class="contact">
+        <li>联系电话：028-83330727</li>
+        <li>企业QQ：800031490</li>
+        <li>HR交流Q群：9580917</li>
+    </ul>
+</div>
+{% endblock %}
+
+

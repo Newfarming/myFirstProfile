@@ -1,0 +1,255 @@
+{% load utils_tag %}
+<div class="feed-list clearfix" id="feedApp" ng-controller="feedApp" ng-app="feedApp">
+  <div class="feed-aside">
+    <h2>我的定制</h2>
+    <div fixedtop>
+      <ul class="feed-nav" ng-controller="aside">
+        {% for userfeed in all_feed %}
+          {% with feed=userfeed.feed %}
+          <li {% if feed.unread_count %}class="latest-count"{% endif %}
+              ng-class="isActive('{{ feed.id }}')?'curr':''"
+              data-id="{{ feed.id }}"
+              {% if not feed.has_expire and feed.expire_status %}
+              data-continue_url="{% url 'special-reset-feed-expire' feed.id|to_str %}"
+              data-delete_url="{% url 'feed-delete' feed.id|to_str %}"
+              data-last_date="{{ feed.feed_expire_time|date:'Y年m月d日' }}"
+              {% endif %}
+
+              {% if feed.has_expire %}data-subscribe_expire="true"
+              data-order_date="{{ feed.start_time|date:'Y年m月d日' }}"
+              data-renewal_url="{% url 'special-renewal-feed' feed.id|to_str %}"
+              data-rest_url="{% url 'special-get-rest-feed' %}"
+              data-delete_url="{% url 'feed-delete' feed.id|to_str %}"
+              {% endif %}
+              {% if feed.partner_feed %}data-partner_feed="true"{% endif %}
+              data-feed_type="{{ feed.feed_type }}"
+              >
+            <a href="#/group/{{ feed.id }}/" class="feed-group-link" title="{{ feed.job_desc }}">
+              <strong class="recruit_job">{{ feed.keywords }}</strong>
+              <span>{{ feed.job_type }} | {{ feed.talent_level }} | {{ feed.expect_area }}</span>
+              {% if not feed.has_expire and feed.expire_status %}<em class="i-over-date"><code>待激活</code></em>{% endif %}
+              {% if feed.has_expire %}<em class="i-subscribe-expire"><code>待确认</code></em>{% endif %}
+
+              {% if feed.feed_type == 2 %}<em class="i-exclusive"><code>聘宝专享</code></em>{% endif %}
+
+            </a>
+            <a href="/feed/edit/{{ feed.id }}">
+              <span class="feed-group-edit"></span>
+            </a>
+            <span
+              data-count-group="{{ feed.id }}"
+              data-count-num="{{ feed.unread_count }}"
+              class="feed-latest-count">
+              {% if feed.unread_count %}{{ feed.unread_count }}{% endif %}
+            </span>
+          </li>
+          {% endwith %}
+        {% endfor %}
+      </ul>
+      {% if has_rest_feed %}
+      <a href="/feed/new" class="btn-feed-add"><span>新增定制</span></a>
+      {% endif %}
+     </div>
+  </div>
+  <div class="activate-success"><i class="i-hook"></i>已激活成功！<a class="i-close" href="javascript:;" onclick="$(this).parent().remove();"></a></div>
+  <div class="feed-page">
+    <p class="feed-meta" ng-cloak>已推荐 <em>{[{ current.total_recommend_count }]}</em> 份 <span>精选自 <strong>{[{ current.total_count }]}</strong> 份简历</span></p>
+
+    <p class="feed-control">
+      <a ng-click="toggleLatest()" ng-class="{'feed-latest-option-false': current.latest==0}" class="feed-latest-option"><i></i>只看未读</a>
+    </p>
+    <div ng-clock class="feed-page-wrap">
+      <div ng-view></div>
+
+        <div class="over-date" id="JS_over_date">
+            <p class="over-date-info">
+                <i class="i-load mb30"></i><br>
+                嗨！你使用该条职位定制服务已超过7天<span id="JS_last_date" style="color: #b1b4b9;"></span>。请问你已经招到心仪的<strong id="JS_recruit_job" style="color:#3FB2E5"></strong>人才了吗？
+            </p>
+            <p class="over-date-info clearfix">
+                <a href="javascript:;" title="" class="again" id="JS_recruit_again">
+                    <span>运气稍欠佳，<br>还需继续招聘此岗位人才</span><br>
+                    <i class="i-tick"></i><br>
+                    <strong>继续招聘</strong>
+                </a>
+                <a href="javascript:;" title="" class="ended JS_recruit_end">
+                    <span>哈哈，招到了！<br>正在酝酿其他岗位人才</span><br>
+                    <i class="i-ring"></i><br>
+                    <strong>完成招聘</strong>
+                </a>
+            </p>
+        </div>
+
+        <div class="over-date" id="JS_end_feed">
+            <p class="over-date-info">
+                <i class="i-load mb30"></i><br>
+                你好！你于<span class="JS_bought_date"></span>获得的专属定制已于今天到期。请问你是否需要继续招募<strong class="JS_recruit_feed" style="color:#3FB2E5"></strong>的人才？
+            </p>
+            <p class="over-date-info clearfix">
+                <a href="javascript:;" title="" class="again" id="JS_feed_again">
+                    <span>继续该职位的招聘，<br>这将消耗一条定制用于该职位的招聘。</span><br>
+                    <i class="i-tick"></i><br>
+                    <strong>继续招聘</strong>
+                </a>
+                <a href="javascript:;" title="" class="ended JS_recruit_end">
+                    <span>完成该职位的招聘，<br>你可以删除该定制并启用一条新的定制。</span><br>
+                    <i class="i-ring"></i><br>
+                    <strong>完成招聘</strong>
+                </a>
+            </p>
+        </div>
+
+        <div class="subscribe-expire">
+            <p class="text-center"><i class="i-expire-person"></i></p>
+            <p class="subscribe-expire-info text-center">你好！你于<span class="JS_bought_date"></span>购买的专属定制已于今天到期。<br>你可以再次购买一段时间的专属定制，继续获得人才推荐。</p>
+            <p class="text-center">
+              <a href="/feed/new" title="购买续期专属定制服务" class="bought-service">购买续期专属定制服务</a>
+            </p>
+            <p class="text-center mt20">
+              <a href="javascript:;" title="查看历史数据" style="color: #41b2e5; font-size:14px;" data-id="" id="JS_view_history">查看历史数据</a>
+            </p>
+        </div>
+
+    </div>
+  <div>
+</div>
+
+<script type="text/x-template" id="template-feeditem">
+  <div class="feed-item-list clearfix">
+    <div
+      ng-repeat="item in feeditems"
+      class="feed-item {[{ item.user_read_status|checkFeedOpen }]} {[{ item.latest|checkFeedLatest }]}"
+    >
+     <div class="feed-item-wrapper">
+        <div class="item-header">
+          <div class="item-header-wrapper">
+            <div class="item-profile">
+              <h3 class="item-work-position">{[{ item.resume.works.0.position_title }]}</h3>
+              <span class="item-update-time" ng-show="item.calc_time">推荐时间: {[{item.pub_time | nospace}]}</span>
+              <p>
+                <span class="item-profile-gender">{[{ item.resume.gender }]}</span>
+                <span class="item-profile-age">{[{ item.resume.age }]}</span>
+                &nbsp; &nbsp;
+                <span>{[{ item.resume.job_target.job_hunting_state }]}</span>
+                <span class="item-profile-sep">|</span>
+                <span ng-show="item.profile.address">现居地：{[{ item.resume.address }]}</span>
+                &nbsp; &nbsp;
+                <span ng-shoiw="item.job_target.expectation_area">意向地：{[{ item.resume.job_target.expectation_area }]}</span>
+              </p>
+            </div>
+            <p class="item-action">
+              <span class="resume-tags-hook" ng-show="item.feed.keywords && item.feed.keywords.length"></span>
+              <a href="" class="btn-dislike" ng-hide="item.dislike" ng-click="dislike($index)">不适合</a>
+              <a href="" class="btn-dislike" ng-show="item.dislike"><i class="ic ic-item-dislike-icon"></i></a>
+            </p>
+            <div class="item-action-keywords">
+              <div class="item-action-keywords-wrap">
+                <span ng-repeat="keyword in item.feed.keywords">{[{ keyword }]}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-body">
+          <div class="item-body-wrapper">
+            <div class="item-summary">
+
+              <div class="item-main">
+                <p>
+                  <span class="item-profile-exp"><em>{[{ item.resume.work_years }]}</em>年经验</span>
+                  <span class="item-profile-sep" ng-show="item.resume.job_target.salary">|</span>
+                  <span class="item-work-salary" ng-show="item.resume.job_target.salary">期望薪资：<em>{[{item.resume.job_target.salary}]}</em></span>
+                </p>
+              </div>
+
+              <div class="item-work" ng-show="item.resume.works.0.company_name">
+                <p>
+                  <span class="item-work-comp">{[{ item.resume.works.0.company_name }]}</span>
+                  <span class="item-profile-sep" ng-show="item.resume.works.0.position_title">|</span>
+                  <span class="item-work-position">{[{ item.resume.works.0.position_title }]}</span>
+                  &nbsp;
+                  <span class="item-work-salary" ng-show="item.resume.works.0.salary">{[{ item.resume.works.0.salary }]}</span>
+                </p>
+                <p ng-show="item.resume.works.0.job_desc" ng-bind-html-unsafe="item.resume.works.0.job_desc | chop" class="work-detail"></p>
+              </div>
+
+              <div class="item-edu">
+                <p>
+                  <span class="item-edu-school">{[{ item.resume.educations.0.school }]}</span>
+                  <span class="item-profile-degree">{[{ item.resume.educations.0.degree }]}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item-footer clearfix">
+          <div class="recommended-words" ng-show="item.recommended_words && item.recommended_words.comment">
+            <strong>推荐理由</strong> {[{ item.recommended_words.comment }]}
+          </div>
+          <a title="点击查看简历详情" class="resume-link" ng-click="openFeed($index)" href="/feed/get/{[{item.feed.id}]}/{[{item.resume.id}]}?calc_time={[{item.pub_time}]}&user=user" target="{[{item.resume.id}]}">查看简历</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="feed-loading" ng-show="initLoading"> Loading... </div>
+  <a class="load-more" ng-show="hasmore" ng-click="fetch()">查看更多</a>
+  <div class="load-more load-more-loading" ng-show="loadmore"></div>
+
+  <div class="feed-waiting" ng-show="waiting">
+    <p class="feed-waiting-tip">已定制成功，推荐简历明早为你呈现，请留意查阅。</p>
+    <p class="feed-waiting-tip-long">
+      <strong>特别提示</strong>
+      <span style="letter-spacing: 0.1px">
+      <span style="font-weight: 800; display: block; margin-bottom: 5px; letter-spacing: 0.1px;">若你七天内未查看过定制，则需要你手动激活才能继续使用专属定制服务。<br /></span>
+ 定制服务不是普通的简历搜索，你或许无法即时看到检索分析的结果，但你刚才所设定的定制条件，将成为聘宝寻觅人才的标尺，不间断的在整个网络人才数据中发现匹配的人才。只需要一次设定，聘宝将每天向你推荐网络中最近更新的优质人才。
+      </span>
+    </p>
+  </div>
+
+</script>
+
+<script>
+  (function() {
+
+    var styles = document.getElementsByTagName('link'),
+        reg = /index\.css/,
+        append = function( dom ){
+            document.body.appendChild(dom);
+            if( BizQQWPA != undefined ) BizQQWPA.addCustom({
+                aty: '0',
+                nameAccount: '800031490',
+                selector: 'yxqq'
+            });
+        };
+    if (styles && styles.length) {
+        for (var i = 0; i < styles.length; ++i) {
+            if (reg.test(styles[i].href)) return false;
+        }
+        var popupImg = document.createElement('p'),
+            width = screen.width;
+        popupImg.className = 'popupImg';
+        popupImg.title = '随时联系我的顾问';
+        popupImg.style.width = '82px';
+        popupImg.style.height = '132px';
+        popupImg.id = 'yxqq';
+        popupImg.innerHTML = '<img src="/static/alpha/images/contact.jpg" alt="随时联系我的顾问">';
+
+        if( width > 1300 ){
+            popupImg.style.right = ( ( width - 1300 ) / 2 - 15 ) + 'px';
+        }
+        if( window.addEventListener ){
+            window.addEventListener( 'load' ,  function(){
+                append( popupImg );
+            });
+        }else{
+            window.attachEvent( 'onload' ,  function(){
+                append( popupImg );
+            });
+        };
+    }
+
+  }());
+</script>

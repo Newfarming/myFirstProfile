@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?20150616" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/resume_detail.min.css?20150630" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  {% include 'sentry_fix.html' %}
+  <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+</head>
+<body data-resumeid="{{resume.id}}" data-feed_id="{{feed_id}}" data-feed_keywords="{{feed_keywords}}">
+
+{% include 'alpha/header.html' %}
+{% include 'alpha/resume-detail-header.html' %}
+
+<div id="main" class="elastic-layout">
+  <div class="resume-detail-page">
+    <div class="resume-detail-page-body">
+
+      <div id="content">
+        <div id="resume-detail" class="clearfix">
+          <div class="resume-main">
+            {% include 'alpha/resume-summary.html' %}
+            {% include 'alpha/resume-content.html' %}
+          </div>
+          {% if calc_time or resume.update_time %}
+          <div class="resume-meta-info" style="border-bottom:0 none;border-top:0 none;">
+            {% if calc_time %}
+            <span>简历推荐时间: {{calc_time}}</span>
+            {% endif %}
+            {% if resume.update_time %}
+            <span>简历入库时间: {{resume.update_time}}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+          {% if not preview %}
+          <div class="resume-handle">
+              {%if contact_info.verify_status == 'unverify' %}
+              <a href="javascript:;" title="审核中" class="btn btn-grey btn-large ml20 grey-disabled w123"><strong>审核中 ...</strong></a>
+              {% elif contact_info.verify_status == 'success' %}
+              <a href="javascript:;" title="通过审核" class="btn btn-grey btn-large ml20 grey-disabled w123"><strong>通过审核</strong><i class="i-b-bingo"></i></a>
+              {% else %}
+              <a href="javascript:;" title="未通过审核" class="btn btn-grey btn-large ml20 grey-disabled w123 not-passed">
+                  <strong>未通过审核</strong><i class="i-b-stop"></i>
+                  {%if contact_info.verify_msg %}
+                  <div class="not-passed-desc">{{ contact_info.verify_msg }}</div>
+                  {%endif%}
+              </a>
+              {% endif %}
+
+              {% if request.user.is_staff  %}
+              <a href="/resumeupload/edit/{{resume.id}}" title="编辑" class="btn btn-white btn-large w123" target="{{resume.id}}" id="JS_edit"><strong>编辑</strong></a>
+              {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include 'alpha/popup.html' %}
+
+<script src="{{ STATIC_URL }}alpha/scripts/angular.min.js"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/detail.js?40b40634"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/ZeroClipboard.js"></script>
+<script>
+
+  $(function(){
+        $('#JS_publish').on('click', function(){
+            if( window._lock ) return false;
+            window._lock = true;
+            var $this = $( this ),
+                id = $( this ).attr('data-id'),
+                strong = $this.find('strong'),
+                text = strong.text();
+            if( !id ) return;
+            strong.text( text + '...' );
+            $.get( '/resumeupload/saveresume/' , { id : id } , function( res ){
+                if( res && res.status == 'success'){
+                    alert('保存成功！');
+                    if( res.redirect_url ){
+                        location.href = res.redirect_url;
+                    };
+                }else{
+
+                }
+                strong.text( text );
+                window._lock = null;
+            }).fail(function(){
+                strong.text( text );
+                window._lock = null;
+            });
+        });
+    });
+</script>
+
+{% if request.user.is_staff == 1 %}
+<!--
+<script src="{{ STATIC_URL }}alpha/scripts/edit-tag.js?40b40634"></script>
+-->
+{% endif %}
+
+{% include 'footer.html' %}
+</body>
+</html>

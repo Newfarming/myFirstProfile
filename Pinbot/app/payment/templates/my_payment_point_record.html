@@ -1,0 +1,35 @@
+{% extends 'my_payment.html' %}
+{% load endless %}
+{% load payment_tags %}
+
+{% block sub_header %}
+{% include 'payment_sub_nav.html' with point_on='on' %}
+{% endblock %}
+
+{% block payment_content %}
+<!-- 聘点记录 -->
+<div class="trading-records">
+    <h2 class="t-header">聘点记录</h2>
+    {% paginate 15 point_record %}
+    <table class="table trading-table">
+        <thead>
+            <tr>
+                <th>时间</th>
+                <th>操作内容</th>
+                <th>聘点</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in point_record %}
+            <tr>
+                <td>{{ record.record_time|date:'Y-m-d H:i'}}</td>
+                <td>{{ record.detail }}</td>
+                <td><span class="cfc7524">{{ record.point }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% get_pages %}
+    {{ pages }}
+</div>
+{% endblock %}

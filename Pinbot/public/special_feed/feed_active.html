@@ -1,0 +1,9 @@
+<div class="no-resume feed-active">
+	<h2 class="feed-title">定制激活</h2>
+	<p><i class="i-timer"></i></p>
+	<p class="feed-renew-info">Hi~你使用该条职位定制服务已超过7天<span class="c44b5e8">（上次查看：{- feedItem.feed.last_click_time.$date | date:'yyyy年MM月dd日' -}）</span>。请问你已经找到心仪的<br><span class="cf46c62">{- feedItem.feed | titleOrKey -}</span>人才了吗？</p>
+	<p class="no-resume-ctrl">
+		<a class="btn red-btn" ng-click="continue_feed(feedItem)">继续招聘此岗位人才</a>
+		<a class="btn blue-btn" ng-click="finish(feedItem)">已完成招聘</a>
+	</p>
+</div>

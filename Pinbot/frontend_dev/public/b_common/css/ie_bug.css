@@ -1,0 +1,104 @@
+/* ------- start variables -------- */
+/* for test */
+/* main red button */
+/* sprite */
+/* z-index */
+/* main red button */
+/* main blue button */
+/* dark blue button */
+/* dark white button */
+/* main background color */
+/* main font color */
+/* main border color */
+/* main font family */
+/* main font size */
+/* ------- start variables -------- */
+/* ------- start mixins -------- */
+.no-space {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+.clear-both {
+  clear: both;
+}
+.userSelectNone {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*
+content-box 在宽度和高度之外绘制元素的内边距和边框
+border-box 为元素设定的宽度和高度决定了元素的边框盒
+*/
+/*
+所有主流浏览器都不支持 appearance 属性
+ */
+.transition {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.transitionTransform {
+  -webkit-transition: -webkit-transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.modalBoxShadow {
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.btnBoxShadow {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1) inset;
+}
+/* backface-visibility 属性定义当元素不面向屏幕时是否可见。 */
+/* ------- end mixins -------- */
+/*登录注册*/
+/*解决IE9不兼容overflow-x:hidden;产生滚动条的bug*/
+html[data-useragent*='Edge'] .main form label {
+  overflow: hidden;
+}
+html[data-useragent*='Trident'] .main form label {
+  overflow: hidden;
+}
+html[data-useragent*='MSIE'] .main form label {
+  overflow: hidden;
+}
+/* IE下不用背景箭头，使用默认箭头*/
+html[data-useragent*='Trident'] .feed-filter select {
+  background: #fff !important;
+}
+html[data-useragent*='MSIE'] .feed-filter select {
+  background: #fff !important;
+}
+/*html[data-useragent*='Trident/5.0'] .smscodeBox{
+    margin-bottom: 10px !important;
+}
+
+html[data-useragent*='MSIE 9'] .smscodeBox{
+    margin-bottom: 10px !important;
+}*/
+html[data-useragent*='Trident/5.0'] .smscodeBox .smscode {
+  position: absolute;
+  top: 11px;
+  left: 240px;
+}
+html[data-useragent*='MSIE 9'] .smscodeBox .smscode {
+  position: absolute;
+  top: 11px;
+  left: 240px;
+}
+/*简历中心*/
+/*简历中心－我的下载：解决IE9筛选的下拉图标错位*/
+html[data-useragent*='Trident/5.0'] .i-barr {
+  margin-top: -3px;
+}
+html[data-useragent*='MSIE 9'] .i-barr {
+  margin-top: -3px;
+}

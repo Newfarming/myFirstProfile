@@ -1,0 +1,47 @@
+<p class="form-label text-center c607d8b experience">
+    <label for="JS_base_info" class="relative"><span class="simsun cf46c62">*</span>工作经历</label>
+    <span id="works_experience_message"></span>
+</p>
+<div class="form-content pt10 long-info work-info">
+    <div class="display-list">
+        <div class="display-item" ng-repeat="item in experience track by $index" ng-if="isPreview(item)">
+            <p class="f14">{- item.start_time -} - {- item.end_time | endTime -}</p>
+            <p class="f16">{- item.company_name -} · {- item.position_title -}</p>
+            <p class="f14" ng-bind-html="item.job_desc | as_html"></p>
+            <i class="sprite i-pen" ng-click="edit_item(item, $index)"></i>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="add-handle" ng-click="add_item()" ng-class="{'disabled': isOpenItem}">新增一条</a>
+    <ng-form name="workForm" novalidate>
+        <div class="add-content" ng-if="isOpenItem">
+            <div class="mt30">
+                <p class="relative inline-block">
+                    <input type="text" name="company_name" id="JS_company_name" class="input w260" maxlength="40" message-id="company_name_message" ng-model="temp.company_name" placeholder="请输入公司名称" validator="company_name" valid-method="submit">
+                    <span id="company_name_message"></span>
+                </p>
+                <p class="relative inline-block ml115">
+                    <input type="text" name="position_title" id="JS_position_title" class="input w260" maxlength="20" message-id="position_title_message" ng-model="temp.position_title" placeholder="职位名称" validator="position_title" valid-method="submit">
+                    <span id="position_title_message"></span>
+                </p>
+            </div>
+            <div class="calendar-wrapper mt30 clearfix">
+                <calendar-wrapper temp="temp" belong="belong"></calendar-wrapper>
+            </div>
+            <div class="mt30 w640 relative">
+                <textarea name="job_desc" id="" cols="30" rows="6" class="textarea" ng-model="temp.job_desc" maxlength="3000" message-id="job_desc_message" placeholder="工作描述" validator="jobDesc" valid-method="submit"></textarea>
+                <p class="word-tip">(请输入3000字以内的描述)</p>
+                <span id="job_desc_message"></span>
+            </div>
+            <div class="mt30">
+                <p class="relative inline-block text-left w260">
+                    <a href="javascript:void(0)" class="btn btn-blue-90" ng-click="info_form.submit(workForm)">保存</a>
+                    <a href="javascript:void(0)" class="btn btn-blue-hline-90" ng-click="cancelItem()">取消</a>
+                </p>
+                <p class="relative inline-block text-right w260 ml115">
+                    <a href="javascript:void(0)" class="btn btn-red-hline-90" ng-if="isDeleteShow" ng-click="deleteItem(temp)">删除本条</a>
+                </p>
+            </div>
+        </div>
+    </ng-form>
+</div>
+

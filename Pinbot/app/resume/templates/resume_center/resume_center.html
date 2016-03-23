@@ -1,0 +1,41 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+
+{% block header %}
+{{ block.super }}
+    {% compress css %}
+    <!-- <link rel="stylesheet" href="/static/alpha/styles/alpha.css?20150616" /> -->
+    <link rel="stylesheet" href="/static/resume/css/resume_center.css" />
+    <link rel="stylesheet" href="/static/resume/css/jquery.datetimepicker.min.css" />
+    <!-- <link rel="stylesheet" href="/static/resume/css/common_btn.css" /> -->
+    {% endcompress %}
+{% endblock %}
+
+{% block app %}
+{% endblock %}
+{% block content %}
+<div class="resume-center-main clearfix" ng-app="app.resume_center" ng-controller="resumeCenter">
+        <section ui-view ></section>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+{% compress js %}
+{% if debug %}
+<script src="/static/common/js/angular.1.3.6.js"></script>
+<script src="/static/common/js/angular-ui-router.min.js"></script>
+{% else %}
+<script src="/static/common/js/angular.min.js"></script>
+<script src="/static/common/js/angular-ui-router.min.js"></script>
+{% endif %}
+<script src="/static/brick/utils/ng_config.js"></script>
+<script src="/static/brick/utils/service.js"></script>
+<script src="/static/brick/utils/filter.js"></script>
+<script src="/static/brick/utils/django.js"></script>
+<script src="/static/resume/js/jquery.datetimepicker.min.js"></script>
+<script src="/static/resume/js/resume_center.js"></script>
+{% endcompress %}
+{% endblock %}
+
+

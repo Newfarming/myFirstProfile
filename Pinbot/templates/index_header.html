@@ -1,0 +1,26 @@
+{% load notify_tags %}
+
+<div id="header">
+    {% include 'snow_bar_full.html' %}
+    <div class="inner-wrap clearfix">
+    <h1><a href="/" title="聘宝，专业人才推荐" style="overflow:hidden;text-indent: -9999px;"><img class="logo pinbot-logo" src="{{ STATIC_URL }}b_index/img/logo_121x75.png" border="0"></a></h1>
+        <div class="nav-meta">
+            {% if not request.user.is_authenticated %}
+            <a href="/users/account_register/" class="btn signup">注册</a>
+            <a href="/signin" class="btn signin">登录</a>
+            {% else %}
+            <!-- <a href="/gotopinbot" class="btn btn-enter">进入聘宝</a> -->
+            <div href="javascript:void(0)" class="user-ctrl" id="JS_toggle_user_menu">
+                <a href="/gotopinbot">
+                    <span class="name">{{ request.user.username }}</span>
+                    <i class="i-head-img"></i>
+                </a>
+                <ul class="user-ctrl-menu">
+                    <li><a href="/gotopinbot">进入聘宝</a></li>
+                    <li><a href="/signout">退出</a></li>
+                </ul>
+            </div>
+            {% endif %}
+        </div><!-- nav-meta -->
+    </div>
+</div>

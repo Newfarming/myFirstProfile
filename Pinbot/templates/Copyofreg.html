@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝，专业人才推荐</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/login.css?ad571bfb" />
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+</head>
+<body class="page-login">
+<div id="page">
+  <div id="login">
+    <h1>
+      <a href="/" title="聘宝，专业人才推荐"></a>
+    </h1> 
+    <form method="post" action="/signup_confirm" id="login-form">
+      <p id="email">
+        <input type="email" tabindex=1" value="mf1032025@sina.com" name="email" autofocus placeholder="请输入邮箱" autocomplete="off"/>
+      </p>
+      <p id="company">
+        <input type="text" tabindex="2" value="fail" name="result" />      
+      </p>
+      
+      <p id="company">
+        <input type="text" value="2XG$I$R06}|2NRka+>-UN}!AAIO+*]Mpc-M{,S=S2>1VUdd8)D HT)i+-kuap7;y" tabindex="2" name="x-pinbot-admin-auth" />      
+      </p>
+
+
+      <p id="submit">
+        <button type="submit" tabindex="4" /> 验证通过 </button>
+      </p>
+      <p id="apply">
+        已经有聘宝帐号？ <a href="/signin/">立即登录</a>
+      </p> 
+      {% csrf_token %}
+    </form>
+
+  </div>
+</div>
+
+<script src="{{ STATIC_URL }}alpha/scripts/login.js?9c1f051a"></script>
+{% include 'footer.html' %}
+</body>
+</html>

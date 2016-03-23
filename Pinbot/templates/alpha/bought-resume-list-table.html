@@ -1,0 +1,195 @@
+{% load endless %}
+<div class="bought-search">
+<form method='get' action='/companycard/resume/filter/'>
+    <span>简历下载来源：</span>
+    <div class="drop-select w140">
+        <button class="button" type="button" data-toggle="dropdown">{{source}}<i class="i-barr"></i></button>
+        <div class="drop-box">
+            <ul class="drop-down">
+                <li><a {%if source == '不限'%}class='active'{%endif%}>不限</a></li>
+                <li><a {%if source == '直接下载'%}class='active'{%endif%}>直接下载</a></li>
+                <li><a {%if source == '企业名片意向确认'%}class='active'{%endif%}>企业名片意向确认</a></li>
+            </ul>
+        </div>
+        <select class="edu_end_year" id="JS_degree" name="source" data-equ="">
+            <option value="不限" {%if source == '不限'%}selected{%endif%}>不限</option>
+            <option value="直接下载" {%if source == '直接下载'%}selected{%endif%}>直接下载</option>
+            <option value="企业名片意向确认" {%if source == '企业名片意向确认'%}selected{%endif%}>企业名片意向确认</option>
+        </select>
+    </div>
+    <span>下载状态：</span>
+    <div class="drop-select w70">
+        <button class="button" type="button" data-toggle="dropdown">{{has_download}}<i class="i-barr"></i></button>
+        <div class="drop-box">
+            <ul class="drop-down">
+                <li><a {%if has_download == '不限'%}class='active'{%endif%}>不限</a></li>
+                <li><a {%if has_download == '已下载'%}class='active'{%endif%}>已下载</a></li>
+                <li><a {%if has_download == '未下载'%}class='active'{%endif%}>未下载</a></li>
+            </ul>
+        </div>
+        <select class="edu_end_year" id="JS_degree" name="download" data-equ="">
+            <option value="不限" {%if has_download == '不限'%}selected{%endif%}>不限</option>
+            <option value="已下载" {%if has_download == '已下载'%}selected{%endif%}>已下载</option>
+            <option value="未下载" {%if has_download == '未下载'%}selected{%endif%}>未下载</option>
+        </select>
+    </div>
+    <span>候选人反馈状态：</span>
+    <div class="drop-select w100">
+        <button class="button" type="button" data-toggle="dropdown">{{feedback}}<i class="i-barr"></i></button>
+        <div class="drop-box">
+            <ul class="drop-down">
+                <li><a {%if feedback == '不限'%}class='active'{%endif%}>不限</a></li>
+                <li><a {%if feedback == '不感兴趣'%}class='active'{%endif%}>不感兴趣</a></li>
+                <li><a {%if feedback == '感兴趣'%}class='active'{%endif%}>感兴趣</a></li>
+                <li><a {%if feedback == '待确认'%}class='active'{%endif%}>待确认</a></li>
+                <li><a {%if feedback == '无回复'%}class='active'{%endif%}>无回复</a></li>
+            </ul>
+        </div>
+        <select class="edu_end_year" id="JS_degree" name="feedback" data-equ="">
+            <option value="不限" {%if feedback == '不限'%}selected{%endif%}>不限</option>
+            <option value="不感兴趣" {%if feedback == '不感兴趣'%}selected{%endif%}>不感兴趣</option>
+            <option value="感兴趣" {%if feedback == '感兴趣'%}selected{%endif%}>感兴趣</option>
+            <option value="待确认" {%if feedback == '待确认'%}selected{%endif%}>待确认</option>
+            <option value="无回复" {%if feedback == '无回复'%}selected{%endif%}>无回复</option>
+        </select>
+    </div>
+    <a class="btn btn-primary" onclick="$(this).closest('form')[0].submit();">查询</a>
+    </form>
+</div>
+
+<div class="resume-list-table">
+  <table>
+    <thead>
+      <tr class="">
+        <th width="8%">下载日期</th>
+        <th width="10%">联系信息</th>
+        <th width="13%">基本信息</th>
+        <th width="13%">最近工作</th>
+        <th width="10%">最高学历</th>
+        <th width="10%">下载状态</th>
+        <th width="10%">简历下载来源</th>
+        <th width="7%">候选人反馈信息</th>
+        <th width="7%">消耗点数</th>
+        <th >简历标记状态</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% paginate 10 resume_list %}
+    {% for resume, extra_info in resume_list %}
+        <tr class="resume-single">
+            <td class="date-field">
+                <p>
+                     {{extra_info.op_time|date:"Y-m-d H:i"}}
+                    <a class="resume-link" href="/resumes/display/{{resume.id}}/?feed_id={{extra_info.feed_id}}" target="{{resume.id}}"><span>查看</span></a>
+                </p>
+                </td>
+            <td>
+                {% if extra_info.buy_record.status == 'LookUp' %}
+                <p><span>{{resume.name}}</span></p>
+                <p><span>{{resume.phone}}</span></p>
+                <p><span>{{resume.email}}</span></p>
+                {% endif %}
+
+                {% if extra_info.buy_record.status == 'Secret' and resume.name == '保密' %}
+                <p><span>保密</span></p>
+                {% endif %}
+
+                {% if extra_info.buy_record.status == 'Secret' and resume.name != '保密' %}
+                <p><span>{{resume.name}}</span></p>
+                <p><span>{{resume.phone}}</span></p>
+                <p><span>{{resume.email}}</span></p>
+                {% endif %}
+            </td>
+            <td>
+                <p>
+                    <span>{{resume.gender}}</span>
+                    <span> {{ resume.age }}岁</span>
+                    <span>{% if resume.work_years %}
+                               {{ resume.work_years }} 年经验
+                           {% endif %}
+                    </span>
+                </p>
+                <p>
+                    <span>{% if resume.job_target.job_hunting_state %}
+                          {{ resume.job_target.job_hunting_state }}
+                          {% endif %}
+                    </span>
+                </p>
+                <p>
+                    <span>意向地:
+                    {% for area in resume.job_target.expectation_area %}
+                       {{ area }}
+                    {% endfor %}
+                    </span>
+                </p>
+            </td>
+            <td>
+                {% if resume.works %}
+                  {% with lastcompany=resume.works.0 %}
+                    <p class="work-range"><span>{{ lastcompany.start_time }} 至 {{ lastcompany.end_time }}</span></p>
+                    <p class="work-company">
+                        <span>{{ lastcompany.company_name }}</span>
+                        <span>{{ lastcompany.position_title }}</span>
+                    </p>
+
+                  {% endwith %}
+                {% endif %}
+            </td>
+            <td>
+                <p class="school">
+                    {% with education=resume.educations.0 %}
+                    <span>{{ education.start_time }}-{{education.end_time}}</span>
+                    <span>{{education.school}}</span>
+                    <span class="degree">{{education.major}}</span>
+                    {% endwith %}
+                </p>
+            </td>
+            <td>
+                {%if extra_info.download_status == '已下载' %}
+                <span class="c333">已下载</span>
+                {%endif%}
+                {%if extra_info.download_status == '未下载' %}
+                <span class="c999">未下载</span>
+                {%endif%}
+                {%if extra_info.download_success == False %}
+                <br><span class="cef7f40">（点数不足，下载失败）</span><br>
+                {%endif%}
+            </td>
+            <td>
+                <span>{{extra_info.buy_source}}</span>
+            </td>
+            <td>
+                <span {%if extra_info.feed_back == '感兴趣'%}class="cef7f40"{%endif%}>{{extra_info.feed_back}}</span>
+            </td>
+            <td>
+                <span class="cef7f40">{{extra_info.used_points}}</span>点
+                {%if extra_info.download_status == '未下载'%}
+                    <br><a data-resumeid="{{resume.id}}" href="javascript:;" data-sendid="{{extra_info.send_id}}" title="" class="a-blue JS_buy_after_sendcard">直接下载</a>
+                {%endif%}
+            </td>
+            <td>
+                {% with mark=extra_info.buy_record.resume_mark.current_mark %}
+                {% if extra_info.buy_record and extra_info.buy_record.status == 'LookUp' %}
+
+                {% if not mark.end_status %}
+                <a class="a-blue JS_mark_resume" href="/resumes/display/{{resume.id}}/?feed_id={{ extra_info.feed_id }}">标记简历&nbsp;&nbsp;&nbsp;<i class="i-edit-mark"></i></a>
+                {% endif %}
+
+                {% if mark.end_status and not mark.change %}
+                <span>{{ mark.desc }}</span>
+                {% endif %}
+
+                {% if mark.end_status and mark.change %}
+                <span class="JS_mark_resume w100p"><cite class="mark-desc">{{ mark.desc}}</cite>{% if not mark.is_accu %} <i class="i-mark-info"><code>简历状态已完结，若状态有误，请<a href="{% url 'transaction-mark-resume' extra_info.buy_record.id %}">点击修改</a></code></i>{% endif %}</span>
+                {% endif %}
+
+                {% endif %}
+                {% endwith %}
+            </td>
+      </tr>
+{%endfor%}
+    </tbody>
+  </table>
+  {% get_pages %}
+  {{ pages }}
+</div>

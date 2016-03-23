@@ -1,0 +1,1 @@
+聘宝推荐好工作－{{job.title}} 来自 {{company.company_name}}

@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+<head>
+<title>聘宝 求职版</title>
+<meta name="keywords" content="keywords" />
+<meta name="description" content="description" />
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="renderer" content="webkit">
+<link rel="shortcut icon" href="{{ STATIC_URL }}yure/img/favicon.ico" />
+<link href="{{ STATIC_URL }}yure/css/qz_common.min.css" type="text/css" rel="stylesheet" />
+<link href="{{ STATIC_URL }}yure/css/yr.min.css?20150423" type="text/css" rel="stylesheet" />
+<!--[if lt IE 9]><script src="{{ STATIC_URL }}yure/js/html5.js"></script><![endif]-->
+</head>
+
+<body>
+<header class="clearfix">
+    <a href="#" title="" class="logo">聘宝求职版</a>
+    {% if not request.user.is_authenticated %}
+    <a href="/account/login/" title="" class="login ml20">登录</a>
+    <a href="/account/register/" title="" class="login ml20">邀请码激活</a>
+    {% else %}
+    <a href="/job/" title="" class="login">进入聘宝</a>
+    {% endif %}
+</header>
+<section class="banner text-center">
+    <ul>
+        <li><img src="{{ STATIC_URL }}yure/img/biaotiwenzi_995x508.png" alt="这年头，谁还找工作啊"></li>
+        <li><a href="javascript:;" title="" class="play-audio"><img src="{{ STATIC_URL }}yure/img/yuyinqipao_380x207.png" alt=""><span id="JS_audio_duration"></span></a></li>
+        <li><img src="{{ STATIC_URL }}yure/img/zhituijianshiheni_779x89.png" alt="聘宝，只推荐适合你的工作"></li>
+    </ul>
+</section>
+
+<div class="content">
+    <h1 class="text-center masthead c008add">
+        <!-- <span class="arial">2015.02.03</span><br> -->
+        <strong>求职神器 内测开启</strong>
+    </h1>
+</div>
+
+<div class="content">
+    <div class="clearfix advantage inner-content">
+        <img src="{{ STATIC_URL }}yure/img/pinbot535x101.png" alt="私密、精准、高效、牛逼" width="100%">
+    </div>
+</div>
+
+<div class="content">
+    <div class="inner-content apply-code">
+        <form action="." method="post" accept-charset="utf-8" id="commentForm" autocomplete="off">
+            <label class="sorry">
+                抱歉，第一期邀请码已发放完毕！<br>
+                您可以留下以下信息，我们将优先发放第二期内测邀请码！
+            </label>
+            <div>
+                <input id="id_email" maxlength="60" name="email" type="email" placeholder="邮箱" class="input required" data-ajax_url="{% url 'invite-check-apply-email' %}" data-method="get" data-ajax_common_type="normal" data-callback="isCanUse"/>
+            </div>
+            <div>
+                <input id="id_job" maxlength="30" name="job" type="text" placeholder="职业" class="input required"/>
+            </div>
+            <div>
+                <select name="city" class="select required" id="id_city">
+                    <option value="">所在城市</option>
+                    <option value="北京">北京</option>
+                    <option value="上海">上海</option>
+                    <option value="广州">广州</option>
+                    <option value="深圳">深圳</option>
+                    <option value="杭州">杭州</option>
+                    <option value="成都">成都</option>
+                    <option value="重庆">重庆</option>
+                    <option value="武汉">武汉</option>
+                    <option value="西安">西安</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+            <div class="none">
+                <input maxlength="30" type="text" placeholder="输入城市" id="other_city" class="input required" name="other_city"/>
+            </div>
+            <div>
+                <input id="id_phone" maxlength="20" name="phone" type="text" placeholder="手机" class="input required number"/>
+            </div>
+            <div>
+                <textarea name="apply_desc" id="id_apply_desc" rows="4" class="textarea required" maxlength="60" placeholder="自我介绍如：本人聘宝市场VP。英国留学主修软件工程，先后在雅虎画产品原型、鹅厂担任大客户总监，因忠于理想（勾搭厂花），一时冲动下海创业，至今不后悔。"></textarea>
+            </div>
+            <input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}' />
+            <div>
+                <button class="button" id="JS_get_code" data-ajax_common_type="form" type="submit" data-before="before" data-callback="callback">获取第二期内测邀请码</button>
+            </div>
+        </form>
+        <div class="apply-weixin">
+            <p class="wx-img text-center"><img src="{{ STATIC_URL }}yure/img/qrcode.png?v1" alt=""></p>
+            <p class="text-center">扫一扫加聘宝微信群</p>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="inner-content footer">
+        <p class="text-center none">
+            成为内测用户<br><span>千元</span>微信红包等你抢
+        </p>
+        <p class="text-center none">
+            <img src="{{ STATIC_URL }}yure/img/hongbao_253x146.png" alt="">
+        </p>
+    </div>
+    <p class="text-center copyright">Copyright &copy; 2013 - 2016 成都浩泊云动科技有限公司</p>
+</div>
+<audio preload="auto" id="JS_audio"></audio>
+
+<script src="{{ STATIC_URL }}yure/js/pb.common.js?20150109"></script>
+<script src="{{ STATIC_URL }}yure/js/jquery.form.js?20150109"></script>
+<script src="{{ STATIC_URL }}yure/js/jquery.validate.js?20150109"></script>
+<script>
+    var audio = function(){
+            var id = parseInt( 15 * Math.random() + 1 ),
+                html = '';
+            html += '<source src="{{ STATIC_URL }}yure/audio/audio_' + id + '.ogg" type="audio/ogg" />' +
+                        '<source src="{{ STATIC_URL }}yure/audio/audio_' + id + '.mp3" type="audio/mpeg" />' +
+                        '你的浏览器不支持音频播放，请使用谷歌等先进浏览器。';
+            $('#JS_audio').html( html );
+        },
+        emailReg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/,
+        isCanUse = function( res ){
+            if( res.status == 'ok' ) return;
+            var $dom = $( 'id_email-error' );
+            if( $dom.length ){
+                $dom.html( res.msg )
+            }else{
+                $('#id_email').after( '<label id="id_email-error" class="error" for="id_email"> ' + res.msg + '</label>' );
+            };
+        },
+        callback = function( res ){
+            $('#JS_get_code').attr('disabled',true);
+            // $('#JS_get_code').html('抱歉，本期邀请码已发放完毕！');
+            $('#JS_get_code').html('已收到申请！');
+        };
+    $( function(){
+        audio();
+        $('#id_city').on( 'change' , function(){
+            var $this = $( this ),
+                val = $this.val();
+            if( val == '其他' ){
+                $this.parent().next('div').show();
+            }else{
+                $this.parent().next('div').hide();
+            };
+
+        } );
+
+        // $('#JS_get_code').on( 'click' , $.commonAjax);
+        $('.play-audio').on( 'click' , function(){
+            if( window.__playing ) return false;
+            window.__playing = true;
+            $('#JS_audio')[0].load();
+            $('#JS_audio')[0].play();
+        });
+
+        $('#id_email').on( 'keyup' , function(){
+            $('#id_email-error').remove();
+        });
+
+        $(document).ready(function(){
+           $("#commentForm").validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    job: {
+                        required: true
+                    },
+                    city: {
+                        required: true
+                    },
+                    phone: {
+                        required: true,
+                        number:true
+                    },
+                    apply_desc: {
+                        required: true
+                    }
+                },
+                messages: {
+                    email: {
+                        required: "邮箱不能为空！",
+                        email: "请输入正确的邮箱！"
+                    },
+                    job: {
+                        required: "请填写职业！"
+                    },
+                    city: {
+                        required: "请选择所在城市！"
+                    },
+                    phone: {
+                        required: "请输入手机号码！",
+                        number: "请输入正确的手机！"
+                    },
+                    apply_desc: {
+                        required: "请输入你的申请宣言！"
+                    },
+                    other_city: {
+                        required: "请输入你的所在城市！"
+                    }
+                },
+                submitHandler:function(form) {
+                    var city = $('#id_city').val();
+                    if( city == '其他' ){
+                        if( !$( '#other_city' ).val() ){
+                            return false;
+                        };
+                    };
+                    $(form).ajaxSubmit({
+                        success: function( res ){
+                            if( res && res.status == 'ok' ){
+                                callback();
+                            }else if( res && res.status == 'malice_ip' ){
+                                $('.result').html('提交得太频繁啦！休息一下再试吧').parent().show();
+                                $('#JS_get_code').attr('disabled',true);
+                            }else if( res && res.errors ){
+                                for( var i in res.errors ){
+                                    var $dom = $('[name="' + i + '"]'),
+                                        id = $dom.attr('id'),
+                                        $error = $('#' + id + '-error'),
+                                        err = res.errors[i];
+                                    if( $error.length ){
+                                        $error.html( err ).show();
+                                    }else{
+                                        $dom.after('<label id="' + id + '-error" class="error" for="' + id + '">' + err + '</label>');
+                                    };
+                                };
+                            };
+                        }
+                    });
+                }
+            });
+        });
+
+        $('#id_email').on( 'blur' , function(){
+            var $this = $( this ),
+                val = $this.val();
+            $this.data( 'email' , val );
+            if( emailReg.test( val ) ){
+                $.commonAjax.call( this );
+            };
+        });
+
+    });
+
+var au = document.getElementById('JS_audio');
+au.addEventListener('ended',function(){
+    audio();
+    window.__playing = false;
+},false);
+au.addEventListener('canplaythrough', function(e){
+    var duration = Math.ceil( this.duration );
+    $('#JS_audio_duration').html( duration );
+}, false);
+
+</script>
+
+<div style="display: none;">
+{% include 'baidu_tj.html' %}
+</div>
+
+</body>
+</html>

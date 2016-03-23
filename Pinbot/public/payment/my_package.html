@@ -1,0 +1,92 @@
+<div class="main main-mode mg-top-20" >
+                <div class="header">
+                    <h1>省心套餐</h1>
+                </div>
+
+                <div class="list-box list-box-menu list-box-menu-50">
+                    <div class="box-col-bar"></div>
+                    <ul class="trade-menu trade-status" data-title="套餐状态：">
+                        <li class="active" ><a class="active" href="javascript:void(0);" ng-click="listStatus($event,'all')">全部</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'applying')">申请中</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'success')">已开通</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'refund')">退款中</a></li>
+                        <!-- <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'cancel_refund')">取消退款</a></li> -->
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'refunded')">退款成功</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'closed')">已关闭</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'canceled')">已取消</a></li>
+                        <!-- <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'deleted')">已删除</a></li> -->
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'expired')">已过期</a></li>
+                        <li class="" ><a href="javascript:void(0);" ng-click="listStatus($event,'finished')">已完结</a></li>
+                    </ul>
+                </div>
+                <div class="list-box list-box-header list-box-header-package">
+                    <ul>
+                        <li>订单时间</li>
+                        <li class="long">订单内容</li>
+                        <li>价格</li>
+                        <li>状态</li>
+                        <!-- <li>有效期</li> -->
+                        <li>操作</li>
+                    </ul>
+                </div>
+                <div class="list-box list-box-content list-box-loading" ng-if="loadingThis">
+                    <div class="text-center ajax-loading"><img src="/static/partner/images/loading.gif" alt="loading"><br>页面装载中...</div>
+                </div>
+                <div class="list-box list-box-content list-box-loading" ng-if="logList.count == 0 && !loadingThis">
+                    <!-- <div class="text-center ajax-loading">暂无<span class="noDataType"></span>数据...</div> -->
+                    <div class="new-exp">
+                        <div class="text-center"><img src="/static/b_common/img/pinbot380x380_icon_resume_failed.png" border="0" width="180" height="180"></div>
+                        <div class="text-center"><span class="f14 c607d8b">您还没有购买过省心套餐...</span></div>
+                        <div class="text-center"><a class="btn btn-red btn-big text-center" href="/vip/role_info/#/usermode_noworry/">立即体验</a></div>
+                    </div>
+                </div>
+                <div class="list-box list-box-content list-box-content-package list-box-content-90" ng-repeat="log in logList.data">
+                    <ul>
+                        <li><span class="">{- log.create_time -}</span></li>
+                        <li class="long"><span class="grey" ng-class="{default:normalStatus(log.status)}">{- log.service_desc -}</span><span class="insurance" ng-if="log.is_insurance==true"></span></li>
+                        <li ng-if="log.is_insurance==false"><span class="grey" ng-class="{error:normalStatus(log.status)}">¥{- log.price -}</span></li>
+                        <li ng-if="log.is_insurance==true"><span class="grey" ng-class="{error:normalStatus(log.status)}">¥{- log.price -}</span></li>
+
+                        <li ng-if="log.status.trim() == '申请中'"><span class="default">申请中</span></li>
+                        <li ng-if="log.status.trim() == '已开通'"><span class="success">已开通</span></li>
+                        <li ng-if="log.status.trim() == '退款中'"><span class="error">退款中</span></li>
+                        <li ng-if="log.status.trim() == '取消退款'"><span class="error">取消退款</span></li>
+                        <li ng-if="log.status.trim() == '退款成功'"><span class="success">退款成功</span></li>
+                        <li ng-if="log.status.trim() == '已关闭'"><span class="success">已关闭</span></li>
+                        <li ng-if="log.status.trim() == '已取消'"><span class="grey">已取消</span></li>
+                        <li ng-if="log.status.trim() == '已删除'"><span class="error">已删除</span></li>
+                        <li ng-if="log.status.trim() == '已过期'"><span class="error">已过期</span></li>
+                        <li ng-if="log.status.trim() == '已完结'"><span class="error">已完结</span></li>
+                        <li ng-if="defaultOrderStatus(log.status)"><span class="default"></span></li>
+
+                        <li><span class="">{- log.expire_time -}</span></li>
+
+                        <li ng-if="showDoApply(log.status.trim())"><a class="select-btn select-btn-blue" href="javascript:void(0);" ><span id="JS_pbqqnoworry_btn">我要开通</span><span class="arrow arrow-close" ng-click="showOpt($event)"><img src="/static/b_common/img/null.png" width="21" height="20" border="0"></span><span class="select-btn-opts" data-oid="{- log.id -}" ng-click="doCancel($event)"><span>取消订单</span></span></a>
+                        </li>
+                        <li ng-if="chkUserNeedContact(log.status.trim())"><a class="select-btn select-btn-default" href="javascript:void(0);"><span data-oid="{- log.id -}" ng-click="doRefund($event)">我要退款</span><span class="arrow arrow-close" ng-click="showOpt($event)"><img src="/static/b_common/img/null.png" width="21" height="20" border="0"></span><span class="select-btn-opts" data-oid="{- log.id -}" ng-click="doContact($event)"><span id="JS_pbqqdiy_btn">联系我们</span></span></a></li>
+                        <li ng-if="chkUserNeedContact2(log.status.trim())"><a class="select-btn select-btn-blue" href="javascript:void(0);"><span data-oid="{- log.id -}" ng-click="cancelRefund($event)">取消退款</span><span class="arrow arrow-close" ng-click="showOpt($event)"><img src="/static/b_common/img/null.png" width="21" height="20" border="0"></span><span class="select-btn-opts" data-oid="{- log.id -}" ng-click="doContact($event)"><span id="JS_pbqqdiy_btn">联系我们</span></span></a></li>
+                        <li ng-if="log.status.trim() == '取消退款'"></li>
+                        <li ng-if="log.status.trim() == '退款成功'"><a class="select-btn select-btn-red" href="javascript:void(0);"><span data-oid="{- log.id -}" ng-click="doRebuy($event)">重新购买</span><!-- <span class="arrow arrow-close" ng-click="showOpt($event)"><img src="/static/b_common/img/null.png" width="21" height="20" border="0"></span> --><!-- <span class="select-btn-opts" data-oid="{- log.id -}" ng-click="doDelete($event)"><span>删除记录</span></span> --></a></li>
+
+                        <!-- <li ssng-if="log.status.trim() == '续期'"><a class="select-btn select-btn-blue" href="javascript:void(0);" ng-click="doResumeDiyPackage($event,log.id)"><span data-oid="{- log.id -}">续期</span></a></li> -->
+
+                        <li ng-if="log.status.trim() == '已关闭'"></li>
+                        <li ng-if="log.status.trim() == '已取消'"><a class="select-btn select-btn-red" href="javascript:void(0);"><span data-oid="{- log.id -}" ng-click="doRebuy($event)">重新购买</span><!-- <span class="arrow arrow-close" ng-click="showOpt($event)"><img src="/static/b_common/img/null.png" width="21" height="20" border="0"></span> --><!-- <span class="select-btn-opts" data-oid="{- log.id -}" ng-click="doDelete($event)"><span>删除记录</span></span> --></a></li>
+                        <!-- <li ng-if="log.status.trim() == '已删除'"></li> -->
+                        <li ng-if="log.status.trim() == '已过期'"><a class="select-btn select-btn-red" href="javascript:void(0);"><span data-oid="{- log.id -}" ng-click="doRebuy($event)">重新购买</span><!-- <span class="arrow arrow-close ng-click="showOpt($event)"><img src="/static/b_common/img/null.png" width="21" height="20" border="0""></span> --><!-- <span class="select-btn-opts" href="javascript:void(0);" data-oid="{- log.id -}" ng-click="doDelete($event)"><span>删除记录</span></span> --><span class="select-btn-opts" data-oid="{- log.id -}" ng-click="doResume($event)"><span>我要续期</span></span></a></li>
+
+                    </ul>
+                </div>
+                <div class="list-box-footer" ng-if="logList.count > 0 && logList.is_paginated == true">
+                    <span class="offset-start">1</span> - <span class="offset-end">{- logList.per_page -}</span>条，共<span class="total">{- logList.count -}</span>条
+
+                    <a href="javascript:void(0);" class="last-page" ng-click="nextPage(1)" ng-if="logList.current > 1 && logList.pages > 1">&lt;&lt;首页</a>
+
+                    <a href="javascript:void(0);" class="prev-page" ng-click="nextPage(logList.current-1)" ng-if="logList.current > 1">&lt;上一页</a>
+
+                    <a href="javascript:void(0);" class="next-page" ng-click="nextPage(logList.current+1)" ng-if="logList.current < logList.pages">下一页&gt;</a>
+
+                    <a href="javascript:void(0);" class="last-page" ng-click="nextPage(logList.pages)" ng-if="logList.current != logList.pages">尾页&gt;&gt;</a>
+                </div>
+
+            </div><!-- main -->

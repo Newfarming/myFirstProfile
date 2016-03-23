@@ -1,0 +1,26 @@
+[
+{
+  "pk": 14, 
+  "model": "weixin.weixinuser", 
+  "fields": {
+    "province": "", 
+    "openid": "oJWixvwBQci9WRqiriZoxOZvbCDs", 
+    "subscribe_time": 0.0, 
+    "headimgurl": "", 
+    "language": "", 
+    "city": "", 
+    "country": "", 
+    "is_subscribe": true, 
+    "sex": 0, 
+    "subscribe": true, 
+    "remark": "", 
+    "create_time": "2015-09-30T00:00:00", 
+    "user": 907, 
+    "groupid": 0, 
+    "unionid": "", 
+    "privilege": "", 
+    "nickname": "", 
+    "is_bind": true
+  }
+}
+]

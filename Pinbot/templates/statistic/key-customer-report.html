@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>{{report_date}}数据统计报表</title>
+	<link href="http://112.124.23.240/statis/css/basic.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="http://112.124.23.240/statis/js/enhance.js"></script>		
+	<script type="text/javascript">
+		// Run capabilities test
+		enhance({
+			loadScripts: [
+				'http://112.124.23.240/statis/js/excanvas.js',
+				'http://112.124.23.240/statis/js/jquery.min.js',
+				'http://112.124.23.240/statis/js/visualize.jQuery.js',
+				'http://112.124.23.240/statis/js/weekly-report.js',
+			],
+			loadStyles: [
+				'http://112.124.23.240/statis/css/visualize.css',
+				'http://112.124.23.240/statis/css/visualize-light.css'
+			]	
+		});   
+    </script>
+</head>
+<body>
+	<H2>{{report_date}}二十家重点客户统计</H2>
+      <table border="1">
+      <tbody>
+      <caption>{{report_date}}二十家重点客户统计</caption>
+	  <tr>
+	    <th>用户</th>
+	    <th>开始时间</th>
+	    <th>结束时间</th>
+	    <th>入口</th>
+	    <th>总共订阅数</th>
+	    <th>订阅点击数</th>
+	    <th>简历推荐数</th>
+	    <th>被推荐的简历显示数</th>
+	    <th>简历显示总数</th>
+	    <th>被推荐的简历点击数</th>
+	    <th>简历点击总数</th>
+	    <th>简历关注数</th>
+	    <th>简历购买数</th>
+	    <th>简历不合适点击数</th>
+	    <th>简历备注数</th>
+	    
+	  </tr>
+	  
+	  {% for email,company,info_list in report_list %}
+	  	<tr>
+	  	<th>{{company}}</th>
+	  	{% for value in info_list %}
+		  	<td style="text-align:center">{{value}}</td>
+			
+		{% endfor%}
+	  	</tr>
+	  {% endfor %}
+	  </tbody>
+	  </table>
+	  <H2>{{report_date}}未使用的客户</H2>
+	  {% for company in unuser_customer %}
+	  	<p>{{company}}</p>
+	  {% endfor %}
+</body>
+</html>

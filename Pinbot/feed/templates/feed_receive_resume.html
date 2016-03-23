@@ -1,0 +1,105 @@
+{% extends 'base_center.html' %}
+{% load endless %}
+{% load job_tags %}
+
+{% block header %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}feed/css/receive_resume.min.css" />
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with watch_class='curr' %}
+{% endblock %}
+
+{% block sub_header %}
+<div class="main-subnav">
+    <div id="resume-list-header">
+        <ul class="main-subnav-list">
+            <li class="first-child">
+                <a href="/resumes/watch/">我的收藏</a>
+            </li>
+            <li>
+                <a href="/transaction/bought">我的下载</a>
+            </li>
+            <li class="on">
+                <a href="{% url 'feed-receive-resume' %}">投递我的</a>
+            </li>
+            <li>
+                <a href="{% url 'transaction-buy-record' %}?query=unmark" class="qzz">待标记简历</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div id="main" class="noborder">
+        <div id="content" class="clearfix">
+            <div>
+                {% paginate 10 receive_resumes %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <div class="select waiting">
+                                <input type="checkbox"/>还未反馈的简历
+                            </div>
+                        </tr>
+                        <tr>
+                            <th>投递日期</th>
+                            <th>联系信息</th>
+                            <th>基本信息</th>
+                            <th>最近工作</th>
+                            <th>最高学历</th>
+                            <th>我的反馈状态</th>
+                            <th>发起会话</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if receive_resumes %}
+                    {% for job_resume in receive_resumes %}
+                    <tr class="hover-layer">
+                        <td>
+                            {{ job_resume.action_time|date:'Y-m-d H:i' }}
+                        </td>
+                        <td>
+                            <a url="{% url 'resume-display-resume' job_resume.resume.resume_id 0 %}?job_id={{ job_resume.id }}">{{ job_resume.resume.name }}</a>
+                        </td>
+                        <td>
+                            {{ job_resume.resume.gender|cn_display }} {{ job_resume.resume.age }}岁 {{ job_resume.resume|get_city }}
+                        </td>
+                        <td>
+                            {{ job_resume.resume|get_work }}
+                        </td>
+                        <td>
+                            {{ job_resume.degree|cn_display }}
+                        </td>
+                        <td>
+                            {{ job_resume.company_action|cn_display }}
+                        </td>
+                        <td>
+                            {% if job_resume.company_action == 'download' %}
+                            <a href="{% url 'chat-start-job-chat' job_resume.id %}" class="chat"><img src="{{ STATIC_URL }}feed/img/huihuaicon_25x17.gif"/></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="7">
+                            <p class="no-list"><i class="i-l-notice"></i>暂时没有任何数据！</p>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+                {% get_pages %}
+                {{ pages }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}feed/receive_resume.min.js"></script>
+{% endblock %}

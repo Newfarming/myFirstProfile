@@ -1,0 +1,40 @@
+
+<div class="main main-mode" ng-controller="coinRecharge">
+    <div class="header">
+        <h1>充值金币</h1>
+        <div class="sub-title">请输入需要充值的金币数</div>
+    </div>
+
+    <div class="price content box-content box-content-p30">
+        <div class="text-center ajax-loading" ng-if="loadingThis" ng-hide="true">
+            <img src="/static/partner/images/loading.gif" alt="loading">
+            <br>页面装载中...
+        </div>
+        <div class="price content box-content pd-top-0 text-center" >
+            <span class="c607d8b f14">充值金币：<input type="text" class="input input-coin" ng-change="chkCoinNum('.input-coin')" ng-blur="chkCoinNum('.input-coin')" ng-model="modeFee" maxlength="6" />金币</span>
+            
+        </div>
+        <div class="price content box-content pd-top-0 text-center" >
+            <span class="c607d8b f14">支付金额：<span class="price-focus">¥ {- modeFeeCoin -}</span>元<br>
+            <label class="agreement-error" class="invalid" style="display: none;"></label>
+        </div>
+        <div class="box-col box-col-center">
+            <div class="user-mode user-mode-pay active" ng-click="choosePayMethod($event,'alipay')" ng-mouseover="hoverMe($event,true)"
+    ng-mouseout="hoverMe($event,false)">
+                <a class="pay-icons pay-icons-alipay">支付宝</a>
+            </div>
+        </div>
+        <!-- <div class="box-col box-col-right">
+            <div class="user-mode user-mode-pay" ng-click="choosePayMethod($event,'wechat')" ng-mouseover="hoverMe($event,true)"
+    ng-mouseout="hoverMe($event,false)">
+                <a class="pay-icons pay-icons-wechat">微信支付</a>
+            </div>
+        </div> -->
+    </div>
+
+    <p class="form-control align-center" >
+        <a href="javascript:void(0);" class="btn btn-welcome-submit" ng-click="paynow()">去支付</a>
+    </p>
+
+</div><!-- main -->
+

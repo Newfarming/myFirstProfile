@@ -1,0 +1,11 @@
+<aside class="clearfix" ng-repeat="record in data.data" ng-class="{self:userid == record.sender}">
+    <div class="avatar">
+        {- sender( userid , record.sender ) -}
+    </div>
+    <div class="chat-info">
+        <p>{- record.msg -}</p>
+    </div>
+    <div class="text-center time">
+        {- record.send_time -}
+    </div>
+</aside>

@@ -1,0 +1,32 @@
+[
+{
+  "pk": 8626, 
+  "model": "resumes.userwatchresume", 
+  "fields": {
+    "analysis_id": "", 
+    "feed_id": "", 
+    "user": 907, 
+    "keywords": "", 
+    "has_contact": 0, 
+    "type": 1, 
+    "resume_id": "5302befafb6dec26284fb1dd", 
+    "feed_keywords": "", 
+    "add_time": "2016-01-11T18:19:39"
+  }
+},
+{
+  "pk": 8627, 
+  "model": "resumes.userwatchresume", 
+  "fields": {
+    "analysis_id": "", 
+    "feed_id": "561617a0152ab503c57a765a", 
+    "user": 907, 
+    "keywords": "", 
+    "has_contact": 0, 
+    "type": 1, 
+    "resume_id": "5301ffb8fb6dec191065448e", 
+    "feed_keywords": "", 
+    "add_time": "2016-01-14T17:59:33"
+  }
+}
+]

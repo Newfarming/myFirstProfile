@@ -1,0 +1,20 @@
+[
+{
+  "pk": 59,
+  "model": "jobs.sendcompanycard",
+  "fields": {
+    "to_email": "likaiguo.happy@163.com",
+    "send_msg": "",
+    "feedback_time": "2014-11-04T20:00:43",
+    "points_used": 13,
+    "download_status": true,
+    "feedback_status": 1,
+    "job": 2,
+    "feed_id": "54ca0451b1c33775b8c89860",
+    "send_time": "2014-11-04T19:59:52",
+    "send_user": 907,
+    "resume_id": "55c476f2a0c4b326dfb05c52",
+    "send_status": 1,
+    "has_download": true
+  }
+}]

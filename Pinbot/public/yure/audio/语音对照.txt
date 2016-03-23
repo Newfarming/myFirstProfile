@@ -1,0 +1,15 @@
+audio_1 北京
+audio_2 成都
+audio_3 广西
+audio_4 德阳
+audio_5 湖南
+audio_6 即墨
+audio_7 闽南
+audio_8 芜湖
+audio_9 粤语1
+audio_10 重庆
+audio_11 河南
+audio_12 陕西
+audio_13 上海 
+audio_14 粤语2
+audio_15 东北

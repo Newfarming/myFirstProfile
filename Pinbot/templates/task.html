@@ -1,0 +1,158 @@
+{% load compress %}
+{% compress css %}
+    <link href="{{ STATIC_URL }}task/css/task.css" type="text/css" rel="stylesheet" />
+{% endcompress %}
+<!-- 页面顶部任务状态 -->
+<div class="task-state-parent">
+    <div class="task-state task-state-undo bd-trace" id="js-task-state" trace-title="任务系统"></div>
+</div>
+<!-- 任务系统上线提示 -->
+<div class="task-contain js-task-tip-contain" id="js-task-tip" style="display:none">
+    <div class="task-head task-banner">
+        <a href="javascript:void(0);" class="close-task js-close-task"></a>
+        <div class="task-notice task-notice-one">
+            <ul class="js-speaker">
+            </ul>
+        </div>
+    </div>
+    <p class="task-tip-word">小伙伴你好，我是聘小宝机器人。接下来的时光我会带你玩转聘宝，<br>助你成为招聘达人。<br>每一个任务完成都有奖励哦！</p>
+    <a href="javascript:void(0)" class="gift-botton js-start-task">准备开始</a>
+</div>
+
+<!-- 关闭任务系统提示 -->
+<div class="task-close-tip" style="display:none">
+    <a href="javascript:void(0)" class="js-close-task-tip"></a>
+    <p class="task-start-tip">平时我会乖乖呆在页面右上角，给你保管着红包和奖品，<br>记得常来看我哦！</p>
+    <div class="confirm-box"><a href="javascript:void(0);" class="task-start-confirm">确定</a></div>
+</div>
+<!-- 黑色背景 -->
+<div class="black-bg"></div>
+<!-- 1级页面 -->
+<div class="task-contain" id="js-task-content" style="display:none">
+    <div class="task-head blue-bg">
+        <a href="javascript:void(0);" class="close-task js-close-task"></a>
+        <div class="task-notice task-notice-two ">
+            <ul class="js-speaker"></ul>
+            <!--<div style="position: relative;width: 100%;height: 100%;overflow: hidden;">
+                <span class="u-urgent-alert" id="urgent_alert">【小喇叭】因产品升级需要，“下载30份简历”、“收藏50份简历”、“下载60份简历”、“收藏100份简历”、“标记50份简历”、“标记80份简历”、“查看50份简历”、“下载10份简历”、“标记20份简历”将在3月12日下线，正在进行这些任务的用户请合理把控任务进度。</span>
+            </div>-->
+
+        </div>
+    </div>
+    <div>
+        <div class="task-tab clearfix">
+            <a href="javascript:void(0)" class="task-tab-current">所有任务</a>
+            <a href="javascript:void(0)" class="js-my-gift">我的奖品</a>
+        </div>
+        <div class="task-slide-contain">
+            <ul>
+                <li>
+                    <ul class="task-slide-main relative" id="js-all-task">
+                    </ul>
+                </li>
+            </ul>
+            <div class="task-page-code js-task-page noselect"></div>
+        </div>
+        <div class="task-slide-contain my-gift">
+            <ul>
+                <li>
+                    <ul class="task-slide-main relative" id="js-my-reward">
+
+                    </ul>
+                </li>
+            </ul>
+            <div class="task-page-code js-reward-page noselect"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 礼物 -->
+<div class="task-contain" id="js-reward-content" style="display:none">
+    <div class="task-head red-bg">
+        <a href="javascript:void(0)" class="return-task js-task-return">返回</a>
+        <a href="javascript:void(0);" class="close-task js-close-task" ></a>
+        <div class="task-notice task-notice-three">
+            <ul class="js-speaker">
+            </ul>
+        </div>
+    </div>
+    <div id="js-gift-box">
+       <!--  5元红包 -->
+        <div class="gift-hongbao pt45">
+            <div class="gift-congratulation">恭喜你获得：<strong class="js-task-reward"></strong></div>
+            <div class="gift-instrction">
+                <p >红包将通过微信服务号发送。</p>
+                <p class="pd110 hongbao-explan">(由于微信系统限制，当您连续领取红包时，可能会出现红包延迟到账的情况，请耐心等待几分钟再查看)</p>
+            </div>
+            <a href="javascript:void(0)" class="gift-botton js-confirm">确定</a>
+        </div>
+        <div class="gift-hongbao-error pt45">
+            <div class="gift-congratulation">恭喜你获得：<strong class="js-task-reward"></strong></div>
+            <div class="gift-instrction pd80">
+                <p>红包将通过微信服务号发送</p>
+                <p>小宝发现你没有绑定微信，请立即绑定。</p>
+            </div>
+           <a href="/users/profile/#bangding" class="gift-botton">立即绑定</a>
+        </div>
+        <!-- 5个聘点 -->
+        <div class="gift-pindian pt45">
+            <div class="gift-congratulation">恭喜你获得：<strong class="js-task-reward"></strong></div>
+            <div class="gift-instrction pd20" style="line-height: 28px;">“聘点”是聘宝的主要消费货币，<br>每10个聘点便可以在聘宝购买一份简历。</div>
+            <div class="gift-instrction pd80">请前往<a href="/payment/my_account/" class="c44b5e8">我的钱包</a>查看</div>
+            <a href="javascript:void(0)" class="gift-botton js-confirm">确定</a>
+        </div>
+        <!-- 5个聘点 -->
+        <div class="gift-gold pt45">
+            <div class="gift-congratulation">恭喜你获得：<strong class="js-task-reward"></strong></div>
+            <div class="gift-instrction pd20" style="line-height: 28px;">“金币”是聘宝的虚拟代币，可用于购买聘点、购买套餐、兑换现金。</div>
+            <div class="gift-instrction pd80">请前往<a href="/payment/my_account/" class="c44b5e8">我的钱包</a>查看</div>
+            <a href="javascript:void(0)" class="gift-botton js-confirm">确定</a>
+        </div>
+        <!-- 抵用劵 -->
+        <div class="gift-juan pt45">
+            <div class="gift-congratulation">恭喜你获得：<strong class="js-task-reward"></strong></div>
+            <div class="gift-instrction pd80"><p style="line-height: 28px;">此劵包含50元自助服务抵用劵和150元省心服务抵用劵，在购买相应套餐时，<br>请向客服说明使用此劵，则套餐费用会有相应降低。</p></div>
+            <a href="javascript:void(0)" class="gift-botton js-confirm">确定</a>
+        </div>
+        <!-- 聘宝江湖笔记本 -->
+        <div class="gift-real-gift relative">
+            <div class="gift-congratulation pt30">恭喜你获得：<strong class="js-task-reward"></strong></div>
+            <div class="gift-instrction pd10">
+                <p>请留下你的收获地址，以便于工作人员为你寄送奖品</p>
+            </div>
+            <form action="" method="post" name="adress" id="js-adress-form" >
+                <div class="task-name-box">
+                    <label>收货人姓名：</label>
+                    <input type="text" name="name" id="js-task-reward-name" value="">
+                    <span class="task-error-tip task-error-tip-top">*必填</span>
+                </div>
+                <div class="task-name-box">
+                     <label>收货地址：</label>
+                     <div class="province-city-box">
+                         <input type="text" name="name" id= "js-task-provice" value="">
+                        <label>省</label>
+                        <input type="text" name="name" id="js-task-city" value="">
+                        <label>市</label>
+                        <span class="task-error-tip">*必填</span>
+                     </div>
+                    <div class="street-box">
+                        <input type="text" name="name" id="js-task-street" value="">
+                        <label>街/号/楼</label>
+                        <span class="task-error-tip">*必填</span>
+                    </div>
+                </div>
+                <a href="javascript:void(0)" class="gift-botton mt20" id="js-submit-task-form">提交</a>
+            </form>
+        </div>
+        <!-- 提交地址成功 -->
+        <div class="submit-sucess">
+            <div class="gift-congratulation pt85"><strong class="js-task-reward">提交成功</strong></div>
+            <div class="gift-instrction">
+                <p class="pd80">聘宝工作人员将在<span class="cf76a58 ">3</span>个工作日内寄出奖品<br>请注意查收哦！</p>
+            </div>
+            <a href="javascript:void(0)" class="gift-botton js-confirm">确定</a>
+        </div>
+
+    </div>
+</div>
+<script defer src="{{ STATIC_URL }}task/js/task.js"></script>

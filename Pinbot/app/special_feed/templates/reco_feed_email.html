@@ -1,0 +1,241 @@
+{% load mail_utils %}
+{% static_inject %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <style>
+    *{margin: 0;padding:0;}
+</style>
+<div style="background:url(http://pinbot.me/static/email_images/yx_bg.gif) left top repeat #2f363f; width:100%; padding: 60px 0; font-family:'Hiragino Sans GB', 'microsoft yahei', Helvetica, Arial, pxsans-serif;font-size:16px;">
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+            <td background="http://pinbot.me/static/email_images/yx_bg.gif" style="background:url(http://pinbot.me/static/email_images/yx_bg.gif) left top repeat #2f363f;">
+
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+                    <tr>
+                        <td style="vertical-align:top">
+
+                            <!-- head start -->
+                                <table width="640" border="0" cellpadding="0" cellspacing="0" align="center"  style="margin: 0 auto;">
+                                    <tr>
+                                        <td bgcolor="#000000" style="padding:18px 0; background:#000000;">
+                                            <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                <tr>
+                                                    <td><a href="http://www.pinbot.me/" target="_blank" title="聘宝 | 新一代猎头"><img border="0" src="http://www.pinbot.me/static/beta/email/logo.png" alt="聘宝 | 新一代猎头"></a></td>
+                                                    <td style="text-align:right;font-size:14px;color:#ffffff">聘宝 | 新一代猎头</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            <!-- head end-->
+
+                            <!-- content start -->
+                                <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;background:#f7f7f7;color:#535353;">
+                                    <tr>
+                                        <td>
+                                            <p style="text-align:center;font-size:14px;line-height:1.8em;margin:0;padding:20px 0;">
+                                                嗨，早上好！聘宝为你共推荐<span style="color:#3498db;">{{ total_num }}</span>位优秀人才，祝你好运哦！
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <img src="{{ static_url }}feed/img/email_push2.jpg" alt="今日职位定制简历推荐" width="543">
+                                        </td>
+                                    </tr>
+                                    {% for feed_result_info in feed_info_list %}
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <table align="center" width="543" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;background:#fff;">
+                                                <tr>
+                                                    <td style="background:#fff;padding:10px 40px;margin:0;">
+                                                        <p style="padding:10px 0 20px;margin:0;font-size:16px;color:#fff; border-bottom:solid 2px #eeeeee; color:#434343;text-align: center;">{{ feed_result_info.title|default:feed_result_info.keywords }} | <span style="color:#3498db;">{{ feed_result_info.feed_result_num }}</span>位人才</p>
+                                                    </td>
+                                                </tr>
+
+                                                {% for resume in feed_result_info.feed_resumes %}
+                                                {% with work=resume.works.0 edu=resume.educations.0 %}
+                                                <tr>
+                                                    <td style="background:#fff;padding:10px 40px 20px;margin:0;text-align:left;">
+                                                        <p style="padding:0 0 10px;margin:0;font-size:16px;color:#fff;color:#434343; line-height:20px;">
+                                                            <img src="{{ static_url }}feed/img/point.jpg" width="16" alt="" style="vertical-align:middle;">
+                                                            {% if work %}
+                                                            {% autoescape off %}{{ work.position_title }}{% endautoescape %}
+                                                            {% endif %}
+                                                        </p>
+
+                                                        {% if resume.job_target.salary or resume.work_year %}
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height :20px;">
+                                                            {% if resume.work_year %}
+                                                            <span style="color:#3498db;">{{ resume.work_years }}</span>年经验
+                                                            {% endif %}
+                                                            {% if resume.work_year and resume.job_target.salary %}|{% endif %}
+                                                            {% if resume.job_target.salary %}
+                                                            期望薪资： <span style="color:#3498db;">{{ resume.job_target.salary }}</span>
+                                                            {% endif %}
+                                                        </p>
+                                                        {% endif %}
+
+                                                        {% if work %}
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height:20px;">
+                                                            {% autoescape off %}{{ work.company_name }}{% endautoescape %}
+                                                        </p>
+                                                        {% endif %}
+
+                                                        {% if edu %}
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height:20px;">
+                                                            {{ edu.school }} {{ edu.degree }}
+                                                        </p>
+                                                        {% endif %}
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height:20px;">
+                                                            <a href="http://www.pinbot.me/resumes/display/{{ resume.id }}/?feed_id={{ feed_result_info.id }}" style="color:#3498db; text-decoration:underline;">查看详情</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                {% endwith %}
+                                                {% endfor %}
+                                                <tr>
+                                                    <td style="text-align:center;padding-bottom:35px;">
+                                                        <a href="http://www.pinbot.me/feed/feed_email/?action=feed&token={{ feed_result_info.token }}" style="color:#fff; display:inline-block;padding:10px 45px;background:#607d8b; text-decoration:none">查看更多</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30"></td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    {% if partner_resumes %}
+                                    <tr>
+                                        <td>
+                                            <p style="text-align:center;font-size:14px;line-height:1.8em;margin:0;padding:20px 0;">
+                                                越互助越收获！互助伙伴为你共推荐<span style="color:#3498db;">{{ partner_resumes_count }}</span>位优秀人才，快来看看吧！
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <img src="{{ static_url }}feed/img/email_push1.jpg" alt="今日职位定制简历推荐" width="543">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;">
+                                            <table align="center" width="543" cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;background:#fff;">
+                                                {% for task_resume in partner_resumes %}
+                                                {% with feed=task_resume.task.feed resume=task_resume.resume %}
+                                                <tr>
+                                                    <td style="background:#fff;padding:30px 40px 0;margin:0;text-align:left;">
+                                                        <p style="padding:0 0 10px;margin:0;font-size:16px;color:#fff;color:#434343; line-height:20px;">
+                                                            <img src="{{ static_url }}feed/img/point.jpg" width="16" alt="" style="vertical-align:middle;">
+                                                            {{ resume.expect_position }}
+                                                        </p>
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height:20px;">
+                                                            <span style="color:#3498db;">{{ resume.work_years }}</span>年经验|期望薪资： <span style="color:#3498db;">{{ resume.target_salary }}</span>
+                                                        </p>
+
+                                                        {% if resume.last_work %}
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height:20px;">
+                                                            {{ resume.last_work.company_name }}
+                                                        </p>
+                                                        {% endif %}
+
+                                                        {% if resume.last_edu %}
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height:20px;">
+                                                            {{ resume.last_edu.school }} {{ resume.last_edu.degree }}
+                                                        </p>
+                                                        {% endif %}
+
+                                                        <p style="padding:5px 0;margin:0;font-size:14px;color:#fff;color:#434343; line-height:20px;">
+                                                            <a href="http://www.pinbot.me/resumes/display/{{ resume.resume_id }}/?feed_id={{ feed.feed_obj_id }}" style="color:#3498db; text-decoration:underline;">查看详情</a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                {% endwith %}
+                                                {% endfor %}
+                                                <tr>
+                                                    <td style="text-align:center;padding-bottom:53px;">
+                                                        <a href="http://www.pinbot.me/special_feed/page/" style="color:#fff; display:inline-block;padding:10px 45px;background:#607d8b; text-decoration:none">查看全部</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+
+                                    <tr>
+                                        <td>
+                                            <p style="text-align:center;font-size:14px;line-height:1.8em;margin:0;padding:20px 0; color:#607d8b;">
+                                                定制更新的结果将同时通过邮件进行告知，如希望更改邮件推送的频率，请<a href="http://www.pinbot.me/feed/feedFrequency" style="color:#3498db">点击这里</a>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;border-top:1px solid #ddd" width="540">
+                                                <tr>
+                                                    <td style="text-align: right;padding: 20px 20px 20px 40px;">
+                                                        <img style="width: 68px;" src="http://www.pinbot.me/static/email_images/img72x72.png">
+                                                    </td>
+                                                    <td style="text-align:left;">
+                                                        <p style="line-height:2;margin:0;font-size:14px;color:#607d8b;font-family:'Hiragino Sans GB','microsoft yahei',Helvetica,Arial,pxsans-serif">关注聘宝微信订阅号</p>
+                                                        <p style="line-height:2;margin:0;font-size:14px;color:#607d8b;font-family:'Hiragino Sans GB','microsoft yahei',Helvetica,Arial,pxsans-serif">聘宝话招聘（pinbotHR）</p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;text-align: center;" width="540">
+                                                <tr>
+                                                    <td>
+                                                        <p style="    padding-bottom: 20px;      color: #999;    margin: 0;font-size:12px;">
+                                                            <span style="color: #999;    font-size: 12px;padding-right: 15px;font-family: 'Hiragino Sans GB','microsoft yahei',Helvetica,Arial,pxsans-serif;">
+                                                                HR交流Q群：9580917
+                                                            </span>
+                                                            |
+                                                            <span style="color: #999;    font-size: 12px;padding: 0 15px;font-family: 'Hiragino Sans GB','microsoft yahei',Helvetica,Arial,pxsans-serif;">
+                                                                企业QQ：800031490
+                                                            </span>
+                                                            |
+                                                            <span style="color: #999;    font-size: 12px;padding-left: 15px;font-family: 'Hiragino Sans GB','microsoft yahei',Helvetica,Arial,pxsans-serif;">
+                                                                联系电话：028-83330727
+                                                            </span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                </table>
+                            <!-- content end -->
+
+                            <!-- footer start -->
+                                <table width="640" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                    <tr>
+                                        <td style="padding:10px 0;">
+                                            <table width="415" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                <tr>
+                                                    <td style="text-align:center;font-size:16px;color:#7d7d7d">
+                                                        <p style="color:#626262;font-size:13px;padding-top:20px;">此邮件为系统邮件，请勿直接回复</p>
+                                                        <p style="color:#666; font-size:16px;padding:10px 0 10px; margin:0;"><a href="http://www.pinbot.me/" style="color:#666;font-size:13px; text-decoration:none;" target="_blank" title="聘宝">关于我们</a> | <a href="http://weibo.com/u/3739464981" style="color:#666;font-size:13px;text-decoration:none;" target="_blank" title="关注聘宝">关注聘宝</a></p>
+                                                        <p style="color:#666; font-size:13px; padding:0px 0 10px; margin:0;">Copyright &copy; 2013 - 2016 HopperClouds, Inc.</p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            <!-- footer end-->
+
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</div>

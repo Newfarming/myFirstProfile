@@ -1,0 +1,50 @@
+
+<div class="main main-mode" >
+                <div class="header">
+                    <h1>您的订单已提交审核</h1>
+                    <div class="sub-title">您的订单申请已收到，请等待聘宝人才顾问与您沟通并核对信息，您也可以<a href="javascript:void(0);" id="JS_pbqqnoworry_btn">联系我们</a></div>
+                </div>
+
+                <div class="price content box-content" >
+                    <div class="text-center ajax-loading" ng-hide="true">
+                        <img src="/static/partner/images/loading.gif" alt="loading">
+                        <br>页面装载中...
+                    </div>
+                    <span class="c607d8b f14">我的套餐详情</span>
+                </div>
+
+                <div class="price content box-content pd-top-0 pd-bottom-0 lh180">
+
+                </div>
+                <div class="price content box-content box-content-table pd-top-0 lh180">
+                    <div class="box-col box-col-center">
+                        <div class="user-mode">
+                            <div class="box-col-bar"></div>
+                            <ul>
+                                <li>
+                                    <span>候选人月薪</span>
+                                    <span><span class="cf46c62">{- salary_range | mode_salary_range -}</span>k</span>
+                                </li>
+                                <li>
+                                    <span>服务时间</span>
+                                    <span><span class="cf46c62">{- service_month -}</span>个月</span>
+                                </li>
+                                <li>
+                                    <span>候选人数量</span>
+                                    <span><span class="cf46c62">{- candidate_num -}</span>个人</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price content box-content pd-top-0">
+                    <span class="c607d8b f14">您的套餐价格：<span class="price-focus">¥ {- modeFee -}</span><br>
+                </div>
+
+                <p class="form-control align-center">
+                    <a class="btn btn-red-submit buy-next" href="/payment/my_package/">查看省心套餐</a>
+                </p>
+
+            </div><!-- main -->
+

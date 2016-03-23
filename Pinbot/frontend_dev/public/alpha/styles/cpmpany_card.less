@@ -1,0 +1,396 @@
+/* 企业名片 */
+@import "../../../css/base";
+
+.common-box{
+    width: 900px;
+    margin: 0 auto;
+    padding: 60px 0 90px;
+}
+.h2{
+    text-align: center;
+    font-size: @font-size-28;
+    font-weight: normal;
+    color: @pb-font-main-dark;
+    line-height: 35px;
+}
+.company-card{
+    margin-top: 40px;
+}
+.border{
+    border-top: solid 5px @pb-bg-main-dark;
+}
+.p-content{
+    border: solid 1px @pb-bg-main-light;
+    border-top: none;
+}
+.company-card .p-content{
+    padding: 35px 10px 10px 30px;
+    background: @pb-bg-main-f7;
+    .boxShadowWithVarsMore (3px, 3px, 0, @pb-bg-main-f2);
+}
+.insert-notice{
+    border: solid 1px @pb-bg-main-light;
+    background: #fff;
+    .border-radius(5px);
+    padding: 20px 20px 20px 120px;
+    font-size: @font-size-14;
+    color: @pb-bg-main-dark;
+    line-height: 25px;
+    background: #fff url(/static/alpha/images/card.png) 20px 20px no-repeat;
+}
+.w526{
+    width: 526px;
+}
+.w540{
+    width: 540px;
+}
+.area-panel{
+    width: 565px;
+}
+.company-table{
+    border: none;
+    margin-top: 35px;
+}
+.company-table th,.company-table td{
+    background: none;
+    border: 0 none;
+    padding: 9px 10px;
+    vertical-align: top;
+    color: @pb-bg-main-dark;
+    font-size: @font-size-14;
+    line-height: 30px;
+}
+.company-table th{
+    width: 130px;
+    font-weight: bold;
+    text-align: right;
+}
+.company-table th span.required {
+    position: relative;
+}
+.company-table th span.required:before {
+    content: '*';
+    color: @pb-btn-red;
+    position: absolute;
+    left: -10px;
+    top: 5px;
+}
+.company-table th .red{
+    font-size: @font-size-12;
+    font-weight: normal;
+    margin-right: 5px;
+}
+.company-submition{
+    padding: 50px;
+}
+.company-submition .btn{
+    font-size: @font-size-16;
+    padding: 20px 135px;
+}
+.card-title{
+    background: @pb-bg-main-f7;
+    padding: 20px 30px;
+    border-bottom: solid 1px @pb-bg-main-light;
+    color: @pb-bg-main-dark;
+    font-size: @font-size-14;
+    font-weight: normal;
+    position: relative;
+}
+.card-title.arr:before,.card-title.arr:after{
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 55px;
+    border: 4px solid transparent;
+    content: ' ';
+}
+.card-title.arr:before{
+    bottom: 0;
+    border-bottom: solid 4px @pb-bg-main-light;
+}
+.card-title.arr:after{
+    bottom: -1px;
+    border-bottom: solid 4px #FFFFFF;
+}
+.card-details{
+    display: block;
+    padding: 25px 0;
+}
+.card-details li{
+    line-height: 1.7em;
+    padding: 0 0 10px 46px;
+    font-size: @font-size-14;
+    color: @pb-font-main-dark;
+    background: url(/static/alpha/images/triangle.png) 31px 9px no-repeat;
+}
+.card-details li strong,.card-details li p{
+    font-size: @font-size-14;
+    color: @pb-font-main-dark;
+    vertical-align: top;
+    line-height: 1.7em;
+}
+.card-details li strong{
+    float: left;
+    width: 75px;
+}
+.card-details li p,.card-details li div{
+    margin-left: 75px;
+}
+a.area{
+    font-size: @font-size-14;
+    color: @pb-bg-main-dark;
+    vertical-align: top;
+    line-height: 1.7em;
+    display: inline-block;
+    border: solid 1px @pb-bg-main-light;
+    background: @pb-bg-main-f2;
+    padding: 3px 0;
+    width: 100px;
+    height: 22px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+    color: @pb-font-main-dark;
+}
+a.area.select{
+    background: @pb-font-main-light;
+    border: solid 1px @pb-font-main-light;
+    color: #fff;
+}
+.view a.area{
+    cursor: default;
+}
+.orange{
+    color: @pb-btn-red;
+}
+
+/**********button*********/
+.button-default,.button-active{
+    padding: 5px 30px;
+    line-height: 20px;
+    display: inline-block;
+    font-size: @font-size-14;
+    .opacityWithVars(90);
+}
+.button-default{
+    color: @pb-btn-blue;
+    border: solid 1px @pb-btn-blue;
+}
+.button-active,.button-default:hover{
+    color: #fff;
+    border: solid 1px @pb-btn-blue;
+    background: @pb-btn-blue;
+}
+.button-default:hover,.button-active:hover{
+    .opacityWithVars(100);
+}
+.textarea{
+    display: block;
+}
+/****************/
+
+.jobs-list{
+    margin-top: 30px;
+    margin-left: -57px;
+}
+.job-panel{
+    background: #fff;
+    width: 420px;
+    display: inline-block;
+    margin-left: 15px;
+    height: 492px;
+    overflow: hidden;
+}
+.job-panel .input{
+    padding: 3px 9px;
+}
+.job-panel .button{
+    height: 28px;
+}
+.jobs-list .job-panel{
+    margin-left: 57px;
+    float: left;
+    margin-top: 30px;
+}
+.job-info{
+    border: solid 1px @pb-bg-main-light;
+    border-top: none;
+}
+.job-details{
+}
+.w220{
+    width: 220px;
+}
+.job-table{
+    margin-top: 20px;
+}
+.job-table th,.job-table td{
+    padding: 5px;
+}
+.job-table th{
+    width: 110px;
+}
+.job-table td span{
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 285px;
+    line-height: 30px;
+}
+.job-table .textarea{
+    height: 62px;
+}
+.w70{
+    width: 70px;
+}
+.w275{
+    width: 275px;
+}
+.job-handles{
+    padding: 0 5px 5px;
+    text-align: right;
+}
+.add-job-btn{
+    background: url(/static/alpha/images/add_card.png) center center no-repeat;
+    display: block;
+    height: 180px;
+    font-size: @font-size-16;
+    color: @pb-bg-main-dark;
+    text-align: center;
+    padding-top: 150px;
+    font-weight: bold;
+}
+.job-short-info{
+    border-left: solid 2px @pb-bg-main-light;
+    margin: 20px;
+    padding-left: 10px;
+    font-size: @font-size-14;
+}
+.job-short-info h4{
+    color: @pb-btn-blue;
+    font-size: @font-size-14;
+    padding-bottom: 9px;
+}
+.job-short-details{
+    line-height: 25px;
+    font-size: @font-size-14;
+    color: @pb-font-main-dark;
+    padding: 0 20px 20px 30px;
+}
+.w246{
+    width: 246px;
+}
+.mt91{
+    margin-top: 91px;
+}
+.mt31{
+    margin-top: 31px;
+}
+.a-blue{
+    color: @pb-btn-blue;
+}
+
+
+/**/
+.choose-send-type{
+    border: solid 1px @pb-bg-main-f2;
+    border-left: 0 none;
+}
+.i-layerout-close {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url(/static/alpha/images/layer_close.png) 0 0 no-repeat;
+}
+.send-type{
+    float: left;
+    width: 207px;
+    padding: 40px 20px;
+    border-left: solid 1px @pb-bg-main-f2;
+    text-align: center;
+}
+.send-type .btn{
+    border: solid 1px @pb-btn-blue;
+    height:40px !important;
+    line-height:40px !important;
+}
+.send-type .tip{
+    color: @pb-font-main-light;
+    line-height: 20px;
+    margin-top: 20px;
+    padding-left: 19px;
+    padding-right: 14px;
+    background: url(/static/alpha/images/point.png) 0 8px no-repeat;
+    font-size: @font-size-14;
+    text-align: left;
+}
+.no-card-info{
+    border: solid 1px @pb-bg-main-f2;
+    text-align: center;
+    padding: 40px 20px;
+}
+.no-card-info .btn{
+    margin-bottom: 20px;
+}
+.no-card-info .a-blue{
+    font-size: @font-size-14;
+}
+.card-layer-title{
+    height: 34px;
+    background: @pb-bg-main-f7;
+    text-align: center;
+    position: relative;
+    line-height: 34px;
+    font-size: @font-size-14;
+    color: @pb-bg-main-dark;
+}
+.card-layer-title .i-layerout-close{
+    position: absolute;
+    right: 7px;
+    top: 7px;
+}
+.i-add{
+    width: 8px;
+    height: 8px;
+    background: url(/static/alpha/images/add.gif) 0 0 no-repeat;
+    display: inline-block;
+    vertical-align: 0px;
+    margin-right: 5px;
+}
+.i-del{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 16px;
+    background: url(/static/alpha/images/del_default.png) 0 0 no-repeat;
+    height: 20px;
+    display: inline-block;
+}
+a.i-del:hover{
+    background: url(/static/alpha/images/del_hover.png) 0 0 no-repeat;
+}
+.card_larr,.card_rarr{
+    width: 17px;
+    height: 42px;
+    position: absolute;
+    top: 50%;
+    margin-top: -21px;
+}
+.card_larr{
+    left: -17px;
+    background: url(/static/alpha/images/card_larr.png) 0 0 no-repeat;
+}
+.card_rarr{
+    right: -17px;
+    background: url(/static/alpha/images/card_rarr.png) 0 0 no-repeat;
+}
+.i-envelope{
+    display: inline-block;
+    background: url(/static/alpha/images/redbag.jpg) 0 0 no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    vertical-align: -2px;
+}

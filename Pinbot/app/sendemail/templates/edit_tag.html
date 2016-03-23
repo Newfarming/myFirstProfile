@@ -1,0 +1,14 @@
+{% extends 'base_sendemail.html' %}
+{%block content%}
+<form action="" method="post">{% csrf_token %}
+    tag name:
+    <input type="text" name="tag_name" value="{{tag_obj.tag_name}}">
+
+    <br><br>
+    tag id:
+    <input type="text" name="tag_name" value="{{tag_obj.tag_id}}">
+    <br/><br/>
+    <input type="submit" value="Submit">
+</form>
+{%endblock%}
+

@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业名片邮件</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style>
+    *{margin: 0;padding:0;}
+</style>
+</head>
+<body style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="65">
+    <tbody>
+        <tr>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%" style="margin: 0 auto;">
+    <tr>
+        <td bgcolor="#fff" style="background:#fff;">
+            <table width="670" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                <tr>
+                    <td bgcolor="#fff" style="background:#fff;border:solid 1px #D4D4D4">
+
+                        <!-- head start -->
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                <tr>
+                                    <td bgcolor="#fff" style="padding:15px 0; background:#fff; border-bottom:solid 1px #D4D4D4">
+                                        <table width="595" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                            <tr>
+                                                <td width="150"><a href="/jobs/index" target="_blank" title="聘宝 | 专业人才推荐"><img border="0" src="{{pic_url}}/logo1.jpg" alt="推荐好工作, 给优秀的你"></a></td>
+                                                <td style="font-size:14px;color:#999">推荐好工作, 给优秀的你</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        <!-- head end-->
+
+                        <!-- content start -->
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                <tr>
+                                    <td>
+                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                            <tr>
+                                                <td>
+                                                    <p style="color:#333333;font-size:14px;line-height:2em;padding-top:40px;">
+                                                        Hi {{name}}，<br>
+我是聘宝人才顾问，我叫{{request.user.last_name}}，我们在网络上看到你的简历，很高兴认识你。聘宝是垂直互联网领域的专业招聘顾问团队，我们向优秀的候选人推荐优质的工作机会。下面的工作机会<span style="color:#3398DA">{{company.company_name}}</span> <span style="color:#3398DA">{{job.title}}</span>是我们为你挑选的，请查阅，并在邮件最后给予我们反馈。谢谢！
+                                                    </p>
+                                                    <p>
+                                                        <a href="{{web_site}}/jobs/company_interest?username={{to_email}}&company_id={{company.id}}&interest=true" style="color:#3398DA;display:inline-block;border:solid 1px #3498DB;padding:10px 20px;font-size:12px;text-decoration:none; margin-top:15px;" title="愿意进一步了解" target="_blank">愿意进一步了解</a>
+                                                    </p>
+                                                    <p style="color:#999;font-size:12px;padding-top:20px;padding-bottom:35px;">
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                            <tr>
+                                                <td style="background:#F9F9F9;border:solid 1px #E8E8E8;">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                                        <tr>
+                                                            <th><h4 style="text-align:left; margin-top:25px;"><span style="background:#3498DB;color:#fff;display:inline-block;padding:10px 30px;">企业信息</span></h4></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom:10px;">
+                                                                <table width="522" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                                <tr>
+                                                                                    <td width="30" valign="top" style="border-bottom:dashed 1px #ccc;"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:40px"></td>
+                                                                                    <td valign="top" style="border-bottom:dashed 1px #ccc;padding-bottom: 10px;">
+                                                                                        <h4 style="font-size:14px;padding:38px 0 15px;">公司名称</h4>
+                                                                                        <p style="color:#333;font-size:14px; padding-bottom:20px">
+                                                                                            {{company.company_name}}
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%if company.key_points%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top" style="border-bottom:dashed 1px #ccc;"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:40px"></td>
+                                                                                    <td valign="top" style="border-bottom:dashed 1px #ccc;padding-bottom: 10px;">
+                                                                                        <h4 style="font-size:14px;padding:38px 0 15px;">公司亮点</h4>
+                                                                                        <p style="color:#333;font-size:14px;padding-bottom:20px">
+                                                                                           {{company.key_points|linebreaksbr}}
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                                {%if company.desc%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top" style="border-bottom:dashed 1px #ccc;"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:40px"></td>
+                                                                                    <td valign="top" style="border-bottom:dashed 1px #ccc;padding-bottom: 10px;">
+                                                                                        <h4 style="font-size:14px;padding:38px 0 15px;">公司简介</h4>
+                                                                                        <p style="color:#333;font-size:12px;line-height:1.8em;color:#666;padding-bottom:20px">
+                                                                                          {{company.desc|linebreaksbr|linebreaksbr}}
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                                {%if company.core_team%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top" style="border-bottom:dashed 1px #ccc;"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:40px"></td>
+                                                                                    <td valign="top" style="border-bottom:dashed 1px #ccc;padding-bottom: 10px;">
+                                                                                        <h4 style="font-size:14px;padding:38px 0 15px;">核心团队</h4>
+                                                                                        <p style="color:#333;font-size:12px;line-height:1.8em;color:#666;padding-bottom:20px">
+                                                                                            {{company.core_team|linebreaksbr}} 
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                                {%if company.company_stage%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top" style="border-bottom:dashed 1px #ccc;"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:40px"></td>
+                                                                                    <td valign="top" style="padding-bottom: 10px;border-bottom:dashed 1px #ccc;">
+                                                                                        <h4 style="font-size:14px;padding:38px 0 15px;">发展阶段和计划</h4>
+                                                                                        <p style="color:#333;font-size:12px;line-height:1.8em;color:#666;padding-bottom:20px">
+                                                                                            {{company.company_stage|linebreaksbr}} 
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                                {%if company.url%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:40px"></td>
+                                                                                    <td valign="top" style="padding-bottom: 10px;">
+                                                                                        <h4 style="font-size:14px;padding:38px 0 15px;">公司官网</h4>
+                                                                                        <p style="color:#333;font-size:12px;line-height:1.8em;color:#666;padding-bottom:20px">
+                                                                                            <a href="{{web_site}}/jobs/company_click?username={{to_email}}&company_url={{url_encode}}&company_id={{company.id}}" target="_blank" style="color:#3C99DF;font-size:14px;" title="">{{company.url}}</a>
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                                {%if company.product_url%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:40px"></td>
+                                                                                    <td valign="top" style="padding-bottom: 10px;">
+                                                                                        <h4 style="font-size:14px;padding:38px 0 15px;">产品地址</h4>
+                                                                                        <p style="color:#333;font-size:12px;line-height:1.8em;color:#666;padding-bottom:20px">
+                                                                                            <a href="{{web_site}}/jobs/company_click?username={{to_email}}&url={{company_url_encode}}&company_id={{company.id}}" target="_blank" style="color:#3C99DF;font-size:14px;" title="">{{company.product_url}}</a>
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background:#F9F9F9;border:solid 1px #E8E8E8;">
+                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;">
+                                                        <tr>
+                                                            <th><h4 style="text-align:left;margin-top:25px"><span style="background:#3498DB;color:#fff;display:inline-block;padding:10px 30px;">招聘岗位</span></h4></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom:10px;">
+                                                                <table width="522" border="0" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table width="510" border="0" cellpadding="0" cellspacing="0" align="center">
+                                                                                <tr>
+                                                                                    <td height="50" colspan="2"></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td width="30" valign="top"></td>
+                                                                                    <td valign="top" style="border-left:solid 4px #D5D5D5;padding-left:15px">
+                                                                                        <h4 style="font-size:16px;">{{job.title}}</h4>
+                                                                                        <p style="color:#333;font-size:14px; padding:15px 0;">
+                                                                                            <strong style="color:#3699DB;">{{job.salary_low}}k-{{job.salary_high}}k</strong> <strong style="color:#CCCCCC;">|</strong> {{job.address}} <strong style="color:#CCCCCC;">|</strong> 经验{{job.work_years}}年以上 <strong style="color:#CCCCCC;">|</strong> {{job_degree}}
+                                                                                        </p>
+                                                                                        <p style="margin:0;color:#333;font-size:14px;">
+                                                                                             {%if job.key_points%}职位诱惑：{{job.key_points|linebreaksbr}}{%endif%}  
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td height="50" colspan="2"></td>
+                                                                                </tr>
+                                                                                {%if job.desc%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top" style="border-bottom:dashed 1px #ccc;"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:20px"></td>
+                                                                                    <td valign="top" style="border-bottom:dashed 1px #ccc;padding-bottom: 50px;">
+                                                                                        <h4 style="font-size:14px; padding:15px 0;">职位描述</h4>
+                                                                                        <p style="color:#333;font-size:12px; line-height:1.8em">
+                                                                                        {{job.desc|linebreaksbr}}  
+                                                                                            
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                                <tr>
+                                                                                    <td height="50" colspan="2"></td>
+                                                                                </tr>
+                                                                                {%if job.skill_desc%}
+                                                                                <tr>
+                                                                                    <td width="30" valign="top"><img src="{{pic_url}}/arr.gif" alt="" style="margin-top:20px"></td>
+                                                                                    <td valign="top" style="padding-bottom: 50px;">
+                                                                                        <h4 style="font-size:14px;padding:15px 0;">岗位要求</h4>
+                                                                                        <p style="color:#333;font-size:12px; line-height:1.8em">
+                                                                                         {{job.skill_desc|linebreaksbr}} 
+                                                                                           
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {%endif%}
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p style="font-size:14px;color:#2D3235;padding:50px 0 30px;text-align:center">
+                                                    单个格式:pinbot@hopperclouds.com<br>
+                                                    多个用分号隔开:xx@11.com;xx2@22.com.com;xx3@33.com<br></p>
+                                                    <div>
+                                                        <form action="/jobs/send_company_card" method="post">
+                                                            <p style="padding:0 0 50px;text-align:center">
+                                                                <textarea id="JS_email" name="to" style="border:solid 1px #E8E8E8; margin:30px 0; width:100%;resize: none;" rows="8"></textarea><br>
+                                                                <input type="hidden" value="{{company_id}}" name="company_id">
+                                                                <input type="hidden" value="{{job.id}}" name="job_id">
+                                                                <a href="javascript:;" onclick="send()"  title="发送邮件" style="display:inline-block;background:#3498DB;color:#fff;padding:15px 50px; border-radius:3px; text-decoration:none;">发送邮件</a>
+                                                            </p>
+                                                            {% csrf_token %}
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        <!-- content end-->
+
+                        <!-- footer start -->
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                <tr>
+                                    <td style="padding:10px 0; border-top:solid 1px #D4D4D4; background:url({{pic_url}}/shadow.jpg) left top no-repeat;">
+                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                            <tr>
+                                                <td>
+                                                    <p style="text-align:center;font-size:12px;color:#949494; padding-top:40px;"><span style="color:#666">联系聘宝 |</span>&nbsp;&nbsp;邮箱： hello@hopperclouds.com</p>
+                                                    <p style="text-align:center;font-size:12px;color:#999; padding:15px 0 20px">推荐好工作，给优秀的你</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        <!-- footer end-->
+
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="65">
+    <tbody>
+        <tr>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<script>
+function send(){
+    var email = document.getElementById('JS_email');
+    if( !email.value ) return false;
+    email.parentNode.parentNode.submit();
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+[
+{
+  "pk": 5784, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "spider_msg_account", 
+    "first_name": "", 
+    "last_name": "", 
+    "is_active": true, 
+    "is_superuser": false, 
+    "is_staff": false, 
+    "last_login": "2015-11-06T14:32:00", 
+    "groups": [], 
+    "user_permissions": [
+      732
+    ], 
+    "password": "pbkdf2_sha256$12000$CcgyiAiKPBbU$cC482TCNCQw6xvnpkN4E+D6Dar6sIksqOQ13kWSpZ7Y=", 
+    "email": "", 
+    "date_joined": "2015-11-06T11:53:10"
+  }
+},
+{
+  "pk": 907, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "runforever@163.com", 
+    "first_name": "\u6d69\u6cca\u4e91\u52a8-\u9648\u8d85", 
+    "last_name": "", 
+    "is_active": true, 
+    "is_superuser": true, 
+    "is_staff": true, 
+    "last_login": "2015-11-06T14:09:43", 
+    "groups": [], 
+    "user_permissions": [
+      317, 
+      316
+    ], 
+    "password": "pbkdf2_sha256$12000$EeWFOMQv229b$4b+SyNoVff4CslGECLaKpVPdSuIKjKzXHz+EBuNQpxw=", 
+    "email": "runforever@163.com", 
+    "date_joined": "2014-08-08T09:47:46"
+  }
+}
+]

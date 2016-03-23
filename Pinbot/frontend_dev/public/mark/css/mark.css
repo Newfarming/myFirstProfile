@@ -1,0 +1,188 @@
+@charset 'utf-8';
+.mark-title{
+    color: #434343;
+    font-size: 28px;
+    padding: 36px 0;
+}
+.w900{
+    width: 900px;
+}
+.w220{
+    width: 220px;
+}
+.w255{
+    width: 255px;
+}
+.f20{
+    font-size: 20px;
+}
+.mt50{
+    margin-top: 50px;
+}
+
+/* state */
+.states-head{
+    color: #607d8b;
+    background: #F2F2F2;
+    padding: 15px 40px;
+    border-left: solid 3px #607D8B;
+    font-size: 15px;
+}
+.states-list{
+    border: solid 1px #CFD8DC;
+    border-top: none;
+    padding: 0 40px 65px;
+}
+.cf26e66{
+    color: #f26e66;
+}
+.cf46c62{
+    color: #f46c62;
+}
+
+/* module */
+.module{
+
+}
+.module-line{
+    border-top: solid 6px #607D8B;
+}
+.module-content{
+    border: solid 1px #CFD8DC;
+    border-top: none;
+    padding: 15px;
+    color: #607d8b;
+    font-size: 14px;
+}
+
+/* resume-info */
+.resume-info{
+    cursor: pointer;
+}
+.resume-info:hover .module-line,.resume-info:hover .module-content{
+    border-color: #607d8b;
+}
+.resume-info dt,.resume-info dd{
+    padding-bottom: 20px;
+}
+.resume-info dd:last-child{
+    padding-bottom: 10px;
+}
+.r-title{
+    color: #434343;
+}
+.r-job{
+    color: #44b5e8;
+}
+.r-line{
+    margin: 0 5px;
+}
+
+/* records */
+.records li{
+    margin-top: 20px;
+}
+.records dd{
+    padding: 5px;
+}
+
+
+/* m-radio */
+.m-radio{
+    color: #607d8b;
+    font-size: 16px;
+    padding: 0 25px;
+    background: url(../img/mradio_default.png) 0 2px no-repeat;
+    display: inline-block;
+    line-height: 20px;
+    cursor: pointer;
+}
+.m-radio input{
+    display: none;
+}
+.m-radio.active{
+    background: url(../img/mradio_active.png) 0 2px no-repeat;
+}
+
+.feedback-info-input, .feedback-info-input:hover {
+    width: 240px;
+    border: 0;
+    border-bottom: 1px solid #607d8b;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #607d8b;
+}
+.feedback-info-input:active, .feedback-info-input:focus {
+    border: 0;
+    border-bottom: 1px solid #44b5e8;
+    color: #44b5e8;
+}
+
+/* states */
+.states{
+    padding-top: 30px;
+}
+.states li{
+    float: left;
+    width: 33%;
+}
+.status-result{
+    font-size: 20px;
+    color: #434343;
+}
+.status-head{
+    color: #3ab2e7;
+    font-size: 16px;
+}
+.status,.status-head{
+    padding-top: 30px;
+}
+/* micon */
+.micon{
+    background: url(../img/mark_icon.png) no-repeat;
+    display: inline-block;
+    vertical-align: -5px;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+}
+.i-success{
+    background-position: -25px 0;
+}
+.i-fail{
+    background-position: 0 0;
+}
+
+
+.modal-backdrop-tip-toreport{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+
+.modal-tip-toreport{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+.modal-dialog-tip-toreport{
+    background: #fff;
+    width: 700px;
+    margin-top: 117.5px;
+    margin: 30px auto;
+    position: relative;
+    padding-bottom: 50px;
+}

@@ -1,0 +1,33 @@
+<div class="no-resume feed-renew-abled" ng-if="asideData.has_rest_feed">
+<!-- 还有剩余定制 -->
+	<h2 class="feed-title">定制确认</h2>
+	<p><i class="i-timer"></i></p>
+	<p class="feed-renew-info">Hi~你于<span class="c44b5e8">{- feedItem.feed.start_time.$date | date:'yyyy年MM月dd日' -}</span>获得的职位定制需要你的重新确认才能继续使用。请问你是否需要招募<br><span class="cf46c62">{- feedItem.feed | titleOrKey -}</span>人才？</p>
+	<p class="no-resume-ctrl">
+		<a class="btn red-btn" ng-click="continue_feed(feedItem)">继续招聘此岗位人才</a>
+		<a class="btn blue-btn" ng-click="finish(feedItem)">已完成招聘</a>
+	</p>
+</div>
+<div class="no-resume feed-renew-unabled" ng-if="!asideData.has_rest_feed">
+<!-- 无剩余定制 -->
+	<h2 class="feed-title">定制确认</h2>
+	<p><i class="i-renew"></i></p>
+	<p class="feed-renew-info">你好！你于<span class="c44b5e8">{- feedItem.feed.start_time.$date | date:'yyyy年MM月dd日' -}</span>获得的职位定制已到期，你可以通过升级会员来获得更多的定制</p>
+	<p class="no-resume-ctrl">
+		<a class="btn red-btn" href="/vip/role_info/">升级会员</a>
+	</p>
+	<p>
+		<a class="c44b5e8" ng-click="JS_viewHistory(feedItem)">查看历史推荐数据</a>
+	</p>
+</div>
+<div class="no-resume feed-renew-unabled" ng-if="!asideData.has_rest_feed && !asideData.vip_user">
+<!-- 无剩余定制且是老套餐用户 -->
+	<h2 class="feed-title">定制确认</h2>
+	<p><i class="i-renew"></i></p>
+	<p class="feed-renew-info">你好！你于<span class="c44b5e8">{- feedItem.feed.start_time.$date | date:'yyyy年MM月dd日' -}</span>获得的职位定制已到期</p>
+	<p class="no-resume-ctrl">
+	</p>
+	<p>
+		<a class="c44b5e8" ng-click="JS_viewHistory(feedItem)">查看历史推荐数据</a>
+	</p>
+</div>

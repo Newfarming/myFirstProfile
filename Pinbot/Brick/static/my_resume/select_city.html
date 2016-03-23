@@ -1,0 +1,16 @@
+<div class="common_form city_form">
+	<p><a ng-click="back()"><img src="{- static_url -}my_resume/img/arrow_1_32x46.fw.png"/></a>请选择求职意向地</p>
+    <ul>
+        <li ng-repeat="city in data.city" ng-class="{'first_li':check_first($index), 'second_li':check_second($index)}">
+            <a class="button {- city.id -}" ng-class="{'checked':checked_area(city)}" ng-click="checkCity(city.id)">{- city.name -}
+            	<span ng-class="{'checked':checked_area(city), 'unchecked': false}"></span>
+        	</a>
+        </li>
+    </ul>
+    <a ng-click="next()" class="city_form_next_btn" ng-class="{'show': isShow(data.expectation_area.length)}">
+    	<img ng-class="{'show': data.expectation_area.length != 0, 'hide': false}" src="{- static_url -}my_resume/img/arrow_R_72x72.png"/>
+	</a>
+    <div class="opt_part">
+        <a class="button confirm" ng-click="confirm()">确认</a>
+    </div>
+</div>

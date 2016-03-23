@@ -1,0 +1,45 @@
+<div class="left w260 relative">
+    <div class="calendar-wrap" ng-click="toggleList('start_year', $event)">
+        <input type="button" name="start_year" class="w120" ng-maxlength="100" value="{- start_time_year -}" target_type="calendar">
+        <i class="sprite i-arr-down" target_type="calendar"></i>
+        <ul class="calendar-wrap-list" ng-if="time_list == 'start_year'">
+            <li ng-repeat="item in start_year track by $index" ng-click="setStartYear(item, $index)" ng-class="{selected: isSelected(item, 'start_year'), disabled: isDisabled(item, 'start_year')}" id="{- item -}" target_type="calendar">
+                {- item -}
+            </li>
+        </ul>
+    </div>
+    <div class="calendar-wrap calendar-wrap-left" ng-click="toggleList('start_month', $event)">
+        <input type="button" name="start_month" class="w120 right" ng-maxlength="100" value="{- start_time_month -}" target_type="calendar">
+        <i class="sprite i-arr-down" target_type="calendar"></i>
+        <ul class="calendar-wrap-list" ng-if="time_list == 'start_month'">
+            <li ng-repeat="item in month track by $index" ng-click="setStartMonth(item, $index)" ng-class="{selected: isSelected(item, 'start_month'), disabled: isDisabled(item, 'start_month')}" id="{- item -}" target_type="calendar">
+                {- item -}
+            </li>
+        </ul>
+    </div>
+    <input type="hidden" ng-model="temp.start_time" name="start_time" message-id="{- start_time_message -}" validator="start_time" validate-method="submit">
+    <span id="{- start_time_message -}"></span>
+</div>
+
+<div class="right w260 relative">
+    <div class="calendar-wrap calendar-wrap-right" ng-click="toggleList('end_year', $event)">
+        <input type="button" name="end_year" class="w120" ng-maxlength="100" value="{- end_time_year -}" target_type="calendar">
+        <i class="sprite i-arr-down" target_type="calendar"></i>
+        <ul class="calendar-wrap-list" ng-if="time_list == 'end_year'">
+            <li ng-repeat="item in end_year track by $index" ng-click="setEndYear(item, $index)" ng-class="{selected: isSelected(item, 'end_year'), disabled: isDisabled(item, 'end_year')}" id="{- item -}" target_type="calendar">
+                {- item -}
+            </li>
+        </ul>
+    </div>
+    <div class="calendar-wrap" ng-click="toggleList('end_month', $event)">
+        <input type="button" name="end_month" class="w120 right" ng-maxlength="100" value="{- end_time_month -}" target_type="calendar">
+        <i class="sprite i-arr-down" target_type="calendar"></i>
+        <ul class="calendar-wrap-list" ng-if="time_list == 'end_month'">
+            <li ng-repeat="item in month track by $index" ng-click="setEndMonth(item, $index)" ng-class="{selected: isSelected(item, 'end_month'), disabled: isDisabled(item, 'end_month')}" id="{- item -}" target_type="calendar">
+                {- item -}
+            </li>
+        </ul>
+    </div>
+    <input type="hidden" ng-model="temp.end_time" name="end_time" message-id="{- end_time_message -}" validator="end_time" validate-method="submit">
+    <span id="{- end_time_message -}"></span>
+</div>

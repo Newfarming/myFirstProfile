@@ -1,0 +1,28 @@
+{% load notify_tags %}
+{% load chat_tags %}
+
+<header class="clearfix">
+    <a href="/" title="" class="logo">聘宝求职版</a>
+    <div class="right nav clearfix" id="JS_nav">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'job-index' %}" title="" class="recommend"><i class="i-recommend"></i><span>获得推荐</span></a>
+        <a href="{% url 'job-my-job' %}" class="myjob"><i class="i-myjob"></i><span>我的职位</span></a>
+        {% with notify=request.user|has_notify msg=request.user|has_receive_msg %}
+        <a href="javascript:;" class="more {% if notify or msg %}has-new{% endif %}" id="JS_more_nav"><i class="i-more"></i></a>
+        <ul class="subnav">
+            <li><span class="text-overflow">{{ request.user.username }}</span></li>
+            <li><a href="{% url 'account-my-pinbot' %}" title=""><i class="i-profile"></i>个人中心</a></li>
+            <li><a href="{% url 'resume-edit-tag' %}" title=""><i class="i-tag"></i>我的标签</a></li>
+            <li><a href="{% url 'resume-show-resume' %}" title=""><i class="i-resume"></i>我的简历</a></li>
+            <li><a href="{% url 'chat-box' %}" title="" class="{% if msg %}has-new{% endif %}"><i class="i-conversation"></i>我的会话</a></li>
+            <li><a href="{% url 'notify-index' %}" title="" class="{% if notify %}has-new{% endif %}"><i class="i-notice"></i>我的通知</a></li>
+            <li><a href="{% url 'account-logout' %}" title=""><i class="i-logout"></i>退出登录</a></li>
+        </ul>
+        {% endwith %}
+        {% comment %}
+        <a href="{% url 'account-register' %}" title="" class="recommend"><i class="i-recommend"></i><span>激活</span></a>
+        <a href="{% url 'account-login' %}" class="myjob"><i class="i-myjob"></i><span>登录</span></a>
+        {% endcomment %}
+        {% endif %}
+    </div>
+</header>

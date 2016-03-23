@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}chat/css/chat.min.css" rel="stylesheet">
+{% endblock%}
+
+{% block body %}
+
+<div class="content" ng-app="app.chat">
+    <div class="chat-content">
+        <div class="chat-body">
+            <h1 class="text-center page-header">我的会话</h1>
+            <div class="category text-center">
+                <a ui-sref="history_chat" ng-class="{ active:pageActive == 'history_list' }">
+                    <i class="i-chat-record"></i><br>
+                    会话记录
+                </a>
+                <a ui-sref="chat_book" ng-class="{ active:pageActive == 'book_list' }">
+                    <i class="i-book-list"></i><br>
+                    通讯列表
+                </a>
+            </div>
+            <div id="JS_chat_list" class="bootom-boder">
+                <p class="text-center ng-hide" ng-show="noRecord" style="color: #999;padding: 20px 0;">这里空空如也！</p>
+                <div ui-view></div>
+                <p class="text-center" ng-show="loading"><img src="{{ STATIC_URL }}common/img/loading.gif" alt=""></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% compress js %}
+<script src="{{ STATIC_URL }}chat/chat.js"></script>
+{% endcompress %}
+{% endblock %}

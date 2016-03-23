@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load compress %}
+
+{% block header %}
+<link type="text/css" href="{{ STATIC_URL }}job_hunting/css/job.min.css" rel="stylesheet">
+{% endblock%}
+
+{% block body %}
+
+<div class="content">
+   <div class="inner-content">
+        <h2 class="end-recommend text-center">联系我的专属顾问</h2>
+        <div class="message text-center form-panel" ng-app="job" ng-controller="message">
+            <form action="." method="post" accept-charset="utf-8" name="leaveMessage">
+                <div class="form-box">
+                    <textarea name="message" class="textarea" rows="10" placeholder="有任何问题请留言，聘宝专属顾问会给你解答。:)" ng-model="message" required ng-change="change()"></textarea>  
+                </div>
+                <div class="form-box">
+                    <button type="button" class="button w70p button-primary" ng-disabled="leaveMessage.$invalid" ng-click="sendMsg()">发送留言</button>
+                    <span class="ng-hide" ng-show="sendSuccess"><p class="validation-valid" style="text-align:center;">发送成功！</p></span>
+                </div>
+            </form>
+        </div>
+   </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {% compress js %}
+        <script src="{{ STATIC_URL }}common/js/angular-validation.js"></script>
+        <script src="{{ STATIC_URL }}common/js/angular-validation-rule.js"></script>
+        <script src="{{ STATIC_URL }}job_hunting/leave_message.js"></script>
+    {% endcompress %}
+{% endblock %}

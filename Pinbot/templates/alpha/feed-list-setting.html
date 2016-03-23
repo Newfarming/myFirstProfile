@@ -1,0 +1,27 @@
+
+<div class="profile-rss tab on">
+  <h1>定制设置</h1>
+
+  <div class="profile-rss-wrap">
+    <div class="profile-rss-header">
+      <p><strong>邮件推送设置</strong>当有新的未读简历时，您才会收到邮件推送，请选择合适的推送时间：</p>
+    </div>
+
+     <ul class="clearfix">
+         <li>
+
+           <a href="#" data-selected="1"  {% if days == '1'  or days == '-1' %} class="selected" {%endif%} >每日推送</a>
+         </li>
+         <li>
+           <a href="#" data-selected="3" {% if days == '3' %} class="selected" {%endif%} >每3日推送</a>
+         </li>
+         <li>
+           <a href="#" data-selected="7" {% if days == '7' %} class="selected" {%endif%} >每7日推送</a>
+         </li>
+         <li>
+           <a href="#" data-selected="0" {% if days == '0' %} class="selected" {%endif%} >暂不推送</a>
+         </li>
+     </ul>
+  <div>
+</div>
+{# include 'eggs/eggs.html' #}

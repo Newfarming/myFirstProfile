@@ -1,0 +1,21 @@
+<div class="aside-box aside-status" ng-if="maxLength>0" ng-cloak>
+  <span class="aside-box-title grey-border">{-title-}</span>
+
+  <div class="notes-loading" ng-if="remarkLoading">
+      <div class="text-center ajax-loading"><img src="/static/partner/images/loading.gif" alt="loading"></div>
+  </div>
+  <div class="notes-list" ng-if="maxLength>0" ng-cloak>
+    <ul class="notes-list-content">
+      <li class="text-left" ng-repeat="d in remarkData">
+        <h6>{-d.mark_time-}</h6>
+        <p class="lh-200"><span class="cf46c62" ng-if="d.is_admin">[顾问标记]</span><span class="" ng-class="{'c44b5e8':d.good_result,'cf46c62':!d.good_result}">{-d.mark_name-}</span><br><span>{-d.comment-}</span></p>
+      <li>
+    </ul>
+  </div>
+  <div class="notes-pager" ng-hide="maxLength<=maxRow" ng-cloak>
+    <span ng-click="prevPage()" class="ic ic-notes-prev disabled"></span>
+    <span class="notes-cp notes-inline cf46c62">{-notesCp-}</span><span class="c607d8b notes-inline">/</span><span class="notes-page-num notes-inline c607d8b">{-notesPages-}</span>
+    <span ng-click="nextPage()" class="ic ic-notes-next"></span>
+  </div>
+
+</div>

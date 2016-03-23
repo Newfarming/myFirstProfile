@@ -1,0 +1,690 @@
+{% extends 'base_revision.html' %}
+{% load compress %}
+{% load utils_tag %}
+{% load show_resume_tags %}
+
+{% block header %}
+{{ block.super }}
+
+{% compress css %}
+
+<!-- <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/common.css?20150616" /> -->
+<!-- <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?20150616" /> -->
+<link rel="stylesheet" href="{{ STATIC_URL }}resume/css/resume_detail.css?20150630" />
+<link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/cpmpany_card.css?20150512" />
+<link rel="stylesheet" href="{{ STATIC_URL }}resume/css/jquery.datetimepicker.min.css" />
+
+{% endcompress %}
+{% endblock %}
+
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' %}
+{% endblock %}
+
+
+{% block sub_header %}
+{% endblock %}
+
+
+{% block content %}
+
+{% if request.user.is_staff %}
+<div id="resume-detail-header" class="clearfix">
+    <div class="inner-wrap">
+        <div class="detail-header-control">
+            <p>
+                {% if contact_info %}
+                <a href="{% url 'crm-candidate-details' contact_info.resume_id %}" target="_blank" class="control-btn" title="CRM链接"><span>CRM链接</span></a>
+                {% endif %}
+                <a href="{{ resume.url }}" target="_blank" class="control-btn" title="请务必使用最新插件查看原简历"><span>原简历</span></a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div id="main" class="elastic-layout" ng-app="app.resume_show" data-resumeid="{{ resume.id }}" data-feed_id="{{ feed_result.feed.id }}" data-send_id="{{ send_company_card.id }}" date-feed_keywords='{{ feed_result.tags.keywords|reco_keywords|to_json|safe }}' data-mark_logs='{{ resume_buy_record.resume_mark.mark_logs.all|mark_logs|to_json|safe }}' data-is_fav="{{ watch_record.type }}" data-feed_title="{{ feed.title }}" data-is_del="{{ feed_result.is_recommended|reco_is_del|to_json|safe }}">
+    <div class="resume-detail-page">
+        <div class="resume-detail-page-body">
+            <div id="content">
+                <div id="resume-detail" class="clearfix">
+                    {% if request.user.is_authenticated and not self_upload_resume %}
+                    {% if contact_info.status == 'secret' %}
+                    <!-- 操作 -->
+                    <div class="aside" ng-controller="resumeAside">
+                        <div class="aside-box aside-resume">
+
+                            <span class="aside-box-title">简历操作</span>
+
+                            {# 简历保密情况 #}
+                            <div class="detail-aside-buy">
+                                <a href="javascript:void(0);" class="btn-resume btn-grey">候选人已关闭简历</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="aside" ng-controller="resumeAside">
+
+                        <div class="aside-box aside-resume">
+                            <span class="aside-box-title">简历操作</span>
+                            {# 下载简历 #}
+                            {% if not resume_buy_record %}
+                            <div class="detail-aside-buy ">
+                                <a href="javascript:void(0);" class="btn-resume btn-red " data-resumeid="{{resume.id}}" data-sendid="{{send_company_card.id}}" data-job_id="{{ recommend_job.id }}" data-feed_id="{{feed_result.feed.id}}" data-sendid="{{send_company_card.id}}" ng-click="getContactInfo($event)" data-has_send="{% if send_company_card %}true{% else %}false{% endif %}" ng-show="!isPrepareResume" ng-cloak>查看联系方式</a>
+                            </div>
+                            {% endif %}
+
+                            {# 简历准备中 #}
+                            <div class="detail-aside-buy" ng-init="isPrepareResume={% if resume_buy_record.status == 'Start' %}true{% else %}false{% endif %}" ng-show="isPrepareResume" ng-cloak>
+                                <a href="javascript:void(0);" ng-mouseenter="showTooltips($event)" id="btn-under-ready" ngs-mousemove="moveTooltips($event)" ng-mouseleave="hideTooltips($event)" class="btn-resume btn-blue "><i class="icon-clock"></i> 简历准备中...</a>
+
+                            </div>
+
+                            {# 企业名片操作 #}
+                            {% if send_company_card|need_reply and not resume_buy_record %}
+                            <div class="detail-aside-buy ">
+                                <a href="javascript:void(0)" class="btn-resume {% if send_company_card.feedback_status == 1 %}btn-blue{% else %}btn-grey{% endif %}">{{ send_company_card.feedback_status|card_reply_msg }}</a>
+                            </div>
+                            {% endif %}
+
+                            {% if send_company_card|no_reply and not resume_buy_record %}
+                            <div class="detail-aside-buy ">
+                                <a href="javascript:void(0)" class="btn-resume btn-grey">候选人无回复</a>
+                            </div>
+                            {% endif %}
+
+                            {# 收藏简历 #}
+                            {% if watch_record.type == 1 %}
+                            {# 展示已经关注简历的状态 #}
+                            <div class="detail-aside-buy">
+                                <a href="javascript:void(0);" class="btn-resume btn-resume-fav btn-light-white bd-trace " ng-class="{'btn-blue':selectedFav()}" id="fav-cancel-resume-btn" ng-click="favCancelResume($event)" trace-title="已收藏" ><span>已收藏</span><i class="icon-fav-star-empty" ng-if="!selectedFav()"></i><i class="icon-fav-star" ng-if="selectedFav()" ng-cloak></i></a>
+                            </div>
+                            {% else %}
+                            <div class="detail-aside-buy">
+                                <a href="javascript:void(0);" class="btn-resume btn-resume-fav btn-light-white bd-trace" id="fav-resume-btn" ng-click="favResume($event)" trace-title="收藏简历" ng-class="{'btn-blue':selectedFav()}"><span>收藏简历</span><i class="icon-fav-star-empty" ng-if="!selectedFav()"></i><i class="icon-fav-star" ng-if="selectedFav()" ng-cloak></i></a>
+                            </div>
+                            {% endif %}
+
+                            {# 举报 #}
+                            {% if resume_buy_record.status == 'LookUp' and resume_buy_record.resume_mark|can_accu %}
+                            <div class="detail-aside-buy">
+                                <a href="javascript:void(0);" class="btn-resume btn-light-white bd-trace" id="report-resume-btn" ng-click="reportResume($event)" trace-title="举报">举报</a>
+                            </div>
+                            {% endif %}
+
+                            {% if feed_result and is_user_feed and not resume_buy_record %}
+                            <div class="detail-aside-buy">
+                                <a href="javascript:void(0);" class="btn-resume btn-light-white bd-trace " id="fav-resume-btn" ng-class="{'btn-grey':selectedDislike()}" ng-click="dislikeResume($event)" trace-title="推荐不准">推荐不准</a>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        {# 安排面试状态提醒 #}
+                        {% with interview_alarm=resume_buy_record.interview_alarm %}
+                        {% if interview_alarm %}
+                        <div class="aside-box aside-log">
+                            <span class="aside-box-title grey-border">状态提醒</span>
+                            <ul class="notes-list-content">
+                                <li class="text-left">
+                                    <h6>安排第{{ interview_alarm.interview_count }}轮面试</h6>
+                                    <p class="lh-200">{{ interview_alarm.interview_time|date:'Y-m-d H:i' }} <a href="javascript:void(0);"  data-record_id="{{ interview_alarm.id }}" data-mod_time="{{ interview_alarm.interview_time|date:'Y-m-d H:i' }}" ng-click="chgInterviewTime($event)" class="underline cf46c62 offset-right-38">修改时间</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+                        {# 举报状态提醒 #}
+                        {% if feedback.feedback_info|is_accu %}
+                        <div class="aside-box aside-log">
+                            <span class="aside-box-title grey-border">状态提醒</span>
+                            <ul class="notes-list-content">
+                                <li class="text-left">
+                                    <h6>{{ feedback.get_check_status_display }}</h6>
+                                    <p class="lh-200">{{ feedback.feedback_info.feedback_desc }}</p>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                        {# 标记简历 #}
+                        {% with current_mark=resume_buy_record.resume_mark.current_mark interview_alarm=resume_buy_record.interview_alarm %}
+                        {% if resume_buy_record.status == 'LookUp' and resume_buy_record.resume_mark.accu_status|not_accu %}
+                        <div class="aside-box aside-log">
+                            <span class="aside-box-title">简历标记状态</span>
+
+                            {# 当前标记状态 #}
+                            {% if current_mark %}
+                            <div class="detail-aside-buy text-left">
+                                <span class="c434343 pd3 ">当前状态：</span><span data-status_selected="true" class="current-resume-status code-{{ current_mark.code_name }}" ng-class="{'c44b5e8':chkStatusP('{{ current_mark.code_name }}'),'cf46c62':chkStatusN('{{ current_mark.code_name }}')}"  data-status_pn="{% if current_mark.good_result %}true{% else %}false{% endif %}" data-record_id="{{ resume_buy_record.id }}" data-code_name="{{ current_mark.code_name }}" data-status_selected="true">
+                                    {{ current_mark|get_mark_display:interview_alarm }}
+                                </span>
+                            </div>
+                            {% endif %}
+
+                            {# 标记选项 #}
+                            {% for level, value in resume_mark.items %}
+                            {% for c_list in value.choices %}
+                            {% for choice in c_list.choices %}
+                            <div class="detail-aside-buy resume-status-btns">
+                                {# invite_interview 和 next_interview 是安排面试, 需要使用新接口 #}
+                                {# 其它的code_name 使用以前的标记接口 #}
+                                <a href="javascript:void(0);" ng-click="tagStatus($event)" class="btn-resume btn-dark-white code-assign code-{{ choice.code_name }}" data-record_id="{{ resume_buy_record.id }}" data-code_name="{{ choice.code_name }}" data-name="{{ choice.name }}" data-status_selected="false" data-status_pn="{% if choice.good_result %}true{% else %}false{% endif %}" ng-class="{'btn-blue':chkStatusP('{{ choice.code_name }}'),'btn-red':chkStatusN('{{ choice.code_name }}')}">{{ choice.name }}</a>
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+                        <!-- 备注 -->
+                        <div class="aside-box aside-remark">
+                            <notes-list title="'备注'" max-length="maxLength" remark-loading="remarkLoading" remark-data="remarkData" notes-cp="notes_cp" notes-pages="notes_pages" comment="comment" open-dialog="openDialog" page-data="pageData" cached-data="cachedData" curr-pos="currPos" max-row="maxRow"></notes-list>
+                        </div>
+
+                        {# 标记记录 #}
+                        <log-list title="'标记记录'" max-length="maxLengthLog" remark-loading="remarkLoadingLog" remark-data="remarkDataLog" notes-cp="notes_cpLog" notes-pages="notes_pagesLog" comment="commentLog" open-dialog="openDialogLog" page-data="pageData" cached-data="cachedDataLog" curr-pos="currPosLog" max-row="maxRowLog" ></log-list>
+
+                        <div class="text-center" ng-show="false">
+                            <a href="javascript:void(0);" class="notes-placeholder bd-trace" id="add-to-folder" trace-title="添加简历到自定义文件夹"  ng-click="addFolder($event)">添加简历到自定义文件夹</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+
+                    {# 简历详细信息展示 #}
+                    <div class="resume-main" ng-controller="resumeDetail">
+                        <div id="resume-meta">
+                            <div class="resume-meta-header clearfix">
+                                <p class="resume-meta-tip c5e7c8b"><i></i>点此复制简历链接，转发给同事哦</p>
+                            </div>
+                        </div>
+                        <div id="resume-title" class="c5e7c8b">
+                            {% if resume.update_time %}
+                            <p class="resume-rec-time">
+                                简历入库时间：{{ resume.update_time }}
+                            </p>
+                            {% endif %}
+
+                            {% if resume.job_target.job_hunting_state %}
+                            <p class="resume-status">{{ resume.job_target.job_hunting_state }}</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- resume summary-->
+                        <div id="resume-summary">
+
+                            <div class="profile">
+                                <ul>
+                                    {# 保存简历到本地 #}
+                                    {% if request.user.is_authenticated  %}
+                                    <a href="javascript:void(0);" class="save btn-download bd-trace i-download-{{resume.id}}" id="JS_down_to_local" ng-click="saveResume($event)" trace-title="保存文本到本地" ng-mouseover="showHoverTip($event)" ng-mouseleave="hideHoverTip($event)"></a>
+                                    <i class="i-delete-hover i-download-delete-hover-{{resume.id}}" style="width: 72px; display: none;">保存文本到本地</i>
+                                    <script type="text/html" id="JS_download_local">
+                                        <p class="text-center f18 c434343 p-30">
+                                            请选择简历下载格式
+                                        </p>
+                                        <p class="text-center pt-15 choose-down-type">
+                                            <a id='js-pdf' href="{% url 'resume-download-resume' 'pdf' resume.id %}" xhref="{% url 'resume-download-resume' 'pdf' resume.id %}" target="_blank" title="PDF" class="btn-resume btn-dark-blue w160 js-pdf" >PDF</a>
+                                            <a id='js-html' href="{% url 'resume-download-resume' 'html' resume.id %}" xhref="{% url 'resume-download-resume' 'html' resume.id %}" target="_blank" title="HTML" class="btn-resume btn-blue ml20 w160 js-html" >HTML</a>
+                                        </p>
+                                        {% if request.user.is_staff %}
+                                        <form class="js-download-list">
+                                        <div class="download-list">
+                                        <div class="download-choice"><input type="checkbox" name="name" id="candidate-name" value="1" > <label for="candidate-name"><span class="f14 cf46c62">候选人姓名</span></label></div>
+                                        <div class="download-choice"><input type="checkbox" name="contact_info" id="candidate-contact" value="1" > <label for="candidate-contact"><span class="f14 cf46c62">候选人联系方式</span></label></div>
+                                        <div class="download-choice"><input type="checkbox" name="salary" id="candidate-money" value="1"> <label for="candidate-money"><span class="f14 cf46c62">候选人希望薪资</span></label></div>
+                                        </div>
+                                        </form>
+                                        {% endif %}
+                                    </script>
+                                    {% endif %}
+
+                                    <li class="profile-basic-field {{ resume.gender }} c5e7c8b">
+                                        <!-- 改版展示 -->
+                                        {% if resume_buy_record.status == 'LookUp' or request.user.is_staff or self_upload_resume %}
+                                        {% if contact_info.status != 'secret' %}
+                                        <p class="name">
+                                            {{ contact_info.name }}
+                                        </p>
+                                        {% endif %}
+                                        {% endif %}
+
+                                        <p class="job-title">
+                                            {% if resume.works %}
+                                            {% with work=resume.works.0 %}
+                                            <span class="c44b5e8">{{ work.position_title }}</span>
+                                            {% endwith %}
+                                            {% endif %}
+
+                                            {% if resume.source == 'talent_partner' and is_user_feed %}
+                                            <span class="source-tag cf46c62">[互助伙伴推荐]</span>
+                                            <i class="i-heart" id="JS_toggle_evaluate">
+                                                <span class="hr-evaluate">
+                                                    最近一次联系候选人：{{ resume.last_contact }}<br>
+                                                    {{ resume.hr_evaluate }}
+                                                </span>
+                                            </i>
+                                            {% endif %}
+                                        </p>
+                                        <p>
+                                            {{ resume.gender }}
+                                            <span class="divide-14"></span>{{ resume.age }}
+                                            {% if resume.educations %}
+                                            {% with edu=resume.educations.0 %}
+                                            <span class="divide-14"></span>{{ edu.degree }} · {{ edu.school }}
+                                            {% endwith %}
+                                            {% endif %}
+
+                                            {% if resume.address %}
+                                            <span class="divide-14"></span>现居：{{ resume.address }}
+                                            {% endif %}
+
+                                            {% if resume.job_target.expectation_area %}
+                                            <span class="divide-14"></span>意向地：
+                                            {{ resume.job_target.expectation_area }}
+                                            {% endif %}
+                                        </p>
+
+                                        <p>
+                                            {% if resume.work_years %}
+                                            <span class="c44b5e8">{{ resume.work_years }}</span>年经验
+                                            {% endif %}
+
+                                            {% if resume.job_target.salary %}
+                                            <span class="divide-14"></span>期望薪资：<span class="c44b5e8">{{resume.job_target.salary}}</span>
+                                            {% endif %}
+
+                                            {% if resume.job_target.job_career %}
+                                            <!-- <span title="{{resume.job_target.job_career}}"><span class="divide-14"></span>期望职位：<span class="c44b5e8 f-text-over-flow-hide">{{resume.job_target.job_career}}</span></span> -->
+                                            {% endif %}
+                                        </p>
+
+                                        {% if feed_result.tags.company_type %}
+                                        <p class="type-tag">
+                                            {{ feed_result.tags.company_type|join:" " }}
+                                        </p>
+                                        {% endif %}
+
+                                        {% if resume_buy_record.status == 'LookUp' or self_upload_resume or request.user.is_staff %}
+                                        {% if contact_info.status != 'secret'%}
+                                        <p class="contact-info">
+                                            {% if contact_info.phone %}
+                                            电话：<span class="cf46c62">{{ contact_info.phone }} </span>
+                                            {% endif %}
+
+                                            {% if contact_info.email %}
+                                            <span class="divide-14"></span>邮箱：<a href="mailto:{{ contact_info.email }}" class="underline cf46c62">{{ contact_info.email }} </a>
+                                            {% endif %}
+
+                                            {% if contact_info.qq and contact_info.qq != 'null' %}
+                                            <span class="divide-14"></span>QQ：<a href="tencent://message/?uin={{ contact_info.qq }}&Site=www.pinbot.me&Menu=yes" class="underline cf46c62">{{ contact_info.qq }} </a></span>
+                                            {% endif %}
+
+                                            {% if request.user.is_staff %}
+                                            <span class="divide-14"></span>[管理员身份：{{ request.user.username }}]</span>
+                                            {% endif %}
+
+                                        </p>
+                                        {% endif %}
+                                        {% endif %}
+                                        <!-- end of 改版展示 -->
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- resume content -->
+                        <div class="resume-content" id="resume-content">
+
+                            {% if resume.self_evaluation %}
+                            <div class="self sec-resume">
+                                <h3><span>自我评价</span><a href="javascript:void(0);" class="btn-toggle" ng-click="shrinkToggle($event)"></a> </h3>
+                                <dl>
+                                    <dd class="content-header">
+                                        <p>{{ resume.self_evaluation|string_safe }}</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {% endif %}
+
+                            {% if resume.works %}
+                            <div class="exp sec-resume">
+                                <h3><span>工作经历</span><a href="javascript:void(0);" class="btn-toggle" ng-click="shrinkToggle($event)"></a> </h3>
+                                {% for work in resume.works %}
+                                <dl>
+                                    <dt class="content-header">
+                                        <p>{{ work.start_time }} 至 {{ work.end_time }} {% if work.duration %} ({{ work.duration }}) {% endif %}</p>
+                                    </dt>
+                                    <dd>
+                                        <table><tbody>
+                                            <tr>
+                                                <td>
+                                                    <h4>
+                                                        <label>{{ work.company_name }}</label>
+                                                        <span class="divide-16"></span>
+                                                        <label>
+                                                            {{ work.position_title|string_safe }}
+                                                            {{ work.salary|default:'' }}
+                                                        </label>
+                                                    </h4>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </dd>
+                                    <dd>
+                                        <table><tbody>
+                                            <tr>
+                                                <td class="desc-span">
+                                                    <div>{{ work.job_desc|string_safe }}</div>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </dd>
+                                </dl>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            {% if resume.projects %}
+                            <div class="project sec-resume">
+                                <h3><span>项目经历</span><a href="javascript:void(0);" class="btn-toggle" ng-click="shrinkToggle($event)"></a> </h3>
+                                {% for project in resume.projects %}
+                                <dl>
+
+                                    <dt class="content-header">
+                                        <p>{{ project.start_time }} 至 {{ project.end_time }}</p>
+                                        {% if project.project_name %}
+                                        <h4>
+                                            {{ project.project_name|string_safe }}
+                                            {% if project.company_name %}
+                                            <span class="divide-16"></span><span class="project-to-company">
+                                                该项目期间就职于: {{ project.company_name|string_safe }}
+                                            </span>
+                                            {% endif %}
+                                        </h4>
+                                        {% endif %}
+                                    </dt>
+
+                                    {% if project.responsible_for %}
+                                    <dd>
+                                        <table><tbody>
+                                            <tr><th>职责</th><td class="desc-span"><div>{{ project.responsible_for|string_safe }}</div></td> </tr>
+                                        </tbody></table>
+                                    </dd>
+                                    {% endif %}
+
+                                    {% if project.project_desc %}
+                                    <dd>
+                                        <table><tbody>
+                                            <tr><th>描述</th><td class="desc-span"><div>{{ project.project_desc|string_safe }} </div></td></tr>
+                                        </tbody></table>
+                                    </dd>
+                                    {% endif %}
+
+                                    {% if project.develop_tool %}
+                                    <dd>
+                                        <table><tbody>
+                                            <tr><th>工具</th> <td><div>{{ project.develop_tool|string_safe }}</div></td></tr>
+                                        </tbody></table>
+                                    </dd>
+                                    {% endif %}
+                                </dl>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            {% if resume.educations %}
+                            <div class="edu sec-resume">
+                                <h3><span>教育经历</span><a href="javascript:void(0);" class="btn-toggle" ng-click="shrinkToggle($event)"></a> </h3>
+                                {% for edu in resume.educations %}
+                                <dl>
+                                    <dt class="content-header">
+                                        <p>{{ edu.start_time }} 至 {{ edu.end_time }}</p>
+                                        <h4>{{ edu.school }}<span class="divide-16"></span>{{ edu.degree }}<span class="divide-16"></span>{{ edu.major }}</h4>
+                                    </dt>
+                                </dl>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            {% if resume.professional_skills %}
+                            <div class="self sec-resume">
+                                <h3><span>专业技能</span><a href="javascript:void(0);" class="btn-toggle" ng-click="shrinkToggle($event)"></a> </h3>
+                                <dl>
+                                    <dd class="content-header">
+                                        <p>
+                                            {{ resume.professional_skills|show_skill|safe }}
+                                        </p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                    {% if feed_result.calc_time %}
+                    <div class="resume-meta-info" >
+                        <span>简历推荐时间：{{ feed_result.calc_time }}</span>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pb-tips" ngs-show="showBtnTip"><span>聘宝的部分简历来自猎头渠道，请给予我们一点时间确认联系信息</span>
+<span class="tips-arrow"></span><span class="tips-arrow-border"></span></div>
+<div class="popup-box" >
+    <div class="popup-box-bg"></div>
+    <div class="popup-box-container">
+        <a href="javascript:;" title="返回" class="popup-box-close"></a>
+        <div class="popup-box-body">
+        </div>
+    </div>
+</div>
+
+<!-- new  -->
+<div class="main">
+    <div ng-cloak>
+        <!-- <section class="resume-aside">
+             <resume-aside-info></resume-aside-info>
+             </section>
+             <section class="resume-page" ui-view>
+             </section> -->
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+{% compress js %}
+
+<script src="{{ STATIC_URL }}resume/js/jquery.datetimepicker.min.js"></script>
+
+{% if debug %}
+<script src="{{ STATIC_URL }}common/js/angular.1.3.6.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% else %}
+<script src="{{ STATIC_URL }}common/js/angular.min.js"></script>
+<script src="{{ STATIC_URL }}common/js/angular-ui-router.min.js"></script>
+{% endif %}
+<script src="{{ STATIC_URL }}brick/utils/ng_config.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/service.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/filter.js"></script>
+<script src="{{ STATIC_URL }}brick/utils/django.js"></script>
+
+{% if debug%}
+<script src="{{ STATIC_URL }}alpha/scripts/ZeroClipboard.js?20160111"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/company_card.js?20160111" type="text/javascript" charset="utf-8"></script>
+{% else %}
+<script src="{{ STATIC_URL }}alpha/scripts/ZeroClipboard.js?20160111"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/company_card.js?20160111" type="text/javascript" charset="utf-8"></script>
+{% endif %}
+
+<script src="{{ STATIC_URL }}resume/js/resume_show.js?t=2015122901"></script>
+<script>
+ (function() {
+     var url = window.location.href;
+     var client = new ZeroClipboard($('.resume-meta-tip'));
+     client.on('copy', function(event) {
+         client.setText(url);
+         $('.resume-meta-tip').html('<i></i>复制成功！').css('color', '#42b3e5');
+     });
+ }());
+
+</script>
+{% endcompress %}
+{% if request.user.is_authenticated %}
+{% include 'interview-faq.html' %}
+{% endif %}
+
+{%if resume.source != 'pinbot' or display_aside%}
+<!-- 反馈 -->
+<script type="text/html" id="JS_feedback">
+    <div class="tao-feed-container" style="display: block;">
+        <div class="body">
+            <div class="tao-rules-enter ">
+                <div class="tao-rules-header">
+                    <ul>
+                        <li class="clearfix">
+                            <h5>特别提示</h5>
+                            <p class="tip-normal" style="display: block;">每封简历只能标记一次状态！</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tao-rules-main">
+
+                    <ul class="choice-groups" data-submit-url="/taocv/add_feedback/" style="display:block;">
+                        <li class="choice-group">
+                            <ul class="choice-list">
+                                <li data-id="211" class="back-count">已约定初试时间</strong></li>
+                                <li data-id="212">已参加初试</li>
+                                <li data-id="213">已约定复试时间</li>
+                                <li data-id="214">已参加复试</li>
+                                <li data-id="215">已入职</li>
+                                <li data-id="216">约面后爽约</li>
+                                <li data-id="217" class="back-count">薪资/地点/经验/能力不匹配</li>
+                                <li data-id="218" class="back-count ">候选人对公司/项目不感兴趣</li>
+                                <li data-id="219" class="back-count ">候选人无求职意愿</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="choice-pending">
+                        <p>已成功提交，系统验证为<strong>3个工作日</strong>。</br>
+                            验证属实后将退还你指定点数，请耐心等待吧！</p>
+                        <a href="javascript:void(0);" class="tao-cancel" onclick="window.location.reload();return false;">返回</a>
+                    </div>
+                </div>
+
+                <div class="footer" style="padding-top:30px;">
+                    <a href="javascript:void(0);" class="tao-submit">提&nbsp;交</a>
+                    <a href="javascript:void(0);" class="tao-cancel" onclick="$._LayerOut.close()">返&nbsp;回</a>
+                    <span></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- 举报 -->
+<div class="modal-backdrop-tip-toreport" style="display:none;"></div>
+<div class="modal-tip-toreport" style="display:none;">
+    <div class="modal-dialog-tip-toreport">
+        <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn JS_close_tip"></a></p>
+        <p style="font-size:20px;color:#434343;text-align:center"><i class="i-l-notice"></i>请选择举报内容</p>
+        <p class="center-box">
+            <span class="m-radio JS_toreport_radio" data-name="back_count"><input type="radio" name="back_count" value="221">电话号码有误</span><br>
+            <span class="m-radio JS_toreport_radio" data-name="back_count"><input type="radio" name="back_count" value="220">空号或停机</span>
+            <br>
+
+            {% if resume.source == 'talent_partner' %}
+            <span class="m-radio JS_toreport_radio" data-name="back_count" has-info="true"><input type="radio" name="back_count" value="222">互助伙伴推荐简历举报</span>
+            {% endif %}
+        </p>
+        <p id="JS_feedback_info" style="display:none;"><input type="text" id="JS_feedback_value" name="feedback_value" class="input feedback-info-input" placeholder="例:候选人不求职了(20字内)" maxlength="20" value=""></p>
+        <p class="cf46c62 mt30 f14 text-center">小宝提示：举报内容审核通过后，我们将返还给你<span class="cf46c62">10</span>聘点</p>
+        <p class="mt20 text-center">
+            <a class="button-b button-primary w158 f16" id="JS_submit_toreport" data-id="{{contact_info.resume_id}}" disabled>提交</a>
+        </p>
+    </div>
+</div>
+
+<!-- 选择发送企业名片 -->
+<script id="JS_choose_cards" type="text/html">
+    <h3 class="card-layer-title">请选择你要发送的企业名片吧！</h3>
+    <div class="card-layer-content">
+        <div id="JS_jobs_ajax_content" style="position: absolute; left:0; top: 0px; padding: 10px 0;"></div>
+    </div>
+    <div>
+        <a href="javascript:;" class="card_larr" id="JS_left_btn"></a>
+        <a href="javascript:;" class="card_rarr" id="JS_right_btn"></a>
+    </div>
+    <h3 class="card-layer-title"><a href="/companycard/get/" target="_blank" title="新增岗位名片" class="a-blue"><i class="i-add"></i>新增岗位名片</a></h3>
+</script>
+
+<!--你还没有填写企业名片-->
+<script id="JS_no_card" type="text/html">
+    <div class="service-agreement">
+
+        <p style="text-align:center; font-size:14px; color:#333;padding: 0 0 30px 0;">
+            <i class="i-l-notice"></i>你还没有填写企业名片，立即去填写吧！
+        </p>
+        <div class="no-card-info">
+            <a href="/companycard/get/" title="" target="_blank" class="btn btn-primary JS_close_layerout">完成企业名片</a><br>
+            <a href="javascript:;" title="" class="a-blue JS_buy_not_sendcard" data-resumeid="{{resume.id}}" data-sendid="{{send_company_card.id}}" data-job_id="{{ recommend_job.id }}" data-feed_id="{{feed_result.feed.id}}">暂不填写，直接购买简历</a>
+        </div>
+    </div>
+</script>
+
+<!--选择下载方式-->
+<script id="JS_has_card_html" type="text/html">
+    <div class="service-agreement">
+        <!-- <p class="text-right">
+             <a class="i-layerout-close JS_close_layerout" title="关闭" href="javascript:;">
+             </a>
+             </p> -->
+        <p style="text-align:center; font-size:14px; color:#333;padding: 0 0 30px 0;">
+            <i class="i-l-notice"></i>确定这是你心仪的人才吗？
+        </p>
+        <div class="choose-send-type clearfix">
+            <div class="send-type">
+                <p><a href="javascript:;" title="" class="btn btn-small button button-red JS_buy_not_sendcard" data-feed_id="{{feed_result.feed.id}}" data-resumeid="{{resume.id}}" data-sendid="{{send_company_card.id}}" data-job_id="{{ recommend_job.id }}">查看联系方式</a></p>
+                <p class="tip">消耗<span class="c44b5e8">10</span>个聘点，直接获取联系方式</p>
+            </div>
+            <div class="send-type">
+                <a href="javascript:;" title="" class="btn btn-small btn-grey-blue" id="JS_send_card_btn">发送企业名片</a>
+                <p class="tip">消耗<span class="c44b5e8">3</span>个聘点，确认求职意向，若候选人反馈有意愿则再扣除<span class="c44b5e8">9</span>个聘点</p>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- 还有未标记的简历 -->
+<script id="JS_to_mark" type="text/html">
+    <div class="service-agreement">
+
+        <p style="text-align:center; font-size:16px; color:#333;padding: 0 0 30px 0;">
+            <i class="i-l-notice"></i>还有简历在等待你标记状态呢！
+        </p>
+        <p style="text-align:center; font-size:14px; color:#333;padding: 0 0 30px 0;">
+            <span style="color:#FF6000;">*</span>你可以在简历中心-待标记简历里查找到需要标记的简历
+        </p>
+        <p style="text-align:center; padding-bottom:10px;">
+            <a class="button-b button-primary w158 f16" href="{% url 'transaction-buy-record' %}?mark_status=1" target="_blank">现在去标记</a>
+        </p>
+    </div>
+</script>
+
+{%endif%}
+
+{% endblock %}

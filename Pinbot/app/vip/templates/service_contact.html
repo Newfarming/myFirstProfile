@@ -1,0 +1,137 @@
+{% load utils_tag %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聘宝服务合同</title>
+    {% load_pdf_zh_style %}
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        .small {
+            font-size: 13px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .content {
+            color: #000;
+            font-size: 14px;
+            line-height: 2em;
+            width: 780px;
+            padding: 0 55px;
+            margin: 0 auto;
+        }
+        p {
+            line-height: 200%;
+        }
+        .ps p {
+            line-height: 100%;
+        }
+        .print-table {
+            border-collapse: collapse;
+            word-break: break-all;
+            margin: 0 auto;
+        }
+        .print-table, .print-table td, .print-table th {
+            border: solid 1px #000;
+            line-height: 100%;
+        }
+        .print-table td, .print-table th {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-left content">
+        <div class="ps">
+            <p class="text-right small">成都浩泊云动科技有限公司</p>
+            <p class="text-right small">成都市府城大道399号天府新谷9号楼2单元1505室</p>
+            <p class="text-right small">电话号码：028-83330727</p>
+        </div>
+        <h1 class="text-center">服务合同</h1>
+        <p class="text-right">合同序号：{{ protocol_id }}</p>
+        <p>甲方：___________________________</p>
+        <p>乙方：<span class="underline">成都浩泊云动科技有限公司</span></p>
+        <p>甲、乙双方经友好协商，就甲方接受乙方提供岗位候选人推荐服务事宜，达成如下协议：</p>
+        <p class="bold">第一条 服务内容及双方权利义务</p>
+        <p>1.服务期限：自合同签订日起，有效期三年。</p>
+        <p>2.服务内容：由乙方为甲方提供岗位候选人推荐服务，具体服务内容如下：</p>
+        <p>（1）乙方根据甲方提供的招聘岗位候选人要求，包括但不限于：专业技能、工作经验、工作地域、薪资水平等，通<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;过其“聘宝”系统进行甲方岗位候选人简历的筛选、推荐。甲方需保证上述信息真实、准确。</p>
+        <p>（2）乙方根据甲方招聘岗位候选人要求，完成对甲方招聘岗位候选人简历的筛选后，通过其系统向甲方推荐符合甲方<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;岗位需求的候选人简历。由甲方确认简历信息是否与其需求匹配，再自行决定是否下载候选人简历。</p>
+        <p>（3）甲方需使用10点下载点数方可下载简历，且乙方保证甲方所下载简历包含有效联系方式，否则视为无效下载，<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲方支付的10点下载点数需以加赠下载点数的方式予以返还。</p>
+        <p>（4）乙方在确保甲方所下载简历真实、有效后，不负责甲方与岗位候选人之间的联系、面试等后续环节。</p>
+        <p>（5）服务期间，乙方赠与甲方如下特权及服务：a.{{ vip_setting.feed_count }}个定制服务使用权；b.每个自然周{{ vip_setting.pinbot_point }}点下载点数，可用于简历<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下载(下载点数以周为单位进行赠送，不累计,但甲方所下载简历无有效联系方式的，需乙方加赠相应下载点数，<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;即10点/份无效简历)。</p>
+        <p>3.甲方除按服务内容要求承担义务以外，还需要承担以下义务：</p>
+        <p>（1）甲方有义务对乙方所推荐的岗位候选人简历进行积极的使用并及时、如实地反馈岗位候选人面试及入职情况；<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;若甲方故意隐瞒实际面试和入职情况，乙方有权利终止服务，并保留追偿服务费的权利。</p>
+        <p>（2）服务到期后的三个月之内，若乙方在服务期内推荐的岗位候选人入职，甲方仍需按照合同规定向乙方支付服务费。</p>
+        <p class="bold">第二条 费用支付</p>
+        <p>1.甲方在候选人入职之前，无需承担费用。</p>
+        <p>2.若由乙方推荐候选人通过面试并在甲方入职，以签订劳动合同时间为准，甲方需支付乙方服务费。根据入职候选人<br>
+        税前月薪，服务费收取标准如下：</p>
+        <table class="print-table text-center" cellspadding="0" cellspacing="0" width="100%">
+            <tr>
+                <th>人才月薪范围（元）</th><th>收费金额(元)</th>
+            </tr>
+            <tr>
+                <td>入职候选人月薪 &lt; 5k</td><td>900/人</td>
+            </tr>
+            <tr>
+                <td>5k &le; 入职候选人月薪 &lt; 20k</td><td>2900/人</td>
+            </tr>
+            <tr>
+                <td>20k &le; 入职候选人月薪 &lt; 30k</td><td>3900/人</td>
+            </tr>
+            <tr>
+                <td>30k &le; 入职候选人月薪</td><td>29900/人</td>
+            </tr>
+        </table>
+        <p>3.甲方应在候选人完成入职起，5个工作日内全额付清服务费。</p>
+        <p>4.付款方式：银行汇款或支付宝。</p>
+        <p>&nbsp;&nbsp;&nbsp;开 &nbsp;户 &nbsp;行：中国银行成都天府大道支行</p>
+        <p>&nbsp;&nbsp;&nbsp;开户名称：成都浩泊云动科技有限公司</p>
+        <p>&nbsp;&nbsp;&nbsp;账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：1198 7396 8093</p>
+        <p>&nbsp;&nbsp;&nbsp;支  &nbsp;付 &nbsp;宝：peaker@hopperclouds.com</p>
+        <table width="100%">
+            <tr>
+                <td>甲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方：</td>
+                <td>乙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方：成都浩泊云动科技有限公司</td>
+            </tr>
+            <tr>
+                <td>甲方代表：</td>
+                <td>乙方代表：</td>
+            </tr>
+            <tr>
+                <td>盖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;章：</td>
+                <td>盖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;章：</td>
+            </tr>
+            <tr>
+                <td>日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</td>
+                <td>日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;期：</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

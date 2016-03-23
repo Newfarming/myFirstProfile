@@ -1,0 +1,826 @@
+/* 按钮样式 */
+@import "../base";
+
+/* button */
+.button{
+    background: none;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    color: #47B5E8;
+    border: none;
+    cursor: pointer;
+}
+.button.button-big{
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 2px;
+}
+.button.button-small{
+    font-size: 13px;
+    padding: 4px 8px;
+}
+.button.button-primary{
+    background: #47B5E8;
+    color: #fff;
+    border: solid 1px #47B5E8 !important;
+}
+.button.button-red{
+    background: #F46C62;
+    color: #fff;
+    border: solid 1px #F46C62 !important;
+}
+.button.button-red:hover{
+    background: #F46C62;
+    color: #fff;
+    border: solid 1px #F46C62 !important;
+}
+.button.button-dark-blue{
+    background: @pb-btn-dark-bule;
+    color: #fff;
+    border: solid 1px @pb-btn-dark-bule !important;
+}
+.button.button-dark-blue:hover{
+    background: @pb-btn-dark-bule;
+    color: #fff;
+    border: solid 1px @pb-btn-dark-bule !important;
+}
+.button-blue {
+    display: block;
+    width: 160px!important;
+    margin: 0 auto!important;
+    text-align: center!important;
+    height: 40px!important;
+    line-height: 40px!important;
+    padding: 0!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    background-color: #44b5e8 !important;
+}
+.button.button-cancle{
+    color: #D0D0D0;
+    border: solid 1px #CECECE !important;
+}
+.button.button-normal{
+    color: #47B5E8;
+    border: solid 1px #47B5E8 !important;
+    background: #fff;
+}
+.button:not(disabled):hover{
+    color: #fff;
+    background: #63c2ec;
+    border: solid 1px #63c2ec;
+}
+.button:not(disabled):active{
+    color: #fff;
+    background: #2899CD;
+    border: solid 1px #2899CD;
+}
+.button[disabled]{
+    cursor: default;
+    background: #cfd8dc !important;
+    color: #fff !important;
+    border: solid 1px #cfd8dc !important;
+}
+.button:not(disabled).hover{
+    color: #fff;
+    background: #63c2ec;
+    border: solid 1px #63c2ec;
+}
+.button:not(disabled).active{
+    color: #fff;
+    background: #2899CD;
+    border: solid 1px #2899CD;
+}
+
+.pb-btn{
+    display:block;
+    width:120px;
+    height:30px;
+    line-height: 30px;
+    color:#fff !important;
+    font-size: 12px;
+    background-color:#607D8B;
+    border:1px solid #607D8B !important;
+    margin:0 auto;
+    margin-top: 5%;
+    text-align: center;
+    text-decoration: none !important;
+    position:relative;
+    top:0px;
+    left:0px;
+}
+.pb-btn-single{
+    margin-top: 10% !important;
+}
+.pb-btn-blue{
+    background-color:#63C2EC;
+    border:1px solid #63C2EC !important;
+}
+.pb-btn-red{
+    background-color:#F46C62;
+    border:1px solid #F46C62 !important;
+}
+.pb-btn-default{
+    background-color:#607D8B;
+    border:1px solid #607D8B !important;
+}
+
+
+
+
+
+
+/* 主页 －》 查看详情 blue */
+a.btn {
+    display: block;
+    width: 240px;
+    height: 46px;
+    font-size: 16px;
+    color: #fff;
+    /*margin: 20px auto 15px;*/
+    text-align: center;
+    line-height: 46px;
+    margin: 0 auto;
+}
+a.btn-blue {
+    background-color: #45b5e8;
+}
+
+/* 主页 －》 查看详情 red */
+a.btn-red {
+    background-color: #ef5646;
+}
+
+/* 互助招聘*/
+
+/* 实际是按钮*/
+.more-task {
+    display: inline-block;
+    font-size: 18px;
+    background: #f46c62;
+    color: #fff;
+    width: 240px;
+    line-height: 60px;
+    text-align: center;
+}
+.opa-btn {
+    opacity: .9;
+}
+
+/* 先做任务 先录简历 */
+.btn-group{
+    list-style:none;
+    float: center;
+}
+.btn-group-two{
+    width: 366px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.btn-group li{
+    display: inline-block;
+    width: 180px;
+    height: 46px;
+    border: 1px solid #607d8b;
+    margin: 0px;
+    margin-left: -5px;
+}
+.btn-group li:first-child{
+    display: inline-block;
+    width: 180px;
+    height: 46px;
+    border: 1px solid #607d8b;
+    margin: 0px;
+    margin-left: 0px !important;
+}
+.btn-group li a{
+    display: inline-block;
+    width: 180px;
+    height: 46px;
+    border: 0px solid #607d8b;
+    background-color: #fff;
+    color: #607d8b;
+    line-height: #46px;
+    font-size: 16px;
+    text-align: center;
+}
+.btn-group li a span{
+    position: relative;
+    top: 10px;
+    left: 0px;
+}
+.btn-group li a:hover{
+    display: inline-block;
+    width: 180px;
+    height: 46px;
+    border: 0px solid #607d8b;
+    background-color: #607d8b;
+    background-color: #607d8b;
+    color: #fff;
+}
+.btn-group li.active a{
+    display: inline-block;
+    width: 180px;
+    height: 46px;
+    border: 0px solid #607d8b;
+    background-color: #607d8b;
+    color: #fff;
+    line-height: #46px;
+    font-size: 16px;
+    text-align: center;
+}
+.btn-group li.active a:hover{
+    display: inline-block;
+    width: 180px;
+    height: 46px;
+    border: 0px solid #607d8b;
+    background-color: #607d8b;
+    color: #fff;
+    line-height: #46px;
+    font-size: 16px;
+    text-align: center;
+}
+/* 筛选任务 */
+.search .search-handle a {
+    background: #f46c62;
+    color: #fff;
+    padding: 0 16px;
+    vertical-align: middle;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+}
+
+/* 录入新简历 */
+.big-btn {
+    width: 240px !important;
+    height: 60px !important;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.red-btn {
+    background: #F46C62;
+}
+.dialog-btn {
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    width: 160px;
+    height: 46px;
+    line-height: 46px;
+    margin: 0 15px;
+}
+
+/* 录入简历保存 */
+.btn-blue-90 {
+    width: 90px;
+    background: #44b5e8;
+    color: #fff;
+}
+/*.btn {
+    display: inline-block;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+}*/
+/* 取消 */
+.btn-blue-hline-90 {
+    color: #44b5e8;
+    border: 1px solid transparent;
+    width: 90px;
+}
+/* 保存并提交 */
+.btn-blue-240 {
+    width: 240px;
+    height: 46px;
+    line-height: 46px;
+    color: #fff;
+    background: #44b5e8;
+}
+
+
+
+/* 职位定制 */
+/* 新增定制 */
+.feed-aside .btn-feed-add, .feed-aside .btn-feed-add-false {
+    display: block;
+    border: 1px solid #44b5e8;
+    width: 238px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #44b5e8;
+    padding: 10px 0;
+    position: relative;
+    background: #fff;
+}
+/* 刷新看看  － 》 实际是按钮 */
+.goto-reload {
+    display: inline-block;
+    font-size: 16px;
+    background: #63C2EC;
+    color: #fff;
+    line-height: 60px;
+    padding: 0 90px;
+}
+/* 新增定制 */
+/* 预览 */
+.view-resume {
+    color: #fff;
+    background-color: #607D8B;
+}
+.resume-right-btn-public {
+    position: relative;
+    height: 45px;
+    width: 60px;
+    line-height: 45px;
+    padding-left: 50px;
+    font-size: 14px;
+}
+/* 编辑定制 */
+/* 筛选：智能匹配 */
+.feed-match>a.feed-apply-option-choose {
+    background-color: #f46c62;
+    color: #fff;
+}
+.feed-match>a {
+    display: inline-block;
+    padding: 3px 0;
+    width: 80px;
+    text-align: center;
+}
+a {
+    line-height: 1.5em;
+    cursor: pointer;
+}
+/* 删除 */
+.del-resume {
+    background-color: #F9F9F9;
+    border: 1px solid #eee;
+    color: #607D8B;
+}
+/* 预览 */
+.resume-right-btn-public {
+    position: relative;
+    height: 45px;
+    width: 60px;
+    line-height: 45px;
+    padding-left: 50px;
+    font-size: 14px;
+}
+/* 人才级别 未选按钮 */
+.button.button-normal {
+    color: #607D8B;
+    border: solid 1px #eee;
+    background: #eee;
+}
+.multi .button {
+    margin-bottom: 0px;
+}
+.choose-btn .button {
+    margin: 20px 5px 0 5px;
+    position: relative;
+    min-width: 70px;
+    padding: 0 8px;
+    height: 30px;
+    line-height: 30px;
+    border: 0px !important;
+}
+/* 人才级别 已选按钮 */
+.choose-btn .button.active {
+    position: relative;
+    background-color: #607D8B !important;
+    color: #fff !important;
+    border: 0px solid #607D8B !important;
+}
+.button:not(disabled).active {
+    color: #fff;
+    background: #2899CD;
+    border: 1px solid #2899CD;
+}
+/* 解析职位详情 */
+.button.button-big {
+    font-size: 16px !important;
+    letter-spacing: 1px !important;
+}
+
+.button.button-red {
+    background: #F46C62 !important;
+    border: solid 1px #F46C62 !important;
+}
+/* 添加扩展名*/
+.keyword-input-box a.botton-add-keyword {
+    background-color: #fff !important;
+    border: 1px solid #607D8B !important;
+    color: #607D8B !important;
+}
+.keyword-input-box a {
+    min-width: 70px;
+    padding: 0 8px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+    background-color: #607D8B;
+}
+/* 定制按钮 （删除、编辑） */
+/* 简历详情 简历操作 －》查看联系方式*/
+.detail-aside-buy a {
+    position: relative;
+    text-indent: 0!important;
+    text-align: center;
+}
+.btn-red {
+    background: #f46c62!important;
+    border: 1px solid #f46c62!important;
+}
+/* 简历详情 简历操作 －》已收藏*/
+.btn-blue {
+    background: #44b5e8!important;
+    border: 1px solid #44b5e8!important;
+}
+/* 简历详情 简历操作 －》不感兴趣*/
+.btn-light-white {
+    border: 1px solid #eee!important;
+}
+/* 简历详情 简历操作 －》备注*/
+.btn-black {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #607D8B;
+}
+.btn-resume {
+    cursor: pointer!important;
+    font-size: 14px;
+    width: 210px;
+    color: #607D8B;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+.btn-resume, .btn-small {
+    height: 40px;
+    line-height: 40px;
+}
+.btn, .btn-resume {
+    display: inline-block;
+    padding: 0;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-image: none;
+    border-radius: 0;
+}
+/* 简历详情 简历操作 －》安排下一轮面试 */
+.btn-dark-white {
+    border: 1px solid #607D8B!important;
+}
+
+/* 简历中心 */
+/* 我的收藏 */
+.control-module .control-nav-collect a.have-collect {
+    color: #fff;
+    background-color: #44b5e9;
+}
+.control-module .control-nav-collect a {
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 210px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    margin: 0 auto;
+}
+/* 搜索 */
+.search-box>a {
+    float: left;
+    width: 47px;
+    padding-left: 43px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 14px;
+    background: url(/static/resume/images/search_bg.png) 17px center no-repeat #607d8b;
+}
+/* 标记状态 */
+.bg607d8b {
+    background-color: #607d8b;
+}
+
+.mark-botton {
+    display: inline-block;
+    margin: 0 auto;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+}
+/* 自定义文件夹 */
+.control-module div.folder{
+    width: 210px;
+    margin: 20px auto 0 auto;
+}
+.control-module div.folder>a{
+    display: block;
+    margin-top: 20px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border:1px solid #607d8b;
+    color: #607d8b;
+    background: url(/static/resume/images/blue_folder.png) no-repeat #fff 24px center;
+}
+.control-module div.folder>a.adit-state,
+.control-module div.folder>a:hover{
+    color: #fff;
+    background: url(/static/resume/images/folder_bg.png) no-repeat #607d8b 24px center;
+}
+.control-module div.folder>a.adit-state:hover{
+    background: url(/static/resume/images/folder_bg.png) no-repeat #78909c 24px center;
+}
+.control-module div.folder>div{
+    width: 210px;
+    height: 38px;
+    margin: 10px auto 0 auto;
+}
+.control-module div.folder>div input{
+    float: left;
+    height: 24px;
+    width: 140px;
+    color: #666;
+    line-height: 24px;
+    padding: 6px 10px 6px 19px;
+    border-top: 1px solid #eceff1;
+    border-bottom: 1px solid #eceff1;
+    border-left: 1px solid #eceff1;
+}
+.control-module div.folder>div a{
+    float: left;
+    height: 38px;
+    width: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: url(/static/resume/images/folder.png) no-repeat #f46c62 center center;
+}
+/* 我的钱包 */
+/* 我的账户 －》 购买套餐 */
+.side-bar-div .pb-btn {
+    margin-right: 0!important;
+}
+.pb-btn-default {
+    background-color: #607D8B;
+    border: 1px solid #607D8B!important;
+}
+.pb-btn {
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff!important;
+    font-size: 12px;
+    background-color: #607D8B;
+    border: 1px solid #607D8B!important;
+    margin: 5% auto 0;
+    text-align: center;
+    text-decoration: none!important;
+    top: 0;
+    left: 0;
+}
+/* 我的账户 －》 购买聘点 */
+.bg47B5E8 {
+    background-color: #47B5E8!important;
+    border: 1px solid #47B5E8!important;
+}
+/* 省心套餐 ->我要退款 */
+.select-btn {
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff !important;
+    font-size: 12px;
+    background-color: #607D8B;
+    border: 1px solid #607D8B !important;
+    margin: 0 auto;
+    text-decoration: none !important;
+    position: relative;
+    top: 30px;
+    left: 0px;
+}
+/* 省心套餐 ->重新购买 */
+.select-btn-red {
+    background-color: #F46C62;
+    border: 1px solid #F46C62 !important;
+}
+/* 省心套餐 ->我要开通 */
+.select-btn-blue {
+    background-color: #63C2EC;
+    border: 1px solid #63C2EC !important;
+}
+
+/* 企业名片 （将要改版，先不管）*/
+
+/* 推广伙伴  （将要改版，先不管）*/
+
+/* 个人设置 */
+/* 保存 */
+.form-panel button[type=button] {
+    border: none;
+    padding: 10px 20px;
+    width: 180px;
+    background: #F46C62;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+//210*40
+.display-text{
+    display:block;
+    text-align: center;
+}
+.btn-210-40{
+    .display-text;
+    width: 210px;
+    height:40px;
+    line-height: 40px;
+    font-size: @font-size;
+}
+//120*30
+.btn-120-30{
+    .display-text;
+    width: 120px;
+    height:30px;
+    line-height: 30px;
+    font-size: @font-size - 1;
+}
+// 红色按钮
+.btn-red{
+    background-color:@pb-btn-red;
+    border:1px solid @pb-btn-red;
+    color:@pb-font-white;
+    &:hover{
+        background-color:@pb-btn-red-hover;
+        border:1px solid @pb-btn-red-hover;
+        color:@pb-font-white;
+    }
+}
+
+//#607D8B dark-blue按钮
+.btn-dark-blue{
+    background-color:@pb-btn-dark-bule;
+    border:1px solid @pb-btn-dark-bule;
+    color:@pb-font-white;
+    &:hover{
+        background-color:@pb-btn-dark-bule-hover;
+        border:1px solid @pb-btn-dark-bule-hover;
+        color:@pb-font-white;
+    }
+}
+
+//蓝色按钮
+.btn-dark-blue{
+    background-color:@pb-btn-blue;
+    border:1px solid @pb-btn-blue;
+    color:@pb-font-white;
+    &:hover{
+        background-color:@pb-btn-blue-hover;
+        border:1px solid @pb-btn-blue-hover;
+        color:@pb-font-white;
+    }
+}
+
+//收藏按钮黄色星星icon，
+.icon-yellow-star{
+    position:relative;
+    &:after{
+        position:absolute;
+        left:27px;
+        top:10px;
+        display:block;
+        content:"";
+        width:25px;
+        height:28px;
+        background: url(/static/b_index/img/sprite.png) -258px -497px no-repeat;
+    }
+}
+
+//收藏按钮红色圆点icon，
+.icon-red-circle{
+    position:relative;
+    &:before{
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        display: block;
+        content: "";
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background-color: #f46c62;
+    }
+}
+
+// 白色按钮灰色边框，hover背景色：＃607D8B(bule-dark)
+.btn-white{
+    background-color:@pb-btn-white;
+    border:1px solid @pb-border-grey;
+    color:@pb-font-dark-blue;
+    &:hover{
+        background-color:@pb-bg-dark-blue;
+        border:1px solid @pb-border-dark-blue;
+        color:@pb-font-white !important;
+    }
+}
+
+// 收藏按钮白色按钮灰色边框带白色星icon)
+.btn-white-star{
+    position:relative;
+    background-color:@pb-btn-white;
+    border:1px solid @pb-border-grey;
+    color:@pb-font-dark-blue;
+    &:after{
+        display: block;
+        content:"";
+        position: absolute;
+        top: 10px;
+        left: 27px;
+        width: 25px;
+        height: 28px;
+        background: url(/static/b_index/img/sprite.png) -438px -497px no-repeat;
+    }
+    &:hover{
+        border:1px solid @pb-border-dark-blue;
+    }
+}
+
+.big-icon {
+  width: 65px;
+  height: 65px;
+  display: block;
+  margin: 0 auto;
+}
+.big-icon-rocket {
+  background: url(/static/b_index/img/sprite.png) -29px -687px no-repeat;
+}
+.big-icon-flower {
+  background: url(/static/b_index/img/sprite.png) -148px -687px no-repeat;
+}
+.big-icon-coffee {
+  background: url(/static/b_common/img/sorry_150x150.png) 0px 0px no-repeat;
+}
+.big-icon-present {
+  background: url(/static/b_index/img/sprite.png) -148px -324px no-repeat;
+}
+
+.btn-grey-blue {
+    display: block;
+    width: 160px!important;
+    margin: 0 auto!important;
+    text-align: center!important;
+    height: 40px!important;
+    line-height: 40px!important;
+    padding: 0!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    background: @pb-btn-dark-bule!important;
+    border: 1px solid @pb-btn-dark-bule;
+}
+.u-btn-grey-blue {
+    display: block;
+    width: 160px!important;
+    margin: 0 auto!important;
+    text-align: center!important;
+    height: 40px!important;
+    line-height: 40px!important;
+    padding: 0!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    background: @pb-btn-dark-bule!important;
+    border: 1px solid @pb-btn-dark-bule!important;
+}
+.u-btn-red {
+    display: block;
+    width: 160px!important;
+    margin: 0 auto!important;
+    text-align: center!important;
+    height: 40px!important;
+    line-height: 40px!important;
+    padding: 0!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    background: @pb-btn-red!important;
+    border: 1px solid @pb-btn-red!important;
+}
+
+
+
+
+
+

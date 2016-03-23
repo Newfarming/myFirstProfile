@@ -1,0 +1,279 @@
+{% extends 'base_crm.html' %}
+{% load compress %}
+{% load endless %}
+{% load candidate_tags %}
+
+{% block sidebar %}
+{% include 'sidebar.html' with candidate_active="active" %}
+{% endblock %}
+
+{% block content %}
+<!--search box1-->
+<form action="." method="get" q_args_json="{{ q_args_json }}" id="search_form">
+    <div class="box box-solid">
+        <div class="row box-body">
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="resume_keywords" placeholder="右侧可以选择精确搜索项">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-flat" type="submit">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    姓名
+                    <input name="search_fields" type="checkbox" value="name" />
+                </label>
+                <label>
+                    职位
+                    <input name="search_fields" type="checkbox" value="works.position_title" />
+                </label>
+                <label>
+                    公司
+                    <input name="search_fields" type="checkbox" value="works.company_name"/>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!--search box2-->
+    <div class="box box-solid">
+        <div class="box-body">
+            <div class="form-inline">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">工作年限</label>
+                            <select id="" name="work_years_min">
+                                <option value="">不限</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                            <select id="" name="work_years_max">
+                                <option value="">不限</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">现居地</label>
+                            <select id="" name="city">
+                                <option value="">不限</option>
+                                <option value="北京">北京</option>
+                                <option value="成都">成都</option>
+                                <option value="上海">上海</option>
+                                <option value="广州">广州</option>
+                                <option value="深圳">深圳</option>
+                                <option value="杭州">杭州</option>
+                                <option value="武汉">武汉</option>
+                                <option value="重庆">重庆</option>
+                                <option value="西安">西安</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">期望城市</label>
+                            <select id="" name="expect_city">
+                                <option value="">不限</option>
+                                <option value="北京">北京</option>
+                                <option value="成都">成都</option>
+                                <option value="上海">上海</option>
+                                <option value="广州">广州</option>
+                                <option value="深圳">深圳</option>
+                                <option value="杭州">杭州</option>
+                                <option value="武汉">武汉</option>
+                                <option value="重庆">重庆</option>
+                                <option value="西安">西安</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">简历来源</label>
+                            <select id="" name="source">
+                                <option value="">不限</option>
+                                <option value="51job">51job</option>
+                                <option value="zhilian">zhilian</option>
+                                <option value="talent_partner">人才伙伴</option>
+                                <option value="brick">C端投递</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">是否联系</label>
+                            <select id="" name="has_contact">
+                                <option value="">不限</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">管理员</label>
+                            <select id="" name="admin_id" class="form-control select2">
+                                <option value="">不限</option>
+                                {% for admin in admin_list %}
+                                <option value="{{ admin.id }}">{{ admin.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">确定</button>
+                        <button type="button" class="btn btn-default" id="clear_query_btn">清空</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">求职状态</label>
+                            <select id="" name="job_hunting_state">
+                                <option value="">不限</option>
+                                <option value="求职">求职</option>
+                                <option value="观望">观望</option>
+                                <option value="稳定">稳定</option>
+                                <option value="应届">应届</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</form>
+<!--result table-->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body">
+                <table class="table no-margin">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>职位</th>
+                            <th>公司</th>
+                            <th>现居地</th>
+                            <th>联系方式</th>
+                            <th>联系过</th>
+                            <th>下载数</th>
+                            <th>推荐数</th>
+                            <th>举报</th>
+                            <th>求职状态</th>
+                            <th>最近操作</th>
+                            <th>简历来源</th>
+                            <th>操作</th>
+                            <th>更新时间</th>
+                            <th>管理员</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% paginate 20 paginate_query %}
+                        {% for candidate in candidate_list %}
+                        <tr class="number-{{ candidate.id }}">
+                            <td><a href="{% url 'crm-candidate-details' candidate.resume_id %}">{{ candidate.name }}</a></td>
+                            <td>{{ candidate.work.position_title }}</td>
+                            <td>{{ candidate.work.company_name }}</td>
+                            <td>{{ candidate.address }}</td>
+                            <td>
+                                {{ candidate.phone }}<br>
+                                {{ candidate.email }}<br>
+                                {% if candidate.qq and candidate.qq != 'null' %}
+                                {{ candidate.qq|default:'' }}<br>
+                                {% endif %}
+                            </td>
+                            <td>{% if candidate.candidate.has_contact %}是{% else %}否{% endif %}</td>
+                            <td>
+                                <a href="{% url 'crm-candidate-details' candidate.resume_id %}#tab_download_records">{{ candidate.download_count }}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'crm-candidate-details' candidate.resume_id %}#tab_reco_feed">{{ candidate.reco_count }}</a>
+                            </td>
+                            <td>{% if candidate.has_accu %}是{% else %}否{% endif %}</td>
+                            <td>
+                                <span class="dropdown notifications-menu">
+                                    <!-- Menu toggle button -->
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                      <span id="show_job_status_{{candidate.resume_id}}"  class="btn bg-light-blue disabled color-palette btn-flat btn-block">{{ candidate.job_target.hunting_status|default:'未知' }}</span>
+                                    </a>
+                                    <ul data-resume_id="{{ candidate.resume_id }}" class="dropdown-menu sleect_job_status">
+                                        <li><a href="">求职(已离职)</a></li>
+                                        <li><a href="">观望(仍在职)</a></li>
+                                        <li><a href="">稳定(仍在职)</a></li>
+                                    </ul>
+                                </span>
+                            </td>
+                            <td>{{ candidate.candidate.update_time|date:'Y-m-d H:i' }}</td>
+                            <td>{{ candidate.source|get_candidate_cn }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#" data-toggle="modal" data-target="#addFeedModal" data-contact_id="{{ candidate.resume_id }}" data-contact_info="{{ candidate.name }} {{ candidate.phone }} {{ candidate.work.position_title }}">加入定制</a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#sendCardModal" data-email="{{ candidate.email }}" data-contact_id="{{ candidate.id }}">发送企业名片</a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#assignModal" data-contact_id="{{ candidate.id }}">分配管理员</a></li>
+                                        <li><a href="#" data-toggle="modal" data-target="#remarkModal" data-contact_id="{{ candidate.id }}">添加评价</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>{{ candidate.update_time }}</td>
+                            <td>{{ candidate.candidate.admin.username }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                {% get_pages %}
+                {{ pages }}
+            </div>
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div>
+
+{% include 'candidate/modal/assign_modal.html' %}
+{% include 'candidate/modal/add_comment.html' %}
+{% include 'candidate/modal/send_company_card.html' %}
+{% include 'candidate/modal/add_feed.html' %}
+<script>
+    //修改求职状态
+    $(".sleect_job_status").on("click", "li", function (event) {
+
+        var $this = $(this),
+            job_status = $this.text();
+        var resume_id = $this.parent().attr("data-resume_id");
+
+        $.post("/crm/candidate/update_jobstatus/",{
+                job_status: job_status,
+                resume_id: resume_id
+            },
+            function(result) {
+              if (result.status == 'ok'){
+                $("#show_job_status_"+resume_id).text(job_status);
+              }
+              else{
+                alert(result.msg);
+              }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block footer %}
+{% compress js %}
+<script src="{{ STATIC_URL }}crm/candidate/list.js"></script>
+{% endcompress %}
+{% endblock %}

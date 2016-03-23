@@ -1,0 +1,45 @@
+{% load resume_tags %}
+{% load endless %}
+<div class="resume-list-table">
+    {% paginate 20 resume_list %}
+    <table>
+        <thead>
+            <tr>
+                <th width="20%">简历ID </th>
+                <th width="10%">候选人</th>
+                <th width="10%">上传时间</th>
+                <th width="10%">入库时间</th>
+                <th width="10%">下载次数</th>
+                <th width="10%">举报次数</th>
+                <th width="10%">奖励总点数</th>
+                <th width="10%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resume in resume_list %}
+            <tr class="resume-single">
+                <td>
+                    {{ resume.resume_id }}
+                </td>
+                <td>
+                    {{ resume.name }}
+                </td>
+                <td>{{ resume.upload_time|date:'Y-m-d H:i' }}</td>
+                <td>{{ resume.pass_time|date:'Y-m-d H:i' }}</td>
+                <td>
+                    {{ resume|trace_type_count:'download' }}
+                </td>
+                <td>{{ resume|trace_type_count:'accusation' }}</td>
+
+                <td class="date-field">
+                    {{ resume|get_resume_point }}
+                </td>
+                <td class="date-field">
+                    <a class="blue-a JS_tip_a" href="javascript:;" data-url="{% url 'resume-trace-list' resume.id %}">查看明细</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    {% show_pages %}
+</div>

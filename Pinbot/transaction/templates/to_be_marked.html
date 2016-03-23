@@ -1,0 +1,181 @@
+{% extends 'base_center.html' %}
+{% load endless %}
+{% load job_tags %}
+
+{% block header %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/resume_list.min.css?20150513" />
+{% endblock %}
+
+{% block nav_header %}
+{% include 'alpha/new-header.html' with watch_class='curr' %}
+{% endblock %}
+
+{% block sub_header %}
+<div class="main-subnav">
+    <div id="resume-list-header">
+        <ul class="main-subnav-list">
+            <li class="first-child">
+                <a href="/resumes/watch/">我的收藏</a>
+            </li>
+            <li>
+                <a href="/transaction/bought">我的下载</a>
+            </li>
+            <li>
+                <a href="{% url 'feed-receive-resume' %}">投递我的</a>
+            </li>
+            <li class="on">
+                <a href="{% url 'transaction-buy-record' %}?query=unmark" class="qzz">待标记简历</a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div id="main" class="noborder">
+        <div id="content" class="clearfix hover-layer">
+            <div class="resume-list-table">
+                <div class="select unmarked text-right">
+                    <a href="javascript:;" class="i-checkbox JS_un_mark"><i></i>没有标记记录的简历</a>
+                </div>
+                {% paginate 10 record_list %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="80">下载日期</th>
+                            <th width="15%">联系信息</th>
+                            <th width="15%">基本信息</th>
+                            <th width="15%">最近工作</th>
+                            <th>最高学历</th>
+                            <th>标记时间</th>
+                            <th width="15%">最近一次简历状态</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% if record_list %}
+                    {% for record in record_list %}
+                    <tr class="hover-layer">
+                        <td>
+                            <p>
+                                {{ record.op_time|date:'Y-m-d H:i' }}
+                                <a class="resume-link none" href="/resumes/display/{{record.resume_id}}/?feed_id={{record.feed_id}}" target="{{record.id}}"><span>查看</span></a>
+                            </p>
+                        </td>
+                        <td>
+                            <p><span>{{ record.contact_info.name }}</span></p>
+                            <p><span>{{ record.contact_info.phone }}</span></p>
+                            <p><span>{{ record.contact_info.email }}</span></p>
+                        </td>
+                        <td>
+                            <p>
+                                <span>{{ record.resume_info.gender}}</span>
+                                <span> {{ record.resume_info.age }}岁</span>
+                                <span>{% if resume.work_years %}
+                                           {{ resume.work_years }} 年经验
+                                       {% endif %}
+                                </span>
+                            </p>
+                            <p>
+                                <span>{% if record.resume_info.job_target.job_hunting_state %}
+                                      {{ record.resume_info.job_target.job_hunting_state }}
+                                      {% endif %}
+                                </span>
+                            </p>
+                            <p>
+                                <span>意向地:
+                                {% for area in record.resume_info.job_target.expectation_area %}
+                                   {{ area }}
+                                {% endfor %}
+                                </span>
+                            </p>
+                        </td>
+                        <td>
+                            {% if record.resume_info.works %}
+                              {% with lastcompany=record.resume_info.works.0 %}
+                                <p class="work-range"><span>{{ lastcompany.start_time }} 至 {{ lastcompany.end_time }}</span></p>
+                                <p class="work-company">
+                                    <span>{{ lastcompany.company_name }}</span>
+                                    <span>{{ lastcompany.position_title }}</span>
+                                </p>
+
+                              {% endwith %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ record.resume_info.educations.0.degree }}
+                        </td>
+                        <td>
+                            <code class="cf26e66">{{ record.resume_mark.mark_time|date:'Y-m-d H:i' }}</code>
+                        </td>
+                        <td>
+                            <code class="c42b3e5">{{ record.resume_mark.current_mark.desc|default:'未标记' }}</code>
+                        </td>
+                        <td>
+                            <a class="i-edit-mark JS_prevent_default" href="{% url 'transaction-mark-resume' record.id %}"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="9">
+                            <p class="no-list"><i class="i-l-notice"></i>暂时没有任何数据！</p>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+                {% get_pages %}
+                {{ pages }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    <script>
+        $( document ).on( 'mouseover' , '.resume-list-table tr' , function(){
+            $('tr.hover').removeClass('hover');
+            $(this).addClass('hover');
+        }).on( 'mouseleave' , '.resume-list-table tr' , function(){
+            $( this ).removeClass('hover');
+        });
+
+        $( '.resume-list-table tr' ).on( 'click' , function(){
+            $( this ).find('.resume-link span').click();
+        });
+
+        $( '.resume-link' ).on( 'click' , function( e ){
+            e = e || window.event;
+            if( e.stopPropagation ){
+                e.stopPropagation();
+            }else{
+                e.cancelBubble = true;
+            };
+        });
+
+        $('.JS_prevent_default').on( 'click' , function( e ){
+          e.stopPropagation();
+        });
+
+        //获取url，更改feed_status check框
+        var url = window.location.href;
+        if (url.indexOf('mark_status=') != -1) {
+            $('.unmarked').find('.JS_un_mark').addClass('active');
+        };
+
+        //还未反馈的简历
+        $('.unmarked').find('.JS_un_mark').on('click', function(){
+            var static_url = window.location.origin;
+            var $this = $(this);
+            if( !$this.hasClass('active') ){
+                window.location.href = static_url + '/transaction/unmark_resume/?mark_status=1';
+            } else {
+                window.location.href = static_url + '/transaction/unmark_resume/';
+            }
+        });
+
+    </script>
+{% endblock %}

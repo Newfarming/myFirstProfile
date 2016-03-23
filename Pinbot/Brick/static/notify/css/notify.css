@@ -1,0 +1,108 @@
+/* notify.css */
+body{
+    background: #f1f1f1;
+}
+.notify-content{
+    border: solid 1px #E3E3E3;
+    border-top: solid 6px #b1e5fd;
+    width: 90%;
+    max-width: 920px;
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    background: #fff;
+}
+.notify-body{
+    padding: 0 100px 35px;
+}
+.category{
+    padding: 35px 0;
+}
+.category a{
+    display: inline-block;
+    color: #777;
+    font-size: 20px;
+    margin: 0 20px;
+}
+.category a.active{
+    color: #0091fa;
+}
+.category a code{
+    display: inline-block;
+    background: #f23748;
+    width: 10px;
+    height: 10px;
+    color: #fff;
+    border-radius: 50%;
+    vertical-align: top;
+}
+.notify{
+    padding: 5px 0 20px;
+    border-top: solid 1px #ddd;
+    position: relative;
+    cursor: pointer;
+}
+.notify p{
+    color: #777;
+    font-size: 16px;
+}
+.notify p.date{
+    color: #ccc;
+    font-size: 14px;
+    padding-right: 25px;
+}
+.notify h5{
+    font-size: 20px;
+    padding: 10px 0;
+    color: #444;
+}
+.notify:before{
+    position: absolute;
+    right: 0;
+    top: -1px;
+    background: url(../img/remind_g_20x24.fw.png);
+    background-size: 100%;
+    content: ' ';
+    width: 20px;
+    height: 24px;
+}
+.notify.unread:before{
+    position: absolute;
+    right: 0;
+    top: -1px;
+    background: url(../img/remind_r_20x24.fw.png);
+    background-size: 100%;
+    content: ' ';
+    width: 20px;
+    height: 24px;
+}
+
+/* media queries */
+@media ( min-width: 320px ) and ( max-width: 760px ) {  /* 手机设备 */
+    .notify-body{
+        padding: 0 15px 35px;
+    }
+    .category{
+        padding: 0 0 20px;
+    }
+    .category a {
+        margin: 0 5px;
+        font-size: 14px;
+    }
+    .notify p{
+        font-size: 12px;
+    }
+    .notify h5 {
+        font-size: 16px;
+    }
+    @media ( min-width: 481px ) and ( max-width: 760px ){   /* 大屏手机设备 */
+
+    }
+}
+@media ( min-width: 761px ) and ( max-width: 1024px ) { /* pad设备(不区分横竖屏) */
+    
+}
+@media ( min-width: 1025px ){   /* pc设备(默认) */
+
+
+}

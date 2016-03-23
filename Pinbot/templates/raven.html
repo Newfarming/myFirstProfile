@@ -1,0 +1,42 @@
+{% if not debug %}
+    <script src="{{ STATIC_URL }}common/js/raven.min.js"></script>
+{% endif %}
+    <script>
+        {% if not debug %}
+        Raven.config('//1ac3749996334cdca9def0d3c8e202fd@sentry.pinbot.me/10', {
+            release: '1ac3749996334cdca9def0d3c8e202fd'
+        }).install();
+        if(Raven.isSetup()){
+            Raven.setUserContext({
+                {% if debug %}
+                email: 'lvyadong@hopperclouds.com'
+                {% else %}
+                email: '{{ request.user.username }}'
+                {% endif %}
+            })
+            window.onerror = function(message, url, lineNumber) {
+                var params = [];
+                params[0] = '['+lineNumber+']';
+                params[1] = '' + message;
+                try {
+                    var errMsg = params.join('').trim();
+                    //ignore error: Script error.
+                    //Uncaught ReferenceError: $ is not defined
+                    if(errMsg.match(/^\[0\]Script error/i) || errMsg.match(/^\[[0-9]+\]Uncaught ReferenceError: \$ is not defined/i)){}else{
+                        throw new Error(errMsg);
+                    }
+                } catch(e) {
+                    Raven.captureException(e)
+                }
+                // prevents browser error messages
+                return true;
+            };
+        }
+        {% endif %}
+
+        {% if debug %}
+        var pbDebug=true;
+        {% else %}
+        var pbDebug=false;
+        {% endif %}
+    </script>

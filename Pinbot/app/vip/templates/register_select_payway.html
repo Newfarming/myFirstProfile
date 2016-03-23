@@ -1,0 +1,45 @@
+{% extends 'base_account.html' %}
+{% load utils_tag %}
+
+{% block header %}
+{{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}beta/styles/app/index.css" />
+{% endblock %}
+{% block content %}
+    <div class="register welcome">
+        <div class="layout">
+            <a class="logo" href="/" title=""></a>
+            <div class="main">
+                <div class="header">
+                    <h1>申请会员</h1>
+                    <div class="steps at-step-3">
+                        <span class="step1">填写信息</span>
+                        <span class="step2">&nbsp;选择会员级别</span>
+                        <span class="step3">&nbsp;支付会员费用</span>
+                        <span class="step4">申请完成</span>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h2>完成<span class="fc863f">{% math_expr user_vip.vip_role.price '-' current_vip.vip_role.price %}元</span>付款，即可享受<span class="vip_{{ user_vip.vip_role.level }}">{{ user_vip.vip_role.vip_name }}</span>会员服务～！</h2>
+                    <div class="payway_field">
+                        <a href="#" class="alipay payway selected"></a>
+                        <a href="#" class="weixinpay payway"><span>敬请期待</span></a>
+                    </div>
+                    <div class="confirm_pay">
+                        <a class="btn confirm_pay_btn" url="{% url 'vip-create-order' %}">确认支付</a>
+                        <label>如需选用其他支付方式，请<a href="#" class="contact c42b4e6 yingxiao_qq" style="display:inline;" id="contact_us">联系我们</a></label>
+                    </div>
+                </div>
+
+            </div><!-- main -->
+        </div><!-- layout -->
+    </div><!-- register -->
+{% endblock %}
+{% block footer_html %}
+{% include 'footer.html' %}
+{% endblock %}
+{% block footer %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}users/scripts/vip_pay.js"></script>
+{% endblock %}

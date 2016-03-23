@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+{% include 'pinbot_beta/user/header.html' %}
+<body>
+  {%if step == 1 %}
+  <div class="register welcome">
+    <div class="layout">
+      <a class="logo" href="/" title=""></a>
+
+      <div class="main">
+        <div class="header">
+            <h1>申请注册</h1>
+           <div class="steps at-step-1">
+            <span class="step1">填写信息</span>
+            <span class="step2">激活邮箱</span>
+            <span class="step3">注册完成</span>
+            <span class="step4">完善企业信息</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <form action="" method="POST" action="/signup/">
+            {% if status == 'error' %}
+              <p class="error">
+                {% if message == 'user existed' %} 用户已经存在 {% endif%}
+                {% if message == 'password invalid' %} 密码不合法 {% endif%}
+                {% if message == 'input error' %} 请检查你的输入 {% endif%}
+                {% if message == 'other_error'%} 请检查你的输入{%endif%}
+              </p>
+            {% endif%}
+            <div class="account-div">
+              <p>
+                <label>你的邮箱</label><input type="email" tabindex="1" name="email" value="{{email}}" autofocus required autocomplete="off"/>
+              </p>
+              <p>
+                <label>设置密码</label><input type="password" tabindex="7" name="password" value="{{password}}" autofocus required autocomplete="off"/>
+              </p>
+            </div>
+            <p>
+              <label>真实姓名</label><input type="text" tabindex="2" name="name" value="{{name}}"  required autocomplete="off"/>
+            </p>
+            <p>
+              <label>联系电话</label><input type="text" tabindex="3" name="phone" value="{{phone}}" required autocomplete="off"/>
+            </p>
+             <p>
+              <label>联络QQ</label><input type="text" tabindex="4" name="qq" value="{{qq}}" required autocomplete="off"/>
+            </p>
+             <p>
+              <label>企业名称</label><input type="text" tabindex="5" name="company_name" value="{{company_name}}" required autocomplete="off"/>
+            </p>
+            <div class="toggle_div">
+              <label>所在领域<br><span class="fix-span">（最多选<span class="fc863f">3</span>个）</span>
+              </label>
+              <ul class="field_list">
+                <li class="first"><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li class="first"><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li class="first"><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li class="first"><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li class="first"><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li class="first"><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+                <li><a href="#">移动互联网</a></li>
+              </ul>
+            </div>
+            <p class="checkbox-p">
+              <label></label><input type="checkbox" required tabindex="6"/>
+              我已阅读并同意<a href="#" class="protocal">聘宝用户协议</a>
+            </p>
+<!--
+            <p>
+              <label></label>
+              <input type="checkbox" name=""/>
+            </p>
+-->
+            <p class="form-control">
+              <label></label><button type="submit" tabindex="7" class="btn btn-welcome-submit">确认提交</button>
+            </p>
+            <p>
+              <label></label>已有帐号？直接<a href="/signin" class="signin">登录</a>
+            </p>
+            {% csrf_token %}
+          </form>
+        </div>
+
+      </div><!-- main -->
+    </div><!-- layout -->
+  </div><!-- login -->
+  {%endif%}
+
+  {%if step == 2 %}
+  <div class="register welcome">
+    <div class="layout">
+      <a class="logo" href="/" title=""></a>
+
+      <div class="main">
+        <div class="header">
+                    <h1>申请注册</h1>
+          <div class="steps at-step-2">
+            <span class="step1">填写信息</span>
+            <span class="step2">激活邮箱</span>
+            <span class="step3">注册完成</span>
+            <span class="step4">完善企业信息</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="checkmail">
+            <p class="checkmail-main">
+              感谢关注！我们将尽快进行审核，并通过邮件告知结果。
+            </p>
+          </div>
+        </div>
+
+      </div><!-- main -->
+    </div><!-- layout -->
+  </div><!-- login -->
+  {%endif%}
+
+  {%if step == 3 %}
+  <div class="register welcome">
+    <div class="layout">
+      <a class="logo" href="/" title=""></a>
+
+      <div class="main">
+        <div class="header">
+            <h1>申请注册</h1>
+          <div class="steps at-step-3">
+            <span class="step1">填写信息</span>
+            <span class="step2">激活邮箱</span>
+            <span class="step3">注册完成</span>
+            <span class="step4">完善企业信息</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <form action="" method="POST">
+            <p>
+              <input type="password" required placeholder="你的密码"/>
+            </p>
+            <p>
+              <input type="password" required placeholder="确认密码"/>
+                        </p>
+            <p class="form-control">
+              <button type="submit" class="btn btn-welcome-submit">确定</button>
+            </p>
+          </form>
+        </div>
+
+      </div><!-- main -->
+    </div><!-- layout -->
+  </div><!-- login -->
+  {%endif%}
+
+
+  <script src="{{ STATIC_URL }}beta/scripts/lib.js"></script>
+  <script src="{{STATIC_URL}}alpha/scripts/common.js"></script>
+  <script src="{{ STATIC_URL }}beta/scripts/form.js?1a042a56"></script>
+  {% include 'statistic_code.html' %}
+</body>
+</html>

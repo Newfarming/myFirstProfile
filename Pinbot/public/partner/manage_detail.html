@@ -1,0 +1,108 @@
+<p class="relative text-center inline-block search">
+    <input type="text" name="search_key" placeholder="请输入简历关键词，如姓名" class="input w380" maxlength="100" ng-model="search_key">
+    <i class="sprite i-search" ng-click="searchResume($event)" id="JS_search"></i>
+</p>
+<div class="loading-page" ng-if="isLoading">
+    <p class="loading-gif"></p>
+    <p class="loading-text"> Loading... </p>
+</div>
+<div class="manage-detail-item" ng-repeat="item in list_data track by $index" ng-if="!isLoading">
+    <header class="clearfix">
+        <p class="time">{- item.update_time -}</p>
+        <p class="resume-id">简历ID：{- item.resume_id -}</p>
+    </header>
+    <section class="resume-content resume-content-{- item.id -} clearfix" ng-click="link2resume_detail(item.resume_id)">
+        <div class="info">
+            <p class="name">
+                {- item.name -}
+            </p>
+            <p class="work">
+                <span>{- item.expect_position | limitword -}</span>
+                <span class="divide-14"></span>
+                {- item.work_years -}年工作经验
+                <span class="divide-14"></span>
+                {- item.expect_work_place -}
+            </p>
+            <p class="salary">
+                {- item.target_salary | salary -}K以上
+            </p>
+        </div>
+        <div class="handle" ng-click="link2edit_resume(item.id, $event)">
+            <a href="javascript:void(0)">
+                编辑简历
+                <i class="sprite i-pen"></i>
+            </a>
+        </div>
+        <div class="rmb-tip">
+            该简历已帮你赚取<span class="cf46c62">{- item.coin -}</span>金币
+        </div>
+    </section>
+    <section class="rec-list rec-list-{- item.id -}" ng-if="item.reco_resume_tasks.length != 0">
+        <table>
+            <thead>
+                <tr>
+                    <th class="tfirst">推荐职位名称</th>
+                    <th>公司名称</th>
+                    <th>月薪范围</th>
+                    <th>城市</th>
+                    <th>更新时间</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-click="show_feed(task)" ng-repeat="task in item.reco_resume_tasks track by $index">
+                    <td class="tfirst">{- task.feed.title || task.feed.keywords -}</td>
+                    <td>{- task.feed.company.company_name -}</td>
+                    <td>{- task.feed.salary_min | formatMoney:task.feed.salary_max -}</td>
+                    <td>{- task.feed.expect_area | joinCity-}</td>
+                    <td>{- task.reco_time -}</td>
+                    <td class="handle">
+                        <a href="javascript:void(0)" ng-click="accept_mission(task.id, item.id, $event, task)">接受任务</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<a class="load-more" id="JS_fetch_more" ng-if="hasMore" ng-click="fetchMore()">查看更多</a>
+<div class="loading-page" ng-if="is_paginated">
+    <p class="loading-gif"></p>
+    <p class="loading-text"> Loading... </p>
+</div>
+<!-- 定制预览 -->
+<div class="modal-backdrop-view" ng-if="viewFeed"></div>
+<div class="modal-view" tabindex="-1" style="display:block" ng-if="viewFeed">
+    <div class="modal-dialog-view" style="border-top: solid 6px #0091FA;">
+        <div class="modal-content-view">
+            <p class="close-layer text-right">
+                <a href="javascript:;" class="close-layerout-btn" ng-click="toggleView()"></a>
+            </p>
+            <div class="modal-body-view">
+                <div class="view-body">
+                    <h2 class="view-title">{- feedData.feed.title || feedData.feed.keywords -}</h2>
+                    <p class="view-salary mt10">{- feedData.feed.salary_min | formatMoney:feedData.feed.salary_max -}</p>
+                    <div class="mt10">
+                        <p>
+                            <a href="javascript:;" class="view-desc-btn" ng-click="toggleDesc()">职位详情</a>
+                        </p>
+                        <div class="view-desc mt10" ng-bind-html="feedData.feed.job_desc | as_html" ng-if="showViewDesc"></div>
+                        <p ng-if="showViewDesc">
+                            <a href="javascript:;" class="close-desc mt10 shrink-desc" ng-click="toggleDesc()"></a>
+                        </p>
+                    </div>
+                    <p class="view-company-name mt10" ng-if="feedData.company.company_name">{- feedData.company.company_name -}</p>
+                    <p class="view-area mt10" ng-if=" ( feedData.feed.expect_area && feedData.feed.expect_area.length ) || feedData.company.company_stage">
+                        <span ng-if="feedData.feed.expect_area && feedData.feed.expect_area.length">{- feedData.feed.expect_area | joinCity -}</span>
+                        <span ng-if="feedData.company.company_stage">, &nbsp;&nbsp;{- feedData.company.company_stage -}</span>
+                    </p>
+                    <p class="view-cat mt10" ng-if=" feedData.feed.job_domain && feedData.feed.job_domain.length ">{- feedData.feed.job_domain | category -}</p>
+                    <p class="view-url mt10" ng-if="feedData.company.product_url"><a target="_blank" href="{- feedData.company.product_url -}">{- feedData.company.product_url -}</a></p>
+                    <p class="view-welfare" ng-if=" feedData.feed.job_welfare && feedData.feed.job_welfare.length ">
+                        <span ng-repeat="v_welfare in feedData.feed.job_welfare track by $index">{- v_welfare -}</span>
+                    </p>
+                    <div class="view-key_points mt10" ng-if="feedData.company.key_points">{- feedData.company.key_points -}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

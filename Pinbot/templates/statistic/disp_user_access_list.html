@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Pinbot分析统计</title>
+    <link href="{{ STATIC_URL }}statis/css/basic.css" type="text/css" rel="stylesheet" />
+    
+</head>
+<body>
+
+
+
+
+<table>
+    <caption><h3>{{username}}--{{company_name}}</h3>最近访问记录</caption>
+
+
+
+    <tbody>
+    
+      <tr>
+       <td>编号</td> 
+       <td>用户操作</td>
+       <td>关键词</td>
+       <td>页面耗时(秒)</td>
+       <td>访问ip</td>
+       <td>访问时间</td>
+      </tr>
+	{%for access_list in access_record_list%}
+	    <tr>
+	          <td>{{forloop.counter}}</td>
+	        {%for tmp in access_list%}
+	            {%if forloop.counter == 4 %}
+	      <td><a href="http://www.ip138.com/ips138.asp?ip={{tmp}}&action=2">{{tmp}}</a></td>
+	            {%elif forloop.last%}
+	                 <td>{{tmp|date:"Y-m-d   H:i"}}</td>
+	            {%else%}
+	                  <td>{{tmp}} </td>
+	            {%endif%}
+	        {%endfor%}
+	    </tr>
+	{%endfor%}
+        
+    </tbody>
+</table>    
+</body>
+</html>

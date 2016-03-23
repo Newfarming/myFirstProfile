@@ -1,0 +1,136 @@
+/* 步骤样式 */
+
+.stepBox {
+  width: 100%;
+}
+.stepBox ul.steps-info {
+  list-style: none;
+  margin-bottom: 60px !important;
+}
+.stepBox ul.steps-info-line {
+  list-style: none;
+}
+.stepBox ul.steps-info-line li {
+  width: 25%;
+  height: 2px;
+  float: left;
+  background-color: #f2f2f2;
+}
+.stepBox ul.steps-info-line li.active {
+  background-color: #f46c62;
+}
+.stepBox ul.steps-info {
+  width: 660px;
+  height: 10px;
+  margin: 0 auto;
+}
+.stepBox ul.steps-info li {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  width: 33.333%;
+}
+.stepBox ul.steps-info li > span {
+  position: relative;
+  top: -18px;
+  left: 1px;
+}
+.stepBox ul.steps-info li > span > span {
+  position: relative;
+  top: 1px;
+  left: 0px;
+}
+.stepBox ul.steps-info li > span.step-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -khtml-border-radius: 16px;
+  border-radius: 16px;
+  font-size: 13px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  background-color: #cfd8dc;
+  margin: 0 auto;
+}
+.stepBox ul.steps-info li > span.step-info {
+  display: block;
+  font-size: 13px;
+  margin-top: 5px;
+  color: #aaaaaa;
+}
+.stepBox ul.steps-info li.active > span.step-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -khtml-border-radius: 16px;
+  border-radius: 16px;
+  font-size: 13px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  background-color: #607d8b;
+  margin: 0 auto;
+}
+.stepBox ul.steps-info li.active > span.step-info {
+  display: block;
+  font-size: 13px;
+  margin-top: 5px;
+  color: #607d8b;
+}
+
+ul.step-title {
+  max-width: 640px;
+  list-style: none;
+  margin: 0 auto;
+  margin-bottom: 100px !important;
+  margin-top: -15px !important;
+  clear: both;
+}
+ul.step-title li {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+  width: 59%;
+  float: left;
+  border: 1px #ffffff solid !important;
+}
+ul.step-title li a {
+  display: none;
+  line-height: 43px;
+  text-indent: -9999px;
+}
+ul.step-title li a.active {
+  display: block;
+}
+ul.step-title li.step-title-prev.active a.active {
+  width: 60px !important;
+  height: 60px !important;
+  overflow: hidden;
+  background: url("/static/b_index/img/sprite.png") -360px -120px no-repeat;
+  margin-left: 70px;
+}
+ul.step-title li.step-title-next.active a.active {
+  width: 60px !important;
+  height: 60px !important;
+  overflow: hidden;
+  background: url("/static/b_index/img/sprite.png") -180px -60px no-repeat;
+}
+ul.step-title li:first-child {
+  width: 20% !important;
+}
+ul.step-title li:last-child {
+  width: 20% !important;
+}
+.step-title-center h1 {
+  line-height: 62px;
+  font-size: 1.2em;
+}
+
+

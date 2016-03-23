@@ -1,0 +1,166 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background: url(../img/bg_02.png) repeat;
+}
+.section{
+    position: relative;
+}
+.header{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+img[response]{
+    width: 100%;
+    display: block;
+}
+.to-index{
+    position: absolute;
+    width: 20%;
+    height: 70%;
+    left: 50%;
+    margin-left: -10%;
+    top: 0;
+    text-indent: -999em;
+    overflow: hidden;
+}
+.circle{
+    width: 70%;
+    position: absolute;
+    top: 13%;
+    left: 15%; 
+}
+.message{
+    width: 90%;
+    top: 70%;
+    position: absolute;
+    left: 5%;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+    opacity: 0;
+}
+.petals{
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    top: 5%;
+    background: url(../img/m/3_1024x790.png) no-repeat;
+    background-size: contain;
+}
+.sign-btn{
+    width: 53%;
+    position: absolute;
+    bottom: 5%;
+    left: 23.5%;
+    -webkit-transition: all 1s ease-in;
+    transition: all 1s ease-in;
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+}
+.exclusive{
+    display: inline-block;
+    width: 33%;
+    right: -40px;
+    top: -10px;
+    position: absolute;
+}
+.message.active{
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+.sign-btn.active{
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+.bg1{
+    background: url(../img/bg_01.png) repeat;
+    box-shadow: 0 -5px 10px rgba(0,0,0,.15) inset;
+}
+.mt30{
+    margin-top: 30px !important;
+}
+.customer{
+    width: 86%;
+    position: relative;
+    background: #fff;
+    margin: 0 auto;
+    padding: 7% 2% 1%;
+    box-shadow: 5px 5px 0 #D2FFFF;
+}
+.customer aside{
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    box-shadow: 3px 3px 0 #1e98cc;
+    top: -9px;
+}
+.customer ul{
+    display: block;
+}
+.customer ul li{
+    width: 33%;
+    float: left;
+}
+.step{
+    width: 90%;
+    margin: 0 auto;
+}
+.step2-title{
+    width: 39%;
+    position: absolute;
+    left: 30.5%;
+    top: -9px;
+}
+.sign-now{
+    width: 90%;
+    margin: 0 auto;
+}
+.sign-now-btn{
+    position: absolute;
+    width: 60%;
+    top: 33%;
+    left: 20%;
+}
+.copyright{
+    padding: 50px 0 20px;
+}
+.copyright p,.copyright p a{
+    color: #999999;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+@-webkit-keyframes fadeup{
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+        -webkit-transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+}
+@keyframes fadeup{
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+        -webkit-transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+    }
+}

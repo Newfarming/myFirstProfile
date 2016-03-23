@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block header %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}brick/css/404500.css" />
+{% endblock %}
+
+{% block body %}
+	<div class="content">
+	    <div class="inner-content">
+	        <p class="title">
+	        	<img src="{{ STATIC_URL }}brick/img/404_201x34.png"/>
+	    	</p>
+	        <p class="notfound_d">
+	        	页面找不着了，但你可以帮我找找我们的PM，她因为吃了太多酱油，走进了黑夜里，我们找不回来她了。
+	        </p>
+	        <p class="notfound_p">
+	        	<img src="{{ STATIC_URL }}brick/img/zhaobudaoduixiang_279x196.png"/>
+	        	<a href="javascript:history.go(-1)"><img src="{{ STATIC_URL }}brick/img/fanhui_107x32.png"/></a>
+	    	</p>
+	    </div>
+	</div>
+{% endblock %}

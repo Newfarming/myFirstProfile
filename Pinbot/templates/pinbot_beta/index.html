@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>聘宝 - 专业人才推荐</title>
+  <meta name="Keywords" content="招聘, 企业招聘, 人才招聘, 定位人才，聘宝"/>
+  <meta name="Description" content="提供优质简历，尊重招聘效果"/>
+  <meta name="baidu-site-verification" content="iNRbJiDIO7" />
+  <meta name="viewport" content="width=device-width">
+  <meta property="qc:admins" content="6073361316274655" />
+  <!--<meta name="baidu-site-verification" content="H1mlNXEdZn" />
+  <meta name="360-site-verification" content="d33b49bc2037818010f3093b1f75c36b" />
+  -->
+  <link rel="stylesheet" href="{{STATIC_URL}}beta/styles/app/index.min.css?d1044781"/>
+  <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+  <script>document.createElement('nav');</script>
+</head>
+<body>
+
+{% include 'pinbot_beta/home_header.html' %}
+
+  <div id="focus">
+    <div class="main">
+      <h1>聘宝 专业人才推荐, 提供优质简历，尊重招聘效果 </h1>
+      {%if not loged_in %}
+          <p>
+            <a href="{% url 'user-account-reg' %}" class="btn btn-register-now">申请会员</a>
+          </p>
+      {%endif%}
+    </div>
+  </div>
+
+  <div id="how-it-works">
+    <div class="layout">
+      <h2 class="sec-title">如何使用聘宝？</h2>
+      <ol class="clearfix">
+        <li class="n0">
+           <a class="circle a1" href="/signup">
+             <span class="inner">
+                <span class="front">
+                  <i class="i-img"></i>
+                  <i class="i-words">去注册</i>
+                </span>
+             </span>
+             <span class="outer"></span>
+             <label class="description">注册并支付成为聘宝会员</label>
+           </a>
+           <i class="i-gt i-gt-1"></i>
+           <a class="circle a2" href="/special_feed/page/">
+             <span class="inner">
+                <span class="front">
+                  <i class="i-img"></i>
+                  <i class="i-words">提交定制</i>
+                </span>
+             </span>
+             <span class="outer"></span>
+             <label class="description">体验定制服务招聘优秀人才</label>
+           </a>
+           <i class="i-gt i-gt-2"></i>
+           <a class="circle a3" href="/users/price?from=index">
+             <span class="inner">
+                <span class="front">
+                  <i class="i-img"></i>
+                  <i class="i-words">费用说明</i>
+                </span>
+             </span>
+             <span class="outer"></span>
+             <label class="description">成功入职后支付服务费用</label>
+           </a>
+        </li>
+        <li class="n1">
+          <div class="words">
+            <h3>优质人才</h3>
+            <p>聘宝的人才资源来自聘宝猎头团队及合作伙伴，从数据源控制人才质量。每一位合作伙伴均通过聘宝官方的考察认证。<a href="javascript:;" title="成为聘宝合作伙伴" class="tips-a" onclick="$('#JS_more_info').toggle()">成为聘宝合作伙伴</a>
+
+            </p>
+            <p class="tips" id="JS_more_info">
+                <i class="i-tarr"></i>
+                聘宝旨在最大化所有人才资源的价值，合作伙伴包括IT互联网行业的HR、资深从业者及猎头，如果你身边拥有一些正在找工作的优质人才，聘宝能助他/她找到更好的工作，并给推荐者多种奖励。<span>咨询电话：</span><em>028-83330727</em>
+            </p>
+          </div>
+        </li>
+        <li class="n2">
+          <div class="words">
+            <h3>算法评估</h3>
+            <p>聘宝基于招聘专家经验，不仅通过字面匹配，而是先通过解析算法，
+              独立考察基本素质、工作经验、教育背景、核心技能等多项指标，并给人才进行筛选和分类。
+            </p>
+          </div>
+        </li>
+        <li class="n3">
+          <div class="words">
+            <h3>聘宝复查</h3>
+            <p>最终聘宝团队会复查每一位候选人的简历，检查算法匹配的结果，
+              进一步把关给您推荐的人才质量。
+            </p>
+          </div>
+        </li>
+        <li class="n4">
+          <div class="words">
+            <h3>专业推荐</h3>
+            <p>聘宝将每日整理符合标准的候选人，并在每一个早晨，在线将精心准备的人才推荐到你创建的职位，或热门的职位中。
+            </p>
+          </div>
+        </li>
+        <li class="n6">
+          <div class="words">
+            <h3>专属服务</h3>
+            <p>聘宝专属顾问会为你提供私人猎头般的使用体验。无论你对推荐结果存在疑问或者需求，均可以随时联系你的顾问。
+            </p>
+          </div>
+        </li>
+         <li class="n5">
+          <div class="words">
+            <h3>效果保证</h3>
+            <p>聘宝确保您的每一分投入都物有所值。简历购买前低成本确认候选人求职意愿，若候选人感兴趣才会扣除余下点数，若候选人不感兴趣，则不再扣除任何点数，保证您的招聘效果。
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div id="clients">
+    <div class="layout">
+
+      <h2 class="sec-title">客户的满意，我们的目标</h2>
+      <div class="clients-slider">
+        <div class="what-they-say">
+          <ul class="clearfix">
+            <li>
+              <div>
+                <p class="quote">比某联和某忧投递过来的简历精确很多，比某勾简历的量多很多。 </p>
+                <p class="from"><img src="{{STATIC_URL}}beta/images/index/clients/kuwo.png"/>酷我音乐HR</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p class="quote">聘宝是新的招聘工具模式，推荐简历服务非常好，希望以后继续完善。</p>
+                <p class="from"><img src="{{STATIC_URL}}beta/images/index/clients/bashi.png"/>巴适游戏HR</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p class="quote">产品使用更方便，服务用户这块做的很好。</p>
+                <p class="from"><img src="{{STATIC_URL}}beta/images/index/clients/wasai.png"/>哇噻网HR</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p class="quote">聘宝的简历与职位匹配度比较高，省去了很多筛选简历的时间，每天都有订阅提醒，方便多快好省的拿到理想人选的简历。</p>
+                <p class="from"><img src="{{STATIC_URL}}beta/images/index/clients/paita.png"/>拍它HR </p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p class="quote">简历的质量度很高，想寻觅中高端人才的话pinbot还是很给力的！</p>
+                <p class="from"><img src="{{STATIC_URL}}beta/images/index/clients/qunar.png"/>去哪儿HR</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <span class="clients-slider-left"></span>
+        <span class="clients-slider-right"></span>
+      </div>
+
+      <div class="logos">
+        <img src="{{STATIC_URL}}beta/images/index/clients-logo.png"/>
+      </div>
+
+    </div> <!-- layout -->
+  </div><!-- #clients -->
+
+
+
+  <div id="footer" class="footer-index">
+    <div class="layout clearfix">
+      <div class="f-links">
+        <h2>友情链接</h2>
+        <ul>
+          <li><a href="http://www.qq.com/" class="first" target="_blank">腾讯</a></li>
+          <li><a href="http://www.immomo.com/" target="_blank">陌陌</a></li>
+          <li><a href="http://www.glu.com/" target="_blank">glu</a></li>
+          <li><a href="http://www.jd.com/" target="_blank">京东</a></li>
+          <li><a href="http://www.kuwo.cn/" target="_blank">酷我音乐</a></li>
+          <li><a href="http://www.wandoujia.com/" target="_blank">豌豆荚</a></li>
+          <li><a href="http://www.qunar.com/" target="_blank">去哪儿</a></li>
+          <li><a href="http://www.chuangyeshequ.cn/" target="_blank">创业社区</a></li>
+          <li><a href="http://fir.im/" target="_blank">FIR</a></li>
+          <li><a href="http://www.fahai.com/" class="last" target="_blank">法海网</a></li>
+        </ul>
+      </div>
+      <div class="about">
+        <div class="about-us">
+          <h2>关于我们</h2>
+          <p>
+            浩泊云动科技有限公司，致力于依托互联网提供专业优质的招聘服务。团队成员包括来自阿里巴巴、腾讯、IBM的资深产品技术人员，也包括资深的招聘顾问。
+          </p>
+        </div>
+        <p class="copyright">Copyright &copy; 2013 - 2016 HopperClouds, Inc.</p>
+      </div>
+
+      <ul class="contact">
+        <li>
+          <i class="ic ic-tel"></i>
+          <a class="contact-tel">028-83330727</a>
+        </li>
+        <li>
+          <i class="ic ic-mail"></i>
+          <a href="mailto:hello@hopperclouds.com">hello@hopperclouds.com</a>
+        </li>
+        <li>
+          <i class="ic ic-weibo"></i>
+          <a href="http://weibo.com/u/3739464981">@关注聘宝</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="{{STATIC_URL}}beta/scripts/lib.js"></script>
+  <script>
+  $(function() {
+      var $container = $('.clients-slider');
+      var $slider = $container.find('ul').css('position', 'relative');
+      var $navPrev = $container.find('.clients-slider-left');
+      var $navNext = $container.find('.clients-slider-right');
+      var max = $slider.find('li').length - 1;
+      var curr = 0;
+      $navNext.on('click', function() {
+        if (curr >= max) { curr = -1; }
+        $slider.stop().animate({'left': -(++curr) * 100 + '%' }, 'normal');
+      });
+      $navPrev.on('click', function() {
+        if (curr <= 0) { curr = max + 1; }
+        $slider.stop().animate({'left': -(--curr) * 100 + '%' }, 'normal');
+      });
+    });
+  </script>
+  {% include 'statistic_code.html' %}
+</body>
+</html>

@@ -1,0 +1,4 @@
+<option value="">不限</option>
+{% for job in job_list %}
+<option value="{{ job.feed_obj_id }}">{{ job.title|default:job.keywords }}</option>
+{% endfor %}

@@ -1,0 +1,211 @@
+{% load show_resume_tags %}
+
+{% if request.user.is_authenticated %}
+{% if not self_upload_resume %}
+<!-- 操作 -->
+<div class="aside" ng-controller="resumeAside">
+    <div class="aside-box aside-resume">
+        <span class="aside-box-title">简历操作</span>
+        {% if recommend_job and recommend_job.company_action == 'unfit' %}
+        <div class="detail-aside-buy buy-status-2">
+            <a href="javascript:void(0);" class="btn-resume btn-grey click-to-download-resume" ng-click="getContactInfo($event)">查看联系方式</a>
+        </div>
+        {% else %}
+        <div class="detail-aside-buy buy-status-1">
+            <a href="javascript:void(0);" class="btn-resume btn-red click-to-download-resume" ng-click="getContactInfo($event)">查看联系方式</a>
+        </div>
+        {% endif %}
+
+        {% if user_buy_status == 'LookUp' %}
+            {% if user_buy_status == 'Secret' %}
+            <div class="detail-aside-buy buy-status-3">
+                <a href="#" class="btn-resume btn-grey">求职者不感兴趣</a>
+            </div>
+            {% else %}
+            <div class="detail-aside-buy">
+                <a href="javascript:void(0);" class="btn-resume btn-grey-no-hover ">候选人待反馈</a>
+            </div>
+            {% endif %}
+        {% else %}
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-dark-blue bd-trace" id="send-company-card-btn" trace-title="发送企业名片" style="display:none">发送企业名片</a>
+        </div>
+        {% endif %}
+
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-resume-fav btn-light-white bd-trace" id="fav-resume-btn" trace-title="收藏简历">收藏简历<i class="icon-fav-star"></i></a>
+        </div>
+
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-light-white bd-trace" id="farword-resume-btn" trace-title="转发简历">转发简历</a>
+        </div>
+
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-light-white bd-trace" id="fav-resume-btn" trace-title="不感兴趣">不感兴趣</a>
+        </div>
+
+        {%if contact_info.status == 'secret'%}
+        <div class="detail-aside-buy buy-status-2">
+            <a href="javascript:void(0);" class="btn-resume btn-grey">候选人已关闭简历</a>
+        </div>
+        {%endif%}
+        {% if user_buy_status == 'LookUp' %}
+        <!-- <div class="detail-aside-buy buy-status-3">
+            <a href="javascript:void(0);" class="btn-resume btn-black">简历已下载</a>
+        </div> -->
+        {%endif%}
+    </div>
+
+
+    <!-- 状态 -->
+    {% if user_buy_status == 'LookUp' %}
+    <div class="aside-box aside-status">
+        <span class="aside-box-title">简历状态标记</span>
+
+    </div>
+    {% endif %}
+    <!-- 备注 -->
+    <div class="aside-box aside-remark">
+
+        <div>
+            <a href="javascript:void(0);" class="btn-resume btn-black bd-trace" id="add-remark-btn" trace-title="添加备注">备注</a>
+        </div>
+        {# autoescape off #}
+        <!-- <div class="notes loading detail-aside-buy" ng-app="Notes" ng-controller="notes" ng-cloak>
+            <a href="" ng-click="toggle()" class="btn-resume btn-black pen bd-trace" id="feed-customize-add-notes-btn" trace-title="添加备注">备注</a>
+          <div class="notes-body">
+            <p class="notes-placeholder bd-trace" ng-click="toggle()" ng-show="!data.length && !openDialog" id="feed-customize-add-notes" trace-title="点击添加备注">点击添加备注</p>
+            <div class="notes-textbox-wrap" ng-show="openDialog">
+              <div class="notes-textbox">
+                <textarea autofocus maxLength="100" ng-model="comment"></textarea>
+              </div>
+              <p class="notes-textbox-action">
+                <span class="btn-add-notes" ng-click="addComment($event)">添加</span>
+              </p>
+            </div>
+
+            <div class="notes-list">
+              <ul class="notes-list-content">
+                <li ng-repeat="d in data">
+                  <h6>{[{d.date |date:'yyyy年MM月dd日'}]}<a ng-click="delComment(d.id, $index)" class="ic btn-del-notes close" href=""></a></h6>
+                  <p>{[{d.text}]}</p>
+                <li>
+              </ul>
+            </div>
+
+            <div class="notes-pager" ng-hide="cachedData.length<=3">
+              <span ng-click="prevPage()" class="ic ic-notes-prev disabled"></span>
+              <span ng-click="nextPage()" class="ic ic-notes-next"></span>
+            </div>
+          </div>
+        </div> -->
+        {# endautoescape #}
+    </div>
+    <!-- 记录 -->
+    {# if user_buy_status == 'LookUp' #}
+    <div class="aside-box aside-log">
+        <span class="aside-box-title">操作记录</span>
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-dark-white">待定</a>
+        </div>
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-blue">待定</a>
+        </div>
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-red">淘汰</a>
+        </div>
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="btn-resume btn-grey">候选人反馈不感兴趣</a>
+        </div>
+        {%if contact_info.status == 'secret'%}
+
+        {% if user_buy_status == '' or not user_buy_status %}
+        {%if send_company_card %}
+        <!-- <div class="detail-aside-buy directly">
+            <a href="javascript:;" class="btn-resume btn-blue has-layer JS_buy_after_sendcard" data-resumeid="{{resume.id}}" data-sendid="{{send_company_card.id}}" >直接下载</a>
+        </div> -->
+        {%endif%}
+        {%endif%}
+        {% if user_buy_status == 'Start' or user_buy_status == 'Crawling' or user_buy_status == 'Parsing' %}
+        <!-- <div class="detail-aside-buy buy-status-2">
+            <a href="#" class="btn-resume btn-blue ready">简历准备中...
+                <i class="i-time"></i>
+                <span class="wait-info">聘宝的部分简历来自猎头渠道，<br>请给予我们一点时间确认联系信息～</span>
+            </a>
+        </div> -->
+        {%endif%}
+
+        {% with resume_mark=resume_buy_record.resume_mark mark=resume_buy_record.resume_mark.current_mark %}
+        {% if user_buy_status == 'LookUp' and resume_mark.accu_status|not_accu %}
+        <div class="detail-aside-buy">
+
+            {% if not mark or not mark.end_status %}
+            <!-- <a href="{% url 'transaction-mark-resume' resume_buy_record.id %}" class="btn-resume btn-blue">标记简历状态</a> -->
+            {% endif %}
+
+            {% if mark.end_status and mark.change %}
+            <!-- <a href="{% url 'transaction-mark-resume' resume_buy_record.id %}" class="btn-resume btn-blue">修改标记</a> -->
+            {% endif%}
+
+            {% if resume_buy_record.resume_mark|get_mark_logs %}
+            <ul class="records">
+                {% for log in resume_buy_record.resume_mark|get_mark_logs %}
+                <li>
+                    <dl>
+                        <dd>{{ log.mark_time|date:'Y/m/d H:i' }}</dd>
+                        <dd>{{ log.mark.desc }}</dd>
+                    </dl>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {%if request.user.is_staff == 1 %}
+        {%if has_feedback or comment_content != "" or offical_feedback %}
+
+        {% if feed_id and feed_id_match %}
+        {% if comment_content != "" %}
+        <p>{{comment_content}}</p>
+        {% endif %}
+        {% endif %}
+
+        {%if offical_feedback%}
+        <br>
+        <p class="global-back">
+            <span class="reason">{{offical_feedback}}</span>
+        </p>
+        {%endif%}
+
+        {%endif%}
+        {%endif%}
+        {%endif%}
+
+        <!-- {_% include 'alpha/detail-aside-enter.html' %_} -->
+        {% if recommend_job.company_action == 'waiting' %}
+        <div class="detail-aside-buy">
+            <a href="javascript:void(0);" class="blue has-layer fit-btn btn-resume btn-blue" data-unfit_url="{% url 'feed-resume-unfit' recommend_job.id %}">该候选人不合适
+            </a>
+        </div>
+        {% endif %}
+        {% if recommend_job.company_action == 'unfit' %}
+        <div class="detail-aside-buy">
+            <a class=" btn-resume btn-red-line">已拒绝求职者</a>
+        </div>
+        {% endif %}
+
+
+
+    </div>
+
+    <div class="notes-body">
+        <a href="javascript:void(0);" class="notes-placeholder bd-trace" id="add-to-folder" trace-title="添加简历到自定义文件夹">添加简历到自定义文件夹</a>
+    </div>
+    {# endif #}
+</div>
+
+{% endif %}
+{% endif %}

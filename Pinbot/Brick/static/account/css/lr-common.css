@@ -1,0 +1,185 @@
+/**login&register**/
+.masthead {
+    line-height: 3rem;
+    padding: 30px 0 0 0;
+    margin: 0;
+}
+.masthead span {
+    font-size: 1.1875rem;
+    color: #607d8b;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin: 0;
+}
+.masthead strong {
+    font-size: 3rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    color: #444444;
+}
+.inner-content {
+    margin: 0 auto;
+    width: 60%;
+}
+.info {
+  color: #777;
+}
+.info a, .active_span a{
+  color: #0091fa;
+  border-bottom: 1px solid #0091fa;
+  padding-left: 2px;
+}
+.apply-code div {
+    padding-top: 1.5625rem;
+}
+.apply-code div.btn{
+  padding-top: 1rem;
+}
+
+.apply-code .input, .apply-code .select, .apply-code .textarea, .apply-code .button {
+    width: 100%;
+    letter-spacing: 1px;
+}
+.apply-code .button {
+  color: white;
+  background: #0091fa;
+  cursor: pointer;
+}
+.apply-code .button:hover {
+  background: #008add;
+  border: 0;
+}
+.apply-code .disabled {
+  background: #ccc;
+  border: 0;
+}
+.apply-code .disabled:hover {
+  background: #ccc;
+  border: 0;
+}
+.apply-code .reset_btn{
+  color: #0091fa;
+  background: #fff;
+}
+.apply-code label {
+	position: relative;
+	padding-top: 15px;
+	padding-top: .9375rem;
+	margin-left: 5%;
+	width: 90%;
+	display: block;
+}
+#forgetForm div:first-child {
+  padding-top: 48px;
+}
+#forgetForm div.btn {
+  padding-top: 32px;
+}
+p.forget-pwd {
+	width: 100%;
+  padding-top: 1rem;
+}
+p.forget-pwd a{
+  color: #777777;
+}
+.login_tip_info, .active_send_resp{
+  color: #f55f6c !important;
+  display: block;
+  text-align: center;
+}
+.active_span{
+  display: block;
+  text-align: center;
+  color: #777777;
+}
+.active_span a{
+  cursor: pointer;
+}
+.result {
+  display: block;
+  text-align: center;
+  color: #0091fa;
+}
+/**reset info tips**/
+.malice, .reset_send_resp, .reset_send_info, .reset_resend_info {
+  display: block;
+  text-align: center;
+  padding-top: 1rem;
+}
+.reset_resend_info{
+  color: #f23748;
+}
+.malice {
+  padding-top: 1rem;
+  color: #f23748;
+}
+.reset_send_resp {
+  color: #777;
+}
+.reset_send_info a {
+  color: #0091fa;
+  border-bottom: 1px solid;
+  cursor: pointer;
+}
+.reset_send_info {
+  color: #777;
+}
+.notice p {
+	padding-top: 0.75rem;
+	color: #777777;
+}
+.notice a.red-line, .notice a.blue-line, a.forget-pwd{
+	cursor: pointer;
+	letter-spacing: 1px;
+	border-bottom: 1px solid;
+	padding: 0 0 0 2px;
+}
+.notice a.blue-line {
+	color: #f23748;
+}
+.notice a.red-line {
+	color: #0091fa;
+}
+@media (min-width: 320px) and (max-width: 760px) {
+  header { padding: 0.9375rem; }
+  header a { font-size: 1.25rem; line-height: 1.59375rem; }
+  .logo { width: 8.4375rem; height: 1.59375rem; }
+  .banner { padding: 1.5625rem 0px; }
+  .masthead { line-height: 2.8125rem; padding: 15px 0 0 0; }
+  .masthead span { font-size: 15px; padding-top: 15px;display: block;}
+  .masthead strong { font-size: 2rem; }
+  .inner-content { width: 80%; }
+  .apply-code { color: #777777; }
+  .apply-code div, #forgetForm div:first-child { padding-top: 1.25rem; }
+  .apply-code div.first{ padding-top: 0; }
+  .apply-code div.btn, #forgetForm div.btn { padding-top: 1rem; }
+  .apply-code p, .apply-code label { padding-top: 0.625rem; }
+  .login_tip_info, .active_send_resp{
+    padding-top: 15px;
+  }
+  a.forget-pwd { letter-spacing: 1px;}
+  #id_common-error{ top: -20px; }
+  .footer { font-size: 18px; }
+  .footer img { width: 30%; }
+  .copyright { color: #777777; padding: 0px 0px 1.875rem; font-size: 12px; }
+  .input, .select, .textarea { padding: 8.5px 10px; font-size: 1rem; }
+  .button { font-size: 16px; padding: 15px 0px; }
+  .i-correct, .i-error { width: 8%; display: inline-block; }
+  .notice {
+    padding-bottom: 48px;
+  }
+  @media (min-width: 481px) and (max-width: 760px) {
+	  .i-correct, .i-error { width: 6%; display: inline-block; }
+   }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  header { padding: 1.5rem 1.25rem; }
+  .banner { padding: 2.5rem 0px; }
+  .apply-code { padding-top: 0rem; }
+  .footer { padding: 1.5625rem 0px 1.875rem; }
+  .copyright { color: #777777; padding: 0px 0px 1.875rem; font-size: 14px; }
+  .input, .select, .textarea { font-size: 20px; }
+  .button { font-size: 24px; }
+}

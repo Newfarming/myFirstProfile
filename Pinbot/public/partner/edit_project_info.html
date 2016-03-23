@@ -1,0 +1,43 @@
+<p class="form-label text-center c607d8b">
+    <label for="JS_base_info" class="relative">项目经验<i class="sprite i-toggle" ng-click="action()" id="i-project"></i></label>
+</p>
+<div class="form-content pt10 long-info project-info" id="JS_project_info">
+    <div class="display-list">
+        <div class="display-item" ng-repeat="item in experience track by $index" ng-if="isPreview(item)">
+            <p class="f14">{- item.start_time -} - {- item.end_time | endTime -}</p>
+            <p class="f16">{- item.project_name -}</p>
+            <p class="f14" ng-bind-html="item.project_desc | as_html"></p>
+            <i class="sprite i-pen" ng-click="edit_item(item, $index)"></i>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="add-handle" ng-click="add_item()" ng-class="{'disabled': isOpenItem}">新增一条</a>
+    <ng-form name="projectForm">
+        <div class="add-content" ng-if="isOpenItem">
+            <div class="mt30">
+                <p class="relative inline-block">
+                    <input type="text" name="project_name" id="JS_project_name" class="input w260" maxlength="80" message-id="project_name_message" ng-model="temp.project_name" placeholder="请输入项目名称" validator="project_name" validate-method="submit">
+                    <span id="project_name_message"></span>
+                </p>
+                <p class="relative inline-block ml115 w260"></p>
+            </div>
+            <div class="calendar-wrapper mt30 clearfix">
+                <calendar-wrapper temp="temp" belong="belong"></calendar-wrapper>
+            </div>
+            <div class="mt30 w640 relative">
+                <textarea name="project_desc" id="" cols="30" rows="6" class="textarea" ng-model="temp.project_desc" placeholder="项目描述" validator="jobDesc" validate-method="submit" message-id="project_desc_message" maxlength="3000"></textarea>
+                <p class="word-tip">(请输入3000字以内的描述)</p>
+                <span id="project_desc_message"></span>
+            </div>
+            <div class="mt30">
+                <p class="relative inline-block text-left w260">
+                    <a href="javascript:void(0)" class="btn btn-blue-90" ng-click="info_form.submit(projectForm)">保存</a>
+                    <a href="javascript:void(0)" class="btn btn-blue-hline-90" ng-click="info_form.reset(projectForm, 'JS_project_info', 'i-project')">取消</a>
+                </p>
+                <p class="relative inline-block text-right w260 ml115">
+                    <a href="javascript:void(0)" class="btn btn-red-hline-90" ng-click="deleteItem(temp)">删除本条</a>
+                </p>
+            </div>
+        </div>
+    </ng-form>
+
+</div>

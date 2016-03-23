@@ -1,0 +1,90 @@
+{% load compress %}
+<!doctype html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>聘宝，专业人才推荐</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    {% compress css %}
+    <!-- <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/alpha.css?1aa1c14b9b8" /> -->
+    <link href="{{ STATIC_URL }}b_common/css/common.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/alpha/styles/cpmpany_card.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}alpha/styles/feed.css" />
+    {% endcompress %}
+
+    <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+    {% include 'sentry_fix.html' %}
+
+    {% compress js %}
+    <script src="{{ STATIC_URL }}alpha/scripts/alpha.js"></script>
+    {% endcompress %}
+</head>
+<body>
+{% include 'alpha/new-header.html' with feed_class='curr' %}
+{% if page_type == 'feed_list'%}
+    <div class="main-subnav">
+        <ul class="main-subnav-list">
+            <li class="first-child {% if function != 'email_setting'%}on{% endif %}"><a href="/feed/">我的定制</a></li>
+            <li class="{% if function == 'email_setting'%}on{% endif %}"><a href="/feed/feedFrequency">定制设置</a></li>
+        </ul>
+    </div>
+{% endif %}
+<div id="main">
+    <div id="content">
+        <div id="new-feed" class="clearfix">
+            {% include 'alpha/feed-list-setting.html' %}
+            <div class="over-date">
+                <p class="over-date-info">
+                    <i class="i-load mb30"></i><br>
+                    嗨！你使用该条职位定制服务已超过7天。请问你已经招到心仪的C++软件工程师人才了吗？
+                </p>
+                <p class="over-date-info clearfix">
+                    <a href="" title="" class="again">
+                        <span>运气稍欠佳，<br>还需继续招聘此岗位人才</span><br>
+                        <i class="i-tick"></i><br>
+                        <strong>继续招聘</strong>
+                    </a>
+                    <a href="" title="" class="ended">
+                        <span>哈哈，招到了！<br>正在酝酿其他岗位人才</span><br>
+                        <i class="i-ring"></i><br>
+                        <strong>完成招聘</strong>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 选择同步企业名片 -->
+<script id="JS_syn_cards" type="text/html">
+    <h3 class="card-layer-title">请选择你要同步的企业名片吧！<a class="i-layerout-close JS_close_layerout" title="关闭" href="javascript:;"></a></h3>
+    <div class="card-layer-content">
+      <div id="JS_jobs_ajax_content" style="position: absolute; left:0; top: 0px; padding: 10px 0;"></div>
+    </div>
+    <div>
+      <a href="javascript:;" class="card_larr" id="JS_left_btn"></a>
+      <a href="javascript:;" class="card_rarr" id="JS_right_btn"></a>
+    </div>
+</script>
+
+{% compress js %}
+<script src="{{ STATIC_URL }}alpha/scripts/common.js?20150310"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/company_card.js?20150702" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/angular.min.js"></script>
+<script src="{{ STATIC_URL }}alpha/scripts/feed.js?20150324"></script>
+<script src="{{ STATIC_URL }}b_common/js/menu.min.js?20150415"></script>
+<script src="{{ STATIC_URL }}b_common/js/notify.js"></script>
+{% endcompress %}
+
+{% block footer_html %}
+{% include 'statistic_code.html' %}
+<div class="fast-menu" id="JS_fast_menu">
+    {% block custom_menu %}
+    {% endblock %}
+    <a href="javascript:;" class="i-service-qa none" id="JS_service_btn" title="联系我们">联系我们</a>
+    <a href="javascript:;" class="i-back-top" data-event="backTop" title="回到顶部" id="JS_back_top">回到顶部</a>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,134 @@
+
+<div class=" ">
+    <ul class="btn-group btn-group-two">
+        <li class="active"><a href="/partner/reco_task/#/list"><span>先做任务</span></a></li>
+        <li class=""><a href="/partner/reco_task/#/resume_first"><span>先录简历</span></a></li>
+    </ul>
+</div>
+
+<!-- 任务进行中-->
+<div>
+    <h3 class="reck-head c607d8b text-center">选择任务推荐合适简历</h3>
+    <!-- <p class="reck-title c607d8b text-center f14">任务推送时间：<span class="c45b5e9" ng-bind="task_time.task_time != 1 ? '不限时间' : '休息时间'"></span>，没有任务不开心？点击<a href="/partner/edit_task_setting/" class="c45b5e9 underline">偏好设置</a>修改</p> -->
+    <p class="reck-title c607d8b text-center f14"><a href="/partner/rule/" class="c45b5e9 underline">查看互助奖励机制</a></p>
+
+    <section class="search">
+        <div class="search-city">
+            <div class="search-city-field" ng-click="toggleCity(showCityList)">
+                工作地：<span>{- selected_city | formatCity -}</span><i class="i-arr-down" ng-class="{'i-arr-up': showCityList}"></i>
+            </div>
+            <ul class="city-list" ng-if="showCityList">
+                <li ng-repeat="item in city_list track by $index" ng-click="setCity(item, $event)" ng-class="{selected: isSelected(item)}">
+                    {- item -}
+                </li>
+                <li class="city-handle">
+                    <a href="javascript:void(0)" ng-click="saveCity()">[确定]</a>
+                </li>
+            </ul>
+        </div>
+        <div class="search-keyword">
+            <input type="text" class="input" placeholder="请输入职位名称或JD关键词搜索，以空格隔开" ng-click="showHistory()" target_type="search_input" ng-keyup="toggleUpDown($event)" ng-model="keyword">
+            <p>
+                例:
+                <span>{- examples | formatExamples -}</span>
+            </p>
+            <ul class="history-list" ng-if="showHistoryList && history_list.length != 0">
+                <li ng-repeat="item in history_list | reverse" ng-mouseover="setHovered($event, $index)" ng-mouseout="clearHovered()" ng-click="setKeyword(item)" ng-keyup="enterHistory($event, item)">
+                    {- item -}
+                    <i class="i-close" ng-click="deleteHistory($event, $index)"></i>
+                </li>
+            </ul>
+        </div>
+        <div class="search-handle">
+            <a href="javascript:void(0)" ng-click="clickSearch()">筛选任务</a>
+        </div>
+        <div class="search-hot">
+            热门职位:
+            <a href="javascript:void(0)" ng-repeat="item in hot_tasks track by $index" ng-click="clickKeyword(item)">{- item -}</a>
+        </div>
+    </section>
+
+    <div class="task-list mt10" ng-if="!noAnyData">
+        <ul class="clearfix" ng-if="!loading">
+            <li ng-repeat="task in datas.data">
+                <p class="earnings">预计收益:{- task.expect_income -}</p>
+                <div class="task-info relative" ng-click="showFeed( task )">
+                    <i class="i-recommand"></i>
+                    <dl>
+                        <dt class="text-overflow">{- task.feed.title || task.feed.keywords -}</dt>
+                        <dd class="text-overflow">{- task.feed.company.company_name -}</dd>
+                        <dd class="text-overflow">{- task.feed.salary_min | formatMoney:task.feed.salary_max -}，{- task.feed.expect_area.join(',') -}</dd>
+                        <dd class="text-overflow" ng-bind-html="task.feed.job_domain | formatTaskDomain:datas.task_domain | as_html"></dd>
+                        <!-- <dd class="text-overflow">人才偏好：<span class="task-tag" ></span></dd> -->
+                        <dd class="text-overflow" ng-if="task.feed.company_prefer.length">人才偏好：<span ng-repeat="prefer in task.feed.company_prefer">{- prefer -}</span></dd>
+                    </dl>
+                </div>
+                <a href="javascript:;" ng-click="isShowLayer( $event , task.id , datas )" class="apply-task opa-btn">领取任务</a>
+                <p class="task-date">任务推荐时间：{- task.reco_time -}</p>
+            </li>
+        </ul>
+        <div class="text-center ajax-loading" ng-if="loading">
+            <img src="/static/partner/images/loading.gif" alt=""><br>
+            Loading...
+        </div>
+        <p class="task-pages text-center" ng-if="datas.pages > 0 && !loading">
+            <a href="javascript:;" class="i-prev" ng-disabled="datas.current == 1" ng-click="prev()"></a>
+            <a href="javascript:;" class="i-next" ng-disabled="datas.pages <= datas.current" ng-click="next()"></a>
+        </p>
+    </div>
+
+    <p class="text-center f14 ajax-loading" ng-if="noAnyData">
+        <img src="/static/b_common/img/no_data.jpg" width="427" height="350" alt="这里空空如也">
+    </p>
+
+</div>
+
+<!-- 接受任务弹窗-->
+<div class="default-modal-backdrop fade in" ng-if="showBackdrop"></div>
+<div class="default-modal" tabindex="-1" style="display: block;" ng-if="showBackdrop">
+    <div class="confirm-dialog">
+        <p class="close-layer text-right"><a href="javascript:;" class="close-layerout-btn" ng-click="toogleBackdrop(false)"></a></p>
+        <div class="dialog-content">
+            <h3 class="c434343 text-center mt20">请选择简历来源</h3>
+            <div class="handler-button text-center">
+                <a class="dialog-btn red-btn opa-btn" href="{- upload_url -}" target="upload_target">录入新简历</a>
+                <a class="dialog-btn blue-btn opa-btn" href="{- select_url -}" target="select_target">选择已有简历</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 定制预览 -->
+<div class="modal-backdrop-view" ng-if="viewFeed"></div>
+<div class="modal-view" tabindex="-1" style="display:block" ng-if="viewFeed">
+    <div class="modal-dialog-view" style=" border-top: solid 6px #0091FA;">
+        <div class="modal-content-view">
+            <p class="close-layer text-right">
+                <a href="javascript:;" class="close-layerout-btn" ng-click="toggleView()"></a>
+            </p>
+            <div class="modal-body-view">
+                <div class="view-body">
+                    <h2 class="view-title">{- feedData.feed.title || feedData.feed.keywords -} <a href="javascript:;" class="cf46c62" ng-click="isShowLayer( $event , feedData.task.id , datas )">[我要认领]</a></h2>
+                    <p class="view-salary mt10">{- feedData.feed.salary_min | formatMoney:feedData.feed.salary_max -}</p>
+                    <div class="mt10">
+                        <p>
+                            <a href="javascript:;" class="view-desc-btn" ng-click="toggleDesc()">职位详情</a>
+                        </p>
+                        <div class="view-desc mt10" ng-bind-html="feedData.feed.job_desc|as_html" ng-if="showViewDesc"></div>
+                        <p ng-if="showViewDesc">
+                            <a href="javascript:;" class="close-desc mt10 shrink-desc" ng-click="toggleDesc()"></a>
+                        </p>
+                    </div>
+                    <p class="view-company-name mt10" ng-if="feedData.company.company_name">{- feedData.company.company_name -}</p>
+                    <p class="view-area mt10" ng-if=" ( feedData.feed.expect_area && feedData.feed.expect_area.length ) || feedData.company.company_stage"><span ng-if="feedData.feed.expect_area && feedData.feed.expect_area.length">{- feedData.feed.expect_area | joinCity -}</span><span ng-if="feedData.company.company_stage">, &nbsp;&nbsp;{- feedData.company.company_stage -}</span></p>
+                    <p class="view-cat mt10" ng-if=" feedData.feed.job_domain && feedData.feed.job_domain.length ">{- feedData.feed.job_domain.join(',') -}</p>
+                    <p class="view-url mt10" ng-if="feedData.company.product_url"><a target="_blank" href="{- feedData.company.product_url -}">{- feedData.company.product_url -}</a></p>
+                    <p class="view-welfare" ng-if=" feedData.feed.job_welfare && feedData.feed.job_welfare.length ">
+                        <span ng-repeat="v_welfare in feedData.feed.job_welfare track by $index">{- v_welfare -}</span>
+                    </p>
+                    <div class="view-key_points mt10" ng-if="feedData.company.key_points">{- feedData.company.key_points -}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

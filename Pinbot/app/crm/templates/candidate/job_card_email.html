@@ -1,0 +1,153 @@
+{% load candidate_tags %}
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%" style="margin: 0 auto;">
+    <tbody>
+        <tr>
+            <td bgcolor="#fff" style="background:#fff; vertical-align:top">            <table width="670" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                <tbody>
+                    <tr>
+                        <td bgcolor="#fff" style="background:#fff;border:solid 1px #D4D4D4">                        <!-- head start -->                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                            <tbody>
+                                <tr>
+                                    <td bgcolor="#fff" style="padding:20px 0; background:#fff; border-bottom:solid 1px #D4D4D4">                                        <table width="595" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td width="150"><a href="http://www.pinbot.me/" target="_blank" title="聘宝 | 专业人才推荐"><img border="0" src="http://pinbot.me/static/beta/email/logo1.jpg" alt="推荐好工作, 给优秀的你"></a></td>
+                                                <td style="font-size:14px;color:#999">推荐好工作, 给优秀的你</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- head end-->                        <!-- content start -->                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                            <tbody>
+                                <tr>
+                                    <td>                                        <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                        <tbody>
+                                            <tr>
+                                                <td>                                                    <p style="color:#333333;font-size:14px;line-height:2em;padding-top:20px;">                                                                                                                                                                      </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="580" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;margin-top:25px;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="background:#F9F9F9;border-top:solid 6px #90caf9; ">                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border:solid 1px #E8E8E8; border-top:none">
+                                                    {% with company=feed.company %}
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="text-align: center;border-bottom:solid 1px #E8E8E8;">                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-size:18px;color:#222;font-weight:bold;text-align: left;line-height: 30px;padding:25px 0 20px;">{{ company.company_name }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#666;text-align: left; line-height: 25px;padding:0 0 30px;">{{ company.key_points }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align: center;">                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#555;padding:25px 0 10px; text-align: left;width:80px;line-height:25px;vertical-align: top;font-weight:bold;" valign="top">企业简介</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#777;padding:0 0 35px; text-align: left;line-height:25px;vertical-align: top;" valign="top">{{ company.key_points }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#555;padding:0 0 10px; text-align: left;width:80px;line-height:25px;vertical-align: top;font-weight: bold;" valign="top">网址</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#777;padding:0 0 50px; text-align: left;line-height:25px;vertical-align: top;" valign="top"><a href="{{ company.product_url|http_url }}" target="_blank" style="color:#3C99DF;font-size:14px;" title="">{{ company.product_url|http_url }}</a></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    {% endwith %}
+                                                </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background:#F9F9F9;border-top:solid 3px #90caf9;">                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border:solid 1px #E8E8E8; border-top:none">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="text-align: center; border-bottom: solid 1px #E8E8E8;">                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-size:18px;color:#222;font-weight:bold;text-align: left;line-height: 30px;padding:20px 0 10px;">{{ feed.title|default:feed.keywords }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#333;text-align: left; line-height: 25px;padding:0 0 20px;">
+                                                                            <strong style="color:#3C99DF;">
+                                                                                {{ feed.get_salary }}
+                                                                            </strong>
+                                                                            <strong style="color:#CCCCCC;">|</strong>
+                                                                            {{ feed.expect_area }}
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="text-align: center;">                                                                    <table width="510" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#555;padding:20px 0 10px; text-align: left;width:80px;line-height:25px;vertical-align: top;" valign="top">职位描述</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="font-size:14px;color:#777; text-align: left;line-height:25px;vertical-align: top; padding-bottom: 45px" valign="top">
+                                                                            {{ feed.job_desc|linebreaks }}
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>                                                    <p style="padding:20px 0;text-align:center">                                                                                                                                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- content end-->                        <!-- footer start -->                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border-top:solid 1px #CDCDCD;">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:10px 0; border-top: solid 6px #ECECEC">                                        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                        <tbody>
+                                            <tr>
+                                                <td>                                                                                                       <p style="text-align:center;font-size:12px;color:#999; padding:15px 0 20px">推荐好工作，给优秀的你</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- footer end-->                    </td>
+                    </tr>
+                </tbody>
+            </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

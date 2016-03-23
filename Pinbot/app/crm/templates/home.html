@@ -1,0 +1,355 @@
+{% extends 'base_crm.html' %}
+{% load compress %}
+{% block content %}
+<style>
+    /* adapted from http://maxwells.github.io/bootstrap-tags.html */
+    .tag {
+      font-size: 14px;
+      padding: .3em .4em .4em;
+      margin: 0 .1em;
+    }
+    .tag a {
+      color: #bbb;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .tag a:hover {
+      opacity: 1.0
+    }
+    .tag .remove {
+      vertical-align: bottom;
+      top: 0;
+    }
+    .tag a {
+      margin: 0 0 0 .3em;
+    }
+    .tag a .fa-black {
+      color: #000;
+      margin-bottom: 2px;
+    }
+</style>
+<div class="box box-solid">
+
+    <div class="box-body">
+        <span>男 | 26岁 |本科·四川大学 | 现居：成都 | 意向地：成都</span>
+        <br/>
+
+        <span class="tag label label-default">
+          <span>比较稳定</span>
+          <a><i class="fa fa-close fa-black"></i></a>
+        </span>
+
+        <span class="tag label label-default">
+          <span>倾向游戏行业</span>
+          <a><i class="fa fa-close fa-black"></i></a>
+        </span>
+
+        <a class="btn btn-social-icon"><i class="fa fa-plus"></i></a>
+
+        <button class="btn bg-default btn-flat margin"><i class="fa fa-plus"></i> 新增评价</button>
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table no-margin">
+          <thead>
+            <tr>
+                <th width="20%">评价时间</th>
+                <th width="20%">标签</th>
+                <th width="20%">求职状态</th>
+                <th width="20%">评价详情</th>
+                <th width="20%">评价人</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>2015-5-23 12：54</td>
+                <td>
+                    <span class="label label-default btn-flat ">比较稳定</span><br/><br/>
+                    <span class="label label-default btn-flat ">倾向游戏行业</span>
+                </td>
+                <td>
+
+                    <span class="label label-warning btn-flat ">在职求职中</span><br/><br/>
+                    <span class="btn btn-social-icon"><i class="fa fa-check"></i></span>
+                </td>
+                <td>凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字</td>
+                <td>houxinqi@hopperclouds.com</td>
+            </tr>
+            <tr>
+                <td>2015-5-23 12：54</td>
+                <td>
+                    <span class="label label-default btn-flat ">比较稳定</span><br/><br/>
+                    <span class="label label-default btn-flat ">倾向游戏行业</span>
+                </td>
+                <td>
+
+                    <span class="label label-warning btn-flat ">在职求职中</span><br/><br/>
+                </td>
+                <td>凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字凑齐140个字</td>
+                <td>houxinqi@hopperclouds.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.table-responsive -->
+    </div>
+    <!-- /.box-body -->
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+      <!-- Custom Tabs -->
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
+          <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
+          <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Dropdown <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+              <li role="presentation" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+            </ul>
+          </li>
+          <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab_1">
+            <b>How to use:</b>
+            <p>Exactly like the original bootstrap tabs except you should use
+              the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
+            A wonderful serenity has taken possession of my entire soul,
+            like these sweet mornings of spring which I enjoy with my whole heart.
+            I am alone, and feel the charm of existence in this spot,
+            which was created for the bliss of souls like mine. I am so happy,
+            my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
+            that I neglect my talents. I should be incapable of drawing a single stroke
+            at the present moment; and yet I feel that I never was a greater artist than now.
+          </div><!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_2">
+            The European languages are members of the same family. Their separate existence is a myth.
+            For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+            in their grammar, their pronunciation and their most common words. Everyone realizes why a
+            new common language would be desirable: one could refuse to pay expensive translators. To
+            achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+            words. If several languages coalesce, the grammar of the resulting language is more simple
+            and regular than that of the individual languages.
+          </div><!-- /.tab-pane -->
+          <div class="tab-pane" id="tab_3">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+            like Aldus PageMaker including versions of Lorem Ipsum.
+          </div><!-- /.tab-pane -->
+        </div><!-- /.tab-content -->
+      </div><!-- nav-tabs-custom -->
+    </div><!-- /.col -->
+
+
+</div> <!-- /.row -->
+<div class="box box-solid">
+
+    <div class="box-body">
+       候选人搜索
+
+    </div>
+</div>
+
+<div class="box box-solid">
+
+    <div class="box-body">
+       候选人现居地
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+        <div class="box-body">
+          <table class="table no-margin">
+            <thead>
+              <tr>
+                <th>姓名</th>
+                <th>职位</th>
+                <th>公司</th>
+                <th>现居地</th>
+                <th>联系方式</th>
+                <th>评价</th>
+                <th>举报</th>
+                <th>求职状态</th>
+                <th>最近操作时间</th>
+                <th>简历来源</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>聘小宝</td>
+                <td>iOS开发</td>
+                <td>成都浩泊云动</td>
+                <td>成都</td>
+                <td>13778322331
+                527788919@qq.com</td>
+                <td>成都浩泊云动科技有限公司</td>
+                <td>电话号码有误</td>
+                <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info">找不到工作</button>
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">找不到工作</a></li>
+                    <li><a href="#">求职离职中</a></li>
+                    <li><a href="#">在职求职中</a></li>
+                    </ul>
+                </div>
+                </td>
+                <td>2015-6-2112:34</td>
+                <td>智联</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="sr-only">Toggle Dropdown</span>
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">加入定制</a></li>
+                            <li><a href="#">发送企业名片</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>聘小宝</td>
+                <td>iOS开发</td>
+                <td>成都浩泊云动</td>
+                <td>成都</td>
+                <td>13778322331
+                527788919@qq.com</td>
+                <td>成都浩泊云动科技有限公司</td>
+                <td>电话号码有误</td>
+                <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info">找不到工作</button>
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">找不到工作</a></li>
+                    <li><a href="#">求职离职中</a></li>
+                    <li><a href="#">在职求职中</a></li>
+                    </ul>
+                </div>
+                </td>
+                <td>2015-6-2112:34</td>
+                <td>智联</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span class="sr-only">Toggle Dropdown</span>
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">加入定制</a></li>
+                            <li><a href="#">发送企业名片</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+<div class="box-footer no-padding">
+  <div class="mailbox-controls">
+    <!-- Check all button -->
+    <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i></button>
+    <div class="btn-group">
+      <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+      <button class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+      <button class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+    </div><!-- /.btn-group -->
+    <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+    <div class="pull-right">
+      1-50/200
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+        <button class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+      </div><!-- /.btn-group -->
+    </div><!-- /.pull-right -->
+  </div>
+</div>
+
+<div class="input-group margin">
+<input type="text" class="form-control">
+<span class="input-group-btn">
+  <button class="btn btn-info btn-flat" type="button">Go!</button>
+</span>
+</div>
+<select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+  <option selected="selected">Alabama</option>
+  <option>Alaska</option>
+  <option disabled="disabled">California (disabled)</option>
+  <option>Delaware</option>
+  <option>Tennessee</option>
+  <option>Texas</option>
+  <option>Washington</option>
+</select>
+<p></p>
+
+
+<div class="box box-danger">
+<div class="box-header with-border">
+  <h3 class="box-title">Different Width</h3>
+</div>
+<div class="box-body">
+  <div class="row">
+    <div class="col-xs-3">
+      <input type="text" class="form-control" placeholder=".col-xs-3">
+    </div>
+    <div class="col-xs-4">
+      <input type="text" class="form-control" placeholder=".col-xs-4">
+    </div>
+    <div class="col-xs-5">
+      <input type="text" class="form-control" placeholder=".col-xs-5">
+    </div>
+  </div>
+</div><!-- /.box-body -->
+</div>
+
+
+<div class="box box-solid">
+    <div class="box-header with-border">
+      <h3 class="box-title">Folders</h3>
+      <div class="box-tools">
+        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    <div class="box-body no-padding" style="display: block;">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-primary pull-right">12</span></a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+        <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+        <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a></li>
+        <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+      </ul>
+    </div><!-- /.box-body -->
+  </div>
+{% endblock %}

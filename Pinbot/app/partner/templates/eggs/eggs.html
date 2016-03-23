@@ -1,0 +1,68 @@
+{% load compress %}
+{% compress css %}
+    <link href="{{ STATIC_URL }}partner/eggs/css/eggs.css?t=2015121802" type="text/css" rel="stylesheet" />
+{% endcompress %}
+
+
+{% if not request.user.is_staff %}
+<div></div>
+
+{% endif %}
+<div class="eggs" style="display: none;">
+    <!-- 遮罩层 -->
+    <div class="eggs-layer"></div>
+
+    <div class="eggs-popup-layer">
+
+        <!-- 砸蛋 -->
+        <div class="eggs-popup" id="JS_egg">
+            <div class="egg-box">
+                <img class="egg hammer egg-click" src="" alt="egg" id="JS_drop_egg">
+            </div>
+            <p class="egg-sprite egg-reel">
+                <span class="f18 pd-btm-38">遇到一颗蛋蛋，好像里面有东西？</span>
+                <a class="button button-red w158 f16 egg-click egg-click-btn">砸开看看</a>
+            </p>
+            <i class="egg-sprite  close egg-close"></i>
+        </div>
+
+        <!-- 调侃型奖品 -->
+        <div class="eggs-popup transparent" id="JS_unreal">
+            <p class="f-mb10">
+                <img id="JS_unreal_img" src="" alt="unreal_gift">
+            </p>
+            <p class="egg-sprite blue-reel gift-reel">
+                <i class="egg-sprite i-blue-close close egg-sprite-close"></i>
+                <span id="JS_unreal_word">
+                </span><br><span class="unreal_footer">明天还来聘宝招人，彩蛋天天有喔！</span>
+            </p>
+
+        </div>
+        <!-- 实质型奖品 -->
+        <div class="eggs-popup transparent" id="JS_real">
+            <p>
+                <img id="JS_real_img" src="" alt="real_gift">
+            </p>
+            <div class="egg-sprite red-reel gift-reel">
+                <i class="egg-sprite i-red-close close egg-sprite-close"></i>
+                <!-- <h3 id="JS_real_word" class="gift-title"></h3> -->
+                <div class="barcode">
+                <p class="text-align barcode-info "><span class="small-title">恭喜你获得</span><span class="barcode-info-red barcode-info-gift gift-title" id="JS_real_word" ></span></p>
+                <span class="gift-title-more"></span>
+                <p class="text-align barcode-info barcode-info-more">1. 拍下此弹窗（或截图）</p>
+                <p class="text-align get-gift-desc get-gift-desc-more">2. 扫码加小助手并发送图片领奖</p>
+                <p class="img-p">
+                    <img class="code-img" src="{{ STATIC_URL }}partner/eggs/img/ass_code.jpg" alt="ass_code">
+                </p>
+                </div>
+                <p class="color-white text-center footer-p">明天还来聘宝招人，更多礼品等着你喔！</p>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% compress js %}
+<script defer src="{{ STATIC_URL }}partner/eggs/js/eggs.js?t=2016020102"></script>
+{% endcompress %}

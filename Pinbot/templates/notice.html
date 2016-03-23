@@ -1,0 +1,20 @@
+<div class="main-notice">
+    <a class="notice-handle selected" href="javascript:void(0)" id="JS_toggle_notice">通知{% if has_unread %}<i class="i-red-circle"></i>{% endif %}</a>
+    <ul class="notice-list">
+        {% if has_notify %}
+        {% for key, notify in all_notify.items %}
+        {% if notify.count %}
+        <li>你有<span class="c44b5e8">{{ notify.count }}</span>条新的<a href="{{ notify.url }}" class="c44b5e8 f12">{{ notify.desc }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% else %}
+        <li class="no-notice" id="JS_no_notice">暂无新的通知</li>
+        {% endif %}
+
+        <li class="last-child clearfix">
+            <a href="javascript:void(0)" id="JS_view_notice" class="left">查看全部通知</a>
+            <a href="javascript:void(0)" id="JS_hide_notice" class="right">收起</a>
+        </li>
+    </ul>
+</div>
