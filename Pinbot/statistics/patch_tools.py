@@ -29,7 +29,7 @@ def add_read_rate(day_num, user_feeds):
         display_time__gt=start_date,
     ).count()
 
-    read_rate = "{:.2f}%".format(100 * (float(all_read_feed_count) / float(all_feed_count)))
+    read_rate = "{:.2%}".format((float(all_read_feed_count) / float(all_feed_count)))
 
     return {
         'all_feed_count': all_feed_count,
